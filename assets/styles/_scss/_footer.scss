@@ -98,7 +98,15 @@
     text-align: center;
   }
 
-  .footer-copyright {
+}
+
+.footer-copyright {
     background-color: $fuschia;
-  }
+    text-align: center;
+    width: 100%;
+    p {
+        color: white;
+        padding: 0.9em;
+        background-color: $fuschia;
+    }
 }
