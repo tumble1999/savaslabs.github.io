@@ -1,0 +1,19 @@
+.home {
+    background: url("/assets/img/home.png");
+    .home-page-copy {
+        @include outer-container;
+        padding: 3% 0;
+        .logo { @include span-columns(4); }
+        .tagline { @include span-columns(8); }
+        h2 {
+            font-family: $roboto;
+            font-size: 400%;
+            padding-top: 10%;
+            color: #9E023B;
+        }
+        h3 {
+            font-size: 120%;
+            color: white;
+        }
+    }
+}

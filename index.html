@@ -1,23 +1,33 @@
 ---
-layout: default
 ---
-<div class="home">
-    <section>
-        <div class="home-page-copy">
-            <div class="logo-tagline">
-                <img src="{{ base.url }}/assets/img/owl.png">
-                <h2>Savas Labs</h2>
-                <h3>A web development and design shop</h3>
-            </div>
-            <div class="who-we-are-list">
-                <ul>
-                    <li>Ready to build your vision for your site</li>
-                    <li>Founded on years of Drupal experience</li>
-                    <li>Focused on creating standards-compliant, sustainable code</li>
-                    <li>A learning environment, where we draw on diverse experience to teach each other best practices and standards</li>
-                    <li>Skilled in all aspects of development, from back-end to theming and automated testing</li>
-                </ul>
-            </div>
+<!DOCTYPE html>
+<html>
+
+  {% include head.html %}
+
+  <body>
+
+    {% include header.html %}
+
+    <div class="page-content">
+        <div class="home">
+            <section>
+                <div class="home-page-copy">
+                    <div class="logo">
+                        <img src="{{ base.url }}/assets/img/owl.png">
+                    </div>
+                    <div class="tagline">
+                        <h2>Savas Labs</h2>
+                        <h3>{{ site.description }}</h3>
+                    </div>
+                </div>
+            </section>
         </div>
-    </section>
-</div>
+    </div>
+
+    {% include footer.html %}
+
+  </body>
+
+</html>
+
