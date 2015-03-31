@@ -92,13 +92,13 @@
   p {
     color: $footer-disclaimer-color;
     font-size: 0.9em;
-    line-height: 1.5em;
+    line-height: 2em;
     margin: auto;
     max-width: 35em;
     text-align: center;
   }
 
   .footer-copyright {
-    background-color: #9E023B;
+    background-color: $fuschia;
   }
 }

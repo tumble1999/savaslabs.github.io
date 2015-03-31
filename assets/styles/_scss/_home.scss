@@ -5,14 +5,11 @@
         padding: 3% 0;
         .logo { @include span-columns(4); }
         .tagline { @include span-columns(8); }
-        h2 {
-            font-family: $roboto;
-            font-size: 400%;
+        h1 {
             padding-top: 10%;
-            color: #9E023B;
+            color: $fuschia;
         }
-        h3 {
-            font-size: 120%;
+        h4 {
             color: white;
         }
     }
