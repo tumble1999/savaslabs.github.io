@@ -1,20 +1,22 @@
 ---
-layout: default
+layout: page
 title: Who we are
 permalink: "/team/"
 ---
-{% for person in site.team %}
 <div class="cards">
-  <div class="card">
-    <div class="card-image">
-      <img src="{{ base.url }}/{{ person.photo }}" alt="">
-    </div>
-    <div class="card-header">
-        {{ person.name }}
-    </div>
-    <div class="card-copy">
-        <p>{{ person.job_title }}</p>
-    </div>
-  </div>
+    {% for person in site.team %}
+    <a href="{{ person.url }}">
+        <div class="card">
+            <div class="card-image">
+                <img src="{{ base.url }}/{{ person.photo }}" alt="">
+            </div>
+            <div class="card-header">
+                {{ person.name }}
+            </div>
+            <div class="card-copy">
+                <p>{{ person.job_title }}</p>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
 </div>
-{% endfor %}
