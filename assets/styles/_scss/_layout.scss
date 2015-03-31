@@ -1,0 +1,5 @@
+.wrapper {
+    @include outer-container;
+    max-width: 60em;
+    vertical-align: baseline;
+}
