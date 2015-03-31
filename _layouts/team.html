@@ -5,9 +5,15 @@ layout: default
     <header class="team-header">
         <img src="{{ base.url }}/{{ page.photo }}">
         <h1 class="team-member-name">{{ page.name }}</h1>
-        <h2 clsas="team-member-job-title">{{ page.job_title }}</h2>
+        <h2 class="team-member-job-title">{{ page.job_title }}</h2>
     </header>
     <article class="team-member-bio">
         {{ content }}
     </article>
+    <table class="table-minimal">
+        <tr>
+            <td class="label">Drupal.org</td>
+            <td><a href="https://drupal.org/u/{{ page.drupal }}">@{{ page.drupal }}</a></td>
+        </tr>
+    </table>
 </div>
