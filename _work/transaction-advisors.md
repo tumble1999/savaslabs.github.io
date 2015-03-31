@@ -5,7 +5,7 @@ client_url: "https://transactionadvisors.com"
 client_since: 2014 - present
 image: "assets/img/work/transaction-advisors.png"
 short_description: >
-  Transaction Advisors is a prestigious technical journal that publishes select white papers, technical articles, and research studies on the critical issues impacting corporate transaction planning, structuring, and execution.
+  Transaction Advisors is a prestigious technical journal for critical issues impacting corporate transactions.
 services:
   - Drupal development
   - Theming
