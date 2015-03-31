@@ -46,7 +46,6 @@
   }
 
   ul {
-    margin-bottom: $base-spacing * 2;
 
     @include media($medium-screen) {
       @include span-columns(3);
