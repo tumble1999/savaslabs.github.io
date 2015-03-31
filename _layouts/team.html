@@ -1,0 +1,13 @@
+---
+layout: default
+---
+<div class="post">
+    <header class="team-header">
+        <img src="{{ base.url }}/{{ page.photo }}">
+        <h1 class="team-member-name">{{ page.name }}</h1>
+        <h2 clsas="team-member-job-title">{{ page.job_title }}</h2>
+    </header>
+    <article class="team-member-bio">
+        {{ content }}
+    </article>
+</div>

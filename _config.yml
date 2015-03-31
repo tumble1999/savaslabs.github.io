@@ -1,9 +1,7 @@
 title: Savas
 email: info@savaslabs.com
 description: > 
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  A Drupal-centric web development and design shop anchored in Durham.
 baseurl: "" 
 url: "http://savaslabs.com"
 twitter_username: savas_labs 
@@ -11,3 +9,7 @@ github_username: savaslabs
 markdown: kramdown
 sass:
   sass_dir: assets/styles/_scss
+collections:
+  team:
+    output: true
+    permalink: /team/:path/
