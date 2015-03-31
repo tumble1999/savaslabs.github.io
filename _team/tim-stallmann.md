@@ -2,8 +2,10 @@
 name: Tim Stallmann
 layout: team
 job_title: Developer
-job_description: Tim maps things
+job_description: Tim is a cartographer and developer at Savas, implementing complex web applications for our clients.
 photo: "assets/img/team/tim-stallmann.jpg"
 card: "assets/img/team/cards/tim-stallmann.jpg"
+drupal: tim-stallmann
+github: timstallmann
 ---
 Tim is a cartographer and web developer. His web development experience dates all the way back to the last millennium, back when frames were in fashion. Tim fell into Drupal via a web mapping project and has been enjoying exploring the possibilities of that framework and building his web skills with the Savas team. Outside of work, Tim is an avid baker, and active in social justice work. He's a founding member of the Counter-Cartographies Collective and part of the OurMaps project. He has an MA in Mathematics from Duke University, and an MA in Geography from UNC Chapel Hill.
