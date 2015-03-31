@@ -98,11 +98,11 @@
     @include outer-container;
     @include span-columns(8);
     @include shift(2);
+    img {
+        max-height: 250px;
+        border-radius: 3px;
+    }
     p {
         font-size: $base-font-size * 1.2;
-    }
-
-    header {
-        text-align: center;
     }
 }
