@@ -3,4 +3,23 @@ layout: page
 title: Blog
 permalink: "/blog/"
 ---
-Coming soon!
+
+<p class="page-description">Recent blog posts</p>
+
+<div class="cards">
+    {% for post in site.posts %}
+    <a href="{{ post.url }}">
+        <div class="card">
+            <div class="card-image">
+            </div>
+            <div class="card-header">
+                {{ post.title }}
+            </div>
+            <div class="card-copy">
+                <p>{{ post.summary }}</p>
+            </div>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
