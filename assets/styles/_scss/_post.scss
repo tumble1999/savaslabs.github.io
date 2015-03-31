@@ -1,0 +1,15 @@
+.portfolio, .post {
+    @include outer-container;
+    @include media($large-screen) {
+        @include span-columns(8);
+        @include shift(2);
+    }
+    p {
+        font-size: $base-font-size * 1.2;
+    }
+
+    header {
+        text-align: center;
+    }
+
+}

@@ -5,6 +5,9 @@ layout: default
     <header class="portfolio-header">
         <h2 class="portfolio-item">{{ page.title }}</h2>
     </header>
+    <article class="portfolio-description">
+        {{ content }}
+    </article>
     <services class="portfolio-details">
         <table class="table-minimal">
             <tbody>
@@ -23,7 +26,4 @@ layout: default
             </tbody>
         </table>
     </services>
-    <article class="portfolio-description">
-        {{ content }}
-    </article>
 </div>
