@@ -13,3 +13,6 @@ collections:
   team:
     output: true
     permalink: /team/:path/
+  work:
+    output: true
+    permalink: /work/:path/

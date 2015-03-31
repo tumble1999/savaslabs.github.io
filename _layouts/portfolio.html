@@ -1,0 +1,29 @@
+---
+layout: default
+---
+<div class="portfolio">
+    <header class="portfolio-header">
+        <h1 class="portfolio-item">{{ page.title }}</h1>
+    </header>
+    <services class="portfolio-details">
+        <table class="table-minimal">
+            <tbody>
+                <tr>
+                    <td class="label">Client since</td>
+                    <td>{{ page.client_since }}</td>
+                </tr>
+                <tr>
+                    <td class="label">Services provided</td>
+                    <td>{{ page.services | join: ', ' }}</td>
+                </tr>
+                <tr>
+                    <td class="label">URL</td>
+                    <td>{{ page.client_url }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </services>
+    <article class="portfolio-description">
+        {{ content }}
+    </article>
+</div>
