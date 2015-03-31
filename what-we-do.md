@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: What we do
 permalink: "/what-we-do/"
 ---
