@@ -3,6 +3,7 @@ layout: portfolio
 title: MIT Press
 client_url: "http://mitpress.mit.edu"
 client_since: 2014 - present
+image: "assets/img/work/mitpress.png"
 short_description: The MIT Press is the only university press in the United States whose list is based in science and technology.
 services:
   - Code cleanup
