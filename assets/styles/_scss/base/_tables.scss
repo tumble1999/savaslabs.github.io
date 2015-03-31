@@ -18,6 +18,10 @@ td {
   padding: $small-spacing 0;
 }
 
+td .label {
+    font-weight: bold;
+}
+
 tr,
 td,
 th {

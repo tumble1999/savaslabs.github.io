@@ -13,7 +13,17 @@ layout: default
     <table class="table-minimal">
         <tr>
             <td class="label">Drupal.org</td>
-            <td><a href="https://drupal.org/u/{{ page.drupal }}">@{{ page.drupal }}</a></td>
+            <td><a href="https://drupal.org/u/{{ page.drupal }}">{{ page.drupal }}</a></td>
         </tr>
+        <tr>
+            <td class="label">GitHub</td>
+            <td><a href="https://github.com/{{ page.github }}">{{ page.github }}</a></td>
+        </tr>
+        {% if page.twitter %}
+        <tr>
+            <td class="label">Twitter</td>
+            <td><a href="https://twitter.com/{{ page.twitter }}">@{{ page.twitter}}</a></td>
+        </tr>
+        {% endif %}
     </table>
 </div>
