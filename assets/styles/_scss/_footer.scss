@@ -102,11 +102,11 @@
 
 .footer-copyright {
     background-color: $fuschia;
-    text-align: center;
+    @include display(flex);
+    height: 5em;
     width: 100%;
     p {
         color: white;
-        padding: 0.9em;
-        background-color: $fuschia;
+        margin: auto;
     }
 }
