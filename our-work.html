@@ -5,10 +5,11 @@ permalink: "/work/"
 ---
 <p class="page-description">Some description of our portfolio items</p>
 
-<div class="cards">
-    {% for portfolio in site.work %}
-        <a href="{{ portfolio.url }}">
+<div class="flex-container">
+    <div class="cards">
+        {% for portfolio in site.work %}
             <div class="card">
+                <a href="{{ portfolio.url }}">
                 <div class="card-image">
                     <img src="{{ base.url }}/{{ portfolio.image }}">
                 </div>
@@ -18,7 +19,8 @@ permalink: "/work/"
                 <div class="card-copy">
                     <p>{{ portfolio.short_description }}</p>
                 </div>
+                </a>
             </div>
-        </a>
-    {% endfor %}
+        {% endfor %}
+    </div>
 </div>

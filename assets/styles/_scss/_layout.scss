@@ -14,3 +14,7 @@ header, .page-description {
 	@include span-columns(8);
 	margin-bottom: 2em;
 }
+
+.flex-container {
+	@include span-columns(12);
+}

@@ -1,4 +1,4 @@
-.team-cards .card {
+.team-card {
     ///////////////////////////////////////////////////////////////////////////////////
     $base-border-color: gainsboro !default;
     $base-border-radius: 3px !default;
@@ -19,9 +19,9 @@
     $card-image-hover-background: lighten($card-image-background, 5%);
     $card-margin: 1em;
 
-    @include span-columns(4);
-    @include flex-basis(15em);
-    @include flex-grow(1);
+    @include span-columns(3);
+    @include flex-basis(20em);
+    @include flex-grow(0);
     @include transition (all 0.2s ease-in-out);
     background-color: $card-background;
     border-radius: $base-border-radius;

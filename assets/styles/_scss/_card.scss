@@ -1,8 +1,7 @@
 .cards {
   @include display(flex);
   @include flex-wrap(wrap);
-  @include justify-content(space-between);
-  @include span-columns(12);
+  @include justify-content(center);
 } 
 
 .card {
@@ -26,7 +25,6 @@
   $card-image-hover-background: lighten($card-image-background, 5%);
   $card-margin: 1em;
 
-  @include span-columns(3);
   @include flex-basis(15em);
   @include flex-grow(1);
   @include transition (all 0.2s ease-in-out);
@@ -37,7 +35,7 @@
   cursor: auto;
   margin: 0 $card-margin $base-spacing $card-margin;
   position: relative;
-
+  
   .card-image {
     overflow: hidden;
     max-height: 200px;

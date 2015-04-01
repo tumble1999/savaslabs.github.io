@@ -3,20 +3,24 @@ layout: page
 title: Blog
 permalink: "/blog/"
 ---
-<div class="cards">
-    {% for post in site.posts %}
-    <a href="{{ post.url }}">
-        <div class="card">
-            <div class="card-image">
-            </div>
-            <div class="card-header">
-                {{ post.title }}
-            </div>
-            <div class="card-copy">
-                <p>{{ post.summary }}</p>
-            </div>
-        </div>
-    </a>
-    {% endfor %}
-</div>
 
+<p class="page-description">We're a full-service web development and design shop, anchored in Durham, NC. Our team has years of experience in Drupal, web development, cartography, design, and project management.</p>
+
+<div class="flex-container">
+    <div class="cards">
+        {% for post in site.posts %}
+            <div class="card">
+                <a href="{{ post.url }}">
+                    <div class="card-image">
+                    </div>
+                    <div class="card-header">
+                        {{ post.title }}
+                    </div>
+                    <div class="card-copy">
+                        <p>{{ post.summary }}</p>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
