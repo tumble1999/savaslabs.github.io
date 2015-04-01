@@ -5,7 +5,7 @@ client_url: "http://cognet.mit.edu"
 client_since: 2014 - present
 image: "assets/img/work/mit-press-cognet.png"
 short_description: >
-  MIT Press CogNet is the essential online resource for students and scholars in the brain and cognitive science
+  MIT Press CogNet is the essential online resource for students and scholars in the brain and cognitive science.
 services:
   - Code cleanup
   - Security audit

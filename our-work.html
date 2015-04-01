@@ -3,12 +3,12 @@ layout: page
 title: Our work
 permalink: "/work/"
 ---
-<p class="page-description">Some description of our portfolio items</p>
+<p class="page-description">Below is a selection of recent work done by Savas.</p>
 
 <div class="flex-container">
     <div class="cards">
         {% for portfolio in site.work %}
-            <div class="card">
+            <div class="card work-card">
                 <a href="{{ portfolio.url }}">
                     <div class="card-image">
                         <img src="{{ base.url }}/{{ portfolio.image }}">
