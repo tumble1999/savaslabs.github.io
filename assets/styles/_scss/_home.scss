@@ -1,18 +1,20 @@
+$medium-screen: em(640) !default;
+
 .home {
     background: url("/assets/img/home.png");
     .home-page-copy {
         @include outer-container;
         padding: 3% 0;
-        .logo { @include shift(2); @include span-columns(3); }
-        .tagline { @include span-columns(7); }
+        text-align: center;
+        @include media($medium-screen) {
+            .logo { @include shift(1); @include span-columns(3); }
+            .tagline { @include span-columns(7); }
+        }
         h1 {
-            text-align: center;
             padding-top: 10%;
-            color: $fuschia;
         }
         h4 {
             color: white;
-            text-align: center;
         }
     }
 }
