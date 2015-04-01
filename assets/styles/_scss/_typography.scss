@@ -49,6 +49,7 @@ a {
 
 .nav-link a {
     text-transform: uppercase;
+    font-size: $base-font-size * 1.1;
 }
 
 p {
@@ -56,5 +57,5 @@ p {
 }
 
 .page-description {
-  font-size: $base-font-size * 1.5;
+  font-size: $base-font-size * 1.2;
 }

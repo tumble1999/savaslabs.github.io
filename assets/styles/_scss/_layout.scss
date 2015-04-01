@@ -8,3 +8,9 @@
 header, .page-description {
 	text-align: center;
 }
+
+.page-description {
+	@include shift(2);
+	@include span-columns(8);
+	margin-bottom: 2em;
+}
