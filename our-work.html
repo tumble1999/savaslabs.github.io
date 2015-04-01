@@ -10,15 +10,15 @@ permalink: "/work/"
         {% for portfolio in site.work %}
             <div class="card">
                 <a href="{{ portfolio.url }}">
-                <div class="card-image">
-                    <img src="{{ base.url }}/{{ portfolio.image }}">
-                </div>
-                    <div class="card-header">
-                        {{ portfolio.title }}
+                    <div class="card-image">
+                        <img src="{{ base.url }}/{{ portfolio.image }}">
                     </div>
-                <div class="card-copy">
-                    <p>{{ portfolio.short_description }}</p>
-                </div>
+                        <div class="card-header">
+                            {{ portfolio.title }}
+                        </div>
+                    <div class="card-copy">
+                        <p>{{ portfolio.short_description }}</p>
+                    </div>
                 </a>
             </div>
         {% endfor %}
