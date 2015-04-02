@@ -4,27 +4,31 @@ title: What we do
 permalink: "/what-we-do/"
 ---
 
+<p class="page-description">Savas is founded on years of Drupal and web development experience, focused on creating standards-compliant, sustainable code.</p>
+
 ### Drupal
 
-Full Drupal site builds: information architecture, theming, development
+<img src="/assets/icons/drupal.png" align="left" height="80px" width="80px">
+[Our team](/team) has built dozens of Drupal sites. We understand the value of sustainable code and write Drupal coding standards compliant PHP, JavaScript, and CSS. We have a thorough knowledge of best practices for deploying small and large scale Drupal sites. We're skilled in all aspects of development, from back-end to large scale data migration, from theming to automated testing.
 
-### Best practices
+Our team has rescued poorly-built Drupal implementations and refactored legacy, bug-ridden code to be secure and reliable. We have also done security audits for clients, both to prevent hacks, and as part of a hack recovery process. (None of the sites we manage were compromised by [DrupalGeddon](https://drupal.org/project/drupalgeddon).)
 
-Code reviews and site audits for security issues, coding standards and best practices
+Savas believes in giving back to the community. Several of our team members contribute patches and maintain modules on [Drupal.org](https://drupal.org), and in 2015 Savas will be organizing Drupal code sprints in Durham.
 
-### Data migration
-
-Large scale data migration projects
+---
 
 ### Automated testing
 
-Automated testing for your website, using Jenkins, Travis CI, and Behat
+<i class="fa fa-check-circle-o fa-3x fa-pull-left"></i> Testing. Every site needs it, but all too often in the industry this comes down to a time-consuming and tedious process of manually clicking through pages on the site.
+
+The Savas team takes a different approach. We use automated tests in [Behat](http://behat.org), [PHPUnit](http://phpunit.de), [CasperJS](http://casperjs.org) and others, and integrate them with [Jenkins](http://jenkins-ci.org) and [Travis](http://travis-ci.org). We pride ourselves on delivering stable, secure, and tested code.
+
+---
 
 ### Mapping and data visualization
-
+<i class="fa fa-globe fa-3x fa-pull-left"></i>
 Data visualization and mapping projects
 
-### Contributing to the community
+---
 
-Contribute to community groups and open source projects
-
+<i class="fa fa-fax"></i> Interested to work with us? [Get in touch!](/contact)
