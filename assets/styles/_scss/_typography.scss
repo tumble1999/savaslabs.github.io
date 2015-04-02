@@ -16,25 +16,11 @@ h6 {
     color: $fuschia;
 }
 
-h1 {
-	font-size: 400%;
-}
-
-h2 {
-	font-size: 300%;
-}
-
-h3 {
-	font-size: 200%;
-}
-
-h4 {
-	font-size: 150%;
-}
-
-h5 {
-	font-size: 120%;
-}
+h1 { font-size: 400%; }
+h2 { font-size: 300%; }
+h3 { font-size: 200%; }
+h4 { font-size: 150%; }
+h5 { font-size: 120%; }
 
 a {
 	color: $fuschia;
@@ -58,4 +44,14 @@ p {
 
 .page-description {
   font-size: $base-font-size * 1.2;
+}
+
+.portfolio, .post {
+    p, ul, ol {
+    font-size: $base-font-size * 1.2;
+    color: $dark-blue;
+    }
+    ul { list-style-type: square; }
+    ol { list-style-type: decimal; }
+    h1, h2, h3, h4, h5 { margin-top: 1.5em; }
 }

@@ -4,12 +4,7 @@
         @include span-columns(8);
         @include shift(2);
     }
-    p {
-        font-size: $base-font-size * 1.2;
-    }
-
     header {
         text-align: center;
     }
-
 }
