@@ -41,6 +41,12 @@ layout: default
             <td><a href="https://twitter.com/{{ page.twitter }}">@{{ page.twitter}}</a></td>
         </tr>
         {% endif %}
+        {% if page.website %}
+        <tr>
+            <td class="label"><i class="fa fa-globe"></i> Website</td>
+            <td><a href="{{ page.website }}">{{ page.website | replace: "www." | replace: "http://" }}</a></td>
+        </tr>
+        {% endif %}
     </table>
     <hr />
     <div class="view-all-team">
