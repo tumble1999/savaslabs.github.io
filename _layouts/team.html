@@ -1,6 +1,22 @@
 ---
 layout: default
 ---
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "colleague": [
+          {% for person in site.team %}{% if person.name != page.name %}"{{ person.name | downcase | replace: ' ', '-'  | prepend: "/team/" | prepend: site.baseurl | prepend: site.url | strip_newlines }}"{% if forloop.rindex > 1 %},{% endif %}{% endif %}{% endfor %}
+      ],
+      "image": "{{ page.photo | prepend: site.baseurl | prepend: site.url }}",
+      "jobTitle": "{{ page.job_title }}",
+      "name": "{{ page.name }}",
+      "affiliation": "Savas",
+      "worksFor": "Savas",
+      "description": "{{ page.job_description }}",
+      "url": "{{ page.url | prepend: site.baseurl | prepend: site.url }}"
+    }
+    </script>
 <div class="team-member">
     <header class="team-header">
         <h2 class="team-member-name">{{ page.name }}</h2>
@@ -12,18 +28,20 @@ layout: default
     </article>
     <table class="table-minimal">
         <tr>
-            <td class="label">Drupal.org</td>
+            <td class="label"><img src="{{ base.url }}/assets/icons/drupal.png" height="16px" width="16px"> Drupal</td>
             <td><a href="https://drupal.org/u/{{ page.drupal }}">{{ page.drupal }}</a></td>
         </tr>
         <tr>
-            <td class="label">GitHub</td>
+            <td class="label"><span class="octicon octicon-mark-github"></span> GitHub</td>
             <td><a href="https://github.com/{{ page.github }}">{{ page.github }}</a></td>
         </tr>
         {% if page.twitter %}
         <tr>
-            <td class="label">Twitter</td>
+            <td class="label"><img src="{{ base.url }}/assets/icons/twitter-bird.svg" height="16px" width="16px"> Twitter</td>
             <td><a href="https://twitter.com/{{ page.twitter }}">@{{ page.twitter}}</a></td>
         </tr>
         {% endif %}
     </table>
+    <hr />
+    <i class="fa fa-arrow-left fa-lg"></i> <a href="/team"> View all team members</a>
 </div>
