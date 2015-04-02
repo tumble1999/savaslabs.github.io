@@ -10,9 +10,7 @@ header, .page-description {
 }
 
 .page-description {
-	@include shift(2);
-	@include span-columns(8);
-	margin-bottom: 2em;
+	  margin-bottom: 2em;
 }
 
 .flex-container {
