@@ -45,12 +45,19 @@
     }
   }
 
-  ul {
+  div ul {
 
     @include media($medium-screen) {
       @include span-columns(3);
       @include omega(3n);
       @include clearfix;
+    }
+    ul {
+      width: 100%;
+      li {
+        display: inline-block;
+        padding-right: 0.5em;
+      }
     }
   }
 
