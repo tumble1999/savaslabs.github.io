@@ -8,7 +8,7 @@ layout: default
       "colleague": [
           {% for person in site.team %}{% if person.name != page.name %}"{{ person.name | downcase | replace: ' ', '-'  | prepend: "/team/" | prepend: site.baseurl | prepend: site.url | strip_newlines }}"{% if forloop.rindex > 1 %},{% endif %}{% endif %}{% endfor %}
       ],
-      "image": "{{ page.photo | prepend: site.baseurl | prepend: site.url }}",
+      "image": "{{ page.photo | prepend: "/" | prepend: site.baseurl | prepend: site.url }}",
       "jobTitle": "{{ page.job_title }}",
       "name": "{{ page.name }}",
       "affiliation": "Savas",
@@ -43,5 +43,5 @@ layout: default
         {% endif %}
     </table>
     <hr />
-    <i class="fa fa-arrow-left fa-lg"></i> <a href="/team"> View all team members</a>
+    <i class="fa fa-arrow-left"></i> <a href="/team"> View all team members</a>
 </div>
