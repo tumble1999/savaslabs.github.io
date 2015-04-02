@@ -55,6 +55,9 @@
     ul {
       width: 100%;
       text-align: center;
+      @include media($medium-screen) {
+        text-align: left;
+      }
       li {
         display: inline-block;
         padding-right: 0.5em;
