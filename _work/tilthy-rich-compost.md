@@ -2,7 +2,7 @@
 layout: portfolio
 title: Tilthy Rich Compost
 client_url: "http://tilthyrichcompost.com"
-client_since: 2014 - present
+client_since: 2013 - present
 image: "assets/img/work/tilthy-rich-compost.png"
 short_description: >
   Tilthy Rich Compost collects and distributes compost via bicycle in Durham, NC.
