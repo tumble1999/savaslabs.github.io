@@ -12,15 +12,15 @@ layout: default
         <table class="table-minimal">
             <tbody>
                 <tr>
-                    <td class="label">Client since</td>
+                    <td class="label"><i class="fa fa-calendar"></i>&nbsp;&nbsp;Client since</td>
                     <td>{{ page.client_since }}</td>
                 </tr>
                 <tr>
-                    <td class="label">Services provided</td>
+                    <td class="label"><i class="fa fa-wrench"></i>&nbsp;&nbsp;Services provided</td>
                     <td>{{ page.services | join: ', ' }}</td>
                 </tr>
                 <tr>
-                    <td class="label">URL</td>
+                    <td class="label"><i class="fa fa-globe"></i>&nbsp;&nbsp;Website</td>
                     <td><a href={{ page.client_url }}>{{ page.client_url }}</a></td>
                 </tr>
             </tbody>

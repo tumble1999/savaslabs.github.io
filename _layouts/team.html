@@ -28,22 +28,22 @@ layout: default
     </article>
     <table class="table-minimal">
         <tr>
-            <td class="label"><img src="{{ base.url }}/assets/icons/drupal.png" height="16px" width="16px"> Drupal</td>
+            <td class="label"><img src="{{ base.url }}/assets/icons/drupal.png" height="16px" width="16px">&nbsp;&nbsp;Drupal</td>
             <td><a href="https://drupal.org/u/{{ page.drupal }}">{{ page.drupal }}</a></td>
         </tr>
         <tr>
-            <td class="label"><span class="octicon octicon-mark-github"></span> GitHub</td>
+            <td class="label"><span class="octicon octicon-mark-github"></span>&nbsp;&nbsp;GitHub</td>
             <td><a href="https://github.com/{{ page.github }}">{{ page.github }}</a></td>
         </tr>
         {% if page.twitter %}
         <tr>
-            <td class="label"><img src="{{ base.url }}/assets/icons/twitter-bird.svg" height="16px" width="16px"> Twitter</td>
+            <td class="label"><img src="{{ base.url }}/assets/icons/twitter-bird.svg" height="16px" width="16px">&nbsp;&nbsp;Twitter</td>
             <td><a href="https://twitter.com/{{ page.twitter }}">@{{ page.twitter}}</a></td>
         </tr>
         {% endif %}
         {% if page.website %}
         <tr>
-            <td class="label"><i class="fa fa-globe"></i> Website</td>
+            <td class="label"><i class="fa fa-globe"></i>&nbsp;&nbsp;Website</td>
             <td><a href="{{ page.website }}">{{ page.website | replace: "www." | replace: "http://" }}</a></td>
         </tr>
         {% endif %}
