@@ -1,10 +1,10 @@
 .work-card {
-    
+
     //@include span-columns(4);
     @include flex-basis(21em);
     @include flex-grow(0);
     @include flex-shrink(1);
-    
+
     .card-image {
         overflow: hidden;
         max-height: 200px;
@@ -15,4 +15,8 @@
             height: 200px;
         }
     }
+}
+
+.view-all-portfolio {
+    text-align: center;
 }
