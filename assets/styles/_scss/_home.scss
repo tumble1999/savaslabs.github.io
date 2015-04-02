@@ -7,14 +7,20 @@ $medium-screen: em(640) !default;
         padding: 3% 0;
         text-align: center;
         h1 {
-            padding-top: 10%;
+            padding-top: 5%;
         }
         h4 {
             padding: 0 5%;
             color: white;
         }
+        .logo img {
+            max-width: 125px;
+        }
         @include media($medium-screen) {
-            .logo { @include shift(1); @include span-columns(3); }
+            .logo { 
+                @include shift(1);
+                @include span-columns(3);
+            }
             .tagline { @include span-columns(7); }
             h4 { padding: 0; }
         }
