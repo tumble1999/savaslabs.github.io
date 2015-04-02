@@ -16,3 +16,6 @@ collections:
   work:
     output: true
     permalink: /work/:path/
+gems:
+  - jekyll-sitemap
+  - jekyll-mentions
