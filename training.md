@@ -2,7 +2,7 @@
 layout: post
 title: Drupal Training
 permalink: "/training/"
-published: true
+published: false
 ---
 <p class="page-description">We offer professional Drupal training classes in Durham.</p>
 
