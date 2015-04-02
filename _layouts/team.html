@@ -12,16 +12,16 @@ layout: default
     </article>
     <table class="table-minimal">
         <tr>
-            <td class="label">Drupal.org</td>
+            <td class="label"><img src="{{ base.url }}/assets/icons/drupal.png" height="16px" width="16px"> Drupal</td>
             <td><a href="https://drupal.org/u/{{ page.drupal }}">{{ page.drupal }}</a></td>
         </tr>
         <tr>
-            <td class="label">GitHub</td>
+            <td class="label"><span class="octicon octicon-mark-github"></span> GitHub</td>
             <td><a href="https://github.com/{{ page.github }}">{{ page.github }}</a></td>
         </tr>
         {% if page.twitter %}
         <tr>
-            <td class="label">Twitter</td>
+            <td class="label"><img src="{{ base.url }}/assets/icons/twitter-bird.svg" height="16px" width="16px"> Twitter</td>
             <td><a href="https://twitter.com/{{ page.twitter }}">@{{ page.twitter}}</a></td>
         </tr>
         {% endif %}
