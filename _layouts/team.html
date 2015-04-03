@@ -20,7 +20,7 @@ layout: default
 <div class="team-member">
     <header class="team-header">
         <h2 class="team-member-name">{{ page.name }}</h2>
-        <img src="{{ base.url }}/{{ page.photo }}">
+        <img alt="{{ page.name }}" src="{{ base.url }}/{{ page.photo }}">
         <h4 class="team-member-job-title">{{ page.job_title }}</h4>
     </header>
     <article class="team-member-bio">
@@ -28,8 +28,8 @@ layout: default
     </article>
     <table class="table-minimal">
         <tr>
-            <td class="label"><img src="{{ base.url }}/assets/icons/drupal.png" height="16px" width="16px">&nbsp;&nbsp;Drupal</td>
-            <td><a href="https://drupal.org/u/{{ page.drupal }}">{{ page.drupal }}</a></td>
+            <td class="label"><img alt="Druplicon" src="{{ base.url }}/assets/icons/drupal.png" height="16px" width="16px">&nbsp;&nbsp;Drupal</td>
+            <td><a href="https://www.drupal.org/u/{{ page.drupal }}">{{ page.drupal }}</a></td>
         </tr>
         <tr>
             <td class="label"><span class="octicon octicon-mark-github"></span>&nbsp;&nbsp;GitHub</td>
@@ -37,7 +37,7 @@ layout: default
         </tr>
         {% if page.twitter %}
         <tr>
-            <td class="label"><img src="{{ base.url }}/assets/icons/twitter-bird.svg" height="16px" width="16px">&nbsp;&nbsp;Twitter</td>
+            <td class="label"><img alt="Twitter bird" src="{{ base.url }}/assets/icons/twitter-bird.svg" height="16px" width="16px">&nbsp;&nbsp;Twitter</td>
             <td><a href="https://twitter.com/{{ page.twitter }}">@{{ page.twitter}}</a></td>
         </tr>
         {% endif %}

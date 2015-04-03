@@ -1,7 +1,7 @@
 ---
 layout: portfolio
 title: Transaction Advisors
-client_url: "https://transactionadvisors.com"
+client_url: "https://www.transactionadvisors.com"
 client_since: 2014 - present
 image: "assets/img/work/transaction-advisors.png"
 short_description: >
