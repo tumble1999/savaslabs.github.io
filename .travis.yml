@@ -2,7 +2,6 @@ language: ruby
 script: ./tests/run-tests.sh
 rvm:
   - 2.1
-exclude: [vendor]
 env:
   global:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true

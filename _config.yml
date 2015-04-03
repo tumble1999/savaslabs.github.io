@@ -9,6 +9,7 @@ github_username: savaslabs
 markdown: kramdown
 paginate: 6
 paginate_path: "/blog/:num/"
+exclude: [vendor]
 sass:
   sass_dir: assets/styles/_scss
 collections:
