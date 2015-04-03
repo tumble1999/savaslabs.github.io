@@ -32,4 +32,4 @@ The Savas team takes a different approach. We use automated tests in [Behat](htt
 
 ---
 
-<i class="fa fa-fax"></i> Interested to work with us? [Get in touch!](/contact)
+<i class="fa fa-fax"></i>&nbsp;&nbsp;Interested to work with us? [Get in touch!](/contact)
