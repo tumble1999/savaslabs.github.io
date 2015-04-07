@@ -49,13 +49,17 @@
     }
 }
 
-.logos {
-    @include display(flex);
-    @include justify-content(center);
-    @include align-items(center);
-    height: 125px;
-    width: 100%;
-    img {
-        margin: 0 1em;
+.associations {
+    text-align: center;
+    clear: both;
+    .logos {
+        @include display(flex);
+        @include justify-content(center);
+        @include align-items(center);
+        height: 125px;
+        width: 100%;
+        img {
+            margin: 0 1em;
+        }
     }
 }
