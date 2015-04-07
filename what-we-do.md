@@ -17,6 +17,9 @@ Our team has rescued poorly-built Drupal implementations and refactored legacy, 
 
 Savas believes in giving back to the community. Several of our team members contribute patches and maintain modules on [Drupal.org](https://www.drupal.org), and in 2015 Savas will be organizing Drupal code sprints in Durham.
 
+<img src="/assets/img/drupal_assoc_member_logo.png" align="left" height="80px" width="80px">
+<br>&nbsp;&nbsp;Savas is a Drupal Association Organization Member.<br><br>
+
 ---
 
 ### Automated testing
