@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Drupal Training
-permalink: "/training/"
-published: false
+permalink: "/drupal-training/"
+published: true
 ---
 <p class="page-description">We offer professional Drupal training classes in Durham.</p>
 
@@ -12,7 +12,7 @@ The Savas team has expertise in all aspects of Drupal development. Our skilled i
 
 ### Upcoming classes
 
-*No upcoming classes at this time.*
+*No upcoming classes at this time. [Contact us](/contact) if you'd like to set something up.*
 
 #### Curriculum
 
