@@ -8,7 +8,7 @@ published: true
 
 ### Learn from professionals
 
-The Savas team has expertise in all aspects of Drupal development. Our skilled instructors will help you take your Drupal talent to the next level.
+The Savas team has [expertise in all aspects of Drupal development](/what-we-do). Our [skilled instructors](/team) will help you take your Drupal talent to the next level.
 
 ### Upcoming classes
 
