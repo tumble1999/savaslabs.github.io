@@ -1,17 +1,29 @@
+# Basic Info
 title: Savas
 email: info@savaslabs.com
 description: > 
   A Drupal-centric web development and design shop anchored in Durham, NC.
 baseurl: "" 
 url: ""
+
+# Professional and social media links
 twitter_username: savas_labs 
 github_username: savaslabs
+
+# Languages and syntax highlighting
 markdown: kramdown
-paginate: 6
-paginate_path: "/blog/:num/"
-exclude: [vendor]
 sass:
   sass_dir: assets/styles/_scss
+pygments: true
+
+# Blog
+paginate: 6
+paginate_path: "/blog/:num/"
+
+# For Travis CI
+exclude: [vendor]
+
+# Collections
 collections:
   team:
     output: true
@@ -19,5 +31,7 @@ collections:
   work:
     output: true
     permalink: /work/:path/
+
+# Gems
 gems:
   - jekyll-sitemap
