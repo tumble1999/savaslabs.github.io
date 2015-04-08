@@ -1,7 +1,11 @@
 language: ruby
-script: ./_tests/run-tests.sh
+script: "./_tests/run-tests.sh"
 rvm:
-  - 2.1
+- 2.1
 env:
   global:
-    - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
+notifications:
+  hipchat:
+    rooms:
+      secure: jUWI8KHGn3fbjUuutXRT451r4G+uiA67f8C7hxP8cUqxzhhUNa2NCa/jVaxRVR4lZuEkEyX/zlVoZ1Tohny5rSeq32isK/aQQOqCaLDrcb/+cfm0KLjZL1SHQuvjo5gDjX29/0jV+BjxWK7qY6JW8xjEdmMqKhIEjA4JSlGFyEc=
