@@ -1,7 +1,12 @@
 $medium-screen: em(640) !default;
 
-.home {
-    background: url("/assets/img/home.png");
+body.home {
+  background: $fuschia;
+}
+
+.home .page-content {
+      background: url("/assets/img/home.png");
+
     .home-page-copy {
         @include outer-container;
         padding: 3% 0;
