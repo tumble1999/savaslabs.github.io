@@ -1,5 +1,5 @@
 language: ruby
-script: ./tests/run-tests.sh
+script: ./_tests/run-tests.sh
 rvm:
   - 2.1
 env:
