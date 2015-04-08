@@ -9,3 +9,6 @@ notifications:
   hipchat:
     rooms:
       secure: jUWI8KHGn3fbjUuutXRT451r4G+uiA67f8C7hxP8cUqxzhhUNa2NCa/jVaxRVR4lZuEkEyX/zlVoZ1Tohny5rSeq32isK/aQQOqCaLDrcb/+cfm0KLjZL1SHQuvjo5gDjX29/0jV+BjxWK7qY6JW8xjEdmMqKhIEjA4JSlGFyEc=
+    template:
+      - '%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}'
+    notify: true
