@@ -53,7 +53,7 @@ layout: default
     {% endif %}{% endfor %}
     {% if counter > 0 %}
     <div class="team-recent-blog flex-container wrapper">
-      <h3>Recent Blog Posts</h3>
+      <h3>Latest posts</h3>
       <div class="cards">
       {% assign blog-counter = 0 %}
       {% for post in site.posts %}{% if blog-counter < 7 %}{% if page.name == post.author %}{% assign blog-counter = counter |plus: 1 %}
