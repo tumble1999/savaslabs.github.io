@@ -8,14 +8,14 @@
     }
 }
 
-header, .page-description {
+.flex-container {
+    @include span-columns(12);
+}
+
+header, .page-description, .view-all-link {
 	text-align: center;
 }
 
 .page-description {
 	  margin-bottom: 2em;
-}
-
-.flex-container {
-	@include span-columns(12);
 }
