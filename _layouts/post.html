@@ -1,6 +1,22 @@
 ---
 layout: default
 ---
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ page.title }}",
+    "about": "{{ page.summary }}",
+    "articleBody": "{{ content }}",
+    "author": "{{ page.author }}",
+    "keywords": "{{ page.tags }}",
+    "sourceOrganization": "Savas",
+    "url": "{{ page.url | prepend: site.baseurl | prepend: site.url }}"
+  }
+
+</script>
+
 <div class="post">
 
   <header class="post-header">
