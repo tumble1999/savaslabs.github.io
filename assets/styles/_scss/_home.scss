@@ -1,9 +1,5 @@
 $medium-screen: em(640) !default;
 
-body.home {
-  background: $fuschia;
-}
-
 .home .page-content {
       background: url("/assets/img/home.png");
 
@@ -31,6 +27,8 @@ body.home {
         }
     }
 }
+
+.home .wrapper h3 { text-align: center; }
 
 .blog-list {
     @include outer-container;

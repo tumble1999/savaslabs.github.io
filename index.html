@@ -25,6 +25,29 @@
         </div>
     </div>
 
+    <div class="wrapper">
+        <h3>Latest posts</h3>
+        <div class="flex-container">
+            <div class="cards">
+                {% for post in site.posts limit 6 %}
+                    <div class="card">
+                        <a href="{{ post.url }}">
+                            <div class="card-image">
+                            </div>
+                            <div class="card-header">
+                                {{ post.title }}
+                            </div>
+                            <div class="card-copy">
+                                <p>By {{ post.author }}</p>
+                                <p>{{ post.summary }}</p>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
     {% include footer.html %}
 
   </body>
