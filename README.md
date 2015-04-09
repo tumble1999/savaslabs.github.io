@@ -6,4 +6,4 @@ The site is built using Jekyll. To run locally:
 
 1. Clone the repo
 2. `bundle install`
-3. `jekyll serve`
+3. `bundle exec jekyll serve`

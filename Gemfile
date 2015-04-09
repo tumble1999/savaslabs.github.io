@@ -1,6 +1,4 @@
 source 'https://rubygems.org'
-gem 'jekyll'
+gem 'github-pages'
 gem 'html-proofer'
-gem 'json'
-gem 'jekyll-sitemap'
 gem 'travis'
