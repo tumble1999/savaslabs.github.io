@@ -3,7 +3,7 @@
     max-width: 70em;
     vertical-align: baseline;
     padding: 3em 1em;
-    @include media($medium-screen) {
+    @include media($large-screen) {
     	padding: 3em 0;
     }
 }
