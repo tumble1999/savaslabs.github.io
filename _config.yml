@@ -14,7 +14,7 @@ github_username: savaslabs
 markdown: kramdown
 sass:
   sass_dir: assets/styles/_scss
-pygments: true
+highlighter: pygments
 
 # Blog
 paginate: 6
