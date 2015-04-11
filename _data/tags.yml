@@ -1,0 +1,15 @@
+# For now, if you add a tag you also need to add an empty
+# template in /blog/tag.
+
+- slug: drupal
+  name: Drupal
+- slug: jekyll
+  name: Jekyll
+- slug: bourbon
+  name: Bourbon
+- slug: sass
+  name: Sass
+- slug: css
+  name: CSS
+- slug: testing
+  name: Testing

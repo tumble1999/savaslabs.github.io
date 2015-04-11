@@ -7,20 +7,15 @@
     p {
         font-size: $base-font-size * 1.2;
     }
-
-    header {
-        text-align: center;
-    }
-
 }
 
 .previous-next-links {
-        .next {
-            @include span-columns(6);
-            float: left;
-        }
-        .previous {
-            @include span-columns(6);
-            float: right;
-        }
+    .next {
+        @include span-columns(6);
+        float: left;
+    }
+    .previous {
+        @include span-columns(6);
+        float: right;
+    }
 }

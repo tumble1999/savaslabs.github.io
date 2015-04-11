@@ -1,0 +1,39 @@
+---
+layout: page
+---
+
+{% for tag in site.data.tags %}
+    {% if tag.slug == page.tag %}
+        {% assign tag = tag.name %}
+    {% endif %}
+{% endfor %}
+
+<header>
+    <h2>Posts tagged: {{ tag }}</h2>
+</header>
+
+<div class="flex-container">
+    <div class="cards">
+        {% if site.tags[page.tag] %}
+        	{% for post in site.tags[page.tag] %}
+                <div class="card">
+                    <a href="{{ post.url }}">
+                        <div class="card-image">
+                        </div>
+                        <div class="card-header">
+                            {{ post.title }}
+                        </div>
+                        <div class="card-copy">
+                            <p>By {{ post.author }}</p>
+                            <p>{{ post.summary }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+
+<div class="view-all-link">
+    <i class="fa fa-arrow-up"></i> <a href="/blog"> View all blog posts</a>
+</div>
