@@ -12,11 +12,12 @@ Initially we intended to whip up a site quickly using a Jekyll template. We had 
 After a few weeks of squeezing in work on the site when we could, it became apparent that the template wasn't going to meet our needs. The one page layout lacked the depth we wanted, and the template didn't allow us to showcase our skills as developers. We tossed around the idea of creating a site from scratch, keeping Jekyll but ditching the template. A few of us have a well-developed love of Sass and wanted to try <a href="http://bourbon.io">Bourbon</a>, a Sass mixin library, its grid system <a href="http://neat.bourbon.io">Neat</a>, and <a href="http://bourbon.io">Bitters</a>, a basic set of styles that help set up a new Sass environment. We also used a few components from <a href="http://refills.bourbon.io/">Refills</a>.
 
 Creating a new Jekyll site was a matter of a few commands:
-
-> `$ gem install jekyll`     
-> `$ jekyll new [sitename]`   
-> `$ cd [sitename]`   
-> `$ jekyll serve`  
+{% highlight bash %}
+$ gem install jekyll     
+$ jekyll new [sitename]   
+$ cd [sitename]   
+$ jekyll serve
+{% endhighlight %}  
 
 This created the file structure, and `jekyll serve` starts a local server on which the new site is running, convenient for coding on sunny patios with bad wifi. 
 
@@ -28,15 +29,19 @@ Modular partial files allowed us to organize our files semantically and avoid re
 
 Neat worked well for this site. The number of columns is set in _grid.scss (12 is the default) and we mostly used just two mixins - span-columns and shift.
 
-    div {
-	    @include span-columns(8);
-	    @include shift(2);
-    }
+{% highlight css %}
+div {
+    @include span-columns(8);
+    @include shift(2);
+}
+{% endhighlight %}
 
 This div will span 8 columns and will be offset by 2 columns, centering it in the 12-column grid. A bit more semantic than Foundation's `col-lg-8 col-lg-offset-2`
 
 To create a few repeated layouts, we used the navigation, footer, and cards Refills. This was our first experience with flexbox and we heavily referenced <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">this excellent article</a> from CSS-Tricks. Since flexbox isn't quite stable and has gone through several versions, a hefty amount of vendor prefixes are required, and this is where Bourbon became a real asset. Instead of:
 
+{% highlight css %}    
+div {
     display: -webkit-box;
     display: -moz-box;
     display: box;
@@ -44,10 +49,16 @@ To create a few repeated layouts, we used the navigation, footer, and cards Refi
     display: -moz-flex;
     display: -ms-flexbox;
     display: flex;
+}
+{% endhighlight %}
 
 ...we simply used the mixin:
 
-    @include display(flex);
+{% highlight css %}    
+    div {
+        @include display(flex);
+    }
+{% endhighlight %}
 
 In addition to flexbox, we used Bourbon's CSS3 transitions mixins, em to pixel calculations, and media query mixins. 
 
