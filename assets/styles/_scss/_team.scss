@@ -43,6 +43,14 @@
     p {
         font-size: $base-font-size * 1.2;
     }
+    .team-links {
+        text-align: center;
+        li {
+            display: inline;
+            list-style-type: none;
+            padding: .5em;
+        }
+    }
 }
 
 .associations {
@@ -61,6 +69,8 @@
 }
 
 .team-recent-blog {
+    border-top: solid 1px gainsboro;
+    margin-top: 3em;
     h3 { text-align: center; }
     p { font-size: 1em; }
 }
