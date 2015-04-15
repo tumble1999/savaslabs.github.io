@@ -54,8 +54,8 @@ p {
     .portfolio-short-description {
       font-size: $base-font-size * 1.5;
     }
-    ul { list-style-type: square; }
-    ol { list-style-type: decimal; }
+    ul { list-style-type: square; margin-left: 2em; }
+    ol { list-style-type: decimal; margin-left: 2em; }
     h3, h4, h5 { margin-top: 1.5em; }
     .page-description {
         font-size: $base-font-size * 1.4;
