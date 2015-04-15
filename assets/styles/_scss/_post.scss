@@ -12,3 +12,25 @@
       margin-bottom: 3em;
     }
 }
+
+.post-meta {
+	@include span-columns(8);
+  @include shift(2);
+	img {
+		display: inline-block;
+		width: 10em;
+		border-radius: 3px;
+	}
+	div {
+		display: inline-block;
+		text-align: left;
+		p {
+			margin: 0 0 0.125em 0.25em;
+		}
+		.post-author-desc {
+			font-size: 1em;
+			font-style: italic;
+		}
+
+	}
+}
