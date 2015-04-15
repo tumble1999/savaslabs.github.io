@@ -23,10 +23,6 @@ layout: default
         <img alt="{{ page.name }}" src="{{ base.url }}/{{ page.photo }}">
         <h4 class="team-member-job-title">{{ page.job_title }}</h4>
     </header>
-    <article class="team-member-bio">
-        {{ content }}
-    </article>
-
     <div class="team-links">
       <li><i class="fa fa-drupal"></i><a href="https://www.drupal.org/u/{{ page.drupal }}">&nbsp;&nbsp;Drupal</a></li>
       <li><span class="octicon octicon-mark-github"></span><a href="https://github.com/{{ page.github }}">&nbsp;&nbsp;Github</a></li>
@@ -40,6 +36,10 @@ layout: default
         <li><i class="fa fa-globe"></i><a href="{{ page.website }}">&nbsp;&nbsp;Website</a></li>
       {% endif %}
     </div>
+
+    <article class="team-member-bio">
+        {{ content }}
+    </article>
 
     {% assign counter = 0 %}
     {% for post in site.posts %}{% if page.name == post.author %}{% assign counter = counter |plus: 1 %}

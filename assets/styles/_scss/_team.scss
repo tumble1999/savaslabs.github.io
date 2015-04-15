@@ -53,13 +53,14 @@
         @include align-items(center);
 
         color: $dark-blue;
-        margin-top: 3em;
+        margin-top: 1em;
+        margin-bottom: 3em;
         text-align: center;
         width: 100%;
 
         li {
             list-style-type: none;
-            padding: .75em;
+            padding: 0 .75em;
         }
     }
 }
