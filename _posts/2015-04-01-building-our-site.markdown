@@ -23,7 +23,7 @@ This created the file structure, and `jekyll serve` starts a local server on whi
 
 From here we created each page and incorporated the content we had already generated for the original site. Creating the skeleton of the site was relatively quick thanks to Jekyll's use of YAML <a href="http://jekyllrb.com/docs/frontmatter/">front matter</a> and the modular nature of its HTML files. We used markdown files in lieu of HTML when possible, and capitalized on Jekyll's support of the Liquid templating language to include HTML snippets (e.g. head, header and footer) and to loop through lists (e.g. team members or recent blog posts).
 
-Next we incorporated the Bourbon, Neat and Bitters libraries into our site and started styling.
+Next we incorporated the <a href="http://egardner.github.io/2015/01/09/asset-management-in-jekyll/">Bourbon, Neat and Bitters libraries</a> into our site and started styling.
 
 Modular partial files allowed us to organize our files semantically and avoid redundancies. _color.scss holds the color variables, _typography.scss ensures that text elements are consistent across the entire site, and _layout.scss holds styles that apply to every page. There's certainly a learning curve with Sass and it can become unnecessarily complicated if one isn't careful (overnesting!), but Sass makes writing non-redundant, modular code so much easier.
 
@@ -69,3 +69,5 @@ Lessons learned:
 >- Bourbon makes Sass even more fun
 >- Neat is just right for a simple, responsive site
 >- Refills are handy for creating clean, minimal elements, at least until everyone's websites start looking the same a la Twitter Bootstrap
+
+Our site is open source so feel free to check out our <a href="https://github.com/savaslabs/savaslabs.github.io">Github repository!</a>
