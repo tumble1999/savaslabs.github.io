@@ -28,16 +28,16 @@ layout: default
     </article>
 
     <div class="team-links">
-      <li><a href="https://www.drupal.org/u/{{ page.drupal }}"><i class="fa fa-drupal fa-lg fa-2x"></i></a></li>
-      <li><a href="https://github.com/{{ page.github }}"><span class="mega-octicon octicon-mark-github"></span></a></li>
+      <li><i class="fa fa-drupal"></i><a href="https://www.drupal.org/u/{{ page.drupal }}">&nbsp;&nbsp;Drupal</a></li>
+      <li><span class="octicon octicon-mark-github"></span><a href="https://github.com/{{ page.github }}">&nbsp;&nbsp;Github</a></li>
       {% if page.twitter %}
-        <li><a href="https://twitter.com/{{ page.twitter }}"><i class="fa fa-twitter fa-lg fa-2x"></i></a></li>
+        <li><i class="fa fa-twitter"></i><a href="https://twitter.com/{{ page.twitter }}">&nbsp;&nbsp;Twitter</a></li>
       {% endif %}
       {% if page.linkedin %}
-        <li><a href="https://www.linkedin.com/in/{{ page.linkedin }}"><i class="fa fa-linkedin fa-lg fa-2x"></i></a></li>
+        <li><i class="fa fa-linkedin"></i><a href="https://www.linkedin.com/in/{{ page.linkedin }}">&nbsp;&nbsp;LinkedIn</a></li>
       {% endif %}
       {% if page.website %}
-        <li><a href="{{ page.website }}"><i class="fa fa-globe fa-lg fa-2x"></i></a></li>
+        <li><i class="fa fa-globe"></i><a href="{{ page.website }}">&nbsp;&nbsp;Website</a></li>
       {% endif %}
     </div>
 
