@@ -36,12 +36,32 @@
         @include span-columns(8);
         @include shift(2);
     }
+
     img {
         max-height: 250px;
         border-radius: 3px;
     }
+
     p {
         font-size: $base-font-size * 1.2;
+    }
+
+    .team-links {
+        @include display(flex);
+        @include flex-wrap(wrap);
+        @include justify-content(center);
+        @include align-items(center);
+
+        color: $dark-blue;
+        margin-top: 1em;
+        margin-bottom: 3em;
+        text-align: center;
+        width: 100%;
+
+        li {
+            list-style-type: none;
+            padding: 0 .75em;
+        }
     }
 }
 
@@ -61,6 +81,8 @@
 }
 
 .team-recent-blog {
+    border-top: solid 1px gainsboro;
+    margin-top: 3em;
     h3 { text-align: center; }
     p { font-size: 1em; }
 }
