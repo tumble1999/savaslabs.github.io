@@ -3,7 +3,7 @@ layout: post
 title: "Code sprint: Help port Views GeoJSON to Drupal 8"
 date: 2015-04-16
 author: Kosta Harlan
-tags: cartography drupal8 drupal
+tags: cartography drupal
 summary: >
   Join us on the afternoon of April 24 to help port the Views GeoJSON module to Drupal 8.
 ---
