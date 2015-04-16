@@ -1,22 +1,6 @@
 ---
 layout: default
 ---
-    <script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "Person",
-      "colleague": [
-          {% for person in site.team %}{% if person.name != page.name %}"{{ person.name | downcase | replace: ' ', '-'  | prepend: "/team/" | prepend: site.baseurl | prepend: site.url | strip_newlines }}"{% if forloop.rindex > 1 %},{% endif %}{% endif %}{% endfor %}
-      ],
-      "image": "{{ page.photo | prepend: "/" | prepend: site.baseurl | prepend: site.url }}",
-      "jobTitle": "{{ page.job_title }}",
-      "name": "{{ page.name }}",
-      "affiliation": "Savas",
-      "worksFor": "Savas",
-      "description": "{{ page.job_description }}",
-      "url": "{{ page.url | prepend: site.baseurl | prepend: site.url }}"
-    }
-    </script>
 <div class="team-member">
     <header class="team-header">
         <h2 class="team-member-name">{{ page.name }}</h2>
