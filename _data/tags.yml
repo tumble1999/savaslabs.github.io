@@ -13,3 +13,7 @@
   name: CSS
 - slug: testing
   name: Testing
+- slug: cartography
+  name: Cartography
+- slug: drupal8
+  name: Drupal 8
