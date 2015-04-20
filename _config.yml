@@ -6,6 +6,21 @@ description: >
 baseurl: "" 
 url: ""
 
+# Nav links
+navigation:
+  - title: Who we are
+    url: /team
+  - title: What we do
+    url: /what-we-do
+  - title: Our work
+    url: /work
+  - title: Training
+    url: /drupal-training
+  - title: Blog
+    url: /blog
+  - title: Contact
+    url: /contact
+
 # Professional and social media links
 twitter_username: savas_labs 
 github_username: savaslabs
