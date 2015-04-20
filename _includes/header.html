@@ -5,14 +5,16 @@
       </a>
       <a href="/" id="js-mobile-menu" class="navigation-menu-button">MENU</a>
       <nav role="navigation">
-          <ul id="js-navigation-menu" class="navigation-menu show">
-              <li class="nav-link"><a href="/team">Who we are</a></li>
-              <li class="nav-link"><a href="/what-we-do">What we do</a></li>
-              <li class="nav-link"><a href="/work">Our work</a></li>
-              <li class="nav-link"><a href="/drupal-training">Training</a></li>
-              <li class="nav-link"><a href="/blog">Blog</a></li>
-              <li class="nav-link"><a href="/contact">Contact</a></li>
-          </ul>
+        <ul id="js-navigation-menu" class="navigation-menu show">
+          {% for link in site.navigation %}{% assign active-nav-item = nil %}
+            {% if page.url contains link.url %}
+              {% assign active-nav-item = 'active-nav-item' %}
+            {% endif %}
+            <li class="nav-link {{ active-nav-item }}">
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
       </nav>
   </div>
 </header>

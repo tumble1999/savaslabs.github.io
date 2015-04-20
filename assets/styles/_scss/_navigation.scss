@@ -20,7 +20,7 @@ header.navigation {
   $navigation-nav-button-border: 1px solid lighten($navigation-nav-button-background, 20%);
   $navigation-search-background: lighten($navigation-background, 5);
   $navigation-search-border: 1px solid darken($navigation-background, 5);
-  $navigation-active-link-color: transparentize(white, 0.5);
+  $navigation-active-link-color: white;
   $navigation-submenu-padding: 1em;
   $navigation-submenu-width: 12em;
   $horizontal-bar-mode: $medium-screen-up;
@@ -117,7 +117,7 @@ header.navigation {
 
   // The nav items
 
-  ul li.nav-link {
+  .nav-link {
     background: $navigation-background;
     display: block;
     line-height: $navigation-height;
@@ -151,9 +151,11 @@ header.navigation {
     }
   }
 
-  .active-nav-item a {
-    border-bottom: 1px solid $navigation-active-link-color;
-    padding-bottom: 3px;
+  .active-nav-item {
+    font-size: 1.11em;
+    a {
+      color: $navigation-active-link-color;
+    }
   }
 
   // Sub menus
