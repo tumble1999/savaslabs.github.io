@@ -8,22 +8,24 @@ layout: default
 
   <header class="post-header">
     <h2 class="post-title">{{ page.title }}</h2>
+    <p>By <a href="{{ page.author | downcase | replace: ' ', '-'  | prepend: "/team/" | prepend: site.baseurl | prepend: site.url | strip_newlines }}">{{ page.author }}</a> • {{ page.date | date: "%b %-d, %Y" }}</p>
   </header>
-  <div class="post-meta">
-    {% for person in site.team %}{% if person.name == page.author %}
-      <img src="/{{ person.photo }}">
-    {% endif %}{% endfor %}
-    <div class="post-author-date">
-      <p>By <a href="{{ page.author | downcase | replace: ' ', '-'  | prepend: "/team/" | prepend: site.baseurl | prepend: site.url | strip_newlines }}">{{ page.author }}</a> • {{ page.date | date: "%b %-d, %Y" }}</p>
-      {% for person in site.team %}{% if person.name == page.author %}
-        <p class="post-author-desc">{{ person.job_description }}</p>
-      {% endif %}{% endfor %}
-    </div>
-  </div>
+
   <article class="post-content">
-    {{ content }}<br>
+    {{ content }}
     <p id="post-tags">{{ tags_content }}</p>
-    <hr />
+    <div class="post-meta">
+      {% for person in site.team %}{% if person.name == page.author %}
+        <img src="/{{ person.photo }}">
+      {% endif %}{% endfor %}
+      <div class="post-author-date">
+        <p>About <a href="{{ page.author | downcase | replace: ' ', '-'  | prepend: "/team/" | prepend: site.baseurl | prepend: site.url | strip_newlines }}">{{ page.author }}</a></p>
+        {% for person in site.team %}{% if person.name == page.author %}
+          <p class="post-author-desc">{{ person.job_description }}</p>
+        {% endif %}{% endfor %}
+      </div>
+    </div>
+  <hr />
   </article>
 
   {% include previous-next-links.html %}

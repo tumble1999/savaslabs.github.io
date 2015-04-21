@@ -5,7 +5,10 @@
         @include shift(2);
     }
     .previous-next-links {
-      margin-top: 2em;
+      margin-top: 3em;
+      .previous {
+        text-align: right;
+      }
     }
     .table-minimal {
       margin-top: 3em;
@@ -23,15 +26,16 @@
   }
   div {
     @include span-columns(6);
-    line-height: 1.2em;
+    line-height: 1.1em;
     text-align: left;
     p {
-      margin: 0 .25em .25em;
+      margin-bottom: .5em;
     }
     .post-author-desc {
       font-size: 1em;
       font-style: italic;
     }
   }
-  margin-bottom: 2em;
+  margin-top: 3em;
+  margin-bottom: 3em;
 }
