@@ -8,26 +8,39 @@ layout: default
 
   <header class="post-header">
     <h2 class="post-title">{{ page.title }}</h2>
-    <p>By <a href="{{ page.author | downcase | replace: ' ', '-'  | prepend: "/team/" | prepend: site.baseurl | prepend: site.url | strip_newlines }}">{{ page.author }}</a> • {{ page.date | date: "%b %-d, %Y" }}</p>
+    <p>{{ page.date | date: "%b %-d, %Y" }} • {{ tags_content }}</p>
   </header>
 
   <article class="post-content">
     {{ content }}
-    <p id="post-tags">{{ tags_content }}</p>
+    <hr />
+
     <div class="post-meta">
+      <h4>By <a href="{{ page.author | downcase | replace: ' ', '-'  | prepend: "/team/" | prepend: site.baseurl | prepend: site.url | strip_newlines }}">{{ page.author }}</a></h4>
       {% for person in site.team %}{% if person.name == page.author %}
-        <img src="/{{ person.photo }}">
+        <img src="/{{ person.photo }}" alt="{{ person.name }}">
+        <p class="post-author-desc">{{ person.job_description }}</p>
       {% endif %}{% endfor %}
-      <div class="post-author-date">
-        <p>About <a href="{{ page.author | downcase | replace: ' ', '-'  | prepend: "/team/" | prepend: site.baseurl | prepend: site.url | strip_newlines }}">{{ page.author }}</a></p>
-        {% for person in site.team %}{% if person.name == page.author %}
-          <p class="post-author-desc">{{ person.job_description }}</p>
-        {% endif %}{% endfor %}
+    </div>
+    <!-- Once we have most content, change this to posts related by tag -->
+    <div class="post-related flex-container">
+      <div class="cards">
+        {% for post in site.posts %}
+          {% if post.title != page.title limit: 3 %}
+            <div class="card">
+              <a href="{{ post.url }}">
+                <div class="card-header">
+                    {{ post.title }}
+                </div>
+                <div class="card-copy">
+                    <p>{{ post.summary | truncatewords: 20 }}</p>
+                </div>
+              </a>
+            </div>
+          {% endif %}
+        {% endfor %}
       </div>
     </div>
-  <hr />
   </article>
-
-  {% include previous-next-links.html %}
 
 </div>
