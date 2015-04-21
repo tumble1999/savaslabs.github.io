@@ -9,8 +9,9 @@ layout: default
 
   <header class="post-header">
     <h2 class="post-title">{{ page.title }}</h2>
-    <p class="event-meta">{{ page.date | date: "%b %-d, %Y" }}{% if page.author %} • <a href="{{ page.author | downcase | replace: ' ', '-'  | prepend: "/team/" | prepend: site.baseurl | prepend: site.url | strip_newlines }}">{{ page.author }}</a>{% endif %}{% if page.meta %} • {{ page.meta }}{% endif %}</p>
+    <p>{{ page.date | date: "%b %-d, %Y" }} • {{ tags_content }}</p>
   </header>
+
   <article class="post-content">
     {{ content }}
     <table class="table-minimal">
@@ -50,10 +51,10 @@ layout: default
         </tr>
       </tbody>
     </table>
-    <p id="post-tags">{{ tags_content }}</p>
     <hr />
-  </article>
 
-  {% include previous-next-links.html %}
+  {% include post-meta.html %}
+
+  </article>
 
 </div>

@@ -15,32 +15,8 @@ layout: default
     {{ content }}
     <hr />
 
-    <div class="post-meta">
-      <h4>By <a href="{{ page.author | downcase | replace: ' ', '-'  | prepend: "/team/" | prepend: site.baseurl | prepend: site.url | strip_newlines }}">{{ page.author }}</a></h4>
-      {% for person in site.team %}{% if person.name == page.author %}
-        <img src="/{{ person.photo }}" alt="{{ person.name }}">
-        <p class="post-author-desc">{{ person.job_description }}</p>
-      {% endif %}{% endfor %}
-    </div>
-    <!-- Once we have most content, change this to posts related by tag -->
-    <div class="post-related flex-container">
-      <div class="cards">
-        {% for post in site.posts %}
-          {% if post.title != page.title limit: 3 %}
-            <div class="card">
-              <a href="{{ post.url }}">
-                <div class="card-header">
-                    {{ post.title }}
-                </div>
-                <div class="card-copy">
-                    <p>{{ post.summary | truncatewords: 20 }}</p>
-                </div>
-              </a>
-            </div>
-          {% endif %}
-        {% endfor %}
-      </div>
-    </div>
+  {% include post-meta.html %}
+
   </article>
 
 </div>
