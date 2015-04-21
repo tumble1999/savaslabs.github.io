@@ -1,9 +1,14 @@
 ---
-layout: post
+layout: event
 title: "Code sprint: Help port Views GeoJSON to Drupal 8"
-date: 2015-04-16
+date: 2015-04-26
 author: Kosta Harlan
-tags: cartography drupal
+start-date: "April 24th, 2015"
+start-time: "1:00 PM"
+end-date: "April 24th, 2015"
+end-time: "5:00 PM"
+location: <a href="http://americanunderground.com/">American Underground @ Main</a>
+tags: cartography drupal event
 summary: >
   Join us on the afternoon of April 24 to help port the Views GeoJSON module to Drupal 8.
 ---
