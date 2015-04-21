@@ -11,7 +11,7 @@ Writing CSS is easy. Writing good, semantic, DRY CSS, all while avoiding uninten
 
 ##### Criteria:
 
-> 1. Must be relatively quick to install and configure. We're a small team generally dealing with 100-300 hours per project and we can't devote much of that to setting up our CSS testing platforms.
+> 1. Must be relatively quick to install and configure. We're a small, efficiency-driven team and we don't want to devote a lot of time to setting up our CSS testing platforms.
 > 3. Ideally would be applicable to dynamic sites. Many of the techniques available involve comparing a local or development site to reference images, which become rapidly outdated for sites with dynamic content like news, posts or social media feeds. Since we're primarily a Drupal shop, we need to be able to run tests that don't break with changing content.   
 
 ##### Testing methods:

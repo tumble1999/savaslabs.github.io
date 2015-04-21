@@ -7,7 +7,11 @@ tags: jekyll bourbon sass
 summary: What do web developers do when they have a few days between projects? Build an entire company website from scratch. Thanks to Jekyll and Bourbon, we were able to completely redo our website efficiently.
 ---
 
-Initially we intended to whip up a site quickly using a Jekyll template. We had previous experience with <a href="http://jekyllrb.com/">Jekyll</a>, a platform for mostly-static sites whose benefits include rapid setup, free hosting with Github Pages, and integration with Prose.io for blogging. We chose a one-page template, hoping this would mean an even quicker initialization process, and set up a site. As this was our company's first website we had a great deal of work to do between choosing design elements, fleshing out the site's structure, creating content, and hounding everyone to turn in a moderately professional photo of him or herself for the team profiles.
+As a newly branded company, Savas Labs needed a company website to showcase our work and abilities, and to provide a platform for connecting with other developers and to the Drupal community in particular via blogging and hosted events.
+
+We initially intended to whip up a site quickly using a Jekyll template. We had previous experience with <a href="http://jekyllrb.com/">Jekyll</a>, a platform for mostly-static sites whose benefits include rapid setup, free hosting with Github Pages, and integration with Prose.io for blogging.
+
+We chose a one-page template, hoping this would mean an even quicker initialization process, and set up a site. As this was our company's first website we had a great deal of work to do between choosing design elements, fleshing out the site's structure, creating content, and hounding everyone to turn in a moderately professional photo of him or herself for the team profiles.
 
 After a few weeks of squeezing in work on the site when we could, it became apparent that the template wasn't going to meet our needs. The one page layout lacked the depth we wanted, and the template didn't allow us to showcase our skills as developers. We tossed around the idea of creating a site from scratch, keeping Jekyll but ditching the template. A few of us have a well-developed love of Sass and wanted to try <a href="http://bourbon.io">Bourbon</a>, a Sass mixin library, its grid system <a href="http://neat.bourbon.io">Neat</a>, and <a href="http://bourbon.io">Bitters</a>, a basic set of styles that help set up a new Sass environment. We also used a few components from <a href="http://refills.bourbon.io/">Refills</a>.
 
