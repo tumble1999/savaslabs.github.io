@@ -18,6 +18,7 @@
   <script type="text/javascript" src="{{ "/assets/js/main.js" | prepend: site.baseurl }}"></script>
   {% include schema-organization.html %}
   {% if page.layout == "team" %}{% include schema-team.html %}{% endif %}
+  {% if page.permalink == "/what-we-do/" or page.permalink == "/drupal-training/" %}{% include schema-professional-service.html %}{% endif %}
   {% if page.path contains "_posts" %}{% include schema-blog.html %}{% endif %}
   {% include googleanalytics.html %}
 </head>
