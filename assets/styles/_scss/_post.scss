@@ -20,6 +20,7 @@
 }
 
 .post-meta {
+  margin-bottom: 3em;
   text-align: center;
   h4 {
     margin: 0 0 1em;
@@ -33,17 +34,18 @@
     line-height: 1.2em;
     margin-top: 1em;
   }
-
   .post-author-desc {
     text-align: left;
   }
   @include media($medium-screen) {
-  @include span-columns(4);
-  text-align: left;
+    @include span-columns(4);
+    text-align: left;
   }
 }
 
 .post-related {
   font-size: .9em;
-  @include span-columns(8);
+  @include media($medium-screen) {
+    @include span-columns(8);
+  }
 }
