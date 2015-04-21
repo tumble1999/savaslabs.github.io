@@ -12,7 +12,7 @@
           "affiliation": "Savas",
           "worksFor": "Savas"
       },
-    "keywords": "{{ page.tags }}",
+    "keywords": "{{ page.tags | join: ', ' }}",
     "text": "{{ content | escape | textify }}",
     "sourceOrganization": "Savas",
     "inLanguage": "en-US",
