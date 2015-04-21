@@ -15,7 +15,7 @@
 
 .post-meta {
   @include span-columns(12);
-  @include shift(3);
+  @include shift(2);
   img {
     @include span-columns(2);
     border-radius: 3px;
@@ -23,6 +23,7 @@
   }
   div {
     @include span-columns(6);
+    line-height: 1.2em;
     text-align: left;
     p {
       margin: 0 .25em .25em;
@@ -30,7 +31,6 @@
     .post-author-desc {
       font-size: 1em;
       font-style: italic;
-      line-height: 1.2em;
     }
   }
   margin-bottom: 2em;
