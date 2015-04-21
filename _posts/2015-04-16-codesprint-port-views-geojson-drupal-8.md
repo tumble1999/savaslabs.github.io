@@ -1,7 +1,7 @@
 ---
 layout: event
 title: "Code sprint: Help port Views GeoJSON to Drupal 8"
-date: 2015-04-26
+date: 2015-04-16
 author: Kosta Harlan
 start-date: "April 24th, 2015"
 start-time: "1:00 PM"
