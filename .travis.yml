@@ -1,5 +1,6 @@
 language: ruby
 script: "./_tests/run-tests.sh"
+cache: bundler
 rvm:
 - 2.1
 env:
