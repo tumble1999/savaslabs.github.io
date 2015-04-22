@@ -1,5 +1,5 @@
 ---
 layout: tag
 tag: jekyll
-permalink: /blog/tag/jekyll/
+permalink: /news/tag/jekyll/
 ---

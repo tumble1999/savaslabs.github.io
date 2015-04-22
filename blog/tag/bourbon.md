@@ -1,5 +1,5 @@
 ---
 layout: tag
 tag: bourbon
-permalink: /blog/tag/bourbon/
+permalink: /news/tag/bourbon/
 ---

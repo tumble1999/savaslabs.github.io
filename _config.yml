@@ -16,8 +16,8 @@ navigation:
     url: /work
   - title: Training
     url: /drupal-training
-  - title: Blog
-    url: /blog
+  - title: News
+    url: /news
   - title: Contact
     url: /contact
 
