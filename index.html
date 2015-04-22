@@ -29,7 +29,7 @@
         <h3>Latest posts</h3>
         <div class="flex-container">
             <div class="cards">
-                {% for post in site.posts limit 3 %}
+                {% for post in site.posts limit:3 %}
                     <div class="card">
                         <a href="{{ post.url }}">
                             <div class="card-image">
