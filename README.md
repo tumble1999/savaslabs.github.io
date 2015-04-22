@@ -10,4 +10,4 @@ The site is built using Jekyll. To run locally:
 
 To run the tests:
 
-> `$ bash _tests/run-tests.sh`
+`$ bash _tests/run-tests.sh`
