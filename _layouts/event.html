@@ -2,6 +2,7 @@
 layout: default
 ---
 
+{% include schema-event.html %}
 {% include tag-logic.html %}
 
 <div class="post event">
@@ -41,7 +42,11 @@ layout: default
             <i class="fa fa-circle fa-stack-2x"></i>
             <i class="fa fa-building-o fa-stack-1x fa-inverse"></i>
           </span>&nbsp;&nbsp;Location</td>
-          <td>{{ page.location }}</td>
+          {% if page.location-url %}
+            <td><a href="{{ page.location-url }}">{{ page.location }}</a></td>
+          {% else %}
+            <td>{{ page.location }}</td>
+          {% endif %}
         </tr>
       </tbody>
     </table>
