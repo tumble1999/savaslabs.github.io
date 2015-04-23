@@ -29,7 +29,7 @@ As promised above, here are some notes on how to prepare for participating in th
 
 #### Set up a local Drupal 8 site
 
-Spend some time getting your local Drupal 8 environment set up. Make sure you can login, that XDebug is working, etc. At the time of this writing, the latest beta is [`8.0.0-beta9`](https://www.drupal.org/node/2459341), we recommend using that instead of the latest commit to the `8.0.x` branch.
+Spend some time getting your [local Drupal 8 environment set up](/2015/04/23/drupal-8-docker-bowline-setup.html). Make sure you can login, that XDebug is working, etc. At the time of this writing, the latest beta is [`8.0.0-beta9`](https://www.drupal.org/node/2459341), we recommend using that instead of the latest commit to the `8.0.x` branch.
 
 #### Clone the Views GeoJSON repo from GitHub, and review the issues
 
