@@ -1,5 +1,5 @@
 ---
 layout: tag
 tag: osx
-permalink: /news/tag/osx
+permalink: /news/tag/osx/
 ---
