@@ -1,5 +1,5 @@
 ---
 layout: tag
 tag: testing
-permalink: /blog/tag/testing/
+permalink: /news/tag/testing/
 ---

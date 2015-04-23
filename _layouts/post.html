@@ -1,23 +1,8 @@
 ---
 layout: default
 ---
-{% assign post = page %}
-{% if post.tags.size > 0 %}
-    {% capture tags_content %}Tags: {% endcapture %}
-    {% for post_tag in post.tags %}
-        {% for data_tag in site.data.tags %}
-            {% if data_tag.slug == post_tag %}
-                {% assign tag = data_tag %}
-            {% endif %}
-        {% endfor %}
-        {% if tag %}
-            {% capture tags_content_temp %}{{ tags_content }}<a href="/blog/tag/{{ tag.slug }}/">{{ tag.name }}</a>{% if forloop.last == false %}, {% endif %}{% endcapture %}
-            {% assign tags_content = tags_content_temp %}
-        {% endif %}
-    {% endfor %}
-{% else %}
-    {% assign tags_content = '' %}
-{% endif %}
+
+{% include tag-logic.html %}
 
 <div class="post">
 
@@ -29,18 +14,8 @@ layout: default
     {{ content }}<br>
     <p id="post-tags">{{ tags_content }}</p>
     <hr />
-    </article>
-    <div class="previous-next-links">
-        <div class="next">
-      {% if page.next.url %}
-        <a href="{{ page.next.url }}"><i class="fa fa-long-arrow-left "></i> {{ page.next.title }}</a>
-      {% endif %}
-        </div>
-        <div class="previous">
-      {% if page.previous.url %}
-        <a href="{{ page.previous.url }}"> {{ page.previous.title }} <i class="fa fa-long-arrow-right"></i></a>
-      {% endif %}
-        </div>
-    </div>
+  </article>
+
+  {% include previous-next-links.html %}
 
 </div>

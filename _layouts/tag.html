@@ -9,7 +9,11 @@ layout: page
 {% endfor %}
 
 <header>
-    <h2>Posts tagged: {{ tag }}</h2>
+    {% if tag == "Event" %}
+        <h2>Upcoming Events</h2>
+    {% else %}
+        <h2>Posts tagged: {{ tag }}</h2>
+    {% endif %}
 </header>
 
 <div class="flex-container">

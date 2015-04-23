@@ -1,5 +1,5 @@
 ---
 layout: tag
 tag: cartography
-permalink: /blog/tag/cartography/
+permalink: /news/tag/cartography/
 ---

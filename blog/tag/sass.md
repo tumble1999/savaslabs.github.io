@@ -1,5 +1,5 @@
 ---
 layout: tag
 tag: sass
-permalink: /blog/tag/sass/
+permalink: /news/tag/sass/
 ---

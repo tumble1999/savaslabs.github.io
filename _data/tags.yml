@@ -17,3 +17,5 @@
   name: Cartography
 - slug: drupal8
   name: Drupal 8
+- slug: event
+  name: Event
