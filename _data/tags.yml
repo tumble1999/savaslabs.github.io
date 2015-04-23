@@ -19,3 +19,9 @@
   name: Drupal 8
 - slug: event
   name: Event
+- slug: docker
+  name: Docker
+- slug: bowline
+  name: Bowline
+- slug: osx
+  name: OS X
