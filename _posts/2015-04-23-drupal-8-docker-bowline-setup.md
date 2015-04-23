@@ -4,8 +4,7 @@ title: "Drupal development environment using Docker, Docker Compose, and Bowline
 date: 2015-04-23
 author: Dan Murphy
 tags: drupal docker bowline OSX
-summary: >
-  Learn how to use Docker, Docker Compose, and Bowline to set up a standardized local Drupal development environment on you Mac.
+summary: Learn how to use Docker, Docker Compose, and Bowline to set up a standardized local Drupal development environment on you Mac.
 ---
 In preparation for a code sprint our team is organizing to port Views
 GeoJSON to Drupal 8, we decided it would be a great opprotunity to
@@ -139,7 +138,7 @@ $ drush si --sites-subdir=default
 Your Drupal 8 site is now set up and running on the web and MySQL Docker containers you set up using Bowline. However, a few extra steps are required so that you can access your site on the Apache server that is running within the web container.
 
 Run the bowline command to get the IP address of your web container, it
-should be something like `http://172.17.0.2`
+should be something like `http://172.17.0.2/`
 
 Run the boot2docker ip command to get the IP address of the boot2docker virtual machine, it should be something like `192.168.59.103`
 
@@ -149,7 +148,7 @@ the boot2docker virtual machine as follows:
 $ sudo route -n add 172.0.0.0/8 192.168.59.103
 {% endhighlight %}
 
-You should now be able to access your Drupal 8 site using the web IP address by ing the `bowline` command, for example `http://172.17.0.2` for my setup.
+You should now be able to access your Drupal 8 site using the web IP address by ing the `bowline` command, for example `http://172.17.0.2/` for my setup.
 
 One of the great things about Bowline is it sets up drush to work with your containers. You can use drush to get a one time login link for the admin user by simply running:
 {% highlight bash %}
@@ -197,7 +196,7 @@ $ bowline
 
 ###Troubleshooting
 
-For each new terminal window or tab you open, you have to set the Boot2Docker environment variables:
+For each new terminal window or tab you open, you have to set the Boot2Docker environment variables. If you see an error message like: "Couldn't connect to Docker daemon - you might need to run \`boot2docker up`." you may need to run:
 {% highlight bash %}
 $ eval "$(boot2docker shellinit)"
 {% endhighlight %}
