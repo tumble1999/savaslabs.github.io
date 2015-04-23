@@ -3,7 +3,7 @@ layout: post
 title: "Drupal development environment using Docker, Docker Compose, and Bowline on OS X"
 date: 2015-04-23
 author: Dan Murphy
-tags: drupal docker bowline OSX
+tags: docker bowline osx drupal drupal8
 summary: Learn how to use Docker, Docker Compose, and Bowline to set up a standardized local Drupal development environment on you Mac.
 ---
 In preparation for a code sprint our team is organizing to port Views
