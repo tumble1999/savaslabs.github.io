@@ -33,7 +33,7 @@ highlighter: pygments
 
 # Blog
 paginate: 6
-paginate_path: "/blog/:num/"
+paginate_path: "/news/:num/"
 
 # For Travis CI
 exclude: [vendor]
