@@ -1,5 +1,5 @@
 ---
 layout: tag
 tag: docker
-permalink: /blog/tag/docker
+permalink: /news/tag/docker
 ---

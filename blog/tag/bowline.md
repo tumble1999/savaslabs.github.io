@@ -1,5 +1,5 @@
 ---
 layout: tag
 tag: bowline
-permalink: /blog/tag/bowline
+permalink: /news/tag/bowline
 ---
