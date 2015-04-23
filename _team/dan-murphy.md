@@ -1,7 +1,7 @@
 ---
 name: Dan Murphy
 layout: team
-job_title: Developer
+job_title: Web Developer
 job_description: Dan develops back-end solutions and front-end, responsive designs for Savas clients.
 photo: "assets/img/team/dan-murphy.jpg"
 card: "assets/img/team/cards/dan-card.jpg"
