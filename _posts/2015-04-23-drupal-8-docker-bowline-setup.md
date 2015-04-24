@@ -211,4 +211,4 @@ $ sudo route -n add 172.0.0.0/8 192.168.59.103
 * Boot2Docker 1.6.0
 * Docker Compose 1.2.0
 * Drupal 8.0.0-beta9
-* Drush 7.0-devev
+* Drush 7.0-dev
