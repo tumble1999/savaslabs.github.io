@@ -4,11 +4,55 @@
         @include span-columns(8);
         @include shift(2);
     }
+    hr {
+      margin: 3em 0;
+    }
+    .post-header {
+      margin-bottom: 1em;
+      p {
+        display: inline;
+      }
+    }
+
     .previous-next-links {
-    	margin-top: 2em;
+      margin-top: 3em;
+      .previous {
+        text-align: right;
+      }
     }
     .table-minimal {
       margin-top: 3em;
       margin-bottom: 3em;
     }
+}
+
+.post-meta {
+  margin-bottom: 3em;
+  text-align: center;
+  h4 {
+    margin: 0 0 1em;
+  }
+  img {
+    border-radius: 3px;
+    width: 10em;
+  }
+  p {
+    font-size: 1em;
+    line-height: 1.2em;
+    margin-top: 1em;
+  }
+  .post-author-desc {
+    text-align: left;
+  }
+  @include media($medium-screen) {
+    @include span-columns(4);
+    text-align: left;
+  }
+}
+
+.post-related {
+  font-size: .9em;
+  @include media($medium-screen) {
+    @include span-columns(8);
+  }
 }
