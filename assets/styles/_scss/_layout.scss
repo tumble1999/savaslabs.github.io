@@ -23,3 +23,10 @@ header, .page-description, .view-all-link {
 hr {
     clear: both;
 }
+
+.page-narrow {
+    @include media($medium-screen) {
+        @include span-columns(8);
+        @include shift(2);
+    }
+}

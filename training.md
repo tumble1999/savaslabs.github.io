@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: page-narrow
 title: Drupal Training
 permalink: "/drupal-training/"
 excerpt: Savas offers professional Drupal training in Durham, NC

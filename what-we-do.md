@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: page-narrow
 title: What we do
 permalink: "/what-we-do/"
 excerpt: Savas is founded on years of Drupal and web development experience, focused on creating standards-compliant, sustainable code.
