@@ -25,3 +25,7 @@
   name: Bowline
 - slug: osx
   name: OS X
+- slug: leaflet
+  name: Leaflet.js
+- slug: durham
+  name: Durham
