@@ -19,3 +19,31 @@
         float: right;
     }
 }
+
+.blog-image {
+  display: block;
+  background: gainsboro;
+  box-shadow: 0 2px 4px darken(gainsboro, 10%);
+  max-width: 250px;
+
+  &.wrap-right {
+    margin-right: 40px;
+    float: left;
+  }
+
+  &.wrap-left {
+    float: right;
+    margin-left: 40px;
+  }
+
+  p {
+    text-align: center;
+    font-size: smaller;
+    font-weight: bold;
+  }
+}
+
+.blog-image-large {
+  @extend .blog-image;
+  max-width: 500px;
+}
