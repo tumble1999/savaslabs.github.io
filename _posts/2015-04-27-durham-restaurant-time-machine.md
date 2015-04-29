@@ -25,7 +25,7 @@ No longer do you have to wonder:
 
 ### Sources
 The data comes from [Durham's new open data initiative](http://data.dconc.gov/), which provided a dataset of restaurant inspections going back all the way to 1990.
-We cleaned their data and mapped it using [Leaflet](http://www.leafletjs.org), an open-source Javascript mapping framework -- how we did that
+We cleaned their data and mapped it using [Leaflet](http://www.leafletjs.com), an open-source Javascript mapping framework -- how we did that
  will be the subject of a future post! The gorgeous
 basemap is [Stamen Design](http://www.stamen.com)'s watercolor tiles, but if you find yourself lost you can click the "label streets" button to get a little bit more
 geographic context.
