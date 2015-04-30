@@ -19,7 +19,7 @@
   //////////////////////////////////////////////////////////////////////////////////
 
   $footer-background: $dark-blue;
-  $footer-color: white;
+  $footer-color: $white;
   $footer-link-color: $footer-color;
   $footer-disclaimer-color: $footer-color;
 
@@ -116,7 +116,7 @@
     height: 5em;
     width: 100%;
     p {
-        color: white;
+        color: $white;
         margin: auto;
     }
 }

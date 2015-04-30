@@ -12,7 +12,7 @@ $medium-screen: em(640) !default;
         }
         h4 {
             padding: 0 5%;
-            color: white;
+            color: $white;
         }
         .logo img {
             max-width: 125px;
@@ -33,5 +33,5 @@ $medium-screen: em(640) !default;
 .blog-list {
     @include outer-container;
     @include span-columns(12);
-    background-color: white;
+    background-color: $white;
 }
