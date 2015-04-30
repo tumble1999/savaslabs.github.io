@@ -16,7 +16,7 @@
     }
 
     .card-copy {
-        border-top: 1px solid gainsboro;
+        border-top: 1px solid $gainsboro;
         font-size: 1em;
     }
        
@@ -85,7 +85,7 @@
 }
 
 .team-recent-blog {
-    border-top: solid 1px gainsboro;
+    border-top: solid 1px $gainsboro;
     margin-top: 3em;
     h3 { text-align: center; }
     p { font-size: 1em; }

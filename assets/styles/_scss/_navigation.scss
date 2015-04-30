@@ -1,6 +1,6 @@
 header.navigation {
   ///////////////////////////////////////////////////////////////////////////////////
-  $base-border-color: gainsboro !default;
+  $base-border-color: $gainsboro !default;
   $base-border-radius: 3px !default;
   $base-accent-color: #477DCA !default;
   $large-screen: em(860) !default;
