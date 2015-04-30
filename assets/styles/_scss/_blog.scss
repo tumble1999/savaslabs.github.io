@@ -29,8 +29,8 @@
   max-width: 250px;
 
   &.wrap-right {
-    margin-right: 40px;
     float: left;
+    margin-right: 40px;
   }
 
   &.wrap-left {
@@ -39,9 +39,9 @@
   }
 
   p {
-    text-align: center;
     font-size: smaller;
     font-weight: bold;
+    text-align: center;
   }
 }
 
