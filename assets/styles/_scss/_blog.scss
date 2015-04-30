@@ -23,7 +23,7 @@
 }
 
 .blog-image {
-  background: $$gainsboro;
+  background: $gainsboro;
   box-shadow: 0 2px 4px darken($gainsboro, 10%);
   display: block;
   max-width: 250px;
