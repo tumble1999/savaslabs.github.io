@@ -1,32 +1,35 @@
 .wrapper {
-    @include outer-container;
-    max-width: 70em;
-    vertical-align: baseline;
-    padding: 3em 1em;
-    @include media($large-screen) {
-    	padding: 3em 0;
-    }
+  @include outer-container;
+  max-width: 70em;
+  padding: 3em 1em;
+  vertical-align: baseline;
+
+  @include media($large-screen) {
+    padding: 3em 0;
+  }
 }
 
 .flex-container {
-    @include span-columns(12);
+  @include span-columns(12);
 }
 
-header, .page-description, .view-all-link {
-	text-align: center;
+header,
+.page-description,
+.view-all-link {
+  text-align: center;
 }
 
 .page-description {
-	  margin-bottom: 2em;
+  margin-bottom: 2em;
 }
 
 hr {
-    clear: both;
+  clear: both;
 }
 
 .page-narrow {
-    @include media($medium-screen) {
-        @include span-columns(8);
-        @include shift(2);
-    }
+  @include media($medium-screen) {
+    @include span-columns(8);
+    @include shift(2);
+  }
 }
