@@ -1,18 +1,12 @@
-header.navigation {
-  ///////////////////////////////////////////////////////////////////////////////////
+.navigation {
   $base-border-color: $gainsboro !default;
   $base-border-radius: 3px !default;
-  $base-accent-color: #477DCA !default;
+  $base-accent-color: #477dca !default;
   $large-screen: em(860) !default;
-
-  a {
-    text-decoration: none;
-  }
-  //////////////////////////////////////////////////////////////////////////////////
-
+  ///////////////////////////////////////////////////
   $navigation-padding: 1em;
   $navigation-background: $dark-blue;
-  $navigation-color: transparentize($white, 0.3);
+  $navigation-color: transparentize($white, .3);
   $navigation-color-hover: $white;
   $navigation-height: 70px;
   $navigation-nav-button-background: $base-accent-color;
@@ -31,6 +25,10 @@ header.navigation {
   width: 100%;
   z-index: 999;
 
+  a {
+    text-decoration: none;
+  }
+
   .navigation-wrapper {
     @include clearfix;
     @include outer-container;
@@ -47,7 +45,7 @@ header.navigation {
 
     img {
       max-height: $navigation-height;
-      padding: 0.8em 0;
+      padding: .8em 0;
     }
   }
 
@@ -94,24 +92,24 @@ header.navigation {
     }
   }
 
-  ul.navigation-menu {
-    -webkit-transform-style: preserve-3d; // stop webkit flicker
+  .navigation-menu {
     clear: both;
     display: none;
     margin: 0 auto;
     overflow: visible;
     padding: 0;
+    -webkit-transform-style: preserve-3d; // stop webkit flicker
     width: 100%;
     z-index: 9999;
-
-    &.show {
-      display: block;
-    }
 
     @include media ($horizontal-bar-mode) {
       display: inline;
       margin: 0;
       padding: 0;
+    }
+
+    &.show {
+      display: block;
     }
   }
 
@@ -122,7 +120,7 @@ header.navigation {
     display: block;
     line-height: $navigation-height;
     overflow: hidden;
-    padding-right: 0.8em;
+    padding-right: .8em;
     text-align: right;
     width: 100%;
     z-index: 9999;
@@ -159,38 +157,17 @@ header.navigation {
 
   // Sub menus
 
-  li.more.nav-link {
-    padding-right: 0;
-
-    @include media($large-screen) {
-      padding-right: $navigation-submenu-padding;
-    }
-
-    > ul > li:first-child a  {
-      padding-top: 1em;
-    }
-
-    a {
-      margin-right: $navigation-submenu-padding;
-    }
-
-    > a {
-      padding-right: 0.6em;
-    }
-
-    > a:after {
-      @include position(absolute, auto -0.4em auto auto);
-      content: '\25BE';
-      color: $navigation-color;
-    }
-  }
-
-  li.more {
+  .more {
     overflow: visible;
     padding-right: 0;
 
+    @include media($horizontal-bar-mode) {
+      padding-right: .8em;
+      position: relative;
+    }
+
     a {
-      padding-right: 0.8em;
+      padding-right: .8em;
     }
 
     > a {
@@ -214,13 +191,34 @@ header.navigation {
       display: block;
     }
 
-    @include media($horizontal-bar-mode) {
-      padding-right: 0.8em;
-      position: relative;
+    &.nav-link {
+      padding-right: 0;
+
+      @include media($large-screen) {
+        padding-right: $navigation-submenu-padding;
+      }
+
+      > ul > li:first-child a {
+        padding-top: 1em;
+      }
+
+      a {
+        margin-right: $navigation-submenu-padding;
+      }
+
+      > a {
+        padding-right: .6em;
+      }
+
+      > a:after {
+        @include position(absolute, auto -.4em auto auto);
+        color: $navigation-color;
+        content: '\25BE';
+      }
     }
   }
 
-  ul.submenu {
+  .submenu {
     display: none;
     padding-left: 0;
 
@@ -232,7 +230,7 @@ header.navigation {
 
     .submenu {
       @include media($horizontal-bar-mode) {
-        left: $navigation-submenu-width - 0.2em;
+        left: $navigation-submenu-width - .2em;
         top: 0;
       }
     }
@@ -252,7 +250,7 @@ header.navigation {
         &:last-child > a {
           border-bottom-left-radius: $base-border-radius;
           border-bottom-right-radius: $base-border-radius;
-          padding-bottom: 0.7em;
+          padding-bottom: .7em;
         }
       }
 
@@ -275,7 +273,7 @@ header.navigation {
   // Elements on the far right
 
   .navigation-tools {
-    background: #505050;
+    background: $navtools-background;
     clear: both;
     display: block;
     height: $navigation-height;
@@ -293,9 +291,9 @@ header.navigation {
     @include button(flat, $base-accent-color);
     display: inline;
     float: right;
-    font-size: 0.8em;
+    font-size: .8em;
     margin-top: 1em;
-    padding: 0.75em 1em;
+    padding: .75em 1em;
     text-transform: uppercase;
   }
 
@@ -307,46 +305,8 @@ header.navigation {
     $search-bar-background: lighten($search-bar-border-color, 10%);
 
     float: left;
-    padding: 0.85em 0.6em 0.7em 0.6em;
+    padding: .85em .6em .7em;
     width: 60%;
-
-    form {
-      position: relative;
-
-      input[type=search] {
-        @include box-sizing(border-box);
-        background: $navigation-search-background;
-        border-radius: $base-border-radius * 2;
-        border: $navigation-search-border;
-        color: $navigation-color;
-        font-size: 0.9em;
-        font-style: italic;
-        margin: 0;
-        padding: 0.5em 0.8em;
-        width: 100%;
-
-        @include media($large-screen) {
-          width: 100%;
-        }
-      }
-
-      button[type=submit] {
-        @include button(flat, $navigation-search-background);
-        bottom: 0.3em;
-        left: auto;
-        outline: none;
-        padding: 0 9px;
-        position: absolute;
-        right: 0.3em;
-        top: 0.3em;
-
-        img {
-          height: 12px;
-          opacity: 0.7;
-          padding: 1px;
-        }
-      }
-    }
 
     @include media($horizontal-bar-mode) {
       display: inline-block;
@@ -356,6 +316,44 @@ header.navigation {
       input {
         @include box-sizing(border-box);
         display: block;
+      }
+    }
+
+    form {
+      position: relative;
+
+      input {
+        @include box-sizing(border-box);
+        background: $navigation-search-background;
+        border: $navigation-search-border;
+        border-radius: $base-border-radius * 2;
+        color: $navigation-color;
+        font-size: .9em;
+        font-style: italic;
+        margin: 0;
+        padding: .5em .8em;
+        width: 100%;
+
+        @include media($large-screen) {
+          width: 100%;
+        }
+      }
+
+      button {
+        @include button(flat, $navigation-search-background);
+        bottom: .3em;
+        left: auto;
+        outline: none;
+        padding: 0 9px;
+        position: absolute;
+        right: .3em;
+        top: .3em;
+
+        img {
+          height: 12px;
+          opacity: .7;
+          padding: 1px;
+        }
       }
     }
   }
