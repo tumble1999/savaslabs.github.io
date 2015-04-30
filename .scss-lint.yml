@@ -1,5 +1,9 @@
 scss_files: 'assets/styles/_scss/*.scss'
 
+exclude:
+  - '_sass'
+  - 'assets/styles/_scss/*/*'
+
 linters:
   SelectorDepth:
     enabled: false
