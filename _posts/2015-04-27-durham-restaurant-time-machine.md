@@ -10,7 +10,7 @@ Remember *Another Thyme*? *Kim Son*? *Honey's*? The *Know* restaurant and book s
 So here at Savas, we've created a helpful [Durham restaurant time machine](http://www.savaslabs.com/durham-restaurants-map).
 
 <div class="blog-image wrap-left">
-<img src="/assets/img/blog/restaurants-map-pan-pan-diner.png" alt="Map showing the Pan Pan Diner, at its original location on Hillandale Road" width="250" height="212">
+<a href="http://www.savaslabs.com/durham-restaurants-map"><img src="/assets/img/blog/restaurants-map-pan-pan-diner.png" alt="Map showing the Pan Pan Diner, at its original location on Hillandale Road" width="250" height="212"></a>
 <p>The Pan Pan Diner, at its original location on Hillandale Road (misspelled as <i>Hillondale</i> in the health inspections dataset)</p>
 </div>
 
@@ -30,5 +30,7 @@ We cleaned their data and mapped it using [Leaflet](http://www.leafletjs.com), a
  will be the subject of a future post! The gorgeous
 basemap is [Stamen Design](http://www.stamen.com)'s watercolor tiles, but if you find yourself lost you can click the "label streets" button to get a little bit more
 geographic context.
+
+The full sourcecode for the map is available on github at [savaslabs/durham-restaurants-map](https://github.com/savaslabs/durham-restaurants-map).
 
 
