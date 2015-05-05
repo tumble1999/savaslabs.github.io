@@ -1,34 +1,36 @@
 .blog-post {
-    @include outer-container;
-    @include media($large-screen) {
-        @include span-columns(8);
-        @include shift(2);
-    }
-    p {
-        font-size: $base-font-size * 1.2;
-    }
+  @include outer-container;
+  @include media($large-screen) {
+    @include span-columns(8);
+    @include shift(2);
+  }
+
+  p {
+    font-size: $base-font-size * 1.2;
+  }
 }
 
 .previous-next-links {
-    .next {
-        @include span-columns(6);
-        float: left;
-    }
-    .previous {
-        @include span-columns(6);
-        float: right;
-    }
+  .next {
+    @include span-columns(6);
+    float: left;
+  }
+
+  .previous {
+    @include span-columns(6);
+    float: right;
+  }
 }
 
 .blog-image {
+  background: $gainsboro;
+  box-shadow: 0 2px 4px darken($gainsboro, 10%);
   display: block;
-  background: gainsboro;
-  box-shadow: 0 2px 4px darken(gainsboro, 10%);
   max-width: 250px;
 
   &.wrap-right {
-    margin-right: 40px;
     float: left;
+    margin-right: 40px;
   }
 
   &.wrap-left {
@@ -37,9 +39,9 @@
   }
 
   p {
-    text-align: center;
     font-size: smaller;
     font-weight: bold;
+    text-align: center;
   }
 }
 

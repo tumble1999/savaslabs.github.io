@@ -1,29 +1,17 @@
 .table-minimal {
-  ///////////////////////////////////////////////////////////////////////////////////
-  $base-border-color: gainsboro !default;
+  $base-border-color: $gainsboro !default;
   $base-border-radius: 3px !default;
-  $base-background-color: white !default;
+  $base-background-color: $white !default;
   $base-line-height: 1.5em !default;
   $base-spacing: 1.5em !default;
-  $base-accent-color: #477DCA !default;
+  $base-accent-color: #477dca !default;
   $base-link-color: $base-accent-color !default;
   $dark-gray: #333 !default;
-  $light-gray: #DDD !default;
+  $light-gray: #ddd !default;
   $medium-screen: em(640) !default;
   $large-screen: em(860) !default;
   $base-font-color: $dark-gray !default;
-  
-  width: 100%;
-
-  th {
-    text-align: left;
-  }
-
-  td {
-    line-height: $base-line-height;
-  }
-  //////////////////////////////////////////////////////////////////////////////////
-
+  ///////////////////////////////////////////////////
   $table-border-color: $base-border-color;
   $table-border: 1px solid $table-border-color;
   $table-background: $base-background-color;
@@ -35,29 +23,21 @@
 
   border-collapse: separate;
   border-spacing: 0;
+  width: 100%;
 
-  tbody {
-    tr:hover > td, tr:hover > th {
-      background-color: $table-hover-background;
-    }
-    tr:first-child td {
-      border-top: 2px solid $table-border-color;
-    }
+  th {
+    text-align: left;
   }
 
-  thead {
-    th {
-      background-color: $table-header-background;
-      border-bottom: 0px;
-      padding: $table-padding;
-    }
+  td {
+    line-height: $base-line-height;
   }
 
   tbody {
     background-color: $table-background;
 
     td {
-      border-bottom: 0px;
+      border-bottom: 0;
       border-top: 1px solid $table-border-color;
       padding: $table-padding;
 
@@ -67,7 +47,7 @@
         font-size: .7em;
         line-height: $base-line-height;
         margin-bottom: .3em;
-        margin-right: 0.5em;
+        margin-right: .5em;
         outline: none;
         padding: .3em 1em;
         width: 100%;
@@ -77,6 +57,23 @@
           width: auto;
         }
       }
+    }
+
+    tr:hover > td,
+    tr:hover > th {
+      background-color: $table-hover-background;
+    }
+
+    tr:first-child td {
+      border-top: 2px solid $table-border-color;
+    }
+  }
+
+  thead {
+    th {
+      background-color: $table-header-background;
+      border-bottom: 0;
+      padding: $table-padding;
     }
   }
 }

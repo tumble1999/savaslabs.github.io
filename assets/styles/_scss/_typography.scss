@@ -1,8 +1,8 @@
-$roboto: "Roboto Condensed","Helvetica Neue",Helvetica,Arial,sans-serif;
-$martel: 'Martel Sans',"Helvetica Neue",Helvetica,Arial,sans-serif;
+$roboto: "Roboto Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$martel: 'Martel Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 body {
-    font-family: $roboto;
+  font-family: $roboto;
 }
 
 h1,
@@ -11,9 +11,9 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: $roboto;
-    font-weight: 800;
-    color: $fuschia;
+  color: $fuschia;
+  font-family: $roboto;
+  font-weight: 800;
 }
 
 h1 { font-size: 400%; }
@@ -23,43 +23,53 @@ h4 { font-size: 150%; }
 h5 { font-size: 120%; }
 
 a {
-	color: $fuschia;
-	&:hover, &:focus {
-		color: $orange;
-	}
+  color: $fuschia;
+
+  &:hover,
+  &:focus {
+    color: $orange;
+  }
 }
 
 .card-copy {
-	color: $dark-blue;
+  color: $dark-blue;
 }
 
 .nav-link a {
-    text-transform: uppercase;
-    font-size: $base-font-size * 1.1;
+  font-size: $base-font-size * 1.1;
+  text-transform: uppercase;
 }
 
 p {
-	color: $dark-blue;
+  color: $dark-blue;
 }
 
 .page-description {
   font-size: $base-font-size * 1.3;
 }
 
-.portfolio, .post {
-    p, ul, ol {
-    font-size: $base-font-size * 1.2;
+.portfolio,
+.post {
+  p,
+  ul,
+  ol {
     color: $dark-blue;
-    }
-    .portfolio-short-description {
-      font-size: $base-font-size * 1.5;
-    }
-    ul { list-style-type: square; margin-left: 2em; }
-    ol { list-style-type: decimal; margin-left: 2em; }
-    h3, h4, h5 { margin-top: 1.5em; }
-    .page-description {
-        font-size: $base-font-size * 1.4;
-    }
+    font-size: $base-font-size * 1.2;
+  }
+
+  .portfolio-short-description {
+    font-size: $base-font-size * 1.5;
+  }
+
+  ul { list-style-type: square; margin-left: 2em; }
+  ol { list-style-type: decimal; margin-left: 2em; }
+  h3,
+  h4,
+  h5 { margin-top: 1.5em; }
+
+  .page-description {
+    font-size: $base-font-size * 1.4;
+  }
 }
 
 .centerdot { font-weight: bold; }

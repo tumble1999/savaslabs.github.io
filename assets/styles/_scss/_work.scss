@@ -1,43 +1,40 @@
 .work-card {
+  @include flex-basis(21em);
+  @include flex-grow(0);
+  @include flex-shrink(1);
 
-    //@include span-columns(4);
-    @include flex-basis(21em);
-    @include flex-grow(0);
-    @include flex-shrink(1);
+  .card-image {
+    max-height: 200px;
+    overflow: hidden;
 
-    .card-image {
-        overflow: hidden;
-        max-height: 200px;
-
-        img {
-            @include transition (all 0.2s ease-in-out);
-            width: 100%;
-        }
+    img {
+      @include transition (all .2s ease-in-out);
+      width: 100%;
     }
-}
-
-.portfolio-details table {
-    padding-top: 2em;
-    padding-bottom: 2em;
-}
-
-.client-quote {
-    .client-name {
-        font-style: italic;
-    }
+  }
 }
 
 .portfolio-details {
-    overflow: hidden;
+  overflow: hidden;
+
+  table {
+    padding-bottom: 2em;
+    padding-top: 2em;
+  }
 }
 
 .client-quote {
-    border: 1px solid gainsboro;
-    @include media($medium-screen) {
-        display: inline-block;
-        float: right;
-        margin: 1.5em;
-        padding: .5em;
-        width: 15em;
-    }
+  border: 1px solid $gainsboro;
+
+  @include media($medium-screen) {
+    display: inline-block;
+    float: right;
+    margin: 1.5em;
+    padding: .5em;
+    width: 15em;
+  }
+
+  .client-name {
+    font-style: italic;
+  }
 }

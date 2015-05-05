@@ -1,37 +1,42 @@
 $medium-screen: em(640) !default;
 
 .home .page-content {
-      background: url("/assets/img/home.png");
+  background: url('/assets/img/home.png');
 
-    .home-page-copy {
-        @include outer-container;
-        padding: 3% 0;
-        text-align: center;
-        h1 {
-            padding-top: 5%;
-        }
-        h4 {
-            padding: 0 5%;
-            color: white;
-        }
-        .logo img {
-            max-width: 125px;
-        }
-        @include media($medium-screen) {
-            .logo { 
-                @include shift(1);
-                @include span-columns(3);
-            }
-            .tagline { @include span-columns(7); }
-            h4 { padding: 0; }
-        }
+  .home-page-copy {
+    @include outer-container;
+    padding: 3% 0;
+    text-align: center;
+
+    @include media($medium-screen) {
+      .logo {
+        @include shift(1);
+        @include span-columns(3);
+      }
+
+      .tagline { @include span-columns(7); }
+      h4 { padding: 0; }
     }
+
+    h1 {
+      padding-top: 5%;
+    }
+
+    h4 {
+      color: $white;
+      padding: 0 5%;
+    }
+
+    .logo img {
+      max-width: 125px;
+    }
+  }
 }
 
 .home .wrapper h3 { text-align: center; }
 
 .blog-list {
-    @include outer-container;
-    @include span-columns(12);
-    background-color: white;
+  @include outer-container;
+  @include span-columns(12);
+  background-color: $white;
 }
