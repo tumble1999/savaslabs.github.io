@@ -19,8 +19,6 @@
   }
 
   .previous-next-links {
-    margin-top: 3em;
-
     .previous {
       text-align: right;
     }
@@ -64,6 +62,8 @@
   }
 
   .post-related {
+    margin-bottom: 3em;
+
     @include media($medium-screen) {
       @include span-columns(8);
 
