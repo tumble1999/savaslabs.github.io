@@ -63,41 +63,23 @@
     }
 
     .team-links {
+      margin-bottom: 3em;
+      margin-top: 1em;
+      text-align: center;
 
-
-    //     @include span-columns(8);
-    //     @include shift(2);
-    //     @include media($medium-screen) {
-    //         //@include span-columns(12);
-    //         @include shift(0);
-    //     }
-    //     @include display(flex);
-    //     @include flex-wrap(wrap);
-    //     @include justify-content(center);
-    //     @include align-items(center);
-
-    //     color: $dark-blue;
-        margin-top: 1em;
-        margin-bottom: 3em;
-        text-align: center;
-    //     // @include media($medium-screen) {
-    //     //     text-align: center;
-    //     // }
-    //     width: 100%;
-
-        li {
-            list-style-type: none;
-            padding: 0 .75em;
-            width: 50%;
-            @include media($medium-screen) {
-                display: inline;
-                min-width: 1%;
-            }
+      li {
+        list-style-type: none;
+        padding: 0 .75em;
+        width: 100%;
+        @include media($medium-screen) {
+          display: inline;
+          min-width: 1%;
         }
+      }
 
-        .fa-file-text {
-            font-size: 13px;
-        }
+      .fa-file-text {
+          font-size: 13px;
+      }
     }
   }
 }
