@@ -21,31 +21,3 @@
     float: right;
   }
 }
-
-.blog-image {
-  background: $gainsboro;
-  box-shadow: 0 2px 4px darken($gainsboro, 10%);
-  display: block;
-  max-width: 250px;
-
-  &.wrap-right {
-    float: left;
-    margin-right: 40px;
-  }
-
-  &.wrap-left {
-    float: right;
-    margin-left: 40px;
-  }
-
-  p {
-    font-size: smaller;
-    font-weight: bold;
-    text-align: center;
-  }
-}
-
-.blog-image-large {
-  @extend .blog-image;
-  max-width: 500px;
-}
