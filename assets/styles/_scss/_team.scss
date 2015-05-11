@@ -69,13 +69,14 @@
 }
 
 .name-explanation {
-    text-align: center;
-    clear: both;
-    padding-bottom: 0;
-    p { 
-      font-size: 1.3em; 
-      margin: 0;
-    }
+  clear: both;
+  padding-bottom: 0;
+  text-align: center;
+
+  p {
+    font-size: 1.3em;
+    margin: 0;
+  }
 }
 
 .associations {
