@@ -27,7 +27,7 @@ hr {
   clear: both;
 }
 
-.page-narrow {
+.column-8 {
   @include media($medium-screen) {
     @include span-columns(8);
     @include shift(2);
