@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/savaslabs/savaslabs.github.io.svg?branch=master)](https://travis-ci.org/savaslabs/savaslabs.github.io)
 
-This is the website for [Savas Labs](http://savaslabs.com).
+This is the site for [Savas Labs](http://savaslabs.com).
 
 The site is built using Jekyll. To run locally:
 
