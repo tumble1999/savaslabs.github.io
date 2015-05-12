@@ -48,9 +48,11 @@
   .team-links {
     margin: 1em auto 3em;
     text-align: center;
+
     @include media($medium-screen) {
-        width: 60%;
+      width: 60%;
     }
+
     @include media($large-screen) {
       width: 100%;
     }
@@ -58,8 +60,8 @@
     li {
       display: inline-block;
       list-style-type: none;
-      padding: 0 .75em;
       min-width: 45%;
+      padding: 0 .75em;
 
       @include media($large-screen) {
         min-width: 1%;
@@ -67,7 +69,7 @@
     }
 
     .fa-file-text {
-        font-size: 13px;
+      font-size: 13px;
     }
   }
 }
