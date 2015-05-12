@@ -11,7 +11,7 @@
   }
 
   .post-header {
-    margin-bottom: 1em;
+    margin-bottom: 2.25em;
 
     p {
       display: inline;
@@ -47,7 +47,7 @@
 
     img {
       border-radius: 3px;
-      width: 10em;
+      width: 12em;
     }
 
     p {
@@ -63,22 +63,20 @@
 
   .post-related {
     margin-bottom: 3em;
+    text-align: center;
 
     @include media($medium-screen) {
       @include span-columns(8);
 
       h4 {
+        margin-left: .583em;
         text-align: left;
       }
     }
 
-    h4 {
-      margin-left: .583em;
-      text-align: center;
-    }
-
     .cards {
       font-size: .9em;
+      text-align: left;
     }
   }
 }
