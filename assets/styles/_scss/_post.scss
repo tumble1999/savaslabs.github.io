@@ -111,3 +111,16 @@
   @extend .blog-image;
   max-width: 500px;
 }
+
+
+.previous-next-links {
+  .next {
+    @include span-columns(6);
+    float: left;
+  }
+
+  .previous {
+    @include span-columns(6);
+    float: right;
+  }
+}
