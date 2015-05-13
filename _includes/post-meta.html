@@ -1,28 +1,33 @@
-<div class="post-meta">
-  <h4>By <a href="{{ page.author | downcase | replace: ' ', '-'  | prepend: "/team/" | strip_newlines }}">{{ page.author }}</a></h4>
-  {% for person in site.team %}{% if person.name == page.author %}
-    <img src="/{{ person.photo }}" alt="{{ person.name }}">
-    <p class="post-author-desc">{{ person.job_description }}</p>
-  {% endif %}{% endfor %}
-</div>
-  <!-- Once we have more content, change this to posts related by tag -->
-<div class="post-related flex-container">
-  <div class="cards">
-    {% assign counter = 0 %}
-    {% for post in site.posts %}
-      {% if post.title != page.title and counter < 3%}
-      {% assign counter = counter |plus: 1 %}
-        <div class="card">
-          <a href="{{ post.url }}">
-            <div class="card-header">
-                {{ post.title }}
-            </div>
-            <div class="card-copy">
-                <p>{{ post.summary | truncatewords: 20 }}</p>
-            </div>
-          </a>
-        </div>
-      {% endif %}
-    {% endfor %}
+<div class="post-bottom">
+  <div class="post-meta">
+    <h4>About the author</h4>
+    {% for person in site.team %}{% if person.name == page.author %}
+      <a href="{{ page.author | downcase | replace: ' ', '-'  | prepend: "/team/" | strip_newlines }}">
+        <img src="/{{ person.photo }}" alt="{{ person.name }}">
+      </a>
+      <p class="post-author-desc">{{ person.job_description }}</p>
+    {% endif %}{% endfor %}
+  </div>
+    <!-- Once we have more content, change this to posts related by tag -->
+  <div class="post-related flex-container">
+    <h4>Recent posts by Savas</h4>
+    <div class="cards">
+      {% assign counter = 0 %}
+      {% for post in site.posts %}
+        {% if post.title != page.title and counter < 3%}
+        {% assign counter = counter |plus: 1 %}
+          <div class="card">
+            <a href="{{ post.url }}">
+              <div class="card-header">
+                  {{ post.title }}
+              </div>
+              <div class="card-copy">
+                  <p>{{ post.summary | markdownify | truncatewords: 20 }}</p>
+              </div>
+            </a>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
   </div>
 </div>

@@ -11,7 +11,7 @@
   }
 
   .post-header {
-    margin-bottom: 1em;
+    margin-bottom: 2.25em;
 
     p {
       display: inline;
@@ -19,8 +19,6 @@
   }
 
   .previous-next-links {
-    margin-top: 3em;
-
     .previous {
       text-align: right;
     }
@@ -32,40 +30,54 @@
   }
 }
 
-.post-meta {
-  margin-bottom: 3em;
-  text-align: center;
-
-  @include media($medium-screen) {
-    @include span-columns(4);
-    text-align: left;
-  }
+.post-bottom {
 
   h4 {
     margin: 0 0 1em;
   }
 
-  img {
-    border-radius: 3px;
-    width: 10em;
+  .post-meta {
+    margin-bottom: 3em;
+    text-align: center;
+
+    @include media($medium-screen) {
+      @include span-columns(4);
+      text-align: left;
+    }
+
+    img {
+      border-radius: 3px;
+      width: 12em;
+    }
+
+    p {
+      font-size: 1em;
+      line-height: 1.2em;
+      margin-top: 1em;
+    }
+
+    .post-author-desc {
+      text-align: left;
+    }
   }
 
-  p {
-    font-size: 1em;
-    line-height: 1.2em;
-    margin-top: 1em;
-  }
+  .post-related {
+    margin-bottom: 3em;
+    text-align: center;
 
-  .post-author-desc {
-    text-align: left;
-  }
-}
+    @include media($medium-screen) {
+      @include span-columns(8);
 
-.post-related {
-  font-size: .9em;
+      h4 {
+        margin-left: .583em;
+        text-align: left;
+      }
+    }
 
-  @include media($medium-screen) {
-    @include span-columns(8);
+    .cards {
+      font-size: .9em;
+      text-align: left;
+    }
   }
 }
 
