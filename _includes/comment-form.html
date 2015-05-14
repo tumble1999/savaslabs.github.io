@@ -4,14 +4,19 @@
       <a href="javascript:void(0)" id="js-expander-trigger" class="expander-trigger expander-hidden">Leave a comment</a>
       <div id="js-expander-content" class="expander-content">
         <form method='post' action="http://localhost:8000/api/comments/new">
-          <div class="comment-name"><p>Name</p> <input type='text' name='name' id='name' /><br></div>
-          <div class="comment-email"><p>Email</p> <input type='email' name='email' id='email' /><br></div>
+          <div class="comment-name">
+            <p>Name</p> <input type='text' name='name' id='name' required /><br>
+          </div>
+
+          <div class="comment-email">
+            <p>Email</p> <input type='email' name='email' id='email' required />
+            <p class="email-disclaimer">Savas will never sell your email address or spam you.</p><br>
+          </div>
 
           <p>Comment</p>
-          <textarea name='comment' id='comment'></textarea><br>
+          <textarea name='comment' id='comment' required></textarea><br>
 
           <input type='hidden' name='slug' id='slug' value='{{ page.url }}' />
-
           <input type='submit' value='Submit' />
         </form>
       </div>
