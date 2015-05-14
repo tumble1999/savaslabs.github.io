@@ -6,7 +6,7 @@ author: Tim Stallmann
 tags: cartography leaflet durham
 summary: Remember *Another Thyme*? *Kim Son*? *Honey's*? The *Know* restaurant and book store? As Durham gains more notoriety for its "foodie scene," it's easy to forget restaurants of the past. So here at Savas, we've created a Durham restaurant time machine.
 ---
-Remember *Another Thyme*? *Kim Son*? *Honey's*? The *Know* restaurant and book store? As Durham gains more notoriety for it's "foodie scene," it's easy to forget restaurants of the past.
+Remember *Another Thyme*? *Kim Son*? *Honey's*? The *Know* restaurant and book store? As Durham gains more notoriety for its "foodie scene," it's easy to forget restaurants of the past.
 So here at Savas, we've created a helpful [Durham restaurant time machine](http://www.savaslabs.com/durham-restaurants-map).
 
 <div class="blog-image wrap-left">
