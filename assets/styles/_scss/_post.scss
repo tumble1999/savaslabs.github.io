@@ -101,6 +101,18 @@
 
 // Post comment block.
 .post-comments {
+  // Make name and email inline on larger screens.
+  @include media($medium-screen) {
+    .comment-name,
+    .comment-email {
+      display: inline-block;
+      width: 48%;
+    }
+
+    .comment-name { float: left; }
+    .comment-email { float: right; }
+  }
+
   p {
     margin: 0;
   }
