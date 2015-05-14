@@ -1,17 +1,19 @@
 <div class="post-comments">
-  <!--Eventually put some instructional text here
-      Depending on whether or not there are already comments
-  -->
-  <form method='post' action="http://localhost:8000/comments/new">
-    <p>Name</p> <input type='text' name='name' id='name' /><br />
-    <p>Email</p> <input type='email' name='email' id='email' /><br />
+  <div class="expander">
+    <a href="javascript:void(0)" id="js-expander-trigger" class="expander-trigger expander-hidden">Leave a comment</a>
+    <div id="js-expander-content" class="expander-content">
+      <form method='post' action="http://localhost:8000/comments/new">
+        <p>Name</p> <input type='text' name='name' id='name' /><br />
+        <p>Email</p> <input type='email' name='email' id='email' /><br />
 
-    <p>Comment</p>
-    <textarea name='comment' id='comment'></textarea><br />
+        <p>Comment</p>
+        <textarea name='comment' id='comment'></textarea><br />
 
-    <input type='hidden' name='slug' id='slug' value='{{ page.url }}' />
+        <input type='hidden' name='slug' id='slug' value='{{ page.url }}' />
 
-    <input type='submit' value='Submit' />
-  </form>
+        <input type='submit' value='Submit' />
+      </form>
+    </div>
+  </div>
   <hr>
 </div>

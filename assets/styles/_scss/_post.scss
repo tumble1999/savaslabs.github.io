@@ -63,6 +63,42 @@
   max-width: 500px;
 }
 
+// Comment block expander.
+.expander {
+  $expander-arrow-width: .7em;
+  $expander-toggle-size: 1em;
+  $expander-toggle-arrow-size: $expander-toggle-size;
+  $expander-toggle-margin: 1em;
+
+  .expander-trigger {
+    @include user-select(none);
+    color: $fuschia;
+    cursor: pointer;
+    display: block;
+    font-size: 1.2em;
+    margin-bottom: $expander-toggle-size;
+    padding-bottom: $expander-toggle-size / 4;
+    text-decoration: none;
+
+    &:before {
+      content: '\25BC';
+      font-size: $expander-arrow-width;
+      margin-right: .5em;
+    }
+  }
+
+  .expander-hidden {
+    &:before {
+      content: '\25BA';
+      font-size: $expander-arrow-width;
+    }
+
+    + .expander-content {
+      display: none;
+    }
+  }
+}
+
 // Post comment block.
 .post-comments {
   p {
