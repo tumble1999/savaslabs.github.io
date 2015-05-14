@@ -144,6 +144,11 @@
     font-size: .8em;
     margin-top: -.75em;
   }
+
+  // Hide honeypot field.
+  #content {
+    display: none;
+  }
 }
 
 // Post bottom area: post meta information and other posts.
