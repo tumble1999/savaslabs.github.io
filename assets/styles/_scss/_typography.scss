@@ -40,7 +40,9 @@ a {
   text-transform: uppercase;
 }
 
-p {
+p,
+input,
+textarea {
   color: $dark-blue;
 }
 
