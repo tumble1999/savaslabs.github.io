@@ -3,9 +3,9 @@
     <div class="expander">
       <a href="javascript:void(0)" id="js-expander-trigger" class="expander-trigger expander-hidden">Leave a comment</a>
       <div id="js-expander-content" class="expander-content">
-        <form method='post' action="http://localhost:8000/comments/new">
-          <p>Name</p> <input type='text' name='name' id='name' /><br>
-          <p>Email</p> <input type='email' name='email' id='email' /><br>
+        <form method='post' action="http://localhost:8000/api/comments/new">
+          <div class="comment-name"><p>Name</p> <input type='text' name='name' id='name' /><br></div>
+          <div class="comment-email"><p>Email</p> <input type='email' name='email' id='email' /><br></div>
 
           <p>Comment</p>
           <textarea name='comment' id='comment'></textarea><br>
