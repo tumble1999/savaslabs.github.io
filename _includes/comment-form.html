@@ -1,0 +1,15 @@
+<div class="post-comments">
+  <h4>Comments</h4>
+  <form method='post' action="http://localhost:8000/comments/new">
+    <p>Name</p> <input type='text' name='name' id='name' /><br />
+    <p>Email</p> <input type='email' name='email' id='email' /><br />
+
+    <p>Comment</p>
+    <textarea name='comment' id='comment'></textarea><br />
+
+    <input type='hidden' name='slug' id='slug' value='{{ page.url }}' />
+
+    <input type='submit' value='Submit' />
+  </form>
+  <hr>
+</div>
