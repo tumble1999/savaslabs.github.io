@@ -1,8 +1,10 @@
 ---
 library: jquery-2.1.3.min.js
+date_format_library: jquery-dateFormat.min.js
 ---
 
 {% include_relative _lib/{{page.library}} %}
+{% include_relative _lib/{{page.date_format_library}} %}
 
 $(document).ready(function() {
   var menuToggle = $('#js-mobile-menu').unbind();
@@ -39,13 +41,13 @@ $(document).ready(function() {
 
         // Assign JSON data points to variables.
         var name = json.data[i].name;
-        var created = json.data[i].created_at;
+        var created = $.format.date(json.data[i].created_at, "MMM d, yyyy h:mma");
         var comment = json.data[i].comment;
 
         // Create HTML output.
-        outhtml = outhtml + '<div class="comment"><h5>'+name+'</h5>';
-        outhtml = outhtml + '<p>'+created+'</p>';
-        outhtml = outhtml + '<p>'+comment+'</p></div>';
+        outhtml = outhtml + '<div class="comment"><h5>'+name+' says:</h5>';
+        outhtml = outhtml + '<p class="comment-date">'+created+'</p>';
+        outhtml = outhtml + '<p class="comment-text">'+comment+'</p></div>';
       });
       $('#post-comments').html(outhtml);
     });

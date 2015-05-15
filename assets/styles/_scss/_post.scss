@@ -99,8 +99,10 @@
   }
 }
 
-// Post comment block.
+// Comments.
 .post-comments {
+
+// Comment form.
   // Make name and email inline on larger screens.
   @include media($medium-screen) {
     .comment-name,
@@ -151,6 +153,19 @@
     display: none;
   }
   // scss-lint:enable IdSelector
+
+  // Existing comments.
+  .comment {
+    h5 {
+      margin-bottom: 0;
+    }
+
+    .comment-date {
+      color: darken($gainsboro, 25%);
+      font-size: .9em;
+      margin: .5em 0 .4em;
+    }
+  }
 }
 
 // Post bottom area: post meta information and other posts.
