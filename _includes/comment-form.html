@@ -3,7 +3,7 @@
     <div class="expander">
       <a href="javascript:void(0)" id="js-expander-trigger" class="expander-trigger expander-hidden">Leave a comment</a>
       <div id="js-expander-content" class="expander-content">
-        <form method='post' action="http://localhost:8000/api/comments/new">
+        <form method='post' action="{{ site.comment_server_url }}/api/comments/new">
           <div class="comment-name">
             <p>Name</p> <input type='text' name='name' id='name' required /><br>
           </div>
@@ -20,6 +20,7 @@
           <input type='text' name='url' id='url' />
           <input type='submit' value='Submit' />
         </form>
+        <div id="post-comments"></div>
       </div>
     </div>
   {% else %}
