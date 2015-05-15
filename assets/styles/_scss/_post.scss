@@ -146,9 +146,11 @@
   }
 
   // Hide honeypot field.
+  // scss-lint:disable IdSelector
   #url {
     display: none;
   }
+  // scss-lint:enable IdSelector
 }
 
 // Post bottom area: post meta information and other posts.
