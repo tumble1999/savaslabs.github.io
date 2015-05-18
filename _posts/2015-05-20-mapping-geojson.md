@@ -15,6 +15,7 @@ summary: Leaflet.js is a powerful, light-weight javascript API for mapping. In t
 <img src="/assets/img/blog/earthquakes-map.jpg" alt="Screenshot of the map of earthquakes which we'll create in this tutorial." width="500" height="202">
 
 ### Basic Leaflet Set-up
+
 This section largely duplicates the basic Leaflet set-up at [this tutorial](http://leafletjs.com/examples/quick-start.html), except for we also add a Leaflet-providers plugin to get easy access to additional tilesets.
 
 The first step in any mapping project using Leaflet is to add a basic div to your page with `id=map`. Leaflet will grab onto this div and insert the map content dynamically. You'll need to fix the div size using CSS:
@@ -121,6 +122,7 @@ function addDataToMap(data, map) {
 
 And here's the "finished" map! Stay tuned for more GeoJSON + Leaflet tutorials from [Savas](http://www.savaslabs.com)
 
+The final HTML file with inline javascript is also posted [as a gist here](https://gist.github.com/anonymous/ed35b8f27c47339490a9).
 
 <div id="map2" style="width: 100%; height: 300px;"></div>
 <script type="text/javascript">
