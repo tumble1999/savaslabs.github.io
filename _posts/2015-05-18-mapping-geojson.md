@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Mapping external GeoJSON data"
-date: 2015-05-20
+date: 2015-05-18
 author: Tim Stallmann
 tags: cartography leaflet
 custom_css: leaflet
