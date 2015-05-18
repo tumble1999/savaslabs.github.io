@@ -4,6 +4,10 @@ title: "Mapping external GeoJSON data"
 date: 2015-05-20
 author: Tim Stallmann
 tags: cartography leaflet
+custom_css: leaflet
+custom_js: 
+ - leaflet
+ - leaflet-providers
 summary: Leaflet.js is a powerful, light-weight javascript API for mapping. In this post, I'll walk through how to use Leaflet to map GeoJSON data.
 ---
 [Leaflet.js](http://www.leafletjs.com) is a powerful, light-weight javascript API for mapping. In this post, I'll walk through how to use Leaflet to map GeoJSON data. By the end, we'll have a map which looks like this:
@@ -71,10 +75,8 @@ We need to access the map variable inside `addDataToMap`, so I'm using a closure
 Here's what your map should look like at this point:
 
 <div id="map" style="width: 100%; height: 300px;"></div>
-<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
-<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-<script src="/assets/js/leaflet-providers.js"></script>
 <script type="text/javascript">
+L.Icon.Default.imagePath = "/assets/img";
 var map = L.map('map');
 var terrainTiles = L.tileLayer.provider('OpenTopoMap');
 terrainTiles.addTo(map);
