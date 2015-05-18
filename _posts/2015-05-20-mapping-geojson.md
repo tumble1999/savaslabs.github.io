@@ -39,7 +39,9 @@ The bulk of the mapping work will take place in custom javascript, which we can 
 var map = L.map('map');
 {% endhighlight %}
 
-Next, we need to add a background layer, or basemap. I like to do this using the [leaflet-providers](https://github.com/leaflet-extras/leaflet-providers) plug-in, which unfortunately means downloading and including another javascript library (in a real site, I would be using [bower](http://www.bower.io) to manage packages). Place this code *after* the previous script tags.
+Next, we need to add a background layer, or basemap. I like to do this using the [leaflet-providers](https://github.com/leaflet-extras/leaflet-providers) plug-in, which gives an easier way to add basemaps from multiple providers without having to manually specify the [URL template strings](http://leafletjs.com/reference.html#tilelayer) for each layer.
+
+Download the `leaflet-providers.js` file, and save it in the same directory as your working HTML file. In a real site, I would be using [bower](http://www.bower.io) and [browserify](http://browserify.org/) to manage packages, but that's a topic for another post entirely. Place this code *after* the previous script tags.
 {% highlight html %}
 <script src="leaflet-providers.js"></script>
 {% endhighlight %}
