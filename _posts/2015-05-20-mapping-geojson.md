@@ -73,7 +73,6 @@ Here's what your map should look like at this point:
 <div id="map" style="width: 100%; height: 300px;"></div>
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
 <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="/assets/js/leaflet-providers.js"></script>
 <script type="text/javascript">
 var map = L.map('map');
