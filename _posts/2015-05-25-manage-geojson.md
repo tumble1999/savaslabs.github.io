@@ -17,7 +17,7 @@ Why might this be useful?
 
 ### Installing GDAL and Downloading Sample Data
 
-[GDAL](http://www.gdal.org) is a free and open-source translator library for both raster and vector data formats. It provides a number of core functionalities for data processing and conversion which are used across the suite of [OSGeo applications](http://www.osgeo.org). More importantly for our purposes, GDAL provides a bunch of command-line tools for processing geospatial data.
+[GDAL (Geospatial Data Abstraction Library)](http://www.gdal.org) is a free and open-source translator library for both raster and vector data formats. It provides a number of core functionalities for data processing and conversion which are used across the suite of [OSGeo applications](http://www.osgeo.org). More importantly for our purposes, GDAL provides a bunch of command-line tools for processing geospatial data.
 
 If you're on a Mac and using homebrew, you can easily install GDAL by running `brew install gdal` from the command line. Otherwise, you can download [binaries from GDAL](http://trac.osgeo.org/gdal/wiki/DownloadingGdalBinaries) or [compile the source code yourself](http://trac.osgeo.org/gdal/wiki/BuildHints). 
 
