@@ -19,9 +19,9 @@ summary: Leaflet.js is a powerful, light-weight javascript API for mapping. In t
 
 This section largely duplicates the basic Leaflet set-up at [this tutorial](http://leafletjs.com/examples/quick-start.html), except for we also add a Leaflet-providers plugin to get easy access to additional tilesets.
 
-The first step in any mapping project using Leaflet is to add a basic div to your page with `id=map`. Leaflet will grab onto this div and insert the map content dynamically. You'll need to fix the div size using CSS:
+> The first step in any mapping project using Leaflet is to add a basic div to your page with `id=map`. Leaflet will grab onto this div and insert the map content >> dynamically. You'll need to fix the div size using CSS:
 
-{% highlight css %}
+{% highlight css Here is some CSS %}
 #map {
   height: 300px; // Or whatever height you like
   width: 100%;
