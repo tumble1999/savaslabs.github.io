@@ -100,5 +100,6 @@ insufficient job.
 
 Savasians certainly support the notion that a working citizen ought to be
 able to support himself or herself in the communities in which **we** live, work,
-and play. Thank you [DLWP](http://www.durhamlivingwage.org) (again, I just shortened it) for being a voice for this
+and play. Thank you [DLWP](http://www.durhamlivingwage.org)
+(again, I just shortened it) for being a voice for this
 issue.
