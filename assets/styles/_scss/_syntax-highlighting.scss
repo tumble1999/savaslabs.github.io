@@ -4,7 +4,7 @@
 
  .highlight, html .gist .gist-file .gist-syntax .gist-highlight {
   table td.code { width: 100%; }
-  border: 1px solid $pre-border !important;
+  border: 1px solid #ddd !important;
 }
 .highlight .line-numbers, html .gist .gist-file .gist-syntax .highlight .line_numbers {
   text-align: right;
@@ -158,20 +158,20 @@ p, li {
   .kc     { color: $solar-green !important; font-weight: bold !important; }                       /* Keyword.Constant */
   .kd     { color: $solar-blue !important; }                       /* Keyword.Declaration */
   .kp     { color: $solar-orange !important; font-weight: bold !important; }                       /* Keyword.Pseudo */
-  .kr     { color: $solar-magenta !important; font-weight: bold !important; }                       /* Keyword.Reserved */
+  .kr     { color: $solar-yellow !important; font-weight: bold !important; }                       /* Keyword.Reserved */
   .kt     { color: $solar-cyan !important; }                       /* Keyword.Type */
   .n      { color: $solar-blue !important; }
   .na     { color: $solar-blue !important; }                                          /* Name.Attribute */
   .nb     { color: $solar-green !important; }                                          /* Name.Builtin */
-  .nc     { color: $solar-magenta !important;}                                                   /* Name.Class */
-  .no     { color: $solar-yellow !important; }                                          /* Name.Constant */
+  .nc     { color: $solar-yellow !important;}                                                   /* Name.Class */
+  .no     { color: $solar-magenta !important; }                                          /* Name.Constant */
   //.ni     { color: #800080 }                                          /* Name.Entity */
   .nl     { color: $solar-green !important; }
   .ne     { color: $solar-blue !important; font-weight: bold !important; }                       /* Name.Exception */
   .nf     { color: $solar-blue !important; font-weight: bold !important; }                       /* Name.Function */
-  .nn     { color: $solar-yellow !important; }                                          /* Name.Namespace */
+  .nn     { color: $solar-magenta !important; }                                          /* Name.Namespace */
   .nt     { color: $solar-blue !important; font-weight: bold !important; }                                          /* Name.Tag */
-  .nx     { color: $solar-yellow !Important; }
+  .nx     { color: $solar-magenta !Important; }
   //.bp     { color: #999999 }                                          /* Name.Builtin.Pseudo */
   //.vc     { color: #008080 }                                          /* Name.Variable.Class */
   .vg     { color: $solar-blue !important; }                                          /* Name.Variable.Global */
