@@ -37,9 +37,9 @@ stratified it actually is.
 
 #### How stratified do we (Americans) _think_ wealth is (in quintiles)?
 
-| Bottom 20% | 21-40% | 41-60% | 61-80% | Top 20% |
-|:--------|:-------|:--------|:--------|:-------|
-| 2.9   | 6.4   | 12.0   | 20.2   | 58.5   |
+| **Population** | Bottom 20% | 21-40% | 41-60% | 61-80% | Top 20% |
+|:---------------|---------:|-------:|-------:|-------:|--------:|
+| **Percentage of total wealth** | 2.9   | 6.4   | 12.0   | 20.2   | 58.5   |
 
 
 Given this is what we _think_ wealth distribution looks like, the next
@@ -61,9 +61,9 @@ the veil of ignorance. Survey participants desire the following distribution:
 
 #### How stratified do we (Americans) **_want_** wealth to be (in quintiles)?
 
-| Bottom 20% | 21-40% | 41-60% | 61-80% | Top 20% |
-|:--------|:-------|:--------|:--------|:-------|
-| 10.5   | 14.1   | 21.5   | 22.0   | 31.9   |
+| **Population** | Bottom 20% | 21-40% | 41-60% | 61-80% | Top 20% |
+|:---------------|---------:|-------:|-------:|-------:|--------:|
+| **Percentage of total wealth** | 10.5   | 14.1   | 21.5   | 22.0   | 31.9   |
 
 Ariely speaks to the diversity of those surveyed about what the ideal distribution
 of wealth should be:
@@ -77,9 +77,9 @@ distribution of wealth than we currently _think_ we have. So what _do_ we have?
 
 #### How stratified _is_ wealth in the U.S. (in quintiles)?
 
-| Bottom 20% | 21-40% | 41-60% | 61-80% | Top 20% |
-|:--------|:-------|:--------|:--------|:-------|
-| 0.1   | 0.2   | 3.9   | 11.3   | 84.4   |
+| **Population** | Bottom 20% | 21-40% | 41-60% | 61-80% | Top 20% |
+|:---------------|---------:|-------:|-------:|-------:|--------:|
+| **Percentage of total wealth** | 0.1   | 0.2   | 3.9   | 11.3   | 84.4   |
 
 Ariely points out:
 
