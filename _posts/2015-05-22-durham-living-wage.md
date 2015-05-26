@@ -89,8 +89,8 @@ we have.
 
 Therefore the gap between what
 [we _actually_ have](#how-stratified-is-wealth-in-the-us-in-quintiles) and what
-[we think is **just**](#how-stratified-do-we-americans-want-wealth-to-be-in-quintiles)
-is astronomical. This seems to the most objective way possible to "prove"
+[we think is **just**](#how-stratified-do-we-americans-want-wealth-to-be-in-quintiles),
+is astronomical. This seems to be the most objective way possible to "prove"
 that wages are not as balanced as most people want them to be.
 
 Establishing a Living Wage attempts to bring light to this reality, and speaks
