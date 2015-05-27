@@ -30,7 +30,7 @@ $(document).ready(function() {
     var commentServer = "{{ site.comment_server_url }}";
     var postSlug = window.location.pathname;
     // Remove leading forward slash.
-    var truncatedSlug = postSlug.substring(1, postSlug.length)
+    var truncatedSlug = postSlug.substring(1, postSlug.length);
     var encodedSlug = encodeURIComponent(truncatedSlug);
     var requri = commentServer+'/api/comments/post/'+encodedSlug;
 
@@ -40,15 +40,17 @@ $(document).ready(function() {
       $.each( json.data, function( i, val ) {
 
         // Assign JSON data points to variables.
-        var name = json.data[i].name;
-        // var created = $.format.date(json.data[i].created_at, "MMM d, yyyy h:mma");
-        var created = json.data[i].created_at;
-        var comment = json.data[i].comment;
+          var name = json.data[i].name;
 
-        // Create HTML output.
-        outhtml = outhtml + '<div class="comment"><h5>'+name+' says:</h5>';
-        outhtml = outhtml + '<p class="comment-date">'+created+'</p>';
-        outhtml = outhtml + '<p class="comment-text">'+comment+'</p></div>';
+          // var created = $.format.date(json.data[i].created_at, "MMM d, yyyy h:mma");
+          console.log(json.data[i].created_at);
+          var created = json.data[i].created_at;
+          var comment = json.data[i].comment;
+
+          // Create HTML output.
+          outhtml = outhtml + '<div class="comment"><h5>'+name+' says:</h5>';
+          outhtml = outhtml + '<p class="comment-date">'+created+'</p>';
+          outhtml = outhtml + '<p class="comment-text">'+comment+'</p></div>';
       });
       $('#post-comments').html(outhtml);
     });
@@ -59,34 +61,37 @@ $(document).ready(function() {
     var newrequri = commentServer+'/api/comments/new';
 
     form.on('submit', function(e) {
-      // @Kosta do I want to prevent the default action of the form?
       // Prevent default action.
       e.preventDefault();
 
-      // Send ajax request.
-      $.ajax({
-        url: commentServer+'/api/comments/new',
-        type: 'POST',
-        cache: false,
-        // @Kosta I'm not sure what should go here, if anything.
-        data: //something,
-        beforeSend: function(){
-          // Change submit button value text and disable it.
-          submit.val('Submitting...').attr('disabled', 'disabled');
-        },
-        success: function(data){
-          // Append with fadeIn, see http://stackoverflow.com/a/978731
-          var item = $(data).hide().fadeIn(800);
-          $('#post-comments').append('<div class="comment">'+item+'</div>');
+        var data = form.serialize();
 
-          // Reset form and button.
-          form.trigger('reset');
-          submit.val('Submit').removeAttr('disabled');
-        },
-        error: function(e){
-          alert(e);
-        }
-      });
+        // Send ajax request.
+        $.ajax({
+            url: commentServer+'/api/comments/new',
+            type: 'POST',
+            dataType: 'json',
+            data: data,
+            beforeSend: function(){
+                // Change submit button value text and disable it.
+                submit.val('Submitting...').attr('disabled', 'disabled');
+            },
+            success: function(data){
+                // Append with fadeIn, see http://stackoverflow.com/a/978731
+                var item = $(data).hide().fadeIn(800);
+                $('#post-comments').append('<div class="comment">'+item+'</div>');
+
+                // Reset form and button.
+                // @todo Hide the form entirely.
+                // @todo Check data.success to make sure it's true, otherwise display error.
+            },
+            error: function(e){
+                form.trigger('reset');
+                submit.val('Submit').removeAttr('disabled');
+                $('#post-comments').append('<div class="comment error">' + 'An error occurred. Sorry.' + '</div>');
+                // @todo :shrug:
+            }
+        });
     });
   });
 });
