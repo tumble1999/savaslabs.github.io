@@ -3,7 +3,9 @@
     <div class="expander">
       <a href="javascript:void(0)" id="js-expander-trigger" class="expander-trigger expander-hidden">Leave a comment</a>
       <div id="js-expander-content" class="expander-content">
-        <form method='post' action="{{ site.comment_server_url }}/api/comments/new">
+        <!-- @Kosta Should the action be defined here or in jQuery? -->
+        <!-- <form method='post' action="{{ site.comment_server_url }}/api/comments/new"> -->
+        <form>
           <div class="comment-name">
             <p>Name</p> <input type='text' name='name' id='name' required /><br>
           </div>
@@ -18,7 +20,7 @@
 
           <input type='hidden' name='slug' id='slug' value='{{ page.url }}' />
           <input type='text' name='url' id='url' />
-          <input type='submit' value='Submit' />
+          <input type='submit' value='Submit' id='submit' />
         </form>
         <div id="post-comments"></div>
       </div>
