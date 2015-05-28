@@ -40,17 +40,16 @@ $(document).ready(function() {
       $.each( json.data, function( i, val ) {
 
         // Assign JSON data points to variables.
-          var name = json.data[i].name;
+        var name = json.data[i].name;
+        // TODO: fix this
+        // var created = $.format.date(json.data[i].created_at, "MMM d, yyyy h:mma");
+        var created = json.data[i].created_at;
+        var comment = json.data[i].comment;
 
-          // var created = $.format.date(json.data[i].created_at, "MMM d, yyyy h:mma");
-          console.log(json.data[i].created_at);
-          var created = json.data[i].created_at;
-          var comment = json.data[i].comment;
-
-          // Create HTML output.
-          outhtml = outhtml + '<div class="comment"><h5>'+name+' says:</h5>';
-          outhtml = outhtml + '<p class="comment-date">'+created+'</p>';
-          outhtml = outhtml + '<p class="comment-text">'+comment+'</p></div>';
+        // Create HTML output.
+        outhtml = outhtml + '<div class="comment"><h5>'+name+' says:</h5>';
+        outhtml = outhtml + '<p class="comment-date">'+created+'</p>';
+        outhtml = outhtml + '<p class="comment-text">'+comment+'</p></div>';
       });
       $('#post-comments').html(outhtml);
     });
@@ -68,28 +67,40 @@ $(document).ready(function() {
 
         // Send ajax request.
         $.ajax({
-            url: commentServer+'/api/comments/new',
-            type: 'POST',
-            dataType: 'json',
-            data: data,
-            beforeSend: function(){
-                // Change submit button value text and disable it.
-                submit.val('Submitting...').attr('disabled', 'disabled');
-            },
-            success: function(data){
-                // Append with fadeIn, see http://stackoverflow.com/a/978731
-                var item = $(data).hide().fadeIn(800);
-                $('#post-comments').append('<div class="comment">'+item+'</div>');
+          url: commentServer+'/api/comments/new',
+          type: 'POST',
+          dataType: 'json',
+          data: data,
+          beforeSend: function(){
+            // Change submit button value text and disable it.
+            submit.val('Submitting...').attr('disabled', 'disabled');
+          },
+          success: function(data){
+            var name = $(data)[0].data[0].name;
+            // // TODO: fix this
+            // // var created = $.format.date(json.data[i].created_at, "MMM d, yyyy h:mma");
+            var created = $(data)[0].data[0].created_at;
+            console.log(data);
+            var comment = $(data)[0].data[0].comment;
 
-                // Reset form and button.
-                // @todo Hide the form entirely.
-                // @todo Check data.success to make sure it's true, otherwise display error.
+            // // Create HTML output.
+            var outhtml = '';
+            outhtml = outhtml + '<div class="comment"><h5>'+name+' says:</h5>';
+            outhtml = outhtml + '<p class="comment-date">'+created+'</p>';
+            outhtml = outhtml + '<p class="comment-text">'+comment+'</p></div>';
+
+              // Append with fadeIn, see http://stackoverflow.com/a/978731
+              var item = $(outhtml).hide().fadeIn(800);
+              $('#post-comments').append(item);
+              console.log(item);
+              // Reset form and button.
+              // @todo Hide the form entirely.
+              // @todo Check data.success to make sure it's true, otherwise display error.
             },
             error: function(e){
-                form.trigger('reset');
-                submit.val('Submit').removeAttr('disabled');
-                $('#post-comments').append('<div class="comment error">' + 'An error occurred. Sorry.' + '</div>');
-                // @todo :shrug:
+              form.trigger('reset');
+              submit.val('Submit').removeAttr('disabled');
+              $('#post-comments').append('<div class="comment error">' + 'An error occurred. Sorry ¯\\\_(ツ)_/¯' + '</div>');
             }
         });
     });
