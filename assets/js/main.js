@@ -117,7 +117,6 @@ $(document).ready(
                                     $('#post-comments').append(item);
                                 },
                                 error: function(e){
-                                    form.trigger('reset');
                                     submit.val('Submit').removeAttr('disabled');
                                     $('#post-comments').prepend('<div class="flash-error">' + 'An error occurred. Sorry ¯\\\_(ツ)_/¯' + '</div>');
                                 }
