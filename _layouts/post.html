@@ -1,7 +1,8 @@
 ---
 layout: default
 custom_js:
-  - comments
+- comments
+- comment-count
 ---
 
 {% include tag-logic.html %}
@@ -14,6 +15,7 @@ custom_js:
     <p class="centerdot">&centerdot; </p>
     <p>{{ page.date | date: "%b %-d, %Y" }} </p><br>
     <p>{{ tags_content }}</p>
+    <div id="#comment-counter"><span id="comment-count"></span></div>
   </header>
 
   <article class="post-content">
