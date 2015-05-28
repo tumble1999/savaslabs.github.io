@@ -1,7 +1,7 @@
 <div class="post-comments">
   {% if page.comments_enabled == 1 %}
     <div class="expander">
-      <a href="javascript:void(0)" id="js-expander-trigger" class="expander-trigger expander-hidden">Leave a comment</a>
+      <a href="javascript:void(0)" id="js-expander-trigger" class="expander-trigger expander-hidden">Comments!</a>
       <div id="js-expander-content" class="expander-content">
         <form>
           <div class="comment-name">
@@ -14,17 +14,25 @@
           </div>
 
           <p>Comment</p>
-          <textarea name='comment' id='comment' required></textarea><br>
+          <textarea name='comment' id='comment' required></textarea><br><br>
 
           <input type='hidden' name='slug' id='slug' value='{{ page.url }}' />
           <input type='text' name='url' id='url' />
-          <p>Are you a human?</p>
-          <img src="/assets/img/owl.png">
-          <input type='text' name='nocaptcha' id='nocaptcha' required>
-          <p class="description">What type of animal does the Savas logo represent? Hint: 3 letters long, starts with an 'o' and ends with an 'l'.</p>
+
+          <div class='are-you-human'>
+            <div class='are-you-human-field'>
+              <p>What type of animal is the Savas logo?</p>
+              <input type='text' name='nocaptcha' id='nocaptcha' class='nocaptcha'>
+               <p class="hint">Hint: 3 letters long, starts with an 'o' and ends with an 'l'.</p>
+            </div>
+            <div class='are-you-human-owl'>
+              <img src="/assets/img/owl.png" alt="Savas logo">
+            </div>
+          </div>
+
           <input type='submit' value='Submit' id='submit' />
         </form>
-        <div id="post-comments"></div>
+        <div id="post-comments" class="post-comments"></div>
       </div>
     </div>
   {% else %}

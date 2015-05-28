@@ -78,6 +78,7 @@
     font-size: 1.2em;
     margin-bottom: $expander-toggle-size;
     padding-bottom: $expander-toggle-size / 4;
+    text-align: center;
     text-decoration: none;
 
     &:before {
@@ -147,6 +148,29 @@
     margin-top: -.75em;
   }
 
+  .nocaptcha {
+    margin-bottom: 0;
+  }
+
+  .are-you-human {
+    @include span-columns(12);
+  }
+
+  .are-you-human-field {
+    @include span-columns(9);
+    .hint {
+      font-size: .8em;
+    }
+  }
+
+  .are-you-human-owl {
+    @include span-columns(3);
+    text-align: center;
+    img {
+      width: 4em;
+    }
+  }
+
   // Hide honeypot field.
   // scss-lint:disable IdSelector
   #url {
@@ -155,15 +179,18 @@
   // scss-lint:enable IdSelector
 
   // Existing comments.
-  .comment {
-    h5 {
-      margin-bottom: 0;
-    }
+  .post-comments {
+    margin-top: 2.5em;
+    .comment {
+      h5 {
+        margin-bottom: 0;
+      }
 
-    .comment-date {
-      color: darken($gainsboro, 25%);
-      font-size: .9em;
-      margin: .5em 0 .4em;
+      .comment-date {
+        color: darken($gainsboro, 25%);
+        font-size: .9em;
+        margin: .5em 0 .4em;
+      }
     }
   }
 }
