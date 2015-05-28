@@ -98,7 +98,6 @@ $(document).ready(
 
                                     // // var created = $.format.date(json.data[i].created_at, "MMM d, yyyy h:mma");
                                     var created = $(data)[0].data[0].created_at;
-                                    console.log(data);
                                     var comment = $(data)[0].data[0].comment;
 
                                     // Create HTML output.
