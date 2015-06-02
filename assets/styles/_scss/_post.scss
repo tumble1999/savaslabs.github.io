@@ -108,7 +108,7 @@
 // Comments.
 .post-comments {
 
-// Comment form.
+  // Comment form.
   // Make name and email inline on larger screens.
   @include media($medium-screen) {
     .comment-name,
@@ -123,6 +123,10 @@
 
   p {
     margin: 0;
+  }
+
+  textarea {
+    margin-bottom: 0;
   }
 
   [type="text"]:focus,
@@ -146,10 +150,6 @@
       background-color: lighten($background, 5%);
       color: $orange;
     }
-  }
-
-  textarea {
-    margin-bottom: 0;
   }
 
   .email-disclaimer {
@@ -182,6 +182,7 @@
   .are-you-human-owl {
     @include span-columns(3);
     text-align: center;
+
     img {
       width: 4em;
     }
@@ -197,6 +198,7 @@
   // Existing comments.
   .post-comments {
     margin-top: 2.5em;
+
     .comment {
       h5 {
         margin-bottom: 0;
