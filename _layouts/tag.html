@@ -1,5 +1,7 @@
 ---
 layout: page
+custom_js:
+  - comment-count-cards
 ---
 
 {% for tag in site.data.tags %}
@@ -21,7 +23,7 @@ layout: page
         {% if site.tags[page.tag] %}
         	{% for post in site.tags[page.tag] %}
                 <div class="card">
-                    <a href="{{ post.url }}">
+                    <a class="url" href="{{ post.url }}">
                         <div class="card-image">
                         </div>
                         <div class="card-header">
@@ -29,6 +31,7 @@ layout: page
                         </div>
                         <div class="card-copy">
                             <p>By {{ post.author }}</p>
+                            <span class="comment-count"></span>
                             <p>{{ post.summary }}</p>
                         </div>
                     </a>

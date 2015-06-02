@@ -3,13 +3,15 @@ layout: page
 title: News
 permalink: "/news/"
 excerpt: Blabs by Savas Labs. Blog posts too!
+custom_js:
+  - comment-count-cards
 ---
 <p class="page-description">Check out our latest blog posts and information about upcoming events.</p>
 <div class="flex-container">
     <div class="cards news-cards">
         {% for post in site.posts %}
             <div class="card news-card">
-                <a href="{{ post.url }}">
+                <a class="url" href="{{ post.url }}">
                     <div class="card-image">
                     </div>
                     <div class="card-header">
@@ -17,6 +19,7 @@ excerpt: Blabs by Savas Labs. Blog posts too!
                     </div>
                     <div class="card-copy">
                         <p>By {{ post.author }}</p>
+                        <span class="comment-count"></span>
                         <p>{{ post.summary | markdownify }}</p>
                     </div>
                 </a>

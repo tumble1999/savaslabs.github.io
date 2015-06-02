@@ -1,5 +1,7 @@
 ---
 layout: default
+custom_js:
+  - comment-count-cards
 ---
 <div class="team-member">
     <header class="team-header">
@@ -38,18 +40,19 @@ layout: default
       {% assign blog-counter = 0 %}
       {% for post in site.posts %}{% if blog-counter < 7 %}{% if page.name == post.author %}{% assign blog-counter = counter |plus: 1 %}
         <div class="card">
-          <a href="{{ post.url }}">
+          <a class="url" href="{{ post.url }}">
             <div class="card-image">
             </div>
             <div class="card-header">
-                {{ post.title }}
+              {{ post.title }}
             </div>
             <div class="card-copy">
-                <p>By {{ post.author }}</p>
-                <p>{{ post.summary | markdownify }}</p>
+              <p>By {{ post.author }}</p>
+              <span class="comment-count"></span>
+              <p>{{ post.summary | markdownify }}</p>
             </div>
-                </a>
-            </div>
+          </a>
+        </div>
       {% endif %}{% endif %}{% endfor %}
       </div>
     </div>
