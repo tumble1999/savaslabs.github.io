@@ -16,7 +16,7 @@ $(document).ready(
                             if (json.data[0][truncatedSlug] == 1) {
                                 commentString = 'comment';
                             }
-                            $("#comment-count").html('<a href="#js-expander-trigger">' + json.data[0][truncatedSlug] + ' ' + commentString + '</a>');
+                            $("#comment-count").html('<a href="#js-expander-trigger"><i class="fa fa-comment"></i>' + json.data[0][truncatedSlug] + ' ' + commentString + '</a>');
                         }
                     });
     });

@@ -1,23 +1,8 @@
 ---
 ---
+
 $(document).ready(
     function() {
-    
-        var menuToggle = $('#js-mobile-menu').unbind();
-        $('#js-navigation-menu').removeClass("show");
-
-        menuToggle.on(
-            'click', function(e) {
-                e.preventDefault();
-                $('#js-navigation-menu').slideToggle(
-                    function(){
-                        if ($('#js-navigation-menu').is(':hidden')) {
-                            $('#js-navigation-menu').removeAttr('style');
-                        }
-                    }
-                );
-            }
-        );
 
         // Expandable comment section.
         var expanderTrigger = document.getElementById("js-expander-trigger");
@@ -89,8 +74,6 @@ $(document).ready(
                                     }
 
                                     var name = $(data)[0].data[0].name;
-
-                                    // // var created = $.format.date(json.data[i].created_at, "MMM d, yyyy h:mma");
                                     var created = $(data)[0].data[0].created_at;
                                     var comment = $(data)[0].data[0].comment;
 

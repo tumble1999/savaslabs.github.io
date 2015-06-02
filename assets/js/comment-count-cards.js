@@ -4,6 +4,7 @@
 $(document).ready(
     function() {
         var commentServer = "{{ site.comment_server_url }}";
+        console.log(commentServer);
         var requri = commentServer + '/api/comments/count';
         $.getJSON(
             requri, function(json) {
@@ -15,10 +16,10 @@ $(document).ready(
                         if (json.data[0][truncatedSlug] == 1) {
                             commentString = 'comment';
                         }
-                        $(this).find(".comment-count").html('<a href="' + $(this).attr('href') + '">' + json.data[0][truncatedSlug] + ' ' + commentString + '</a>');
+                        $(this).find(".comment-count").html('<a href="' + $(this).attr('href') + '">' + '<i class="fa fa-comment-o"></i>' + json.data[0][truncatedSlug] + ' ' + commentString + '</a>');
                     }
                     else {
-                        $(this).find(".comment-count").text("No comments");
+                        $(this).find(".comment-count").remove();
                     }
                 });
 
