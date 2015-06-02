@@ -14,8 +14,8 @@ custom_js:
     <p>By <a href="{{ page.author | downcase | replace: ' ', '-'  | prepend: "/team/" | strip_newlines }}">{{ page.author }}</a></p>
     <p class="centerdot">&centerdot; </p>
     <p>{{ page.date | date: "%b %-d, %Y" }} </p><br>
-    <p>{{ tags_content }}</p>
-    <div id="#comment-counter"><span id="comment-count"></span></div>
+    <i class="fa fa-tags"></i><p>{{ tags_content }}</p>
+    <div id="#comment-counter" class="comment-counter"><i class="fa fa-comment"></i><p><span id="comment-count"></span></p></div>
   </header>
 
   <article class="post-content">

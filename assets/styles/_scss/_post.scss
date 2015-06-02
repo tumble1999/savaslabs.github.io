@@ -17,6 +17,15 @@
     p {
       display: inline;
     }
+
+    i {
+      color: $dark-blue;
+      margin-right: 5px;
+    }
+
+    // .fa-comment {
+    //   margin-left: 10px;
+    // }
   }
 
   .previous-next-links {
@@ -142,10 +151,22 @@
     }
   }
 
+  textarea {
+    margin-bottom: 0;
+  }
+
   .email-disclaimer {
     float: right;
     font-size: .8em;
-    margin-top: -.75em;
+    margin-top: -1em;
+  }
+
+  .hint {
+    font-size: .8em;
+  }
+
+  .below-textarea {
+    margin-top: -.5em;
   }
 
   .nocaptcha {
@@ -154,13 +175,11 @@
 
   .are-you-human {
     @include span-columns(12);
+    margin-top: 2em;
   }
 
   .are-you-human-field {
     @include span-columns(9);
-    .hint {
-      font-size: .8em;
-    }
   }
 
   .are-you-human-owl {
