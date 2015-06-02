@@ -1,11 +1,19 @@
 $medium-screen: em(640) !default;
 
 .home .page-content {
-  background: url('/assets/img/home.png');
+  .home-image {
+    background-image: url('/assets/img/Whiteboard_everyone_837.jpg');
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+  }
 
   .home-page-copy {
     @include outer-container;
-    padding: 3% 0;
+    padding: 10% 0;
     text-align: center;
 
     @include media($medium-screen) {
