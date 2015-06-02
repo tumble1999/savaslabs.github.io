@@ -1,7 +1,5 @@
 ---
 layout: page
-custom_js:
-  - comment-count-cards
 ---
 
 {% for tag in site.data.tags %}
@@ -32,7 +30,7 @@ custom_js:
                         <div class="card-copy">
                             <p>By {{ post.author }}</p>
                             <span class="comment-count"></span>
-                            <p>{{ post.summary }}</p>
+                            <p>{{ post.summary | markdownify }}</p>
                         </div>
                     </a>
                 </div>
