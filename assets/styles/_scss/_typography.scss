@@ -1,5 +1,6 @@
 $roboto: "Roboto Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $martel: 'Martel Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+$mono: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace !default;
 
 body {
   font-family: $roboto;
@@ -73,3 +74,8 @@ p {
 }
 
 .centerdot { font-weight: bold; }
+
+blockquote {
+  border-left: 4px solid $gainsboro;
+  padding-left: 1em;
+}
