@@ -3,7 +3,11 @@
     <div class="expander">
       <a href="javascript:void(0)" id="js-expander-trigger" class="expander-trigger expander-hidden">Comments!</a>
       <div id="js-expander-content" class="expander-content">
-        <form>
+        <!-- If there are existing comments, output them here. -->
+        <div id="post-comments" class="post-comments"></div>
+        <!-- New comment form -->
+        <form id="comment-form">
+          <h4>Leave a comment</h4>
           <div class="comment-name">
             <p>Name</p> <input type='text' name='name' id='name' required /><br>
           </div>
@@ -33,7 +37,6 @@
 
           <input type='submit' value='Submit' id='submit' />
         </form>
-        <div id="post-comments" class="post-comments"></div>
       </div>
     </div>
   {% else %}

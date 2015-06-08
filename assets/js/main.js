@@ -44,6 +44,11 @@ $(document).ready(
                 $.getJSON(
                     requri, function(json) {
                         var outhtml = '';
+                        console.log(json.data);
+                        // If there are comments, include a link to the comment form.
+                        if (json.data.length > 0) {
+                            outhtml = '<p class="comment-form-link"><a href="#comment-form">Leave a comment</a></p>'
+                        }
                         // Loop through comments.
                         $.each(
                             json.data, function( i, val ) {
