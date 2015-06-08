@@ -19,7 +19,7 @@
     background: $base01 $noise-bg !important;
     border-right: 1px solid darken($base03, 2) !important;
     box-shadow: lighten($base01, 2) -1px 0 inset;
-    text-shadow: darken($base02, 10) 0 -1px;
+    text-shadow: darken($base01, 10) 0 -1px;
   }
   span { color: $base01 !important; }
   padding: .8em !important;
@@ -202,7 +202,7 @@ p, li {
 .highlight, .gist-highlight {
   pre { background: none; border-radius: 0; border: none; padding: 0; margin-bottom: 0; }
   margin-bottom: 1.8em;
-  background: $base03;
+  background: #ddd;
   overflow-y: hidden;
   overflow-x: auto;
 }
