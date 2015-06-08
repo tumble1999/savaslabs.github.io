@@ -28,8 +28,8 @@ $solar-red:       #9e023b;
 $solar-magenta:   #d33682;
 $solar-violet:    #501888;
 $solar-blue:      #14133b;
-$solar-cyan:      #0A5365;
-$solar-green:     #055C2B;
+$solar-cyan:      #0a5365;
+$solar-green:     #055c2b;
 
 
 @if $solarized == light {
@@ -53,7 +53,7 @@ $solar-green:     #055C2B;
   $base3:   $_base03; //darkest blue
 }
 
-/* non highlighted code colors */
+// Non highlighted code colors.
 $pre-bg: $base03 !default;
 $pre-border: darken($base01, 5) !default;
 $pre-color: $base1 !default;
