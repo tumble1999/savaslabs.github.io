@@ -46,7 +46,9 @@ layout: default
             </div>
             <div class="card-copy">
               <p>By {{ post.author }}</p>
+              {% if site.comment_server_enabled == 1 %}
               <span class="comment-count"></span>
+              {% endif %}
               <p>{{ post.summary | markdownify }}</p>
             </div>
           </a>

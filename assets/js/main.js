@@ -151,7 +151,6 @@ $(document).ready(
 $(document).ready(
     function() {
         var commentServer = "{{ site.comment_server_url }}";
-        console.log(commentServer);
         var requri = commentServer + '/api/comments/count';
         $.getJSON(
             requri, function(json) {

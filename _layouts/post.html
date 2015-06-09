@@ -12,16 +12,20 @@ layout: default
     <p class="centerdot">&centerdot; </p>
     <p>{{ page.date | date: "%b %-d, %Y" }} </p><br>
     <i class="fa fa-tags"></i><p>{{ tags_content }}</p>
+    {% if site.comment_server_enabled == 1 %}
     <div id="#comment-counter" class="comment-counter"><p><span id="comment-count"></span></p></div>
+    {% endif %}
   </header>
 
   <article class="post-content">
     {{ content }}
     <hr>
 
-  {% include comment-form.html %}
-  {% include post-meta.html %}
-  {% include previous-next-links.html %}
+    {% if site.comment_server_enabled == 1 %}
+      {% include comment-form.html %}
+    {% endif %}
+    {% include post-meta.html %}
+    {% include previous-next-links.html %}
 
   </article>
 
