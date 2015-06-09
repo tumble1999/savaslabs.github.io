@@ -4,7 +4,6 @@ title: "Building a time machine for Durham's food landscape"
 date: 2015-04-27
 author: Tim Stallmann
 tags: cartography leaflet durham
-comments_enabled: 1
 summary: Remember *Another Thyme*? *Kim Son*? *Honey's*? The *Know* restaurant and book store? As Durham gains more notoriety for its "foodie scene," it's easy to forget restaurants of the past. So here at Savas, we've created a Durham restaurant time machine.
 ---
 Remember *Another Thyme*? *Kim Son*? *Honey's*? The *Know* restaurant and book store? As Durham gains more notoriety for its "foodie scene," it's easy to forget restaurants of the past.

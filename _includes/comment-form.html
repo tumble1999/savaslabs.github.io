@@ -1,5 +1,7 @@
 <div class="post-comments">
-  {% if page.comments_enabled == 1 %}
+  {% if page.comments_enabled == 0 %}
+    <p>Comments are disabled for this post.</p>
+  {% else %}
     <div class="expander">
       <a href="javascript:void(0)" id="js-expander-trigger" class="expander-trigger expander-hidden">Comments!</a>
       <div id="js-expander-content" class="expander-content">
@@ -39,8 +41,6 @@
         </form>
       </div>
     </div>
-  {% else %}
-    <p>Comments are disabled for this post.</p>
   {% endif %}
   <hr>
 </div>
