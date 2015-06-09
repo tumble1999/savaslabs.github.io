@@ -39,19 +39,70 @@ Though the theming layer in Drupal 8 is quite different from Drupal 7 and will r
 - More semantic CSS classes and far fewer uses of IDs in CSS (http://d8.sqndr.com/drupal8/changes.html). D8 is using the SMACSS system of file organization and BEM for CSS class names. There’s even a brand new base class whose purpose is to set up CSS classes (aptly named Classy, which I’ll go into later).
 - A general trend towards more extendable, modular, well-organized, better-performing code. With the adoption of OOPHP, Sass, Twig, YAML, etc. (write more on this)
 
-
 There are plenty of other advantages to using D8, along with new challenges and plenty of new things to learn. Generally, I think that D8 is going to be much better (need more transition material here)
 
 ### Creating a custom theme in Drupal 8
 So, now that we’ve covered some reasons that D8 theming will be awesome, let’s create a custom theme using Classy as a base.
 
-The first thing to note is the different file structure. The `core` folder now holds all the the modules and themes that ship with Drupal, and contributed and custom modules and themes are now found respectively in the `modules` and `theme` folders in the Drupal document root. (show file structure)
+The first thing to note is the different file structure. The `core` folder now holds all the the modules and themes that ship with Drupal, and contributed and custom modules and themes are now found respectively in the `modules` and `theme` folders in the Drupal document root.
+
 Let’s create a folder for our new theme. Savas is working on a Drupal 8 mapping project, so I’ll use that as an example. Our theme is called “Mappy,” so we’ve created a folder for our theme within themes/custom.
 
-The first file we’ll want to create is [theme-name].info.yml, which replaces D7’s [theme-name].info file. I’ve created mappy.info.yml, and I’ll go through each of the lines below. If you’re new to YAML, Symfony has a nice writeup on syntax and the Collections section is particularly helpful (http://symfony.com/doc/current/components/yaml/yaml_format.html#collections)
+<img class="blog-image-xl" src="/assets/img/blog/theme-folder-location.png" alt="Screenshot of D8 file structure." width="661" height="255">
+
+The first file we’ll want to create is `[theme-name].info.yml`, which replaces D7’s `[theme-name].info` file. I’ve created `mappy.info.yml`, shown below. If you’re new to YAML, Symfony has a [nice writeup](http://symfony.com/doc/current/components/yaml/yaml_format.html#collections) on syntax and the Collections section is particularly relevant. Pay close attention to the whitespace - for example, a space is required after the colon in key/value pairs.
+
+{% highlight yaml %}
+# mappy.info.yml
+name: Mappy
+type: theme
+base theme: classy
+description: 'D8 Theme for a basic leaflet site.'
+core: 8.x
+libraries:
+ - mappy/global-styling
+ - mappy/leaflet
+regions:
+  navbar: 'Top Navigation Bar'
+  content: Content
+  sidebar: 'Sidebar'
+  footer: 'Footer'
+{% endhighlight %}
+
+Let's knock out the easy ones:
+
+{% highlight yaml %}
+name: Mappy
+type: theme
+description: 'D8 Theme for a basic leaflet site.'
+core: 8.x
+{% endhighlight %}
+
+This information tells Drupal that we're dealing with a Drupal 8 theme and gives Drupal a name and description to display in the admin UI. Note that all of these items are required for your theme to be installable.
+
+{% highlight yaml %}
+regions:
+  navbar: 'Top Navigation Bar'
+  content: Content # required!
+  sidebar: 'Sidebar'
+  footer: 'Footer'
+{% endhighlight %}
+
+This hasn't changed much from Drupal 7. Don't forget that the `Content` region is required. You can also forego declaring regions if you want to use Drupal's [default regions.](https://www.drupal.org/node/2469113)
 
 
+#### Classy: a new base theme
 
+{% highlight yaml %}
+base theme: classy
+{% endhighlight %}
+
+Classy is a brand new base theme that ships with Drupal core. All CSS classes were moved out of core template files and into Classy's as a way to a) contain, minimize, and organize default classes and b) give developers the option of not using Drupal's default classes without having to undo core. One can simply not use Classy as a base class.
+
+Additionally, Classy's classes follow the BEM convention, making them less generic and more meaningful. Check out [this article](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) for a great introduction to BEM.
+
+
+For more information on creating your .info.yml file, see [this post](https://www.drupal.org/node/2349827) on Drupal.org.
 
 
 Assets (from https://api.drupal.org/api/drupal/core!modules!system!theme.api.php/group/themeable/8)

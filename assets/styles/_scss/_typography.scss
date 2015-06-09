@@ -45,7 +45,6 @@ p,
 input,
 textarea {
   color: $dark-blue;
-  font-size: $base-font-size * 1.2;
 }
 
 .page-description {
@@ -54,9 +53,15 @@ textarea {
 
 .portfolio,
 .post {
-
   .portfolio-short-description {
     font-size: $base-font-size * 1.5;
+  }
+
+  p,
+  ul,
+  ol {
+    color: $dark-blue;
+    font-size: $base-font-size * 1.2;
   }
 
   ul { list-style-type: square; }

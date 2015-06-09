@@ -264,6 +264,42 @@
   }
 }
 
+.blog-image {
+  background: $gainsboro;
+  box-shadow: 0 2px 4px darken($gainsboro, 10%);
+  display: block;
+  margin: 1em auto;
+  max-width: 250px;
+
+  @include media($medium-screen) {
+    &.wrap-right {
+      float: left;
+      margin-right: 40px;
+    }
+
+    &.wrap-left {
+      float: right;
+      margin-left: 40px;
+    }
+  }
+
+  p {
+    font-size: smaller;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+
+.blog-image-large {
+  @extend .blog-image;
+  max-width: 500px;
+}
+
+.blog-image-xl {
+  @extend .blog-image;
+  max-width: 737px; // Width of narrow column layout on lg screens
+}
+
 // Previous and next links.
 .previous-next-links {
   .next {
