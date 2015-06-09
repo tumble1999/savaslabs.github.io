@@ -151,7 +151,7 @@ GEM
     redcarpet (3.1.2)
     safe_yaml (1.0.4)
     sass (3.4.14)
-    scss-lint (0.38.0)
+    scss_lint (0.39.0)
       rainbow (~> 2.0)
       sass (~> 3.4.1)
     slop (3.6.0)
@@ -187,5 +187,5 @@ DEPENDENCIES
   github-pages
   html-proofer (~> 2.2.0)
   json (~> 1.8.3)
-  scss-lint
+  scss_lint
   travis
