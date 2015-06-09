@@ -1,3 +1,4 @@
+// General styles.
 .portfolio,
 .post {
   @include outer-container;
@@ -16,6 +17,11 @@
     p {
       display: inline;
     }
+
+    i {
+      color: $dark-blue;
+      margin-right: 5px;
+    }
   }
 
   .previous-next-links {
@@ -30,6 +36,183 @@
   }
 }
 
+// Images within posts.
+.blog-image {
+  background: $gainsboro;
+  box-shadow: 0 2px 4px darken($gainsboro, 10%);
+  display: block;
+  margin: 1em auto;
+  max-width: 250px;
+
+  @include media($medium-screen) {
+    &.wrap-right {
+      float: left;
+      margin-right: 40px;
+    }
+
+    &.wrap-left {
+      float: right;
+      margin-left: 40px;
+    }
+  }
+
+  p {
+    font-size: smaller;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+
+.blog-image-large {
+  @extend .blog-image;
+  max-width: 500px;
+}
+
+// Comment block expander.
+.expander {
+  $expander-arrow-width: .7em;
+  $expander-toggle-size: 1em;
+  $expander-toggle-arrow-size: $expander-toggle-size;
+  $expander-toggle-margin: 1em;
+
+  .expander-trigger {
+    @include user-select(none);
+    color: $fuschia;
+    cursor: pointer;
+    display: block;
+    font-size: 1.2em;
+    margin-bottom: $expander-toggle-size;
+    padding-bottom: $expander-toggle-size / 4;
+    text-align: center;
+    text-decoration: none;
+
+    &:before {
+      content: '\25BC';
+      font-size: $expander-arrow-width;
+      margin-right: .5em;
+    }
+  }
+
+  .expander-hidden {
+    &:before {
+      content: '\25BA';
+      font-size: $expander-arrow-width;
+    }
+
+    + .expander-content {
+      display: none;
+    }
+  }
+}
+
+// Comments.
+.post-comments {
+
+  // Comment form.
+  // Make name and email inline on larger screens.
+  @include media($medium-screen) {
+    .comment-name,
+    .comment-email {
+      display: inline-block;
+      width: 48%;
+    }
+
+    .comment-name { float: left; }
+    .comment-email { float: right; }
+  }
+
+  p {
+    margin: 0;
+  }
+
+  textarea {
+    margin-bottom: 0;
+  }
+
+  [type="text"]:focus,
+  [type="email"]:focus,
+  textarea:focus {
+    border-color: lighten($orange, 25%);
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, .06), 0 0 5px rgba(246, 67, 62, .7);
+  }
+
+  [type="submit"] {
+    $background: lighten($gainsboro, 10%);
+    background-color: $background;
+    border: 1px solid $gainsboro;
+    color: $fuschia;
+    font-family: $roboto;
+    margin-top: 2em;
+    transition: (all .2s ease-in-out);
+
+    &:hover,
+    &:focus {
+      background-color: lighten($background, 5%);
+      color: $orange;
+    }
+  }
+
+  .email-disclaimer {
+    font-size: .8em;
+    margin-top: -1em;
+  }
+
+  .hint {
+    font-size: .8em;
+  }
+
+  .below-textarea {
+    margin-top: -.5em;
+  }
+
+  .nocaptcha {
+    margin-bottom: 0;
+  }
+
+  .are-you-human {
+    @include span-columns(12);
+    margin-top: 2em;
+  }
+
+  .are-you-human-field {
+    @include span-columns(9);
+  }
+
+  .are-you-human-owl {
+    @include span-columns(3);
+    text-align: center;
+
+    img {
+      width: 4em;
+    }
+  }
+
+  // Hide honeypot field.
+  // scss-lint:disable IdSelector
+  #url {
+    display: none;
+  }
+  // scss-lint:enable IdSelector
+
+  // Existing comments.
+  .post-comments {
+    margin-top: 2.5em;
+
+    .comment {
+      h5 {
+        margin-bottom: 0;
+      }
+
+      .comment-date {
+        color: darken($gainsboro, 25%);
+        font-size: .9em;
+        margin: .5em 0 .4em;
+      }
+    }
+  }
+}
+
+// Post bottom area: post meta information and other posts.
 .post-bottom {
 
   h4 {
@@ -81,38 +264,7 @@
   }
 }
 
-.blog-image {
-  background: $gainsboro;
-  box-shadow: 0 2px 4px darken($gainsboro, 10%);
-  display: block;
-  margin: 1em auto;
-  max-width: 250px;
-
-  @include media($medium-screen) {
-    &.wrap-right {
-      float: left;
-      margin-right: 40px;
-    }
-
-    &.wrap-left {
-      float: right;
-      margin-left: 40px;
-    }
-  }
-
-  p {
-    font-size: smaller;
-    font-weight: bold;
-    text-align: center;
-  }
-}
-
-.blog-image-large {
-  @extend .blog-image;
-  max-width: 500px;
-}
-
-
+// Previous and next links.
 .previous-next-links {
   .next {
     @include span-columns(6);

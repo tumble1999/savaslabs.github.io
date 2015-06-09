@@ -26,20 +26,21 @@
     </div>
 
     <div class="wrapper">
-        <h3>Latest posts</h3>
+        <h3><a href="/news">Latest posts</a></h3>
         <div class="flex-container">
             <div class="cards">
                 {% for post in site.posts limit:3 %}
                     <div class="card">
-                        <a href="{{ post.url }}">
+                        <a class="url" href="{{ post.url }}">
                             <div class="card-image">
                             </div>
                             <div class="card-header">
                                 {{ post.title }}
                             </div>
                             <div class="card-copy">
-                                <p>By {{ post.author }}</p>
-                                <p>{{ post.summary | markdownify }}</p>
+                              <p>By {{ post.author }}</p>
+                              <span class="comment-count"></span>
+                              <p>{{ post.summary | markdownify }}</p>
                             </div>
                         </a>
                     </div>

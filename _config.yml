@@ -5,6 +5,7 @@ description: >
   A Drupal-centric web development and design shop anchored in Durham, NC.
 baseurl: "" 
 url: "http://savaslabs.com"
+comment_server_url: http://comments.savasdev.com
 
 # Nav links
 navigation:

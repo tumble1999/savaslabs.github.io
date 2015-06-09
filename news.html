@@ -9,7 +9,7 @@ excerpt: Blabs by Savas Labs. Blog posts too!
     <div class="cards news-cards">
         {% for post in site.posts %}
             <div class="card news-card">
-                <a href="{{ post.url }}">
+                <a class="url" href="{{ post.url }}">
                     <div class="card-image">
                     </div>
                     <div class="card-header">
@@ -17,6 +17,7 @@ excerpt: Blabs by Savas Labs. Blog posts too!
                     </div>
                     <div class="card-copy">
                         <p>By {{ post.author }}</p>
+                        <span class="comment-count"></span>
                         <p>{{ post.summary | markdownify }}</p>
                     </div>
                 </a>

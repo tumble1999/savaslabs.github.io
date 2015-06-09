@@ -6,7 +6,7 @@ The site is built using Jekyll. To run locally:
 
 1. Clone the repo
 2. `bundle install`
-3. `bundle exec jekyll serve --config _config.yml,_config.test.yml`
+3. `bundle exec jekyll serve --config _config.yml,_config.test.yml,_config.dev.yml`
 
 To run the tests:
 

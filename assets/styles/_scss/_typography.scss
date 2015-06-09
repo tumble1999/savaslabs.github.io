@@ -41,7 +41,9 @@ a {
   text-transform: uppercase;
 }
 
-p {
+p,
+input,
+textarea {
   color: $dark-blue;
 }
 
@@ -83,6 +85,8 @@ p {
 .centerdot { font-weight: bold; }
 
 blockquote {
-  border-left: 4px solid $gainsboro;
-  padding-left: 1em;
+    border-left: 4px solid $gainsboro;
+    padding-left: 1em;
 }
+
+.fa-comment-o { margin-right: 4px; }
