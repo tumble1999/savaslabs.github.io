@@ -6,3 +6,54 @@ $beige: #f4d1a6;
 $gainsboro: #dcdcdc;
 $white: #fff;
 $navtools-background: #505050;
+
+$noise-bg: image-url('noise.png') top left !default;
+
+// Syntax highlighting is based off a Sass port of the Solarized theme,
+// created by Brandon Mathis at Octopress.
+
+$solarized: light;
+
+$base03:          #002b36; //darkest blue
+$base02:          #073642; //dark blue
+$base01:          #586e75; //darkest gray
+$base00:          #657b83; //dark gray
+$base0:           #839496; //medium gray
+$base1:           #93a1a1; //medium light gray
+$base2:           #eee8d5; //cream
+$base3:           #fdf6e3; //white
+$solar-yellow:    #f2a324;
+$solar-orange:    #f6433e;
+$solar-red:       #9e023b;
+$solar-magenta:   #d33682;
+$solar-violet:    #501888;
+$solar-blue:      #14133b;
+$solar-cyan:      #0a5365;
+$solar-green:     #055c2b;
+
+
+@if $solarized == light {
+
+  $_base03: $base03;
+  $_base02: $base02;
+  $_base01: $base01;
+  $_base00: $base00;
+  $_base0:  $base0;
+  $_base1:  $base1;
+  $_base2:  $base2;
+  $_base3:  $base3;
+
+  $base03:  $_base3; //white
+  $base02:  $_base2; //cream
+  $base01:  $_base1; //medium light gray
+  $base00:  $_base0; //medium gray
+  $base0:   $_base00; //dark gray
+  $base1:   $_base01; //darkest gray
+  $base2:   $_base02; //dark blue
+  $base3:   $_base03; //darkest blue
+}
+
+// Non highlighted code colors.
+$pre-bg: $base03 !default;
+$pre-border: darken($base01, 5) !default;
+$pre-color: $base1 !default;

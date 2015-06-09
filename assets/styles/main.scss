@@ -4,14 +4,16 @@
 @import "lib/bourbon/bourbon";
 @import "base/grid-settings";
 @import "lib/neat/neat";
+
+@import "variables";
+
 @import "font-awesome/font-awesome";
-@import "syntax-highlighting";
 
 @import "base/base";
 @import "layout";
 
-@import "variables";
 @import "typography";
+@import "syntax-highlighting";
 @import "post";
 @import "card";
 @import "team";
