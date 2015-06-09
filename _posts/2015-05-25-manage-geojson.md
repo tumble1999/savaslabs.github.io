@@ -28,17 +28,17 @@ Just like the last tutorial, we're going to be using the USGS earthquake data. N
 [OGRInfo](http://www.gdal.org/ogrinfo.html) lets us look inside geospatial datasets, viewing both summary info and lists of individual features. It's useful to see what attributes are available for a given dataset or how many features it contains, as well as testing out attribute filters and examining individual features.
 
 Let's try some basic commands. Just running ogrinfo on a dataset will give you a list of all the layers it contains. In the case of GeoJSON, this is usually just a single layer.
-<pre>
+{% highlight bash %}
 $ ogrinfo all_month.geojson
 ERROR 4: GeoJSON Driver doesn't support update.
 Had to open data source read-only.
 INFO: Open of `all_month.geojson'
       using driver `GeoJSON' successful.
 1: OGRGeoJSON (3D Point)
-</pre>
+{% endhighlight %}
 
 That's not very helpful, so let's try peeking inside the (only) layer. ogrinfo syntax has you pass the layer name as the second argument. By default, it will print every feature in this dataset (7.5 Mb worth!) to the console, so instead let's add the `-so` argument, which displays a summary of the layer. Note that the GeoJSON driver for OGR has assigned the layer name `OGRGeoJSON`, which we're passing in:
-<pre>
+{% highlight bash %}
 $ ogrinfo all_month.geojson OGRGeoJSON -so
 ERROR 4: GeoJSON Driver doesn't support update.
 Had to open data source read-only.
@@ -66,12 +66,12 @@ place: String (0.0)
 magType: String (0.0)
 type: String (0.0)
 title: String (0.0)
-</pre>
+{% endhighlight %}
 
 Now this is getting somewhere! We've got info about the number of features, the extent of the data (apparently there aren't earthquakes at the poles, or USGS isn't monitoring them), the coordinate system of the data, and a full list of attributes.
 
 What might that `type` attribute be telling us? We can use ogrinfo to run basic SQL queries on the data as well, for example:
-<pre>
+{% highlight bash %}
 $ ogrinfo all_month.geojson -sql "SELECT DISTINCT type FROM OGRGeoJSON -q"
 ERROR 4: GeoJSON Driver doesn't support update.
 
@@ -83,20 +83,20 @@ OGRFeature(OGRGeoJSON):1
   type (String) = quarry blast
 
 ...
-</pre>
+{% endhighlight %}
 
 Note: I'm using the `-q` flag to suppress some of the more verbose output. Also, ogrinfo unfortunately doesn't support `GROUP BY` or `LIMIT` clauses on SQL queries for GeoJSON files. 
 
 We can also use this to answer some basic questions about the data. Like, how many earthquakes were recorded with magnitude of 5 or greater?
 
-<pre>
+{% highlight bash %}
 $ ogrinfo all_month.geojson -sql "SELECT COUNT(*) FROM OGRGeoJSON WHERE mag>=5" -q
 ERROR 4: GeoJSON Driver doesn't support update.
 
 Layer name: OGRGeoJSON
 OGRFeature(OGRGeoJSON):0
   COUNT_* (Integer) = 176
-</pre>
+{% endhighlight %}
 
 ### Optimizing your data
 
@@ -106,7 +106,10 @@ First pass: if you remember the output from `ogrinfo -so`, you'll remember that 
 
 Ogr2Ogr is another tool designed for converting to and from a variety of geospatial data formats, but it also allows us to filter the data as we're copying it and only copy over specific attributes. So we can use it to "convert" the dataset from GeoJSON into a new GeoJSON with fewer columns.
 
-The basic syntax is `ogr2ogr -f "Output format specifier" output_filename input_filename`. We want to cherry-pick only a few attribute fields, which we can to using the `-select` flag:
+The basic syntax is:
+`ogr2ogr -f "Output format specifier" output_filename input_filename`
+
+We want to cherry-pick only a few attribute fields, which we can to using the `-select` flag:
 
 {% highlight bash %}
 $ ogr2ogr -f GeoJSON all_month_optimized.geojson all_month.geojson -select mag,place,url
@@ -149,7 +152,7 @@ But what if we want all the earthquakes in, say, North Dakota? For more complica
 We can download a shapefile of all 50 US States from the Census Bureau, then select out North Dakota and pass that as a clipping argument to ogr2ogr. First, download the `tl_2014_us_state.zip` file from the [Census Bureau FTP site](ftp://ftp2.census.gov/geo/tiger/TIGER2014/STATE/), and unzip it to the same directory as your geojson file.
 
 Let's use ogrinfo to examine this file and see how we could select out North Dakota
-<pre>
+{% highlight bash %}
 $ ogrinfo tl_2014_us_state.shp tl_2014_us_state -so
 INFO: Open of `tl_2014_us_state.shp'
       using driver `ESRI Shapefile' successful.
@@ -168,10 +171,10 @@ REGION: String (2.0)
 ...
 NAME: String (100.0)
 ...
-</pre>
+{% endhighlight %}
 
 Looks like we can just select by name. Try it first in ogrinfo:
-<pre>
+{% highlight bash %}
 $ ogrinfo tl_2014_us_state.shp -SQL "SELECT * FROM tl_2014_us_state WHERE NAME='Georgia'" -GEOM=NO
 INFO: Open of `tl_2014_us_state.shp'
       using driver `ESRI Shapefile' successful.
@@ -181,7 +184,7 @@ Geometry: Polygon
 Feature Count: 1
 Extent: (-179.231086, -14.601813) - (179.859681, 71.441059)
 ...
-</pre>
+{% endhighlight %}
 
 That worked, so now we can format the whole ogr2ogr string, using `-clipsrc` and `-clipsrcsql` options. Note that because we're using a very detailed shapefile for the state outlines, this command takes a long time to process. On my MacBook Pro it clocks in at around 3 minutes. 
 {% highlight bash %}
