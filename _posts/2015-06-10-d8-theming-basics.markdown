@@ -19,22 +19,22 @@ Theming in Drupal 8 means a lot of changes for current Drupalers and a lot of aw
 
 Too much to list here, but here are some highlights:
 
-- Twig, a template engine by SensioLabs, is used inside template files in lieu of PHP
+- [Twig](http://twig.sensiolabs.org/documentation), a template engine by SensioLabs, is used inside template files in lieu of PHP
 - Responsive design elements are included by default
 - Breakpoints can be set and used across modules and themes
 - Support for IE8 and below is dropped meaning the use of jQuery 2.0, HTML5, and CSS3 (including pseudo selectors) are now supported
 - Classy, a new base theme, is introduced
 - CSS: far fewer IDs are used, default classes are no longer in core but are moved to Classy, CSS file structure now uses SMACSS and class names follow the BEM format
 - CSS and JS files are attached to pages differently
-- template.php becomes the slightly better-named [theme-name].theme
+- `template.php` becomes the slightly better-named `[theme-name].theme`. Maybe we'll finally get `theme.php` in Drupal 9?
 
 Check out Drupal's [change log](https://www.drupal.org/list-changes/published/drupal?keywords_description=&to_branch=&version=&created_op=%3E%3D&created%5Bvalue%5D=&created%5Bmin%5D=&created%5Bmax%5D=&impacts%5B%5D=3) for a comprehensive list of changes.
 
 ### Why all the changes?
 
-Though the theming layer in Drupal 8 is quite different from Drupal 7 and will required some relearning, these changes come with great improvements, including:
+Though the theming layer in Drupal 8 is quite different from Drupal 7 and will require some relearning, these changes come with great improvements, including:
 
-- Fewer Drupal-specific conventions and more popular, well-documented frameworks (such as Twig), meaning non-Drupalers can jump in much more quickly. Let’s face it - Drupal 7 theming has a major learning curve, which can keep developers from using Drupal at all.
+- Fewer Drupal-specific conventions and more popular, well-documented frameworks (such as Twig), meaning non-Drupalers can jump in much more quickly. Let’s face it - Drupal 7 theming has a major learning curve, which can keep developers and designers from using Drupal at all.
 - Template files are more secure since they no longer contain PHP code (thanks to Twig). Sanders at [d8.sqndr.com](http://d8.sqndr.com/) offers this nice/scary example of PHP code that could be executed in a Drupal 7 template file:
 
 {% highlight php %}
@@ -69,7 +69,7 @@ The first thing to note is the different file structure. The `core` folder now h
 
 Let’s create a folder for our new theme. Savas is working on a Drupal 8 mapping project, so I’ll use that as an example. Our theme is called “Mappy,” so we’ve created a folder for our theme within `themes/custom`.
 
-<img class="blog-image-xl" src="/assets/img/blog/theme-folder-location.png" alt="Screenshot of D8 file structure." width="661" height="255">
+<img class="blog-image-xl" src="/assets/img/blog/theme-folder-location.png" alt="Screenshot of D8 file structure.">
 
 The first file we’ll want to create is `[theme-name].info.yml`, which replaces D7’s `[theme-name].info` file. I’ve created `mappy.info.yml`, shown below. If you’re new to YAML, Symfony has a [nice writeup](http://symfony.com/doc/current/components/yaml/yaml_format.html#collections) on syntax. Pay close attention to the whitespace - for example, a space is required after the colon in key-value pairs.
 
@@ -244,13 +244,13 @@ There are also [Drupal-specific Twig filters](https://www.drupal.org/node/235763
 {% endraw %}
 {% endhighlight %}
 
-By the way, ARIA labels are new in Drupal 8 too!
+By the way, [ARIA labels](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) are new in Drupal 8 too!
 
 In addition to filters, Twig provides a range of [functions](http://twig.sensiolabs.org/doc/functions/index.html) that are also used within the double curly brace delimiters.
 
 #### Tags
 
-Control flow and other [tags](http://twig.sensiolabs.org/doc/tags/set.html) are also supported in Twig. One of my favorite things about templating languages is how easy it is to execute `if` statements and `for` loops. Savas uses Jekyll for our company website and the Liquid templating language makes it easy to loop through a list of data points, blog posts, projects, etc. and print them to a page rather than writing out all of the HTML. In Drupal, we'll use the `if` statement quite often.
+Control flow and other [tags](http://twig.sensiolabs.org/doc/tags/set.html) are also supported in Twig. One of my favorite things about templating languages is how easy it is to execute `if` statements and `for` loops. [Savas](https://github.com/savaslabs/savaslabs.github.io) uses Jekyll for our company website and the Liquid templating language makes it easy to loop through a list of data points, blog posts, projects, etc. and print them to a page rather than writing out all of the HTML. In Drupal, we'll use the `if` statement quite often.
 
 {% highlight liquid %}
 // From Bartik's page.html.twig
@@ -353,7 +353,7 @@ One useful function that comes with Twig is `dump()`. This function works once y
 
 `dump()` is great, but it outputs a rather unwieldy array.
 
-<img class="blog-image-xl" src="/assets/img/blog/dump-output.png" alt="Screenshot of dump function output." width="480" height="685">
+<img class="blog-image-xl" src="/assets/img/blog/dump-output.png" alt="Screenshot of dump function output.">
 
 Enter the beloved Devel module and the new Devel Kint module. Kint is to Drupal 8 what krumo was to Drupal 7. Once Devel and Devel Kint are installed, you can use `kint()` in place of `dump()` for a nice expandable array.
 
@@ -365,7 +365,7 @@ Enter the beloved Devel module and the new Devel Kint module. Kint is to Drupal 
 {% endraw %}
 {% endhighlight %}
 
-<img class="blog-image-xl" src="/assets/img/blog/kint-output.png" alt="Screenshot of kint function output." width="703" height="406">
+<img class="blog-image-xl" src="/assets/img/blog/kint-output.png" alt="Screenshot of kint function output.">
 
 Ahh, much better!
 

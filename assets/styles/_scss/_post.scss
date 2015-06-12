@@ -65,11 +65,13 @@
 
 .blog-image-large {
   @extend .blog-image;
+  width: 100%;
   max-width: 500px;
 }
 
 .blog-image-xl {
   @extend .blog-image;
+  width: 100%;
   max-width: 737px; // Width of narrow column layout on lg screens
 }
 
