@@ -19,16 +19,16 @@ Theming in Drupal 8 means a lot of changes for current Drupalers and a lot of aw
 
 Too much to list here, but here are some highlights:
 
-- Twig, a template engine, is used inside template files in lieu of PHP
+- Twig, a template engine by SensioLabs, is used inside template files in lieu of PHP
 - Responsive design elements are included by default
 - Breakpoints can be set and used across modules and themes
 - Support for IE8 and below is dropped meaning the use of jQuery 2.0, HTML5, and CSS3 (including pseudo selectors) are now supported
-- Classy, a new base theme is introduced
+- Classy, a new base theme, is introduced
 - CSS: far fewer IDs are used, default classes are no longer in core but are moved to Classy, CSS file structure now uses SMACSS and class names follow the BEM format
 - CSS and JS files are attached to pages differently
 - template.php becomes the slightly better-named [theme-name].theme
 
-Check out Drupal's [change log](https://www.drupal.org/list-changes/published/drupal?keywords_description=&to_branch=&version=&created_op=%3E%3D&created%5Bvalue%5D=&created%5Bmin%5D=&created%5Bmax%5D=&impacts%5B%5D=3) for a comprehensive (but, unfortunately, only mildly searchable) list of changes.
+Check out Drupal's [change log](https://www.drupal.org/list-changes/published/drupal?keywords_description=&to_branch=&version=&created_op=%3E%3D&created%5Bvalue%5D=&created%5Bmin%5D=&created%5Bmax%5D=&impacts%5B%5D=3) for a comprehensive list of changes.
 
 ### Why all the changes?
 
@@ -57,7 +57,7 @@ Though the theming layer in Drupal 8 is quite different from Drupal 7 and will r
 
 At the time of writing this post, the toughest things about theming in Drupal 8 for me were:
 
-- Contributed themes and modules not having their 8.x branches ready. So far I haven't seen any contributed themes that are truly usable with Drupal 8. This will surely change soon, and this is good motivation to submit patches in the meantime.
+- Contributed themes and modules not having their 8.x branches ready. So far I haven't seen any contributed themes that are truly usable with Drupal 8. This will surely change soon, and it's good motivation to submit patches in the meantime.
 - Lack of documentation online. When building my first D8 site, documentation often didn't exist for the problem I was having, it existed but was marked as out of date, or it was out of date but NOT marked as such. This was definitely a challenge! I'd recommend taking anything you read with a grain of salt (including this).
 
 Fortunately both of these problems will resolve as Drupal 8 gets closer to release.
@@ -130,7 +130,7 @@ libraries:
  - mappy/leaflet
 {% endhighlight %}
 
-In Drupal 8, assets can be added to pages in a few different ways: globally, per-template, and per-page. We've chosen to add our CSS and JS globally since this is a small site and the same, relatively lightweight assets are used on almost every page.
+In Drupal 8, assets can be added to pages in a few different ways: globally, per-template, and per-page. We've chosen to add our CSS and JS globally since this is a small site and the same relatively lightweight assets are used on almost every page.
 
 In the `mappy.info.yml` file, I've listed two libraries. These correspond to items in my `mappy.libraries.yml` file, which lives in the root of my theme directory. No matter how you're including CSS or JS files on a page, you'll need to define them in your `[theme-name].libraries.yml` file.
 {% highlight yaml %}
@@ -189,7 +189,7 @@ With these files set up, you now have a working custom theme!
 
 In our custom theme's current state, we're using Classy's template files as-is. If we want to customize any of these templates, we need to override them with Twig files located in our custom theme's `templates` directory.
 
-Twig is a template engine with syntax similar to Django, Jinja, and Liquid. It simplifies template creation with clean syntax and useful build-in filters, functions, and tags. In a Drupal template file (now with the extention .html.twig), anything between {% raw %}`{{ ... }}`{% endraw %} or {% raw %}`{% ... %}`{% endraw %} or {% raw %}`{# ... #}`{% endraw %} is Twig.
+[Twig](http://twig.sensiolabs.org/doc/templates.html) is a template engine with syntax similar to Django, Jinja, and Liquid. It simplifies template creation with clean syntax and useful build-in filters, functions, and tags. In a Drupal template file (now with the extention .html.twig), anything between {% raw %}`{{ ... }}`{% endraw %} or {% raw %}`{% ... %}`{% endraw %} or {% raw %}`{# ... #}`{% endraw %} is Twig.
 
 - {% raw %}`{{ These }}`{% endraw %} are for printing content, either explicitly or via functions
 - {% raw %}`{% These %}`{% endraw %} are for executing statements
@@ -369,11 +369,8 @@ Enter the beloved Devel module and the new Devel Kint module. Kint is to Drupal 
 
 Ahh, much better!
 
-[This post](https://drupalize.me/blog/201405/lets-debug-twig-drupal-8) from Drupalize Me has some great info on using `dump()`, devel and kint, along with an explanation of a few gotchas you may run into with Twig syntax. Be aware that some of the information in that post on configuring Twig is out of date.
-
 
 ### Further reading:
-- For more information on creating your .info.yml file, see [this post](https://www.drupal.org/node/2349827) on Drupal.org.
-- Drupal.org's [page](https://www.drupal.org/node/1906392) about debugging Twig
-- Drupalize Me's [post](https://drupalize.me/blog/201405/lets-debug-twig-drupal-8) about debugging Twig has some detailed information about `dump()`, devel and kint. Be aware that some of the information in that post on configuring Twig is out of date.
+- Start with Drupal.org's [theming guide](https://www.drupal.org/theme-guide/8)
 - Check out sqndr's excellent [Drupal 8 theming guide](http://d8.sqndr.com/)
+- Drupalize Me's [post](https://drupalize.me/blog/201405/lets-debug-twig-drupal-8) about debugging Twig has some detailed information about `dump()`, devel and kint. Be aware that some of the information in that post on configuring Twig is out of date.
