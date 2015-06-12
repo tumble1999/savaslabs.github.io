@@ -53,15 +53,15 @@ textarea {
 
 .portfolio,
 .post {
+  .portfolio-short-description {
+    font-size: $base-font-size * 1.5;
+  }
+
   p,
   ul,
   ol {
     color: $dark-blue;
     font-size: $base-font-size * 1.2;
-  }
-
-  .portfolio-short-description {
-    font-size: $base-font-size * 1.5;
   }
 
   ul { list-style-type: square; }

@@ -29,3 +29,5 @@
   name: Leaflet.js
 - slug: durham
   name: Durham
+- slug: theming
+  name: Theming
