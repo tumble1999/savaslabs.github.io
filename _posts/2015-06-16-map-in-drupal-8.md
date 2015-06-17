@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Build a map in Drupal 8"
+title: "Building a map in Drupal 8"
 date: 2015-06-16
 author: Anne Tomasevich
 tags: drupal8 cartography drupal leaflet
@@ -9,20 +9,20 @@ summary: In this post I'll outline how to create a basic map in Drupal 8 using t
 
 Adding a map to a Drupal 7 is made easy by a variety of location storage and map rendering modules. However, at the time of this post most of these modules don't have an 8.x branch ready and thereful aren't usable in Drupal 8. Since Savas has recently taken on a Drupal 8 mapping project, we decided to use the Leaflet library within a custom theme for redering our map and the Views GeoJSON module to store our data.
 
-A lot of the steps taken in this post are based on this [excellent post](/2015/05/18/mapping-geojson.html) about mapping with Leaflet and GeoJSON, so check that out for a great primer if you're new to mapping.
+This tutorial is based on this [excellent post](/2015/05/18/mapping-geojson.html) about mapping with Leaflet and GeoJSON, so check that out for a great primer if you're new to mapping.
 
 
 ### Setup
 
-Before we can get into mapping, you'll need a working Drupal 8 site. Check out this [very thorough post](/2015/04/23/drupal-8-docker-bowline-setup.html) by Dan Murphy for instructions on setting up a D8 site using Docker, and my [last post](/2015/06/10/mapping-geojson.html) for instructions on setting up a custom theme. That said, you don't need to use Docker or a custom theme based on Classy to create your map - any Drupal 8 instance with a custom theme will do. In this tutorial, I'll be referencing our custom theme called Mappy.
+Before we can get into mapping, you'll need a working Drupal 8 site. Savas has previously gone over setting up a D8 site [using Docker](/2015/04/23/drupal-8-docker-bowline-setup.html) and [creating a custom theme](/2015/06/10/d8-theming-basics.html). That said, you don't need to use Docker or a custom theme based on Classy to create your map - any Drupal 8 instance with a custom theme will do. In this tutorial, I'll be referencing our custom theme called Mappy that we created for the [Durham Civil Rights Mapping project](https://github.com/savaslabs/durham-civil-rights-map).
 
 
 ### Install contributed modules
 
 First you'll need to install several contributed modules in your site's `modules/contrib` directory:
 
-- [Geofield](https://www.drupal.org/project/geofield), which creates a new field type called geofield that we'll be using in a view
-- [GeoPHP](https://www.drupal.org/project/geophp), which Geofield depends on
+- [Geofield](https://www.drupal.org/project/geofield), which creates a new field type called geofield that we'll use within a view
+- [GeoPHP](https://www.drupal.org/project/geophp), a dependency of Geofield
 - [Views GeoJSON](https://github.com/savaslabs/views_geojson), a style plugin for Views that outputs data in GeoJSON, which can be used by Leaflet to create map points. You'll note that I've linked to Savas's Views GeoJSON GitHub repo rather than the module's [Drupal.org page](https://www.drupal.org/project/views_geojson), because at the time of writing this our 8.x branch is not yet available there.
 
 There are 3 core modules you'll need:
@@ -36,7 +36,7 @@ Make sure these are installed as rest and serialization ship with core but are n
 
 ### Add the Leaflet library
 
-<img src="/assets/img/blog/leaflet-files.png" alt="Screenshot of the Mappy theme showing Leaflet file locations" class="blog-image wrap-left" width="256" height="504">
+<img src="/assets/img/blog/map-in-drupal-8/leaflet-files.png" alt="Screenshot of the Mappy theme showing Leaflet file locations" class="blog-image wrap-left" width="256" height="504">
 
 Head over to [Leaflet's website](http://leafletjs.com/download.html) and download the latest stable release of the Leaflet library. You'll need to move:
 
@@ -44,9 +44,9 @@ Head over to [Leaflet's website](http://leafletjs.com/download.html) and downloa
 - leaflet.css to your `css` directory
 - The images folder to your `images` directory.
 
-See my custom theme directory for reference. You can put your files wherever you want to, you'll just need to customize your filepaths in the libraries file in the next step. You should also create a custom JS file to hold your map code - ours is called map.js.
+See my custom theme directory for reference. You can put your files wherever you want to, you'll just need to customize your filepaths in the libraries file in the next step. You should also create a custom JavaScript file to hold your map code - ours is called map.js.
 
-Next you'll need to add the Leaflet library to your theme's [libraries file](https://www.drupal.org/developing/api/8/assets). In `mappy.libraries.yml` I've defined a new library called `leaflet` and defined the paths to leaflet.css, leaflet.js and my custom JS file map.js.
+Next you'll need to add the Leaflet library to your theme's [libraries file](https://www.drupal.org/developing/api/8/assets). In `mappy.libraries.yml` I've defined a new library called `leaflet` and stated the paths to leaflet.css, leaflet.js and my custom JS file map.js.
 
 Note that I've listed jQuery as a dependency - in Drupal 8 jQuery is no longer loaded on every page, so it needs to be explictly included here.
 
@@ -90,7 +90,7 @@ You'll need a content type that includes a location field.
 1. Navigate to admin/structure/types/add.
 2. Give your new content type a name (we called ours "Place"), then click "Save and manage fields."
 3. Add a new field with the field type Geofield. If Geofield isn't an option, you should double-check that the Geofield module is installed. Add a label (we used "Location Coordinates"), then click "Save and continue."
-<img src="/assets/img/blog/geofield_creation.png" alt="Screenshot of geofield creation" class="blog-image-large">
+<img src="/assets/img/blog/map-in-drupal-8/geofield_creation.png" alt="Screenshot of geofield creation" class="blog-image-large">
 4. On the next page, leave the number of maxiumum values at 1 and click "Save field settings."
 
 That's it! Obviously you can add more fields to your content type if you'd like, but all we need to generate a map marker is the geofield that we created.
@@ -98,7 +98,7 @@ That's it! Obviously you can add more fields to your content type if you'd like,
 
 ### Add some content
 
-Next, add a few points by navigating to "node/add/place" (or node/add/whatever your content type is called) and create a few nodes representiing different locations. A quick Google search can provide you with the latitude and longitude of any location you'd like to include.
+Next, add a few points by navigating to "node/add/place" (or node/add/whatever your content type is called) and create a few nodes representing different locations. A quick Google search can provide you with the latitude and longitude of any location you'd like to include.
 
 
 ### Add a new view
@@ -109,8 +109,12 @@ Next we'll add a view that will output a list of our "place" nodes as GeoJSON th
 2. Give your new view a name - ours is called "Points."
 3. Under View Settings, show content of type "Place" (or whatever you named your new content type).
 4. Check the "Provide a REST export" box. Note that this box will only be available if the rest module is installed. Enter a path for your data to be output - we chose /points. Click "Save and edit."
-5. Under "Format," click on "Serializer." Change the style to GeoJSON. When the GeoJSON settings pop up, change "Map Data Sources" to "Geofield" and "Geofield" to "Location Coordinates" (or whatever you named your geofield). See the screenshot of my settings for reference. We also have other fields in our Place content type, so I've set the title and body fields accordingly.
+5. Under "Format," click on "Serializer." Change the style to GeoJSON. When the GeoJSON settings pop up, add the following settings:
+  <img src="/assets/img/blog/map-in-drupal-8/rest-export-settings.png" alt="Screenshot the rest export settings for the Places view" class="blog-image-large" width="440px">
 6. Under "Pager," change the number of fields to display to 0 (which means unlimited in this case).
+
+For reference, here's the settings for my Places view:
+<img src="/assets/img/blog/map-in-drupal-8/places-view.png" alt="Screenshot of settings for the Places view" class="blog-image-xl">
 
 We've just set up a view that outputs GeoJSON data at [site-url]/points. Take a second to go to that URL and check out your data. In the next step, we'll use this page to populate our map with points.
 
@@ -127,18 +131,18 @@ We also need to define a height and width of the map div. Ours is going to span 
 
 {% highlight scss %}
 .map--front {
+  // Set these to whatever you want.
   height: 100%;
   width: 100%;
-  z-index: 0;
 }
 {% endhighlight %}
 
-Previously we created a custom JavaScript file to hold our map code. Ours is called `map.js` and is located in our custom theme's `js` directory. First, we need to add the map itself and set a center point and a zoom level. The `L` stands for the Leaflet library. We've centered over our hometown of Durham, NC and selected a zoom level of 12 since all of our map markers are within this region. Check out [this explanation](https://www.mapbox.com/guides/how-web-maps-work/#tiles-and-zoom-levels) of zoom levels, or go for a little trial and error to get the right one for your map.
+Previously we created a custom JavaScript file to hold our map code. Ours is called `map.js` and is located in our custom theme's `js` directory. In the code below, we've added the map itself and set a center point and a zoom level. We've centered over our hometown of Durham, NC and selected a zoom level of 12 since all of our map markers are viewable within this region. Check out [this explanation](https://www.mapbox.com/guides/how-web-maps-work/#tiles-and-zoom-levels) of zoom levels, or go for a little trial and error to get the right one for your map.
 
 {% highlight js %}
 (function ($) {
   // Create map and set center and zoom.
-  var map = L.map('map', {
+  var map = L.map('map', { // The `L` stands for the Leaflet library.
     scrollWheelZoom: false,
     center: [35.9908385, -78.9005222],
     zoom: 12
@@ -146,11 +150,11 @@ Previously we created a custom JavaScript file to hold our map code. Ours is cal
 })(jQuery);
 {% endhighlight %}
 
-Now we need to add a base map. We're using Positron by CartoDB. We'll import the tiles, then add them as a layer to our map.
+Now we need to add a base map. We're using Positron by CartoDB. We'll import the tiles and attribution, then add them as a layer to our map.
 
 {% highlight js %}
 (function ($) {
-  // Add basemap tiles.
+  // Add basemap tiles and attribution.
   var baseLayer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="http://cartodb.com/attributions">CartoDB</a>'
   });
@@ -169,16 +173,19 @@ Now we need to add a base map. We're using Positron by CartoDB. We'll import the
 
 Go to your Drupal site and rebuild your cache you should see your base map!
 
+<img src="/assets/img/blog/map-in-drupal-8/map-without-markers.png" alt="Screenshot the base map" class="blog-image-xl">
+
+
 
 ### Add our points
 
-Finally, we're going to access that GeoJSON we're outputting via a view and add points to our map. First, let's add the path to our marker image.
+Now, we're going to access the GeoJSON we're outputting via our view to add points to our map. First, let's add the path to our marker image.
 
 {% highlight js %}
 L.Icon.Default.imagePath = '/themes/custom/mappy/images/leaflet';
 {% endhighlight %}
 
-Now we'll use `.getJSON` to retrieve our data from the url "/points," then fire the `addDataToMap` function to create a new layer containing our points via Leaflet's geoJson function.
+Now we'll use `.getJSON` to retrieve our data from the url "/points," then trigger the `addDataToMap` function to create a new layer containing our points via Leaflet's geoJson function.
 
 {% highlight js %}
 // Add points.
@@ -192,8 +199,20 @@ Now we'll use `.getJSON` to retrieve our data from the url "/points," then fire 
   });
  {% endhighlight %}
 
- Refresh - we've got points! The last thing to do is add popups to each point when they're clicked. We'll insert this code in the `addDataToMap` function. If you actually navigate to [sitename]/points, you can inspect your GeoJSON and figure out what array key names have been assigned to the fields in your content type. I want to display the node title in the popup, which I can see is at feature[property][name].
+ Refresh - we've got points!
 
+<img src="/assets/img/blog/map-in-drupal-8/map-with-markers.png" alt="Screenshot of the map with markers" class="blog-image-xl">
+
+
+### Add popups
+
+ The last thing to do is add popups to each point when they're clicked. We'll insert this code in the `addDataToMap` function. If you actually navigate to [sitename]/points, you can inspect your GeoJSON and figure out what array key names have been assigned to the fields in your content type.
+
+ <img src="/assets/img/blog/map-in-drupal-8/geojson-points.png" alt="Screenshot of GeoJSON" class="blog-image-xl">
+
+ I want to display the node title in the popup, which I can see is at `feature.property.name`.
+
+{% highlight js %}
  function addDataToMap(data, map) {
         var dataLayer = L.geoJson(data, {
             onEachFeature: function(feature, layer) {
@@ -203,7 +222,10 @@ Now we'll use `.getJSON` to retrieve our data from the url "/points," then fire 
         });
         dataLayer.addTo(map);
     }
+{% endhighlight %}
 
 Now when I click on a point I get a nice little popup with the node title.
 
-Check out the entire [map.js file](https://gist.github.com/AnneTee/ea9a57c5a49b9ce53352) and be sure to visit [Savas's GitHub repository](https://github.com/savaslabs/durham-civil-rights-map) for the Durham Civil Rights Mapping project to see a Drupal 8 project in action!
+<img src="/assets/img/blog/map-in-drupal-8/map-with-popup.png" alt="Screenshot of the map with a popup open" class="blog-image-xl">
+
+Check out the entire [map.js file](https://gist.github.com/AnneTee/ea9a57c5a49b9ce53352) and be sure to visit Savas's GitHub repository for the [Durham Civil Rights Mapping project](https://github.com/savaslabs/durham-civil-rights-map) to see a Drupal 8 site in action!
