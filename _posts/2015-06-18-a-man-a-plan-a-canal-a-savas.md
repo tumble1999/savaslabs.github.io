@@ -42,7 +42,7 @@ top contenders, we discovered people found it alluring, and also tied it to
 <img class="emoji" src="http://www.emoji-cheat-sheet.com/graphics/emojis/stuck_out_tongue_winking_eye.png">
 - In writing this, I learned a *new* literary term: [Semordnilap](http://en.wikipedia.org/wiki/Palindrome#Semordnilaps) 
 which is a word when read backward is a different word! E.g. repaid
-- The world's longest palindromic phrease, at least so far _and_ according to [these guys](http://norvig.com/palindrome.html)
+- The world's longest palindromic phrase, at least so far _and_ according to [these guys](http://norvig.com/palindrome.html)
 is 17,826 words!
 
 ##### Previous top name contenders
