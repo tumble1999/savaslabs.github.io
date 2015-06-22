@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "A man a plan a canal a... Savas!"
-date: 2015-06-18
+date: 2015-06-23
 author: Chris Russo
 tags: business identity
 summary: The truth behind the palindrome.
