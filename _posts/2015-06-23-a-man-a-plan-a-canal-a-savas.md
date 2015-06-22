@@ -33,7 +33,7 @@ said I.
 connotation as it was presented to us, but after holding a focus group on 
 top contenders, we discovered people found it alluring, and also tied it to 
 "savant" and other words that made them think of knowledge from the French:
- _savoir_ . 
+ _savoir_. 
  
 
 ##### Fun palindromic facts
