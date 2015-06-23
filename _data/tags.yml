@@ -1,5 +1,5 @@
 # For now, if you add a tag you also need to add an empty
-# template in /blog/tag.
+# template in /news/tag.
 
 - slug: drupal
   name: Drupal
@@ -33,3 +33,5 @@
   name: Theming
 - slug: business
   name: Business
+- slug: identity
+  name: Identity
