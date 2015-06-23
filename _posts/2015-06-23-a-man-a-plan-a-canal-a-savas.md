@@ -16,8 +16,9 @@ with me, they know I have an odd obsession with
 [palindromes](http://en.wikipedia.org/wiki/Palindrome).
 
 This is why, when we asked [Harbor](http://www.studioharbor.com) to help us
-come up with a company identity, including designing our logo and our name, 
- "palindrome" was naturally a category... e pluribus unum 
+come up with a company identity, including designing our logo and assissting us 
+with our name selection, "palindrome" was naturally a category of options for 
+names... e pluribus unum 
  <img alt="winking emoji"  class="emoji" src="http://www.emoji-cheat-sheet.com/graphics/emojis/wink.png">
 
 #### Really though?
@@ -32,13 +33,13 @@ said I.
 "Savas" was actually a low-ranking option early on due to our initial, internal feelings on the 
 connotation as it was presented to us, but after holding a focus group on 
 top contenders, we discovered people found it alluring, and also tied it to 
-"savant" and other words that made them think of knowledge from the French:
+"savant" and other words that made them think of knowledge from the French word
  _savoir_. 
  
 
 ##### Fun palindromic facts
 - Our area code in Durham, NC is a palindrome: 919
-- One of the team's house numbers is a palindrome: not going to tell you who or what 
+- One of the team's house number is a palindrome: not going to tell you who or what 
 <img alt="winking emoji" class="emoji" src="http://www.emoji-cheat-sheet.com/graphics/emojis/stuck_out_tongue_winking_eye.png">
 - In writing this, I learned a *new* literary term: [Semordnilap](http://en.wikipedia.org/wiki/Palindrome#Semordnilaps) 
 which is a word when read backward is a different word! E.g. repaid
