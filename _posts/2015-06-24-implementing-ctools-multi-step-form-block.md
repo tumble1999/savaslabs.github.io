@@ -14,7 +14,7 @@ On a recent project, a client asked us to create the form using only blocks, so 
 
 In the main CTools form definition, which looks something like this:
 
-{% highlight php %}
+{% highlight php startinline=true %}
 $form_info = array(
   'id' => 'quote-form',
   'ajax' => TRUE,
@@ -31,7 +31,7 @@ We need to change path to use query parameters for advancing the form. So let's 
 
 Next, we need an implementation of `hook_block_info()` and `hook_block_view()`. `hook_block_info()` is pretty unremarkable so I'm not including it here, other than to say you should consider setting `cache` to `DRUPAL_NO_CACHE` when declaring your block. Now, on to `hook_block_view()`:
 
-{% highlight php %}
+{% highlight php startinline=true %}
 /**
  * Implements hook_block_view().
  */
@@ -57,7 +57,7 @@ So far, so good. But there's one problem at this stage. If we try to use the for
 
 The workaround is to use our `subtask_next` callback to redirect our user where we want them to go using `drupal_goto()`:
 
-{% highlight php %}
+{% highlight php startinline=true %}
 /**
  * Callback executed when the 'next' button is clicked.
  */
