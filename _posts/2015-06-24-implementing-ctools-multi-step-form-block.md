@@ -4,11 +4,13 @@ title: "Implementing a CTools multi-step form in a block"
 date: 2015-06-23
 author: Kosta Harlan
 tags: drupal
-summary: Some tips on how to implement a CTools multi-step form entirely in a block.
+summary: Some tips on how to implement a Drupal CTools multi-step form entirely in a block.
 ---
-There are [many wonderful guides](https://duckduckgo.com/?q=ctools+multistep+form) on how to build a CTools multi-step form in Drupal. As far as I can tell, though, all of the guides assume that the form will live on a page.
+No one likes long forms. They're overwhelming to look at and it's easy to lose your place. Multi-step forms are a way to simplify data collection and make your users' lives easier.
 
-On a recent project, a client asked us to create the form using only blocks, so it could be placed on a page using Panels. It turns out this is pretty straightforward but as it's not well documented elsewhere, here's a quick guide to what you need to do. (Note: I created [an example module on GitHub](git@github.com:savaslabs/ctools_multistep_form_block.git), so please reference that as needed. This post is just covering the highlights.)
+Drupal's Form API combined with the CTools module provide a solid platform for building a multi-step form. There are [many wonderful guides](https://duckduckgo.com/?q=ctools+multistep+form) on how to build a CTools multi-step form in Drupal. But as far as I can tell, all of the guides assume that the form will live on a page — which makes sense, as that's the most common use case.
+
+On a recent project, though, a client asked us to create a multi-step form using only a block, so it could be placed on a page using Panels. It turns out this is pretty straightforward but as it's not well documented elsewhere, here's a quick guide to what you need to do. (Note: I created [an example module on GitHub](git@github.com:savaslabs/ctools_multistep_form_block.git), so please reference that as needed. This post is just covering the highlights.)
 
 ### Update your CTools form definition
 
@@ -74,4 +76,4 @@ function example_subtask_next(&$form_state) {
 
 The first two lines are caching form values so that as the user goes back and forth between steps on the form, their data is cached. Moving on: remember how CTools is sending us to a 404 page with the encoded value of the path we want to go to? It turns out the un-encoded value is in `$form_state['redirect'][0]`, in the form of `example-form?step=step-two`.
 
-Since we know the base path, we can use `substr()` and `strlen()` to extract the value of `step=` and then pass that along to `drupal_goto()`. `drupal_goto()` bypasses CTools' own redirection, and thus we are able to avoid the unwanted encoding of the path, and can send our user happily along their way.
+Since we know the base path, we can use `substr()` and `strlen()` to extract the value of `step=` and then pass that along to `drupal_goto()`. `drupal_goto()` bypasses CTools' own redirection, and thus we are able to avoid the unwanted encoding of the path, and can send our users happily along their way.
