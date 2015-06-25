@@ -39,9 +39,7 @@ Though the theming layer in Drupal 8 is quite different from Drupal 7 and will r
 
 {% highlight php %}
 // This really shouldn’t be allowed to work, and it won’t in D8.
-<?php
-  db_query('DROP TABLE {users}');
-?>
+  <?php db_query('DROP TABLE {users}'); ?>
 {% endhighlight %}
 
 - Even more security: text is automatically escaped in Twig, meaning a lower chance of XSS attacks.
@@ -296,14 +294,14 @@ I created `settings.local.php` by making copy of `example.settings.local.php` in
 
 To get Drupal to recognize my local settings file, I opened `settings.php` and uncommented the last 3 lines:
 
-{% highlight php %}
+{% highlight php startinline=true %}
 if (file_exists(__DIR__ . '/settings.local.php')) {
   include __DIR__ . '/settings.local.php';
 }
 {% endhighlight %}
 
 In `settings.local.php` we'll see:
-{% highlight php %}
+{% highlight php startinline=true %}
 /**
  * Enable local development services.
  */
@@ -320,7 +318,7 @@ parameters:
 {% endhighlight %}
 
 Great, we've completed steps 1 and 2. Fun fact: step 3 is already complete too! In `settings.local.php`:
-{% highlight php %}
+{% highlight php startinline=true %}
 /**
  * Disable the render cache (this includes the page cache).
  *

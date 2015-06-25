@@ -32,6 +32,8 @@ Note: most of the techniques I tested require the node package manager (npm) for
 
 That said, CSS Lint is entirely customizable so rules can be created, edited, or omitted. This is where either a house or project-specific styleguide would come in handy. The team can agree on these rules and test their CSS against that ruleset.
 
+Savas uses the [SCSS-Lint Ruby gem](https://github.com/brigade/scss-lint) on our [company website](https://github.com/savaslabs/savaslabs.github.io/blob/master/_tests/run-tests.sh) via [Travis CI](https://travis-ci.org/).
+
 ##### StyleStats 
 
 [Stylestats](https://github.com/t32k/stylestats) provides stylesheet statistics and is useful in tandem with CSS Lint. It works on single stylesheets or a directory of them, or globbing can be used (don't forget the quotes, e.g. `stylestats 'styles/*.css'`). Stylestats will report the number and size of your stylesheets, simplicity (# rules/# selectors), unique font sizes, number of ID selectors used, and other pertinent information.
@@ -39,11 +41,11 @@ That said, CSS Lint is entirely customizable so rules can be created, edited, or
 
 #### Image Diff
 
-Tools using this technique take screenshots of the local/dev/staging site and compare them to a baseline via PhantomJS, a headless browser.
+Tools using this technique take screenshots of the local/dev/staging site and compare them to a baseline via [PhantomJS](http://phantomjs.org/), a headless browser.
 
 ##### BackstopJS
 
-[BackstopJS](https://github.com/garris/BackstopJS) wraps ResembleJS, another Image Diff tool, in a nice, user-friendly interface. It uses Gulp - a Javascript library for automating tasks - to create a reference image set, then run a test. This can be done in any environment and the config file can be reused across environments by simply updating the test site URL. Dynamic content can cause failed tests, but selectors can be ignored to avoid this.
+[BackstopJS](https://github.com/garris/BackstopJS) wraps [ResembleJS](http://huddle.github.io/Resemble.js/), another Image Diff tool, in a nice, user-friendly interface. It uses Gulp - a Javascript library for automating tasks - to create a reference image set, then run a test. This can be done in any environment and the config file can be reused across environments by simply updating the test site URL. Dynamic content can cause failed tests, but selectors can be ignored to avoid this.
 
 BackstopJS is a cinch to install and configure ([this article](https://css-tricks.com/automating-css-regression-testing/) by Garrett Shipon, the author of BackstopJS, is a good walkthrough), and the test command opens a report with a list of passed and failed tests and diffs of the failed tests, so any unintentional regressions are quickly pinpointed.
 
