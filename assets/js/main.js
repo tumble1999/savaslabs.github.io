@@ -4,7 +4,7 @@ library: jquery-2.1.3.min.js
 
 {% include_relative _lib/{{page.library}} %}
 
-// MOBILE MENU
+// MOBILE MENU.
 $(document).ready(
     function() {
         var menuToggle = $('#js-mobile-menu').unbind();
@@ -18,11 +18,11 @@ $(document).ready(
                         if ($('#js-navigation-menu').is(':hidden')) {
                             $('#js-navigation-menu').removeAttr('style');
                         }
-                });
-        });
-});
+                    });
+            });
+    });
 
-// COMMENTS
+// COMMENTS.
 $(document).ready(
     function() {
         // Expandable comment section.
@@ -39,7 +39,7 @@ $(document).ready(
                 // Remove leading forward slash.
                 var truncatedSlug = postSlug.substring(1, postSlug.length);
                 var encodedSlug = encodeURIComponent(truncatedSlug);
-                var requri = commentServer+'/api/comments/post';
+                var requri = commentServer + '/api/comments/post';
                 var payload = {}
                 payload.slug = encodedSlug;
                 $.ajax(
@@ -76,7 +76,7 @@ $(document).ready(
                 // Output new comment.
                 var form = $('form');
                 var submit = $('#submit');
-                var newrequri = commentServer+'/api/comments/new';
+                var newrequri = commentServer + '/api/comments/new';
 
                 form.on(
                     'submit', function(e) {
@@ -86,7 +86,7 @@ $(document).ready(
                         // Send ajax request.
                         $.ajax(
                             {
-                                url: commentServer+'/api/comments/new',
+                                url: commentServer + '/api/comments/new',
                                 type: 'POST',
                                 dataType: 'json',
                                 data: form.serialize(),
@@ -116,9 +116,9 @@ $(document).ready(
 
                                     // Append new comment.
                                     var outhtml = '';
-                                    outhtml = outhtml + '<div class="comment new"><h5>'+name+' says:</h5>';
-                                    outhtml = outhtml + '<p class="comment-date">'+created+'</p>';
-                                    outhtml = outhtml + '<p class="comment-text">'+comment+'</p></div>';
+                                    outhtml = outhtml + '<div class="comment new"><h5>' + name + ' says:</h5>';
+                                    outhtml = outhtml + '<p class="comment-date">' + created + '</p>';
+                                    outhtml = outhtml + '<p class="comment-text">' + comment + '</p></div>';
 
                                     // Append with fadeIn, see http://stackoverflow.com/a/978731
                                     var item = $(outhtml).hide().fadeIn(800);
@@ -128,12 +128,12 @@ $(document).ready(
                                     submit.val('Submit').removeAttr('disabled');
                                     $('#post-comments').prepend('<div class="flash-error">' + 'An error occurred. Sorry ¯\\\_(ツ)_/¯' + '</div>');
                                 }
-                        });
-                });
-        });
-});
+                            });
+                    });
+            });
+    });
 
-// COMMENT COUNT
+// COMMENT COUNT.
 $(document).ready(
     function() {
         // Create variable for request URI.
@@ -142,20 +142,20 @@ $(document).ready(
         // Remove leading forward slash.
         var truncatedSlug = postSlug.substring(1, postSlug.length);
         var encodedSlug = encodeURIComponent(truncatedSlug);
-        var requri = commentServer+'/api/comments/count';
-            $.getJSON(
-                requri, function(json) {
-                    if (truncatedSlug in json.data[0]) {
-                        var commentString = 'comments';
-                        if (json.data[0][truncatedSlug] == 1) {
-                            commentString = 'comment';
-                        }
-                        $("#comment-count").html('<a href="#js-expander-trigger"><i class="fa fa-comment"></i>' + json.data[0][truncatedSlug] + ' ' + commentString + '</a>');
+        var requri = commentServer + '/api/comments/count';
+        $.getJSON(
+            requri, function(json) {
+                if (truncatedSlug in json.data[0]) {
+                    var commentString = 'comments';
+                    if (json.data[0][truncatedSlug] == 1) {
+                        commentString = 'comment';
                     }
+                    $("#comment-count").html('<a href="#js-expander-trigger"><i class="fa fa-comment"></i>' + json.data[0][truncatedSlug] + ' ' + commentString + '</a>');
+                }
             });
-});
+    });
 
-// COMMENT COUNT ON CARDS
+// COMMENT COUNT ON CARDS.
 $(document).ready(
     function() {
         var commentServer = "{{ site.comment_server_url }}";
@@ -176,5 +176,5 @@ $(document).ready(
                         $(this).find(".comment-count").remove();
                     }
                 });
-        });
-});
+            });
+    });
