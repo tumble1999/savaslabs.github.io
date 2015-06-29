@@ -39,31 +39,39 @@ $(document).ready(
                 // Remove leading forward slash.
                 var truncatedSlug = postSlug.substring(1, postSlug.length);
                 var encodedSlug = encodeURIComponent(truncatedSlug);
-                var requri = commentServer+'/api/comments/post/'+encodedSlug;
+                var requri = commentServer+'/api/comments/post';
+                var payload = {}
+                payload.slug = encodedSlug;
+                $.ajax(
+                    {
+                        url: requri,
+                        type: 'POST',
+                        dataType: 'json',
+                        data: payload,
+                        success: function(json){
+                            var outhtml = '';
+                            // If there are comments, include a link to the comment form.
+                            if (json.data.length > 0) {
+                                outhtml = '<p class="comment-form-link"><a href="#comment-form">Leave a comment</a></p>'
+                            }
+                            // Loop through comments.
+                            $.each(
+                                json.data, function(i, val) {
+                                    // Assign JSON data points to variables.
+                                    var name = json.data[i].name;
+                                    var created = json.data[i].created_at;
+                                    var comment = json.data[i].comment;
 
-                $.getJSON(
-                    requri, function(json) {
-                        var outhtml = '';
-                        // If there are comments, include a link to the comment form.
-                        if (json.data.length > 0) {
-                            outhtml = '<p class="comment-form-link"><a href="#comment-form">Leave a comment</a></p>'
+                                    // Create HTML output.
+                                    outhtml = outhtml + '<div class="comment"><h5>' + name + ' says:</h5>';
+                                    outhtml = outhtml + '<p class="comment-date">' + created + '</p>';
+                                    outhtml = outhtml + '<p class="comment-text">' + comment + '</p></div>';
+                                });
+                            $('#post-comments').html(outhtml);
+                        },
+                        error: function(e){
                         }
-                        // Loop through comments.
-                        $.each(
-                            json.data, function( i, val ) {
-
-                                // Assign JSON data points to variables.
-                                var name = json.data[i].name;
-                                var created = json.data[i].created_at;
-                                var comment = json.data[i].comment;
-
-                                // Create HTML output.
-                                outhtml = outhtml + '<div class="comment"><h5>'+name+' says:</h5>';
-                                outhtml = outhtml + '<p class="comment-date">'+created+'</p>';
-                                outhtml = outhtml + '<p class="comment-text">'+comment+'</p></div>';
-                        });
-                        $('#post-comments').html(outhtml);
-                });
+                    });
 
                 // Output new comment.
                 var form = $('form');
