@@ -6,7 +6,7 @@ description: >
 baseurl: "" 
 url: "http://savaslabs.com"
 comment_server_url: http://comments.savasdev.com
-comment_server_enabled: 0
+comment_server_enabled: 1
 
 # Nav links
 navigation:
