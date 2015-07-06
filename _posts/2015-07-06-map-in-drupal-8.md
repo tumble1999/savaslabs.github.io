@@ -7,7 +7,7 @@ tags: drupal8 cartography drupal leaflet
 summary: In this post I'll outline how to create a basic map in Drupal 8 using the Leaflet library within a custom theme and the Views GeoJSON module.
 ---
 
-Adding a map to a Drupal 7 site is made easy by a variety of location storage and map rendering modules. However, at the time of this post most of these modules don't have an 8.x branch ready and thereful aren't usable in Drupal 8. Since Savas has recently taken on a Drupal 8 mapping project, we decided to use the Leaflet library within a custom theme to render our map and the Views GeoJSON module to store our data.
+Adding a map to a Drupal 7 site is made easy by a variety of location storage and map rendering modules. However, at the time of this post most of these modules don't have an 8.x branch ready and therefore aren't usable in Drupal 8. Since Savas has recently taken on a Drupal 8 mapping project, we decided to use the Leaflet library within a custom theme to render our map and the Views GeoJSON module to store our data.
 
 This tutorial is based on this [excellent post](/2015/05/18/mapping-geojson.html) about mapping with Leaflet and GeoJSON, so check that out for a great primer if you're new to mapping.
 
@@ -23,7 +23,7 @@ First you'll need to install several contributed modules in your site's `modules
 
 - [Geofield](https://www.drupal.org/project/geofield), which creates a new field type called geofield that we'll use within a view
 - [GeoPHP](https://www.drupal.org/project/geophp), a dependency of Geofield
-- [Views GeoJSON](https://github.com/savaslabs/views_geojson), a style plugin for Views that outputs data in GeoJSON, which can be used by Leaflet to create map points. You'll note that I've linked to Savas's Views GeoJSON GitHub repo rather than the module's [Drupal.org page](https://www.drupal.org/project/views_geojson), because at the time of writing this our 8.x branch is not yet available there.
+- [Views GeoJSON](https://github.com/savaslabs/views_geojson), a style plugin for Views that outputs data in GeoJSON, which can be used by Leaflet to create map points. You'll note that I've linked to Savas's Views GeoJSON GitHub repo rather than the module's [Drupal.org page](https://www.drupal.org/project/views_geojson), because at the time of writing this our 8.x branch is not yet available there. You can follow the status of this issue [here.](https://www.drupal.org/node/2527636)
 
 There are 3 core modules you'll need:
 
@@ -31,8 +31,7 @@ There are 3 core modules you'll need:
 - [RESTful Web Services](https://www.drupal.org/project/restws) (otherwise known as rest)
 - [Serialization](https://www.drupal.org/documentation/modules/serialization)
 
-Make sure these are installed as rest and serialization ship with core but are not installed by default. This can be done via the admin interface or with `drush en [module-name]`.
-
+Rest and serialization are dependencies of Views GeoJSON, so they will be installed when Views GeoJSON is installed.
 
 ### Add the Leaflet library
 
@@ -42,7 +41,7 @@ Head over to [Leaflet's website](http://leafletjs.com/download.html) and downloa
 
 Move the Leaflet files into your custom theme directory (see mine for reference). You can put your files wherever you want to, you'll just need to customize your filepaths in the libraries file in the next step.
 
-You should also create a custom JavaScript file to hold your map code - ours is called map.js.
+You should also create a custom JavaScript file to hold your map code - ours is called `map.js`.
 
 Next you'll need to add the Leaflet library to your theme's [libraries file](https://www.drupal.org/developing/api/8/assets). In `mappy.libraries.yml`, shown below, I've defined a new library called `leaflet` and stated the paths to leaflet.css, leaflet.js and my custom JS file map.js.
 
@@ -85,7 +84,7 @@ For more methods of attaching assets to pages and elements, check out Drupal.org
 
 Now we need a content type that includes a location field.
 
-1. Navigate to admin/structure/types/add.
+1. Navigate to `admin/structure/types/add`
 2. Give your new content type a name (we called ours "Place"), then click "Save and manage fields."
 3. Add a new field with the field type Geofield. If Geofield isn't an option, you should double-check that the Geofield module is installed. Add a label (we used "Location Coordinates"), then click "Save and continue."
 <img src="/assets/img/blog/map-in-drupal-8/geofield_creation.png" alt="Screenshot of geofield creation" class="blog-image-large">
@@ -103,7 +102,7 @@ Next, add a few points by navigating to "node/add/place" (or node/add/whatever y
 
 Next we'll add a view that will output a list of our "place" nodes as GeoJSON thanks to the Views GeoJSON plugin.
 
-1. Navigate to admin/structure/views/add.
+1. Navigate to `admin/structure/views/add`
 2. Give your new view a name - ours is called "Points."
 3. Under View Settings, show content of type "Place" (or whatever you named your new content type).
 4. Check the "Provide a REST export" box. Note that this box will only be available if the rest module is installed. Enter a path for your data to be output - we chose "/points". Click "Save and edit."
