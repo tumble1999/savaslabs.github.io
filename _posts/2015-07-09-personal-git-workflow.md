@@ -191,7 +191,7 @@ exactly.
 
 ### Rollback to before you started working on your feature and ignored formatting
 
-{% highlight bash %}
+{% highlight console %}
 MacBook-Pro: chris$  git log b464b45
 commit b464b4570ba56ec7db751483149b046d88fe8d9d
 Author: Chris Russo <chris.andrews.russo@gmail.com>
@@ -265,7 +265,7 @@ git checkout b464b4570ba56ec7db751483149b046d88fe8d9d .
 
 Unstage everything so you may start anew.
 
-{% highlight bash %}
+{% highlight console %}
 MacBook-Pro:drupalroot chris$ git checkout b464b4570ba56ec7db751483149b046d88fe8d9d .
 MacBook-Pro:drupalroot chris$ git status
 On branch master
@@ -324,7 +324,7 @@ However, if we look at the tree object, which defines all the project code,
 we can see that they are identical, we get `f2f767ce`
 again. So we can be confident we didn't miss 
 anything in our rewriting.
-{% highlight bash %}
+{% highlight console %}
 
 MacBook-Pro:drupalroot chris$ git cat-file -p 3706ca31771312646f0caf0356cbc9ee3b2f4533
 tree f2f767cefda3d283f0fb3b68fd4f377e554b7f57
