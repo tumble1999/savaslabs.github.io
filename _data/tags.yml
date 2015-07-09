@@ -35,3 +35,9 @@
   name: Business
 - slug: identity
   name: Identity
+- slug: git
+  name: Git
+- slug: efficiency
+  name: Efficiency
+- slug: productivity
+  name: Productivity
