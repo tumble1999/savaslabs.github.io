@@ -124,7 +124,7 @@ function addDataToMap(data, map) {
 
 And here's the "finished" map! Stay tuned for more GeoJSON + Leaflet tutorials from [Savas](http://www.savaslabs.com)
 
-The final HTML file with inline javascript is also posted [as a gist here](https://gist.github.com/anonymous/ed35b8f27c47339490a9).
+The final HTML file with inline javascript is also posted [as a gist here](https://gist.github.com/chrisarusso/d7d54a4149830a8baa6d).
 
 <div id="map2" style="width: 100%; height: 300px;"></div>
 <script type="text/javascript">
