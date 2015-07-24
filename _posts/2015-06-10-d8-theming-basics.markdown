@@ -116,7 +116,7 @@ This hasn't changed much from Drupal 7. Don't forget that the `Content` region i
 base theme: classy
 {% endhighlight %}
 
-Classy is a brand new base theme that ships with Drupal core. All CSS classes were moved out of core template files and into Classy's as a way to a) contain, minimize, and organize default classes and b) give developers the option of not using Drupal's default classes without having to undo core. One can simply choose not to use Classy as a base class.
+Classy is a brand new base theme that ships with Drupal core. All CSS classes were moved out of core template files and into Classy's as a way to a) contain, minimize, and organize default classes and b) give developers the option of not using Drupal's default classes without having to undo core. One can simply choose not to use Classy as a base theme.
 
 Additionally, Classy's classes follow the BEM convention, making them less generic and more meaningful. Check out [this article](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) for a great introduction to BEM.
 
@@ -221,7 +221,7 @@ Printing variables using Twig in D8 is as easy as including them in the double c
 {% endraw %}
 {% endhighlight %}
 
-This will be more useful when debugging. The Drupal core base classes include lists of available variables and regions in the DocBlock of their template files, or you can print variables to the page via Twig's debug mode (more on that below) to see what's available to you.
+This will be more useful when debugging. The Drupal core base themes include lists of available variables and regions in the DocBlock of their template files, or you can print variables to the page via Twig's debug mode (more on that below) to see what's available to you.
 
 #### Filters and functions
 
