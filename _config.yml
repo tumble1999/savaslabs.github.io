@@ -3,7 +3,7 @@ title: Savas
 email: info@savaslabs.com
 description: > 
   A Drupal-centric web development and design shop anchored in Durham, NC.
-baseurl: "" 
+baseurl: "http://savaslabs.com" 
 url: "http://savaslabs.com"
 comment_server_url: http://comments.savasdev.com
 comment_server_enabled: 1
