@@ -4,7 +4,20 @@ title: "When Drupal database sanitization isn't enough"
 date: 2015-08-04
 author: Chris Russo
 tags: drupal drupal8 best-practices
-summary: The user revision module does not (_yet_) care about `drush sqlsan`, and it should!
+summary: | 
+  The user revision module does not (_yet_) care about `drush sqlsan`, 
+  and it should!
+drupal_planet_summary: |
+  One of the most embarrassing and potentially costly things we can do as developers
+  is to send emails out to real people unintentionally from a development 
+  environment. It happens, and often times we aren't even aware of it until the damage
+  is done and a background process sends out, say, 11,000 automated emails to
+  existing customers (actually happened to a former employer recently). In the 
+  Drupal world, there are <a href="https://github.com/chrisarusso/Tilthy-Rich-Compost-Website/commit/64a558e2">myriad ways</a>
+  to <a href="https://github.com/chrisarusso/Tilthy-Rich-Compost-Website/blob/master/scripts/sanitize.php">attempt to address</a> this problem. 
+  
+  We discuss how to use a drush hook on the `drush sqlsan` command to ensure 
+  proper sanitization while using the `user revision` module.
 ---
 
 #### The general problem
