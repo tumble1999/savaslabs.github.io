@@ -5,6 +5,11 @@ date: 2015-06-10
 author: Anne Tomasevich
 tags: drupal8 theming drupal
 summary: Theming in Drupal 8 means a lot of changes for current Drupalers and a lot of awesome stuff for everyone. I'll cover what's new and how to create a custom theme in Drupal 8.
+drupal_planet_summary: |
+  Theming in Drupal 8 means a lot of changes for current Drupalers. These updates make Drupal more accessible to non-Drupalers and more modular, semantic, modern, and fun for everyone. Right now, documentation is scarce and often out-of-date, so I've collected all that I've learned while building my first Drupal 8 site.
+
+  Since most contributed base themes don't have an 8.x branch in a useable state at this point, Savas created a custom theme based on Classy, Drupal's new base theme. I'll step through the process of creating a custom theme and walk through the basics of Twig and Twig debugging.
+
 ---
 
 Theming in Drupal 8 means a lot of changes for current Drupalers and a lot of awesome stuff for everyone. In this post I'll cover:
