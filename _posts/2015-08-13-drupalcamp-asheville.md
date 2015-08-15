@@ -31,6 +31,6 @@ Check out Anne's [slides](http://annetee.github.io/create-a-custom-theme-d8/#/).
 Or clone her [presentation on Github](https://github.com/AnneTee/create-a-custom-theme-d8).
 
 #### Personal Git Workflow, For Everyone
-Check out Chris's [slides](http://www.slideshare.net/AnneTomasevich/personal-git-workflow-for-everyone).
+Check out Chris's [slides](http://chrisarusso.github.io/asheville.html#/).
 Or clone his [presentation on Github](https://github.com/chrisarusso/Drupalcamp-Asheville-2015-Presentation).
 
