@@ -27,7 +27,7 @@ We're excited to head to beautiful Asheville to teach, share and learn. We
 might even get a hike in and some craft beer while we're at it.
 
 #### [Building a Custom Theme in Drupal 8](http://www.slideshare.net/AnneTomasevich/building-a-custom-theme-in-drupal-8)
-Check out Anne's [slides](http://www.slideshare.net/AnneTomasevich/building-a-custom-theme-in-drupal-8).
+Check out Anne's [slides](http://annetee.github.io/create-a-custom-theme-d8/#/).
 Or clone her [presentation on Github](https://github.com/AnneTee/create-a-custom-theme-d8).
 
 #### Personal Git Workflow, For Everyone
