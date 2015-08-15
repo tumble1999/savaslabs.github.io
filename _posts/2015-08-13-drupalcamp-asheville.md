@@ -26,10 +26,11 @@ on his "personal git workflow, for everyone," which is also based off a
 We're excited to head to beautiful Asheville to teach, share and learn. We
 might even get a hike in and some craft beer while we're at it.
 
-#### Building a Custom Theme in Drupal 8
+#### [Building a Custom Theme in Drupal 8](http://www.slideshare.net/AnneTomasevich/building-a-custom-theme-in-drupal-8)
 Check out Anne's [slides](http://www.slideshare.net/AnneTomasevich/building-a-custom-theme-in-drupal-8).
-Or fork her [presentation on Github](https://github.com/AnneTee/create-a-custom-theme-d8).
+Or clone her [presentation on Github](https://github.com/AnneTee/create-a-custom-theme-d8).
 
 #### Personal Git Workflow, For Everyone
-Check out Chris's [presentation on Github](https://github.com/chrisarusso/Drupalcamp-Asheville-2015-Presentation).
+Check out Chris's [slides](http://www.slideshare.net/AnneTomasevich/personal-git-workflow-for-everyone).
+Or clone his [presentation on Github](https://github.com/chrisarusso/Drupalcamp-Asheville-2015-Presentation).
 
