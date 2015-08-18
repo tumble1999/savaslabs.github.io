@@ -15,8 +15,10 @@ city-state: Durham, North Carolina
 postal-code: 27701
 tags: cartography drupal event
 comments_enabled: 0
-summary: >
+summary: |
   Join us on the afternoon of April 24 to help port the Views GeoJSON module to Drupal 8.
+drupal_planet_summary: |
+  Triangle-area Drupalers and cartography enthusiasts: please join us from 1:00 PM to 5:00 PM on April 24 at the American Underground @ Main. Our team will be working on porting Views GeoJSON to Drupal 8.
 ---
 Triangle-area Drupalers and cartography enthusiasts: please join us from 1:00 PM to 5:00 PM on April 24 at the [American Underground @ Main](http://americanunderground.com/). Our team will be working on porting [Views GeoJSON](https://www.drupal.org/project/views_geojson) to Drupal 8.
 
