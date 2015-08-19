@@ -3,7 +3,7 @@ layout: post
 title: "Implementing a CTools multi-step form in a block"
 date: 2015-06-23
 author: Kosta Harlan
-tags: drupal
+tags: drupal drupal-planet
 summary: Some tips on how to implement a Drupal CTools multi-step form entirely in a block.
 drupal_planet_summary: |
   No one likes long forms. They're overwhelming to look at and it's easy to lose your place. Multi-step forms are a way to simplify data collection and make your users' lives easier.

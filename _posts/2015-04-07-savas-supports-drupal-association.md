@@ -3,7 +3,7 @@ title: Savas supports the Drupal Association
 layout: post
 date: 2015-04-07
 author: Kosta Harlan
-tags: drupal
+tags: drupal drupal-planet
 summary: Savas is proud to join the Drupal Association as an organization member.
 drupal_planet_summary: |
   Drupal is a thriving FOSS project, and one of the main organizations moving it forward is the Drupal Association. Today, Savas is proud to have become a supporting member of the Drupal Association.

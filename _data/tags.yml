@@ -3,6 +3,8 @@
 
 - slug: drupal
   name: Drupal
+- slug: drupal-planet
+  name: Drupal Planet
 - slug: jekyll
   name: Jekyll
 - slug: bourbon
