@@ -15,7 +15,7 @@
       <item>
         <title>{{ post.title | xml_escape }}</title>
         <description>{{ post.drupal_planet_summary | xml_escape | markdownify | xml_escape | replace: '!SITE_URL', site.url' }}
-        &lt;p&gt;&lt;a href=&quot;{{ site.url }}{{ post.url }}/&quot;&gt;Continue reading…&lt;/a&gt;&lt;/p&gt;
+        &lt;p&gt;&lt;a href=&quot;{{ site.url }}{{ post.url }}&quot;&gt;Continue reading…&lt;/a&gt;&lt;/p&gt;
         </description>
         <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
         <link>{{ post.url | prepend: site.url }}</link>
