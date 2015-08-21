@@ -29,7 +29,7 @@ Let's talk vocab.
 A preprocessor for CSS. [Sass](http://sass-lang.com/guide) offers functionalities not yet available in CSS like variables, rule nesting, and much more.
 
 ##### SCSS
-"Sassy CSS." Early Sass, with the file extension `.sass`, used a syntax quite different from the CSS syntax we know and...well, we know. Version 3 of Sass brought SCSS, returning to the same syntax as CSS and proving easier to use for most developers. Importantly, this means that valid CSS is also valid SCSS. Files ending with the `.scss` extension are written in SCSS. I still call them "Sass files;" please don't be mad at me.
+"Sassy CSS." Early Sass, with the file extension `.sass`, used a syntax quite different from the CSS syntax we're already familiar with. Version 3 of Sass brought SCSS, returning to the same syntax as CSS and proving easier to use for most developers. Importantly, this means that valid CSS is also valid SCSS. Files ending with the `.scss` extension are written in SCSS. I still call them "Sass files"; please don't be mad at me.
 
 If you found that last paragraph terribly interesting, you should [read this](http://thesassway.com/editorial/sass-vs-scss-which-syntax-is-better).
 
