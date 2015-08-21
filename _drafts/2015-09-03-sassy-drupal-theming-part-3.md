@@ -3,7 +3,7 @@ layout: post
 title: "Sassy Drupal theming: Best practices"
 date: 2015-09-03
 author: Anne Tomasevich
-tags: drupal theming sass bourbon
+tags: drupal drupal-planet theming sass bourbon
 summary: Some lessons learned about writing clear SCSS and taking advantage of what Sass has to offer.
 drupal_planet_summary: |
   TODO

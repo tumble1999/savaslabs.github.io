@@ -3,7 +3,7 @@ layout: post
 title: "Sassy Drupal theming: Setting up Bourbon and Neat"
 date: 2015-08-21
 author: Anne Tomasevich
-tags: drupal theming sass bourbon
+tags: drupal drupal-planet theming sass bourbon
 summary: A step-by-step tutorial on setting up Bourbon and Neat and compiling it all with Compass.
 drupal_planet_summary: |
   When Savas built a custom Drupal 8 theme, we needed to include a grid framework and chose Bourbon's Neat for its ease of use, its light weight, and the library of useful Sass mixins provided by Bourbon. In this post I detail how to set all of this up and use Compass to compile SCSS.
