@@ -33,10 +33,15 @@ $medium-screen: em(640) !default;
   }
 }
 
-.home .wrapper h3 { text-align: center; }
+.home .wrapper {
+  h3, h2 {
+    text-align: center;
+  }
+}
 
 .blog-list {
   @include outer-container;
   @include span-columns(12);
   background-color: $white;
 }
+
