@@ -64,6 +64,12 @@ textarea {
     font-size: $base-font-size * 1.2;
   }
 
+  // Keep ems from cascading in nested lists.
+  ul ul,
+  ul ul li {
+    font-size: 1em;
+  }
+
   ul { list-style-type: square; }
   ol { list-style-type: decimal; }
 
