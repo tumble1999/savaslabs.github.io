@@ -31,21 +31,17 @@ wondered why they haven't invested ~$100 into making their site more user friend
 You will have the opportunity to lead/shape design perspective at Savas.
 
 #### Expectations
-- Solid Chops in... 
-  + Adobe Photoshop and Adobe Illustrator.
-  + Creative execution with an online portfolio of design samples.
- + Strong attention to detail.
- + Familiarity with wireframing applications.
- + Familiarity with HTML and CSS.
- + Experience with Content Management Systems a plus.
- + Develop wireframes based on reviewing sitemaps, functional requirements and other discovery documentation.
- + Produce grid-based web designs that can easily be executed by front-end developers.
- + Design icons, banners, and additional support elements as necessary.
- + Meet with project managers to discuss project requirements and progress.
- + Discuss design decisions effectively and implement feedback accurately.
- + Work as part of a multidisciplinary team to ensure designs are implemented to spec.
- + Recommend solutions based on knowledge of web usability principles
-
++ Solid Chops in
+  + Adobe Photoshop and Adobe Illustrator
+  + web usability
+  + user experience
++ Strong attention to detail
++ Comfort with
+  + wireframing 
+  + HTML 
+  + CSS 
+  + Designing for popular CMSes 
+  + collaborating with front-end developers
 
 ---
 
@@ -54,11 +50,11 @@ You will have the opportunity to lead/shape design perspective at Savas.
 Do you have Drupal chops? Cool. We need you.
 
 #### Expectations 
-- Solid Chops in... 
++ Solid Chops in... 
   + Drupal 6, 7 and 8
   + git
   + MySQL
-- Good communication skills
-- A preferred IDE
-- Small ego (at least smaller than Chris's)
-- An interest in learning/growing
++ Good communication skills
++ A preferred IDE
++ Small ego (at least smaller than Chris's)
++ An interest in learning/growing
