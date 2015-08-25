@@ -7,7 +7,7 @@ layout: default
 <div class="post">
 
   <header class="post-header">
-    <h2 class="post-title">{{ page.title }}</h2>
+    <h1 class="post-title">{{ page.title }}</h1>
     <p>By <a href="{{ page.author | downcase | replace: ' ', '-'  | prepend: "/team/" | strip_newlines }}">{{ page.author }}</a></p>
     <p class="centerdot">&centerdot; </p>
     <p>{{ page.date | date: "%b %-d, %Y" }} </p><br>
