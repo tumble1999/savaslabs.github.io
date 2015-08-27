@@ -4,9 +4,9 @@ title: "Sassy Drupal theming: Best practices"
 date: 2015-09-03
 author: Anne Tomasevich
 tags: drupal drupal-planet theming sass bourbon
-summary: Some lessons learned about writing clear SCSS and taking advantage of what Sass has to offer.
+summary: Some lessons learned about writing lean, easy-to-understand SCSS and capitalizing on all Sass has to offer.
 drupal_planet_summary: |
-  TODO
+  In part 3 of my three-part series on using Sass with Drupal, I'll discuss some best practices for writing Sass that's lean, that makes sense to other developers, and that capitalizes on all Sass has to offer.
 
 ---
 
@@ -110,6 +110,30 @@ $copytext-color: #5C5240;               // Brown
 {% endhighlight %}
 
 With this method we can change any of the colors site-wide with a single edit.
+
+<hr>
+
+### 4. Nest, but nest responsibly
+
+Nesting is one of the best things about Sass, but anyone who's used it can tell you that getting nest-happy has consequences.
+
+- Specificity issues: Too many selectors can make it difficult to override styles
+- Code bloat: Nesting when it's not necessary can lead to styles that aren't actually needed clogging up your compiled CSS file
+- Unreadable code: Crazy nesting is difficult for the next developer to figure out
+
+Some people say "don't nest" or "only nest one level deep." I completely disagree since nesting is a great tool that solves one of CSS's biggest shortcomings.
+
+Some say follow the [Inception Rule](http://thesassway.com/beginner/the-inception-rule) (don't nest more than 4 levels). This is a good guideline and it's beneficial to be mindful of how many levels you've nested, but I don't think an arbitrary number should be a cold hard rule. My general rules of nesting:
+
+1. If your compiled CSS contains rulesets that aren't needed, you did something wrong. If you've got multiple selectors on one level but at the next level you only need to write a rule for one of them, close out the nest and start a new one.
+2. Follow your normal specificity rules. Don't use ID selectors since they're so difficult to override. Be as general as possible.
+3. Keep nests organized with:
+  - Comments. Explain blocks of code so it's easy for another developer to see what it's doing.
+  - Good spacing. If your code is appropriately spaced it's easier to read. Which brings me to my last point...
+
+### 5. Use SCSS-Lint
+
+Or whatever code inspector you want. We've had great success with [SCSS-Lint](https://github.com/brigade/scss-lint) on our [company website](https://github.com/savaslabs/savaslabs.github.io/blob/master/_tests/run-tests.sh). SCSS Lint checks everything from declaration order to whitespace to nesting depth. It's very strict out of the box but you can change or ignore linters to customize it to your needs. Because of the potential complexity of Sass, following coding standards becomes more crucial than ever. And, y'know, it's good for you.
 
 <hr>
 

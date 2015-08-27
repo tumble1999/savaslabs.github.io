@@ -66,7 +66,13 @@ textarea {
 
   // Keep ems from cascading in nested lists.
   ul ul,
-  ul ul li {
+  ul ul li,
+  ul ol,
+  ul ol li,
+  ol ul,
+  ol ul li,
+  ol ol,
+  ol ol li {
     font-size: 1em;
   }
 
