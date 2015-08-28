@@ -55,3 +55,4 @@ collections:
 # Gems
 gems:
   - jekyll-sitemap
+  - jekyll-redirect-from
