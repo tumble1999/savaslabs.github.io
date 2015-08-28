@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Sassy Drupal theming: a lighter version of SMACSS"
-date: 2015-08-27
+date: 2015-08-28
 author: Anne Tomasevich
 tags: drupal drupal-planet theming sass bourbon
 summary: We'll use SMACSS principles to organize our custom SCSS and keep it lean and maintainable.
