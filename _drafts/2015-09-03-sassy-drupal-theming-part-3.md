@@ -13,7 +13,7 @@ drupal_planet_summary: |
 In my previous posts we:
 
 - [Set up a `sass` directory](/2015/08/21/sassy-drupal-theming-part-1.html) containing the Bourbon and Neat libraries and learned how to use Compass to compile our SCSS
-- [Used SMACSS](/2015/08/27/sassy-drupal-theming-part-2.html) to organize our lean, modular custom SCSS
+- [Used SMACSS](/2015/08/28/sassy-drupal-theming-part-2.html) to organize our lean, modular custom SCSS
 
 To close out this series, I've compiled some lessons learned along the way that have helped me write the most maintainable Sass possible.
 

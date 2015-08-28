@@ -15,7 +15,7 @@ Recently Savas [built a custom Drupal 8 theme](/2015/06/10/d8-theming-basics.htm
 In this three-part series I'll detail:
 
 - Setting up Bourbon and Neat within a Drupal theme for quick, well-organized styling
-- Creating a Sass file structure following a light version of SMACSS
+- [Creating a Sass file structure following a light version of SMACSS](/2015/08/28/sassy-drupal-theming-part-2.html)
 - What we at Savas consider best practices for creating shareable, maintainable Sass
 
 I'll be pulling some examples from our Drupal 8 theme, but none of this is Drupal-8-specific and really, it's not entirely Drupal-specific. These principles can be applied to any site. Much of the material in these posts is also largely a matter of opinion, so if you disagree or if something else works better for you, sound off about it in the [comments!](#js-expander-trigger)
@@ -291,4 +291,4 @@ sass
 └── styles.scss
 {% endhighlight %}
 
-Where do we go from here? In future posts, I'll tackle the `base`, `components`, and `layouts` SMACSS-based directories and the custom `scss` files they will hold. I'll also go through some of Savas's best practices for writing Sass that can be easily shared amongst team members and maintained in the long run.
+Where do we go from here? In [my next post](/2015/08/28/sassy-drupal-theming-part-2.html), I tackle the `base`, `components`, and `layouts` SMACSS-based directories and the custom `scss` files they will hold. In a future post I'll go through some of Savas's best practices for writing Sass that can be easily shared amongst team members and maintained in the long run.
