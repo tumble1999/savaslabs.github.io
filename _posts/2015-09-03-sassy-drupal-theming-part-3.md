@@ -3,10 +3,8 @@ layout: post
 title: "Sassy Drupal theming: Best practices"
 date: 2015-09-03
 author: Anne Tomasevich
-tags: drupal drupal-planet theming sass bourbon
+tags: drupal theming sass bourbon
 summary: Some lessons learned about writing lean, easy-to-understand SCSS and capitalizing on all Sass has to offer.
-drupal_planet_summary: |
-  In part 3 of my three-part series on using Sass with Drupal, I'll discuss some best practices for writing Sass that's lean, that makes sense to other developers, and that capitalizes on all Sass has to offer.
 
 ---
 
