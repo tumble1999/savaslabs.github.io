@@ -61,15 +61,14 @@ shaping design at Savas, this is the position for you. We'd love to hear
 about front-end development techniques you're comfortable with to complement
 your design skills.
 
-You will have the opportunity to lead/shape design perspective at Savas.
 
 #### Expectations
-+ Working experience using
-  + Leading design tools/software
++ Working experience 
+  + using leading design tools/software
     + This probably means Adobe
-    + We'd *love* to hear about success with open-source tools
-  + web usability
-  + user experience 
+    + We'd *love* to hear about success with open-source tools 
+  + designing for web usability
+  + designing for user experience 
 + Strong attention to detail
 + Comfort with
   + wireframing 
