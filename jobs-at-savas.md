@@ -25,7 +25,7 @@ At Savas, we prioritize a few things. We like people who are enjoyable to work
 with. We like to learn, and teach one another, and sometimes teach others for free. 
 We dedicate time for collaboration every week. We allow a flexible work schedule 
 as long as we are upholding our commitments to one another and our clients. We 
-value openness, over coming in with top-notch experience, though we certainly want
+value openness over coming in with top-notch experience, though we certainly want
 to hear about your experience. We value a work/life balance that we believe improves 
 our environment and productivity. We use emoji _a lot_. You **absolutely** don't have to 
 <img src="http://www.emoji-cheat-sheet.com/graphics/emojis/wink.png" alt="winking emoji" class="emoji">.
@@ -56,16 +56,20 @@ If you're Interested in applying for this position
 
 ### Web designer 
 
-Do you design websites well? I don't, that's why I need you. We'd love to hear
-about other front-end development techniques you're comfortable with.
+Do you design websites well? If you are interested in a leadership role in 
+shaping design at Savas, this is the position for you. We'd love to hear
+about front-end development techniques you're comfortable with to complement
+your design skills.
 
 You will have the opportunity to lead/shape design perspective at Savas.
 
 #### Expectations
-+ Solid Chops in
-  + Adobe Photoshop and Adobe Illustrator
++ Working experience using
+  + Leading design tools/software
+    + This probably means Adobe
+    + We'd *love* to hear about success with open-source tools
   + web usability
-  + user experience
+  + user experience 
 + Strong attention to detail
 + Comfort with
   + wireframing 
