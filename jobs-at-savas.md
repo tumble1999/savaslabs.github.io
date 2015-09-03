@@ -3,8 +3,9 @@ layout: page-narrow
 title: Opportunities at Savas
 permalink: "/jobs-at-savas/"
 excerpt: | 
-  Savas is constantly evolving its needs, and is always on the lookout for talented
-  and engaged people to help us deliver excellence to the interwebs and beyond.
+  Savas is constantly evolving its needs, and is always on the lookout for 
+  talented and engaged people to help us deliver excellence to the interwebs and 
+  beyond.
 ---
 
 <p class="page-description">
