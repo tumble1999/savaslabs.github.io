@@ -153,4 +153,4 @@ Now we've got a nicely organized, easy to navigate Sass directory, ready to hold
 
 <hr>
 
-But how do we ensure that our one CSS file really is beautiful? Check in next week when I talk about best practices for writing Sass that you can easily maintain or pass off to another developer.
+But how do we ensure that our one CSS file really is beautiful? Check out [my final post](/2015/09/03/sassy-drupal-theming-part-3.html) about best practices for writing Sass that you can easily maintain or pass off to another developer.
