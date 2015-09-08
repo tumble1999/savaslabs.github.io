@@ -33,8 +33,8 @@ our environment and productivity. We use emoji _a lot_. You **absolutely** don't
 ### Drupal Developer 
 
 #### Our projects
-When this was written, we were actively working on projects in Drupal 5,6,7 and 8
-. Yes I said 5. You don't need to know all these versions like the back of your
+When this was written, we were actively working on projects in Drupal 5,6,7 and 
+8. Yes I said 5. You don't need to know all these versions like the back of your
 hand, but you ought to be able to hit the ground running on a Drupal project 
 somewhere in the middle. 
 
