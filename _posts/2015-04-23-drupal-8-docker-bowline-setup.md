@@ -166,10 +166,6 @@ Stop all docker containers:
 {% highlight bash %}
 $ docker stop $(docker ps -a -q)
 {% endhighlight %}
-Remove all docker containers:
-{% highlight bash %}
-$ docker rm $(docker ps -a -q)
-{% endhighlight %}
 Stop the boot2docker virtual machine:
 {% highlight bash %}
 $ boot2docker stop
