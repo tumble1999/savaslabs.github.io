@@ -5,6 +5,9 @@ date: 2015-04-23
 author: Dan Murphy
 tags: docker bowline osx drupal drupal8 drupal-planet
 summary: Learn how to use Docker, Docker Compose, and Bowline to set up a standardized local Drupal development environment on your Mac.
+drupal_planet_summary: |
+  In this post I explain how my team used Docker, Docker Compose, and Bowline to spin up consistent local dev environments on OS X as part of a Drupal 8 contrib module sprint.
+
 ---
 In preparation for a [code sprint our team is organizing to port Views GeoJSON to Drupal 8](/2015/04/16/codesprint-port-views-geojson-drupal-8.html), we decided it would be a great opportunity to standardize our Drupal 8 local development environments. To ease this process, we ended up using Docker, Docker Compose, and Bowline.
 
