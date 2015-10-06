@@ -46,7 +46,7 @@ somewhere in the middle.
   + an interest in learning/teaching/growing
   + a detail-oriented approach
   + pride in the quality of your work
-+ You know how to develop "The Drupal Way". You're familiar with
++ You understand the importance of developing 'The Drupal Way'. You're familiar with
   + the hook system
   + the theming engine
   + drush
@@ -70,14 +70,14 @@ somewhere in the middle.
 ### About the position
 We are hiring intermediate to senior level Drupal developers. You need to be 
 skilled, but compatibility with team culture, and attitude towards learning and 
-improvement come paramount to existing expert knowledge. The right fit will have
- a great support system with Savas to excel. You will work 
-collaboratively with a team primarily located in Durham, NC, though you need
- not be physically located nearby to apply. You will work directly with 
- high-profile clients who operate in many different industries. The position will require
- proficiency in most aspects of Drupal development. You will also have a voice
- in the kind of work you find most rewarding, and we will do what we can to 
- meet your preferences.  
+improvement come paramount to existing expert knowledge. At Savas we provide peer 
+support and work collectively to achieve our individual and company goals. You 
+will work collaboratively with a team primarily located in Durham, NC, though 
+you need not be physically located nearby to apply. You will work directly with 
+high-profile clients who operate in many different industries. The position will 
+require proficiency in most aspects of Drupal development. You will also have a 
+voice in the kind of work you find most rewarding, and we will do what we can to 
+meet your preferences.  
   
 Let's start there. 
 If you're Interested in applying for this position 
