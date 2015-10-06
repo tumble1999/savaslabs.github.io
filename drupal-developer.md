@@ -72,7 +72,7 @@ We are hiring intermediate to senior level Drupal developers. You need to be
 skilled, but compatibility with team culture, and attitude towards learning and 
 improvement come paramount to existing expert knowledge. At Savas we provide peer 
 support and work collectively to achieve our individual and company goals. You 
-will work collaboratively with a team primarily located in Durham, NC, though 
+will work with a team primarily located in Durham, NC, though 
 you need not be physically located nearby to apply. You will work directly with 
 high-profile clients who operate in many different industries. The position will 
 require proficiency in most aspects of Drupal development. You will also have a 
