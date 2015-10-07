@@ -50,7 +50,8 @@ At Savas, we have internship opportunities for **project managers**, and
 **web developers**. This is a great opportunity to see what working in a dynamic 
 web agency is like. The selected candidate will receive support from a technical 
 and business perspective, but will also need to be self-motivated, and able to
-contribute through times of limited supervision. This is a part-time internship.
+contribute through times of limited supervision. This is a part-time, paid 
+internship.
  
 ---
 
