@@ -64,7 +64,7 @@ somewhere in the middle.
   + Continous Integration experience (e.g. Travis, Jenkins)
   + Automated testing experience (e.g. Behat)
   + javascript library knowledge (e.g. jQuery)
-  + OO Php
+  + OO PHP
   + Drupal 8 
  
 ### About the position
