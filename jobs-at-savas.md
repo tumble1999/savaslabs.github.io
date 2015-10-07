@@ -44,29 +44,15 @@ since **we greatly embrace diversity**!
 
 ---
 
+### Internship
+
+[Full description](/intern)
+
+---
+
 ### Web designer 
 
-Do you design websites well? If you are interested in a leadership role in 
-shaping design at Savas, this is the position for you. We'd love to hear
-about front-end development techniques you're comfortable with to complement
-your design skills.
+[Full description](/web-designer)
 
-
-#### Expectations
-+ Working experience 
-  + using leading design tools/software
-    + This probably means Adobe
-    + We'd *love* to hear about success with open-source tools 
-  + designing for web usability
-  + designing for user experience 
-+ Strong attention to detail
-+ Comfort with
-  + wireframing 
-  + HTML 
-  + CSS 
-  + Designing for popular CMSes 
-  + collaborating with front-end developers
-
-Let's start there. 
-If you're Interested in applying for this position 
-<a href="/contact">send us a message</a>. You pick the format.
+Think we need you, but you're too unique to fit into one of the boxes above? 
+We're listening. <a href="/contact">Send us a message</a>. You pick the format.
