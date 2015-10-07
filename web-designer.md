@@ -1,12 +1,19 @@
 ---
 layout: page-narrow
-title: Web designer available position 
+title: Web designer 
 permalink: "/web-designer/"
 excerpt: | 
   Savas is seeking to employ a web designer.
 ---
 
-### About working with us
+### The position
+We would like to strengthen our web design offering to keep up with the 
+requests we receive from our high-profile clients. If you are interested in a 
+leadership role in shaping design at Savas, this is the position for you. We'd 
+love to hear about front-end development techniques you're comfortable with to complement
+your design skills.
+
+### Working at Savas 
 At Savas, we prioritize a few things. We like people who are enjoyable to work 
 with. We like to **learn** from and **teach** one another, and often the result is others
  learn as well either via [blog posts](/news), 
@@ -55,12 +62,7 @@ first projects you would work on would be redesigning our website. We have
 assets from a team photo-shoot that are long overdue to make their way into
 our website, and you're just the person to help us with that!
  
-### About the position
-We would like to strengthen our web design offering to keep up with the 
-requests we receive from our high-profile clients. If you are interested in a 
-leadership role in shaping design at Savas, this is the position for you. We'd 
-love to hear about front-end development techniques you're comfortable with to complement
-your design skills.
+---
 
 Let's start there. 
 If you're Interested in applying for this position 

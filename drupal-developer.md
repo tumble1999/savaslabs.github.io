@@ -6,7 +6,18 @@ excerpt: |
   Savas hiring for Drupal developer.
 ---
 
-### About working with us
+### The position
+We are hiring intermediate to senior level Drupal developers. You need to be 
+skilled, but compatibility with team culture, and attitude towards learning and 
+improvement come paramount to existing expert knowledge. At Savas we provide peer 
+support and work collectively to achieve our individual and company goals. You 
+will work with a team primarily located in Durham, NC, though 
+you need not be physically located nearby to apply. You will often interface
+directly with our clients. The position will require proficiency in most aspects 
+of Drupal development. You will also have a voice in the kind of work you find 
+most rewarding, and we will do what we can to meet your preferences. 
+
+### Working at Savas 
 At Savas, we prioritize a few things. We like people who are enjoyable to work 
 with. We like to **learn** from and **teach** one another, and often the result is others
  learn as well either via [blog posts](/news), 
@@ -69,16 +80,7 @@ hand, but you ought to be able to on-board quickly to a Drupal project
 somewhere in the middle. We work with high-profile corporate and nonprofit 
 clients who operate in many different industries.
  
-### About the position
-We are hiring intermediate to senior level Drupal developers. You need to be 
-skilled, but compatibility with team culture, and attitude towards learning and 
-improvement come paramount to existing expert knowledge. At Savas we provide peer 
-support and work collectively to achieve our individual and company goals. You 
-will work with a team primarily located in Durham, NC, though 
-you need not be physically located nearby to apply. You will often interface
-directly with our clients. The position will require proficiency in most aspects 
-of Drupal development. You will also have a voice in the kind of work you find 
-most rewarding, and we will do what we can to meet your preferences.  
+--- 
   
 Let's start there. 
 If you're Interested in applying for this position 
