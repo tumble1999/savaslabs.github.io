@@ -20,6 +20,17 @@ excerpt: |
    for everyone involved to learn and grow together. You'll like it here.
 </p>
 
+## Available positions
+[Drupal developer](/drupal-developer)
+
+---
+[Developer / project manager internship](/intern)
+
+---
+[Web designer](/web-designer)
+
+---
+
 ### About working with us
 At Savas, we prioritize a few things. We like people who are enjoyable to work 
 with. We like to **learn** from and **teach** one another, and often the result is others
@@ -38,23 +49,8 @@ We use emoji _a lot_
 You **absolutely** don't have to <img src="http://www.emoji-cheat-sheet.com/graphics/emojis/relieved.png" alt="relived emoji" class="emoji">,
 since **we greatly embrace diversity**!
 
-### Drupal developer 
-
-[Full description](/drupal-developer)
-
----
-
-### Internship
-
-[Full description](/intern)
-
----
-
-### Web designer 
-
-[Full description](/web-designer)
 
 ---
 
 Think we need you, but you're too unique to fit into one of the boxes above? 
-We're listening. <a href="/contact">Send us a message</a>. You pick the format.
+We're listening. <a href="/contact">Send us a message</a>. You pick the medium.
