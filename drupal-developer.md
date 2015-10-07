@@ -33,12 +33,6 @@ since **we greatly embrace diversity**!
 + Conference presentation opportunities
 + 24/7 access to the [American Underground](http://americanunderground.com/) 
 
-#### Our projects
-When this was written, we were actively working on projects in Drupal 5,6,7 and 
-8. Yes I said 5. You don't need to know all these versions like the back of your
-hand, but you ought to be able to on-board quickly to a Drupal project 
-somewhere in the middle.  
-
 #### About You 
 + You have
   + great communication skills
@@ -66,6 +60,14 @@ somewhere in the middle.
   + javascript library knowledge (e.g. jQuery)
   + OO PHP
   + Drupal 8 
+  
+  
+#### Our projects
+When this was written, we were actively working on projects in Drupal 5,6,7 and 
+8. Yes I said 5. You don't need to know all these versions like the back of your
+hand, but you ought to be able to on-board quickly to a Drupal project 
+somewhere in the middle. We work with high-profile corporate and nonprofit 
+clients who operate in many different industries.
  
 ### About the position
 We are hiring intermediate to senior level Drupal developers. You need to be 
@@ -73,11 +75,10 @@ skilled, but compatibility with team culture, and attitude towards learning and
 improvement come paramount to existing expert knowledge. At Savas we provide peer 
 support and work collectively to achieve our individual and company goals. You 
 will work with a team primarily located in Durham, NC, though 
-you need not be physically located nearby to apply. You will work directly with 
-high-profile clients who operate in many different industries. The position will 
-require proficiency in most aspects of Drupal development. You will also have a 
-voice in the kind of work you find most rewarding, and we will do what we can to 
-meet your preferences.  
+you need not be physically located nearby to apply. You will often interface
+directly with our clients. The position will require proficiency in most aspects 
+of Drupal development. You will also have a voice in the kind of work you find 
+most rewarding, and we will do what we can to meet your preferences.  
   
 Let's start there. 
 If you're Interested in applying for this position 
