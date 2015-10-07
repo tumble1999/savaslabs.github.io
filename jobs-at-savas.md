@@ -3,15 +3,15 @@ layout: page-narrow
 title: Opportunities at Savas
 permalink: "/jobs-at-savas/"
 excerpt: | 
- The needs at Savas are constantly evolving, but ​*we are constantly*​ on the 
+ The needs at Savas are constantly evolving, but *​*we are always**​ on the 
  lookout for talented and engaged people to help us deliver excellence to the 
  interwebs and beyond for our clients.
 ---
 
 <p class="page-description">
-  The needs at Savas are constantly evolving, but ​*we are constantly*​ on the 
-  lookout for talented and engaged people to help us deliver excellence to the 
-  interwebs and beyond for our clients.
+  The needs at Savas are constantly evolving, but ​<b>we are always</b> on 
+  the lookout for talented and engaged people to help us deliver excellence to 
+  the interwebs and beyond for our clients.
   
  <br>
  <br> 
@@ -30,27 +30,9 @@ to hear about your experience. We value a work/life balance that we believe impr
 our environment and productivity. We use emoji _a lot_. You **absolutely** don't have to 
 <img src="http://www.emoji-cheat-sheet.com/graphics/emojis/wink.png" alt="winking emoji" class="emoji">.
 
-### Drupal Developer 
+### Drupal developer 
 
-#### Our projects
-When this was written, we were actively working on projects in Drupal 5,6,7 and 
-8. Yes I said 5. You don't need to know all these versions like the back of your
-hand, but you ought to be able to hit the ground running on a Drupal project 
-somewhere in the middle. 
-
-#### About You 
-+ You know how to develop "The Drupal Way" 
-+ You have
-  + good communication skills
-  + an interest in collaborating and sharing
-  + an interest in learning/teaching/growing
-  + a detail-oriented approach
-  + pride in the quality of your work
-  
-  
-Let's start there. 
-If you're Interested in applying for this position 
-<a href="/contact">send us a message</a>. You pick the format.
+[Full description](/drupal-developer)
 
 ---
 
