@@ -22,13 +22,21 @@ excerpt: |
 
 ### About working with us
 At Savas, we prioritize a few things. We like people who are enjoyable to work 
-with. We like to learn, and teach one another, and sometimes teach others for free. 
-We dedicate time for collaboration every week. We allow a flexible work schedule 
-as long as we are upholding our commitments to one another and our clients. We 
-value openness over coming in with top-notch experience, though we certainly want
-to hear about your experience. We value a work/life balance that we believe improves 
-our environment and productivity. We use emoji _a lot_. You **absolutely** don't have to 
-<img src="http://www.emoji-cheat-sheet.com/graphics/emojis/wink.png" alt="winking emoji" class="emoji">.
+with. We like to **learn** from and **teach** one another, and often the result is others
+ learn as well either via [blog posts](/news), 
+ [conference prezzies](http://chrisarusso.github.io/asheville.html#/) or social media.
+We dedicate time each week for self-improvement, socializing, and collaboration. 
+We encourage a flexible work schedule
+so long as we are upholding our commitments to one another and our clients. We 
+value **openness**; you are encouraged to be vocal about _not_ knowing something,
+and fix it. We are very honest, yet **very respectful**; this is not a cut-throat 
+environment.
+We take a lot of pride in the quality of our work. We value a work/life **balance** 
+that keeps us productive and happy. We like to have **fun**.
+We use emoji _a lot_ 
+<img src="http://www.emoji-cheat-sheet.com/graphics/emojis/thumbsup.png" alt="thumbs up emoji" class="emoji">. 
+You **absolutely** don't have to <img src="http://www.emoji-cheat-sheet.com/graphics/emojis/relieved.png" alt="relived emoji" class="emoji">,
+since **we greatly embrace diversity**!
 
 ### Drupal developer 
 
