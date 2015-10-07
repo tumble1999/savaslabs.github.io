@@ -64,6 +64,6 @@ your design skills.
 
 Let's start there. 
 If you're Interested in applying for this position 
-<a href="/contact">send us a message</a>. You pick the format.
+<a href="/contact">send us a message</a>. You pick the medium.
 
 ---

@@ -82,6 +82,6 @@ most rewarding, and we will do what we can to meet your preferences.
   
 Let's start there. 
 If you're Interested in applying for this position 
-<a href="/contact">send us a message</a>. You pick the format.
+<a href="/contact">send us a message</a>. You pick the medium.
 
 ---
