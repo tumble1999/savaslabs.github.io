@@ -24,7 +24,7 @@ excerpt: |
 [Drupal developer](/drupal-developer)
 
 ---
-[Developer / project manager internship](/intern)
+[Developer / project manager intern](/intern)
 
 ---
 [Web designer](/web-designer)
