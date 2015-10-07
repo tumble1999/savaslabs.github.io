@@ -54,5 +54,7 @@ since **we greatly embrace diversity**!
 
 [Full description](/web-designer)
 
+---
+
 Think we need you, but you're too unique to fit into one of the boxes above? 
 We're listening. <a href="/contact">Send us a message</a>. You pick the format.
