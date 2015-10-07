@@ -3,7 +3,7 @@ layout: page-narrow
 title: Internship opportunity available 
 permalink: "/intern/"
 excerpt: | 
-  Savas is hiring for internship.
+  Savas is hiring for internship positions.
 ---
 
 ### About working with us
@@ -27,39 +27,33 @@ since **we greatly embrace diversity**!
 #### About You 
 + You have
   + great communication skills
+  + great organization
   + an interest in collaborating and sharing
   + an interest in learning/teaching/growing
   + a detail-oriented approach
   + pride in the quality of your work
+  + the ability to learn quickly
 + You have some experience with
-  + web development
-  + working closely with MySQL
-  + working with the Apache web server
-  + using git
+  + web development or project management
 + Bonus points for
   + Drupal development experience
-  + 
   
 #### Our projects
 When this was written, we were actively working on web projects in varying 
 capacities. Sometimes, we're the rescue team, sometimes we build from scratch,
-sometimes we design, and sometimes we do everything else in between. We work 
-with high-profile corporate and nonprofit clients who operate in many different 
-industries.
+sometimes we do custom designs, and sometimes we do everything else in between. 
+We work with high-profile corporate and nonprofit clients who operate in many 
+different industries.
  
 ### About the position
-At Savas, we have needs for **project managers**, **developers**. This is an 
+At Savas, we have internship opportunities for **project managers**, and 
+**web developers**. This is a great opportunity to see what working in a dynamic 
+web agency is like. The selected candidate will receive support from a technical 
+and business perspective, but will also need to be self-motivated, and able to
+contribute through times of limited supervision. This is a part-time internship.
+ 
+---
 
-You need to be 
-skilled, but compatibility with team culture, and attitude towards learning and 
-improvement come paramount to existing expert knowledge. At Savas we provide peer 
-support and work collectively to achieve our individual and company goals. You 
-will work with a team primarily located in Durham, NC, though 
-you need not be physically located nearby to apply. You will often interface
-directly with our clients. The position will require proficiency in most aspects 
-of Drupal development. You will also have a voice in the kind of work you find 
-most rewarding, and we will do what we can to meet your preferences.  
-  
 Let's start there. 
 If you're Interested in applying for this position 
 <a href="/contact">send us a message</a>. You pick the format.
