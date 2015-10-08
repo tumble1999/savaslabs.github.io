@@ -1,3 +1,4 @@
+// Colors ----------------------------------------------------------------------
 $dark-blue: #14133b !default;
 $fuschia: #9e023b;
 $yellow: #f2a324;
@@ -7,6 +8,31 @@ $gainsboro: #dcdcdc;
 $white: #fff;
 $navtools-background: #505050;
 
+// Fonts -----------------------------------------------------------------------
+$roboto: "Roboto Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$heading-font: 'PT Serif', "Helvetica Neue", Helvetica, Arial, sans-serif;
+$mono: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace !default;
+
+// Mixins and abstract classes -------------------------------------------------
+%button {
+  $background: lighten($gainsboro, 10%);
+  background-color: $background;
+  border: 1px solid $gainsboro;
+  border-radius: 3px;
+  color: $fuschia;
+  font-family: $roboto;
+  margin-top: 2em;
+  padding: .75em 1em;
+  transition: (all .2s ease-in-out);
+
+  &:hover,
+  &:focus {
+    background-color: lighten($background, 5%);
+    color: $orange;
+  }
+}
+
+// Syntax highlighting ---------------------------------------------------------
 $noise-bg: image-url('noise.png') top left !default;
 
 // Syntax highlighting is based off a Sass port of the Solarized theme,
@@ -28,7 +54,7 @@ $solar-red:       #9e023b;
 $solar-magenta:   #d33682;
 $solar-violet:    #501888;
 $solar-blue:      #14133b;
-$solar-cyan:      #0a5365;
+$solar-cyan:      #0a5365; // Inline syntax highlighting.
 $solar-green:     #055c2b;
 
 
