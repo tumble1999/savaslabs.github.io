@@ -143,19 +143,7 @@
   }
 
   [type="submit"] {
-    $background: lighten($gainsboro, 10%);
-    background-color: $background;
-    border: 1px solid $gainsboro;
-    color: $fuschia;
-    font-family: $roboto;
-    margin-top: 2em;
-    transition: (all .2s ease-in-out);
-
-    &:hover,
-    &:focus {
-      background-color: lighten($background, 5%);
-      color: $orange;
-    }
+    @extend %button;
   }
 
   .email-disclaimer {

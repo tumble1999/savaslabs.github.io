@@ -40,9 +40,44 @@ $medium-screen: em(640) !default;
   }
 }
 
-.blog-list {
-  @include outer-container;
-  @include span-columns(12);
-  background-color: $white;
+.job-posting-block {
+  @include media($medium-screen) {
+    @include span-columns(8);
+    @include shift(2);
+  }
+
+  $link-background: lighten($gainsboro, 10%);
+  text-align: center;
+
+  p {
+    font-size: 1.2em;
+    text-align: left;
+  }
+
+  a {
+    @extend %button;
+    display: inline-block;
+    font-size: 1.2em;
+    margin: 2em auto;
+    width: auto;
+  }
+
+  hr {
+    margin-bottom: 3em;
+  }
+}
+
+
+.home-blog-list {
+  clear: both;
+
+  .view-more-posts {
+    font-size: 1.2em;
+    text-align: center;
+
+    i {
+      margin-left: 5px;
+    }
+  }
 }
 
