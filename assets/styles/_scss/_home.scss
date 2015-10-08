@@ -41,13 +41,13 @@ $medium-screen: em(640) !default;
 }
 
 .job-posting-block {
+  $link-background: lighten($gainsboro, 10%);
+  text-align: center;
+
   @include media($medium-screen) {
     @include span-columns(8);
     @include shift(2);
   }
-
-  $link-background: lighten($gainsboro, 10%);
-  text-align: center;
 
   p {
     font-size: 1.2em;
