@@ -1,7 +1,3 @@
-$roboto: "Roboto Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
-$martel: 'Martel Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
-$mono: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace !default;
-
 body {
   font-family: $roboto;
 }
@@ -12,8 +8,8 @@ h3,
 h4,
 h5,
 h6 {
-  color: $dark-blue;
-  font-family: $roboto;
+  color: $fuschia;
+  font-family: $heading-font;
   font-weight: 800;
 }
 
@@ -24,12 +20,16 @@ h4 { font-size: 150%; }
 h5 { font-size: 120%; }
 
 a {
-  color: $fuschia;
+  color: $solar-cyan;
 
   &:hover,
   &:focus {
-    color: $orange;
+    color: lighten($solar-cyan, 10%);
   }
+}
+
+p a {
+  border-bottom: .1em solid rgba(10,83,101,.1);
 }
 
 .card-copy {

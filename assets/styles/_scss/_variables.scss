@@ -8,6 +8,11 @@ $gainsboro: #dcdcdc;
 $white: #fff;
 $navtools-background: #505050;
 
+// Fonts -----------------------------------------------------------------------
+$roboto: "Roboto Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$heading-font: 'PT Serif', "Helvetica Neue", Helvetica, Arial, sans-serif;
+$mono: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace !default;
+
 // Mixins and abstract classes -------------------------------------------------
 %button {
   $background: lighten($gainsboro, 10%);
