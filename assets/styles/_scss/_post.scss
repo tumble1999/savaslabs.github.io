@@ -66,12 +66,14 @@
 .blog-image-large {
   @extend .blog-image;
   max-width: 500px;
+  width: 100%;
 }
 
 .blog-image-xl {
   @extend .blog-image;
   height: auto;
   max-width: 737px; // Width of narrow column layout on lg screens
+  width: 100%;
 }
 
 // Comment block expander.

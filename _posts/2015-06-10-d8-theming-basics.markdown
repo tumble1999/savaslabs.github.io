@@ -356,7 +356,7 @@ One useful function that comes with Twig is `dump()`. This function works once y
 
 `dump()` is great, but it outputs a rather unwieldy array.
 
-<img class="blog-image-xl" src="{{ site.base_url }}/assets/img/blog/dump-output.png" alt="Screenshot of dump function output.">
+<img class="blog-image-large" src="{{ site.base_url }}/assets/img/blog/dump-output.png" alt="Screenshot of dump function output.">
 
 Enter the beloved Devel module and the new Devel Kint module. Kint is to Drupal 8 what krumo was to Drupal 7. Once Devel and Devel Kint are installed, you can use `kint()` in place of `dump()` for a nice expandable array.
 
