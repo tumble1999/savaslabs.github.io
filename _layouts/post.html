@@ -5,7 +5,7 @@ layout: default
 {% include tag-logic.html %}
 
 <div class="post">
-
+    <div class="flash-success"><span><a href="/jobs-at-savas">Attention Drupal devs & designers: We're hiring & we'd love to work with you!</a></span></div>
   <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
     <p>By <a href="{{ page.author | downcase | replace: ' ', '-'  | prepend: "/team/" | strip_newlines }}">{{ page.author }}</a></p>
@@ -24,7 +24,6 @@ layout: default
     {% if site.comment_server_enabled == 1 %}
       {% include comment-form.html %}
     {% endif %}
-    {% include job-posting-block.html %}
     {% include post-meta.html %}
     {% include previous-next-links.html %}
 
