@@ -272,3 +272,41 @@
     float: right;
   }
 }
+
+// Job posting banner.
+.job-banner {
+  background: $orange;
+  padding: 1em;
+  text-align: center;
+  width: 100%;
+
+  .job-banner__title {
+    color: $white;
+    display: inline-block;
+    margin-bottom: .5em;
+
+    @include media($large-screen) {
+      margin-bottom: 0;
+      margin-right: .5em;
+    }
+
+    a {
+      color: $white;
+    }
+  }
+
+  .job-banner__description {
+    display: inline-block;
+    font-size: 1.5em;
+    margin-bottom: 0;
+
+    @include media($large-screen) {
+      line-height: 250%;
+    }
+
+    a {
+      border-bottom: .1em solid rgba(250, 250, 250, .1);
+      color: $white;
+    }
+  }
+}
