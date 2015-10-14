@@ -11,7 +11,7 @@ summary: Using composer manager to manage a custom module's dependencies.
 #### Why Composer?
 We at Savas love [Composer](https://getcomposer.org/) and use it with many of our projects to help manage our automated testing dependencies.
 
-For those not already familiar, [Composer](https://getcomposer.org/) is a package manager for PHP. If you want to go further down the rabbit hole ["a package is a namespace that organizes a set of related classes and interfaces”](https://docs.oracle.com/javase/tutorial/java/concepts/package.html.)
+For those not already familiar, [Composer](https://getcomposer.org/) is a package manager for PHP. If you want to go further down the rabbit hole ["a package is a namespace that organizes a set of related classes and interfaces.”](https://docs.oracle.com/javase/tutorial/java/concepts/package.html)
 
 Basically, Composer allows you to manage dependencies on a per project basis. Those dependencies live within the project directory so that everything is encapsulated there.  And since you can specify package versions, different projects on your systems can depend on different versions. Composer also pulls in the dependencies of your project's dependencies, keeping you out of ['dependency hell'](https://en.wikipedia.org/wiki/Dependency_hell). You simply specify your projects dependencies in a `composer.json` file, then pull in all of your project's dependencies into a `/vendor` directory on the command line via `composer install`. (You can also update your dependencies via `composer update`).
 
