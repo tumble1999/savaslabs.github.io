@@ -23,7 +23,7 @@ While we were excited that we could use Composer to easily install the dependenc
 #### Composer Manager to the Rescue!
 Things get a little more complex when Drupal modules start specifying dependencies. But luckily for us, [Composer Manager](https://www.drupal.org/project/composer_manager) thought this through and provides a solution.
 
-[Composer Manager](https://www.drupal.org/project/composer_manager) is a Drupal contributed modules with releases for Drupal 6, 7, and 8.  From the project description:
+[Composer Manager](https://www.drupal.org/project/composer_manager) is a Drupal contributed module with releases for Drupal 6, 7, and 8.  From the project description:
 
 > Composer Manager allows each contributed module to ship with its own composer.json file, listing the module-specific requirements. It then merges the requirements of all found modules into the consolidated composer.json file, consumed by composer install/update. This results in a single vendor directory shared across all modules which prevents code duplication and version mismatches.
 
