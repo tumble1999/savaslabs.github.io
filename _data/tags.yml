@@ -45,3 +45,7 @@
   name: Productivity
 - slug: best-practices
   name: Best Practices
+- slug: composer
+  name: Composer
+- slug: module-development
+  name: Module Development
