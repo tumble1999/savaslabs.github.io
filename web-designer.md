@@ -62,10 +62,10 @@ first projects you would work on would be redesigning our website. We have
 assets from a team photo-shoot that are long overdue to make their way into
 our website, and you're just the person to help us with that!
  
----
-
+--- 
+  
 Let's start there. 
 If you're Interested in applying for this position 
-<a href="/contact">send us a message</a>. You pick the medium.
+<a href="/contact">send us a message</a> and attach a resumé and cover letter.
 
 ---

@@ -84,6 +84,6 @@ clients who operate in many different industries.
   
 Let's start there. 
 If you're Interested in applying for this position 
-<a href="/contact">send us a message</a>. You pick the medium.
+<a href="/contact">send us a message</a> and attach a resumé and cover letter.
 
 ---
