@@ -110,16 +110,21 @@ was screened followed by a great panel "Cultivating Diversity and Inclusion in
 Projects, Communities, and Companies." I won't pretend I can capture all
 of the nuances of that necessary conversation, but some highlights to me were:
 
-+ If you want to hire more women, don't have your on-staff female developer 
-passing out t-shirts, have her interviewing the candidates!
-+ Meritocracy can work - but hyper-confrontational meritocracy can also better
-serve dominant or extroverted people.
- + To avoid this, constantly review your policies on inclusion.
-+ Be visually inclusive: have pictures on your website, and booths at events
-that are demographically diverse.
 + Be mindful of the signals of culture in job descriptions - men tend to think
 (most of us undeservedly so -- my assessment) that we're all rock stars, 
-unicorns, ninjas, gurus, [insert ridiculous, contemporary bro-grammer term in here where MAX(annoying)]
+unicorns, ninjas, gurus, or ...
+{% highlight mysql %} 
+[INSERT ridiculous, contemporary bro-grammer term WHERE MAX(annoying) = TRUE;]
+{% endhighlight %} 
++ If your company wants to hire more women, don't have your female developers 
+passing out t-shirts, have them interview the candidates!
++ Meritocracy can work - but hyper-confrontational meritocracy can also better
+serve dominant or extroverted people.
+  + To avoid this, constantly review your policies on inclusion.
++ Be visually inclusive: have pictures on your website, and booths at events
+that are demographically diverse.
+
+
 
 I look forward to Savas presenting at 
 [#ATO2016](https://twitter.com/hashtag/ATO2016?src=hash) next year.
