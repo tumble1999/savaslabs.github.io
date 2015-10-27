@@ -44,6 +44,8 @@ seems to theoretically well-address some issues that existing concentrated
 systems don't. At the very least, we have opportunities to 
 [bet in more open and democractic ways](http://www.augur.net/)
 
+![My little brony](/assets/img/rainbowdash by krazy3.png)  
+
 ##### Performance Profiling Tools & Tricks
 [Brad Blake](https://www.phase2technology.com/brad-blake/), self-proclaimed 
 [non-brony](http://whatisabrony.com/) (don't worry, I was in the dark too during
