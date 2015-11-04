@@ -23,7 +23,7 @@ for a lot of purposes. But there are a few things which are hard to do easily us
  * Allowing multiple users to edit and comment on feature attributes, using versioning and permission controls.
 
 This blog post covers how to add a styled web map of node locations to a Drupal website. There are also ways to add more powerful mapping
-and GIS capabilities to Drupal (for example via [cartaro](http://www.cartaro.org), but I'm not going to talk about those here. I also assume you're already
+and GIS capabilities to Drupal (for example via [cartaro](http://www.cartaro.org), but I'm not going to talk about those here). I also assume you're already
 familiar with basic Drupal concepts.
 
 ### Getting and storing geo-data
