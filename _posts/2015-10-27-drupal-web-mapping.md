@@ -56,7 +56,7 @@ OpenLayers is a wrapper for the [OpenLayers](http://www.openlayers.org) web mapp
 your own popup you theoretically just have to extend the `OpenLayers.Popup.FramedCloud` class and override some of its attributes or behaviors. In practice, this is more complicated than it sounds, especially because not all the class intricacies are well-documented.
 
 OpenLayers offers much more customization via the various settings GUIs than Leaflet does. I'm not going to get into all the details here, as it's pretty self-explanatory (there's a [decent slideshare from DrupalCamp Spain](http://www.slideshare.net/pvhee/mapping-in-drupal-7-using-openlayers) as well).
-One thing you do need to know when using OpenLayers, is that you're going to need to create (at least) *two* views for each map. Each data layer will have it's own view, with format `OpenLayers Data Overlay`. Then you'll configure a map object within OpenLayers, but in order to actually display the map you 
+One thing you do need to know when using OpenLayers, is that you're going to need to create (at least) *two* views for each map. Each data layer will have its own view, with format `OpenLayers Data Overlay`. Then you'll configure a map object within OpenLayers, but in order to actually display the map you 
 need to create a view with format `OpenLayers Map`. If you're using contextual filters, those filters need to be applied (with identical settings) on both views, for the map *and* the relevant data layer.
 
 Open Layers does have a cost of more computational and memory overhead than Leaflet. On a recent project, I found that on a production server with the GeOS PHP extention installed,
