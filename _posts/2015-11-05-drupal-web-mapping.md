@@ -1,13 +1,13 @@
 ---
 layout: post
 title: "Drupalized Web Mapping @ NACIS 2015"
-date: 2015-10-27
+date: 2015-11-05
 author: Tim Stallmann
-tags: Drupal, Drupal Planet, Cartography
+tags: drupal drupal-planet cartography
 summary: Slides from Tim's talk on building web maps using Drupal at the 2015 NACIS conference.
 ---
 
-Two weeks ago, I gave a presentation on "[Drupalized Web Mapping](http://timstallmann.github.io/nacis-drupal-mapping-talk/#/)" for the [North American Cartographic Information Society 2015](http://www.nacis.org) conference in Minneapolis, MN.
+Two weeks ago, I gave a presentation on [Drupalized Web Mapping](http://timstallmann.github.io/nacis-drupal-mapping-talk/#/) for the [North American Cartographic Information Society 2015](http://www.nacis.org) conference in Minneapolis, MN.
 The full set of slides for the talk are [online via Github pages](http://timstallmann.github.io/nacis-drupal-mapping-talk/#/), but here I'm going to skip the "what is Drupal" side of the talk and focus on giving more detail on three different recommended workflows for building web maps in Drupal.
 
 Note: At the time of writing this few of the modules mentioned had stable D8 ports. The shift to D8 is likely to change the landscape of mapping modules significantly, so the following advice is really focused on D7 sites (although we're using the third approach on a D8 site currently).
@@ -38,7 +38,7 @@ their data on a Google Map](https://developers.google.com/maps/documentation/geo
 with Drupal yet, but the Geocoder module has a really simple plugin system that allows you to define your own geocoding endpoint.
 
 For sites where ease-of-use on the data-entry side is a lower priority, you can also just allow direct input of latitude and longitude coordinates via the node edit screen (or pasting in GeoJSON for more complicated geometries). Lat/long coordinates
-are easy to find via Google Maps.
+are easy to find via Google Maps, or even just a Google search.
 
 ### Leaflet module
 
@@ -63,10 +63,11 @@ Open Layers does have a cost of more computational and memory overhead than Leaf
  OpenLayers maps would fail to render on the server-side once the mapped view reached about 500-750 points. If you're just displaying individual points, you can get around this performance limitation using the [GeoCluster](https://www.drupal.org/project/geocluster) module for D7, which implements
  server-side clustering, but that module clusters all features at once and does not support, for example, clustering multiple feature layers separately. Also it needs some D8 port-related love.
 
+<img src="/assets/img/blog/pauli_murray_map_site_screenshot.jpg" width="500px" height="223px" alt="Screenshot of Durham Civil and Human Rights map, showing a detail of Pauli Murray's childhood home." class="blog-image-large">
 
 ### Views GeoJSON + Custom leaflet.js code
 
 This is a sort of "headless Drupal" approach, and it's the one we're using on Savas' first D8 site, the [Durham Civil Rights map](https://github.com/savaslabs/durham-civil-rights-map). By using the Views GeoJSON module, you can
-render the output of any view containing location information as a GeoJSON feed (potentially even including exposed filters via the query path). Then, just like any GeoJSON feed, that data can be loaded via AJAX into a Leaflet (or OpenLayers, or other frameworks) map. Savas' Anne Tomasevich has a
+render the output of any view containing location information as a GeoJSON feed (potentially even including exposed filters via the query path). Then, just like any GeoJSON feed, that data can be loaded via AJAX into a Leaflet (or OpenLayers, or other frameworks) map. Savas' [Anne Tomasevich](http://savaslabs.com/team/anne-tomasevich/) has a
 great write-up on just how to do that [in Drupal 8 specifically](http://savaslabs.com/2015/07/06/map-in-drupal-8.html), and I wrote a post a while ago about [how to map GeoJSON data in Leaflet more generally](http://savaslabs.com/2015/05/18/mapping-geojson.html). This approach is still something we're 
 experimenting with, so we'd love to hear your thoughts. One note -- using this approach it's also possible for any user with enough permissions to view the GeoJSON feed to very easily download the full dataset using this approach.
