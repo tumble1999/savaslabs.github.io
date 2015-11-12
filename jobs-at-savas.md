@@ -46,7 +46,7 @@ We take a lot of pride in the quality of our work. We value a work/life **balanc
 that keeps us productive and happy. We like to have **fun**.
 We use emoji _a lot_ 
 <img src="http://www.emoji-cheat-sheet.com/graphics/emojis/thumbsup.png" alt="thumbs up emoji" class="emoji">. 
-You **absolutely** don't have to <img src="http://www.emoji-cheat-sheet.com/graphics/emojis/relieved.png" alt="relived emoji" class="emoji">,
+You **absolutely** don't have to <img src="http://www.emoji-cheat-sheet.com/graphics/emojis/relieved.png" alt="relieved emoji" class="emoji">,
 since **we greatly embrace diversity**!
 
 
