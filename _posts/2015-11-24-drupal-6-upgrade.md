@@ -1,12 +1,18 @@
 ---
 layout: post
-title: "It's nearly 2016, your site is running on Drupal 6, now what? (Part 1)"
+title: "It's nearly 2016, your site is running on Drupal 6, now what? Part 1: The overview"
 date: 2015-11-24
 author: Chris Russo
 tags: drupal drupal8 drupal-planet 
 summary: What to plan for as Drupal 6 EOL approaches.
 
 ---
+This is part 1 of a series investigating what to do with your Drupal 6 site as 
+EOL approaches.
+
+(Part 1 - the overview \| [Part 2 - the risks](/2015/12/10/drupal-6-part-2.html))
+
+*****
 
 ## The issue at <img src="/assets/img/hand.png" alt="hand">
 
@@ -92,7 +98,7 @@ In considering a Drupal 6 upgrade you have a few simple options.
  
 ### Drupal 7 or Drupal 8... heck, what about Drupal 9?
 
-This is another one that, I know...shocker, depends. The factors that effect this choice which we'll discuss more in part 2 are:
+This is another one that, I know...shocker, depends. The factors that effect this choice we discuss more in [part 2](/2015/12/10/drupal-6-part-2.html) are:
 
  + **Organizational tolerance for risk**: Drupal 8 is less tested, and is inherently riskier earlier on in the life cycle of your site.
  + **Willingness to support community**: In some cases Drupal 8 contributed modules will need extra polish to be up to production snuff.
@@ -118,5 +124,9 @@ migration techniques available from Drupal 6 to Drupal 7 or Drupal 8 that may be
 and matching site functionality can be completely decoupled.
  
 We **love talking through this process** with site owners. We analyze what makes the most sense for your organization while addressing priorities for both short and long term goals.
-We have been building sites in Drupal 8 since May 2015 and sites in Drupal 7 since 2010 so we are well versed to the pros and cons of each. [Reach out](/contact) to further discuss and stay tuned for parts 2, and 3.
+We have been building sites in Drupal 8 since May 2015 and sites in Drupal 7 
+since 2010 so we are well versed to the pros and cons of each. [Reach out](/contact) to further discuss, continue on to [part 2](2015/12/10/drupal-6-part-2.html) and stay tuned for part 3.
 
+*****
+
+(Part 1 - the overview \| [Part 2 - the risks](/2015/12/10/drupal-6-part-2.html))
