@@ -63,7 +63,7 @@ Drupal 6 has been around for a long time. As of mid November 2015 there are at l
 [~125,000 reported instances](https://www.drupal.org/project/usage/drupal) ([likely underrepresented](https://www.drupal.org/node/329620)) of 
 Drupal 6 sites in the wild. So you are not alone (...I am here with you...) and there is some comfort in that. If you're reading this and have not 
 begun your upgrade process yet, it is **very** likely you will be spending at least some time outside of support for your Drupal 6 site. 
-We will dive into this at a deeper level in part 2, but some of the factors that are worth taking into consideration as you strategize the upgrade are:
+We dive into this at a deeper level in [part 2](/2015/12/10/drupal-6-part-2.html), but some of the factors that are worth taking into consideration as you strategize the upgrade are:
 
 ##### Considerations to assess risk
 + How well-known is your organization? 
@@ -75,7 +75,7 @@ We will dive into this at a deeper level in part 2, but some of the factors that
  
 ### What are the risks?
 
-High-level risks, more closely examined in part 2 are as follows from most severe to least. 
+High-level risks, more closely examined in [part 2](/2015/12/10/drupal-6-part-2.html) are as follows from most severe to least. 
 
 
 + Complete site compromise and control with consequences dictated by the whim of a hacker.
@@ -125,7 +125,7 @@ and matching site functionality can be completely decoupled.
  
 We **love talking through this process** with site owners. We analyze what makes the most sense for your organization while addressing priorities for both short and long term goals.
 We have been building sites in Drupal 8 since May 2015 and sites in Drupal 7 
-since 2010 so we are well versed to the pros and cons of each. [Reach out](/contact) to further discuss, continue on to [part 2](2015/12/10/drupal-6-part-2.html) and stay tuned for part 3.
+since 2010 so we are well versed to the pros and cons of each. [Reach out](/contact) to further discuss, continue on to [part 2](/2015/12/10/drupal-6-part-2.html) and stay tuned for part 3.
 
 *****
 
