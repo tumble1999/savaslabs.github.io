@@ -23,3 +23,8 @@ In the wild, however, given the complexity of site builds, we know most of them 
 
 Take this snippet from one of the [most prolific Drupal security vulnerabilities](https://www.drupal.org/PSA-2014-003) known to date
 > You should proceed under the assumption that every Drupal 7 website was compromised unless updated or patched before Oct 15th, 11pm UTC, that is 7 hours after the announcement.
+
+Total cost of owernship
+
+DX
+https://www.deeson.co.uk/blog/24-things-about-drupal-8-every-cto-should-know?utm_source=The+Weekly+Drop&utm_medium=email&utm_campaign=The_Weekly_Drop_Issue_219_12_10_2015
