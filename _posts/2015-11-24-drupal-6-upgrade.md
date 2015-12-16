@@ -10,7 +10,8 @@ summary: What to plan for as Drupal 6 EOL approaches.
 This is part 1 of a series investigating what to do with your Drupal 6 site as 
 EOL approaches.
 
-(Part 1 - the overview \| [Part 2 - the risks](/2015/12/10/drupal-6-part-2.html))
+(**Part 1 - overview** \| [Part 2 - the risks](/2015/12/10/drupal-6-part-2.html)
+  \| [Part 3 - the options](/2015/12/21/drupal-6-part-3.html))
 
 *****
 
@@ -129,4 +130,5 @@ since 2010 so we are well versed to the pros and cons of each. [Reach out](/cont
 
 *****
 
-(Part 1 - the overview \| [Part 2 - the risks](/2015/12/10/drupal-6-part-2.html))
+(**Part 1 - overview** \| [Part 2 - the risks](/2015/12/10/drupal-6-part-2.html)
+  \| [Part 3 - the options](/2015/12/21/drupal-6-part-3.html))
