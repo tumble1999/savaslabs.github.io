@@ -229,4 +229,4 @@ Now when I click on a point I get a nice little popup with the node title.
 
 <img src="/assets/img/blog/map-in-drupal-8/map-with-popup.png" alt="Screenshot of the map with a popup open" class="blog-image-xl">
 
-Check out the entire [map.js file](https://gist.github.com/AnneTee/ea9a57c5a49b9ce53352) and be sure to visit Savas's GitHub repository for the [Durham Civil Rights Mapping project](https://github.com/savaslabs/durham-civil-rights-map) to see a Drupal 8 site in action!
+Check out the entire [map.js file](https://github.com/savaslabs/durham-civil-rights-map/blob/master/docroot/themes/custom/mappy/js/page--front--map.js) and be sure to visit Savas's GitHub repository for the [Durham Civil Rights Mapping project](https://github.com/savaslabs/durham-civil-rights-map) to see a Drupal 8 site in action!
