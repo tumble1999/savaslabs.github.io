@@ -5,6 +5,8 @@ This is the website for [Savas Labs](http://savaslabs.com).
 The site is built using Jekyll. To run locally:
 
 1. Make sure [Bundler](http://bundler.io) and [Jekyll](http://jekyllrb.com/docs/installation/) are installed
+   * `gem install bundler`
+   * `gem install jekyll`
 2. Clone the repo
 3. `bundle install`
 4. `bundle exec jekyll serve --config _config.yml,_config.test.yml,_config.dev.yml`
