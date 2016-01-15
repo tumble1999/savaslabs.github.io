@@ -48,7 +48,6 @@ $(document).ready(
         var postSlug = window.location.pathname;
         // Remove leading forward slash.
         var truncatedSlug = postSlug.substring(1, postSlug.length);
-        var encodedSlug = encodeURIComponent(truncatedSlug);
         var requri = commentServer + '/api/comments/count';
         $.getJSON(
             requri, function(json) {
@@ -70,7 +69,7 @@ $(document).ready(
         $.getJSON(
             requri, function(json) {
 
-                $(".card .url").each(function(index) {
+                $(".card .url").each(function() {
                     var truncatedSlug = $(this).attr('href').substring(1, $(this).attr('href').length);
                     if (truncatedSlug in json.data[0]) {
                         var commentString = 'comments';
@@ -119,7 +118,7 @@ function enableCommentForm($id) {
                 }
                 // Loop through comments.
                 $.each(
-                    json.data, function (i, val) {
+                    json.data, function (i) {
                         // Assign JSON data points to variables.
                         var name = json.data[i].name;
                         var created = json.data[i].created_at;
@@ -139,7 +138,6 @@ function enableCommentForm($id) {
     // Output new comment.
     var form = $('form');
     var submit = $('#submit');
-    var newrequri = commentServer + '/api/comments/new';
 
     form.on(
         'submit', function (e) {
