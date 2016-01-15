@@ -30,12 +30,12 @@ $(document).ready(
         var expanderContent = document.getElementById("js-expander-content");
 
         $('#js-expander-trigger').click(function() {
-            enableCommentForm();
+            enableCommentForm('#js-expander-trigger');
         });
 
 
         $('#comment-count').click(function() {
-            enableCommentForm();
+            enableCommentForm('#comment-count');
         });
 
 
@@ -89,8 +89,13 @@ $(document).ready(
     });
 
 // Export comment functionality and include functionality for comment count button
-function enableCommentForm() {
-    $('#js-expander-trigger').toggleClass("expander-hidden");
+function enableCommentForm($id) {
+    if ($id == '#js-expander-trigger') {
+        $('#js-expander-trigger').toggleClass("expander-hidden");
+    }
+    if ($id == '#comment-count') {
+        $('#js-expander-trigger').removeClass("expander-hidden");
+    }
 
 
     // Create variable for request URI.
@@ -100,7 +105,7 @@ function enableCommentForm() {
     var truncatedSlug = postSlug.substring(1, postSlug.length);
     var encodedSlug = encodeURIComponent(truncatedSlug);
     var requri = commentServer + '/api/comments/post';
-    var payload = {}
+    var payload = {};
     payload.slug = encodedSlug;
     $.ajax(
         {
