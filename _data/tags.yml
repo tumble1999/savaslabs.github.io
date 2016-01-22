@@ -51,3 +51,5 @@
   name: Composer
 - slug: module-development
   name: Module Development
+- slug: mailchimp
+  name: MailChimp
