@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "How to Subscribe Users to MailChimp Lists in a Druapl Custom Module"
-date: 2016-01-25
+date: 2016-01-22
 author: Dan Murphy
 tags: drupal composer module-development mailchimp
 summary: Using composer manager and the MailChimp PHP library we can simply and easily subscribe users to mailing lists without using the MailChimp contributed module.
