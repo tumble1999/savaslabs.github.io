@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "How to Subscribe Users to MailChimp Lists in a Druapl Custom Module"
+title: "How to subscribe users to MailChimp lists in a Drupal custom module"
 date: 2016-01-22
 author: Dan Murphy
 tags: drupal composer module-development mailchimp
@@ -16,7 +16,7 @@ In this post, I'll show you how we:
 - Used the [MailChimp PHP Library](https://packagist.org/packages/mailchimp/mailchimp) in a custom module to quickly and easily subscribe users to a MailChimp mailing list without the overhead of the [Drupal MailChimp contributed module](https://www.drupal.org/project/mailchimp).
 - Managed the MailChimp library dependency via Composer Manager.
 
-#### Custom vs. Conrtib?
+#### Custom vs. Contrib?
 But first, why didn't we just use the MailChimp contributed module? Contributed modules are often a great option and offer many benefits, such as security, maintenance, and flexibility.
 
 But there is a cost to installing all those contributed modules. As [*The Definitive Guide to Drupal 7*](http://definitivedrupal.org/) explains "The more modules you install, the worse your web site will perform."
@@ -25,8 +25,7 @@ With each installed module comes more code to load and execute, and more memory 
 
 In our case, the decision to go with a custom solution was easy:
 
-- The MailChimp contributed module
-was bloated with features we didn't need.
+- The MailChimp contributed module had many features we didn't need.
 - We were already using Composer Manager on the project to manage other module dependencies.
 - The custom module we were building already included logic to determine when to subscribe users to mailing lists (don't worry, we made sure they opted in!)
 
@@ -67,7 +66,7 @@ Next, we created a function in our custom module to subscribe a user to a MailCh
  * @param string $email
  *   The email address for the user being subscribed to the mailing list.
  */
-function module_subscribe_user($api_key, $list_id, $email) {
+function my_module_subscribe_user($api_key, $list_id, $email) {
 
   $mailchimp = new Mailchimp($api_key);
 
@@ -75,7 +74,7 @@ function module_subscribe_user($api_key, $list_id, $email) {
     $result = $mailchimp->lists->subscribe($list_id, array('email' => $email));
   }
   catch(Exception $e) {
-    watchdog(WATCHDOG_WARNING, 'User not subscribed to ' . $e->getMessage());
+    watchdog('my_module', 'User with email %email not subscribed to list %list_id', array('%email' => $email, '%list_id' => $list_id), WATCHDOG_WARNING);
   }
 }
 {% endhighlight %}
@@ -83,7 +82,7 @@ function module_subscribe_user($api_key, $list_id, $email) {
 With that function defined, we could then subscribe any user to any mailing list by simply calling
 
 {% highlight php %}
-module_subscribe_user($api_key, $list_id, $email);
+my_module_subscribe_user($api_key, $list_id, $email);
 {% endhighlight %}
 
 #### Conclusion
