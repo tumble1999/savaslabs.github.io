@@ -16,6 +16,13 @@ layout: default
     {% endif %}
   </header>
 
+  {% if page.disclaimer %}
+    <div class="disclaimer">
+      <h5>Proceed with caution</h5>
+      {{ page.disclaimer }}
+    </div>
+  {% endif %}
+
   <article class="post-content">
     {{ content }}
     <hr>
