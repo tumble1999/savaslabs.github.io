@@ -39,63 +39,78 @@ Unfortunately, [you can’t run Docker natively in OS X](https://docs.docker.com
 To install Boot2Docker, I followed the [Docker Mac installation instructions.](https://docs.docker.com/installation/mac/). First, I installed Boot2Docker from [boot2docker/osx-installer](https://github.com/boot2docker/osx-installer/releases/latest) as explained in that tutorial. The docker and boot2docker binaries are installed in `/usr/local/bin` which you can access from your terminal. I then followed the instructions for starting Boot2Docker from the command line, running the following commands:
 
 Setup Boot2Docker, this only needs to be run once during initial setup:
-{% highlight bash %}
+
+```bash
 $ boot2docker init
-{% endhighlight %}
+```
+
 Start the boot2docker application:
-{% highlight bash %}
+
+```bash
 $ boot2docker start
-{% endhighlight %}
+```
+
 Set the environment variables for the Docker client, so that it can access Docker running on the Boot2Docker virtual machine. Note, this needs to be run for each terminal window or tab you open:
-{% highlight bash %}
+
+```bash
 $ eval "$(boot2docker shellinit)"
-{% endhighlight %}
+```
+
 Verify that boot2docker is running:
-{% highlight bash %}
+
+```bash
 $ boot2docker status
-{% endhighlight %}
+```
+
 Verify that the Docker client environment is initialized:
-{% highlight bash %}
+
+```bash
 $ docker version
-{% endhighlight %}
+```
 
 #### Install Docker Compose
 
 To install Docker Compose I followed the [Docker Compose installation
 instructions](https://docs.docker.com/compose/install/#install-compose). I ran the following command:
-{% highlight bash %}
+
+```bash
 $ curl -L https://github.com/docker/compose/releases/download/1.2.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 $ chmod +x /usr/local/bin/docker-compose
-{% endhighlight %}
+```
 
 Verify the installation of Docker Compose:
-{% highlight bash %}
+
+```bash
 $ docker-compose --version
-{% endhighlight %}
+```
 
 Optionally, if you choose to install command completion for Docker Compose for the bash shell, you may follow [these steps](https://docs.docker.com/compose/completion/), however on OS X you will probably have to modify the bash_completion.d path as follows:
-{% highlight bash %}
+
+```bash
 $ curl -L https://raw.githubusercontent.com/docker/compose/1.2.0/contrib/completion/bash/docker-compose > /usr/local/etc/bash_completion.d/docker-compose
-{% endhighlight %}
+```
 
 #### Install Bowline and set up the Drupal 8 Project
 
 The [Bowline project readme](https://github.com/davenuman/bowline/blob/master/readme.md) provides installation and setup instructions, however I needed to make some modifications. For example, Fig has been deprecated in place of Docker Compose. Explicitly I did the following:
 
 Pull the Docker images:
-{% highlight bash %}
+
+```bash
 $ docker pull davenuman/bowline-web-php
 $ docker pull mysql:5.5
-{% endhighlight %}
+```
 
 Navigate to your sites directory and create a new project for your drupal 8 site (for me, that directory is `/Users/dan/Sites`):
-{% highlight bash %}
+
+```bash
 $ mkdir drupal8
 $ cd drupal8
-{% endhighlight %}
+```
 
 Setup bowline:
-{% highlight bash %}
+
+```bash
 $ git init
 $ git remote add bowline git@github.com:davenuman/bowline.git
 $ git remote update
@@ -104,37 +119,42 @@ $ git add . && git status
 $ git rm --cached readme.md
 $ rm readme.md
 $ git commit -m 'Starting with bowline code'
-{% endhighlight %}
+```
 
 Activate bowline and build the containers:
-{% highlight bash %}
+
+```bash
 $ . bin/activate
 $ build
-{% endhighlight %}
+```
 
 Check that that the containers are running:
-{% highlight bash %}
+
+```bash
 $ bowline
-{% endhighlight %}
+```
 
 Download Drupal 8 to your project folder and rename the folder as docroot. You can [manually download it here](https://www.drupal.org/project/drupal), or you can use wget as follows:
-{% highlight bash %}
+
+```bash
 $ wget http://ftp.drupal.org/files/projects/drupal-8.0.0-beta9.tar.gz
 $ tar -xzvf drupal-8.0.0-beta9.tar.gz
 $ mv drupal-8.0.0-beta9 docroot
 $ rm drupal-8.0.0-beta9.tar.gz
-{% endhighlight %}
+```
 
 Update Composer (not to be confused with Docker Compose) to use Drush 7 (Drupal 8 does not work with older versions of Drush):
-{% highlight bash %}
+
+```bash
 $ composer require drush/drush:dev-master
-{% endhighlight %}
+```
 
 Use bowline to initialize the site settings and then use drush to install Drupal
-{% highlight bash %}
+
+```bash
 $ settings_init
 $ drush si --sites-subdir=default
-{% endhighlight %}
+```
 
 Your Drupal 8 site is now set up and running on the web and MySQL Docker containers you set up using Bowline. However, a few extra steps are required so that you can access your site on the Apache server that is running within the web container.
 
@@ -145,16 +165,18 @@ Run the boot2docker ip command to get the IP address of the boot2docker virtual 
 
 We now manually add a subnet route to the docker instance running inside
 the boot2docker virtual machine as follows:
-{% highlight bash %}
+
+```bash
 $ sudo route -n add 172.0.0.0/8 192.168.59.103
-{% endhighlight %}
+```
 
 You should now be able to access your Drupal 8 site using the web IP address by ing the `bowline` command, for example `http://172.17.0.2/` for my setup.
 
 One of the great things about Bowline is it sets up drush to work with your containers. You can use drush to get a one time login link for the admin user by simply running:
-{% highlight bash %}
+
+```bash
 $ drush uli
-{% endhighlight %}
+```
 
 You can also debug the site using XDebug. I will explain how to set this up in a future blog post.
 
@@ -163,48 +185,61 @@ You can also debug the site using XDebug. I will explain how to set this up in a
 Bowline, Boot2Docker, all docker containers, and the subnet route will all cease when you restart your machine, however you can manually stop them as follows:
 
 Deactivate bowline:
-{% highlight bash %}
+
+```bash
 $ deactivate
-{% endhighlight %}
+```
+
 Stop all docker containers:
-{% highlight bash %}
+
+```bash
 $ docker stop $(docker ps -a -q)
-{% endhighlight %}
+```
+
 Stop the boot2docker virtual machine:
-{% highlight bash %}
+
+```bash
 $ boot2docker stop
-{% endhighlight %}
+```
+
 Remove the static route:
-{% highlight bash %}
+
+```bash
 $ sudo route -n delete 172.0.0.0/8 192.168.59.103
-{% endhighlight %}
+```
 
 ### Running in the future
 
 Next time you start you machine and want to fire up the development environment you’ll need to run the following commands from the project root.
-{% highlight bash %}
+
+```bash
 $ boot2docker start
 $ eval "$(boot2docker shellinit)"
 $ . bin/activate
 $ build
 $ sudo route -n add 172.0.0.0/8 192.168.59.103
 $ bowline
-{% endhighlight %}
+```
 
 ### Troubleshooting
 
 For each new terminal window or tab you open, you have to set the Boot2Docker environment variables. If you see an error message like: "Couldn't connect to Docker daemon - you might need to run \`boot2docker up`." you may need to run:
-{% highlight bash %}
+
+```bash
 $ eval "$(boot2docker shellinit)"
-{% endhighlight %}
+```
+
 If you move to a different project within the same terminal window or tab, make sure you deactivate bowline:
-{% highlight bash %}
+
+```bash
 $ deactivate
-{% endhighlight %}
+```
+
 If drush status is working, but the site is not loading, double check that you are rerouting to the Boot2Docker IP address:
-{% highlight bash %}
+
+```bash
 $ sudo route -n add 172.0.0.0/8 192.168.59.103
-{% endhighlight %}
+```
 
 ### Versions used in this tutorial
 * Docker 1.6.0

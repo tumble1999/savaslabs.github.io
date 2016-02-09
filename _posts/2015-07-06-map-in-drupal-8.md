@@ -51,7 +51,7 @@ Next you'll need to add the Leaflet library to your theme's [libraries file](htt
 
 Note that I've listed jQuery as a dependency - in Drupal 8 jQuery is no longer loaded on every page, so it needs to be explictly included here.
 
-{% highlight yaml %}
+```yaml
 # From mappy.libraries.yml
 leaflet:
   css:
@@ -62,24 +62,24 @@ leaflet:
     js/map.js: {}
   dependencies:
     - core/jquery
-{% endhighlight %}
+```
 
 Once the library is defined, you need to include it on your page. This can be done globally by including the following in your [theme].info.yml file:
 
-{% highlight yaml %}
+```yaml
 # In mappy.info.yml
 libraries:
  - mappy/leaflet
-{% endhighlight %}
+```
 
 You could also attach the library in a Twig template:
 
-{% highlight liquid %}
+```liquid
 {% raw %}
 {# In some .html.twig file #}
 {{ attach_library('mappy/leaflet') }}
 {% endraw %}
-{% endhighlight %}
+```
 
 For more methods of attaching assets to pages and elements, check out Drupal.org's [writeup](https://www.drupal.org/developing/api/8/assets) on the matter.
 
@@ -124,23 +124,23 @@ We've just set up a view that outputs GeoJSON data at [site-url]/points. Take a 
 
 The first thing we need to do is create a div with the id "map" in our template file. Our map is on the front page so I've inserted the following into `page--front.html.twig`. Place this code in the template your map will reside in. Feel free to customize the class, but the ID should remain "map."
 
-{% highlight html %}
+```html
 <div id="map" class="map--front"></div>
-{% endhighlight %}
+```
 
 We also need to define a height and width of the map div. Ours is going to span the entire page background so I've included the following in my Sass file:
 
-{% highlight scss %}
+```scss
 .map--front {
   // Set these to whatever you want.
   height: 100%;
   width: 100%;
 }
-{% endhighlight %}
+```
 
 Previously we created a custom JavaScript file to hold our map code. Ours is called `map.js` and is located in our custom theme's `js` directory. In the code below, we've added the map itself and set a center point and a zoom level. We've centered over our hometown of Durham, NC and selected a zoom level of 12 since all of our map markers are viewable within this region. Check out [this explanation](https://www.mapbox.com/guides/how-web-maps-work/#tiles-and-zoom-levels) of zoom levels, or go for a little trial and error to get the right one for your map.
 
-{% highlight js %}
+```js
 (function ($) {
   // Create map and set center and zoom.
   var map = L.map('map', { // The `L` stands for the Leaflet library.
@@ -149,11 +149,11 @@ Previously we created a custom JavaScript file to hold our map code. Ours is cal
     zoom: 12
   });
 })(jQuery);
-{% endhighlight %}
+```
 
 Now we need to add a base map. We're using Positron by CartoDB. We'll import the tiles and attribution, then add them as a layer to our map.
 
-{% highlight js %}
+```js
 (function ($) {
   // Add basemap tiles and attribution.
   var baseLayer = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
@@ -170,7 +170,7 @@ Now we need to add a base map. We're using Positron by CartoDB. We'll import the
   // Add basemap to map.
   map.addLayer(baseLayer);
 })(jQuery);
-{% endhighlight %}
+```
 
 Go to your Drupal site and rebuild your cache and you should see your base map!
 
@@ -182,13 +182,13 @@ Go to your Drupal site and rebuild your cache and you should see your base map!
 
 Next, we're going to access the GeoJSON we're outputting via our view to add points to our map. First, let's add the path to our marker image.
 
-{% highlight js %}
+```js
 L.Icon.Default.imagePath = '/themes/custom/mappy/images/leaflet';
-{% endhighlight %}
+```
 
 Now we'll use `.getJSON` to retrieve our data from the url "/points," then trigger the `addDataToMap` function to create a new layer containing our points via Leaflet's geoJson function.
 
-{% highlight js %}
+```js
 // Add points.
   function addDataToMap(data, map) {
     var dataLayer = L.geoJson(data);
@@ -198,7 +198,7 @@ Now we'll use `.getJSON` to retrieve our data from the url "/points," then trigg
   $.getJSON('/points', function(data) {
     addDataToMap(data, map);
   });
- {% endhighlight %}
+ ```
 
  Refresh - we've got points!
 
@@ -207,13 +207,13 @@ Now we'll use `.getJSON` to retrieve our data from the url "/points," then trigg
 
 ### Add popups
 
- The last thing to do is add popups to each point when they're clicked. We'll insert this code in the `addDataToMap` function. If you actually navigate to [site-url]/points, you can inspect your GeoJSON and see which array keys have been assigned to the fields in your content type.
+The last thing to do is add popups to each point when they're clicked. We'll insert this code in the `addDataToMap` function. If you actually navigate to [site-url]/points, you can inspect your GeoJSON and see which array keys have been assigned to the fields in your content type.
 
- <img src="/assets/img/blog/map-in-drupal-8/geojson-points.png" alt="Screenshot of GeoJSON" class="blog-image-xl">
+<img src="/assets/img/blog/map-in-drupal-8/geojson-points.png" alt="Screenshot of GeoJSON" class="blog-image-xl">
 
- I want to display the node title in the popup, which I can see is at `feature.property.name`.
+I want to display the node title in the popup, which I can see is at `feature.property.name`.
 
-{% highlight js %}
+```js
  function addDataToMap(data, map) {
         var dataLayer = L.geoJson(data, {
             onEachFeature: function(feature, layer) {
@@ -223,7 +223,7 @@ Now we'll use `.getJSON` to retrieve our data from the url "/points," then trigg
         });
         dataLayer.addTo(map);
     }
-{% endhighlight %}
+```
 
 Now when I click on a point I get a nice little popup with the node title.
 

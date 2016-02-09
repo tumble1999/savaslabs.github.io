@@ -39,26 +39,28 @@ We were able to achieve this by adding the [MailChimp PHP library](https://packa
 
 First, in our module's root directory we created a `composer.json` file that specified the MailChimp PHP library as a dependency:
 
-{% highlight php %}
+```php
+<?php
 {
   "require": {
     "mailchimp/mailchimp": "*"
   }
 }
-{% endhighlight %}
+```
 
 We then installed the Mailchimp API using the Composer Manager drush commands:
 
-{% highlight bash %}
+```bash
 drush composer-json-rebuild
 drush composer-manager install
-{% endhighlight %}
+```
 
 As explained in my [last post](/2015/10/15/composing-with-composer-manager.html), the first command builds  (or rebuilds) the consolidated project wide `composer.json` file and the second command installs the dependencies.
 
 Next, we created a function in our custom module to subscribe a user to a MailChimp mailing list.
 
-{% highlight php %}
+```php
+<?php
 /**
  * Add an email to a MailChimp list.
  *
@@ -80,13 +82,14 @@ function my_module_subscribe_user($api_key, $list_id, $email) {
     watchdog('my_module', 'User with email %email not subscribed to list %list_id', array('%email' => $email, '%list_id' => $list_id), WATCHDOG_WARNING);
   }
 }
-{% endhighlight %}
+```
 
 With that function defined, we could then subscribe any user to any mailing list by simply calling
 
-{% highlight php %}
+```php
+<?php
 my_module_subscribe_user($api_key, $list_id, $email);
-{% endhighlight %}
+```
 
 #### Conclusion
 That's it! A nice, simple, and clean approach to subscribing users to a MailChimp mailing list that doesn't require installation of the MailChimp contributed module.

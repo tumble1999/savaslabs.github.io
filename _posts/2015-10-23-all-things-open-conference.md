@@ -115,9 +115,11 @@ of the nuances of that necessary conversation, but some highlights to me were:
 + Be mindful of the signals of culture in job descriptions - men tend to think
 (most of us undeservedly so -- my assessment) that we're all rock stars, 
 unicorns, ninjas, gurus, or ...
-{% highlight mysql %} 
+
+```bash
 [INSERT ridiculous, contemporary bro-grammer term WHERE MAX(annoying) = TRUE;]
-{% endhighlight %} 
+```
+
 + If your company wants to hire more women, don't have your female developers 
 passing out t-shirts, have them interview the candidates!
 + Meritocracy can work - but hyper-confrontational meritocracy can also better
