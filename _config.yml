@@ -36,6 +36,7 @@ sass:
   sass_dir: assets/styles/_scss
 kramdown:
   input: GFM
+  hard_wrap: false
   syntax-highlighter: rouge
 
 # Blog
