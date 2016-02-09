@@ -18,6 +18,25 @@ To run the tests:
 
 `$ bash _tests/run-tests.sh`
 
+### Syntax Highlighting
+
+Since updating to Jekyll 3.0.2 which uses Kramdown/Rouge, to use syntax
+highlighting in a post you just need to use backticks (similar to GitHub or
+Slack highlighting).
+
+Special tips:
+
+1. You can include the language name after the first set of backticks with no
+space e.g. ```bash
+2. For php you must including an opening php tag to get proper highlighting
+3. The syntax block must be proceeded and followed by a space e.g.
+
+````
+```bash
+$ mkdir cat_photos
+```
+````
+
 ### Tags
 
 To add a new tag, complete the following:

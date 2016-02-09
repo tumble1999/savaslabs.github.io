@@ -41,7 +41,6 @@ pre {
   line-height: 1.45em;
   font-size: 13px;
   margin: 0;
-  padding: .8em 1em;
   color: $pre-color;
   overflow: auto;
 }
@@ -76,11 +75,11 @@ p, li {
   span { color: $base1 !important; }
   span { font-style: normal !important; font-weight: normal !important; }
 
-  .c      { color: $base01 !important; font-style: italic !important; }                                                      /* Comment */
-  .cm     { color: $base01 !important; font-style: italic !important; }                                                      /* Comment.Multiline */
-  .cp     { color: $base01 !important; font-style: italic !important;  }                                                     /* Comment.Preproc */
-  .c1     { color: $base01 !important; font-style: italic !important; }                                                      /* Comment.Single */
-  .cs     { color: $base01 !important; font-weight: bold !important; font-style: italic !important; }                        /* Comment.Special */
+  .c      { color: $pre-border !important; font-style: italic !important; }                                                  /* Comment */
+  .cm     { color: $pre-border !important; font-style: italic !important; }                                                  /* Comment.Multiline */
+  .cp     { color: $pre-border !important; font-style: italic !important;  }                                                 /* Comment.Preproc */
+  .c1     { color: $pre-border !important; font-style: italic !important; }                                                  /* Comment.Single */
+  .cs     { color: $pre-border !important; font-weight: bold !important; font-style: italic !important; }                    /* Comment.Special */
   .err    { color: $solar-red !important; background: none !important; }                                                     /* Error */
   .k      { color: $solar-orange !important; }                                                                               /* Keyword */
   .o      { color: $base1 !important; font-weight: bold !important; }                                                        /* Operator */
@@ -144,7 +143,7 @@ p, li {
 
 .highlight {
   pre { background: none; border-radius: 0; border: none; padding: 0; margin-bottom: 0; }
-  margin-bottom: 1.8em;
+  margin: 0 3em 1.5em;
   background: #ddd;
   overflow-y: hidden;
   overflow-x: auto;
@@ -207,4 +206,8 @@ figure.code {
   font-size: 13px;
   text-shadow: #cbcccc 0 1px 0;
   padding-left: 3em;
+}
+
+.highlight-console .pre-code {
+  color: $pre-color !important;
 }
