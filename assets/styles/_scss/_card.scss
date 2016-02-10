@@ -2,7 +2,7 @@
   @include display(flex);
   @include flex-wrap(wrap);
   @include justify-content(center);
-} 
+}
 
 .card {
   $base-border-color: $gainsboro !default;
@@ -33,7 +33,7 @@
   cursor: auto;
   margin: 0 $card-margin $base-spacing;
   position: relative;
-  
+
   .card-image {
     max-height: 200px;
     overflow: hidden;
@@ -66,7 +66,7 @@
       margin: 0 0 ($base-spacing / 2);
     }
   }
-      
+
   &:focus,
   &:hover {
     background-color: $card-hover-background;

@@ -28,9 +28,11 @@ a {
   }
 }
 
+// scss-lint:disable ColorVariable
 p a {
   border-bottom: .1em solid rgba(10, 83, 101, .1);
 }
+// scss-lint:enable ColorVariable
 
 .card-copy {
   color: $dark-blue;
@@ -106,7 +108,7 @@ blockquote {
   padding: 1em;
   quotes: '\201C' '\201D';
 
-  &:before {
+  &::before {
     color: transparentize($dark-blue, .6);
     content: open-quote;
     font-family: 'Source Sans Pro', sans-serif;
