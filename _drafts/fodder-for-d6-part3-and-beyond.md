@@ -1,5 +1,5 @@
 
-Key points for future 
+Key points for future
 
  + There are many others in your shoes
  + Upgrading Drupal is non-trivial so if you're convinced of security implications, seriously consider a comprehensive rebuild
@@ -11,12 +11,9 @@ Key points for future
   + Great thing about Drupal, there are lots of good resources out there
   + Reference Drupalgeddon - every site in the world was destroyed within 7 minutes
   + stomach hurts - https://www.drupal.org/drupal-6-eol#comment-10556816
-  
-  
+
   Drupal 8 gitignore: http://drupal.stackexchange.com/questions/99363/why-does-drupal-8-default-gitignore-suggest-ignoring-config-directory
   https://www.drupal.org/node/1170538
-
-
 
 This can be a hot-button topic. Some technologists are purists, and believe it sacrosanct to even consider.
 In the wild, however, given the complexity of site builds, we know most of them take more than 3 months.

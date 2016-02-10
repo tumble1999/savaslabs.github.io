@@ -5,7 +5,7 @@ date: 2015-05-18
 author: Tim Stallmann
 tags: cartography leaflet
 custom_css: leaflet
-custom_js: 
+custom_js:
  - leaflet
  - leaflet-providers
 summary: Leaflet.js is a powerful, light-weight javascript API for mapping. In this post, I'll walk through how to use Leaflet to map GeoJSON data.
@@ -72,9 +72,9 @@ function addDataToMap(data, map) {
 $.getJSON("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson", function(data) { addDataToMap(data, map); });
 ```
 
-The callback creates a new Leaflet layer object by calling `L.geoJson`, and then adds that layer to the map. 
+The callback creates a new Leaflet layer object by calling `L.geoJson`, and then adds that layer to the map.
 
-Note that within jQuery, JSON is in all caps, whereas Leaflet uses strict camelCase (geoJson). 
+Note that within jQuery, JSON is in all caps, whereas Leaflet uses strict camelCase (geoJson).
 
 We need to access the map variable inside `addDataToMap`, so I'm using a closure here to pass that along with the data. This is usually not strictly necessary, since depending on how your javascript is written, `map` is probably already available within the scope of `addDataToMap`. But let's explicitly pass it here, to avoid being confusing.
 

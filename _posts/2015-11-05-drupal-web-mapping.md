@@ -16,7 +16,7 @@ Note: At the time of writing this few of the modules mentioned had stable D8 por
 
 ArcGIS.com, Google My Maps, CartoDB, Mapbox - the list of GUI-based web-mapping tools keeps getting longer. These tools are great
 for a lot of purposes. But there are a few things which are hard to do easily using most conventional web-based mapping/GIS tools that *are* easy to do in Drupal:
- 
+
  * Annotating features with rich text and longer text descriptions, and having that text be easily editable in a WYSIWYG format.
  * Attaching media (pictures, audio and video) to features without having to use a separate external service for storing media. ArcGIS.com and CartoDB both require you to upload photos elsewhere and then copy-and-paste a URL from the photo location, not the simplest workflow.
  * Incorporating search and filtering capabilities.
@@ -55,9 +55,7 @@ are a lot of limitations on customizing maps made using the Leaflet module. If y
 OpenLayers is a wrapper for the [OpenLayers](http://www.openlayers.org) web mapping framework. OpenLayers is a highly object-oriented mapping framework in which all components of the map (markers, popups, map interaction behaviors, data layers, etc.) are modelled using objects and inheritable classes. For example, to design
 your own popup you theoretically just have to extend the `OpenLayers.Popup.FramedCloud` class and override some of its attributes or behaviors. In practice, this is more complicated than it sounds, especially because not all the class intricacies are well-documented.
 
-OpenLayers offers much more customization via the various settings GUIs than Leaflet does. I'm not going to get into all the details here, as it's pretty self-explanatory (there's a [decent slideshare from DrupalCamp Spain](http://www.slideshare.net/pvhee/mapping-in-drupal-7-using-openlayers) as well).
-One thing you do need to know when using OpenLayers, is that you're going to need to create (at least) *two* views for each map. Each data layer will have its own view, with format `OpenLayers Data Overlay`. Then you'll configure a map object within OpenLayers, but in order to actually display the map you 
-need to create a view with format `OpenLayers Map`. If you're using contextual filters, those filters need to be applied (with identical settings) on both views, for the map *and* the relevant data layer.
+OpenLayers offers much more customization via the various settings GUIs than Leaflet does. I'm not going to get into all the details here, as it's pretty self-explanatory (there's a [decent slideshare from DrupalCamp Spain](http://www.slideshare.net/pvhee/mapping-in-drupal-7-using-openlayers) as well). One thing you do need to know when using OpenLayers, is that you're going to need to create (at least) *two* views for each map. Each data layer will have its own view, with format `OpenLayers Data Overlay`. Then you'll configure a map object within OpenLayers, but in order to actually display the map you need to create a view with format `OpenLayers Map`. If you're using contextual filters, those filters need to be applied (with identical settings) on both views, for the map *and* the relevant data layer.
 
 Open Layers does have a cost of more computational and memory overhead than Leaflet. On a recent project, I found that on a production server with the GeOS PHP extention installed,
  OpenLayers maps would fail to render on the server-side once the mapped view reached about 500-750 points. If you're just displaying individual points, you can get around this performance limitation using the [GeoCluster](https://www.drupal.org/project/geocluster) module for D7, which implements
@@ -69,5 +67,5 @@ Open Layers does have a cost of more computational and memory overhead than Leaf
 
 This is a sort of "headless Drupal" approach, and it's the one we're using on Savas' first D8 site, the [Durham Civil Rights map](https://github.com/savaslabs/durham-civil-rights-map). By using the Views GeoJSON module, you can
 render the output of any view containing location information as a GeoJSON feed (potentially even including exposed filters via the query path). Then, just like any GeoJSON feed, that data can be loaded via AJAX into a Leaflet (or OpenLayers, or other frameworks) map. Savas' [Anne Tomasevich](http://savaslabs.com/team/anne-tomasevich/) has a
-great write-up on just how to do that [in Drupal 8 specifically](http://savaslabs.com/2015/07/06/map-in-drupal-8.html), and I wrote a post a while ago about [how to map GeoJSON data in Leaflet more generally](http://savaslabs.com/2015/05/18/mapping-geojson.html). This approach is still something we're 
+great write-up on just how to do that [in Drupal 8 specifically](http://savaslabs.com/2015/07/06/map-in-drupal-8.html), and I wrote a post a while ago about [how to map GeoJSON data in Leaflet more generally](http://savaslabs.com/2015/05/18/mapping-geojson.html). This approach is still something we're
 experimenting with, so we'd love to hear your thoughts. One note -- using this approach it's also possible for any user with enough permissions to view the GeoJSON feed to very easily download the full dataset using this approach.

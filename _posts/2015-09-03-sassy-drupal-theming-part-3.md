@@ -83,6 +83,7 @@ paht/to/theme/stylesheets/*
 One of the best things about Sass is being able to make sweeping changes with only one code edit thanks to variables.
 
 But keeping your variables maintainable requires a little thoughtfulness when naming them. For example, let's say these are my site's color variables:
+
 ```scss
 // Colors
 $eggshell: #FFFFF9;

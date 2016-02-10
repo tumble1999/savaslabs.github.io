@@ -16,7 +16,7 @@ For those not already familiar, [Composer](https://getcomposer.org/) is a packag
 Basically, Composer allows you to manage dependencies on a per project basis. Those dependencies live within the project directory so that everything is encapsulated there.  And since you can specify package versions, different projects on your systems can depend on different versions. Composer also pulls in the dependencies of your project's dependencies, keeping you out of ['dependency hell'](https://en.wikipedia.org/wiki/Dependency_hell). You simply specify your projects dependencies in a `composer.json` file, then pull in all of your project's dependencies into a `/vendor` directory on the command line via `composer install`. (You can also update your dependencies via `composer update`).
 
 #### Composer with Drupal Modules?
-But recently, one of our projects required a custom module that depended on a PHP package that expected to be installed via Composer. 
+But recently, one of our projects required a custom module that depended on a PHP package that expected to be installed via Composer.
 
 While we were excited that we could use Composer to easily install the dependency, we hadn't used Composer to manage dependencies within a Drupal module before, and this requirement raised a new concern: **What if more than one module requires the same package?** In that scenario, how do we avoid duplicate code, and more seriously, how do we avoid version conflicts?
 

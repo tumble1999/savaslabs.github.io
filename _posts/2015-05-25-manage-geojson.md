@@ -19,7 +19,7 @@ Why might this be useful?
 
 [GDAL (Geospatial Data Abstraction Library)](http://www.gdal.org) is a free and open-source translator library for both raster and vector data formats. It provides a number of core functionalities for data processing and conversion which are used across the suite of [OSGeo applications](http://www.osgeo.org). More importantly for our purposes, GDAL provides a bunch of command-line tools for processing geospatial data.
 
-If you're on a Mac and using homebrew, you can easily install GDAL by running `brew install gdal` from the command line. Otherwise, you can download [binaries from GDAL](http://trac.osgeo.org/gdal/wiki/DownloadingGdalBinaries) or [compile the source code yourself](http://trac.osgeo.org/gdal/wiki/BuildHints). 
+If you're on a Mac and using homebrew, you can easily install GDAL by running `brew install gdal` from the command line. Otherwise, you can download [binaries from GDAL](http://trac.osgeo.org/gdal/wiki/DownloadingGdalBinaries) or [compile the source code yourself](http://trac.osgeo.org/gdal/wiki/BuildHints).
 
 Just like the last tutorial, we're going to be using the USGS earthquake data. Navigate to [http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson](http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson), and save the resulting file to your computer as a `.geojson` file.
 
@@ -88,7 +88,7 @@ OGRFeature(OGRGeoJSON):1
 ...
 ```
 
-Note: I'm using the `-q` flag to suppress some of the more verbose output. Also, ogrinfo unfortunately doesn't support `GROUP BY` or `LIMIT` clauses on SQL queries for GeoJSON files. 
+Note: I'm using the `-q` flag to suppress some of the more verbose output. Also, ogrinfo unfortunately doesn't support `GROUP BY` or `LIMIT` clauses on SQL queries for GeoJSON files.
 
 We can also use this to answer some basic questions about the data. Like, how many earthquakes were recorded with magnitude of 5 or greater?
 
@@ -195,7 +195,7 @@ Extent: (-179.231086, -14.601813) - (179.859681, 71.441059)
 ...
 ```
 
-That worked, so now we can format the whole ogr2ogr string, using `-clipsrc` and `-clipsrcsql` options. Note that because we're using a very detailed shapefile for the state outlines, this command takes a long time to process. On my MacBook Pro it clocks in at around 3 minutes. 
+That worked, so now we can format the whole ogr2ogr string, using `-clipsrc` and `-clipsrcsql` options. Note that because we're using a very detailed shapefile for the state outlines, this command takes a long time to process. On my MacBook Pro it clocks in at around 3 minutes.
 
 ```bash
 $ ogr2ogr -f GeoJSON all_month_georgia.geojson all_month.geojson -clipsrc tl_2014_us_state.shp -clipsrcsql "SELECT * FROM tl_2014_us_state WHERE NAME='Georgia'"
@@ -204,6 +204,3 @@ $ ogr2ogr -f GeoJSON all_month_georgia.geojson all_month.geojson -clipsrc tl_201
 And here's the GeoJSON dataset we just created, viewed on geojson.io -- all two earthquakes in Georgia last month!
 
 <img src="/assets/img/blog/earthquakes-georgia-geojson-io.jpg" width="500px" height="164px" alt="Screenshot of GeoJSON.io map showing two earthquakes in Georgia" class="blog-image-large">
-
- 
-
