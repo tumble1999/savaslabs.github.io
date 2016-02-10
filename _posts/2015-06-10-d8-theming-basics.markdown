@@ -42,10 +42,10 @@ Though the theming layer in Drupal 8 is quite different from Drupal 7 and will r
 - Fewer Drupal-specific conventions and more popular, well-documented frameworks (such as Twig), meaning non-Drupalers can jump in much more quickly. Let’s face it - Drupal 7 theming has a major learning curve, which can keep developers and designers from using Drupal at all.
 - Template files are more secure since they no longer contain PHP code (thanks to Twig). Sanders at [d8.sqndr.com](http://d8.sqndr.com/) offers this nice/scary example of PHP code that could be executed in a Drupal 7 template file:
 
-{% highlight php %}
+```php
 // This really shouldn’t be allowed to work, and it won’t in D8.
   <?php db_query('DROP TABLE {users}'); ?>
-{% endhighlight %}
+```
 
 - Even more security: text is automatically escaped in Twig, meaning a lower chance of XSS attacks.
 - D8 themers don’t need to know PHP to whip up a theme.
@@ -76,7 +76,7 @@ Let’s create a folder for our new theme. Savas is working on a Drupal 8 mappin
 
 The first file we’ll want to create is `[theme-name].info.yml`, which replaces D7’s `[theme-name].info` file. I’ve created `mappy.info.yml`, shown below. If you’re new to YAML, Symfony has a [nice writeup](http://symfony.com/doc/current/components/yaml/yaml_format.html#collections) on syntax. Pay close attention to the whitespace - for example, a space is required after the colon in key-value pairs.
 
-{% highlight yaml %}
+```yaml
 # mappy.info.yml
 name: Mappy
 type: theme
@@ -91,35 +91,35 @@ regions:
   content: Content
   sidebar: 'Sidebar'
   footer: 'Footer'
-{% endhighlight %}
+```
 
 Let's knock out the easy ones:
 
-{% highlight yaml %}
+```yaml
 name: Mappy
 type: theme
 description: 'D8 Theme for a basic leaflet site.'
 core: 8.x
-{% endhighlight %}
+```
 
 This information tells Drupal that we're dealing with a Drupal 8 theme and gives Drupal a name and description to display in the admin UI. Note that all of these items are required for your theme to be installable.
 
-{% highlight yaml %}
+```yaml
 regions:
   navbar: 'Top Navigation Bar'
   content: Content # required!
   sidebar: 'Sidebar'
   footer: 'Footer'
-{% endhighlight %}
+```
 
 This hasn't changed much from Drupal 7. Don't forget that the `Content` region is required. You can also forego declaring regions if you want to use Drupal's [default regions.](https://www.drupal.org/node/2469113)
 
 
 #### Classy, the new base theme
 
-{% highlight yaml %}
+```yaml
 base theme: classy
-{% endhighlight %}
+```
 
 Classy is a brand new base theme that ships with Drupal core. All CSS classes were moved out of core template files and into Classy's as a way to a) contain, minimize, and organize default classes and b) give developers the option of not using Drupal's default classes without having to undo core. One can simply choose not to use Classy as a base theme.
 
@@ -127,16 +127,18 @@ Additionally, Classy's classes follow the BEM convention, making them less gener
 
 
 #### Libraries
-{% highlight yaml %}
+
+```yaml
 libraries:
  - mappy/global-styling
  - mappy/leaflet
-{% endhighlight %}
+```
 
 In Drupal 8, assets can be added to pages in a few different ways: globally, per-template, and per-page. We've chosen to add our CSS and JS globally since this is a small site and the same relatively lightweight assets are used on almost every page.
 
 In the `mappy.info.yml` file, I've listed two libraries. These correspond to items in my `mappy.libraries.yml` file, which lives in the root of my theme directory. No matter how you're including CSS or JS files on a page, you'll need to define them in your `[theme-name].libraries.yml` file.
-{% highlight yaml %}
+
+```yaml
 # mappy.libraries.yml
 global-styling:
   css:
@@ -152,7 +154,7 @@ leaflet:
     js/map.js: {}
   dependencies:
     - core/jquery
-{% endhighlight %}
+```
 
 As you may have guessed, `global-styling` is a library that applies site-wide styles. `leaflet` is the leaflet library, which consists of `leaflet.css` and `leaflet.js`, plus our custom file `map.js`. jQuery is no longer loaded on every page in Drupal 8, so we have to explicitly include it when it's required.
 
@@ -161,7 +163,8 @@ By listing these two libraries in `mappy.info.yml` we ensure that these assets w
 
 #### Breakpoints
 Another new YAML file, `[theme-name].breakpoints.yml`, allows developers to create standard breakpoints to be used by modules and themes across the site. You can set custom breakpoints by defining them in this file. Below is our breakpoints file, which also resides in the root of our theme. Note that we simply adapted the breakpoints file from the Bartik theme.
-{% highlight yaml %}
+
+```yaml
 # mappy.breakpoints.yml
 mappy.mobile:
   label: mobile
@@ -181,7 +184,7 @@ mappy.wide:
   weight: 0
   multipliers:
     - 1x
-{% endhighlight %}
+```
 
 Important tip: Once you add a breakpoints file, you'll need to uninstall and reinstall your theme to expose these breakpoints in the admin UI.
 
@@ -202,29 +205,29 @@ In our custom theme's current state, we're using Classy's template files as-is. 
 
 In Drupal 7 we render content like so:
 
-{% highlight php %}
+```php
 <?php print render($page['sidebar']); ?>
-{% endhighlight %}
+```
 
 Printing variables using Twig in D8 is as easy as including them in the double curly brace delimiter.
 
-{% highlight liquid %}
+```liquid
 // In page--front.html.twig
 // Print the sidebar region.
 {% raw %}
-  {{ page.sidebar }}
+{{ page.sidebar }}
 {% endraw %}
-{% endhighlight %}
+```
 
 ...unless there are special characters in the variable name. If that's the case and you see an error when using the syntax above, you can use Twig's subscript syntax, which should look pretty familiar to Drupalers:
 
-{% highlight liquid %}
+```liquid
 // In page--front.html.twig
 // Print the page type.
 {% raw %}
-  {{ page['#type'] }}
+{{ page['#type'] }}
 {% endraw %}
-{% endhighlight %}
+```
 
 This will be more useful when debugging. The Drupal core base themes include lists of available variables and regions in the DocBlock of their template files, or you can print variables to the page via Twig's debug mode (more on that below) to see what's available to you.
 
@@ -232,20 +235,21 @@ This will be more useful when debugging. The Drupal core base themes include lis
 
 Twig comes with many built-in [filters](http://twig.sensiolabs.org/doc/filters/index.html) that variables are passed to via the pipe character. These filters do many of the things that PHP functions would have in previous Drupal versions. One example is the date filter:
 
-{% highlight liquid %}
+```liquid
 // Format the post date.
 {% raw %}
-  {{ post.published|date("Y-m-d") }}
+{{ post.published|date("Y-m-d") }}
 {% endraw %}
-{% endhighlight %}
+```
 
 There are also [Drupal-specific Twig filters](https://www.drupal.org/node/2357633), such as `t` which runs the string through the `t()` function.
-{% highlight liquid %}
+
+```liquid
 // Run an ARIA label through t()
 {% raw %}
-  <nav class="tabs" role="navigation" aria-label="{{ 'Tabs'|t }}">
+<nav class="tabs" role="navigation" aria-label="{{ 'Tabs'|t }}">
 {% endraw %}
-{% endhighlight %}
+```
 
 By the way, [ARIA labels](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) are new in Drupal 8 too!
 
@@ -255,26 +259,27 @@ In addition to filters, Twig provides a range of [functions](http://twig.sensiol
 
 Control flow and other [tags](http://twig.sensiolabs.org/doc/tags/set.html) are also supported in Twig. One of my favorite things about templating languages is how easy it is to execute `if` statements and `for` loops. [Savas](https://github.com/savaslabs/savaslabs.github.io) uses Jekyll for our company website and the Liquid templating language makes it easy to loop through a list of data points, blog posts, projects, etc. and print them to a page rather than writing out all of the HTML. In Drupal, we'll use the `if` statement quite often.
 
-{% highlight liquid %}
+```liquid
 // From Bartik's page.html.twig
 // If there are tabs, output them.
 {% raw %}
-  {% if tabs %}
-    <nav class="tabs" role="navigation" aria-label="{{ 'Tabs'|t }}">
-      {{ tabs }}
-    </nav>
-  {% endif %}
+{% if tabs %}
+  <nav class="tabs" role="navigation" aria-label="{{ 'Tabs'|t }}">
+    {{ tabs }}
+  </nav>
+{% endif %}
 {% endraw %}
-{% endhighlight %}
+```
 
 Another useful tag is `set`, which allows you to set and use variables throughout the template. In the following example, the variable `heading_id` is set and then used as the `aria-labelledby` attribute. Note that the Twig concatenation character `~` is used, and the string '-menu' is passed through the `clean_id` filter.
-{% highlight liquid %}
+
+```liquid
 // From Classy's block--system-menu-block.html.twig
 {% raw %}
-  {% set heading_id = attributes.id ~ '-menu'|clean_id %}
-  <nav{{ attributes.addClass(classes) }} role="navigation" aria-labelledby="{{ heading_id }}">
+{% set heading_id = attributes.id ~ '-menu'|clean_id %}
+<nav{{ attributes.addClass(classes) }} role="navigation" aria-labelledby="{{ heading_id }}">
 {% endraw %}
-{% endhighlight %}
+```
 
 #### Coding standards
 
@@ -299,31 +304,36 @@ I created `settings.local.php` by making copy of `example.settings.local.php` in
 
 To get Drupal to recognize my local settings file, I opened `settings.php` and uncommented the last 3 lines:
 
-{% highlight php startinline=true %}
+```php
+<?php
 if (file_exists(__DIR__ . '/settings.local.php')) {
   include __DIR__ . '/settings.local.php';
 }
-{% endhighlight %}
+```
 
 In `settings.local.php` we'll see:
-{% highlight php startinline=true %}
+
+```php
+<?php
 /**
  * Enable local development services.
  */
 $settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml';
-{% endhighlight %}
+```
 
 This means we need to head over to `sites` and edit `development.services.yml` to change our local development services. I added these lines to this file to enlable debug mode and auto reload:
 
-{% highlight yaml %}
+```yaml
 parameters:
   twig.config:
     debug: true
     auto-reload: true
-{% endhighlight %}
+```
 
 Great, we've completed steps 1 and 2. Fun fact: step 3 is already complete too! In `settings.local.php`:
-{% highlight php startinline=true %}
+
+```php
+<?php
 /**
  * Disable the render cache (this includes the page cache).
  *
@@ -333,7 +343,7 @@ Great, we've completed steps 1 and 2. Fun fact: step 3 is already complete too! 
  * Do not use this setting until after the site is installed.
  */
 $settings['cache']['bins']['render'] = 'cache.backend.null';
-{% endhighlight %}
+```
 
 So by using the local settings file we've already disabled the render cache.
 
@@ -342,17 +352,17 @@ Now, reload your site and you should see HTML comments in your browser's code in
 #### Where my variables at?
 One useful function that comes with Twig is `dump()`. This function works once you've enabled Twig's debug mode and can be entered into any template file.
 
-{% highlight liquid %}
+```liquid
 // Print out all variables on the page.
 {% raw %}
-  {{ dump() }}
+{{ dump() }}
 {% endraw %}
 
 // Print the page's base path.
 {% raw %}
-  {{ dump(base_path) }}
+{{ dump(base_path) }}
 {% endraw %}
-{% endhighlight %}
+```
 
 `dump()` is great, but it outputs a rather unwieldy array.
 
@@ -360,13 +370,13 @@ One useful function that comes with Twig is `dump()`. This function works once y
 
 Enter the beloved Devel module and the new Devel Kint module. Kint is to Drupal 8 what krumo was to Drupal 7. Once Devel and Devel Kint are installed, you can use `kint()` in place of `dump()` for a nice expandable array.
 
-{% highlight liquid %}
+```liquid
 // In page--front.html.twig
 // Print out all variables on the page.
 {% raw %}
-  {{ kint() }}
+{{ kint() }}
 {% endraw %}
-{% endhighlight %}
+```
 
 <img class="blog-image-xl" src="{{ site.base_url }}/assets/img/blog/kint-output.png" alt="Screenshot of kint function output.">
 

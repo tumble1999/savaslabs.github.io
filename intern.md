@@ -12,8 +12,7 @@ At Savas, we have internship opportunities for **project managers**, and
 web agency is like. The selected candidate will receive support from a technical
 and business perspective, but will also need to be self-motivated, and able to
 contribute through times of limited supervision. The role of the intern will
-depend on availability and this is a part-time, paid 
-internship.
+depend on availability and this is a part-time, paid internship.
 
 ### Working at Savas
 At Savas, we prioritize a few things. We like people who are enjoyable to work

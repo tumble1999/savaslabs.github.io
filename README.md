@@ -18,6 +18,19 @@ To run the tests:
 
 `$ bash _tests/run-tests.sh`
 
+### Syntax Highlighting
+
+Since updating to Jekyll 3.0.2 which uses Kramdown/Rouge, to use syntax
+highlighting in a post you just need to use backticks (similar to GitHub or
+Slack highlighting).
+
+Special tips:
+
+1. You can include the language name after the first set of backticks with no
+space e.g. ```bash
+2. The syntax block must be proceeded and followed by blank lines.
+3. For php you must including an opening php tag to get proper highlighting.
+
 ### Tags
 
 To add a new tag, complete the following:
@@ -25,7 +38,6 @@ To add a new tag, complete the following:
 1. Add the tag to _data/tags.yml.
 2. Add a new markdown file for the tag in news/tag. This creates a page for posts with that tag.
 3. Add the tag to the front matter of your post.
-
 
 ### Staging site
 
@@ -37,12 +49,12 @@ The staging site lives on the savasdev.com server.
 
 If you would like to add your private repo to stage your code feel free
 
-```
+```bash
 www@savasdev:~/blabs.savasdev.com/site$ git remote -v
-origin	git@bitbucket.org:illmasterc/savas-labs-website.git (fetch)
-origin	git@bitbucket.org:illmasterc/savas-labs-website.git (push)
-upstream	git@github.com:savaslabs/savaslabs.github.io.git (fetch)
-upstream	git@github.com:savaslabs/savaslabs.github.io.git (push)
+origin git@bitbucket.org:illmasterc/savas-labs-website.git (fetch)
+origin git@bitbucket.org:illmasterc/savas-labs-website.git (push)
+upstream git@github.com:savaslabs/savaslabs.github.io.git (fetch)
+upstream git@github.com:savaslabs/savaslabs.github.io.git (push)
 ```
 
 The site is served from `/home/www/blabs.savasdev.com/site/_site` which can

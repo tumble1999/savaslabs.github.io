@@ -34,7 +34,10 @@ github_username: savaslabs
 markdown: kramdown
 sass:
   sass_dir: assets/styles/_scss
-highlighter: pygments
+kramdown:
+  input: GFM
+  hard_wrap: false
+  syntax-highlighter: rouge
 
 # Blog
 paginate: 6
@@ -56,3 +59,4 @@ collections:
 gems:
   - jekyll-sitemap
   - jekyll-redirect-from
+  - jekyll-paginate

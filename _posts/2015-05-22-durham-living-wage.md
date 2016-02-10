@@ -41,7 +41,6 @@ stratified it actually is.
 |:---------------|---------:|-------:|-------:|-------:|--------:|
 | **Percentage of total wealth** | 2.9   | 6.4   | 12.0   | 20.2   | 58.5   |
 
-
 Given this is what we _think_ wealth distribution looks like, the next
 most intriguing and relative to Living Wage is what we _want_ wealth
 distribution to be. Like any wise author should, Ariely references another,

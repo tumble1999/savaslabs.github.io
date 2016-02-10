@@ -19,7 +19,8 @@ At this point, we're ready to write some SCSS within the `base`, `components`, a
 ### Drupal-flavored SMACSS
 
 When we left off, our `sass` directory looked like this:
-{% highlight bash %}
+
+```bash
 # Inside the custom theme directory
 sass
 ├── _init.scss
@@ -31,7 +32,7 @@ sass
 │   ├── font-awesome
 │   └── neat
 └── styles.scss
-{% endhighlight %}
+```
 
 At this point we're ready to start styling. Let's take a look at the three folders that will hold our custom `.scss` files, which are loosely based on SMACSS. Acquia has a [nice writeup](https://dev.acquia.com/blog/organize-your-styles-introduction-smacss) of how SMACSS principles can be applied to Drupal, but I like to simplify it even further.
 
@@ -52,7 +53,7 @@ This is where I house all of my Sass variables and custom mixins. I typically ha
 
 I'd definitely recommend including `_normalize.scss` in `base` if you're using Neat, but other than that do what works for you! If you're following my method, your `sass` folder should be looking like this:
 
-{% highlight bash %}
+```bash
 # Inside the custom theme directory
 sass
 ├── _init.scss
@@ -67,7 +68,7 @@ sass
 │   ├── font-awesome
 │   └── neat
 └── styles.scss
-{% endhighlight %}
+```
 
 #### Layouts
 
@@ -75,7 +76,7 @@ This directory holds page-wide layout styles, which means we'll be making heavy 
 
 Remember that these styles only apply to the page's layout! I occasionally find myself moving styles from the `layouts` directory to `base` or `components` when I realize they don't only define layout. In these partials, you should be doing a lot of grid work and spacing. This is the entirety of my `sass/layouts/_base.scss` file on our mapping site:
 
-{% highlight scss %}
+```scss
 /**
  * @file
  *
@@ -95,10 +96,11 @@ body {
     }
   }
 }
-{% endhighlight %}
+```
 
 We're almost there:
-{% highlight bash %}
+
+```bash
 # Inside the custom theme directory
 sass
 ├── _init.scss
@@ -116,7 +118,7 @@ sass
 │   ├── font-awesome
 │   └── neat
 └── styles.scss
-{% endhighlight %}
+```
 
 #### Components
 
@@ -124,7 +126,7 @@ In SMACSS this is called "modules," but that gets a little confusing in Drupal L
 
 Let's say we created partials for the header, footer, and sidebar regions, plus one for non-layout node page styles. At this point, our `sass` directory is looking like this:
 
-{% highlight bash %}
+```bash
 # Inside the custom theme directory
 sass
 ├── _init.scss
@@ -147,7 +149,7 @@ sass
 │   ├── font-awesome
 │   └── neat
 └── styles.scss
-{% endhighlight %}
+```
 
 Now we've got a nicely organized, easy to navigate Sass directory, ready to hold your styles and compile them into one beautiful CSS file!
 
