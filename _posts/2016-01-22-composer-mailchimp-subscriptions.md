@@ -39,8 +39,7 @@ We were able to achieve this by adding the [MailChimp PHP library](https://packa
 
 First, in our module's root directory we created a `composer.json` file that specified the MailChimp PHP library as a dependency:
 
-```php
-<?php
+```json
 {
   "require": {
     "mailchimp/mailchimp": "*"
@@ -51,8 +50,8 @@ First, in our module's root directory we created a `composer.json` file that spe
 We then installed the Mailchimp API using the Composer Manager drush commands:
 
 ```bash
-drush composer-json-rebuild
-drush composer-manager install
+$ drush composer-json-rebuild
+$ drush composer-manager install
 ```
 
 As explained in my [last post](/2015/10/15/composing-with-composer-manager.html), the first command builds  (or rebuilds) the consolidated project wide `composer.json` file and the second command installs the dependencies.
