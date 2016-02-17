@@ -4,13 +4,16 @@ This is the website for [Savas Labs](http://savaslabs.com).
 
 The site is built using Jekyll. To run locally:
 
-1. Make sure [Bundler](http://bundler.io) and [Jekyll](http://jekyllrb.com/docs/installation/) are installed
-   * `gem install bundler`
-   * `gem install jekyll`
-2. Clone the repo
-3. `bundle install`
-4. `bundle exec jekyll serve --config _config.yml,_config.test.yml,_config.dev.yml`
- - This convenient script also captures the config files specified above: `./_scripts/jekyll.sh`
+1. [Install Docker](https://docs.docker.com/engine/installation/) (n.b. if you're on a Mac or Windows, you'll want to run with [Docker Toolbox](https://docs.docker.com/engine/installation/mac/))
+2. `docker-compose up -d` (`-d` says to detach the process; leave this off if you want to see Jekyll's output)
+3. The site is now running at `http://localhost:4000`
+4. Run `docker-compose stop` when you're finished
+
+You can run custom commands like so:
+
+``` bash
+$ docker-compose run website --rm jekyll --help # The --rm flag says to remove the container after you run the command.
+```
 
 ### Tests
 
