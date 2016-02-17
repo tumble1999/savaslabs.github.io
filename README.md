@@ -5,9 +5,10 @@ This is the website for [Savas Labs](http://savaslabs.com).
 The site is built using Jekyll. To run locally:
 
 1. [Install Docker](https://docs.docker.com/engine/installation/) (n.b. if you're on a Mac or Windows, you'll want to run with [Docker Toolbox](https://docs.docker.com/engine/installation/mac/))
-2. `docker-compose up -d` (`-d` says to detach the process; leave this off if you want to see Jekyll's output)
-3. The site is now running at `http://localhost:4000`
-4. Run `docker-compose stop` when you're finished
+2. `docker-compose pull` to get the prebuilt image (You only need to do this once)
+3. `docker-compose up -d` (`-d` says to detach the process; leave this off if you want to see Jekyll's output)
+4. The site is now running at `http://localhost:4000`
+5. Run `docker-compose stop` when you're finished
 
 You can run custom commands like so:
 

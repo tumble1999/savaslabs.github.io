@@ -1,5 +1,5 @@
 website:
-  build: .
+  image: kostajh/savaslabs.github.io:master
   command: jekyll serve --config _config.yml,_config.test.yml,_config.dev.yml -H 0.0.0.0 --force_polling --incremental
   restart: on-failure
   ports:
