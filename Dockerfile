@@ -26,11 +26,6 @@ ENV LANGUAGE en_US.UTF-8
 
 RUN gem install \
 github-pages \
-jekyll \
-jekyll-redirect-from \
-kramdown \
-rdiscount \
-rouge \
 mdl \
 scss_lint \
 html-proofer
@@ -42,7 +37,3 @@ WORKDIR /src
 
 EXPOSE 4000
 CMD ["jekyll", "s"]
-
-
-
-
