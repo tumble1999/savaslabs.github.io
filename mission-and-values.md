@@ -5,37 +5,52 @@ permalink: "/mission-and-values/"
 excerpt: Mission statement and core values of Savas
 ---
 
-As a team, we at Savas take our company mission and our core values seriously etc......
-
----
-
 ## Mission Statement
 
-We exist to be a force for positive change in the world by:
-
-- Contributing back to the community
-- Using our skills for good
-- Focusing on client needs
-- Using appropriate technologies to solve problems
+We aspire to provide top-notch customer service by providing appropriate 
+technological solutions to empower organizations to positively affect the world.
 
 ---
 
 ## Core Values
 
-### Diversity
 
-We embrace diversity in every sense of the word, not only for the benefits it brings the company from a more holistic perspective on problem solving, but as it pertains to the empowerment of traditionally and presently underrepresented groups. We are deeply committed to maintaining an environment where every person can feel comfortable in her own skin.
+#### Diversity
 
-### Collaboration
+We embrace diversity in every sense of the word, not only for the benefits it 
+brings to the company providing a more holistic perspective on problem solving, 
+but as it pertains to the empowerment of traditionally and presently 
+underrepresented groups. We strive to craft an intentionally inclusive work 
+environment in which everyone feels comfortable in her own skin.
 
-Collaboration is key to our success. We teach one another and others We have fostered a very inclusive team environment
+#### Collaboration
 
-### Respect
+Collaboration by means of listening, learning, and teaching is core to our 
+spirit and key to our success. We share our knowledge and experience in our 
+daily teamwork, and impart that expertise enriching the broader community 
+through [blog posts](/news/), [public code contributions](https://www.drupal.org/savas), 
+[hosting local meetups](http://www.meetup.com/triDUG/), and giving talks at 
+conferences.
 
-### Balance
+#### Respect
 
-Balance is important to us at Savas. We work hard while we’re on the clock but appreciate the needs of a complete life which includes aspirations outside the workplace.
+Respect is paramount to fostering trust with each other and our partners. We 
+recognize that we are all imperfect human beings, and we approach problems with 
+humility and understanding. With egos checked at the door, our professional 
+ethos, founded in honesty and integrity makes us a delight to collaborate with.
 
-### Quality
+#### Balance
 
-We believe in a client-centric approach to solving problems and deriving new value that is derived from a very high-level of quality. We provide thoughtful solutions, and take the care required to see them through to their full potential.
+[Balance](/team/#what-does-savas-mean) is important to us at Savas. We work 
+hard while we’re on the clock but appreciate the needs of a complete life which 
+includes aspirations outside of the work place. Having fun does not have to come 
+at the cost of productivity, and we find just the opposite to be the case. We 
+aspire to be well-rounded partners, citizens, and members of our communities.
+
+#### Quality
+
+We take great care to ensure the quality of the work we produce. By taking a 
+client-centric approach to solving problems and providing new value we ensure 
+we’re truly understanding needs and providing thoughtful right-fit solutions by 
+adhering to best practices. We hold ourselves to a high and constantly improving 
+standard.
