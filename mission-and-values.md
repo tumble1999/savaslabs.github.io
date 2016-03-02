@@ -1,11 +1,11 @@
 ---
 layout: page-narrow
-title: Mission and Values
+title: Mission and Core Values
 permalink: "/mission-and-values/"
-excerpt: Mission statement and core values of Savas
+excerpt: Mission statement and core values of Savas Labs
 ---
 
-## Mission Statement
+## Mission 
 
 We empower organizations seeking to create positive change by listening 
 carefully to their needs, strategizing collaboratively and delivering 
