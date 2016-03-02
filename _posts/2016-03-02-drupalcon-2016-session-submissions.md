@@ -4,7 +4,7 @@ title: "We're going to Drupalcon; will they let us talk?"
 date: 2016-03-02
 author: Chris Russo
 tags: drupal drupal8 
-summary: Savas Labs is sending 3 people to Drupalcon and has proposed 4 sessions?
+summary: Savas Labs is sending 3 people to Drupalcon and has proposed 4 sessions.
 ---
 
 
