@@ -8,8 +8,12 @@ layout: default
         <h4 class="team-member-job-title">{{ page.job_title }}</h4>
     </header>
     <div class="team-links">
-      <li><i class="fa fa-drupal"></i><a href="https://www.drupal.org/u/{{ page.drupal }}">&nbsp;&nbsp;Drupal</a></li>
-      <li><span class="octicon octicon-mark-github"></span><a href="https://github.com/{{ page.github }}">&nbsp;&nbsp;Github</a></li>
+      {% if page.drupal %}
+        <li><i class="fa fa-drupal"></i><a href="https://www.drupal.org/u/{{ page.drupal }}">&nbsp;&nbsp;Drupal</a></li>
+      {% endif %}
+      {% if page.github %}
+        <li><span class="octicon octicon-mark-github"></span><a href="https://github.com/{{ page.github }}">&nbsp;&nbsp;Github</a></li>
+      {% endif %}
       {% if page.twitter %}
         <li><i class="fa fa-twitter"></i><a href="https://twitter.com/{{ page.twitter }}">&nbsp;&nbsp;Twitter</a></li>
       {% endif %}
