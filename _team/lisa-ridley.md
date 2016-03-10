@@ -16,4 +16,8 @@ Prior to working as a developer, Lisa was a project manager for an employee bene
 
 Lisa became an Acquia Certified Developer in May, 2015.
 
+<p style="text-align:center">
+  <img src="/assets/img/team/ACD2015.png" alt="Acquia Certification Badge" height="157" width="162">
+</p>
+
 When she's not working on cool software projects, Lisa likes to cook, collect wine, shoot pool, and view the countryside from the back of her Harley.
