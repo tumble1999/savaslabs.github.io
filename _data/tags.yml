@@ -53,3 +53,5 @@
   name: Module Development
 - slug: mailchimp
   name: MailChimp
+- slug: drupalcamp
+  name: DrupalCamp
