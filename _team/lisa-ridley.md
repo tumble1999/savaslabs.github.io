@@ -9,6 +9,10 @@ drupal: lhridley
 github: lhridley
 linkedin: lisahridley
 resume: https://docs.google.com/document/d/1DDsmug2fY7O6xefDOjwiTQiXeze4tPRoQxVw66nm0ac/pub
+badges:
+  - image: "/assets/img/team/association_ind_member_badge.svg"
+    alt: "Drupal Association Individual Member"
+    link: "https://assoc.drupal.org/membership"
 ---
 Lisa is a PHP and mobile apps developer with 12 years development experience, specializing in Drupal and mobile development. Before working with Drupal, Lisa was writing code for software projects using Zend Framework, Symfony, Doctrine and pure PHP, and was contributing code to the MediaWiki project (the software that runs Wikipedia).  Her focus is on strategic project development and planning, back-end development, continuous integration and automated testing.
 
