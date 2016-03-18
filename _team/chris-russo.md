@@ -12,6 +12,12 @@ github: chrisarusso
 linkedin: chrisarusso
 ---
 
+<p style="text-align:center">
+  <a href="https://events.drupal.org/news/sessions-training-opportunities-announced-drupalcon-new-orleans">
+    <img src="/assets/img/team/DC2016_Spread_The_Word_Sponsor-Speaker.png" alt="Drupalcon NOLA speaking Badge" >
+  </a>
+</p>
+
 Chris has been a professional web developer since 2007 and made his first website
 on geocities.com when he was 11. He was a big fan of 
 <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blink"><code>&lt;blink&gt;&lt;/blink&gt;</code></a> 
