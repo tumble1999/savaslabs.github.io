@@ -40,4 +40,4 @@ start to hatch plans for a Drupalcamp Triangle for 2016. Who's coming with us?!
 
 Dorothy Boyd, thank you.
 
-... and you too [Drupalcamp Asheville](https://drupalasheville.com/).
+... and you too [Drupalcamp Asheville](http://drupalasheville.com/).

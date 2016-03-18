@@ -36,7 +36,7 @@
     @include shift(2);
   }
 
-  img {
+  .team-header img {
     border-radius: 3px;
     max-height: 250px;
   }
@@ -70,6 +70,17 @@
 
     .fa-file-text {
       font-size: 13px;
+    }
+  }
+
+  .team-badges {
+    @include display(flex);
+    @include justify-content(center);
+    @include flex-wrap(wrap);
+
+    .team-badges__badge img {
+      max-width: 200px;
+      padding: 1em;
     }
   }
 }

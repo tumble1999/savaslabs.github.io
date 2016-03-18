@@ -15,7 +15,7 @@ drupal_planet_summary: |
 ---
 
 ### Drupalcamp Asheville, we're coming!
-Savas will be represented at [Drupalcamp Asheville](https://www.drupalasheville.com/camp/2015/program/schedule/sessions) this year!
+Savas will be represented at [Drupalcamp Asheville](http://www.drupalasheville.com) this year!
 [Anne](/team/anne-tomasevich/) and [Chris](/team/chris-russo/)
 are both presenting. Anne will present on Drupal 8 theming, roughly based off
 her [blog post about it](/2015/06/10/d8-theming-basics.html), a topic with

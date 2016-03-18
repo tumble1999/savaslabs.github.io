@@ -3,10 +3,9 @@ layout: post
 title: "DrupalCamp Florida 2016 Recap"
 date: 2016-03-10
 author: Lisa Ridley
-tags: drupal drupalcamp drupal8 
+tags: drupal drupalcamp drupal8
 summary: Lisa Ridley of Savas Labs attended Drupal Camp Florida in March 2016.  Here's what she learned.
 ---
-
 
 <img src="/assets/img/blog/drupal-camp-florida-2016.png" alt="DrupalCamp Florida Hero Banner">
 
@@ -15,7 +14,7 @@ summary: Lisa Ridley of Savas Labs attended Drupal Camp Florida in March 2016.  
 Last weekend, [I](/team/lisa-ridley/) attended [DrupalCamp Florida](https://www.fldrupal.camp/) in Orlando.  This camp has become a regular on my annual list of camps,
 and it's usually the first one on the calendar for the year.  The camp, as are most Drupal Camps, is organized entirely by volunteers, most of them members of the Orlando
 and surrounding area Drupal User Groups.  The camp is held at the Florida Technical College campus in Orlando, who graciously provides the use of their facilities at
-no cost, which (along with the generosity of the sponsors) helps to keep the cost to attendees down.  This is just an extremely well run camp, and it sets the
+no cost, which (along with the generosity of the sponsors) helps to keep the cost to attendees down. This is just an extremely well run camp, and it sets the
 bar for the remainder of the year for other Drupal Camps.
 
 On the sessions agenda the year was, no surprise, several sessions that focused on Drupal 8, and ran the gamut:
