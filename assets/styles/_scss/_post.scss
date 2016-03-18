@@ -36,6 +36,13 @@
     }
   }
 
+  // Need to override inline style from Twitter iframe.
+  // scss-lint:disable ImportantRule
+  .twitter-tweet {
+    margin: 3em auto !important;
+  }
+  // scss-lint:enable ImportantRule
+
   .previous-next-links {
     .previous {
       text-align: right;
