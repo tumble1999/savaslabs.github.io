@@ -36,7 +36,7 @@ layout: default
     <div class="team-badges">
       {% for badge in page.badges %}
         <a class="team-badges__badge" href="{{ badge.link }}">
-         <img src="{{ badge.image }}" alt="{{ badge.alt }}">
+         <img src="/{{ badge.image }}" alt="{{ badge.alt }}">
         </a>
       {% endfor %}
     </div>
