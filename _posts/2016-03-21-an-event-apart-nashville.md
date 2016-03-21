@@ -17,7 +17,8 @@ ahead of the people who build the web (and the equally huge responsibility we
 have to move forward with thoughtfulness and compassion).
 
 I wasn't quite sure what to expect going in, so I'd like to summarize my biggest
-takeaways and share some of the things I found exciting.
+takeaways, share some of the things I found exciting, and reflect on what I
+got out of attending and whether it was worth the relatively high ticket price.
 
 ### Major takeaways
 
@@ -44,8 +45,8 @@ device makes the most sense for them. As Cameron put it:
 
 Unified design isn't just important for the sake of a great user experience
 across multiple devices. Right now, 13% of US adults are smartphone-only users,
-and that percentage rises for people without a college degree, African Americans,
-people who make less than $20,000 a year, and young people -- 21% of millenials use the internet
+and that percentage rises for people without a college degree, people who make
+less than $20,000 a year, and young people -- 21% of millenials use the internet
 exclusively on mobile. And the US is behind most countries in mobile use! So if
 we continue gutting the functionality of our sites on small screens, we're
 penalizing large and sometimes vulnerable groups of users who can't afford or
@@ -64,7 +65,7 @@ of mobile-first design.
 
 I'll be honest, the [Internet of Things](http://www.wired.com/2013/05/internet-of-things-2/)
 usually gives me a creepy,
-hair-standing-up-on-the-back-of-my-neck, Ray-Bradbury-was-right feeling. But the
+hair-standing-up-on-the-back-of-my-neck, [Ray-Bradbury-was-right feeling](https://www.washingtonpost.com/business/technology/dreams-of-ray-bradbury-ten-predictions-that-came-true/2012/06/06/gJQAqbs9IV_story.html). But the
 possibilities in front of us are truly amazing, and if we handle the responsibility
 with care, we can meld the internet with our physical world in a way that actually improves
 our lives. [Josh Clark](https://bigmedium.com/) suggested that instead of using
@@ -142,7 +143,7 @@ This was my biggest question given the relatively high cost, and yes, I think it
 was worth it. The high caliber of the speakers, their presentations, and the
 event as a whole justified the ticket price in my opinion. Every talk was
 polished, informative, and relevant to the current status and future of our
-industry. Not only did a learn a ton, I believe that the event spreads a
+industry. Not only did I learn a ton, I believe that the event spreads a
 much-needed set of values that will be crucial to the progression of the web as
 it infiltrates more and more aspects of our lives.
 
