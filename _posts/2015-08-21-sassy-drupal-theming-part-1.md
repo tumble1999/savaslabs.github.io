@@ -138,7 +138,7 @@ Now that we've got our libraries set up, we need to actually import them so that
 
 ### Set up `styles.scss`
 
-Create `styles.scss` in the `scss` directory. Inside `styles.scss`, we'll import all our SCSS partials. View a working example of this [here](https://github.com/savaslabs/durham-civil-rights-map/blob/master/docroot/themes/custom/mappy/sass/styles.scss). I generally organize the imports in this manner:
+Create `styles.scss` in the `scss` directory. Inside `styles.scss`, we'll import all our SCSS partials. View a working example of this [here](https://github.com/savaslabs/durham-civil-rights-map/blob/master/themes/custom/mappy/sass/styles.scss). I generally organize the imports in this manner:
 
 ```scss
 /**
@@ -178,7 +178,7 @@ In `_init.scss` we will (in this order):
 3. Import Neat itself
 4. Import fonts
 
-You can view an example of a full `_init.scss` file [here](https://github.com/savaslabs/durham-civil-rights-map/blob/master/docroot/themes/custom/mappy/sass/_init.scss), but I'll go through some of the highlights.
+You can view an example of a full `_init.scss` file [here](https://github.com/savaslabs/durham-civil-rights-map/blob/master/themes/custom/mappy/sass/_init.scss), but I'll go through some of the highlights.
 
 ##### 1. Import `bourbon.scss` and `neat-helpers.scss`
 

@@ -40,7 +40,7 @@ At this point we're ready to start styling. Let's take a look at the three folde
 
 I personally only have three files in the `sass/base` directory. Don't forget that we already [imported these three partials](/2015/08/21/sassy-drupal-theming-part-1.html#set-up-stylesscss) in `styles.scss`.
 
-For full examples of each of these files, check out [our `base` directory](https://github.com/savaslabs/durham-civil-rights-map/tree/master/docroot/themes/custom/mappy/sass/base).
+For full examples of each of these files, check out [our `base` directory](https://github.com/savaslabs/durham-civil-rights-map/tree/master/themes/custom/mappy/sass/base).
 
 ##### `_normalize.scss`
 This is simply [`normalize.css`](https://necolas.github.io/normalize.css/) renamed as `_normalize.scss` - remember that CSS is valid SCSS. Thoughtbot recommends using `normalize.css` as your CSS reset along with Neat. Regardless of which reset you use, include it in `base`.
