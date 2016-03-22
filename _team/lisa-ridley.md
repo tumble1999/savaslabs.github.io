@@ -10,10 +10,10 @@ github: lhridley
 linkedin: lisahridley
 resume: https://docs.google.com/document/d/1DDsmug2fY7O6xefDOjwiTQiXeze4tPRoQxVw66nm0ac/pub
 badges:
-  - image: "/assets/img/team/association_ind_member_badge.svg"
+  - image: "assets/img/team/association_ind_member_badge.svg"
     alt: "Drupal Association Individual Member"
     link: "https://assoc.drupal.org/membership"
-  - image: "/assets/img/team/ACD2015.png"
+  - image: "assets/img/team/ACD2015.png"
     alt: "Acquia Certification Badge"
     link: "https://www.acquia.com/customer-success/learning-services/acquia-certification-program-overview"
 ---

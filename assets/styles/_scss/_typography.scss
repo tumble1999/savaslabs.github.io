@@ -29,7 +29,8 @@ a {
 }
 
 // scss-lint:disable ColorVariable
-p a {
+p a,
+.post li a {
   border-bottom: .1em solid rgba(10, 83, 101, .1);
 }
 // scss-lint:enable ColorVariable
@@ -120,6 +121,21 @@ blockquote {
 
   p {
     display: inline;
+  }
+}
+
+.callout {
+  background-color: $dark-blue;
+  border-left: solid 1em $fuschia;
+  border-radius: $base-border-radius * 2;
+  margin: 1.5em auto;
+  padding: 1em;
+  width: 100%;
+
+  p {
+    color: $white;
+    font-size: 1.5em;
+    margin-bottom: 0;
   }
 }
 
