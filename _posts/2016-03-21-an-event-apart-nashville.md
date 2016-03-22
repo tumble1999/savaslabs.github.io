@@ -10,8 +10,9 @@ hero_alt: "An Event Apart: Nashville logo over Broadway Street"
 
 ---
 
-Sitting in the airport after attending [An Event Apart](http://aneventapart.com/)
-Nashville, I found myself feeling overwhelmed at the sheer volume of
+Sitting in the Nashville airport after attending
+[An Event Apart](http://aneventapart.com/), a leading web design and development
+conference, I found myself feeling overwhelmed at the sheer volume of
 information I'd just taken in and the positively enormous possibilities lying
 ahead of the people who build the web (and the equally huge responsibility we
 have to move forward with thoughtfulness and compassion).
