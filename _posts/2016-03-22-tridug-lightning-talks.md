@@ -5,7 +5,7 @@ date: 2016-03-22
 author: Chris Russo
 start-date: April 28, 2016
 start-time: 6:30 PM
-end-date: Aprile 28, 2016
+end-date: April 28, 2016
 end-time: 8:30 PM
 duration: 2
 location: American Underground @ Main
