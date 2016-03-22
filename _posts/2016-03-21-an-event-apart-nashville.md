@@ -46,7 +46,7 @@ device makes the most sense for them. As Cameron put it:
 Unified design isn't just important for the sake of a great user experience
 across multiple devices. Right now, 13% of US adults are smartphone-only users,
 and that percentage rises for people without a college degree, people who make
-less than $20,000 a year, and young people -- 21% of millenials use the internet
+less than $20,000 a year, and young people --- 21% of millenials use the internet
 exclusively on mobile. And the US is behind most countries in mobile use! So if
 we continue gutting the functionality of our sites on small screens, we're
 penalizing large and sometimes vulnerable groups of users who can't afford or
@@ -76,7 +76,7 @@ navigation system to help visually impaired people use the London Tube.
 
 Josh also called on us to design calm technology - to weave data into the background
 of our lives rather than overwhelming people with it. A wearable should be something
-you'd wear if it didn't contain any technology. And like an escalator, a physical
+you'd wear if it didn't contain any technology. And like an [escalator](https://youtu.be/bVceIdoWf5o?t=378), a physical
 item should still work if the technology within breaks.
 
 #### As the web seeps further into our lives, compassion is key.
