@@ -14,7 +14,7 @@ street-address: 201 W Main St.
 city-state: Durham, North Carolina
 postal-code: 27701
 tags: drupal event
-comments_enabled: 0
+comments_enabled: 1
 summary: |
   After a long lull in activity, Savas Labs would like to reinvigorate the TriDUG evening meetups.
 ---
