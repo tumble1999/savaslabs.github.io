@@ -15,11 +15,11 @@ Adding a map to a Drupal 7 site is made easy by a variety of location storage an
 
 This tutorial is based on this [excellent post](/2015/05/18/mapping-geojson.html) about mapping with Leaflet and GeoJSON, so check that out for a great primer if you're new to mapping.
 
-### Setup
+## Setup
 
 Before we can get into mapping, we'll need a working Drupal 8 site. Savas has previously gone over [setting up a D8 site using Docker](/2015/04/23/drupal-8-docker-bowline-setup.html) and [creating a custom theme](/2015/06/10/d8-theming-basics.html). That said, you don't need to use Docker or a custom theme based on Classy to create your map - any Drupal 8 instance with a custom theme will do. In this tutorial, I'll be referencing our custom theme called Mappy that we created for the [Durham Civil Rights Mapping project](https://github.com/savaslabs/durham-civil-rights-map).
 
-### Install contributed modules
+## Install contributed modules
 
 First you'll need to install several contributed modules in your site's `modules/contrib` directory:
 
@@ -35,7 +35,7 @@ There are 3 core modules you'll need:
 
 Rest and serialization are dependencies of Views GeoJSON, so they will be installed when Views GeoJSON is installed.
 
-### Add the Leaflet library
+## Add the Leaflet library
 
 <img src="/assets/img/blog/map-in-drupal-8/leaflet-files.png" alt="Screenshot of the Mappy theme showing Leaflet file locations" class="blog-image wrap-left" width="256" height="504">
 
@@ -81,7 +81,7 @@ You could also attach the library in a Twig template:
 
 For more methods of attaching assets to pages and elements, check out Drupal.org's [writeup](https://www.drupal.org/developing/api/8/assets) on the matter.
 
-### Define a new content type
+## Define a new content type
 
 Now we need a content type that includes a location field.
 
@@ -93,11 +93,11 @@ Now we need a content type that includes a location field.
 
 That's it! Obviously you can add more fields to your content type if you'd like, but all we need to generate a map marker is the geofield that we created.
 
-### Add some content
+## Add some content
 
 Next, add a few points by navigating to "node/add/place" (or node/add/whatever your content type is called) and create a few nodes representing different locations. A quick Google search can provide you with the latitude and longitude of any location you'd like to include.
 
-### Add a new view
+## Add a new view
 
 Next we'll add a view that will output a list of our "place" nodes as GeoJSON thanks to the Views GeoJSON plugin.
 
@@ -114,7 +114,7 @@ For reference, here's the settings for my Places view:
 
 We've just set up a view that outputs GeoJSON data at [site-url]/points. Take a minute to go to that URL and check out your data. In the next step, we'll use this page to populate our map with points.
 
-### Create the map div and add a base map
+## Create the map div and add a base map
 
 The first thing we need to do is create a div with the id "map" in our template file. Our map is on the front page so I've inserted the following into `page--front.html.twig`. Place this code in the template your map will reside in. Feel free to customize the class, but the ID should remain "map."
 
@@ -170,7 +170,7 @@ Go to your Drupal site and rebuild your cache and you should see your base map!
 
 <img src="/assets/img/blog/map-in-drupal-8/map-without-markers.png" alt="Screenshot the base map" class="blog-image-xl">
 
-### Add our points
+## Add our points
 
 Next, we're going to access the GeoJSON we're outputting via our view to add points to our map. First, let's add the path to our marker image.
 
@@ -196,7 +196,7 @@ Now we'll use `.getJSON` to retrieve our data from the url "/points," then trigg
 
 <img src="/assets/img/blog/map-in-drupal-8/map-with-markers.png" alt="Screenshot of the map with markers" class="blog-image-xl">
 
-### Add popups
+## Add popups
 
 The last thing to do is add popups to each point when they're clicked. We'll insert this code in the `addDataToMap` function. If you actually navigate to [site-url]/points, you can inspect your GeoJSON and see which array keys have been assigned to the fields in your content type.
 

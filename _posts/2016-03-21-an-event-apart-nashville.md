@@ -21,7 +21,7 @@ I wasn't quite sure what to expect going in, so I'd like to summarize my biggest
 takeaways, share some of the things I found exciting, and reflect on what I
 got out of attending and whether it was worth the relatively high ticket price.
 
-### Major takeaways
+## Major takeaways
 
 Knowing the kind of ground-breaking conversations that can happen at An Event
 Apart (for instance, the idea of responsive design was introduced by
@@ -30,7 +30,7 @@ Apart (for instance, the idea of responsive design was introduced by
 I was hoping for a glimpse into the future of the web, and I wasn't disappointed.
 Throughout the event, a few overarching themes came up.
 
-#### Unified design is the logical continuation of responsive design.
+### Unified design is the logical continuation of responsive design.
 
 Between the growing capabilities of devices, the sheer number of models, the
 differences in how we use them depending on age/location/race/preference/ability,
@@ -62,7 +62,7 @@ mobile and then add enhancements depending on device capabilities. One of the
 biggest gains for me from this conference was finally grasping the true value
 of mobile-first design.
 
-#### Beyond devices, the Internet of Things is coming and can be awesome -- if we design responsibly.
+### Beyond devices, the Internet of Things is coming and can be awesome -- if we design responsibly.
 
 I'll be honest, the [Internet of Things](http://www.wired.com/2013/05/internet-of-things-2/)
 usually gives me a creepy,
@@ -80,7 +80,7 @@ of our lives rather than overwhelming people with it. A wearable should be somet
 you'd wear if it didn't contain any technology. And like an [escalator](https://youtu.be/bVceIdoWf5o?t=378), a physical
 item should still work if the technology within breaks.
 
-#### As the web seeps further into our lives, compassion is key.
+### As the web seeps further into our lives, compassion is key.
 
 One of the most powerful moments of the conference was Eric Meyer's presentation
 on designing for real people through compassion. Through an incredibly personal
@@ -106,7 +106,7 @@ presenters brought up examples of people getting things wrong, they did so to
 ensure that we learn from each other's mistakes rather than repeating them, and
 they constantly reiterated that we all have room to improve.
 
-### Other awesome things
+## Other awesome things
 
 Here's a little data-dump of other noteworthy items:
 
@@ -138,7 +138,7 @@ users to seamlessly learn new technologies. As data becomes more and more
 tangible, we can capitalize on new inputs to allow users to interact with the
 web in increasingly realistic, physical ways.
 
-### Was it worth it?
+## Was it worth it?
 
 This was my biggest question given the relatively high cost, and yes, I think it
 was worth it. The high caliber of the speakers, their presentations, and the

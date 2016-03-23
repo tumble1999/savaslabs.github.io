@@ -18,6 +18,13 @@ To run the tests:
 
 `$ bash _tests/run-tests.sh`
 
+### Writing blog posts
+
+#### Headings
+
+Your post title (stored in the post's front matter) will be an H1. Your
+top-level headings should be H2's (##), then H3's (###), etc.
+
 ### Syntax Highlighting
 
 Since updating to Jekyll 3.0.2 which uses Kramdown/Rouge, to use syntax

@@ -17,10 +17,10 @@ To close out this series, I've compiled some lessons learned along the way that 
 
 <hr>
 
-### 1. Document the crap out of everything
+## 1. Document the crap out of everything
 One criticism of Sass is that, particularly because of nesting, things can get complicated quickly and other developers may not know what's going on when you pass off your code. I like to follow these three rules:
 
-##### Place a docblock comment in every `scss` file.
+#### Place a docblock comment in every `scss` file.
 People may not be familiar with SMACSS or whatever personal version of it you're using. Docblock comments makes your files easy to navigate.
 
 In each file, I state the purpose of the file, and include anything that may not be extremely evident. This is the docblock of a layout partial for a tricky map page:
@@ -37,7 +37,7 @@ In each file, I state the purpose of the file, and include anything that may not
  */
 ```
 
-##### Comment on your grid layout technique.
+#### Comment on your grid layout technique.
 
 ```scss
 // Title box: 10 columns on mobile and narrow, 6 on wide and up.
@@ -51,7 +51,7 @@ In each file, I state the purpose of the file, and include anything that may not
 }
 ```
 
-##### Comment on anything that isn't immediately obvious.
+#### Comment on anything that isn't immediately obvious.
 
 This is as much for yourself in 6 months as it is for other developers who may someday look at your code. (I'm not the only one who forgets why I did something in the first place unless I comment it, right?)
 
@@ -66,7 +66,7 @@ This is as much for yourself in 6 months as it is for other developers who may s
 
 <hr>
 
-### 2. gitignore the CSS directory
+## 2. gitignore the CSS directory
 
 Every developer (and your production environment) should be compiling SCSS into CSS locally rather than passing along a compiled CSS file and potentially running into merge conflicts. Simply add your `stylesheets` directory and `sass-cache` to your `.gitignore` file.
 
@@ -78,7 +78,7 @@ paht/to/theme/stylesheets/*
 
 <hr>
 
-### 3. Variable names
+## 3. Variable names
 
 One of the best things about Sass is being able to make sweeping changes with only one code edit thanks to variables.
 
@@ -112,7 +112,7 @@ With this method we can change any of the colors site-wide with a single edit.
 
 <hr>
 
-### 4. Nest, but nest responsibly
+## 4. Nest, but nest responsibly
 
 Nesting is one of the best things about Sass, but anyone who's used it can tell you that getting nest-happy has consequences.
 
@@ -130,7 +130,7 @@ Some say follow the [Inception Rule](http://thesassway.com/beginner/the-inceptio
   - Comments. Explain blocks of code so it's easy for another developer to see what it's doing.
   - Good spacing. If your code is appropriately spaced it's easier to read. Which brings me to my last point...
 
-### 5. Use SCSS-Lint
+## 5. Use SCSS-Lint
 
 Or whatever code inspector you want. We've had great success with [SCSS-Lint](https://github.com/brigade/scss-lint) on our [company website](https://github.com/savaslabs/savaslabs.github.io/blob/master/_tests/run-tests.sh). SCSS Lint checks everything from declaration order to whitespace to nesting depth. It's very strict out of the box but you can change or ignore linters to customize it to your needs. Because of the potential complexity of Sass, following coding standards becomes more crucial than ever. And, y'know, it's good for you.
 

@@ -26,15 +26,15 @@ We'll be updating this post shortly with some additional information on how to p
 
 If you're interested to join us, please RSVP to [info@savaslabs.com](mailto:info@savaslabs.com).
 
-### Update: Preparing for the codesprint
+## Update: Preparing for the codesprint
 
 As promised above, here are some notes on how to prepare for participating in the code sprint tomorrow. Please do these things before arriving at the sprint so we can get started right at 1 PM.
 
-#### Set up a local Drupal 8 site
+### Set up a local Drupal 8 site
 
 Spend some time getting your [local Drupal 8 environment set up](/2015/04/23/drupal-8-docker-bowline-setup.html). Make sure you can login, that XDebug is working, etc. At the time of this writing, the latest beta is [`8.0.0-beta9`](https://www.drupal.org/node/2459341), we recommend using that instead of the latest commit to the `8.0.x` branch.
 
-#### Clone the Views GeoJSON repo from GitHub, and review the issues
+### Clone the Views GeoJSON repo from GitHub, and review the issues
 
 I've mirrored the Views GeoJSON repo from Drupal.org over on GitHub. You can clone the repo at [https://github.com/savaslabs/views_geojson](https://github.com/savaslabs/views_geojson).
 
@@ -46,6 +46,6 @@ Make sure you also fork the repo on GitHub so that you can submit pull requests 
 
 I've also created [issues in the GitHub repo](https://github.com/savaslabs/views_geojson/issues) that we can divvy up tomorrow.
 
-#### Read through the Views plugins API docs
+### Read through the Views plugins API docs
 
 It's worth spending some time glancing over the [Views plugin API docs for Drupal 8](https://api.drupal.org/api/drupal/core!modules!views!views.api.php/group/views_plugins/8).

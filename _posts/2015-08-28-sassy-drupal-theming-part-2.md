@@ -16,7 +16,7 @@ At this point, we're ready to write some SCSS within the `base`, `components`, a
 
 <hr>
 
-### Drupal-flavored SMACSS
+## Drupal-flavored SMACSS
 
 When we left off, our `sass` directory looked like this:
 
@@ -36,19 +36,19 @@ sass
 
 At this point we're ready to start styling. Let's take a look at the three folders that will hold our custom `.scss` files, which are loosely based on SMACSS. Acquia has a [nice writeup](https://dev.acquia.com/blog/organize-your-styles-introduction-smacss) of how SMACSS principles can be applied to Drupal, but I like to simplify it even further.
 
-#### Base
+### Base
 
 I personally only have three files in the `sass/base` directory. Don't forget that we already [imported these three partials](/2015/08/21/sassy-drupal-theming-part-1.html#set-up-stylesscss) in `styles.scss`.
 
 For full examples of each of these files, check out [our `base` directory](https://github.com/savaslabs/durham-civil-rights-map/tree/master/themes/custom/mappy/sass/base).
 
-##### `_normalize.scss`
+#### `_normalize.scss`
 This is simply [`normalize.css`](https://necolas.github.io/normalize.css/) renamed as `_normalize.scss` - remember that CSS is valid SCSS. Thoughtbot recommends using `normalize.css` as your CSS reset along with Neat. Regardless of which reset you use, include it in `base`.
 
-##### `_base.scss`
+#### `_base.scss`
 This is for HTML element styles only. No layout, no classes, nothing else. In here I'll apply font styles to the body and headings, link styles to the anchor element, and possibly a few other site-wide styles.
 
-##### `_variables.scss`
+#### `_variables.scss`
 This is where I house all of my Sass variables and custom mixins. I typically have sections for colors, fonts, other useful stuff like a standard border radius or spacing between elements, variables for any [Refills](http://refills.bourbon.io/) I'm using, and custom mixins.
 
 I'd definitely recommend including `_normalize.scss` in `base` if you're using Neat, but other than that do what works for you! If you're following my method, your `sass` folder should be looking like this:
@@ -70,7 +70,7 @@ sass
 └── styles.scss
 ```
 
-#### Layouts
+### Layouts
 
 This directory holds page-wide layout styles, which means we'll be making heavy use of the Neat grid here. This is flexible, but I recommend a single `.scss` partial for each unique template file that represents an entire page. Think about what works best for your site. For the sake of our example, let's say we're creating `_front-page.scss` and `_node-page.scss`. I like to also create `_base.scss` for layout styles that apply to all pages.
 
@@ -120,7 +120,7 @@ sass
 └── styles.scss
 ```
 
-#### Components
+### Components
 
 In SMACSS this is called "modules," but that gets a little confusing in Drupal Land. This is for applying layout and theme styles to smaller chunks of your site, which in Drupal typically means regions. Create a separate partial for each region, or if you have several distinct components within a region, consider a separate partial for each of them.
 

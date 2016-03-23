@@ -14,7 +14,7 @@ In preparation for a [code sprint our team is organizing to port Views GeoJSON t
 
 In this post I’ll give a brief overview of these awesome tools, and explain how we set them up on OS X to create identical Drupal 8 development environments on each team member’s computer.
 
-### Background
+## Background
 
 There are a lot of different ways to setup a local development environment, and there are usually many challenges along the way. One problem that often arises is that a developer’s local environment differs from their co-workers and/or their staging or production environments. For example, maybe you’re running PHP 5.6, your colleague is running PHP 5.5, and production is running PHP 5.4. This can cause issues when you share or deploy code that works in one environment but not in another. Using Docker, Docker Compose, and Bowline we can remove this pain point by ensuring that all of the environments are the same.
 
@@ -28,9 +28,9 @@ By using these tools, you can ensure that each member of your team has the same 
 
 Now I’ll go through the steps I followed to set everything up on my Mac. For this tutorial I’ll be showing you how to set up a fresh Drupal 8 install, however you can also use these tools on new or existing Drupal 6 and 7 projects.
 
-### Initial Setup
+## Initial Setup
 
-#### Install Docker on your machine
+### Install Docker on your machine
 
 Unfortunately, [you can’t run Docker natively in OS X](https://docs.docker.com/installation/mac/), as explained in the Docker documentation:
 
@@ -68,7 +68,7 @@ Verify that the Docker client environment is initialized:
 $ docker version
 ```
 
-#### Install Docker Compose
+### Install Docker Compose
 
 To install Docker Compose I followed the [Docker Compose installation
 instructions](https://docs.docker.com/compose/install/#install-compose). I ran the following command:
@@ -90,7 +90,7 @@ Optionally, if you choose to install command completion for Docker Compose for t
 $ curl -L https://raw.githubusercontent.com/docker/compose/1.2.0/contrib/completion/bash/docker-compose > /usr/local/etc/bash_completion.d/docker-compose
 ```
 
-#### Install Bowline and set up the Drupal 8 Project
+### Install Bowline and set up the Drupal 8 Project
 
 The [Bowline project readme](https://github.com/davenuman/bowline/blob/master/readme.md) provides installation and setup instructions, however I needed to make some modifications. For example, Fig has been deprecated in place of Docker Compose. Explicitly I did the following:
 
@@ -180,7 +180,7 @@ $ drush uli
 
 You can also debug the site using XDebug. I will explain how to set this up in a future blog post.
 
-### When you're done
+## When you're done
 
 Bowline, Boot2Docker, all docker containers, and the subnet route will all cease when you restart your machine, however you can manually stop them as follows:
 
@@ -208,7 +208,7 @@ Remove the static route:
 $ sudo route -n delete 172.0.0.0/8 192.168.59.103
 ```
 
-### Running in the future
+## Running in the future
 
 Next time you start you machine and want to fire up the development environment you’ll need to run the following commands from the project root.
 
@@ -221,7 +221,7 @@ $ sudo route -n add 172.0.0.0/8 192.168.59.103
 $ bowline
 ```
 
-### Troubleshooting
+## Troubleshooting
 
 For each new terminal window or tab you open, you have to set the Boot2Docker environment variables. If you see an error message like: "Couldn't connect to Docker daemon - you might need to run \`boot2docker up`." you may need to run:
 
@@ -241,7 +241,7 @@ If drush status is working, but the site is not loading, double check that you a
 $ sudo route -n add 172.0.0.0/8 192.168.59.103
 ```
 
-### Versions used in this tutorial
+## Versions used in this tutorial
 * Docker 1.6.0
 * Boot2Docker 1.6.0
 * Docker Compose 1.2.0

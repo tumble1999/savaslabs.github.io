@@ -15,7 +15,7 @@ Why might this be useful?
 * Cleaning data by removing invalid features
 * Converting other geo-data formats into GeoJSON, or vice versa.
 
-### Installing GDAL and Downloading Sample Data
+## Installing GDAL and Downloading Sample Data
 
 [GDAL (Geospatial Data Abstraction Library)](http://www.gdal.org) is a free and open-source translator library for both raster and vector data formats. It provides a number of core functionalities for data processing and conversion which are used across the suite of [OSGeo applications](http://www.osgeo.org). More importantly for our purposes, GDAL provides a bunch of command-line tools for processing geospatial data.
 
@@ -23,7 +23,7 @@ If you're on a Mac and using homebrew, you can easily install GDAL by running `b
 
 Just like the last tutorial, we're going to be using the USGS earthquake data. Navigate to [http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson](http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_month.geojson), and save the resulting file to your computer as a `.geojson` file.
 
-### Using OGRInfo to look inside your dataset
+## Using OGRInfo to look inside your dataset
 
 [OGRInfo](http://www.gdal.org/ogrinfo.html) lets us look inside geospatial datasets, viewing both summary info and lists of individual features. It's useful to see what attributes are available for a given dataset or how many features it contains, as well as testing out attribute filters and examining individual features.
 
@@ -101,7 +101,7 @@ OGRFeature(OGRGeoJSON):0
   COUNT_* (Integer) = 176
 ```
 
-### Optimizing your data
+## Optimizing your data
 
 Check the filesize of the `all_month.geojson` file you downloaded. It probably weighs in at around 7-8 Mb, which is really unwieldy for a client to download before viewing a web map. Can we trim the file down a bit?
 
@@ -126,7 +126,7 @@ ogr2ogr also accepts the `-sql` flag, so we could also have written:
 $ ogr2ogr -f GeoJSON all_month_optimized.geojson all_month.geojson -sql "SELECT mag,place,url FROM OGRGeoJSON"
 ```
 
-### Filtering data by attributes
+## Filtering data by attributes
 
 With this syntax, it's easy to select out a subset of the features (since who will really be able to navigate 10,000+ points if we were to map the full dataset, anyway?):
 
@@ -139,7 +139,7 @@ Now we're just down to 44 kb, a totally reasonable size for mapping.
 Here's what the dataset we just made looks like (via [geojson.io](http://geojson.io)):
 <img src="/assets/img/blog/earthquakes-mag-5-geojson-io.jpg" width="500px" height="250px" alt="Screenshot of GeoJSON.io map showing earthquakes distributed across the world" class="blog-image-large">
 
-### Filtering by location
+## Filtering by location
 
 What if we just want to map earthquakes that have taken place in a specific area?
 
@@ -152,7 +152,7 @@ $ ogr2ogr -f GeoJSON all_month_us_east.geojson all_month.geojson -clipsrc -86.83
 Here's the result. Florida turns out to be a good place to live if you want to avoid minor tremors! Also notice that because of using a simple latitude-longitude rectangle to filter the data, we also pulled in those parts of Canada which are south of Maine.
 <img src="/assets/img/blog/earthquakes-us-east-geojson-io.jpg" width="400px" height="400px" alt="Screenshot of GeoJSON.io map showing earthquakes in the past month in the United States, with one point in Canada" class="blog-image-large">
 
-### Filtering by location 2: Clipping to another dataset
+## Filtering by location 2: Clipping to another dataset
 
 But what if we want all the earthquakes in, say, North Dakota? For more complicated area queries, we'll have to supply the clipping area as a separate datasource.
 

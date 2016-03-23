@@ -8,7 +8,7 @@ summary: |
   Drupalcamp Asheville - an all around success!
 ---
 
-### Drupalcamp Asheville, we're leaving!
+## Drupalcamp Asheville, we're leaving!
 Drupalcamp Asheville was an all around success for Savas. It was our first
 public camp/conference that we presented at. Anne's presentation on Drupal 8
 themeing went swimmingly (and rapidly) to a sold out crowd, and most of my
