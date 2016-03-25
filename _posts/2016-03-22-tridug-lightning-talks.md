@@ -16,7 +16,7 @@ postal-code: 27701
 tags: drupal event
 comments_enabled: 1
 summary: |
-  After a long lull in activity, Savas Labs would like to reinvigorate the TriDUG evening meetups.
+  Savas Labs will host 4 lightning talks at the American Underground @Main for the next TriDUG meetup.
 ---
 
 Savas Labs will host [this session "Lightning talks - all things Drupal"](http://www.meetup.com/triDUG/events/229790010/) at our home base again at the American Underground @ Main in downtown Durham. We will be looking into Raleigh options for the next meetup, so write if you've got space to offer.
