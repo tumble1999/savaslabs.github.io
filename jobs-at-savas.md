@@ -21,6 +21,7 @@ excerpt: |
 </p>
 
 ## Available positions
+---
 [Drupal developer](/drupal-developer)
 
 ---
