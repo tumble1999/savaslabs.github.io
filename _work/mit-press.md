@@ -31,4 +31,4 @@ Savas has collaborated with MIT Press to deploy new microsites and new features 
 
 ### Security audit
 
-Savas developers implemented version control using Git and GitHub, a deployment system using [Fabric](http://www.fabfile.org) and made important initial security updates. On an ongoing basis, Savas has identified and investigated potential security issues and made the appropriate updates to ensure that sensitive and propriatary information is protected.
+Savas developers implemented version control using Git and GitHub, a deployment system using [Fabric](https://www.fabfile.org) and made important initial security updates. On an ongoing basis, Savas has identified and investigated potential security issues and made the appropriate updates to ensure that sensitive and propriatary information is protected.
