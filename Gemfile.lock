@@ -63,7 +63,7 @@ GEM
     html-pipeline (2.3.0)
       activesupport (>= 2, < 5)
       nokogiri (>= 1.4)
-    html-proofer (2.6.4)
+    html-proofer (3.0.4)
       activesupport (~> 4.2)
       addressable (~> 2.3)
       colored (~> 1.2)
@@ -132,7 +132,7 @@ GEM
       mini_portile2 (~> 2.0.0.rc2)
     octokit (4.2.0)
       sawyer (~> 0.6.0, >= 0.5.3)
-    parallel (1.6.1)
+    parallel (1.7.0)
     public_suffix (1.5.3)
     pusher-client (0.6.2)
       json
@@ -175,7 +175,7 @@ PLATFORMS
 
 DEPENDENCIES
   github-pages
-  html-proofer
+  html-proofer (~> 3.0.0)
   jekyll-sitemap
   json (~> 1.8.3)
   mdl
