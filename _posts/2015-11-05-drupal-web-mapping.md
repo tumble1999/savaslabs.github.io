@@ -43,7 +43,7 @@ are easy to find via Google Maps, or even just a Google search.
 ## Leaflet module
 
 One of the simplest ways to add a web map to your site is using the [Leaflet module](https://www.drupal.org/project/leaflet), which is a wrapper around the [Leaflet.js](http://leafletjs.com) web mapping framework. With Leaflet installed, you can set the display mode
-for your geofield to "Leaflet Map", which will add a locator map to each node page. With [Leaflet Views](https://www.drupal.org/project/leaflet_views) also installed, you can set the display mode for a view to "Leaflet" to output a view as a map - you'll need to include
+for your geofield to "Leaflet Map", which will add a locator map to each node page. With Leaflet Views also installed, you can set the display mode for a view to "Leaflet" to output a view as a map - you'll need to include
 a geofield as one of the fields in the view before this will work, of course. With this set-up, to add search or filters to the map all you have to do is add them as exposed filters to the view!
 
 Leaflet offers some basic customization options -- you can set popup title and content, choose a different point icon image, and choose from a couple of different basemaps. The [Leaflet More Maps](https://www.drupal.org/project/leaflet_more_maps) module also offers some additional basemaps. But there
