@@ -21,7 +21,7 @@ with our name selection, "palindrome" was naturally a category of options for
 names... e pluribus unum
  <img alt="winking emoji"  class="emoji" src="http://www.emoji-cheat-sheet.com/graphics/emojis/wink.png">
 
-#### Really though?
+## Really though?
 While the original impetus for choosing a name that is a palindrome _did_ stem
 from previous wholesale high-regard for palindromes, I began to appreciate
 the **balance** and **symmetry** that they represent aesthetically, and therefore
@@ -36,7 +36,7 @@ top contenders, we discovered people found it alluring, and also tied it to
 "savant" and other words that made them think of knowledge from the French word
  _savoir_.
 
-##### Fun palindromic facts
+### Fun palindromic facts
 - Our area code in Durham, NC is a palindrome: 919
 - One of the team's house number is a palindrome: not going to tell you who or what
 <img alt="winking emoji" class="emoji" src="http://www.emoji-cheat-sheet.com/graphics/emojis/stuck_out_tongue_winking_eye.png">
@@ -45,7 +45,7 @@ which is a word when read backward is a different word! E.g. repaid
 - The world's longest palindromic phrase, at least so far _and_ according to [these guys](http://norvig.com/palindrome.html)
 is 17,826 words!
 
-##### Previous top name contenders
+### Previous top name contenders
 - bespoke
 - Nivelo
 

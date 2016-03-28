@@ -14,7 +14,7 @@ drupal_planet_summary: |
 
 ---
 
-### Drupalcamp Asheville, we're coming!
+## Drupalcamp Asheville, we're coming!
 Savas will be represented at [Drupalcamp Asheville](http://www.drupalasheville.com) this year!
 [Anne](/team/anne-tomasevich/) and [Chris](/team/chris-russo/)
 are both presenting. Anne will present on Drupal 8 theming, roughly based off
@@ -26,11 +26,11 @@ on his "personal git workflow, for everyone," which is also based off a
 We're excited to head to beautiful Asheville to teach, share and learn. We
 might even get a hike in and some craft beer while we're at it.
 
-#### Building a Custom Theme in Drupal 8
+### Building a Custom Theme in Drupal 8
 Check out Anne's [slides](http://annetee.github.io/create-a-custom-theme-d8/#/).
 Or clone her [presentation on Github](https://github.com/AnneTee/create-a-custom-theme-d8).
 
-#### Personal Git Workflow, For Everyone
+### Personal Git Workflow, For Everyone
 Check out Chris's [slides](http://chrisarusso.github.io/asheville.html#/).
 Or clone his [presentation on Github](https://github.com/chrisarusso/Drupalcamp-Asheville-2015-Presentation).
 

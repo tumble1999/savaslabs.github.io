@@ -9,7 +9,7 @@ summary: Savas Labs is sending 3 people to Drupalcon and has proposed 4 sessions
 
 <img src="/assets/img/blog/drupalcon-nola.png" alt="Drupalcon New Orleans logo">
 
-### 4 Savas Labs sessions proposed for Drupalcon NA 2016
+## 4 Savas Labs sessions proposed for Drupalcon NA 2016
 
 [Lisa](/team/lisa-ridley/), [Kosta](/team/kosta-harlan/) and [I](/team/chris-russo) will be heading over to [The Big Easy](https://en.wikipedia.org/wiki/New_Orleans) in early May for this
 year's [Drupalcon North America](https://events.drupal.org/neworleans2016). The week promises to be filled with some
@@ -19,7 +19,7 @@ people like this...
 
 <img src="/assets/img/blog/druplicon-in-durham.png" alt="Druplicon in Durham">
 
-##### What we're (hopefully) talking about
+### What we're (hopefully) talking about
 
 The call for papers closed on leap day earlier this week, and I'm proud to say we submitted
 4 excellent and diverse topics showcasing our breadth of knowledge and expertise.
@@ -37,7 +37,7 @@ The call for papers closed on leap day earlier this week, and I'm proud to say w
 will provide invaluable information and tactics to honestly compare other products
 in the CMS market and highlight Drupal's strengths with the maturing Drupal 8 platform.
 
-##### We'll let you know when we do
+### We'll let you know when we do
 
 We will find out in the coming weeks who of us will be speaking at Drupalcon
 this year. We are all excited to share our experiences and expertise with the

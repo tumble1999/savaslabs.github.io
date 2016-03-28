@@ -67,7 +67,7 @@ though both are worthwhile in considering how to improve.
 Here is the workflow I recommend a solo developer considering for her own
 workflow when collaborating with others in a shared code repository.
 
-### Commit early and often
+## Commit early and often
 Everything in git is reversible, so no fear of commitment here! Understanding
 how to explicitly push and fetch from different remote repositories is a
 prerequesite, so make sure you have your repos clearly labeled as to which is
@@ -82,7 +82,7 @@ upstream  git@github.com:chrisarusso/Tilthy-Rich-Compost-Website.git (fetch)
 upstream  git@github.com:chrisarusso/Tilthy-Rich-Compost-Website.git (push)
 ```
 
-### Write verbose messages, format **NOTHING**
+## Write verbose messages, format **NOTHING**
 Worry about cleanliness **LATER**, we will get to that. Write lots of messages,
 comment everything, write todos, write questions, write in your native tongue
  <img alt="tongue emoji" class="emoji" src="http://www.emoji-cheat-sheet.com/graphics/emojis/tongue.png">,
@@ -142,7 +142,7 @@ understand your thoughts and intentions later. To be clear, yes, commit this:
  }
 ```
 
-#### Push to a backup repository all the time
+### Push to a backup repository all the time
 [Bitbucket](https://bitbucket.org/), a git (and mercurial) repository host
 brought to you by [Atlassian](https://www.atlassian.com/), unlike the popular, and beloved
 [github](https://github.com/), allows for
@@ -152,7 +152,7 @@ so no one ever has to see lots of bad code you write, and it won't cost you
 local repository, commit and push it up to your backup _at least_ daily, and
 ideally more frequently than that.
 
-#### Test, polish, finish, and push to bitbucket
+### Test, polish, finish, and push to bitbucket
 Once you've got your feature functional, tested, suitable to performance, coding
 legibility standards and any other criteria your team requires, you are now
 nearly ready to share. Push up your final commit that addresses all the @todos,
@@ -163,7 +163,7 @@ commits intact to your backup repository.
 git push backup no-one-sees-but-me-branch
 ```
 
-### Mark the tree (no, not you fido)
+## Mark the tree (no, not you fido)
 
 We run `git log` or `git show` to see the output of `HEAD` , i.e. the last
 commit we made.
@@ -192,7 +192,7 @@ Now we know that the tree hash, which defines all of the files in our repository
 reference this later to make sure after we're done rewriting, our files match
 exactly.
 
-### Rollback to before you started working on your feature and ignored formatting
+## Rollback to before you started working on your feature and ignored formatting
 
 ```bash
 MacBook-Pro: chris$  git log b464b45
@@ -257,7 +257,7 @@ ended, so we want to roll back to that.
 git reset 2feea47ee35 --hard
 ```
 
-### Add back the _polished_ code to the working tree
+## Add back the _polished_ code to the working tree
 
 Bring back the code that you just finished working on to the working tree,
 but don't include any of the commits with it.
@@ -308,7 +308,7 @@ Untracked files:
   sites/all/modules/contrib/bcc/
 ```
 
-### Make new commits, [put your past behind you](https://www.youtube.com/watch?v=k-MpHDvseU8)!
+## Make new commits, [put your past behind you](https://www.youtube.com/watch?v=k-MpHDvseU8)!
 
 Now make the wonderful commit messages
 [you know you can](http://chris.beams.io/posts/git-commit), and impress
@@ -317,7 +317,7 @@ your fellow collaborators!
 I prefer to add patches of files at a time that are logically related with
 `git add -p`
 
-### Check that everything is _exactly_ the same
+## Check that everything is _exactly_ the same
 
 Since we've now rewritten history, our commit hashes will not line up. We
 previously had `b464b4570` and now we have
@@ -346,7 +346,7 @@ Remove old paypal templates and libraries
 that aren't being used
 ```
 
-### Push to your shared platform
+## Push to your shared platform
 
 Now you're all set to push up your code for others to see!
 
@@ -357,5 +357,5 @@ git push upstream branch-made-with-pride
 Pat yourself on the back, go write some bad code, share it with no one,
 fix it up, and share it with everyone. Rinse. Repeat.
 
-#### Future inspired posts
+### Future inspired posts
 * My top 10 useful git commands

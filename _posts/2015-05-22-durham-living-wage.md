@@ -17,13 +17,13 @@ result in a better society for _all_.
 
 > A living wage: good for business, good for workers.
 
-### What is a Living Wage?
+## What is a Living Wage?
 
 [Simply stated](http://www.durhamlivingwage.org/what) by the Durham Living Wage Project:
 
 > A living wage is the amount of income needed for an individual to meet her or his basic needs without public or private assistance.
 
-### Why do we care?
+## Why do we care?
 
 To avoid making any sweeping political and/or philosophical generalizations in
 my inaugural post, I'll reference another fellow Triangle-based author
@@ -35,7 +35,7 @@ In his presentation, Ariely references research he's done about economic inequal
 how stratified we think it is, how we would like it to be, and how
 stratified it actually is.
 
-#### How stratified do we (Americans) _think_ wealth is (in quintiles)?
+### How stratified do we (Americans) _think_ wealth is (in quintiles)?
 
 | **Population** | Bottom 20% | 21-40% | 41-60% | 61-80% | Top 20% |
 |:---------------|---------:|-------:|-------:|-------:|--------:|
@@ -58,7 +58,7 @@ Ariely illustrates this concept by surveying Americans and asking them what the
 economic characteristics should be of a country they would choose to join under
 the veil of ignorance. Survey participants desire the following distribution:
 
-#### How stratified do we (Americans) **_want_** wealth to be (in quintiles)?
+### How stratified do we (Americans) **_want_** wealth to be (in quintiles)?
 
 | **Population** | Bottom 20% | 21-40% | 41-60% | 61-80% | Top 20% |
 |:---------------|---------:|-------:|-------:|-------:|--------:|
@@ -74,7 +74,7 @@ at Harvard, they all gave us basically the same answer.
 According to Ariely's research, we clearly want a more equally shared
 distribution of wealth than we currently _think_ we have. So what _do_ we have?
 
-#### How stratified _is_ wealth in the U.S. (in quintiles)?
+### How stratified _is_ wealth in the U.S. (in quintiles)?
 
 | **Population** | Bottom 20% | 21-40% | 41-60% | 61-80% | Top 20% |
 |:---------------|---------:|-------:|-------:|-------:|--------:|

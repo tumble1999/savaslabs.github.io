@@ -29,11 +29,11 @@ conference organizer [Todd Lewis](https://twitter.com/toddlew)'s ability to say
 it was a productive conference for meeting people, hearing presentations, and
 getting our name out there a bit more.
 
-### Highlights
+## Highlights
 
-#### Sessions
+### Sessions
 
-##### Bitcoin, the Blockchain, and Open Source
+#### Bitcoin, the Blockchain, and Open Source
 [Eric Martindale](https://twitter.com/martindale?lang=en)'s
 [session on bitcoin](http://allthingsopen.org/talks/bitcoin-the-blockchain-and-open-source/)
 was a very intriguing one. He described the complexity of the bitcoin system and
@@ -46,7 +46,7 @@ systems don't. At the very least, we have opportunities to
 
 ![My little brony](/assets/img/rainbowdash by krazy3.png)
 
-##### Performance Profiling Tools & Tricks
+#### Performance Profiling Tools & Tricks
 [Brad Blake](https://www.phase2technology.com/brad-blake/), self-proclaimed
 [non-brony](http://whatisabrony.com/) (don't worry, I was in the dark too during
 this presentation) with [Phase 2
@@ -63,7 +63,7 @@ during application execution.
 See [Brad's Slides](http://www.slideshare.net/Phase2Technology/performance-profiling-tools-and-tricks)
 for a thorough reference.
 
-##### Just Be Nice: Rethinking Tech Hiring
+#### Just Be Nice: Rethinking Tech Hiring
 
 [Mark Lavin](https://twitter.com/DrOhYes) of the across-the-street
 [Caktus Group](https://www.caktusgroup.com/) gave [an excellent
@@ -103,7 +103,7 @@ who is a
 In addition to hiring, Mark gets to work on some of the
 [most important work](https://github.com/caktus/taytay) Caktus produces.
 
-#### Keynote themes
+### Keynote themes
 There was a _lot_ of discussion about cultivating diversity in the technology
 industry. An excellent, and award-winning documentary called
 [Code: Debugging the Gender Gap](http://www.codedocumentary.com/)

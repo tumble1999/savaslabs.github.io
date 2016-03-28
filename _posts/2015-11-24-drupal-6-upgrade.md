@@ -107,7 +107,7 @@ This is another one that, I know...shocker, depends. The factors that effect thi
  substantial shifts from Drupal 7. Therefore the skills required to succeed in these two realms differ.
  + Get out of here with that Drupal 9 talk! It's neither prime nor even!
 
-### What is our recommendation?
+## What is our recommendation?
 
 If you feel lost in these concepts or with answering some of these questions on your own, it's best that you [speak with professionals](/contact) who
 have years of experience maintaining and upgrading Drupal sites. The upgrade process

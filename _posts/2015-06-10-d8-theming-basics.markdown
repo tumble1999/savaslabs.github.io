@@ -20,7 +20,7 @@ Theming in Drupal 8 means a lot of changes for current Drupalers and a lot of aw
 - Twig basics
 - Twig debugging
 
-### What's new?
+## What's new?
 
 Too much to list here, but here are some highlights:
 
@@ -35,7 +35,7 @@ Too much to list here, but here are some highlights:
 
 Check out Drupal's [change log](https://www.drupal.org/list-changes/published/drupal?keywords_description=&to_branch=&version=&created_op=%3E%3D&created%5Bvalue%5D=&created%5Bmin%5D=&created%5Bmax%5D=&impacts%5B%5D=3) for a comprehensive list of changes.
 
-### Why all the changes?
+## Why all the changes?
 
 Though the theming layer in Drupal 8 is quite different from Drupal 7 and will require some relearning, these changes come with great improvements, including:
 
@@ -56,7 +56,7 @@ Though the theming layer in Drupal 8 is quite different from Drupal 7 and will r
 - A general trend towards more extendable, modular, well-organized, better-performing code
 
 
-### Okay, are there any disadvantages?
+## Okay, are there any disadvantages?
 
 At the time of writing this post, the toughest things about theming in Drupal 8 for me were:
 
@@ -65,7 +65,7 @@ At the time of writing this post, the toughest things about theming in Drupal 8 
 
 Fortunately both of these problems will resolve as Drupal 8 gets closer to release.
 
-### Creating a custom theme in Drupal 8
+## Creating a custom theme in Drupal 8
 So, now that we’ve covered some reasons that D8 theming will be awesome and we're feeling motivated to submit some patches and write some documentation, let’s create a custom theme using Classy as a base.
 
 The first thing to note is the different file structure. The `core` folder now holds all the the modules and themes that ship with Drupal, and contributed and custom modules and themes are now found respectively in the `modules` and `themes` folders in the Drupal document root (mine is called `docroot`).
@@ -115,7 +115,7 @@ regions:
 This hasn't changed much from Drupal 7. Don't forget that the `Content` region is required. You can also forego declaring regions if you want to use Drupal's [default regions.](https://www.drupal.org/node/2469113)
 
 
-#### Classy, the new base theme
+### Classy, the new base theme
 
 ```yaml
 base theme: classy
@@ -126,7 +126,7 @@ Classy is a brand new base theme that ships with Drupal core. All CSS classes we
 Additionally, Classy's classes follow the BEM convention, making them less generic and more meaningful. Check out [this article](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/) for a great introduction to BEM.
 
 
-#### Libraries
+### Libraries
 
 ```yaml
 libraries:
@@ -161,7 +161,7 @@ As you may have guessed, `global-styling` is a library that applies site-wide st
 By listing these two libraries in `mappy.info.yml` we ensure that these assets will be included on every page of our site. However, this is typically not the best practice for larger sites since these files can seriously affect performance. [This page](https://www.drupal.org/developing/api/8/assets) on Drupal.org details how to attach assets to pages via hooks so that CSS and JS files are only loaded where they're needed.
 
 
-#### Breakpoints
+### Breakpoints
 Another new YAML file, `[theme-name].breakpoints.yml`, allows developers to create standard breakpoints to be used by modules and themes across the site. You can set custom breakpoints by defining them in this file. Below is our breakpoints file, which also resides in the root of our theme. Note that we simply adapted the breakpoints file from the Bartik theme.
 
 ```yaml
@@ -191,7 +191,7 @@ Important tip: Once you add a breakpoints file, you'll need to uninstall and rei
 With these files set up, you now have a working custom theme!
 
 
-### Creating template files with Twig
+## Creating template files with Twig
 
 In our custom theme's current state, we're using Classy's template files as-is. If we want to customize any of these templates, we need to override them with Twig files located in our custom theme's `templates` directory.
 
@@ -201,7 +201,7 @@ In our custom theme's current state, we're using Classy's template files as-is. 
 - {% raw %}`{% These %}`{% endraw %} are for executing statements
 - {% raw %}`{# These #}`{% endraw %} are for comments
 
-#### Printing variables and regions
+### Printing variables and regions
 
 In Drupal 7 we render content like so:
 
@@ -231,7 +231,7 @@ Printing variables using Twig in D8 is as easy as including them in the double c
 
 This will be more useful when debugging. The Drupal core base themes include lists of available variables and regions in the DocBlock of their template files, or you can print variables to the page via Twig's debug mode (more on that below) to see what's available to you.
 
-#### Filters and functions
+### Filters and functions
 
 Twig comes with many built-in [filters](http://twig.sensiolabs.org/doc/filters/index.html) that variables are passed to via the pipe character. These filters do many of the things that PHP functions would have in previous Drupal versions. One example is the date filter:
 
@@ -255,7 +255,7 @@ By the way, [ARIA labels](https://developer.mozilla.org/en-US/docs/Web/Accessibi
 
 In addition to filters, Twig provides a range of [functions](http://twig.sensiolabs.org/doc/functions/index.html) that are also used within the double curly brace delimiters.
 
-#### Tags
+### Tags
 
 Control flow and other [tags](http://twig.sensiolabs.org/doc/tags/set.html) are also supported in Twig. One of my favorite things about templating languages is how easy it is to execute `if` statements and `for` loops. [Savas](https://github.com/savaslabs/savaslabs.github.io) uses Jekyll for our company website and the Liquid templating language makes it easy to loop through a list of data points, blog posts, projects, etc. and print them to a page rather than writing out all of the HTML. In Drupal, we'll use the `if` statement quite often.
 
@@ -281,12 +281,12 @@ Another useful tag is `set`, which allows you to set and use variables throughou
 {% endraw %}
 ```
 
-#### Coding standards
+### Coding standards
 
 Since this is new to some Drupalers, take a moment to check out the [coding standards](https://www.drupal.org/node/1823416) for Twig.
 
 
-### Debugging with Twig
+## Debugging with Twig
 
 Twig comes with a highly useful debug feature that outputs helpful HTML comments and allows you to code without having to clear the cache constantly, but it doesn't work out of the box. We're going to turn on that feature and disable the several layers of caching that require developers to clear the cache every time they make a change in a template file.
 
@@ -349,7 +349,7 @@ So by using the local settings file we've already disabled the render cache.
 
 Now, reload your site and you should see HTML comments in your browser's code inspector with lots of helpful info: which theme hook is being implemented, theme hook suggestions (i.e. how to override the current theme hook), and which template file is being output. You can also make changes to your source code and simply refresh the page to see your changes rather than constantly clearing the cache.
 
-#### Where my variables at?
+### Where my variables at?
 One useful function that comes with Twig is `dump()`. This function works once you've enabled Twig's debug mode and can be entered into any template file.
 
 ```liquid
@@ -383,7 +383,7 @@ Enter the beloved Devel module and the new Devel Kint module. Kint is to Drupal 
 Ahh, much better!
 
 
-### Further reading:
+## Further reading:
 - Start with Drupal.org's [theming guide](https://www.drupal.org/theme-guide/8)
 - Check out sqndr's excellent [Drupal 8 theming guide](http://d8.sqndr.com/)
 - Drupalize Me's [post](https://drupalize.me/blog/201405/lets-debug-twig-drupal-8) about debugging Twig has some detailed information about `dump()`, devel and kint. Be aware that some of the information in that post on configuring Twig is out of date.

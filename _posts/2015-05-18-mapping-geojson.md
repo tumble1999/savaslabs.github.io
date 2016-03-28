@@ -14,7 +14,7 @@ summary: Leaflet.js is a powerful, light-weight javascript API for mapping. In t
 
 <img class="blog-image-large" src="/assets/img/blog/earthquakes-map.jpg" alt="Screenshot of the map of earthquakes which we'll create in this tutorial." width="500" height="202">
 
-### Basic Leaflet Set-up
+## Basic Leaflet Set-up
 
 This section largely duplicates the basic Leaflet set-up at [this tutorial](http://leafletjs.com/examples/quick-start.html), except for we also add a Leaflet-providers plugin to get easy access to additional tilesets.
 
@@ -59,7 +59,7 @@ terrainTiles.addTo(map);
 map.setView([35.9908385, -78.9005222], 8);
 ```
 
-### Bringing in GeoJSON
+## Bringing in GeoJSON
 
 Whether you're pulling in GeoJSON from external data source or hosting it locally, you'll need to load the data using AJAX. jQuery provides a standard `getJSON` function, which will load JSON from an external source and then fire a callback once the data has loaded. In this example, I'm using the [USGS geoJSON feed](http://earthquake.usgs.gov/earthquakes/feed/v1.0/geojson.php) of all recorded earthquakes in the past 24 hours.
 
@@ -96,7 +96,7 @@ function addDataToMap(data, map) {
 $.getJSON("http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson", function(data) { addDataToMap(data, map); });
 </script>
 
-### Adding Popups
+## Adding Popups
 
 Wouldn't it be nice to be able to click on some of those points and find out more details about the earthquake? So far we haven't made use of any, but Leaflet allows you to pass a variety of [callbacks as options to `L.geoJson`](http://leafletjs.com/reference.html#geojson). These include:
 

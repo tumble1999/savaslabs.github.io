@@ -12,7 +12,7 @@ The full set of slides for the talk are [online via Github pages](http://timstal
 
 Note: At the time of writing this few of the modules mentioned had stable D8 ports. The shift to D8 is likely to change the landscape of mapping modules significantly, so the following advice is really focused on D7 sites (although we're using the third approach on a D8 site currently).
 
-### The use case - why Drupal?
+## The use case - why Drupal?
 
 ArcGIS.com, Google My Maps, CartoDB, Mapbox - the list of GUI-based web-mapping tools keeps getting longer. These tools are great
 for a lot of purposes. But there are a few things which are hard to do easily using most conventional web-based mapping/GIS tools that *are* easy to do in Drupal:
@@ -26,7 +26,7 @@ This blog post covers how to add a styled web map of node locations to a Drupal 
 and GIS capabilities to Drupal (for example via [cartaro](http://www.cartaro.org), but I'm not going to talk about those here). I also assume you're already
 familiar with basic Drupal concepts.
 
-### Getting and storing geo-data
+## Getting and storing geo-data
 
 [Geofield](https://www.drupal.org/project/geofield) is the best module for adding location information to existing content types in a Drupal website. For most basic purposes, the default
 storage settings will work just fine, although for more complicated geo-data you can also enable PostGIS integration for better performance on the back-end.
@@ -40,7 +40,7 @@ with Drupal yet, but the Geocoder module has a really simple plugin system that 
 For sites where ease-of-use on the data-entry side is a lower priority, you can also just allow direct input of latitude and longitude coordinates via the node edit screen (or pasting in GeoJSON for more complicated geometries). Lat/long coordinates
 are easy to find via Google Maps, or even just a Google search.
 
-### Leaflet module
+## Leaflet module
 
 One of the simplest ways to add a web map to your site is using the [Leaflet module](https://www.drupal.org/project/leaflet), which is a wrapper around the [Leaflet.js](http://leafletjs.com) web mapping framework. With Leaflet installed, you can set the display mode
 for your geofield to "Leaflet Map", which will add a locator map to each node page. With [Leaflet Views](https://www.drupal.org/project/leaflet_views) also installed, you can set the display mode for a view to "Leaflet" to output a view as a map - you'll need to include
@@ -50,7 +50,7 @@ Leaflet offers some basic customization options -- you can set popup title and c
 are a lot of limitations on customizing maps made using the Leaflet module. If you want to add multiple layers, use tokens from a field in the view to set the icon image, or add custom behavior overlays to the map you'll need to either use OpenLayers or write your own
  custom code.
 
-### OpenLayers module
+## OpenLayers module
 
 OpenLayers is a wrapper for the [OpenLayers](http://www.openlayers.org) web mapping framework. OpenLayers is a highly object-oriented mapping framework in which all components of the map (markers, popups, map interaction behaviors, data layers, etc.) are modelled using objects and inheritable classes. For example, to design
 your own popup you theoretically just have to extend the `OpenLayers.Popup.FramedCloud` class and override some of its attributes or behaviors. In practice, this is more complicated than it sounds, especially because not all the class intricacies are well-documented.
@@ -63,7 +63,7 @@ Open Layers does have a cost of more computational and memory overhead than Leaf
 
 <img src="/assets/img/blog/pauli_murray_map_site_screenshot.jpg" width="500px" height="223px" alt="Screenshot of Durham Civil and Human Rights map, showing a detail of Pauli Murray's childhood home." class="blog-image-large">
 
-### Views GeoJSON + Custom leaflet.js code
+## Views GeoJSON + Custom leaflet.js code
 
 This is a sort of "headless Drupal" approach, and it's the one we're using on Savas' first D8 site, the [Durham Civil Rights map](https://github.com/savaslabs/durham-civil-rights-map). By using the Views GeoJSON module, you can
 render the output of any view containing location information as a GeoJSON feed (potentially even including exposed filters via the query path). Then, just like any GeoJSON feed, that data can be loaded via AJAX into a Leaflet (or OpenLayers, or other frameworks) map. Savas' [Anne Tomasevich](http://savaslabs.com/team/anne-tomasevich/) has a

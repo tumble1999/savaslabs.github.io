@@ -13,7 +13,7 @@ drupal_planet_summary: |
   We discuss how to use a drush hook on the `drush sqlsan` command to ensure proper sanitization while using the `user revision` module.
 ---
 
-#### The general problem
+## The general problem
 One of the most embarrassing and potentially costly things we can do as developers
 is to send emails out to real people unintentionally from a development
 environment. It happens, and often times we aren't even aware of it until the damage
@@ -22,7 +22,7 @@ existing customers (actually happened to a former employer recently). In the
 Drupal world, there are [myriad ways](https://github.com/chrisarusso/Tilthy-Rich-Compost-Website/commit/64a558e2)
 to [attempt to address](https://github.com/chrisarusso/Tilthy-Rich-Compost-Website/blob/master/scripts/sanitize.php) this problem.
 
-#### General solutions to the general problem
+## General solutions to the general problem
 - [maillog](https://www.drupal.org/project/maillog) - A Drupal module that
 logs mails to the database and optionally allows you to "not send" them
 - [reroute email](https://www.drupal.org/project/reroute_email) - A Drupal
@@ -33,7 +33,7 @@ of sending
 - [mailcatcher](http://mailcatcher.me/) (not Drupal-specific) - Configure your
 local mail server to not send mail through PHP
 
-#### The _ultimate_ solution to _the problem_?
+## The _ultimate_ solution to _the problem_?
 **Never store real email addresses in your development environment**. In the
 Drupal world, we do that by using the `drush sql-sanitize`
 [command](http://drushcommands.com/drush-6x/sql/sql-sanitize). With no arguments,
@@ -50,7 +50,7 @@ writing about _most_ scenarios now am I? Sadly, I'm not yet aware of a
 comprehensive solution that ensures no email will be sent from a development
 environment. Please [comment](#js-expander-trigger) if you know of one!
 
-#### The _specific_ problem with `user_revision` module
+## The _specific_ problem with `user_revision` module
 One pernicious case, in which `drush sqlsan` is insufficient in sanitizing your
 database, is when  the
 [`user_revision` module](https://www.drupal.org/project/user_revision)
@@ -65,7 +65,7 @@ the "revision" table, `user_revision`, due to
 from the `user_revision` table. Without the above patch applied,
 this table is not affected by `drush sqlsan`.
 
-#### How did I discover this?
+## How did I discover this?
 I discovered this when adding new cron, notification functionality to the
 [Tilthy Rich Compost](http://tilthyrichcompost.com) website, which we maintain.
 We [began using](https://github.com/chrisarusso/Tilthy-Rich-Compost-Website/commit/fccc3f7387616510d512d3700639c5de3a560a1e) the `user_revision`
@@ -75,7 +75,7 @@ environment for the 10th time in 2 years, even after sanitizing, I was determine
 to figure out once and for all, what was going on. So like any deep-dive, I
 fired up the trusty ol' debugger and discovered the aforementioned culprit.
 
-#### The solution to the _specific_ problem
+## The solution to the _specific_ problem
 After consulting [Kosta](/team/kosta-harlan/), we agreed
 that the solution would be to write a [drush hook](https://www.drupal.org/node/2534638)
 for the `user_revision` module. This code would need to sanitize the `mail`
@@ -84,19 +84,19 @@ command is executed in the presence of the `user_revision` module.  However,
 to write this code efficiently and effectively, I would need to debug drush commands
 during execution, which I had never done.
 
-#### How to debug drush (or other CLI scripts) with PHPStorm
+## How to debug drush (or other CLI scripts) with PHPStorm
 
-##### Set up xdebug (Mac only)
+### Set up xdebug (Mac only)
 I first installed xdebug with [homebrew](http://brew.sh/) via
 [this method](http://antistatique.net/en/we/blog/2013/09/17/debugging-with-xdebug-and-phpstorm-on-macos-x).
 NB: Changing the port change to `10000` was necessary for me.
 
-##### Upgrade to latest drush
+### Upgrade to latest drush
 I [ensured I was using the most recent version of drush](http://whaaat.com/installing-drush-8-using-composer)
 (I strongly recommend perusing Brant's [about page](http://whaaat.com/about))
 to ensure that the code I wrote would apply to most recent drush development.
 
-##### Getting breakpoints in PHPStorm to listen to drush
+### Getting breakpoints in PHPStorm to listen to drush
 Several have blogged about this before, so I'll just point theirs out. Generally,
 I followed
 [these instructions](https://www.deeson.co.uk/labs/debugging-drupal-drush-real-time-phpstorm-and-xdebug),
@@ -112,13 +112,13 @@ which proved true. After having xdebug properly installed, you can
 to your `.bashrc` file to always make PHPStorm ready to listen for drush
 commands.
 
-#### The solution in action
+## The solution in action
 So [now when running `drush sqlsan`](https://github.com/chrisarusso/Tilthy-Rich-Compost-Website/commit/cf8f04f65b9f782ebaaf84d4348043f5aeec8409),
 we can truly feel safe that we won't send emails to anyone we didn't mean to.
 You're welcome community
 <img src="http://www.emoji-cheat-sheet.com/graphics/emojis/wink.png" alt="winking emoji" class="emoji">
 
-#### Will `user_revision` exist in D8?
+## Will `user_revision` exist in D8?
 It's not clear, though [some](https://www.drupal.org/sandbox/devpreview/2444961)
 think [so](https://www.drupal.org/node/2336681).
 Perhaps mature D8 entities and revisioning on all entities will render a contrib

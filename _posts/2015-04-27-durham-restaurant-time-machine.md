@@ -24,7 +24,7 @@ No longer do you have to wonder:
 <br><b>Click here to [take a look!](http://www.savaslabs.com/durham-restaurants-map)</b>
 And we'd love to hear what you think! You can reach us on twitter at <a href="https://twitter.com/savas_labs">@savas_labs</a>, or email <a href="mailto:info@savaslabs.com">info@savaslabs.com</a>.
 
-### Sources
+## Sources
 The data comes from [Durham's new open data initiative](http://data.dconc.gov/), which provides a dataset of restaurant inspections going back all the way to 1990.
 We cleaned their data and mapped it using [Leaflet](http://www.leafletjs.com), an open-source Javascript mapping framework -- how we did that
  will be the subject of a future post! The gorgeous
