@@ -14,9 +14,9 @@ layout: default
     {% if site.comment_server_enabled == 1 %}
     <div><p><span id="comment-count"></span></p></div>
     {% endif %}
-    {% if page.hero_image %}
-      <div class="post-hero">
-        <img class="post-hero-image" src="/{{ page.hero_image }}" alt="{{ page.hero_alt }}">
+    {% if page.featured_image %}
+      <div class="post-featured-image">
+        <img class="post-hero-image" src="{{ page.featured_image }}" alt="{{ page.featured_image_alt }}">
       </div>
     {% endif %}
   </header>
