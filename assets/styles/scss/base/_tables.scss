@@ -1,5 +1,11 @@
-.table-minimal {
+/**
+ * @file
+ *
+ * Table styles.
+ */
 
+// Table refill.
+.table-minimal {
   border-collapse: separate;
   border-spacing: 0;
   width: 100%;
@@ -10,6 +16,14 @@
 
   td {
     line-height: $base-line-height;
+  }
+
+  thead {
+    th {
+      background-color: $table-header-background;
+      border-bottom: 0;
+      padding: $table-padding;
+    }
   }
 
   tbody {
@@ -44,14 +58,6 @@
 
     tr:first-child td {
       border-top: 2px solid $table-border-color;
-    }
-  }
-
-  thead {
-    th {
-      background-color: $table-header-background;
-      border-bottom: 0;
-      padding: $table-padding;
     }
   }
 }

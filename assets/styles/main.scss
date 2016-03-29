@@ -12,6 +12,7 @@
 /* HTML element (SMACSS base) rules */
 @import 'scss/base/normalize';
 @import 'scss/base/base';
+@import 'scss/base/tables';
 
 /* Layout rules */
 @import 'scss/layout/base-layout';
@@ -26,5 +27,4 @@
 @import 'scss/components/navigation';
 @import 'scss/components/footer';
 @import 'scss/components/home';
-@import 'scss/components/contact';
 @import 'scss/components/news';
