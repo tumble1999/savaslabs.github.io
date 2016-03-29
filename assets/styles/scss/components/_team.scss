@@ -1,92 +1,31 @@
-
+/**
+ * @file
+ *
+ * Styles for /team and team member pages.
+ */
 
 .team-member {
-  @include outer-container;
-  @include media($medium-screen-up) {
-    @include span-columns(8);
-    @include shift(2);
-  }
 
-  .team-header img {
-    border-radius: 3px;
-    max-height: 250px;
-  }
-
-  p {
-    font-size: $base-font-size * 1.2;
-  }
-
-  .team-links {
-    margin: 1em auto 3em;
-    text-align: center;
-
-    @include media($medium-screen-up) {
-      width: 60%;
-    }
-
-    @include media($large-screen-up) {
-      width: 100%;
-    }
-
-    li {
-      display: inline-block;
-      list-style-type: none;
-      min-width: 45%;
-      padding: 0 .75em;
-
-      @include media($large-screen-up) {
-        min-width: 1%;
-      }
-    }
-
-    .fa-file-text {
-      font-size: 13px;
-    }
-  }
-
-  .team-badges {
-    @include display(flex);
-    @include justify-content(center);
-    @include flex-wrap(wrap);
-
-    .team-badges__badge img {
-      max-width: 200px;
-      padding: 1em;
-    }
+  // Link icons.
+  .fa-file-text {
+    font-size: 13px;
   }
 }
 
-.name-explanation {
-  clear: both;
+.name-description {
   padding-bottom: 0;
   text-align: center;
-
-  p {
-    font-size: 1.3em;
-    margin: 0;
-  }
-}
-
-.associations {
-  clear: both;
-  text-align: center;
-
-  .logos {
-    @include display(flex);
-    @include justify-content(center);
-    @include align-items(center);
-    height: 125px;
-    width: 100%;
-
-    img {
-      margin: 0 1em;
-    }
-  }
 }
 
 .team-recent-blog {
   border-top: solid 1px $gainsboro;
   margin-top: 3em;
-  h3 { text-align: center; }
-  p { font-size: 1em; }
+
+  h3 {
+    text-align: center;
+  }
+
+  p {
+    font-size: 1em;
+  }
 }

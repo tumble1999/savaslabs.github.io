@@ -1,3 +1,9 @@
+/**
+ * @file
+ *
+ * Site-wide layout styles.
+ */
+
 .wrapper {
   @include outer-container;
   max-width: 70em;

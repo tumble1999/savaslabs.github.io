@@ -69,7 +69,9 @@ p a,
 
 .post,
 .portfolio,
-.page-description {
+.page-description,
+.name-description p,
+.team-member p {
   color: $dark-blue;
   font-size: $base-font-size * 1.2;
 }
