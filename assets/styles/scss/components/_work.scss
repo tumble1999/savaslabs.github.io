@@ -1,15 +1,23 @@
 /**
  * @file
  *
- * Styles for /our-work and porfolio pages.
+ * Styles for /our-work and portfolio pages.
  */
 
-.portfolio-details {
-  overflow: hidden;
+.portfolio {
+  @include outer-container;
+  @include media($large-screen-up) {
+    @include span-columns(8);
+    @include shift(2);
+  }
 
-  table {
-    padding-bottom: 2em;
-    padding-top: 2em;
+  .portfolio-details {
+    overflow: hidden;
+
+    table {
+      margin-bottom: 3em;
+      margin-top: 3em;
+    }
   }
 }
 

@@ -1,5 +1,10 @@
+/**
+ * @file
+ *
+ * Styles for the blog posts.
+ */
+
 // General styles.
-.portfolio,
 .post {
   @include outer-container;
   @include media($large-screen-up) {
@@ -7,12 +12,11 @@
     @include shift(2);
   }
 
-  hr {
-    margin: 3em 0;
-  }
-
+  // Header area.
   .post-header {
-    margin-bottom: 2.25em;
+
+    // Match margin-bottom of H1.
+    margin-bottom: 1.875em;
 
     p {
       display: inline;
@@ -23,16 +27,22 @@
       margin-right: 5px;
     }
 
+    .centerdot {
+      font-weight: bold;
+    }
+
+    // Hero image.
     .post-hero {
       margin: 3em 0;
     }
   }
 
+  // Optional disclaimer section.
   .disclaimer {
     background-color: transparentize($fuschia, .9);
     border: solid 1px transparentize($fuschia, .7);
     border-radius: 5px;
-    margin-bottom: 2em;
+    margin-bottom: 1.875em;
     padding: 1em;
 
     h5 {
@@ -47,12 +57,6 @@
   }
   // scss-lint:enable ImportantRule
 
-  .previous-next-links {
-    .previous {
-      text-align: right;
-    }
-  }
-
   .table-minimal {
     margin-bottom: 3em;
     margin-top: 3em;
@@ -64,7 +68,7 @@
 
 }
 
-// Images within posts.
+// Images within posts ---------------------------------------------------------
 .blog-image {
   background: $gainsboro;
   box-shadow: 0 2px 4px darken($gainsboro, 10%);
@@ -111,128 +115,7 @@
   text-align: center;
 }
 
-// Comment block expander.
-.expander {
-  $expander-arrow-width: .7em;
-  $expander-toggle-size: 1em;
-  $expander-toggle-arrow-size: $expander-toggle-size;
-  $expander-toggle-margin: 1em;
-
-  .expander-trigger {
-    @include user-select(none);
-    color: $fuschia;
-    cursor: pointer;
-    display: block;
-    font-size: 1.2em;
-    margin-bottom: $expander-toggle-size;
-    padding-bottom: $expander-toggle-size / 4;
-    text-align: center;
-    text-decoration: none;
-
-    &::before {
-      content: '\25BC';
-      font-size: $expander-arrow-width;
-      margin-right: .5em;
-    }
-  }
-
-  .expander-hidden {
-    &::before {
-      content: '\25BA';
-      font-size: $expander-arrow-width;
-    }
-
-    + .expander-content {
-      display: none;
-    }
-  }
-}
-
-// Comments.
-.post-comments {
-
-  // Comment form.
-  // Make name and email inline on larger screens.
-  @include media($medium-screen-up) {
-    .comment-name,
-    .comment-email {
-      display: inline-block;
-      width: 48%;
-    }
-
-    .comment-name { float: left; }
-    .comment-email { float: right; }
-  }
-
-  p {
-    margin: 0;
-  }
-
-  textarea {
-    margin-bottom: 0;
-  }
-
-  .email-disclaimer {
-    font-size: .8em;
-    margin-top: -1em;
-  }
-
-  .hint {
-    font-size: .8em;
-  }
-
-  .below-textarea {
-    margin-top: -.5em;
-  }
-
-  .nocaptcha {
-    margin-bottom: 0;
-  }
-
-  .are-you-human {
-    @include span-columns(12);
-    margin-top: 2em;
-  }
-
-  .are-you-human-field {
-    @include span-columns(9);
-  }
-
-  .are-you-human-owl {
-    @include span-columns(3);
-    text-align: center;
-
-    img {
-      width: 4em;
-    }
-  }
-
-  // Hide honeypot field.
-  // scss-lint:disable IdSelector
-  #url {
-    display: none;
-  }
-  // scss-lint:enable IdSelector
-
-  // Existing comments.
-  .post-comments {
-    margin-top: 2.5em;
-
-    .comment {
-      h5 {
-        margin-bottom: 0;
-      }
-
-      .comment-date {
-        color: darken($gainsboro, 25%);
-        font-size: .9em;
-        margin: .5em 0 .4em;
-      }
-    }
-  }
-}
-
-// Post bottom area: post meta information and other posts.
+// Post meta information and other posts ---------------------------------------
 .post-bottom {
 
   h4 {
@@ -284,7 +167,7 @@
   }
 }
 
-// Previous and next links.
+// Previous and next links -----------------------------------------------------
 .previous-next-links {
   .next {
     @include span-columns(6);
@@ -294,9 +177,6 @@
   .previous {
     @include span-columns(6);
     float: right;
+    text-align: right;
   }
 }
-
-.centerdot { font-weight: bold; }
-
-.fa-comment-o { margin-right: 4px; }

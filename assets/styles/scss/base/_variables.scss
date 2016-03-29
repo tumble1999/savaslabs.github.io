@@ -89,6 +89,12 @@ $table-stripe-background: darken($table-background, 4);
 $table-stripe-background-hover: darken($table-stripe-background, 5);
 $table-padding: .75em 1em;
 
+// Expander refill variables.
+$expander-arrow-width: .7em;
+$expander-toggle-size: 1em;
+$expander-toggle-arrow-size: $expander-toggle-size;
+$expander-toggle-margin: 1em;
+
 // Mixins and abstract classes -------------------------------------------------
 %button {
   $background: lighten($light-gray, 10%);

@@ -7,11 +7,11 @@
 .wrapper {
   @include outer-container;
   max-width: 70em;
-  padding: 3em 1em;
+  padding: $base-margin 1em;
   vertical-align: baseline;
 
   @include media($large-screen-up) {
-    padding: 3em 0;
+    padding: $base-margin 0;
   }
 }
 
@@ -27,10 +27,6 @@ header,
 
 .page-description {
   margin-bottom: 2em;
-}
-
-hr {
-  clear: both;
 }
 
 .column-8 {

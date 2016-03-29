@@ -99,6 +99,11 @@ ol ol li {
 
 // Misc ------------------------------------------------------------------------
 
+hr {
+  clear: both;
+  margin: $base-margin 0;
+}
+
 .emoji { width: 24px; }
 
 // Thanks CSS-Tricks!
