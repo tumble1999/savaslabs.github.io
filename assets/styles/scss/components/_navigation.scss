@@ -2,7 +2,6 @@
   $base-border-color: $gainsboro !default;
   $base-border-radius: 3px !default;
   $base-accent-color: #477dca !default;
-  $large-screen: em(860) !default;
   ///////////////////////////////////////////////////
   $navigation-padding: 1em;
   $navigation-background: $dark-blue;
@@ -15,7 +14,7 @@
   $navigation-active-link-color: $white;
   $navigation-submenu-padding: 1em;
   $navigation-submenu-width: 10em;
-  $horizontal-bar-mode: $medium-screen-up;
+  $horizontal-bar-mode: $medium-screen-up ;
 
   background-color: $navigation-background;
   border-bottom: 1px solid darken($navigation-background, 10);

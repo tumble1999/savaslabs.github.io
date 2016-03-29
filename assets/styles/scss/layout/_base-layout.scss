@@ -4,7 +4,7 @@
   padding: 3em 1em;
   vertical-align: baseline;
 
-  @include media($large-screen) {
+  @include media($large-screen-up) {
     padding: 3em 0;
   }
 }
@@ -28,7 +28,7 @@ hr {
 }
 
 .column-8 {
-  @include media($large-screen) {
+  @include media($large-screen-up) {
     @include span-columns(8);
     @include shift(2);
   }

@@ -1,3 +1,12 @@
+/**
+ * @file
+ *
+ * Custom variables, mixins, and abstract classes.
+ *
+ * Note: this partial is imported by ../lib/base/_base.scss so Bitters will use
+ * our custom variables in its styles.
+ */
+
 // Colors ----------------------------------------------------------------------
 $dark-blue: #14133b !default;
 $fuschia: #9e023b;
@@ -9,6 +18,7 @@ $white: #fff;
 $navtools-background: #505050;
 
 // Fonts -----------------------------------------------------------------------
+@import "../lib/font-awesome/font-awesome";
 $roboto: "Roboto Condensed", "Helvetica Neue", Helvetica, Arial, sans-serif;
 $heading-font: 'PT Serif', "Helvetica Neue", Helvetica, Arial, sans-serif;
 $mono: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace !default;

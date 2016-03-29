@@ -2,7 +2,7 @@
 .portfolio,
 .post {
   @include outer-container;
-  @include media($large-screen) {
+  @include media($large-screen-up) {
     @include span-columns(8);
     @include shift(2);
   }
@@ -72,7 +72,7 @@
   margin: 1em auto;
   max-width: 250px;
 
-  @include media($medium-screen) {
+  @include media($medium-screen-up) {
     &.wrap-right {
       float: left;
       margin-right: 40px;
@@ -153,7 +153,7 @@
 
   // Comment form.
   // Make name and email inline on larger screens.
-  @include media($medium-screen) {
+  @include media($medium-screen-up) {
     .comment-name,
     .comment-email {
       display: inline-block;
@@ -256,7 +256,7 @@
     margin-bottom: 3em;
     text-align: center;
 
-    @include media($medium-screen) {
+    @include media($medium-screen-up) {
       @include span-columns(4);
       text-align: left;
     }
@@ -281,7 +281,7 @@
     margin-bottom: 3em;
     text-align: center;
 
-    @include media($medium-screen) {
+    @include media($medium-screen-up) {
       @include span-columns(8);
 
       h4 {
@@ -322,7 +322,7 @@
     display: inline-block;
     margin-bottom: .5em;
 
-    @include media($large-screen) {
+    @include media($large-screen-up) {
       margin-bottom: 0;
       margin-right: .5em;
     }
@@ -337,7 +337,7 @@
     font-size: 1.5em;
     margin-bottom: 0;
 
-    @include media($large-screen) {
+    @include media($large-screen-up) {
       line-height: 250%;
     }
 

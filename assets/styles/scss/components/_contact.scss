@@ -8,8 +8,6 @@
   $base-link-color: $base-accent-color !default;
   $dark-gray: #333 !default;
   $light-gray: #ddd !default;
-  $medium-screen: em(640) !default;
-  $large-screen: em(860) !default;
   $base-font-color: $dark-gray !default;
   ///////////////////////////////////////////////////
   $table-border-color: $base-border-color;
@@ -51,7 +49,7 @@
         padding: .3em 1em;
         width: 100%;
 
-        @include media($medium-screen) {
+        @include media($medium-screen-up) {
           margin-bottom: 0;
           width: auto;
         }

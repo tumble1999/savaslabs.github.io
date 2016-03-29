@@ -26,7 +26,7 @@
 .client-quote {
   border: 1px solid $gainsboro;
 
-  @include media($medium-screen) {
+  @include media($medium-screen-up) {
     display: inline-block;
     float: right;
     margin: 1.5em;
