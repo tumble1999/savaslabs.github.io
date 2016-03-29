@@ -1,9 +1,9 @@
-scss_files: 'assets/styles/_scss/*.scss'
+scss_files: 'assets/styles/scss/*/*.scss'
 
 exclude:
-  - '_sass'
-  - 'assets/styles/_scss/*/*'
-  - 'assets/styles/_scss/_syntax-highlighting.scss'
+  - 'assets/styles/scss/*/*/*'
+  - 'assets/styles/scss/components/_syntax-highlighting.scss'
+  - 'assets/styles/scss/base/_normalize.scss'
 
 linters:
   SelectorDepth:
@@ -15,4 +15,6 @@ linters:
   PlaceholderInExtend:
     enabled: false
   SelectorFormat:
+    enabled: false
+  Comment:
     enabled: false
