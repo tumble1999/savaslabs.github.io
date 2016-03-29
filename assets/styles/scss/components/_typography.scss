@@ -1,5 +1,5 @@
 body {
-  font-family: $roboto;
+  font-family: $copytext-font;
 }
 
 h1,
@@ -21,11 +21,11 @@ h5 { font-size: 120%; }
 h6 { font-size: 100%; }
 
 a {
-  color: $solar-cyan;
+  color: $teal;
 
   &:hover,
   &:focus {
-    color: lighten($solar-cyan, 10%);
+    color: lighten($teal, 10%);
   }
 }
 
@@ -104,7 +104,7 @@ textarea {
 // Thanks CSS-Tricks!
 // https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/
 blockquote {
-  background-color: lighten($gainsboro, 10);
+  background-color: lighten($light-gray, 10);
   border-left: 10px solid transparentize($dark-blue, .6);
   border-radius: 0 $base-border-radius * 3 $base-border-radius * 3 0;
   font-style: italic;
@@ -136,7 +136,7 @@ blockquote {
   width: 100%;
 
   p {
-    color: $white;
+    color: $base-background-color;
     font-size: 1.5em;
     margin-bottom: 0;
   }

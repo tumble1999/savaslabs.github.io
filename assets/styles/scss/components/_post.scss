@@ -318,7 +318,7 @@
   width: 100%;
 
   .job-banner__title {
-    color: $white;
+    color: $base-background-color;
     display: inline-block;
     margin-bottom: .5em;
 
@@ -328,7 +328,7 @@
     }
 
     a {
-      color: $white;
+      color: $base-background-color;
     }
   }
 
@@ -344,7 +344,7 @@
     // scss-lint:disable ColorVariable
     a {
       border-bottom: .1em solid rgba(250, 250, 250, .1);
-      color: $white;
+      color: $base-background-color;
     }
     // scss-lint:enable ColorVariable
   }

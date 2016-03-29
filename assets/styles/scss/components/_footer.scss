@@ -1,11 +1,4 @@
 .footer {
-  $base-spacing: 1.5em !default;
-  ///////////////////////////////////////////////////
-  $footer-background: $dark-blue;
-  $footer-color: $white;
-  $footer-link-color: $footer-color;
-  $footer-disclaimer-color: $footer-color;
-
   background: $footer-background;
   padding: ($base-spacing * 2) $gutter;
   width: 100%;
@@ -111,7 +104,7 @@
   width: 100%;
 
   p {
-    color: $white;
+    color: $footer-color;
     margin: auto;
   }
 }
