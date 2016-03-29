@@ -1,14 +1,26 @@
+/**
+ * @file
+ *
+ * Card styles, using the Card Refill.
+ *
+ * See _variables.scss for card refill variables.
+ */
+
+// General card styles ---------------------------------------------------------
+
+// The group of cards.
 .cards {
   @include display(flex);
   @include flex-wrap(wrap);
   @include justify-content(center);
 }
 
+// A single card.
 .card {
-
   @include flex-basis(15em);
   @include flex-grow(1);
   @include transition (all .2s ease-in-out);
+
   background-color: $card-background;
   border: $card-border;
   border-radius: $base-border-radius;
@@ -71,4 +83,49 @@
       background-color: $card-background;
     }
   }
+}
+
+// Team card overrides ---------------------------------------------------------
+.team-card {
+  @include flex-basis(21em);
+  @include flex-grow(0);
+  @include transition (all .2s ease-in-out);
+
+  .card-image {
+    max-height: 150px;
+    overflow: hidden;
+  }
+
+  .card-header {
+    display: inline-block;
+    font-size: 1.1em;
+    padding: ($base-spacing / 3) ($base-spacing / 2) 0;
+  }
+
+  .card-copy {
+    border-top: 1px solid $gainsboro;
+    font-size: 1em;
+  }
+
+  .card-title {
+    display: inline-block;
+    float: right;
+    font-size: .8em;
+    line-height: 2em;
+    padding: ($base-spacing / 2) ($base-spacing / 2) 0;
+    text-transform: uppercase;
+  }
+}
+
+// Work card overrides ---------------------------------------------------------
+.work-card {
+  @include flex-basis(21em);
+  @include flex-grow(0);
+  @include flex-shrink(1);
+}
+
+// News card overrides ---------------------------------------------------------
+.news-card {
+  @include flex-basis(20em);
+  @include flex-grow(0);
 }

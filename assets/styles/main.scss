@@ -19,12 +19,11 @@
 @import 'scss/layout/base-layout';
 
 /* Component rules (called 'modules' in SMACSS) */
-@import 'scss/components/syntax-highlighting';
-@import 'scss/components/post';
-@import 'scss/components/card';
-@import 'scss/components/team';
-@import 'scss/components/work';
-@import 'scss/components/navigation';
+@import 'scss/components/cards';
 @import 'scss/components/footer';
 @import 'scss/components/home';
-@import 'scss/components/news';
+@import 'scss/components/navigation';
+@import 'scss/components/post';
+@import 'scss/components/syntax-highlighting';
+@import 'scss/components/team';
+@import 'scss/components/work';
