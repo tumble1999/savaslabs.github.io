@@ -1,9 +1,18 @@
+/**
+ * @file
+ *
+ * Footer styles, using the Footer Refill.
+ *
+ * See _variables.scss for footer refill variables.
+ */
+
 .footer {
   background: $footer-background;
   padding: ($base-spacing * 2) $gutter;
   width: 100%;
 
   ul {
+    margin: 0;
     padding: 0;
   }
 
@@ -57,7 +66,6 @@
   }
 
   div ul {
-
     @include media($medium-screen-up) {
       @include span-columns(3);
       @include omega(3n);
@@ -96,6 +104,7 @@
 
 }
 
+// Area below footer.
 .footer-copyright {
   @include display(flex);
 

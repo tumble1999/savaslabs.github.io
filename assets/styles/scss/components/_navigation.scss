@@ -1,3 +1,12 @@
+/**
+ * @file
+ *
+ * Navigation styles, using the Navigation Refill.
+ *
+ * See _variables.scss for navigation refill variables.
+ */
+
+// The entire header.
 .navigation {
   background-color: $navigation-background;
   border-bottom: 1px solid darken($navigation-background, 10);
@@ -18,16 +27,19 @@
   }
 
   .logo {
+    // On small screens, float menu to the left inline with mobile menu.
     float: left;
     max-height: $navigation-height;
     padding-left: $navigation-padding;
     padding-right: 2em;
 
+    // On medium screens, center logo above menu.
     @include media($horizontal-bar-mode) {
       float: none;
       margin: 0 auto;
     }
 
+    // On large screens, float logo to the left inline with menu.
     @include media($large-screen-up) {
       float: left;
       margin: 0;
@@ -39,8 +51,7 @@
     }
   }
 
-  // Mobile view
-
+  // Mobile menu link.
   .navigation-menu-button {
     color: $navigation-color;
     display: block;
@@ -61,8 +72,7 @@
     }
   }
 
-  // Nav menu
-
+  // Menu wrapper.
   nav {
     float: none;
     min-height: $navigation-height;
@@ -79,6 +89,7 @@
     }
   }
 
+  // The actual menu.
   .navigation-menu {
     clear: both;
     display: none;
@@ -100,8 +111,7 @@
     }
   }
 
-  // The nav items
-
+  // Menu items.
   .nav-link {
     background: $navigation-background;
     display: block;
@@ -148,13 +158,10 @@
     }
   }
 
-  // Sub menus
-
-  // Menu link with sub-links.
+  // Menu link with submenu.
   .more.nav-link {
     overflow: visible;
     padding-right: 0;
-
 
     @include media($horizontal-bar-mode) {
       padding-right: .8em;
@@ -193,7 +200,7 @@
     }
   }
 
-  // The actual sub-menu.
+  // The actual submenu.
   .submenu {
     display: none;
     padding-left: 0;
