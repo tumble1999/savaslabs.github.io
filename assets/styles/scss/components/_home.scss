@@ -1,74 +1,86 @@
-.home .page-content {
-  background: url('/assets/img/home.png');
+/**
+ * @file
+ *
+ * Styles for the home page.
+ */
 
-  .home-page-copy {
-    @include outer-container;
-    padding: 3% 0;
+.home {
+  .page-content {
+    background: url('/assets/img/home.png');
+
+    .home-page-copy {
+      @include outer-container;
+      padding: 3% 0;
+      text-align: center;
+
+      @include media($medium-screen-up) {
+        .logo {
+          @include shift(1);
+          @include span-columns(3);
+        }
+
+        .tagline {
+          @include span-columns(7);
+        }
+
+        h4 {
+          padding: 0;
+        }
+      }
+
+      h1 {
+        padding-top: 5%;
+      }
+
+      h4 {
+        color: $base-background-color;
+        padding: 0 5%;
+      }
+
+      .logo img {
+        max-width: 125px;
+      }
+    }
+  }
+
+  .wrapper {
+    h3,
+    h2 {
+      text-align: center;
+    }
+  }
+
+  .job-posting-block {
+    $link-background: lighten($gainsboro, 10%);
     text-align: center;
 
     @include media($medium-screen-up) {
-      .logo {
-        @include shift(1);
-        @include span-columns(3);
+      @include span-columns(8);
+      @include shift(2);
+
+      float: none;
+    }
+
+    p {
+      font-size: 1.2em;
+      text-align: left;
+    }
+
+    hr {
+      margin: 3em 0;
+    }
+  }
+
+  .home-blog-list {
+    clear: both;
+
+    .view-more-posts {
+      font-size: 1.2em;
+      text-align: center;
+
+      i {
+        margin-left: 5px;
       }
-
-      .tagline { @include span-columns(7); }
-      h4 { padding: 0; }
-    }
-
-    h1 {
-      padding-top: 5%;
-    }
-
-    h4 {
-      color: $base-background-color;
-      padding: 0 5%;
-    }
-
-    .logo img {
-      max-width: 125px;
-    }
-  }
-}
-
-.home .wrapper {
-  h3,
-  h2 {
-    text-align: center;
-  }
-}
-
-.job-posting-block {
-  $link-background: lighten($gainsboro, 10%);
-  text-align: center;
-
-  @include media($medium-screen-up) {
-    @include span-columns(8);
-    @include shift(2);
-
-    float: none;
-  }
-
-  p {
-    font-size: 1.2em;
-    text-align: left;
-  }
-
-  hr {
-    margin: 3em 0;
-  }
-}
-
-
-.home-blog-list {
-  clear: both;
-
-  .view-more-posts {
-    font-size: 1.2em;
-    text-align: center;
-
-    i {
-      margin-left: 5px;
     }
   }
 }
