@@ -4,7 +4,7 @@ title: Drupal Training
 permalink: "/drupal-training/"
 excerpt: Savas offers professional Drupal training in Durham, NC
 ---
-<p class="page-description">We offer professional Drupal training classes in Durham.</p>
+We offer professional Drupal training classes in Durham.
 
 ### Learn from professionals
 

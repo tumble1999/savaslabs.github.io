@@ -13,12 +13,12 @@
 @import 'scss/base/normalize';
 @import 'scss/base/base';
 @import 'scss/base/tables';
+@import 'scss/base/typography';
 
 /* Layout rules */
 @import 'scss/layout/base-layout';
 
 /* Component rules (called 'modules' in SMACSS) */
-@import 'scss/components/typography';
 @import 'scss/components/syntax-highlighting';
 @import 'scss/components/post';
 @import 'scss/components/card';

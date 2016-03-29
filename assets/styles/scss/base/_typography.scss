@@ -1,7 +1,15 @@
+/**
+ * @file
+ *
+ * Typography styles.
+ */
+
 body {
+  color: $dark-blue;
   font-family: $copytext-font;
 }
 
+// Headings --------------------------------------------------------------------
 h1,
 h2,
 h3,
@@ -13,6 +21,18 @@ h6 {
   font-weight: 800;
 }
 
+// Add margin top for posts.
+.portfolio,
+.post {
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 1.5em;
+  }
+}
+
 h1 { font-size: 250%; }
 h2 { font-size: 200%; }
 h3 { font-size: 160%; }
@@ -20,86 +40,64 @@ h4 { font-size: 140%; }
 h5 { font-size: 120%; }
 h6 { font-size: 100%; }
 
+// Links -----------------------------------------------------------------------
+
 a {
-  color: $teal;
+  color: $action-color;
+  transition: all 0.1s linear;
 
   &:hover,
   &:focus {
-    color: lighten($teal, 10%);
+    color: $action-color-hover;
   }
 }
 
+// Give inline links an underlined look.
 // scss-lint:disable ColorVariable
 p a,
 .post li a {
   border-bottom: .1em solid rgba(10, 83, 101, .1);
+
+  &:hover,
+  &:focus {
+    border-bottom: .1em solid $action-color-hover;
+  }
 }
 // scss-lint:enable ColorVariable
 
-.card-copy {
-  color: $dark-blue;
-}
+// Paragraphs and lists --------------------------------------------------------
 
-.nav-link a {
-  font-size: $base-font-size * 1.1;
-  text-transform: uppercase;
-}
-
-p,
-input,
-textarea {
-  color: $dark-blue;
-}
-
-.page-description {
-  font-size: $base-font-size * 1.3;
-}
-
+.post,
 .portfolio,
-.post {
-  .portfolio-short-description {
-    font-size: $base-font-size * 1.5;
-  }
-
-  p,
-  ul,
-  ol {
-    color: $dark-blue;
-    font-size: $base-font-size * 1.2;
-  }
-
-  // Keep ems from cascading in nested lists.
-  ul ul,
-  ul ul li,
-  ul ol,
-  ul ol li,
-  ol ul,
-  ol ul li,
-  ol ol,
-  ol ol li {
-    font-size: 1em;
-  }
-
-  ul { list-style-type: square; }
-  ol { list-style-type: decimal; }
-
-  ul,
-  ol {
-    margin-bottom: 1em;
-    margin-left: 2em;
-  }
-
-  h2,
-  h3,
-  h4,
-  h5 { margin-top: 1.5em; }
-
-  .page-description {
-    font-size: $base-font-size * 1.4;
-  }
+.page-description {
+  color: $dark-blue;
+  font-size: $base-font-size * 1.2;
 }
 
-.centerdot { font-weight: bold; }
+ul { list-style-type: square; }
+ol { list-style-type: decimal; }
+
+ul,
+ol {
+  margin-bottom: 1em;
+  margin-left: 2em;
+}
+
+// Keep ems from cascading in nested lists.
+ul ul,
+ul ul li,
+ul ol,
+ul ol li,
+ol ul,
+ol ul li,
+ol ol,
+ol ol li {
+  font-size: 1em;
+}
+
+// Misc ------------------------------------------------------------------------
+
+.emoji { width: 24px; }
 
 // Thanks CSS-Tricks!
 // https://css-tricks.com/snippets/css/simple-and-nice-blockquote-styling/
@@ -141,7 +139,3 @@ blockquote {
     margin-bottom: 0;
   }
 }
-
-.fa-comment-o { margin-right: 4px; }
-
-.emoji { width: 24px; }
