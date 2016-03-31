@@ -4,7 +4,7 @@
 
  .highlight {
   table td.code { width: 100%; }
-  border: 1px solid #ddd !important;
+  border: 1px solid $light-gray !important;
   border-radius: .4em;
 }
 
@@ -36,7 +36,7 @@ figure.code, pre {
 pre {
   background: $pre-bg $noise-bg;
   border-radius: .4em;
-  font-family: $mono !important;
+  font-family: $monospace-font !important;
   border: 1px solid $pre-border;
   line-height: 1.45em;
   font-size: 13px;
@@ -47,15 +47,15 @@ pre {
 
 p, li {
   code {
-    font-family: $mono !important;
+    font-family: $monospace-font !important;
     display: inline-block;
     white-space: no-wrap;
-    background: #fff;
+    background: $base-background-color;
     font-size: .8em;
     line-height: 1.5em;
-    color: $solar-cyan;
-    border: 1px solid #ddd;
-    border-radius: .4em;
+    color: $fuschia;
+    border: 1px solid $light-gray;
+    border-radius: .2em;
     padding: 0 .3em;
     margin: -1px 0;
   }
@@ -63,7 +63,7 @@ p, li {
 }
 
 .pre-code {
-  font-family: $mono !important;
+  font-family: $monospace-font !important;
   overflow: scroll;
   overflow-y: hidden;
   display: block;

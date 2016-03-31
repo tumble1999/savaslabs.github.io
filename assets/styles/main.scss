@@ -1,26 +1,30 @@
 ---
 ---
-@import "lib/normalize";
-@import "lib/bourbon/bourbon";
-@import "base/grid-settings";
-@import "lib/neat/neat";
 
-@import "variables";
+/**
+ * @file
+ * Styles are organized using the SMACSS technique. @see http://smacss.com/book/
+ */
 
-@import "font-awesome/font-awesome";
+/* Import Sass mixins, variables, Compass modules, Bourbon and Neat, etc. */
+@import 'scss/init';
 
-@import "base/base";
-@import "layout";
+/* HTML element (SMACSS base) rules */
+@import 'scss/base/normalize';
+@import 'scss/base/base';
+@import 'scss/base/tables';
+@import 'scss/base/typography';
 
-@import "typography";
-@import "syntax-highlighting";
-@import "post";
-@import "card";
-@import "team";
-@import "work";
-@import "navigation";
-@import "footer";
-@import "home";
-@import "contact";
-@import "news";
-@import "flash";
+/* Layout rules */
+@import 'scss/layout/base-layout';
+
+/* Component rules (called 'modules' in SMACSS) */
+@import 'scss/components/cards';
+@import 'scss/components/comments';
+@import 'scss/components/footer';
+@import 'scss/components/home';
+@import 'scss/components/navigation';
+@import 'scss/components/post';
+@import 'scss/components/syntax-highlighting';
+@import 'scss/components/team';
+@import 'scss/components/work';

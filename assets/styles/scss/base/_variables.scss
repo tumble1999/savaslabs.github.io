@@ -1,0 +1,195 @@
+/**
+ * @file
+ *
+ * Custom variables, mixins, and abstract classes.
+ *
+ * Note: this partial is imported by ../lib/base/_base.scss so Bitters will use
+ * our custom variables in its styles.
+ *
+ * Useful variables set by Bitters:
+ *  $light-gray: #ddd
+ *  $dark-gray: #333
+ *  $base-background-color: #fff (white)
+ *  $base-spacing: 1.5em
+ *  $base-border-radius: 3px
+ */
+
+// Colors ----------------------------------------------------------------------
+
+// Primary colors.
+$dark-blue: #14133b;
+$fuschia: #9e023b;
+$yellow: #f2a324;
+$orange: #f6433e;
+$beige: #f4d1a6;
+
+// Secondary colors.
+$teal: #0a5365;
+$green: #055c2b;
+$purple: #501888;
+$gainsboro: #dcdcdc;
+
+// Alert colors.
+$alert-color: transparentize($yellow, .8);
+$error-color: transparentize($fuschia, .8);
+$notice-color: transparentize($orange, .8);
+$success-color: transparentize($green, .8);
+
+// Action colors.
+$action-color: $teal;
+$action-color-hover: lighten($teal, 10%);
+
+// Fonts -----------------------------------------------------------------------
+@import '../lib/font-awesome/font-awesome';
+$copytext-font: 'Roboto Condensed', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$heading-font: 'PT Serif', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$monospace-font: Menlo, Monaco, 'Andale Mono', 'lucida console', 'Courier New', monospace !default;
+
+// Spacing and other utilities -------------------------------------------------
+$base-margin: $base-spacing * 2;
+
+// Refills ---------------------------------------------------------------------
+
+// Navigation refill variables.
+$navigation-padding: 1em;
+$navigation-background: $dark-blue;
+$navigation-color: transparentize($base-background-color, .3);
+$navigation-color-hover: $base-background-color;
+$navigation-height: 70px;
+$navigation-active-link-color: $base-background-color;
+$navigation-submenu-padding: $navigation-padding;
+$navigation-submenu-width: 10em;
+$horizontal-bar-mode: $medium-screen-up;
+
+// Footer refill variables.
+$footer-background: $dark-blue;
+$footer-color: $base-background-color;
+$footer-link-color: $footer-color;
+$footer-disclaimer-color: $footer-color;
+
+// Card refill variables.
+$base-font-color: $dark-gray !default;
+$card-border-color: $base-border-color;
+$card-border: 1px solid $card-border-color;
+$card-background: lighten($card-border-color, 10%);
+$card-header-background: $card-background;
+$card-hover-background: lighten($card-background, 5%);
+$card-image-background: $light-gray;
+$card-image-hover-background: lighten($card-image-background, 5%);
+$card-margin: 1em;
+
+// Table refill variables.
+$base-font-color: $dark-gray !default;
+$table-border-color: $base-border-color;
+$table-border: 1px solid $table-border-color;
+$table-background: $base-background-color;
+$table-header-background: lighten($table-background, 10);
+$table-hover-background: darken($table-background, 2);
+$table-stripe-background: darken($table-background, 4);
+$table-stripe-background-hover: darken($table-stripe-background, 5);
+$table-padding: .75em 1em;
+
+// Expander refill variables.
+$expander-arrow-width: .7em;
+$expander-toggle-size: 1em;
+$expander-toggle-arrow-size: $expander-toggle-size;
+$expander-toggle-margin: 1em;
+
+// Mixins and abstract classes -------------------------------------------------
+%button {
+  $background: lighten($light-gray, 10%);
+  background-color: $background;
+  border: 1px solid $light-gray;
+  border-radius: 3px;
+  color: $fuschia;
+  font-family: $copytext-font;
+  margin-top: 2em;
+  padding: .75em 1em;
+  transition: (all .2s ease-in-out);
+
+  &:hover,
+  &:focus {
+    background-color: lighten($background, 5%);
+    color: $orange;
+  }
+}
+
+@mixin flash($color) {
+  background-color: $color;
+  color: darken($color, 60%);
+  display: block;
+  font-weight: 600;
+  margin-bottom: $base-spacing / 2;
+  padding: $base-spacing / 2;
+  text-align: center;
+
+  a {
+    color: darken($color, 70%);
+    text-decoration: underline;
+
+    &:focus,
+    &:hover {
+      color: darken($color, 90%);
+    }
+  }
+}
+
+.flash-alert { @include flash($alert-color); }
+
+.flash-error { @include flash($error-color); }
+
+.flash-notice { @include flash($notice-color); }
+
+.flash-success { @include flash($success-color); }
+
+// Syntax highlighting ---------------------------------------------------------
+$noise-bg: image-url('noise.png') top left !default;
+
+// Syntax highlighting is based off a Sass port of the Solarized theme,
+// created by Brandon Mathis at Octopress.
+
+$solarized: light;
+
+$base03:          #002b36; // darkest blue
+$base02:          #073642; // dark blue
+$base01:          #586e75; // darkest gray
+$base00:          #657b83; // dark gray
+$base0:           #839496; // medium gray
+$base1:           #93a1a1; // medium light gray
+$base2:           #eee8d5; // cream
+$base3:           #fdf6e3; // white
+$solar-yellow:    $yellow;
+$solar-orange:    $orange;
+$solar-red:       $fuschia;
+$solar-magenta:   #d33682;
+$solar-violet:    $purple;
+$solar-blue:      $dark-blue;
+$solar-cyan:      $teal;
+$solar-green:     #055c2b;
+
+
+@if $solarized == light {
+
+  $_base03: $base03;
+  $_base02: $base02;
+  $_base01: $base01;
+  $_base00: $base00;
+  $_base0:  $base0;
+  $_base1:  $base1;
+  $_base2:  $base2;
+  $_base3:  $base3;
+
+  $base03:  $_base3; // white
+  $base02:  $_base2; // cream
+  $base01:  $_base1; // medium light gray
+  $base00:  $_base0; // medium gray
+  $base0:   $_base00; // dark gray
+  $base1:   $_base01; // darkest gray
+  $base2:   $_base02; // dark blue
+  $base3:   $_base03; // darkest blue
+}
+
+// Non highlighted code colors.
+$pre-bg: $base03 !default;
+$pre-border: darken($base01, 5) !default;
+$pre-color: $base1 !default;

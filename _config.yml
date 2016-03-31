@@ -1,7 +1,7 @@
 # Basic Info
 title: Savas
 email: info@savaslabs.com
-description: > 
+description: >
   A Drupal-centric web development and design shop anchored in Durham, NC.
 # Base URL is used in the manner that is specified by this guide
 # (http://jekyllrb.com/docs/github-pages/) which is to say, it's
@@ -32,13 +32,13 @@ navigation:
     url: /contact
 
 # Professional and social media links
-twitter_username: savas_labs 
+twitter_username: savas_labs
 github_username: savaslabs
 
 # Languages and syntax highlighting
 markdown: kramdown
 sass:
-  sass_dir: assets/styles/_scss
+  sass_dir: assets/styles
 kramdown:
   input: GFM
   hard_wrap: false
