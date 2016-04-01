@@ -26,8 +26,8 @@ navigation:
     url: /work
   - title: Training
     url: /drupal-training
-  - title: News
-    url: /news
+  - title: Blog
+    url: /blog
   - title: Contact
     url: /contact
 
@@ -46,7 +46,7 @@ kramdown:
 
 # Blog
 paginate: 6
-paginate_path: "/news/:num/"
+paginate_path: "/blog/:num/"
 
 # For Travis CI
 exclude: [vendor]

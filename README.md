@@ -49,7 +49,7 @@ space e.g. ```bash
 To add a new tag, complete the following:
 
 1. Add the tag to _data/tags.yml.
-2. Add a new markdown file for the tag in news/tag. This creates a page for posts with that tag.
+2. Add a new markdown file for the tag in blog/tag. This creates a page for posts with that tag.
 3. Add the tag to the front matter of your post.
 
 ### Staging site
