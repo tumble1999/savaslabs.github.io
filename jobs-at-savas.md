@@ -35,7 +35,7 @@ excerpt: |
 ### About working with us
 At Savas, we prioritize a few things. We like people who are enjoyable to work
 with. We like to **learn** from and **teach** one another, and often the result is others
- learn as well either via [blog posts](/news),
+ learn as well either via [blog posts](/blog),
  [conference prezzies](http://chrisarusso.github.io/asheville.html#/) or social media.
 We dedicate time each week for self-improvement, socializing, and collaboration.
 We encourage a flexible work schedule

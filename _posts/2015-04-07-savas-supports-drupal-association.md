@@ -17,4 +17,4 @@ There are [lots of free and open source software (FOSS)](http://directory.fsf.or
 
 By supporting the Drupal Association, we're excited to help sustain the growing network of Drupal developers around the world. But we also recognize that making a yearly payment to an organization is just the starting point.
 
-Keep an eye on [our blog](/news) as we've got some exciting plans to strengthen the Drupal community here in Durham, North Carolina, with trainings, community code sprints, and mentoring opportunities.
+Keep an eye on [our blog](/blog) as we've got some exciting plans to strengthen the Drupal community here in Durham, North Carolina, with trainings, community code sprints, and mentoring opportunities.

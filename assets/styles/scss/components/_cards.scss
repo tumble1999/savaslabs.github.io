@@ -127,7 +127,7 @@
 }
 
 // News card overrides ---------------------------------------------------------
-.news-card {
+.blog-card {
   @include flex-basis(20em);
   @include flex-grow(0);
 }

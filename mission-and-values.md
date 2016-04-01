@@ -28,7 +28,7 @@ environment in which everyone feels comfortable in her own skin.
 Collaboration by means of listening, learning, and teaching is core to our
 spirit and key to our success. We share our knowledge and experience in our
 daily teamwork and enrich the broader community by imparting our expertise
-through [blog posts](/news/), [public code contributions](https://www.drupal.org/savas),
+through [blog posts](/blog/), [public code contributions](https://www.drupal.org/savas),
 [hosting local meetups](http://www.meetup.com/triDUG/), and giving talks at
 conferences.
 
