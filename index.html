@@ -9,20 +9,11 @@
 
     {% include header.html %}
 
-    <div class="page-content">
-        <div>
-            <section>
-                <div class="home-page-copy">
-                    <div class="logo">
-                        <img alt="Savas owl" src="{{ base.url }}/assets/img/owl.png">
-                    </div>
-                    <div class="tagline">
-                        <h1>Savas Labs</h1>
-                        <h4>{{ site.description }} <a href="/contact">Get in touch.</a></h4>
-                    </div>
-                </div>
-            </section>
-        </div>
+    <!-- Cover image and overlaid text -->
+    <div class="home__cover">
+      <h1 class="home__cover__heading">Savas Labs</h1><hr>
+      <p class="home__cover__site-description">{{ site.description }}</p>
+      <i class="fa fa-angle-double-down fa-lg"></i>
     </div>
 
     <div class="wrapper">
