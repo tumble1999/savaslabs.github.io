@@ -22,7 +22,8 @@
                   {{ post.title }}
               </div>
               <div class="card-copy">
-                  <p>{{ post.summary | markdownify | truncatewords: 20 }}</p>
+                <p>{{ post.date | date: "%b %-d, %Y" }}</p>
+                <p>{{ post.summary | markdownify | truncatewords: 20 }}</p>
               </div>
             </a>
           </div>
