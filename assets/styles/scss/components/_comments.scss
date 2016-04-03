@@ -103,6 +103,10 @@
   }
   // scss-lint:enable IdSelector
 
+  .submit-comment {
+    @extend %button;
+  }
+
   // Existing comments.
   .post-comments {
     margin-top: 2.5em;
