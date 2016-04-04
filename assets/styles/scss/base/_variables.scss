@@ -97,11 +97,9 @@ $expander-toggle-margin: 1em;
 
 // Mixins and abstract classes -------------------------------------------------
 %button {
-  $background: lighten($light-gray, 10%);
-  background-color: $background;
-  border: 1px solid $light-gray;
+  background-color: $action-color;
   border-radius: 3px;
-  color: $fuschia;
+  color: $base-background-color;
   font-family: $copytext-font;
   margin-top: 2em;
   padding: .75em 1em;
@@ -109,8 +107,7 @@ $expander-toggle-margin: 1em;
 
   &:hover,
   &:focus {
-    background-color: lighten($background, 5%);
-    color: $orange;
+    background-color: $action-color-hover;
   }
 }
 
