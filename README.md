@@ -1,8 +1,10 @@
 [![Build Status](https://travis-ci.org/savaslabs/savaslabs.github.io.svg?branch=master)](https://travis-ci.org/savaslabs/savaslabs.github.io)
 
-This is the website for [Savas Labs](http://savaslabs.com).
+This is the Jekyll-based website for [Savas Labs](http://savaslabs.com).
 
-The site is built using Jekyll. To run locally:
+## Docker
+
+To run locally:
 
 1. [Install Docker](https://docs.docker.com/engine/installation/) (n.b. if you're on a Mac or Windows, you'll want to run with [Docker Toolbox](https://docs.docker.com/engine/installation/mac/))
 2. `docker-compose pull` to get the prebuilt image (You only need to do this once)
@@ -16,26 +18,40 @@ You can run custom commands like so:
 $ docker-compose run website --rm jekyll --help # The --rm flag says to remove the container after you run the command.
 ```
 
-### Tests
+### To build a new image
+
+Run this command:
+
+``` bash
+$ docker build -t savas_website .
+```
+
+Then upload the image to `hub.docker.com`:
+
+``` bash
+$ docker push kostajh/savaslabs.github.io
+```
+
+## Tests
 
 To run the tests:
 
 `$ bash _tests/run-tests.sh`
 
-### Writing blog posts
+## Writing blog posts
 
-#### Headings
+### Headings
 
 Your post title (stored in the post's front matter) will be an H1. Your
 top-level headings should be H2's (##), then H3's (###), etc.
 
-#### Images
+### Images
 
 You can include a featured image in the front matter using the `featured_image`
 and `featured_image_alt` keys. This will work for our site and for Drupal Planet.
 Please try to do this for every post!
 
-### Syntax Highlighting
+## Syntax Highlighting
 
 Since updating to Jekyll 3.0.2 which uses Kramdown/Rouge, to use syntax
 highlighting in a post you just need to use backticks (similar to GitHub or
@@ -48,7 +64,7 @@ space e.g. ```bash
 2. The syntax block must be proceeded and followed by blank lines.
 3. For php you must including an opening php tag to get proper highlighting.
 
-### Tags
+## Tags
 
 To add a new tag, complete the following:
 
@@ -56,7 +72,7 @@ To add a new tag, complete the following:
 2. Add a new markdown file for the tag in blog/tag. This creates a page for posts with that tag.
 3. Add the tag to the front matter of your post.
 
-### Staging site
+## Staging site
 
 We have a password protected [staging site](http://blabs.savasdev.com)!
 Among other use cases, it can be used to share a site update with the team that

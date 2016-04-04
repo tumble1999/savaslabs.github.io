@@ -24,16 +24,12 @@ ENV LC_ALL C.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US.UTF-8
 
-RUN gem install \
-github-pages \
-mdl \
-scss_lint \
-html-proofer
+WORKDIR /src
+
+ADD Gemfile* /src/
+RUN bundle install
 
 VOLUME /src
 EXPOSE 4000
 
-WORKDIR /src
-
-EXPOSE 4000
 CMD ["jekyll", "s"]
