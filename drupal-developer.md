@@ -78,6 +78,6 @@ As a full-service agency, we partner with clients to fulfill their design, user 
 
 Let's start there.
 If you're Interested in applying for this position
-<a href="/contact">send us a message</a> and attach a resumé and cover letter.
+<a href="mailto:careers@savaslabs.com">send us a message</a> and attach a resumé and cover letter.
 
 ---

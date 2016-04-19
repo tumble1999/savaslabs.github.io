@@ -17,7 +17,7 @@ your design skills.
 At Savas, we prioritize a few things. We like people who are enjoyable to work
 with. We like to **learn** from and **teach** one another, and often the result is others
  learn as well either via [blog posts](/blog),
- [conference prezzies](http://chrisarusso.github.io/asheville.html#/) or social media.
+ [conference prezzies](https://events.drupal.org/neworleans2016/sessions/total-value-ownership-drupal-8-and-beyond) or social media.
 We dedicate time each week for self-improvement, socializing, and collaboration.
 We encourage a flexible work schedule
 so long as we are upholding our commitments to one another and our clients. We
@@ -65,6 +65,6 @@ our website, and you're just the person to help us with that!
 
 Let's start there.
 If you're Interested in applying for this position
-<a href="/contact">send us a message</a> and attach a resumé and cover letter.
+<a href="mailto:careers@savaslabs.com">send us a message</a> and attach a resumé and cover letter.
 
 ---
