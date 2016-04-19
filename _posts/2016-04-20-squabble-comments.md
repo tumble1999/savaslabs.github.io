@@ -19,7 +19,7 @@ This post provides an overview of how and why we implemented comments for our Je
 
 Most folks using static site generators include comments by outsourcing their site's comment section to [Disqus](https://disqus.com/).
 
-Disqus works like this: you sign up for their service and get a `<script>` embed code that you place in your page template. When the user visits that page, their browser will load the Disqus commenting widget. All comments are stored on Disqus' servers, the script loads any comments stored in Disqus for the particular URL that you are on.
+Disqus works like this: you sign up for their service and get a `<script>` embed code that you place in your page template. When the user visits that page, their browser will load the Disqus commenting widget. All comments are stored on Disqus' servers, the script loads any comments stored in Disqus for the particular URL the user is on.
 
 This is an elegant solution, but there are some problems. For one, you don't own your comments; they reside in a third-party service. And as [Our Incredible Journey](http://ourincrediblejourney.tumblr.com/) has well documented, services, even big ones like Disqus, sometimes disappear without much warning.
 
