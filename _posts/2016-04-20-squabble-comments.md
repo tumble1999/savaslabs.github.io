@@ -9,7 +9,7 @@ summary: |
 ---
 [Avid readers of our blog](/2015/04/01/building-our-site.html) know that it's built using the amazing and lovely open-source static site generator known as [Jekyll](http://jekyllrb.com/).
 
-Jekyll is a great solution for our site for a site like ours because we get an always-on[^1], super fast, database-free site that's also capable of many of the things you'd typically associate with a database-driven site: tagging, content organization, advanced templating, etc. Best of all it's one less application for us to host and keep up-to-date with the latest security patches.
+Jekyll is a great solution for a site like ours because we get an always-on[^1], super fast, database-free site that's also capable of many of the things you'd typically associate with a database-driven site: tagging, content organization, advanced templating, etc. Best of all, it's one less application for us to host and keep up-to-date with the latest security patches.
 
 However, as much as we like our static HTML, we also care about you, dear reader, and we wanted to provide an easy way for you to comment on and contribute to discussion on our site's content.
 
