@@ -21,13 +21,13 @@ Most folks using static site generators include comments by outsourcing their si
 
 Disqus works like this: you sign up for their service and get a `<script>` embed code that you place in your page template. When the user visits that page, your browser will load the Disqus commenting widget. All comments are stored on Disqus' servers, the script loads any comments stored in Disqus for the particular URL that you are on.
 
-This is an elegant solution, but there are some problems. For one, you don't own your comments; they reside in a third-party service. And as [Our Incredible Journey](http://ourincrediblejourney.tumblr.com/) has well documented, services, even big ones like Disqus, sometimes disappear without much warning. 
+This is an elegant solution, but there are some problems. For one, you don't own your comments; they reside in a third-party service. And as [Our Incredible Journey](http://ourincrediblejourney.tumblr.com/) has well documented, services, even big ones like Disqus, sometimes disappear without much warning.
 
 More importantly, Disqus doesn't have a great track record on privacy. By default, they track your activity while you browse sites across the web:
 
 > We strive to make the Disqus experience as personalized and relevant as possible for all users. In doing so, we collect non-personally identifiable interest information to deliver targeted content and advertising on websites that use Disqus, as well as other websites you may visit.
 
-This is somewhat mitigated by this [semi-hidden setting](https://help.disqus.com/customer/portal/articles/1657951) that lets you opt out of some of their tracking, but I'm willing to venture that the vast majority of Disqus users don't know about this. And the "non-personally identifiable information" term is a [bit of a misnomer](https://www.eff.org/deeplinks/2009/09/what-information-personally-identifiable) in any case. 
+This is somewhat mitigated by this [semi-hidden setting](https://help.disqus.com/customer/portal/articles/1657951) that lets you opt out of some of their tracking, but I'm willing to venture that the vast majority of Disqus users don't know about this. And the "non-personally identifiable information" term is a [bit of a misnomer](https://www.eff.org/deeplinks/2009/09/what-information-personally-identifiable) in any case.
 
 (Full disclosure: we're not entirely innocent in this respect either, since we're using Google Analytics on our site, so if you are not doing so already, we invite you to go install an ad blocker plugin for your browser and come back to finish the article!)
 
