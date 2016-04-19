@@ -63,9 +63,5 @@ That's why, for example, we don't (yet) have nicely formatted comments (they are
 
 Our [website](https://github.com/savaslabs/savaslabs.github.io) and [comment application](https://github.com/savaslabs/squabble) code is all open source, so have a look and feel free to use it for your own projects.
 
----
-
-#### Footnotes
-
 [^1]: [Nearly](https://twitter.com/githubstatus/status/711965206029725697).
 [^2]: I should mention we investigated some alternatives too; writing code from scratch that we have to then maintain is rarely our first choice. The [Isso](https://posativ.org/isso/) project is very cool but seemed a little complex to deploy and maintain. And [this person](http://ivanzuzak.info/2011/02/18/github-hosted-comments-for-github-hosted-blogs.html) came up with a solution that cleverly uses GitHub Issues for gathering comments, but then we'd shut the door on anyone without a GitHub account, and having to visit GitHub to leave a comment is more than a little awkward. Another benefit to writing our own implementation: a great opportunity for the team to stay current with the latest technology and make use of a popular PHP framework.
