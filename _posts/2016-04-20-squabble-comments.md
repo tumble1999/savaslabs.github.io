@@ -5,7 +5,7 @@ date: 2016-04-20
 author: Kosta Harlan
 tags: jekyll
 summary: |
-  A peek under the hood at our website's commenting app, [Squabble](http://github.com/savaslabs/squabble).
+  A peek under the hood at our website's commenting app, Squabble.
 ---
 [Avid readers of our blog](/2015/04/01/building-our-site.html) know that it's built using the amazing and lovely open-source static site generator known as [Jekyll](http://jekyllrb.com/).
 
