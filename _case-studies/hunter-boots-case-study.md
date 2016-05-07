@@ -21,9 +21,7 @@ services_provided: |
   - [Responsive design](/blog/tag/front-end-dev/)
   - [Drupal theme development](/blog/tag/theming/)
   - [Drupal custom module development](/blog/tag/drupal/)
-  - Third party integration
-  - Data
-  - Rescue
+  - Third party data integration
 technologies_used: |
   - Drupal 7
   - Drupal Commerce
@@ -37,6 +35,6 @@ project_process_image_alt: "Drupal Commerce logo"
 project_results_image: "/assets/img/work/hunter-boots-case-study/hunter_results.png"
 project_results_image_alt: "The Hunter Boots home page on desktop and mobile"
 client_quote2_author: Jodi Sweetbaum, President of Lloyd & Co.
-client_quote2: The site is looking amazing. I was very proud to present it today. Thank you so so so much! THANK YOU a million times over
+client_quote2: The site is looking amazing. I was very proud to present it today. Thank you so so so much! THANK YOU a million times over.
 
 ---
