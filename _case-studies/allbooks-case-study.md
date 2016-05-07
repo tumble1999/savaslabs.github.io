@@ -25,6 +25,8 @@ technologies_used: |
   - PHPUnit
   - Object-Oriented Programming
 client_logo: "/assets/img/work/allbooks-case-study/mitpress-logo.png"
+client_logo_width: "110px"
+client_logo_height: "107px"
 client_hero_image: "/assets/img/work/allbooks-case-study/allbooks-hero.png"
 project_objective_image: "/assets/img/work/allbooks-case-study/allbooks-objective.png"
 project_objective_image_alt: "Class hierarchy of importer objects."

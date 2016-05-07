@@ -182,25 +182,23 @@
 
   .case-study__client {
     background-color: lighten($light-gray, 10);
-    padding: $base-margin $base-spacing;
+    padding: $base-spacing $base-spacing $base-margin;
 
     .wrapper {
-      @include display(flex);
-      @include justify-content(space-between);
-      @include align-items(center);
-      @include flex-wrap(wrap);
-
-      @include media($medium-screen-up) {
-        @include flex-wrap(nowrap);
-      }
-
       .case-study__client__logo {
         display: block;
-        margin: 0 auto $base-spacing;
+        height: auto;
+        margin: $base-spacing auto 0;
 
         @include media($medium-screen-up) {
+          float: left;
           margin: 0 $base-margin 0 0;
+          min-height: 60px;
         }
+      }
+
+      p {
+        margin-top: $base-spacing;
       }
     }
   }

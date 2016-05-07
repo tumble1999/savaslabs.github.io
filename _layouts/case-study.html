@@ -25,7 +25,9 @@
         <!-- Client introduction -->
         <div class="case-study__client">
           <div class="wrapper">
-            <img class="case-study__client__logo" src="{{ page.client_logo }}" alt="{{ page.client_name }} logo">
+            <!--<div class="case-study__client__logo">-->
+              <img class="case-study__client__logo" src="{{ page.client_logo }}" alt="{{ page.client_name }} logo" width="{{ page.client_logo_width }}" height="{{ page.client_logo_height }}">
+            <!--</div>-->
             {{ page.client_description | markdownify }}
           </div>
         </div>
