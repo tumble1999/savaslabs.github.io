@@ -27,6 +27,8 @@ technologies_used: |
   - Drupal Commerce
   - jQuery
 client_logo: "/assets/img/work/hunter-boots-case-study/hunter_logo.svg"
+client_logo_width: "120px"
+client_logo_height: "50px"
 client_hero_image: "/assets/img/work/hunter-boots-case-study/hunter_hero.png"
 project_objective_image: "/assets/img/work/hunter-boots-case-study/hunter_objective.png"
 project_objective_image_alt: "The Hunter Boots checkout process on multiple screen sizes"
