@@ -3,7 +3,7 @@ name: Ro Wang
 layout: team
 job_title: Web Developer Intern
 job_description: Ro is a web developer intern at Savas Labs filling her brain daily with myriad things the team throws at her.
-card: "assets/img/team/ro-wang.jpg"
+card: "assets/img/team/cards/ro-card.jpg"
 photo: "assets/img/team/ro-wang.jpg"
 ---
 
