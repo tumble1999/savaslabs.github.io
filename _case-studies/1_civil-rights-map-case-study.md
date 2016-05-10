@@ -8,7 +8,7 @@ client_description: |
   Pauli Murray was a champion for civil and human rights who grew up in Durham. Her insights and vision continue to resonate powerfully in our times. To build a better Durham the Pauli Murray Project engages a diversity of residents to lift up the vision and legacy of activist, scholar, feminist, poet, and priest Pauli Murray in order to tackle enduring inequities and injustice in our community.
 client_dates: 2015 - present
 project_description: |
-  Over the 5+ years, the Pauli Murray Project assembled a detailed map about Durham's Civil and Human Rights history. But their data was locked in a proprietary Google Map, which broke after an API update. Savas worked with the Pauli Murray Project to create a fresh responsive design to showcase the rich detail of these important stories.
+  Over 5+ years, the Pauli Murray Project assembled a detailed map about Durham's Civil and Human Rights history. But their data was locked in a proprietary Google Map, which broke after an API update. Savas worked with the Pauli Murray Project to create a fresh responsive design to showcase the rich detail of these important stories.
 project_objective: |
   Savas needed to move content out of the old Google MyMap (shown), and provide a map which was easy to navigate but also held detailed content for each point, spanning text write-ups, photos, and audio documentary pieces. We also wanted to create a structure that would make it easy for future Duke students working with the Center to add content to the map.
 project_process: |
