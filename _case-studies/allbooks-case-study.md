@@ -23,7 +23,6 @@ services_provided: |
 technologies_used: |
   - Drupal 6
   - PHPUnit
-  - Object-Oriented Programming
 client_logo: "/assets/img/work/allbooks-case-study/mitpress-logo.png"
 client_logo_width: "110px"
 client_logo_height: "107px"
