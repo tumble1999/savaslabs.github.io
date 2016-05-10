@@ -16,14 +16,14 @@ project_objective: |
 project_process: |
   Savas Labs integrated the two new sites with the existing Transaction Advisors Drupal 7 installation and database using the Drupal Domain Access module. This allowed each site to have its own domain name and theme while providing a single administrative interface for all three. We leveraged our previous experience theming Transaction Advisors to theme the new SatelliteFinance and TelecomFinance sites in a responsive way so that they worked on all devices. For easy subscription management and access to paywall restricted content we integrated [Stripe](https://stripe.com/) via a custom module. Lastly, we used the Drupal Feeds module to import all content from the two legacy sites before going live.
 project_results: |
-  Thanks to an agile approach in which we worked closely with our clients, the new sites launched in time for an important conference, the administrative burden from running three separate website was reduced, and both customers and the business felt the benefit of easy to manage subscriptions.
+  Thanks to an agile approach in which we worked closely with our clients, the new sites launched in time for an important conference, the administrative burden from running three separate websites was reduced, and both customers and the business felt the benefit of easy to manage subscriptions.
 services_provided: |
   - [Responsive design](/blog/tag/front-end-dev/)
   - [Drupal theme development](/blog/tag/theming/)
   - [Drupal custom module development](/blog/tag/drupal/)
-  - [Multisite](/blog/tag/multisite/)
-  - [Payment processing](/blog/tag/payment-processing/)
-  - [Migration](/blog/tag/migration/)
+  - Multisite
+  - Payment processing
+  - Migration
 technologies_used: |
   - Drupal 7
   - Stripe payment processor
