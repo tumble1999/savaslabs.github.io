@@ -4,6 +4,9 @@ featured: 1
 project_title: Durham Civil and Human Rights History Map
 client_name: Pauli Murray Project, Duke Human Rights Center
 client_url: "http://www.durhamcivilrightsmap.org"
+client_quote: |
+   I have so enjoyed working with Savas Labs to redesign our online educational civil and human rights activism map. The Savas Labs staff are knowledgeable, creative problem solvers with a real commitment to Durham and to social justice. The map is now sleek and easier to use, the best since we started it in 2009.
+client_quote_author: Barbara Lau, Director, Pauli Murray Project
 client_description: |
   Pauli Murray was a champion for civil and human rights who grew up in Durham. Her insights and vision continue to resonate powerfully in our times. To build a better Durham the Pauli Murray Project engages a diversity of residents to lift up the vision and legacy of activist, scholar, feminist, poet, and priest Pauli Murray in order to tackle enduring inequities and injustice in our community.
 client_dates: 2015 - present
