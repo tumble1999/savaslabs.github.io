@@ -297,7 +297,6 @@
 
   .case-study__client-quote {
     background-color: lighten($light-gray, 10);
-    margin-bottom: $base-spacing * 2;
     padding: $base-spacing;
 
     @include media($medium-screen-up) {
@@ -330,6 +329,7 @@
 
   .case-study__details {
     @include outer-container();
+    margin-top: $base-spacing * 2;
 
     .wrapper {
       @include media($medium-screen-up) {
