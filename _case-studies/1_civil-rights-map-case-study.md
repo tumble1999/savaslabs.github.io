@@ -1,5 +1,6 @@
 ---
 layout: case-study
+featured: 1
 project_title: Durham Civil and Human Rights History Map
 client_name: Pauli Murray Project, Duke Human Rights Center
 client_url: "http://www.durhamcivilrightsmap.org"
@@ -26,12 +27,12 @@ technologies_used: |
 client_logo: "/assets/img/work/civil-rights-map-case-study/pauli-murray-logo.png"
 client_logo_width: "300px"
 client_logo_height: "72px"
-client_hero_image: "/assets/img/work/civil-rights-map-case-study/allbooks-hero.png"
-project_objective_image: "/assets/img/work/civil-rights-map-case-study/google-map.png"
+client_hero_image: "/assets/img/work/civil-rights-map-case-study/pmp-hero.png"
+project_objective_image: "/assets/img/work/civil-rights-map-case-study/pmp-objective.png"
 project_objective_image_alt: "The map as it was pre-migration on Google Maps"
-project_process_image: "/assets/img/work/civil-rights-map-case-study/drupal-map.png"
+project_process_image: "/assets/img/work/civil-rights-map-case-study/pmp-process.png"
 project_process_image_alt: "The same site, on the new Drupal 8 map"
-project_results_image: "/assets/img/work/civil-rights-map-case-study/drupal-map-mobile.png"
-project_results_image_alt: "The map on a mobile device"
+project_results_image: "/assets/img/work/civil-rights-map-case-study/pmp-results.png"
+project_results_image_alt: "An educational page on desktop and tablet screens"
 
 ---
