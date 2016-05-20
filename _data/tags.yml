@@ -67,3 +67,5 @@
   name: Multisite
 - slug: migration
   name: Migration
+- slug: drupalcon
+  name: Drupalcon
