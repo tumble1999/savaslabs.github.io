@@ -62,6 +62,8 @@ collections:
   case-studies:
     output: true
     permalink: /work/:path/
+  services:
+    output: false
 
 # Gems
 gems:
