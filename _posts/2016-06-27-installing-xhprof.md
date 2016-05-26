@@ -13,16 +13,16 @@ I had run across a number of blog posts about using XHProf + Drupal, but never a
 
 ### How to find documentation
 
-I find the [php.net XHProf manual entry](http://php.net/manual/en/book.xhprof.php) super-confusing and circular. Part of the problem is that Facebook's original documentation for the library has since been removed from the internet and is only accessible via [the WayBack Machine](http://web.archive.org). 
+I find the [php.net XHProf manual entry](http://php.net/manual/en/book.xhprof.php) super-confusing and circular. Part of the problem is that Facebook's original documentation for the library has since been removed from the internet and is only accessible via [the WayBack Machine](http://web.archive.org).
 
 If there's only one thing you take away from this blog post, let it be: read and bookmark the WayBack machine view of the original XHProf documentation, which is at [http://web.archive.org/web/20110514095512/http://mirror.facebook.net/facebook/xhprof/doc.html](http://web.archive.org/web/20110514095512/http://mirror.facebook.net/facebook/xhprof/doc.html).
 
 ### Install XHProf in a VM
 
 If you're not running DrupalVM, you'll need to install XHProf manually via [PECL](https://pecl.php.net/). On [DrupalVM](http://docs.drupalvm.com/en/latest/), [XHProf is already installed](http://docs.drupalvm.com/en/latest/extras/profile-code/#xhprof) and you can skip to the next step.
- 
+
 `sudo pecl install xhprof-beta`
- 
+
  Note that all these commands are for Ubuntu flavors of linux. If you're on Red Hat / CentOS you'll want to use the `yum` equivalents. I had to first install the `php5-dev` package to get PECL working properly:
 
 ```bash
@@ -53,7 +53,7 @@ Lastly, restart Apache so that the PHP config changes take effect.
 
 ### Set up a path to view the XHProf GUI
 
-The XHProf GUI runs off a set of HTML files in the `xhprof_html` directory. If you've been following the install steps above, you should be able to find that directory at `/usr/share/php/xhprof_html`. Now you need to set up your virtual host configuration to serve the files in the `xhprof_html` directory. 
+The XHProf GUI runs off a set of HTML files in the `xhprof_html` directory. If you've been following the install steps above, you should be able to find that directory at `/usr/share/php/xhprof_html`. Now you need to set up your virtual host configuration to serve the files in the `xhprof_html` directory.
 
 I find the easiest way to do this is just to symlink the `xhprof_html` directory into the existing webroot of whatever site you're working on locally, for example:
 
