@@ -7,6 +7,8 @@ tags: php drupal module-development
 summary: Step-by-step, how to install and use XHProf to profile your Drupal module.
 ---
 
+XHProf is a profiling tool for PHP code -- it tracks the amount of time and memory your code spends in each function call, allowing you to spot bottlenecks in the code and identify where it's worth spending resources on optimization. There are have been a [number of PHP profilers over the years](http://www.linuxjournal.com/article/7213), and XDebug has [a profiler as well](https://xdebug.org/docs/profiler), but XHProf is the first one I've successfully managed to configure correctly and interpret the output of.
+
 I had run across a number of blog posts about using XHProf + Drupal, but never actually got it to work sucessfully for a project. Because so much of the documentation online is incomplete or out-of-date, I thought it would be useful to document my process using XHProf to profile a Drupal 8 custom module here. YMMV, but please post your thoughts/experiences in the comments!
 
 ### How to find documentation
@@ -17,13 +19,13 @@ If there's only one thing you take away from this blog post, let it be: read and
 
 ### Install XHProf in a VM
 
-If you're not running DrupalVM, you'll need to install XHProf manually via [PECL](https://pecl.php.net/). On DrupalVM, XHProf is already installed and you can skip to the next step.
+If you're not running DrupalVM, you'll need to install XHProf manually via [PECL](https://pecl.php.net/). On [DrupalVM](http://docs.drupalvm.com/en/latest/), [XHProf is already installed](http://docs.drupalvm.com/en/latest/extras/profile-code/#xhprof) and you can skip to the next step.
  
 `sudo pecl install xhprof-beta`
  
  Note that all these commands are for Ubuntu flavors of linux. If you're on Red Hat / CentOS you'll want to use the `yum` equivalents. I had to first install the `php5-dev` package to get PECL working properly:
 
-```
+```bash
 sudo apt-get update
 sudo apt-get install php5-dev
 ```
@@ -36,7 +38,7 @@ And, if you want to view nice callgraph trees like the one below you'll need to 
 
 You need to tell PHP to enable the xhprof extension via your php.ini files. Usually these are in `/etc/php5/apache2/php.ini` and `/etc/php5/cli/php.ini`. Add the following lines to the bottom of each file if they're not there already. You will also need to create the `/var/tmp/xhprof` directory if it doesn't already exist.
 
-```
+```ini
 [xhprof]
 extension=xhprof.so
 ;
@@ -47,11 +49,11 @@ extension=xhprof.so
 xhprof.output_dir="/var/tmp/xhprof"
 ```
 
-Lastly, restart apache so that the php config changes take effect.
+Lastly, restart Apache so that the PHP config changes take effect.
 
 ### Set up a path to view the XHProf GUI
 
-The XHProf GUI runs off a set of html files in the `xhprof_html` directory. If you've been following the install steps above, you should be able to find that directory at `/usr/share/php/xhprof_html`. Now you need to set up your virtual host configuration to serve the files in the `xhprof_html` directory. 
+The XHProf GUI runs off a set of HTML files in the `xhprof_html` directory. If you've been following the install steps above, you should be able to find that directory at `/usr/share/php/xhprof_html`. Now you need to set up your virtual host configuration to serve the files in the `xhprof_html` directory. 
 
 I find the easiest way to do this is just to symlink the `xhprof_html` directory into the existing webroot of whatever site you're working on locally, for example:
 
@@ -68,11 +70,12 @@ Generally, the process of profiling a chunk of code using XHProf goes as follows
 3. Once the code has finished running, call `xhprof_disable()`. That function will return the profiler data, which you can either display to the screen (not recommended), or...
 4. Store the profiler data to a file by creating a new `XHProfRuns_Default();` object and calling its `save_run` method.
 
-In this case, I've been profiling a module that implements a few drush commands from the command line which I'd like to optimize. So I created `_modulename_xhprof_enable()` and `_modulename_xhprof_disable()` functions -- the names don't matter here -- and then added a `--profile` flag to my drush command options which, when it is set to true, calls my custom enable/disable functinos before and after the drush command runs.
+In the case below, I'm profiling a module that implements a few Drush commands from the command line which I'd like to optimize. So I created `_modulename_xhprof_enable()` and `_modulename_xhprof_disable()` functions -- the names don't matter here -- and then added a `--profile` flag to my Drush command options which, when it is set to true, calls my custom enable/disable functions before and after the Drush command runs.
 
 Here's what those look like in full:
 
 ```php
+<?php
 /**
  * Helper function to enable xhprof.
  */
@@ -120,7 +123,7 @@ function _mymodule_disable_xhprof() {
 }
 ```
 
-The `echo` command here works fine for a drush command, but for other tasks you could use log the run url using watchdog.
+The `echo` command here works fine for a Drush command, but for other tasks you could log the run url using watchdog.
 
 Note: Another way to run XHProf on a Drupal site is using the [XHProf](https://www.drupal.org/project/xhprof) module, but I haven't had great luck with that.
 
