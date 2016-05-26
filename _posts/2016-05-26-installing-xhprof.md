@@ -3,7 +3,7 @@ layout: post
 title: "Installing XHProf to profile your Drupal module"
 date: 2016-05-26
 author: Tim Stallmann
-tags: php drupal module-development
+tags: php performance drupal module-development 
 summary: Step-by-step, how to install and use XHProf to profile your Drupal module.
 ---
 

@@ -71,3 +71,5 @@
   name: Drupalcon
 - slug: php
   name: PHP
+- slug: performance
+  name: Performance
