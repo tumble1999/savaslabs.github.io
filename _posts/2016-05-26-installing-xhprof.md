@@ -3,8 +3,12 @@ layout: post
 title: "Installing XHProf to profile your Drupal module"
 date: 2016-05-26
 author: Tim Stallmann
-tags: php performance drupal module-development 
+tags: php performance drupal drupal-planet module-development
 summary: Step-by-step, how to install and use XHProf to profile your Drupal module.
+featured_image: "/assets/img/blog/xhprof-callgraph.jpg"
+featured_image_alt: "an XHProf callgraph"
+drupal_planet_summary:
+  First part in a series of how to use XHProf effectively within a VM for a Drupal website.
 ---
 
 XHProf is a profiling tool for PHP code -- it tracks the amount of time and memory your code spends in each function call, allowing you to spot bottlenecks in the code and identify where it's worth spending resources on optimization. There are have been a [number of PHP profilers over the years](http://www.linuxjournal.com/article/7213), and XDebug has [a profiler as well](https://xdebug.org/docs/profiler), but XHProf is the first one I've successfully managed to configure correctly and interpret the output of.
