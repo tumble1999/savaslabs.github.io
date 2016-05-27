@@ -1,6 +1,7 @@
 ---
 layout: case-study
 featured: 1
+weight: 3
 project_title: MIT Press AllBooks Importer
 client_name: MIT Press
 client_url: "http://mitpress.mit.edu"
