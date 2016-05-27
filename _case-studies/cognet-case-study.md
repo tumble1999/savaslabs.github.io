@@ -1,5 +1,6 @@
 ---
 layout: case-study
+weight: 5
 project_title: MIT Press CogNet Responsive Redesign
 client_name: MIT Press CogNet
 client_url: "http://cognet.mit.edu"

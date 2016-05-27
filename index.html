@@ -21,7 +21,8 @@
       <!-- Most recent case studies. -->
       <div class="case-studies">
         <h2>Recent work</h2>
-        {% for item in site.case-studies %}
+        {% assign items = site.case-studies | sort: 'weight' %}
+        {% for item in items %}
           {% if item.featured == 1 %}
           <div class="case-studies__case-study" style="background-image: url({{ item.client_hero_image }});">
             <div class="case-study__title">
