@@ -1,0 +1,21 @@
+---
+layout: page
+title: Services
+permalink: "/services/"
+excerpt: Savas is founded on years of Drupal and web development experience, focused on creating standards-compliant, sustainable code.
+---
+<p class="page-description" style="text-align: center;">Savas is founded on
+  years of Drupal and web development experience, focused on creating
+  standards-compliant, sustainable code.</p>
+
+<div class="services">
+  {% assign services = site.services | sort: 'weight' %}
+  {% for service in services %}
+  <div class="services__service">
+    <a href="{{ service.url }}"><i class="fa fa-lg fa-3x {{ service.icon }} services__service__icon"></i></a>
+    <h2><a href="{{ service.url }}">{{ service.title }}</a></h2>
+    {{ service.summary | markdownify }}
+    <p><a href="{{ service.url }}">Read more.</a></p>
+  </div>
+  {% endfor %}
+</div>

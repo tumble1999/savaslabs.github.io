@@ -1,0 +1,32 @@
+/**
+ * @file
+ *
+ * Styles for /services.
+ */
+
+.services {
+  @include display(flex);
+  @include flex-wrap(wrap);
+
+  .services__service {
+    margin-bottom: $base-margin;
+
+    @include media($medium-screen-up) {
+      margin-bottom: $base-spacing;
+      padding: $base-spacing;
+      width: 50%;
+    }
+
+    .services__service__icon {
+      color: $fuschia;
+      float: left;
+      margin-right: .5em;
+    }
+
+    // This allows us to append "read more" link to paragraph.
+    p {
+      display: inline;
+      margin: 0;
+    }
+  }
+}

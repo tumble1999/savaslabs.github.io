@@ -20,12 +20,10 @@ navigation:
         url: /team
       - title: Mission & values
         url: /mission-and-values
-  - title: What we do
-    url: /what-we-do
+  - title: Services
+    url: /services
   - title: Our work
     url: /work
-  - title: Training
-    url: /drupal-training
   - title: Blog
     url: /blog
   - title: Contact
@@ -63,7 +61,8 @@ collections:
     output: true
     permalink: /work/:path/
   services:
-    output: false
+    output: true
+    permalink: /what-we-do/:path/
 
 # Gems
 gems:
