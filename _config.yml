@@ -61,7 +61,7 @@ collections:
     output: true
     permalink: /work/:path/
   services:
-    output: true
+    output: false
     permalink: /what-we-do/:path/
 
 # Gems

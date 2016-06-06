@@ -4,7 +4,7 @@ title: Automated Testing
 summary: |
   Testing. Every site needs it, but all too often in the industry this comes down to a time-consuming and tedious process of manually clicking through pages on the site.
 icon: "fa-check-circle-o"
-weight: 10
+weight: 7
 
 ---
 
