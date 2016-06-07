@@ -3,7 +3,7 @@ layout: page
 title: Development
 summary: |
   [Our team](/team) has built dozens of Drupal sites. We understand the value of sustainable code and write Drupal coding standards compliant PHP, JavaScript, and CSS. We have a thorough knowledge of best practices for deploying small and large scale Drupal sites. We're skilled in all aspects of development, from back-end to large scale data migration, from theming to automated testing.
-icon: "fa-drupal"
+icon: "icon-drupal"
 weight: 1
 
 ---

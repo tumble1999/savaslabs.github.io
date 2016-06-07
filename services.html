@@ -8,12 +8,23 @@ excerpt: Savas is founded on years of Drupal and web development experience, foc
   years of Drupal and web development experience, focused on creating
   standards-compliant, sustainable code.</p>
 
-<div class="services">
+<div class="services services--main">
   {% assign services = site.services | sort: 'weight' %}
-  {% for service in services %}
+  {% for service in services limit:4 %}
   <div class="services__service">
-    <i class="fa fa-lg fa-3x {{ service.icon }} services__service__icon"></i>
     <h2>{{ service.title }}</h2>
+    <img src="/assets/icons/{{ service.icon }}.png" class="services__service__icon" alt="{{ service.title }} icon" width="90px" height="90px">
+    {{ service.summary | markdownify }}
+  </div>
+  {% endfor %}
+</div>
+<hr>
+<div class="services services--sub">
+  {% assign services = site.services | sort: 'weight' %}
+  {% for service in services offset:4 %}
+  <div class="services__service">
+    <i class="fa fa-2x {{ service.icon }} services__service__icon"></i>
+    <h3>{{ service.title }}</h3>
     {{ service.summary | markdownify }}
   </div>
   {% endfor %}
