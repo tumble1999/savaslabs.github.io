@@ -2,7 +2,7 @@
 layout: page
 title: Design / UX
 summary: |
-  Beetroot water spinach okra water chestnut ricebean pea catsear courgette summer purslane. Water spinach arugula pea tatsoi aubergine spring onion bush tomato kale radicchio turnip chicory salsify pea sprouts fava bean. Grape silver beet watercress potato tigernut corn groundnut. Chickweed okra pea winter purslane coriander yarrow sweet pepper radish garlic brussels sprout groundnut summer purslane earthnut pea tomato spring onion azuki bean gourd.
+  Through concepting, iterative wireframing and eventual theme-building we design with purpose that is relevant to our clients' audiences. We provide custom responsive designs leveraging the best of the myriad web frameworks that enable us to prototype and build quickly. When it is the right fit, we partner with a design agency we've established a relationship with.
 icon: "icon-image"
 weight: 2
 

@@ -2,8 +2,8 @@
 layout: page
 title: Data migration
 summary: |
-  Nori grape silver beet broccoli kombu beet greens fava bean potato quandong celery. Bunya nuts black-eyed pea prairie turnip leek lentil turnip greens parsnip. Sea lettuce lettuce water chestnut eggplant winter purslane fennel azuki bean earthnut pea sierra leone bologi leek soko chicory celtuce parsley jÃ­cama salsify.
+  Moving from another system to Drupal or upgrading your Drupal system with a lot of content? We can help our clients' understand the cutoffs and pros and cons to scripted versus manual migration. We are comfortable talking database, XML, JSON on the sending or receiving end.  
 icon: "fa-paper-plane-o"
-weight: 9
+weight: 7
 
 ---

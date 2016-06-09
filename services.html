@@ -2,12 +2,9 @@
 layout: page
 title: Services
 permalink: "/services/"
-excerpt: Savas is founded on years of Drupal and web development experience, focused on creating standards-compliant, sustainable code.
+excerpt: Savas Labs is a full-service digital agency leveraging the power of Drupal.
 ---
-<p class="page-description" style="text-align: center;">Savas is founded on
-  years of Drupal and web development experience, focused on creating
-  standards-compliant, sustainable code.</p>
-
+<p class="page-description" style="text-align: center;">As a full-service agency, Savas Labs provides a multitude of services to a wide array of clients.</p>
 <div class="services services--main">
   {% assign services = site.services | sort: 'weight' %}
   {% for service in services limit:4 %}
@@ -19,7 +16,8 @@ excerpt: Savas is founded on years of Drupal and web development experience, foc
   {% endfor %}
 </div>
 <hr>
-<div class="services services--sub">
+<h3>Sub services</h3>
+<div class="services services--sub" id="sub-services">
   {% assign services = site.services | sort: 'weight' %}
   {% for service in services offset:4 %}
   <div class="services__service">

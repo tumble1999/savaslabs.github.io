@@ -2,8 +2,8 @@
 layout: page
 title: Integrations
 summary: |
-  Brussels sprout coriander water chestnut gourd swiss chard wakame kohlrabi beetroot carrot watercress. Corn amaranth salsify bunya nuts nori azuki bean chickweed potato bell pepper artichoke.
+  We really excel at the challenge of a complex integration with legacy or concurrently functioning data systems. We have made publishing, warehouse fulfillment and various payment systems play nicely together with Drupal websites. Have the need to import/export data and integrate with a system outside of Drupal? We're your team! I've exposing or consuming APIs isn't your thing, we've got your back (front and sides). 
 icon: "fa-cogs"
-weight: 8
+weight: 6
 
 ---

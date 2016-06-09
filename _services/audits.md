@@ -2,7 +2,7 @@
 layout: page
 title: Audits
 summary: |
-  Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot courgette tatsoi pea sprouts fava bean collard greens dandelion okra wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini.
+  One of the most valuable initial services we provide new partners (and ourselves) are technical audits. We've seen (and even committed in our earliest of days) most every hack, and know what to look for. Often clients feel in the dark. With relatively little time, we can get clients back in the know, on track to make the improvements they seek, and empowered to use their own site in more powerful ways.
 icon: "fa-check-square-o"
 weight: 10
 

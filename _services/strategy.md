@@ -2,7 +2,7 @@
 layout: page
 title: Strategy
 summary: |
-  Grape silver beet watercress potato tigernut corn groundnut. Chickweed okra pea winter purslane coriander yarrow sweet pepper radish garlic brussels sprout groundnut summer purslane earthnut pea tomato spring onion azuki bean gourd. Grape silver beet watercress potato tigernut corn groundnut. Chickweed okra pea winter purslane coriander yarrow sweet pepper radish garlic brussels sprout groundnut summer purslane earthnut pea tomato spring onion azuki bean gourd.
+  We empower organizations to sift through the seemingly limitless technical choices and focus on what it the organization is trying to achieve. Whether through a technical audit, SEO, content analysis or another measure, we ensure our clients use their resources most effectively to meet their needs and reach their audiences. We lean on lessons learned to inform our process while catering to each organization's unique needs in space and time. 
 icon: "icon-map-signs"
 weight: 3
 
