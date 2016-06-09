@@ -39,17 +39,24 @@
   }
 }
 
-.services--sub {
-  .services__service {
+.services--sub__wrapper {
+  h2 {
+    text-align: center;
+  }
 
-    @include media($medium-screen-up) {
-      margin-bottom: $base-spacing;
-      padding: $base-spacing;
-      width: 50%;
-    }
+  .services--sub {
 
-    .services__service__icon {
-      margin-right: .5em;
+    .services__service {
+
+      @include media($medium-screen-up) {
+        margin-bottom: $base-spacing;
+        padding: $base-spacing;
+        width: 50%;
+      }
+
+      .services__service__icon {
+        margin-right: .5em;
+      }
     }
   }
 }
