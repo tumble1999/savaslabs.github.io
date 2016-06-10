@@ -33,6 +33,10 @@
       width: 50%;
     }
 
+    &:last-child {
+      margin-bottom: 0;
+    }
+
     .services__service__icon {
       margin-right: 1em;
     }
@@ -40,7 +44,9 @@
 }
 
 .services--sub__wrapper {
+
   h2 {
+    margin-bottom: $base-spacing;
     text-align: center;
   }
 
