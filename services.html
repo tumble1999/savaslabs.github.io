@@ -8,7 +8,7 @@ excerpt: Savas Labs is a full-service digital agency leveraging the power of Dru
 <div class="services services--main">
   {% assign services = site.services | sort: 'weight' %}
   {% for service in services limit:4 %}
-  <div class="services__service">
+  <div class="services__service" id="{{ service.slug }}">
     <h2>{{ service.title }}</h2>
     <img src="/assets/icons/{{ service.icon }}.png" class="services__service__icon" alt="{{ service.title }} icon" width="90px" height="90px">
     {{ service.summary | markdownify }}
@@ -16,14 +16,16 @@ excerpt: Savas Labs is a full-service digital agency leveraging the power of Dru
   {% endfor %}
 </div>
 <hr>
-<h3>Sub services</h3>
-<div class="services services--sub" id="sub-services">
-  {% assign services = site.services | sort: 'weight' %}
-  {% for service in services offset:4 %}
-  <div class="services__service">
-    <i class="fa fa-2x {{ service.icon }} services__service__icon"></i>
-    <h3>{{ service.title }}</h3>
-    {{ service.summary | markdownify }}
+<div class="services--sub__wrapper" id="sub-services">
+  <h2>Sub-services</h2>
+  <div class="services services--sub">
+    {% assign services = site.services | sort: 'weight' %}
+    {% for service in services offset:4 %}
+    <div class="services__service" id="{{ service.slug }}">
+      <i class="fa fa-2x {{ service.icon }} services__service__icon"></i>
+      <h3>{{ service.title }}</h3>
+      {{ service.summary | markdownify }}
+    </div>
+    {% endfor %}
   </div>
-  {% endfor %}
 </div>
