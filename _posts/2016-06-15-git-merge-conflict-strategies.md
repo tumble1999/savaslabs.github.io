@@ -31,7 +31,7 @@ Fast forward merges occur when the tip of the current branch is a direct ancesto
 
 However, a fast-forward merge is not possible if the branches have diverged. In those cases, a 3-way merges is required, which uses a dedicated commit to bring together the two histories.
 
-In a three way merge, Git's merge algorithm uses the current branch, the target branch, and their merge base in order to incorporate changes from the target branch into the current branch. The merge base is essentially the most recent common ancestor (often this is commit before the two branches forked). Git uses the merge base to identify what changed since the branches diverged.
+In a three way merge, Git's merge algorithm uses the current branch, the target branch, and their merge base in order to incorporate changes from the target branch into the current branch. The merge base is essentially the most recent common ancestor (often this is the commit before the two branches forked). Git uses the merge base to identify what changed since the branches diverged.
 
 Git is smart, and non-overlapping changes (areas of code modified by one branch but not that other) are automatically incorporated into the final merged result. However, sometimes both branches change the same part of the same file, resulting in merge conflicts.
 
@@ -41,10 +41,10 @@ If your branch and the target branch both changed the same part of the same file
 
 In these cases, Git leaves the changes made by both your branch and the target (separated by special conflict markers) and notifies you that there was a conflict.
 
-To complete the merge you must then resolve each of these conflicts by explicitly telling Git what you'd like the post-merged file to include like at these locations. To do so you use the following commands:
+To complete the merge you must then resolve each of these conflicts by explicitly telling Git what you'd like the post-merged file to include at these locations. To do so use the following commands:
 
 - `git status` shows you which files need to be resolved.
-- `git add` on a conflicted file(s) tells Git they conflicts are resolved.
+- `git add` on a conflicted file(s) tells Git the conflicts are resolved.
 - `git commit` generates the merge commit completing the merge.
 
 
@@ -68,20 +68,20 @@ Sometimes, I find it easier to omit the `-p` option in the previous commands, an
 - `git diff <merge-base-sha> <target-branch> -- path/to/file`
 - `git diff <merge-base-sha> HEAD -- path/to/file`
 
-Ultimately, reviewing this history helps me better understand what each branch was trying to accomplish. With this information in hand, I can then manually resolve the merge conflict by deciding what code each of these files should include post merge.
+Ultimately, reviewing this history helps me better understand what each branch was trying to accomplish. With this information in hand, I can then manually resolve the merge conflicts by deciding what code each of these files should include post merge.
 
 ## Visual merge tools
 In addition to these strategies, I find that it is also helpful to use a visual merge tool when resolving merge conflicts.
 
 With these tools, you don't need to sift through Git conflict markers. Rather, visual merge tools provide a GUI that allows you to compare the different versions of the files you are merging, and they provide point and click tools to help you find and resolve conflicts.
 
-For each file with conflicts, a good visual merge tool will have at least 3 display panels. There will be a panel showing the version of that file:
+A good visual merge tool will display at least 3 panels for each file with conflicts. There will be a panel showing the version of that file:
 
 - In your branch
 - In the target branch
-- After merging
+- As it will appear after merging
 
-I prefer merge tools which also include a fourth display panel showing the version of that file in the merge base, such as the P4Merge tool:
+I prefer merge tools (such as the P4Merge tool shown below) which also include a fourth display panel showing the version of that file in the merge base:
 
 <img src="/assets/img/blog/P4Merge_screenshot.png" alt="P4Merge tool screenshot">
 
@@ -89,7 +89,7 @@ There are many visual merge tools to choose from, some of which may already be i
 
 To view the list of available merge tools along with other valid but uninstalled merge tools, type `git mergetool --tool-help` in your terminal.
 
-If your merge results in merge conflicts, you can type `git mergetool` to use your default merge tool, or you can specify the merge tool to use via `git mergetool --tool=<tool>`.
+If your merge results in conflicts, you can type `git mergetool` to use your default merge tool, or you can specify the merge tool to use via `git mergetool --tool=<tool>`.
 
 Most merge tools will iterate through each file with conflicts, giving you the opportunity to resolve the conflicts and save (i.e. `git add` them), or dismiss and revisit later.
 
