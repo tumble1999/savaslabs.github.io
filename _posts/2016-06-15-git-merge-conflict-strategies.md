@@ -1,25 +1,25 @@
 ---
 layout: post
-title: "Tools and strategies for resolving Git merge conflicts"
+title: "Strategies and tools for resolving Git merge conflicts"
 date: 2016-06-15
 author: Dan Murphy
 tags: git
-summary: An overview of tools and strategies I like to use when I encounter conflicts during merges.
+summary: An overview of strategies and tools I like to use when I encounter conflicts during merges.
 featured_image: "/assets/img/blog/git_merge_conflict_screenshot.png"
 featured_image_alt: "screenshot of git merge output"
 ---
 
 If you use Git for version control and you collaborate frequently, then you are bound to run into merge conflicts from time to time.
 
-In an ideal world you merge upstream updates into your work frequently, and the conflicts are relatively minor and straightforward to resolve.
+In an ideal world you merge changes to production (or other relevant upstream updates) into your parallel feature work frequently, and the conflicts are relatively minor and straightforward to resolve.
 
 However, from time to time branches diverge significantly and merging them back together takes time and a solid understanding of why each branch may have modified the same hunks of code.
 
-In this post I'm going to review the tools and strategies I like to use when resolving complicated merge conflicts.
+In this post I'm going to review the strategies and tools I like to use when resolving complicated merge conflicts.
 
 ## What is merging?
 
-There are many good online tutorials covering the basics of Git merging, so I'll just cover the basics. If you're already fluent in Git, feel free to skip to the strategies and tools section.
+There are many good online tutorials that cover Git merging, so I'll just review the basics. If you're already fluent in Git, feel free to skip to the [strategies and tools](#strategies-and-tools) section.
 
 As [Atlassian's branching tutorial](https://www.atlassian.com/git/tutorials/using-branches/git-branch) explains "Merging is Git's way of putting a forked history back together again."
 
@@ -29,7 +29,7 @@ There are two types of merges: fast-forward merges and 3-way merges.
 
 Fast forward merges occur when the tip of the current branch is a direct ancestor of the target branch. In this case, instead of actually merging the branches, Git simply moves (or fast forwards) the current branch tip up to the target branch tip.
 
-However, a fast-forward merge is not possible if the branches have diverged. In those cases, a 3-way merges is required, which uses a dedicated commit to bring together the two histories.
+However, a fast-forward merge is not possible if the branches have diverged. In those cases, a 3-way merge is required, which uses a dedicated commit to bring together the two histories.
 
 In a three way merge, Git's merge algorithm uses the current branch, the target branch, and their merge base in order to incorporate changes from the target branch into the current branch. The merge base is essentially the most recent common ancestor (often this is the commit before the two branches forked). Git uses the merge base to identify what changed since the branches diverged.
 
@@ -53,7 +53,7 @@ First of all, you should always make sure your working directory is clean before
 
 If the merge results in conflicts, I start by finding the merge base using the `git merge-base <tareget_branch> <current_branch>` command. As mentioned previously, the merge base is essentially the commit before the two branches forked.
 
-I then inspect the development history (since the branches diverged) for each file with merge conflicts. This helps me better understand (or simply remember!) each branches intent when modifying the file.
+I then inspect the development history (since the branches diverged) for each file with merge conflicts. This helps me better understand (or simply remember!) each branch's intent when modifying the file.
 
 I find that the most powerful command for this inspection is `git log --follow -p -- file`, which [shows the history of the file (including the history beyond renames) with diffs for each commit](http://stackoverflow.com/a/5493663/2793226). To inspect both the target branch and the current branch since they diverged (i.e. since the merge base), I use the following commands respectively:
 
