@@ -37,7 +37,7 @@ Git is smart, and non-overlapping changes (areas of code modified by one branch 
 
 ## Merge conflicts
 
-If your branch and the target branch both changed the same part of the same file, then Git won’t be able to merge them cleanly. Each of these discrepancies result in a merge conflict.
+If your branch and the target branch both changed the same part of the same file, then Git won’t be able to merge them cleanly. Each of these discrepancies results in a merge conflict.
 
 In these cases, Git leaves the changes made by both your branch and the target (separated by special conflict markers) and notifies you that there was a conflict.
 
