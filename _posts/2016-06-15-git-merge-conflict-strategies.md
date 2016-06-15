@@ -47,7 +47,6 @@ To complete the merge you must then resolve each of these conflicts by explicitl
 - `git add` on a conflicted file(s) tells Git the conflicts are resolved.
 - `git commit` generates the merge commit completing the merge.
 
-
 ## Strategies and tools
 
 First of all, you should always make sure your working directory is clean before merging. If you have work in progress, either commit it to a temporary branch or stash it. This allows you to easily abandon your merge at any point without losing any of your work. You can abort an in-progress merge using the `git merge --abort` command.
