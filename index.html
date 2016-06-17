@@ -13,13 +13,13 @@
     <div class="home__cover">
       <h1 class="home__cover__heading">Savas Labs</h1><hr>
       <p class="home__cover__site-description">{{ site.description }}</p>
-      <a href="#home-blog-list"><i class="fa fa-angle-double-down fa-lg" id="home-down-arrow"></i></a>
+      <a href="#case-studies"><i class="fa fa-angle-double-down fa-lg" id="home-down-arrow"></i></a>
     </div>
 
     <div class="wrapper">
 
       <!-- Most recent case studies. -->
-      <div class="case-studies">
+      <div id="case-studies" class="case-studies">
         <h2>Recent work</h2>
         {% assign items = site.case-studies | sort: 'weight' %}
         {% for item in items %}
