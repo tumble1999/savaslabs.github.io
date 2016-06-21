@@ -32,7 +32,7 @@ Let's break these down.
 
 **Goals:** These can be measurable metrics (e.g. "Increase newsletter signups" or "Increase time spent on site") or general value statements ("Provide a great experience on small screen sizes" or "Maintain a clean, modern design").
 
-**Users:** This is a list of user personas in order of priority for the particular project. A persona is more in-depth and specific than a demographic, which may represent an age group, a gender, or an occupation. A persona is defined by patterns of behavior and needs, so it may encompass multiple demographics, and one demographic may be split across several personas. The user list is prioritized using the goals of the project (unless your client is lucky enough to be able to put forward the time and money to fix all of their users' problems at once!)
+**Users:** This is a list of user personas in order of priority for the particular project. A persona is more in-depth and specific than a demographic, which may represent an age group, a gender, or an occupation. A persona is defined by patterns of behavior and needs, so it may encompass multiple demographics, and one demographic may be split across several personas. The user list is prioritized using the goals of the project (unless the client is lucky enough to be able to put forward the time and money to fix all of their users' problems at once!) One of our roles in this process is helping the client brainstorm and account for all of their user groups, including ones they might not have considered.
 
 Once these lists are created, we review them at the beginning of every meeting (yes, every meeting!). Why? Ensuring that the entire team is completely focused on meeting the project goals at all times causes a few awesome things happen:
 
@@ -48,7 +48,9 @@ Once the goals and users are compiled and agreed upon, we can start digging into
 
 ### Google analytics
 
-Reviewing Google analytics is a great first step towards focusing user testing on the aspects of the site that are causing the most issues. Viewing the analytics interface for the first time can be a bit overwhelming, so I'll review some terminology and some of the points on which I like to focus for the purposes of usability testing.
+Reviewing Google analytics is a great first step towards focusing user testing on the aspects of the site that are causing the most issues. If a client doesn't already have Google analytics installed, we can help set this up.
+
+Viewing the analytics interface for the first time can be a bit overwhelming, so I'll review some terminology and some of the points on which I like to focus for the purposes of usability testing.
 
 ##### Terminology
 
@@ -93,7 +95,7 @@ After gathering information from analytics and competitive analysis, we design o
 
 Designing the user tests is a multi-step process:
 
-1. Decide which personas will be tested and how many participants are needed. User personas to be tested are chosen based on the client's priority and potential/known issues found in the review of analytics and competitors. Number of participants can be surprisingly small and still quite effective, as per the Nielson Group's [detailed analysis](https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/). Ideally user testing would be iterative -- a few users would be tested, followed by improvements to the site targeting the results of those tests, followed by more testing, etc. If this isn't possible, five participants with one round of testing is typically effective.
+1. Decide which personas will be tested and how many participants are needed. User personas to be tested are chosen based on the client's priority and potential/known issues found in the review of analytics and competitors. Number of participants can be surprisingly small and still quite effective, as per the Nielson Group's [detailed analysis](https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/). Ideally user testing would be iterative -- a few users would be tested, followed by improvements to the site targeting the results of those tests, followed by more testing, etc. If this isn't possible, five participants with one round of testing is typically effective. A/B testing can be implemented to test different versions of the site (or features within the site) within the same round of testing.
 2. Determine what needs to be tested. These items come from the critical tasks for our user persona(s), the potential points of frustration or difficulty for users (found by Google analytics, competitive analysis, or simply review of the current site), and anything else desired by the client. I frame these items as goals.
 3. Translate goals to tasks. At this stage, each goal is translated into an actionable task or endpoint for the user.
 4. Translate tasks to scenarios. Rarely is a user told exactly what to do on a website in real life. To make the tests more realistic, we translate tasks into scenarios. We'll read the scenario to each user to see if she can complete the desired task, how she approaches the task, and what points of frustration she encounters along the way.
@@ -112,6 +114,7 @@ Some other tips for designing user tests:
 
 - We aim for the test to take about 45 minutes, then ask some general or follow-up questions afterwards. Each participant will be there for about an hour.
 - Scenarios shouldn't give away how the website is supposed to work.
+- Whenever possible, recruit participants who have never seen the site.
 - Before conducting any real tests, do a pilot study on a willing participant (a coworker with a free hour works!) This will uncover any phrasing that doesn't work and allow you to check the timing of the test, and it may even start revealing UX issues with the site.
 - Offering compensation for a participant's time is not only good practice, it helps immensely with recruitment!
 
