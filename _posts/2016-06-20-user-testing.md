@@ -19,6 +19,15 @@ At Savas Labs we've honed our approach to usability testing to balance efficienc
 
 ## Our Process
 
+Our process comprises six phases:
+
+1. [Determine goals and user personas](#determine-goals-and-user-personas)
+2. [Review Google analytics](#google-analytics)
+3. [Complete competitive analysis](#competitive-analysis)
+4. [Conduct user testing](#user-testing)
+5. [Conduct user survey](#user-survey)
+6. [Compile findings](#compile-findings)
+
 ### Determine goals and user personas
 
 Focusing a usability study on a product's most critical users and functionality can help uncover the highest-impact problems without spending time and budget on lower-priority issues. To start the process, we meet with our clients and listen to them explain their purpose, describe their users, and identify potential or known issues with their website.
