@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Usability Testing - Our Process and Favorite Practices"
-date: 2016-06-20
+date: 2016-06-22
 author: Anne Tomasevich
 tags: user-experience best-practices
 summary: Our approach to designing, conducting, and learning from user testing and other analyses.
