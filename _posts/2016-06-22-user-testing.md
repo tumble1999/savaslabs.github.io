@@ -22,7 +22,7 @@ At Savas Labs we've honed our approach to usability testing to balance efficienc
 Our process comprises six phases:
 
 1. [Determine goals and user personas](#determine-goals-and-user-personas)
-2. [Review Google analytics](#google-analytics)
+2. [Review Google Analytics](#google-analytics)
 3. [Complete competitive analysis](#competitive-analysis)
 4. [Conduct user testing](#user-testing)
 5. [Conduct user survey](#user-survey)
@@ -55,9 +55,9 @@ So how does this apply to usability testing? Nailing down project goals and the 
 
 Once the goals and users are compiled and agreed upon, we can start digging into the usability testing.
 
-### Google analytics
+### Google Analytics
 
-Reviewing Google analytics is a great first step towards focusing user testing on the aspects of the site that are causing the most issues. If a client doesn't already have Google analytics installed, we can help set this up.
+Reviewing Google Analytics is a great first step towards focusing user testing on the aspects of the site that are causing the most issues. If a client doesn't already have Google Analytics installed, we can help set this up.
 
 Viewing the analytics interface for the first time can be a bit overwhelming, so I'll review some terminology and some of the points on which I like to focus for the purposes of usability testing.
 
@@ -105,7 +105,7 @@ After gathering information from analytics and competitive analysis, we design o
 Designing the user tests is a multi-step process:
 
 1. Decide which personas will be tested and how many participants are needed. User personas to be tested are chosen based on the client's priority and potential/known issues found in the review of analytics and competitors. Number of participants can be surprisingly small and still quite effective, as per the Nielson Group's [detailed analysis](https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/). Ideally user testing would be iterative -- a few users would be tested, followed by improvements to the site targeting the results of those tests, followed by more testing, etc. If this isn't possible, five participants with one round of testing is typically effective. A/B testing can be implemented to test different versions of the site (or features within the site) within the same round of testing.
-2. Determine what needs to be tested. These items come from the critical tasks for our user persona(s), the potential points of frustration or difficulty for users (found by Google analytics, competitive analysis, or simply review of the current site), and anything else desired by the client. I frame these items as goals.
+2. Determine what needs to be tested. These items come from the critical tasks for our user persona(s), the potential points of frustration or difficulty for users (found by Google Analytics, competitive analysis, or simply review of the current site), and anything else desired by the client. I frame these items as goals.
 3. Translate goals to tasks. At this stage, each goal is translated into an actionable task or endpoint for the user.
 4. Translate tasks to scenarios. Rarely is a user told exactly what to do on a website in real life. To make the tests more realistic, we translate tasks into scenarios. We'll read the scenario to each user to see if she can complete the desired task, how she approaches the task, and what points of frustration she encounters along the way.
 
