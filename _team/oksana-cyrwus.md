@@ -8,6 +8,7 @@ card: "assets/img/team/cards/oksana-card.jpg"
 drupal: oksana-c
 github: oksana-c
 linkedin: oksanacyrwus
+stack-exchange: 6655373/oksana-c
 website: http://oksanac.com
 badges:
   - image: "assets/img/team/association_ind_member_badge.svg"

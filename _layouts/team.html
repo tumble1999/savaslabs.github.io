@@ -20,6 +20,9 @@ layout: default
       {% if page.linkedin %}
         <li><i class="fa fa-linkedin"></i><a href="https://www.linkedin.com/in/{{ page.linkedin }}">&nbsp;&nbsp;LinkedIn</a></li>
       {% endif %}
+      {% if page.stack-exchange %} 
+        <li><i class="fa fa-stack-exchange"></i><a href="http://stackexchange.com/users/{{ page.stack-exchange }}?tab=accounts">  Stack Exchange</a></li> 
+      {% endif %}
       {% if page.website %}
         <li><i class="fa fa-globe"></i><a href="{{ page.website }}">&nbsp;&nbsp;Website</a></li>
       {% endif %}
