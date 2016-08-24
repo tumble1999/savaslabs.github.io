@@ -1,6 +1,6 @@
 language: ruby
 script:
-  - if [ "$TRAVIS_PULL_REQUEST" !== "false" ]; then bash ./_scripts/run-tests.sh; fi
+  - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bash ./_scripts/run-tests.sh; fi
   - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash ./scripts/build.sh; fi
 branches:
   only:
