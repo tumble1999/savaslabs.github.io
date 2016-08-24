@@ -1,10 +1,5 @@
 language: ruby
-script:
-  - if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then bash ./_scripts/run-tests.sh; fi
-  - if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then bash ./scripts/build.sh; fi
-branches:
-  only:
-  - source
+script: "./_scripts/run-tests.sh"
 cache: bundler
 rvm:
 - 2.1
@@ -12,3 +7,9 @@ env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
   - secure: Bc8sgN7Q2qSL349XIw0Loc/sT2+7M9i9eitmw6hR4r22fErVontMeD0KaXkCL0pgs1qy2N/MP0tSdKhZD2jlpyP1OicwetmoJc4XEeM3QUjagG8qfhWJOWNMq1WBdWwM4hc4bOwUVchVAPUceorMTscF5ZtejxxFSq1zwTFBmeg=
+deploy:
+  provider: script
+  script: ./scripts/build.sh
+  skip_cleanup: true
+  on:
+    branch: source
