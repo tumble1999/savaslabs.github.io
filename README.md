@@ -12,11 +12,18 @@ The site is built using Jekyll. To run locally:
 4. `bundle exec jekyll serve --config _config.yml,_config.test.yml,_config.dev.yml`
  - This convenient script also captures the config files specified above: `./_scripts/jekyll.sh`
 
+### Git workflow
+
+Because we're using Travis to build the site and push to master, which is then
+deployed by Github Pages, the master branch contains the generated `_site`
+directory. The main development branch you should pull from and open pull
+requests against is `source`.
+
 ### Tests
 
 To run the tests:
 
-`$ bash _tests/run-tests.sh`
+`$ bash _scripts/run-tests.sh`
 
 ### Writing blog posts
 
