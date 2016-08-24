@@ -1,7 +1,7 @@
 ---
 layout: case-study
 featured: 1
-weight: 5
+weight: -5
 project_title: HIV Prevention Trials Network (HPTN) Site Redesign
 client_name: HIV Prevention Trials Network
 client_url: "https://www.hptn.org"
@@ -29,12 +29,14 @@ technologies_used: |
   - Microsoft Azure Cloud Services
 
 client_logo: "/assets/img/work/hptn-case-study/hptn-logo.png"
-client_hero_image: "/assets/img/work/transaction-advisors-case-study/transaction_advisors_hero.png"
-project_objective_image: "/assets/img/work/transaction-advisors-case-study/transaction_advisors_objective.png"
-project_objective_image_alt: "The Transaction Advisors home page on desktop and mobile."
-project_process_image: "/assets/img/work/transaction-advisors-case-study/transaction_advisors_process.png"
-project_process_image_alt: "The SatelliteFinance home page on desktop and mobile."
-project_results_image: "/assets/img/work/transaction-advisors-case-study/transaction_advisors_results.png"
-project_results_image_alt: "The TelecomFinance home page on desktop and mobile."
+client_logo_width: "229"
+client_logo_height: "91"
+client_hero_image: "/assets/img/work/hptn-case-study/hptn-hero.png"
+project_objective_image: "/assets/img/work/hptn-case-study/hptn-objective.png"
+project_objective_image_alt: "HPTN website redesign mockups."
+project_process_image: "/assets/img/work/hptn-case-study/hptn-process.png"
+project_process_image_alt: "HPTN studies page on desktop and mobile."
+project_results_image: "/assets/img/work/hptn-case-study/hptn-results.png"
+project_results_image_alt: "The HPTN news page on multiple screen sizes."
 
 ---
