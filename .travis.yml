@@ -7,9 +7,10 @@ env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
   - secure: Bc8sgN7Q2qSL349XIw0Loc/sT2+7M9i9eitmw6hR4r22fErVontMeD0KaXkCL0pgs1qy2N/MP0tSdKhZD2jlpyP1OicwetmoJc4XEeM3QUjagG8qfhWJOWNMq1WBdWwM4hc4bOwUVchVAPUceorMTscF5ZtejxxFSq1zwTFBmeg=
+  - secure: cZzIlGtTm/yRXJOT3sB8XJI/lJwtxMReOnpBLik/+KW36/hwFkOoYaJa6aif6bLaAixcH/IlmZYE6bNjMQ7HtSLoaZLzmBXu39Qhj305LT78A/r4P9zt43JFhAYB9T+WjzT3qeX1k+YKdhC8CM9p0GPAT1LQ24co5/TbOjKzpGs=
 deploy:
   provider: script
-  script: ./scripts/build.sh
+  script: "./scripts/build.sh"
   skip_cleanup: true
   on:
     branch: source
