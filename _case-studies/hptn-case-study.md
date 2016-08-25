@@ -15,7 +15,7 @@ project_objective: |
 project_process: |
   We evaluated the needs of the site's target audiences to determine the best path forward with the site design.  Once the design was completed, we began implementing the functional components of the site using Drupal 8.  We heavily relied on Drupal content entities to house data coming from legacy systems that was to be displayed on the site, themed the site so that it would render properly on a variety of mobile devices in use by remote scientists and clinical workers around the world, and leveraged both Drupal and external caching mechanisms to ensure prompt delivery of requests to end users.
 project_results: |
-  Thanks to in integrated approach in which we worked closely with our client, the new site launched in time for the HPTN Annual Conference, the ongoing maintenance and administration of the content has decreased dramatically, and both the corporate site maintainers and the remote users reaped the benefits of an easily navigable, mobile-friendly delivery of data.
+  Thanks to an integrated approach in which we worked closely with our client, the new site launched in time for the HPTN Annual Conference, the ongoing maintenance and administration of the content has decreased dramatically, and both the corporate site maintainers and the remote users reaped the benefits of an easily navigable, mobile-friendly delivery of data.
 services_provided: |
   - [Responsive design](/blog/tag/front-end-dev/)
   - [Drupal theme development](/blog/tag/theming/)
