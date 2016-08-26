@@ -32,7 +32,7 @@ Note: most of the techniques I tested require the node package manager (npm) for
 
 That said, CSS Lint is entirely customizable so rules can be created, edited, or omitted. This is where either a house or project-specific styleguide would come in handy. The team can agree on these rules and test their CSS against that ruleset.
 
-Savas uses the [SCSS-Lint Ruby gem](https://github.com/brigade/scss-lint) on our [company website](https://github.com/savaslabs/savaslabs.github.io/blob/master/_tests/run-tests.sh) via [Travis CI](https://travis-ci.org/).
+Savas uses the [SCSS-Lint Ruby gem](https://github.com/brigade/scss-lint) on our [company website](https://github.com/savaslabs/savaslabs.github.io/blob/source/_scripts/run-tests.sh) via [Travis CI](https://travis-ci.org/).
 
 #### StyleStats
 
