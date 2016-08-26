@@ -7,9 +7,7 @@ set -e
 pwd
 git status
 ls -lah
-ls -lah ../savaslabs.github.io.master
 git branch
-rm -rf ../savaslabs.github.io.master
 
 # Clone master branch using encrypted GH_TOKEN for authentication.
 git clone https://${GH_TOKEN}@github.com/savaslabs/savaslabs.github.io.git ../savaslabs.github.io.master
