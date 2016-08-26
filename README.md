@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/savaslabs/savaslabs.github.io.svg?branch=master)](https://travis-ci.org/savaslabs/savaslabs.github.io)
+[![Build Status](https://travis-ci.org/savaslabs/savaslabs.github.io.svg?branch=source)](https://travis-ci.org/savaslabs/savaslabs.github.io)
 
 This is the website for [Savas Labs](http://savaslabs.com).
 
