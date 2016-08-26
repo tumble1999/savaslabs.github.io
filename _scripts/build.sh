@@ -9,9 +9,9 @@ git clone https://${GH_TOKEN}@github.com/savaslabs/savaslabs.github.io.git ../sa
 
 # Move to new directory and copy generated HTML site from source.
 cd ../savaslabs.github.io.master
-ls -lah
+git config user.email ${GH_EMAIL}
+git config user.name "savas-bot"
 rm -rf *
-ls -lah
 cp -R ../savaslabs.github.io/_site/* .
 ls -lah
 
@@ -24,8 +24,6 @@ git stash apply
 git status
 
 # Commit and push generated content to master branch.
-git config user.email ${GH_EMAIL}
-git config user.name "savas-bot"
 git add -A .
 git status
 git commit -a -m "Travis #$TRAVIS_BUILD_NUMBER"
