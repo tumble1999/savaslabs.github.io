@@ -3,9 +3,6 @@
 # Enable error reporting to the console.
 set -e
 
-# Build site with jekyll, by default to `_site' folder.
-bundle exec jekyll build
-
 # Clean up master branch.
 rm -rf ../savaslabs.github.io.master
 
