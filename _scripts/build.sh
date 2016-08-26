@@ -18,6 +18,9 @@ rm -rf *
 # Now the master branch will contain only the contents of the _site directory.
 cp -R ../savaslabs.github.io/_site/* .
 
+# Make sure we have the updated .travis.yml file so tests won't run on master.
+cp ../savaslabs.github.io/.travis.yml .
+
 # Commit and push generated content to master branch.
 git add -A .
 git status
