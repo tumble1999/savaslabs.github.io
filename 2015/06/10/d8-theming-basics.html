@@ -1,0 +1,2103 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <title>Drupal 8 Theming Basics | Savas Labs</title>
+  
+  <meta name="description" content="Theming in Drupal 8 means a lot of changes for current Drupalers and a lot of awesome stuff for everyone. In this post I’ll cover:">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,400italic,700italic|PT+Serif|Bitter|Source+Sans+Pro' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/assets/styles/main.css">
+  <link rel="stylesheet" href="/assets/icons/octicons/octicons.css">
+  <link rel="canonical" href="/2015/06/10/d8-theming-basics.html">
+  <link rel="alternate" type="application/rss+xml" title="Savas Labs" href="/feed.xml" />
+  <script type="text/javascript" src="/assets/js/main.js"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Durham, North Carolina",
+        "postalCode": "27701",
+        "streetAddress": "201 W Main St."
+      },
+      "description": "A full-service web agency leveraging the power of Drupal.
+",
+      "email": "info@savaslabs.com",
+      "name": "Savas",
+      "telephone": "(919) 432-4660",
+      "url": "http://savaslabs.com",
+      "logo": "http://savaslabs.com/assets/img/logo.png"
+    }
+</script>
+
+  
+  
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Drupal 8 Theming Basics",
+    "about": "Theming in Drupal 8 means a lot of changes for current Drupalers and a lot of awesome stuff for everyone. I'll cover what's new and how to create a custom theme in Drupal 8.",
+    "articleBody": "
+
+
+&lt;div class=&quot;post&quot;&gt;
+  &lt;header class=&quot;post-header&quot;&gt;
+    &lt;h1 class=&quot;post-title&quot;&gt;Drupal 8 Theming Basics&lt;/h1&gt;
+    &lt;p&gt;By &lt;a href=&quot;/team/anne-tomasevich&quot;&gt;Anne Tomasevich&lt;/a&gt;&lt;/p&gt;
+    &lt;p class=&quot;centerdot&quot;&gt;&amp;centerdot; &lt;/p&gt;
+    &lt;p&gt;Jun 10, 2015 &lt;/p&gt;&lt;br&gt;
+    &lt;i class=&quot;fa fa-tags&quot;&gt;&lt;/i&gt;&lt;p&gt;&lt;a href=&quot;/blog/tag/drupal8/&quot;&gt;Drupal 8&lt;/a&gt;, &lt;a href=&quot;/blog/tag/drupal-planet/&quot;&gt;Drupal Planet&lt;/a&gt;, &lt;a href=&quot;/blog/tag/theming/&quot;&gt;Theming&lt;/a&gt;, &lt;a href=&quot;/blog/tag/drupal/&quot;&gt;Drupal&lt;/a&gt;&lt;/p&gt;
+    
+    &lt;div&gt;&lt;p&gt;&lt;span id=&quot;comment-count&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+    
+    
+  &lt;/header&gt;
+
+  
+
+  &lt;article class=&quot;post-content&quot;&gt;
+    &lt;p&gt;Theming in Drupal 8 means a lot of changes for current Drupalers and a lot of awesome stuff for everyone. In this post I’ll cover:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What’s changing&lt;/li&gt;
+  &lt;li&gt;The positives and negatives of these changes&lt;/li&gt;
+  &lt;li&gt;How to create a custom theme in D8&lt;/li&gt;
+  &lt;li&gt;Twig basics&lt;/li&gt;
+  &lt;li&gt;Twig debugging&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;whats-new&quot;&gt;What’s new?&lt;/h2&gt;
+
+&lt;p&gt;Too much to list here, but here are some highlights:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://twig.sensiolabs.org/documentation&quot;&gt;Twig&lt;/a&gt;, a template engine by SensioLabs, is used inside template files in lieu of PHP&lt;/li&gt;
+  &lt;li&gt;Responsive design elements are included by default&lt;/li&gt;
+  &lt;li&gt;Breakpoints can be set and used across modules and themes&lt;/li&gt;
+  &lt;li&gt;Support for IE8 and below is dropped meaning the use of jQuery 2.0, HTML5, and CSS3 (including pseudo selectors) are now supported&lt;/li&gt;
+  &lt;li&gt;Classy, a new base theme, is introduced&lt;/li&gt;
+  &lt;li&gt;CSS: far fewer IDs are used, default classes are no longer in core but are moved to Classy, CSS file structure now uses SMACSS and class names follow the BEM format&lt;/li&gt;
+  &lt;li&gt;CSS and JS files are attached to pages differently&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;template.php&lt;/code&gt; becomes the slightly better-named &lt;code class=&quot;highlighter-rouge&quot;&gt;[theme-name].theme&lt;/code&gt;. Maybe we’ll finally get &lt;code class=&quot;highlighter-rouge&quot;&gt;theme.php&lt;/code&gt; in Drupal 9?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Check out Drupal’s &lt;a href=&quot;https://www.drupal.org/list-changes/published/drupal?keywords_description=&amp;amp;to_branch=&amp;amp;version=&amp;amp;created_op=%3E%3D&amp;amp;created%5Bvalue%5D=&amp;amp;created%5Bmin%5D=&amp;amp;created%5Bmax%5D=&amp;amp;impacts%5B%5D=3&quot;&gt;change log&lt;/a&gt; for a comprehensive list of changes.&lt;/p&gt;
+
+&lt;h2 id=&quot;why-all-the-changes&quot;&gt;Why all the changes?&lt;/h2&gt;
+
+&lt;p&gt;Though the theming layer in Drupal 8 is quite different from Drupal 7 and will require some relearning, these changes come with great improvements, including:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Fewer Drupal-specific conventions and more popular, well-documented frameworks (such as Twig), meaning non-Drupalers can jump in much more quickly. Let’s face it - Drupal 7 theming has a major learning curve, which can keep developers and designers from using Drupal at all.&lt;/li&gt;
+  &lt;li&gt;Template files are more secure since they no longer contain PHP code (thanks to Twig). Sanders at &lt;a href=&quot;http://d8.sqndr.com/&quot;&gt;d8.sqndr.com&lt;/a&gt; offers this nice/scary example of PHP code that could be executed in a Drupal 7 template file:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// This really shouldn’t be allowed to work, and it won’t in D8.
+  &lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;db_query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;DROP TABLE {users}&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Even more security: text is automatically escaped in Twig, meaning a lower chance of XSS attacks.&lt;/li&gt;
+  &lt;li&gt;D8 themers don’t need to know PHP to whip up a theme.&lt;/li&gt;
+  &lt;li&gt;Separation of logic from appearance, leading to more modular (reusable) code.&lt;/li&gt;
+  &lt;li&gt;Speaking of more modular code, Twig introduces &lt;a href=&quot;http://twig.sensiolabs.org/doc/templates.html#template-inheritance&quot;&gt;template inheritance&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Lack of browser support for IE8 and below means we get to use HTML5, CSS3, and modern jQuery libraries&lt;/li&gt;
+  &lt;li&gt;More semantic CSS class names means leaner CSS and a more readable DOM&lt;/li&gt;
+  &lt;li&gt;A general trend towards more extendable, modular, well-organized, better-performing code&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;okay-are-there-any-disadvantages&quot;&gt;Okay, are there any disadvantages?&lt;/h2&gt;
+
+&lt;p&gt;At the time of writing this post, the toughest things about theming in Drupal 8 for me were:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Contributed themes and modules not having their 8.x branches ready. So far I haven’t seen any contributed themes that are truly usable with Drupal 8. This will surely change soon, and it’s good motivation to submit patches in the meantime.&lt;/li&gt;
+  &lt;li&gt;Lack of documentation online. When building my first D8 site, documentation often didn’t exist for the problem I was having, it existed but was marked as out of date, or it was out of date but NOT marked as such. This was definitely a challenge! I’d recommend taking anything you read with a grain of salt (including this).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Fortunately both of these problems will resolve as Drupal 8 gets closer to release.&lt;/p&gt;
+
+&lt;h2 id=&quot;creating-a-custom-theme-in-drupal-8&quot;&gt;Creating a custom theme in Drupal 8&lt;/h2&gt;
+&lt;p&gt;So, now that we’ve covered some reasons that D8 theming will be awesome and we’re feeling motivated to submit some patches and write some documentation, let’s create a custom theme using Classy as a base.&lt;/p&gt;
+
+&lt;p&gt;The first thing to note is the different file structure. The &lt;code class=&quot;highlighter-rouge&quot;&gt;core&lt;/code&gt; folder now holds all the the modules and themes that ship with Drupal, and contributed and custom modules and themes are now found respectively in the &lt;code class=&quot;highlighter-rouge&quot;&gt;modules&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;themes&lt;/code&gt; folders in the Drupal document root (mine is called &lt;code class=&quot;highlighter-rouge&quot;&gt;docroot&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Let’s create a folder for our new theme. Savas is working on a Drupal 8 mapping project, so I’ll use that as an example. Our theme is called “Mappy,” so we’ve created a folder for our theme within &lt;code class=&quot;highlighter-rouge&quot;&gt;themes/custom&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;blog-image-xl&quot; src=&quot;/assets/img/blog/theme-folder-location.png&quot; alt=&quot;Screenshot of D8 file structure.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The first file we’ll want to create is &lt;code class=&quot;highlighter-rouge&quot;&gt;[theme-name].info.yml&lt;/code&gt;, which replaces D7’s &lt;code class=&quot;highlighter-rouge&quot;&gt;[theme-name].info&lt;/code&gt; file. I’ve created &lt;code class=&quot;highlighter-rouge&quot;&gt;mappy.info.yml&lt;/code&gt;, shown below. If you’re new to YAML, Symfony has a &lt;a href=&quot;http://symfony.com/doc/current/components/yaml/yaml_format.html#collections&quot;&gt;nice writeup&lt;/a&gt; on syntax. Pay close attention to the whitespace - for example, a space is required after the colon in key-value pairs.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# mappy.info.yml&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Mappy&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;theme&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;D8&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Theme&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;basic&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;leaflet&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;site.&#39;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;core&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;8.x&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;base theme&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;classy&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;libraries&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+ &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;mappy/global-styling&lt;/span&gt;
+ &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;mappy/leaflet&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;regions&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;navbar&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Top&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Navigation&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Bar&#39;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Content&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;sidebar&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Sidebar&#39;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;footer&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Footer&#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Let’s knock out the easy ones:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Mappy&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;theme&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;D8&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Theme&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;basic&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;leaflet&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;site.&#39;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;core&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;8.x&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This information tells Drupal that we’re dealing with a Drupal 8 theme and gives Drupal a name and description to display in the admin UI. Note that all of these items are required for your theme to be installable.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;regions&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;navbar&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Top&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Navigation&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Bar&#39;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Content&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# required!&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;sidebar&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Sidebar&#39;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;footer&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Footer&#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This hasn’t changed much from Drupal 7. Don’t forget that the &lt;code class=&quot;highlighter-rouge&quot;&gt;Content&lt;/code&gt; region is required. You can also forego declaring regions if you want to use Drupal’s &lt;a href=&quot;https://www.drupal.org/node/2469113&quot;&gt;default regions.&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;classy-the-new-base-theme&quot;&gt;Classy, the new base theme&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;base theme&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;classy&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Classy is a brand new base theme that ships with Drupal core. All CSS classes were moved out of core template files and into Classy’s as a way to a) contain, minimize, and organize default classes and b) give developers the option of not using Drupal’s default classes without having to undo core. One can simply choose not to use Classy as a base theme.&lt;/p&gt;
+
+&lt;p&gt;Additionally, Classy’s classes follow the BEM convention, making them less generic and more meaningful. Check out &lt;a href=&quot;http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/&quot;&gt;this article&lt;/a&gt; for a great introduction to BEM.&lt;/p&gt;
+
+&lt;h3 id=&quot;libraries&quot;&gt;Libraries&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;libraries&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+ &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;mappy/global-styling&lt;/span&gt;
+ &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;mappy/leaflet&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In Drupal 8, assets can be added to pages in a few different ways: globally, per-template, and per-page. We’ve chosen to add our CSS and JS globally since this is a small site and the same relatively lightweight assets are used on almost every page.&lt;/p&gt;
+
+&lt;p&gt;In the &lt;code class=&quot;highlighter-rouge&quot;&gt;mappy.info.yml&lt;/code&gt; file, I’ve listed two libraries. These correspond to items in my &lt;code class=&quot;highlighter-rouge&quot;&gt;mappy.libraries.yml&lt;/code&gt; file, which lives in the root of my theme directory. No matter how you’re including CSS or JS files on a page, you’ll need to define them in your &lt;code class=&quot;highlighter-rouge&quot;&gt;[theme-name].libraries.yml&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# mappy.libraries.yml&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;global-styling&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;theme&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;css/styles.css&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;{}&lt;/span&gt;
+
+&lt;span class=&quot;s&quot;&gt;leaflet&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;theme&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;css/leaflet.css&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;{}&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;js&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;js/leaflet.js&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;{}&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;js/map.js&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;{}&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;dependencies&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;core/jquery&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;As you may have guessed, &lt;code class=&quot;highlighter-rouge&quot;&gt;global-styling&lt;/code&gt; is a library that applies site-wide styles. &lt;code class=&quot;highlighter-rouge&quot;&gt;leaflet&lt;/code&gt; is the leaflet library, which consists of &lt;code class=&quot;highlighter-rouge&quot;&gt;leaflet.css&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;leaflet.js&lt;/code&gt;, plus our custom file &lt;code class=&quot;highlighter-rouge&quot;&gt;map.js&lt;/code&gt;. jQuery is no longer loaded on every page in Drupal 8, so we have to explicitly include it when it’s required.&lt;/p&gt;
+
+&lt;p&gt;By listing these two libraries in &lt;code class=&quot;highlighter-rouge&quot;&gt;mappy.info.yml&lt;/code&gt; we ensure that these assets will be included on every page of our site. However, this is typically not the best practice for larger sites since these files can seriously affect performance. &lt;a href=&quot;https://www.drupal.org/developing/api/8/assets&quot;&gt;This page&lt;/a&gt; on Drupal.org details how to attach assets to pages via hooks so that CSS and JS files are only loaded where they’re needed.&lt;/p&gt;
+
+&lt;h3 id=&quot;breakpoints&quot;&gt;Breakpoints&lt;/h3&gt;
+&lt;p&gt;Another new YAML file, &lt;code class=&quot;highlighter-rouge&quot;&gt;[theme-name].breakpoints.yml&lt;/code&gt;, allows developers to create standard breakpoints to be used by modules and themes across the site. You can set custom breakpoints by defining them in this file. Below is our breakpoints file, which also resides in the root of our theme. Note that we simply adapted the breakpoints file from the Bartik theme.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# mappy.breakpoints.yml&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;mappy.mobile&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;mobile&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;mediaQuery&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;(min-width:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;0px)&#39;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;weight&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;2&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;multipliers&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;1x&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;mappy.narrow&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;narrow&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;mediaQuery&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;(min-width:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;560px)&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;(max-width:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;850px)&#39;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;weight&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;1&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;multipliers&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;1x&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;mappy.wide&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;wide&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;mediaQuery&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;(min-width:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;851px)&#39;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;weight&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;0&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;multipliers&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;1x&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Important tip: Once you add a breakpoints file, you’ll need to uninstall and reinstall your theme to expose these breakpoints in the admin UI.&lt;/p&gt;
+
+&lt;p&gt;With these files set up, you now have a working custom theme!&lt;/p&gt;
+
+&lt;h2 id=&quot;creating-template-files-with-twig&quot;&gt;Creating template files with Twig&lt;/h2&gt;
+
+&lt;p&gt;In our custom theme’s current state, we’re using Classy’s template files as-is. If we want to customize any of these templates, we need to override them with Twig files located in our custom theme’s &lt;code class=&quot;highlighter-rouge&quot;&gt;templates&lt;/code&gt; directory.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://twig.sensiolabs.org/doc/templates.html&quot;&gt;Twig&lt;/a&gt; is a template engine with syntax similar to Django, Jinja, and Liquid. It simplifies template creation with clean syntax and useful build-in filters, functions, and tags. In a Drupal template file (now with the extention .html.twig), anything between &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt; is Twig.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;These&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;/code&gt; are for printing content, either explicitly or via functions&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;These&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt; are for executing statements&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;These&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt; are for comments&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;printing-variables-and-regions&quot;&gt;Printing variables and regions&lt;/h3&gt;
+
+&lt;p&gt;In Drupal 7 we render content like so:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;sidebar&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Printing variables using Twig in D8 is as easy as including them in the double curly brace delimiter.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// In page--front.html.twig
+// Print the sidebar region.
+
+&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;sidebar&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;…unless there are special characters in the variable name. If that’s the case and you see an error when using the syntax above, you can use Twig’s subscript syntax, which should look pretty familiar to Drupalers:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// In page--front.html.twig
+// Print the page type.
+
+&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;#type&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This will be more useful when debugging. The Drupal core base themes include lists of available variables and regions in the DocBlock of their template files, or you can print variables to the page via Twig’s debug mode (more on that below) to see what’s available to you.&lt;/p&gt;
+
+&lt;h3 id=&quot;filters-and-functions&quot;&gt;Filters and functions&lt;/h3&gt;
+
+&lt;p&gt;Twig comes with many built-in &lt;a href=&quot;http://twig.sensiolabs.org/doc/filters/index.html&quot;&gt;filters&lt;/a&gt; that variables are passed to via the pipe character. These filters do many of the things that PHP functions would have in previous Drupal versions. One example is the date filter:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// Format the post date.
+
+&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;published&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;date(&quot;Y-m-d&quot;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;There are also &lt;a href=&quot;https://www.drupal.org/node/2357633&quot;&gt;Drupal-specific Twig filters&lt;/a&gt;, such as &lt;code class=&quot;highlighter-rouge&quot;&gt;t&lt;/code&gt; which runs the string through the &lt;code class=&quot;highlighter-rouge&quot;&gt;t()&lt;/code&gt; function.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// Run an ARIA label through t()
+
+&amp;lt;nav class=&quot;tabs&quot; role=&quot;navigation&quot; aria-label=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Tabs&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot;&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;By the way, &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute&quot;&gt;ARIA labels&lt;/a&gt; are new in Drupal 8 too!&lt;/p&gt;
+
+&lt;p&gt;In addition to filters, Twig provides a range of &lt;a href=&quot;http://twig.sensiolabs.org/doc/functions/index.html&quot;&gt;functions&lt;/a&gt; that are also used within the double curly brace delimiters.&lt;/p&gt;
+
+&lt;h3 id=&quot;tags&quot;&gt;Tags&lt;/h3&gt;
+
+&lt;p&gt;Control flow and other &lt;a href=&quot;http://twig.sensiolabs.org/doc/tags/set.html&quot;&gt;tags&lt;/a&gt; are also supported in Twig. One of my favorite things about templating languages is how easy it is to execute &lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;/code&gt; statements and &lt;code class=&quot;highlighter-rouge&quot;&gt;for&lt;/code&gt; loops. &lt;a href=&quot;https://github.com/savaslabs/savaslabs.github.io&quot;&gt;Savas&lt;/a&gt; uses Jekyll for our company website and the Liquid templating language makes it easy to loop through a list of data points, blog posts, projects, etc. and print them to a page rather than writing out all of the HTML. In Drupal, we’ll use the &lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;/code&gt; statement quite often.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// From Bartik&#39;s page.html.twig
+// If there are tabs, output them.
+
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tabs&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+  &amp;lt;nav class=&quot;tabs&quot; role=&quot;navigation&quot; aria-label=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Tabs&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot;&amp;gt;
+    &lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tabs&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+  &amp;lt;/nav&amp;gt;
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;endif&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Another useful tag is &lt;code class=&quot;highlighter-rouge&quot;&gt;set&lt;/code&gt;, which allows you to set and use variables throughout the template. In the following example, the variable &lt;code class=&quot;highlighter-rouge&quot;&gt;heading_id&lt;/code&gt; is set and then used as the &lt;code class=&quot;highlighter-rouge&quot;&gt;aria-labelledby&lt;/code&gt; attribute. Note that the Twig concatenation character &lt;code class=&quot;highlighter-rouge&quot;&gt;~&lt;/code&gt; is used, and the string ‘-menu’ is passed through the &lt;code class=&quot;highlighter-rouge&quot;&gt;clean_id&lt;/code&gt; filter.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// From Classy&#39;s block--system-menu-block.html.twig
+
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;heading_id&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;attributes.id&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;~&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;-menu&#39;&lt;/span&gt;|clean_id&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&amp;lt;nav&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;attributes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;addClass&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;classes&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt; role=&quot;navigation&quot; aria-labelledby=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;heading_id&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot;&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;coding-standards&quot;&gt;Coding standards&lt;/h3&gt;
+
+&lt;p&gt;Since this is new to some Drupalers, take a moment to check out the &lt;a href=&quot;https://www.drupal.org/node/1823416&quot;&gt;coding standards&lt;/a&gt; for Twig.&lt;/p&gt;
+
+&lt;h2 id=&quot;debugging-with-twig&quot;&gt;Debugging with Twig&lt;/h2&gt;
+
+&lt;p&gt;Twig comes with a highly useful debug feature that outputs helpful HTML comments and allows you to code without having to clear the cache constantly, but it doesn’t work out of the box. We’re going to turn on that feature and disable the several layers of caching that require developers to clear the cache every time they make a change in a template file.&lt;/p&gt;
+
+&lt;p&gt;To enable debug mode and turn off caching, we need to do 3 things:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Turn on Twig’s debug mode&lt;/li&gt;
+  &lt;li&gt;Turn on Twig auto reload, meaning that Twig templates are automatically recompiled when the source code is changed&lt;/li&gt;
+  &lt;li&gt;Disable Drupal’s render cache&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Note that one thing we do NOT need to do, surprisingly, is turn off Twig caching - turning on auto reload is enough.&lt;/p&gt;
+
+&lt;p&gt;If you open &lt;code class=&quot;highlighter-rouge&quot;&gt;default.services.yml&lt;/code&gt; located in &lt;code class=&quot;highlighter-rouge&quot;&gt;sites/default&lt;/code&gt;, you’ll see some &lt;code class=&quot;highlighter-rouge&quot;&gt;twig.config&lt;/code&gt; options where you can enable Twig debugging auto reload. I’m going to use this syntax but in a different file because I’m using a local settings file.&lt;/p&gt;
+
+&lt;p&gt;I created &lt;code class=&quot;highlighter-rouge&quot;&gt;settings.local.php&lt;/code&gt; by making copy of &lt;code class=&quot;highlighter-rouge&quot;&gt;example.settings.local.php&lt;/code&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;sites&lt;/code&gt;, moving it to &lt;code class=&quot;highlighter-rouge&quot;&gt;sites/default&lt;/code&gt; and renaming it. I then opened up &lt;code class=&quot;highlighter-rouge&quot;&gt;settings.local.php&lt;/code&gt; and customized the &lt;code class=&quot;highlighter-rouge&quot;&gt;$databases[&#39;default&#39;][&#39;default&#39;]&lt;/code&gt; array.&lt;/p&gt;
+
+&lt;p&gt;To get Drupal to recognize my local settings file, I opened &lt;code class=&quot;highlighter-rouge&quot;&gt;settings.php&lt;/code&gt; and uncommented the last 3 lines:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;file_exists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;__DIR__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;/settings.local.php&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;__DIR__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;/settings.local.php&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;settings.local.php&lt;/code&gt; we’ll see:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;/**
+ * Enable local development services.
+ */&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$settings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;container_yamls&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;DRUPAL_ROOT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;/sites/development.services.yml&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This means we need to head over to &lt;code class=&quot;highlighter-rouge&quot;&gt;sites&lt;/code&gt; and edit &lt;code class=&quot;highlighter-rouge&quot;&gt;development.services.yml&lt;/code&gt; to change our local development services. I added these lines to this file to enlable debug mode and auto reload:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;parameters&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;twig.config&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;debug&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;auto-reload&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Great, we’ve completed steps 1 and 2. Fun fact: step 3 is already complete too! In &lt;code class=&quot;highlighter-rouge&quot;&gt;settings.local.php&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;/**
+ * Disable the render cache (this includes the page cache).
+ *
+ * This setting disables the render cache by using the Null cache back-end
+ * defined by the development.services.yml file above.
+ *
+ * Do not use this setting until after the site is installed.
+ */&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$settings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;cache&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;bins&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;render&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;cache.backend.null&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;So by using the local settings file we’ve already disabled the render cache.&lt;/p&gt;
+
+&lt;p&gt;Now, reload your site and you should see HTML comments in your browser’s code inspector with lots of helpful info: which theme hook is being implemented, theme hook suggestions (i.e. how to override the current theme hook), and which template file is being output. You can also make changes to your source code and simply refresh the page to see your changes rather than constantly clearing the cache.&lt;/p&gt;
+
+&lt;h3 id=&quot;where-my-variables-at&quot;&gt;Where my variables at?&lt;/h3&gt;
+&lt;p&gt;One useful function that comes with Twig is &lt;code class=&quot;highlighter-rouge&quot;&gt;dump()&lt;/code&gt;. This function works once you’ve enabled Twig’s debug mode and can be entered into any template file.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// Print out all variables on the page.
+
+&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dump&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+
+
+// Print the page&#39;s base path.
+
+&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dump&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;base_path&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;dump()&lt;/code&gt; is great, but it outputs a rather unwieldy array.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;blog-image-large&quot; src=&quot;/assets/img/blog/dump-output.png&quot; alt=&quot;Screenshot of dump function output.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Enter the beloved Devel module and the new Devel Kint module. Kint is to Drupal 8 what krumo was to Drupal 7. Once Devel and Devel Kint are installed, you can use &lt;code class=&quot;highlighter-rouge&quot;&gt;kint()&lt;/code&gt; in place of &lt;code class=&quot;highlighter-rouge&quot;&gt;dump()&lt;/code&gt; for a nice expandable array.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// In page--front.html.twig
+// Print out all variables on the page.
+
+&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;kint&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img class=&quot;blog-image-xl&quot; src=&quot;/assets/img/blog/kint-output.png&quot; alt=&quot;Screenshot of kint function output.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ahh, much better!&lt;/p&gt;
+
+&lt;h2 id=&quot;further-reading&quot;&gt;Further reading:&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Start with Drupal.org’s &lt;a href=&quot;https://www.drupal.org/theme-guide/8&quot;&gt;theming guide&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Check out sqndr’s excellent &lt;a href=&quot;http://d8.sqndr.com/&quot;&gt;Drupal 8 theming guide&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Drupalize Me’s &lt;a href=&quot;https://drupalize.me/blog/201405/lets-debug-twig-drupal-8&quot;&gt;post&lt;/a&gt; about debugging Twig has some detailed information about &lt;code class=&quot;highlighter-rouge&quot;&gt;dump()&lt;/code&gt;, devel and kint. Be aware that some of the information in that post on configuring Twig is out of date.&lt;/li&gt;
+&lt;/ul&gt;
+
+    &lt;hr&gt;
+
+    
+      &lt;div class=&quot;post-comments&quot;&gt;
+  
+    &lt;div class=&quot;expander&quot;&gt;
+      &lt;a href=&quot;javascript:void(0)&quot; id=&quot;js-expander-trigger&quot; class=&quot;expander-trigger expander-hidden&quot;&gt;Comments!&lt;/a&gt;
+      &lt;div id=&quot;js-expander-content&quot; class=&quot;expander-content&quot;&gt;
+        &lt;!-- If there are existing comments, output them here. --&gt;
+        &lt;div id=&quot;post-comments&quot; class=&quot;post-comments&quot;&gt;&lt;/div&gt;
+        &lt;!-- New comment form --&gt;
+        &lt;form id=&quot;comment-form&quot;&gt;
+          &lt;h4&gt;Leave a comment&lt;/h4&gt;
+          &lt;div class=&quot;comment-name&quot;&gt;
+            &lt;p&gt;Name&lt;/p&gt; &lt;input type=&#39;text&#39; name=&#39;name&#39; id=&#39;name&#39; required /&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;comment-email&quot;&gt;
+            &lt;p&gt;Email&lt;/p&gt; &lt;input type=&#39;email&#39; name=&#39;email&#39; id=&#39;email&#39; required /&gt;
+            &lt;p class=&quot;email-disclaimer&quot;&gt;Savas will never sell your email address or spam you.&lt;/p&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;p&gt;Comment&lt;/p&gt;
+          &lt;textarea name=&#39;comment&#39; id=&#39;comment&#39; required&gt;&lt;/textarea&gt;
+          &lt;p class=&quot;hint below-textarea&quot;&gt;Plain text format only please.&lt;/p&gt;
+
+          &lt;input type=&#39;hidden&#39; name=&#39;slug&#39; id=&#39;slug&#39; value=&#39;/2015/06/10/d8-theming-basics.html&#39; /&gt;
+          &lt;input type=&#39;text&#39; name=&#39;url&#39; id=&#39;url&#39; /&gt;
+
+          &lt;div class=&#39;are-you-human&#39;&gt;
+            &lt;div class=&#39;are-you-human-owl&#39;&gt;
+              &lt;img src=&quot;/assets/img/owl.png&quot; alt=&quot;Savas logo&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&#39;are-you-human-field&#39;&gt;
+              &lt;p&gt;What type of animal is the Savas logo?&lt;/p&gt;
+              &lt;input type=&#39;text&#39; name=&#39;nocaptcha&#39; id=&#39;nocaptcha&#39; class=&#39;nocaptcha&#39;&gt;
+              &lt;p class=&quot;hint&quot;&gt;Hint: 3 letters long, starts with an &#39;o&#39; and ends with an &#39;l&#39;.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;input type=&#39;submit&#39; value=&#39;Submit&#39; id=&#39;submit&#39; class=&quot;submit-comment&quot;/&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+  &lt;hr&gt;
+&lt;/div&gt;
+
+    
+    &lt;div class=&quot;post-bottom&quot;&gt;
+  &lt;div class=&quot;post-meta&quot;&gt;
+    &lt;h4&gt;About the author&lt;/h4&gt;
+    
+      &lt;a href=&quot;/team/anne-tomasevich&quot;&gt;
+        &lt;img src=&quot;/assets/img/team/anne-tomasevich.jpg&quot; alt=&quot;Anne Tomasevich&quot;&gt;
+      &lt;/a&gt;
+      &lt;p class=&quot;post-author-desc&quot;&gt;Anne is a developer at Savas Labs, focused on front-end technologies and user experience.&lt;/p&gt;
+    
+  &lt;/div&gt;
+    &lt;!-- Once we have more content, change this to posts related by tag --&gt;
+  &lt;div class=&quot;post-related flex-container&quot;&gt;
+    &lt;h4&gt;Recent posts by Savas&lt;/h4&gt;
+    &lt;div class=&quot;cards&quot;&gt;
+      
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/22/user-testing.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Usability Testing - Our Process and Favorite Practices
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 22, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;Our approach to designing, conducting, and learning from user testing and other analyses.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/16/using-xhprof.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Using XHProf to profile your Drupal module
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 16, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;A case study of using XHProf to profile a Drupal module.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/15/git-merge-conflict-strategies.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Strategies and tools for resolving Git merge conflicts
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 15, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;An overview of strategies and tools I like to use when I encounter conflicts during merges.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;div class=&quot;previous-next-links&quot;&gt;
+  &lt;div class=&quot;next&quot;&gt;
+    
+      &lt;a href=&quot;/2015/06/23/a-man-a-plan-a-canal-a-savas.html&quot;&gt;&lt;i class=&quot;fa fa-long-arrow-left &quot;&gt;&lt;/i&gt; A man a plan a canal a... Savas!&lt;/a&gt;
+    
+  &lt;/div&gt;
+  &lt;div class=&quot;previous&quot;&gt;
+    
+      &lt;a href=&quot;/2015/05/25/manage-geojson.html&quot;&gt; Managing GeoJSON data using GDAL &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+  &lt;/article&gt;
+
+&lt;/div&gt;
+",
+      "author": {
+          "@context": "http://schema.org",
+          "@type": "Person",
+          "name": "Anne Tomasevich",
+          "affiliation": "Savas",
+          "worksFor": "Savas"
+      },
+    "keywords": "drupal8, drupal-planet, theming, drupal",
+    "text": "
+
+
+&lt;div class=&quot;post&quot;&gt;
+  &lt;header class=&quot;post-header&quot;&gt;
+    &lt;h1 class=&quot;post-title&quot;&gt;Drupal 8 Theming Basics&lt;/h1&gt;
+    &lt;p&gt;By &lt;a href=&quot;/team/anne-tomasevich&quot;&gt;Anne Tomasevich&lt;/a&gt;&lt;/p&gt;
+    &lt;p class=&quot;centerdot&quot;&gt;&amp;centerdot; &lt;/p&gt;
+    &lt;p&gt;Jun 10, 2015 &lt;/p&gt;&lt;br&gt;
+    &lt;i class=&quot;fa fa-tags&quot;&gt;&lt;/i&gt;&lt;p&gt;&lt;a href=&quot;/blog/tag/drupal8/&quot;&gt;Drupal 8&lt;/a&gt;, &lt;a href=&quot;/blog/tag/drupal-planet/&quot;&gt;Drupal Planet&lt;/a&gt;, &lt;a href=&quot;/blog/tag/theming/&quot;&gt;Theming&lt;/a&gt;, &lt;a href=&quot;/blog/tag/drupal/&quot;&gt;Drupal&lt;/a&gt;&lt;/p&gt;
+    
+    &lt;div&gt;&lt;p&gt;&lt;span id=&quot;comment-count&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+    
+    
+  &lt;/header&gt;
+
+  
+
+  &lt;article class=&quot;post-content&quot;&gt;
+    &lt;p&gt;Theming in Drupal 8 means a lot of changes for current Drupalers and a lot of awesome stuff for everyone. In this post I’ll cover:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What’s changing&lt;/li&gt;
+  &lt;li&gt;The positives and negatives of these changes&lt;/li&gt;
+  &lt;li&gt;How to create a custom theme in D8&lt;/li&gt;
+  &lt;li&gt;Twig basics&lt;/li&gt;
+  &lt;li&gt;Twig debugging&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;whats-new&quot;&gt;What’s new?&lt;/h2&gt;
+
+&lt;p&gt;Too much to list here, but here are some highlights:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://twig.sensiolabs.org/documentation&quot;&gt;Twig&lt;/a&gt;, a template engine by SensioLabs, is used inside template files in lieu of PHP&lt;/li&gt;
+  &lt;li&gt;Responsive design elements are included by default&lt;/li&gt;
+  &lt;li&gt;Breakpoints can be set and used across modules and themes&lt;/li&gt;
+  &lt;li&gt;Support for IE8 and below is dropped meaning the use of jQuery 2.0, HTML5, and CSS3 (including pseudo selectors) are now supported&lt;/li&gt;
+  &lt;li&gt;Classy, a new base theme, is introduced&lt;/li&gt;
+  &lt;li&gt;CSS: far fewer IDs are used, default classes are no longer in core but are moved to Classy, CSS file structure now uses SMACSS and class names follow the BEM format&lt;/li&gt;
+  &lt;li&gt;CSS and JS files are attached to pages differently&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;template.php&lt;/code&gt; becomes the slightly better-named &lt;code class=&quot;highlighter-rouge&quot;&gt;[theme-name].theme&lt;/code&gt;. Maybe we’ll finally get &lt;code class=&quot;highlighter-rouge&quot;&gt;theme.php&lt;/code&gt; in Drupal 9?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Check out Drupal’s &lt;a href=&quot;https://www.drupal.org/list-changes/published/drupal?keywords_description=&amp;amp;to_branch=&amp;amp;version=&amp;amp;created_op=%3E%3D&amp;amp;created%5Bvalue%5D=&amp;amp;created%5Bmin%5D=&amp;amp;created%5Bmax%5D=&amp;amp;impacts%5B%5D=3&quot;&gt;change log&lt;/a&gt; for a comprehensive list of changes.&lt;/p&gt;
+
+&lt;h2 id=&quot;why-all-the-changes&quot;&gt;Why all the changes?&lt;/h2&gt;
+
+&lt;p&gt;Though the theming layer in Drupal 8 is quite different from Drupal 7 and will require some relearning, these changes come with great improvements, including:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Fewer Drupal-specific conventions and more popular, well-documented frameworks (such as Twig), meaning non-Drupalers can jump in much more quickly. Let’s face it - Drupal 7 theming has a major learning curve, which can keep developers and designers from using Drupal at all.&lt;/li&gt;
+  &lt;li&gt;Template files are more secure since they no longer contain PHP code (thanks to Twig). Sanders at &lt;a href=&quot;http://d8.sqndr.com/&quot;&gt;d8.sqndr.com&lt;/a&gt; offers this nice/scary example of PHP code that could be executed in a Drupal 7 template file:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// This really shouldn’t be allowed to work, and it won’t in D8.
+  &lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;db_query&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;DROP TABLE {users}&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Even more security: text is automatically escaped in Twig, meaning a lower chance of XSS attacks.&lt;/li&gt;
+  &lt;li&gt;D8 themers don’t need to know PHP to whip up a theme.&lt;/li&gt;
+  &lt;li&gt;Separation of logic from appearance, leading to more modular (reusable) code.&lt;/li&gt;
+  &lt;li&gt;Speaking of more modular code, Twig introduces &lt;a href=&quot;http://twig.sensiolabs.org/doc/templates.html#template-inheritance&quot;&gt;template inheritance&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Lack of browser support for IE8 and below means we get to use HTML5, CSS3, and modern jQuery libraries&lt;/li&gt;
+  &lt;li&gt;More semantic CSS class names means leaner CSS and a more readable DOM&lt;/li&gt;
+  &lt;li&gt;A general trend towards more extendable, modular, well-organized, better-performing code&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;okay-are-there-any-disadvantages&quot;&gt;Okay, are there any disadvantages?&lt;/h2&gt;
+
+&lt;p&gt;At the time of writing this post, the toughest things about theming in Drupal 8 for me were:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Contributed themes and modules not having their 8.x branches ready. So far I haven’t seen any contributed themes that are truly usable with Drupal 8. This will surely change soon, and it’s good motivation to submit patches in the meantime.&lt;/li&gt;
+  &lt;li&gt;Lack of documentation online. When building my first D8 site, documentation often didn’t exist for the problem I was having, it existed but was marked as out of date, or it was out of date but NOT marked as such. This was definitely a challenge! I’d recommend taking anything you read with a grain of salt (including this).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Fortunately both of these problems will resolve as Drupal 8 gets closer to release.&lt;/p&gt;
+
+&lt;h2 id=&quot;creating-a-custom-theme-in-drupal-8&quot;&gt;Creating a custom theme in Drupal 8&lt;/h2&gt;
+&lt;p&gt;So, now that we’ve covered some reasons that D8 theming will be awesome and we’re feeling motivated to submit some patches and write some documentation, let’s create a custom theme using Classy as a base.&lt;/p&gt;
+
+&lt;p&gt;The first thing to note is the different file structure. The &lt;code class=&quot;highlighter-rouge&quot;&gt;core&lt;/code&gt; folder now holds all the the modules and themes that ship with Drupal, and contributed and custom modules and themes are now found respectively in the &lt;code class=&quot;highlighter-rouge&quot;&gt;modules&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;themes&lt;/code&gt; folders in the Drupal document root (mine is called &lt;code class=&quot;highlighter-rouge&quot;&gt;docroot&lt;/code&gt;).&lt;/p&gt;
+
+&lt;p&gt;Let’s create a folder for our new theme. Savas is working on a Drupal 8 mapping project, so I’ll use that as an example. Our theme is called “Mappy,” so we’ve created a folder for our theme within &lt;code class=&quot;highlighter-rouge&quot;&gt;themes/custom&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;blog-image-xl&quot; src=&quot;/assets/img/blog/theme-folder-location.png&quot; alt=&quot;Screenshot of D8 file structure.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The first file we’ll want to create is &lt;code class=&quot;highlighter-rouge&quot;&gt;[theme-name].info.yml&lt;/code&gt;, which replaces D7’s &lt;code class=&quot;highlighter-rouge&quot;&gt;[theme-name].info&lt;/code&gt; file. I’ve created &lt;code class=&quot;highlighter-rouge&quot;&gt;mappy.info.yml&lt;/code&gt;, shown below. If you’re new to YAML, Symfony has a &lt;a href=&quot;http://symfony.com/doc/current/components/yaml/yaml_format.html#collections&quot;&gt;nice writeup&lt;/a&gt; on syntax. Pay close attention to the whitespace - for example, a space is required after the colon in key-value pairs.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# mappy.info.yml&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Mappy&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;theme&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;D8&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Theme&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;basic&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;leaflet&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;site.&#39;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;core&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;8.x&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;base theme&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;classy&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;libraries&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+ &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;mappy/global-styling&lt;/span&gt;
+ &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;mappy/leaflet&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;regions&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;navbar&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Top&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Navigation&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Bar&#39;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Content&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;sidebar&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Sidebar&#39;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;footer&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Footer&#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Let’s knock out the easy ones:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Mappy&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;theme&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;D8&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Theme&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;basic&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;leaflet&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;site.&#39;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;core&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;8.x&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This information tells Drupal that we’re dealing with a Drupal 8 theme and gives Drupal a name and description to display in the admin UI. Note that all of these items are required for your theme to be installable.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;regions&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;navbar&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Top&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Navigation&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Bar&#39;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;Content&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# required!&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;sidebar&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Sidebar&#39;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;footer&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Footer&#39;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This hasn’t changed much from Drupal 7. Don’t forget that the &lt;code class=&quot;highlighter-rouge&quot;&gt;Content&lt;/code&gt; region is required. You can also forego declaring regions if you want to use Drupal’s &lt;a href=&quot;https://www.drupal.org/node/2469113&quot;&gt;default regions.&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;classy-the-new-base-theme&quot;&gt;Classy, the new base theme&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;base theme&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;classy&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Classy is a brand new base theme that ships with Drupal core. All CSS classes were moved out of core template files and into Classy’s as a way to a) contain, minimize, and organize default classes and b) give developers the option of not using Drupal’s default classes without having to undo core. One can simply choose not to use Classy as a base theme.&lt;/p&gt;
+
+&lt;p&gt;Additionally, Classy’s classes follow the BEM convention, making them less generic and more meaningful. Check out &lt;a href=&quot;http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/&quot;&gt;this article&lt;/a&gt; for a great introduction to BEM.&lt;/p&gt;
+
+&lt;h3 id=&quot;libraries&quot;&gt;Libraries&lt;/h3&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;libraries&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+ &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;mappy/global-styling&lt;/span&gt;
+ &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;mappy/leaflet&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In Drupal 8, assets can be added to pages in a few different ways: globally, per-template, and per-page. We’ve chosen to add our CSS and JS globally since this is a small site and the same relatively lightweight assets are used on almost every page.&lt;/p&gt;
+
+&lt;p&gt;In the &lt;code class=&quot;highlighter-rouge&quot;&gt;mappy.info.yml&lt;/code&gt; file, I’ve listed two libraries. These correspond to items in my &lt;code class=&quot;highlighter-rouge&quot;&gt;mappy.libraries.yml&lt;/code&gt; file, which lives in the root of my theme directory. No matter how you’re including CSS or JS files on a page, you’ll need to define them in your &lt;code class=&quot;highlighter-rouge&quot;&gt;[theme-name].libraries.yml&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# mappy.libraries.yml&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;global-styling&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;theme&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;css/styles.css&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;{}&lt;/span&gt;
+
+&lt;span class=&quot;s&quot;&gt;leaflet&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;css&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;theme&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;css/leaflet.css&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;{}&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;js&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;js/leaflet.js&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;{}&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;js/map.js&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;pi&quot;&gt;{}&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;dependencies&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;core/jquery&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;As you may have guessed, &lt;code class=&quot;highlighter-rouge&quot;&gt;global-styling&lt;/code&gt; is a library that applies site-wide styles. &lt;code class=&quot;highlighter-rouge&quot;&gt;leaflet&lt;/code&gt; is the leaflet library, which consists of &lt;code class=&quot;highlighter-rouge&quot;&gt;leaflet.css&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;leaflet.js&lt;/code&gt;, plus our custom file &lt;code class=&quot;highlighter-rouge&quot;&gt;map.js&lt;/code&gt;. jQuery is no longer loaded on every page in Drupal 8, so we have to explicitly include it when it’s required.&lt;/p&gt;
+
+&lt;p&gt;By listing these two libraries in &lt;code class=&quot;highlighter-rouge&quot;&gt;mappy.info.yml&lt;/code&gt; we ensure that these assets will be included on every page of our site. However, this is typically not the best practice for larger sites since these files can seriously affect performance. &lt;a href=&quot;https://www.drupal.org/developing/api/8/assets&quot;&gt;This page&lt;/a&gt; on Drupal.org details how to attach assets to pages via hooks so that CSS and JS files are only loaded where they’re needed.&lt;/p&gt;
+
+&lt;h3 id=&quot;breakpoints&quot;&gt;Breakpoints&lt;/h3&gt;
+&lt;p&gt;Another new YAML file, &lt;code class=&quot;highlighter-rouge&quot;&gt;[theme-name].breakpoints.yml&lt;/code&gt;, allows developers to create standard breakpoints to be used by modules and themes across the site. You can set custom breakpoints by defining them in this file. Below is our breakpoints file, which also resides in the root of our theme. Note that we simply adapted the breakpoints file from the Bartik theme.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# mappy.breakpoints.yml&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;mappy.mobile&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;mobile&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;mediaQuery&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;(min-width:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;0px)&#39;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;weight&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;2&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;multipliers&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;1x&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;mappy.narrow&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;narrow&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;mediaQuery&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;(min-width:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;560px)&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;(max-width:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;850px)&#39;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;weight&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;1&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;multipliers&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;1x&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;mappy.wide&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;label&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;wide&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;mediaQuery&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;and&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;(min-width:&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;851px)&#39;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;weight&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;0&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;multipliers&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;1x&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Important tip: Once you add a breakpoints file, you’ll need to uninstall and reinstall your theme to expose these breakpoints in the admin UI.&lt;/p&gt;
+
+&lt;p&gt;With these files set up, you now have a working custom theme!&lt;/p&gt;
+
+&lt;h2 id=&quot;creating-template-files-with-twig&quot;&gt;Creating template files with Twig&lt;/h2&gt;
+
+&lt;p&gt;In our custom theme’s current state, we’re using Classy’s template files as-is. If we want to customize any of these templates, we need to override them with Twig files located in our custom theme’s &lt;code class=&quot;highlighter-rouge&quot;&gt;templates&lt;/code&gt; directory.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://twig.sensiolabs.org/doc/templates.html&quot;&gt;Twig&lt;/a&gt; is a template engine with syntax similar to Django, Jinja, and Liquid. It simplifies template creation with clean syntax and useful build-in filters, functions, and tags. In a Drupal template file (now with the extention .html.twig), anything between &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt; is Twig.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;These&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;/code&gt; are for printing content, either explicitly or via functions&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;These&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt; are for executing statements&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;These&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt; are for comments&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;printing-variables-and-regions&quot;&gt;Printing variables and regions&lt;/h3&gt;
+
+&lt;p&gt;In Drupal 7 we render content like so:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;render&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;sidebar&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt; &lt;span class=&quot;cp&quot;&gt;?&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Printing variables using Twig in D8 is as easy as including them in the double curly brace delimiter.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// In page--front.html.twig
+// Print the sidebar region.
+
+&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;sidebar&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;…unless there are special characters in the variable name. If that’s the case and you see an error when using the syntax above, you can use Twig’s subscript syntax, which should look pretty familiar to Drupalers:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// In page--front.html.twig
+// Print the page type.
+
+&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;#type&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This will be more useful when debugging. The Drupal core base themes include lists of available variables and regions in the DocBlock of their template files, or you can print variables to the page via Twig’s debug mode (more on that below) to see what’s available to you.&lt;/p&gt;
+
+&lt;h3 id=&quot;filters-and-functions&quot;&gt;Filters and functions&lt;/h3&gt;
+
+&lt;p&gt;Twig comes with many built-in &lt;a href=&quot;http://twig.sensiolabs.org/doc/filters/index.html&quot;&gt;filters&lt;/a&gt; that variables are passed to via the pipe character. These filters do many of the things that PHP functions would have in previous Drupal versions. One example is the date filter:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// Format the post date.
+
+&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;published&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;date(&quot;Y-m-d&quot;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;There are also &lt;a href=&quot;https://www.drupal.org/node/2357633&quot;&gt;Drupal-specific Twig filters&lt;/a&gt;, such as &lt;code class=&quot;highlighter-rouge&quot;&gt;t&lt;/code&gt; which runs the string through the &lt;code class=&quot;highlighter-rouge&quot;&gt;t()&lt;/code&gt; function.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// Run an ARIA label through t()
+
+&amp;lt;nav class=&quot;tabs&quot; role=&quot;navigation&quot; aria-label=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Tabs&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot;&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;By the way, &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute&quot;&gt;ARIA labels&lt;/a&gt; are new in Drupal 8 too!&lt;/p&gt;
+
+&lt;p&gt;In addition to filters, Twig provides a range of &lt;a href=&quot;http://twig.sensiolabs.org/doc/functions/index.html&quot;&gt;functions&lt;/a&gt; that are also used within the double curly brace delimiters.&lt;/p&gt;
+
+&lt;h3 id=&quot;tags&quot;&gt;Tags&lt;/h3&gt;
+
+&lt;p&gt;Control flow and other &lt;a href=&quot;http://twig.sensiolabs.org/doc/tags/set.html&quot;&gt;tags&lt;/a&gt; are also supported in Twig. One of my favorite things about templating languages is how easy it is to execute &lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;/code&gt; statements and &lt;code class=&quot;highlighter-rouge&quot;&gt;for&lt;/code&gt; loops. &lt;a href=&quot;https://github.com/savaslabs/savaslabs.github.io&quot;&gt;Savas&lt;/a&gt; uses Jekyll for our company website and the Liquid templating language makes it easy to loop through a list of data points, blog posts, projects, etc. and print them to a page rather than writing out all of the HTML. In Drupal, we’ll use the &lt;code class=&quot;highlighter-rouge&quot;&gt;if&lt;/code&gt; statement quite often.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// From Bartik&#39;s page.html.twig
+// If there are tabs, output them.
+
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tabs&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+  &amp;lt;nav class=&quot;tabs&quot; role=&quot;navigation&quot; aria-label=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Tabs&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot;&amp;gt;
+    &lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;tabs&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+  &amp;lt;/nav&amp;gt;
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;endif&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Another useful tag is &lt;code class=&quot;highlighter-rouge&quot;&gt;set&lt;/code&gt;, which allows you to set and use variables throughout the template. In the following example, the variable &lt;code class=&quot;highlighter-rouge&quot;&gt;heading_id&lt;/code&gt; is set and then used as the &lt;code class=&quot;highlighter-rouge&quot;&gt;aria-labelledby&lt;/code&gt; attribute. Note that the Twig concatenation character &lt;code class=&quot;highlighter-rouge&quot;&gt;~&lt;/code&gt; is used, and the string ‘-menu’ is passed through the &lt;code class=&quot;highlighter-rouge&quot;&gt;clean_id&lt;/code&gt; filter.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// From Classy&#39;s block--system-menu-block.html.twig
+
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;heading_id&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;attributes.id&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;~&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;-menu&#39;&lt;/span&gt;|clean_id&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&amp;lt;nav&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;attributes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;addClass&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;classes&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt; role=&quot;navigation&quot; aria-labelledby=&quot;&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;heading_id&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;&quot;&amp;gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;coding-standards&quot;&gt;Coding standards&lt;/h3&gt;
+
+&lt;p&gt;Since this is new to some Drupalers, take a moment to check out the &lt;a href=&quot;https://www.drupal.org/node/1823416&quot;&gt;coding standards&lt;/a&gt; for Twig.&lt;/p&gt;
+
+&lt;h2 id=&quot;debugging-with-twig&quot;&gt;Debugging with Twig&lt;/h2&gt;
+
+&lt;p&gt;Twig comes with a highly useful debug feature that outputs helpful HTML comments and allows you to code without having to clear the cache constantly, but it doesn’t work out of the box. We’re going to turn on that feature and disable the several layers of caching that require developers to clear the cache every time they make a change in a template file.&lt;/p&gt;
+
+&lt;p&gt;To enable debug mode and turn off caching, we need to do 3 things:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Turn on Twig’s debug mode&lt;/li&gt;
+  &lt;li&gt;Turn on Twig auto reload, meaning that Twig templates are automatically recompiled when the source code is changed&lt;/li&gt;
+  &lt;li&gt;Disable Drupal’s render cache&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Note that one thing we do NOT need to do, surprisingly, is turn off Twig caching - turning on auto reload is enough.&lt;/p&gt;
+
+&lt;p&gt;If you open &lt;code class=&quot;highlighter-rouge&quot;&gt;default.services.yml&lt;/code&gt; located in &lt;code class=&quot;highlighter-rouge&quot;&gt;sites/default&lt;/code&gt;, you’ll see some &lt;code class=&quot;highlighter-rouge&quot;&gt;twig.config&lt;/code&gt; options where you can enable Twig debugging auto reload. I’m going to use this syntax but in a different file because I’m using a local settings file.&lt;/p&gt;
+
+&lt;p&gt;I created &lt;code class=&quot;highlighter-rouge&quot;&gt;settings.local.php&lt;/code&gt; by making copy of &lt;code class=&quot;highlighter-rouge&quot;&gt;example.settings.local.php&lt;/code&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;sites&lt;/code&gt;, moving it to &lt;code class=&quot;highlighter-rouge&quot;&gt;sites/default&lt;/code&gt; and renaming it. I then opened up &lt;code class=&quot;highlighter-rouge&quot;&gt;settings.local.php&lt;/code&gt; and customized the &lt;code class=&quot;highlighter-rouge&quot;&gt;$databases[&#39;default&#39;][&#39;default&#39;]&lt;/code&gt; array.&lt;/p&gt;
+
+&lt;p&gt;To get Drupal to recognize my local settings file, I opened &lt;code class=&quot;highlighter-rouge&quot;&gt;settings.php&lt;/code&gt; and uncommented the last 3 lines:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;file_exists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;__DIR__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;/settings.local.php&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;include&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;__DIR__&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;/settings.local.php&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;In &lt;code class=&quot;highlighter-rouge&quot;&gt;settings.local.php&lt;/code&gt; we’ll see:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;/**
+ * Enable local development services.
+ */&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$settings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;container_yamls&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;DRUPAL_ROOT&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;.&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;/sites/development.services.yml&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This means we need to head over to &lt;code class=&quot;highlighter-rouge&quot;&gt;sites&lt;/code&gt; and edit &lt;code class=&quot;highlighter-rouge&quot;&gt;development.services.yml&lt;/code&gt; to change our local development services. I added these lines to this file to enlable debug mode and auto reload:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;s&quot;&gt;parameters&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;twig.config&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;debug&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;auto-reload&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Great, we’ve completed steps 1 and 2. Fun fact: step 3 is already complete too! In &lt;code class=&quot;highlighter-rouge&quot;&gt;settings.local.php&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;/**
+ * Disable the render cache (this includes the page cache).
+ *
+ * This setting disables the render cache by using the Null cache back-end
+ * defined by the development.services.yml file above.
+ *
+ * Do not use this setting until after the site is installed.
+ */&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$settings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;cache&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;bins&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;render&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;cache.backend.null&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;So by using the local settings file we’ve already disabled the render cache.&lt;/p&gt;
+
+&lt;p&gt;Now, reload your site and you should see HTML comments in your browser’s code inspector with lots of helpful info: which theme hook is being implemented, theme hook suggestions (i.e. how to override the current theme hook), and which template file is being output. You can also make changes to your source code and simply refresh the page to see your changes rather than constantly clearing the cache.&lt;/p&gt;
+
+&lt;h3 id=&quot;where-my-variables-at&quot;&gt;Where my variables at?&lt;/h3&gt;
+&lt;p&gt;One useful function that comes with Twig is &lt;code class=&quot;highlighter-rouge&quot;&gt;dump()&lt;/code&gt;. This function works once you’ve enabled Twig’s debug mode and can be entered into any template file.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// Print out all variables on the page.
+
+&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dump&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+
+
+// Print the page&#39;s base path.
+
+&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;dump&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;base_path&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;dump()&lt;/code&gt; is great, but it outputs a rather unwieldy array.&lt;/p&gt;
+
+&lt;p&gt;&lt;img class=&quot;blog-image-large&quot; src=&quot;/assets/img/blog/dump-output.png&quot; alt=&quot;Screenshot of dump function output.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Enter the beloved Devel module and the new Devel Kint module. Kint is to Drupal 8 what krumo was to Drupal 7. Once Devel and Devel Kint are installed, you can use &lt;code class=&quot;highlighter-rouge&quot;&gt;kint()&lt;/code&gt; in place of &lt;code class=&quot;highlighter-rouge&quot;&gt;dump()&lt;/code&gt; for a nice expandable array.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;// In page--front.html.twig
+// Print out all variables on the page.
+
+&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;kint&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;()&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;img class=&quot;blog-image-xl&quot; src=&quot;/assets/img/blog/kint-output.png&quot; alt=&quot;Screenshot of kint function output.&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Ahh, much better!&lt;/p&gt;
+
+&lt;h2 id=&quot;further-reading&quot;&gt;Further reading:&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Start with Drupal.org’s &lt;a href=&quot;https://www.drupal.org/theme-guide/8&quot;&gt;theming guide&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Check out sqndr’s excellent &lt;a href=&quot;http://d8.sqndr.com/&quot;&gt;Drupal 8 theming guide&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Drupalize Me’s &lt;a href=&quot;https://drupalize.me/blog/201405/lets-debug-twig-drupal-8&quot;&gt;post&lt;/a&gt; about debugging Twig has some detailed information about &lt;code class=&quot;highlighter-rouge&quot;&gt;dump()&lt;/code&gt;, devel and kint. Be aware that some of the information in that post on configuring Twig is out of date.&lt;/li&gt;
+&lt;/ul&gt;
+
+    &lt;hr&gt;
+
+    
+      &lt;div class=&quot;post-comments&quot;&gt;
+  
+    &lt;div class=&quot;expander&quot;&gt;
+      &lt;a href=&quot;javascript:void(0)&quot; id=&quot;js-expander-trigger&quot; class=&quot;expander-trigger expander-hidden&quot;&gt;Comments!&lt;/a&gt;
+      &lt;div id=&quot;js-expander-content&quot; class=&quot;expander-content&quot;&gt;
+        &lt;!-- If there are existing comments, output them here. --&gt;
+        &lt;div id=&quot;post-comments&quot; class=&quot;post-comments&quot;&gt;&lt;/div&gt;
+        &lt;!-- New comment form --&gt;
+        &lt;form id=&quot;comment-form&quot;&gt;
+          &lt;h4&gt;Leave a comment&lt;/h4&gt;
+          &lt;div class=&quot;comment-name&quot;&gt;
+            &lt;p&gt;Name&lt;/p&gt; &lt;input type=&#39;text&#39; name=&#39;name&#39; id=&#39;name&#39; required /&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;comment-email&quot;&gt;
+            &lt;p&gt;Email&lt;/p&gt; &lt;input type=&#39;email&#39; name=&#39;email&#39; id=&#39;email&#39; required /&gt;
+            &lt;p class=&quot;email-disclaimer&quot;&gt;Savas will never sell your email address or spam you.&lt;/p&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;p&gt;Comment&lt;/p&gt;
+          &lt;textarea name=&#39;comment&#39; id=&#39;comment&#39; required&gt;&lt;/textarea&gt;
+          &lt;p class=&quot;hint below-textarea&quot;&gt;Plain text format only please.&lt;/p&gt;
+
+          &lt;input type=&#39;hidden&#39; name=&#39;slug&#39; id=&#39;slug&#39; value=&#39;/2015/06/10/d8-theming-basics.html&#39; /&gt;
+          &lt;input type=&#39;text&#39; name=&#39;url&#39; id=&#39;url&#39; /&gt;
+
+          &lt;div class=&#39;are-you-human&#39;&gt;
+            &lt;div class=&#39;are-you-human-owl&#39;&gt;
+              &lt;img src=&quot;/assets/img/owl.png&quot; alt=&quot;Savas logo&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&#39;are-you-human-field&#39;&gt;
+              &lt;p&gt;What type of animal is the Savas logo?&lt;/p&gt;
+              &lt;input type=&#39;text&#39; name=&#39;nocaptcha&#39; id=&#39;nocaptcha&#39; class=&#39;nocaptcha&#39;&gt;
+              &lt;p class=&quot;hint&quot;&gt;Hint: 3 letters long, starts with an &#39;o&#39; and ends with an &#39;l&#39;.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;input type=&#39;submit&#39; value=&#39;Submit&#39; id=&#39;submit&#39; class=&quot;submit-comment&quot;/&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+  &lt;hr&gt;
+&lt;/div&gt;
+
+    
+    &lt;div class=&quot;post-bottom&quot;&gt;
+  &lt;div class=&quot;post-meta&quot;&gt;
+    &lt;h4&gt;About the author&lt;/h4&gt;
+    
+      &lt;a href=&quot;/team/anne-tomasevich&quot;&gt;
+        &lt;img src=&quot;/assets/img/team/anne-tomasevich.jpg&quot; alt=&quot;Anne Tomasevich&quot;&gt;
+      &lt;/a&gt;
+      &lt;p class=&quot;post-author-desc&quot;&gt;Anne is a developer at Savas Labs, focused on front-end technologies and user experience.&lt;/p&gt;
+    
+  &lt;/div&gt;
+    &lt;!-- Once we have more content, change this to posts related by tag --&gt;
+  &lt;div class=&quot;post-related flex-container&quot;&gt;
+    &lt;h4&gt;Recent posts by Savas&lt;/h4&gt;
+    &lt;div class=&quot;cards&quot;&gt;
+      
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/22/user-testing.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Usability Testing - Our Process and Favorite Practices
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 22, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;Our approach to designing, conducting, and learning from user testing and other analyses.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/16/using-xhprof.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Using XHProf to profile your Drupal module
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 16, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;A case study of using XHProf to profile a Drupal module.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/15/git-merge-conflict-strategies.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Strategies and tools for resolving Git merge conflicts
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 15, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;An overview of strategies and tools I like to use when I encounter conflicts during merges.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;div class=&quot;previous-next-links&quot;&gt;
+  &lt;div class=&quot;next&quot;&gt;
+    
+      &lt;a href=&quot;/2015/06/23/a-man-a-plan-a-canal-a-savas.html&quot;&gt;&lt;i class=&quot;fa fa-long-arrow-left &quot;&gt;&lt;/i&gt; A man a plan a canal a... Savas!&lt;/a&gt;
+    
+  &lt;/div&gt;
+  &lt;div class=&quot;previous&quot;&gt;
+    
+      &lt;a href=&quot;/2015/05/25/manage-geojson.html&quot;&gt; Managing GeoJSON data using GDAL &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+  &lt;/article&gt;
+
+&lt;/div&gt;
+",
+    "sourceOrganization": "Savas",
+    "inLanguage": "en-US",
+    "dateCreated": "2015-06-10 00:00:00 +0000",
+    "datePublished": "2015-06-10 00:00:00 +0000",
+    "url": "/2015/06/10/d8-theming-basics.html"
+  }
+</script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-61514316-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  
+
+  
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+
+    <!-- Savas logo. -->
+    <a href="/" class="logo">
+        <img src="/assets/img/logo.png" alt="Savas logo">
+    </a>
+
+    <!-- Mobile menu button. -->
+    <a href="/" id="js-mobile-menu" class="navigation-menu-button">MENU</a>
+
+    <!-- Main menu. -->
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+
+        <!-- Loop through nav items in config.yml. -->
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  more">
+            <a href="javascript:void(0)">Who we are</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+
+              <ul class="submenu">
+                
+
+                  <!-- Assign active nav item class. -->
+                  
+                  
+
+                  <li class="nav-link ">
+                    <a href="/team">Team</a>
+                  </li>
+                
+
+                  <!-- Assign active nav item class. -->
+                  
+                  
+
+                  <li class="nav-link ">
+                    <a href="/mission-and-values">Mission & values</a>
+                  </li>
+                
+              </ul>
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/services">Services</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/work">Our work</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/blog">Blog</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/contact">Contact</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        
+
+
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">Drupal 8 Theming Basics</h1>
+    <p>By <a href="/team/anne-tomasevich">Anne Tomasevich</a></p>
+    <p class="centerdot">&centerdot; </p>
+    <p>Jun 10, 2015 </p><br>
+    <i class="fa fa-tags"></i><p><a href="/blog/tag/drupal8/">Drupal 8</a>, <a href="/blog/tag/drupal-planet/">Drupal Planet</a>, <a href="/blog/tag/theming/">Theming</a>, <a href="/blog/tag/drupal/">Drupal</a></p>
+    
+    <div><p><span id="comment-count"></span></p></div>
+    
+    
+  </header>
+
+  
+
+  <article class="post-content">
+    <p>Theming in Drupal 8 means a lot of changes for current Drupalers and a lot of awesome stuff for everyone. In this post I’ll cover:</p>
+
+<ul>
+  <li>What’s changing</li>
+  <li>The positives and negatives of these changes</li>
+  <li>How to create a custom theme in D8</li>
+  <li>Twig basics</li>
+  <li>Twig debugging</li>
+</ul>
+
+<h2 id="whats-new">What’s new?</h2>
+
+<p>Too much to list here, but here are some highlights:</p>
+
+<ul>
+  <li><a href="http://twig.sensiolabs.org/documentation">Twig</a>, a template engine by SensioLabs, is used inside template files in lieu of PHP</li>
+  <li>Responsive design elements are included by default</li>
+  <li>Breakpoints can be set and used across modules and themes</li>
+  <li>Support for IE8 and below is dropped meaning the use of jQuery 2.0, HTML5, and CSS3 (including pseudo selectors) are now supported</li>
+  <li>Classy, a new base theme, is introduced</li>
+  <li>CSS: far fewer IDs are used, default classes are no longer in core but are moved to Classy, CSS file structure now uses SMACSS and class names follow the BEM format</li>
+  <li>CSS and JS files are attached to pages differently</li>
+  <li><code class="highlighter-rouge">template.php</code> becomes the slightly better-named <code class="highlighter-rouge">[theme-name].theme</code>. Maybe we’ll finally get <code class="highlighter-rouge">theme.php</code> in Drupal 9?</li>
+</ul>
+
+<p>Check out Drupal’s <a href="https://www.drupal.org/list-changes/published/drupal?keywords_description=&amp;to_branch=&amp;version=&amp;created_op=%3E%3D&amp;created%5Bvalue%5D=&amp;created%5Bmin%5D=&amp;created%5Bmax%5D=&amp;impacts%5B%5D=3">change log</a> for a comprehensive list of changes.</p>
+
+<h2 id="why-all-the-changes">Why all the changes?</h2>
+
+<p>Though the theming layer in Drupal 8 is quite different from Drupal 7 and will require some relearning, these changes come with great improvements, including:</p>
+
+<ul>
+  <li>Fewer Drupal-specific conventions and more popular, well-documented frameworks (such as Twig), meaning non-Drupalers can jump in much more quickly. Let’s face it - Drupal 7 theming has a major learning curve, which can keep developers and designers from using Drupal at all.</li>
+  <li>Template files are more secure since they no longer contain PHP code (thanks to Twig). Sanders at <a href="http://d8.sqndr.com/">d8.sqndr.com</a> offers this nice/scary example of PHP code that could be executed in a Drupal 7 template file:</li>
+</ul>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// This really shouldn’t be allowed to work, and it won’t in D8.
+  <span class="cp">&lt;?php</span> <span class="nx">db_query</span><span class="p">(</span><span class="s1">'DROP TABLE {users}'</span><span class="p">);</span> <span class="cp">?&gt;</span>
+</code></pre>
+</div>
+
+<ul>
+  <li>Even more security: text is automatically escaped in Twig, meaning a lower chance of XSS attacks.</li>
+  <li>D8 themers don’t need to know PHP to whip up a theme.</li>
+  <li>Separation of logic from appearance, leading to more modular (reusable) code.</li>
+  <li>Speaking of more modular code, Twig introduces <a href="http://twig.sensiolabs.org/doc/templates.html#template-inheritance">template inheritance</a></li>
+  <li>Lack of browser support for IE8 and below means we get to use HTML5, CSS3, and modern jQuery libraries</li>
+  <li>More semantic CSS class names means leaner CSS and a more readable DOM</li>
+  <li>A general trend towards more extendable, modular, well-organized, better-performing code</li>
+</ul>
+
+<h2 id="okay-are-there-any-disadvantages">Okay, are there any disadvantages?</h2>
+
+<p>At the time of writing this post, the toughest things about theming in Drupal 8 for me were:</p>
+
+<ul>
+  <li>Contributed themes and modules not having their 8.x branches ready. So far I haven’t seen any contributed themes that are truly usable with Drupal 8. This will surely change soon, and it’s good motivation to submit patches in the meantime.</li>
+  <li>Lack of documentation online. When building my first D8 site, documentation often didn’t exist for the problem I was having, it existed but was marked as out of date, or it was out of date but NOT marked as such. This was definitely a challenge! I’d recommend taking anything you read with a grain of salt (including this).</li>
+</ul>
+
+<p>Fortunately both of these problems will resolve as Drupal 8 gets closer to release.</p>
+
+<h2 id="creating-a-custom-theme-in-drupal-8">Creating a custom theme in Drupal 8</h2>
+<p>So, now that we’ve covered some reasons that D8 theming will be awesome and we’re feeling motivated to submit some patches and write some documentation, let’s create a custom theme using Classy as a base.</p>
+
+<p>The first thing to note is the different file structure. The <code class="highlighter-rouge">core</code> folder now holds all the the modules and themes that ship with Drupal, and contributed and custom modules and themes are now found respectively in the <code class="highlighter-rouge">modules</code> and <code class="highlighter-rouge">themes</code> folders in the Drupal document root (mine is called <code class="highlighter-rouge">docroot</code>).</p>
+
+<p>Let’s create a folder for our new theme. Savas is working on a Drupal 8 mapping project, so I’ll use that as an example. Our theme is called “Mappy,” so we’ve created a folder for our theme within <code class="highlighter-rouge">themes/custom</code>.</p>
+
+<p><img class="blog-image-xl" src="/assets/img/blog/theme-folder-location.png" alt="Screenshot of D8 file structure." /></p>
+
+<p>The first file we’ll want to create is <code class="highlighter-rouge">[theme-name].info.yml</code>, which replaces D7’s <code class="highlighter-rouge">[theme-name].info</code> file. I’ve created <code class="highlighter-rouge">mappy.info.yml</code>, shown below. If you’re new to YAML, Symfony has a <a href="http://symfony.com/doc/current/components/yaml/yaml_format.html#collections">nice writeup</a> on syntax. Pay close attention to the whitespace - for example, a space is required after the colon in key-value pairs.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1"># mappy.info.yml</span>
+<span class="s">name</span><span class="pi">:</span> <span class="s">Mappy</span>
+<span class="s">type</span><span class="pi">:</span> <span class="s">theme</span>
+<span class="s">description</span><span class="pi">:</span> <span class="s1">'</span><span class="s">D8</span><span class="nv"> </span><span class="s">Theme</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">basic</span><span class="nv"> </span><span class="s">leaflet</span><span class="nv"> </span><span class="s">site.'</span>
+<span class="s">core</span><span class="pi">:</span> <span class="s">8.x</span>
+<span class="s">base theme</span><span class="pi">:</span> <span class="s">classy</span>
+<span class="s">libraries</span><span class="pi">:</span>
+ <span class="pi">-</span> <span class="s">mappy/global-styling</span>
+ <span class="pi">-</span> <span class="s">mappy/leaflet</span>
+<span class="s">regions</span><span class="pi">:</span>
+  <span class="s">navbar</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Top</span><span class="nv"> </span><span class="s">Navigation</span><span class="nv"> </span><span class="s">Bar'</span>
+  <span class="s">content</span><span class="pi">:</span> <span class="s">Content</span>
+  <span class="s">sidebar</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Sidebar'</span>
+  <span class="s">footer</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Footer'</span>
+</code></pre>
+</div>
+
+<p>Let’s knock out the easy ones:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="s">name</span><span class="pi">:</span> <span class="s">Mappy</span>
+<span class="s">type</span><span class="pi">:</span> <span class="s">theme</span>
+<span class="s">description</span><span class="pi">:</span> <span class="s1">'</span><span class="s">D8</span><span class="nv"> </span><span class="s">Theme</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">basic</span><span class="nv"> </span><span class="s">leaflet</span><span class="nv"> </span><span class="s">site.'</span>
+<span class="s">core</span><span class="pi">:</span> <span class="s">8.x</span>
+</code></pre>
+</div>
+
+<p>This information tells Drupal that we’re dealing with a Drupal 8 theme and gives Drupal a name and description to display in the admin UI. Note that all of these items are required for your theme to be installable.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="s">regions</span><span class="pi">:</span>
+  <span class="s">navbar</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Top</span><span class="nv"> </span><span class="s">Navigation</span><span class="nv"> </span><span class="s">Bar'</span>
+  <span class="s">content</span><span class="pi">:</span> <span class="s">Content</span> <span class="c1"># required!</span>
+  <span class="s">sidebar</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Sidebar'</span>
+  <span class="s">footer</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Footer'</span>
+</code></pre>
+</div>
+
+<p>This hasn’t changed much from Drupal 7. Don’t forget that the <code class="highlighter-rouge">Content</code> region is required. You can also forego declaring regions if you want to use Drupal’s <a href="https://www.drupal.org/node/2469113">default regions.</a></p>
+
+<h3 id="classy-the-new-base-theme">Classy, the new base theme</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="s">base theme</span><span class="pi">:</span> <span class="s">classy</span>
+</code></pre>
+</div>
+
+<p>Classy is a brand new base theme that ships with Drupal core. All CSS classes were moved out of core template files and into Classy’s as a way to a) contain, minimize, and organize default classes and b) give developers the option of not using Drupal’s default classes without having to undo core. One can simply choose not to use Classy as a base theme.</p>
+
+<p>Additionally, Classy’s classes follow the BEM convention, making them less generic and more meaningful. Check out <a href="http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/">this article</a> for a great introduction to BEM.</p>
+
+<h3 id="libraries">Libraries</h3>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="s">libraries</span><span class="pi">:</span>
+ <span class="pi">-</span> <span class="s">mappy/global-styling</span>
+ <span class="pi">-</span> <span class="s">mappy/leaflet</span>
+</code></pre>
+</div>
+
+<p>In Drupal 8, assets can be added to pages in a few different ways: globally, per-template, and per-page. We’ve chosen to add our CSS and JS globally since this is a small site and the same relatively lightweight assets are used on almost every page.</p>
+
+<p>In the <code class="highlighter-rouge">mappy.info.yml</code> file, I’ve listed two libraries. These correspond to items in my <code class="highlighter-rouge">mappy.libraries.yml</code> file, which lives in the root of my theme directory. No matter how you’re including CSS or JS files on a page, you’ll need to define them in your <code class="highlighter-rouge">[theme-name].libraries.yml</code> file.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1"># mappy.libraries.yml</span>
+<span class="s">global-styling</span><span class="pi">:</span>
+  <span class="s">css</span><span class="pi">:</span>
+    <span class="s">theme</span><span class="pi">:</span>
+      <span class="s">css/styles.css</span><span class="pi">:</span> <span class="pi">{}</span>
+
+<span class="s">leaflet</span><span class="pi">:</span>
+  <span class="s">css</span><span class="pi">:</span>
+    <span class="s">theme</span><span class="pi">:</span>
+      <span class="s">css/leaflet.css</span><span class="pi">:</span> <span class="pi">{}</span>
+  <span class="s">js</span><span class="pi">:</span>
+    <span class="s">js/leaflet.js</span><span class="pi">:</span> <span class="pi">{}</span>
+    <span class="s">js/map.js</span><span class="pi">:</span> <span class="pi">{}</span>
+  <span class="s">dependencies</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">core/jquery</span>
+</code></pre>
+</div>
+
+<p>As you may have guessed, <code class="highlighter-rouge">global-styling</code> is a library that applies site-wide styles. <code class="highlighter-rouge">leaflet</code> is the leaflet library, which consists of <code class="highlighter-rouge">leaflet.css</code> and <code class="highlighter-rouge">leaflet.js</code>, plus our custom file <code class="highlighter-rouge">map.js</code>. jQuery is no longer loaded on every page in Drupal 8, so we have to explicitly include it when it’s required.</p>
+
+<p>By listing these two libraries in <code class="highlighter-rouge">mappy.info.yml</code> we ensure that these assets will be included on every page of our site. However, this is typically not the best practice for larger sites since these files can seriously affect performance. <a href="https://www.drupal.org/developing/api/8/assets">This page</a> on Drupal.org details how to attach assets to pages via hooks so that CSS and JS files are only loaded where they’re needed.</p>
+
+<h3 id="breakpoints">Breakpoints</h3>
+<p>Another new YAML file, <code class="highlighter-rouge">[theme-name].breakpoints.yml</code>, allows developers to create standard breakpoints to be used by modules and themes across the site. You can set custom breakpoints by defining them in this file. Below is our breakpoints file, which also resides in the root of our theme. Note that we simply adapted the breakpoints file from the Bartik theme.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c1"># mappy.breakpoints.yml</span>
+<span class="s">mappy.mobile</span><span class="pi">:</span>
+  <span class="s">label</span><span class="pi">:</span> <span class="s">mobile</span>
+  <span class="s">mediaQuery</span><span class="pi">:</span> <span class="s1">'</span><span class="s">(min-width:</span><span class="nv"> </span><span class="s">0px)'</span>
+  <span class="s">weight</span><span class="pi">:</span> <span class="s">2</span>
+  <span class="s">multipliers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">1x</span>
+<span class="s">mappy.narrow</span><span class="pi">:</span>
+  <span class="s">label</span><span class="pi">:</span> <span class="s">narrow</span>
+  <span class="s">mediaQuery</span><span class="pi">:</span> <span class="s1">'</span><span class="s">all</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">(min-width:</span><span class="nv"> </span><span class="s">560px)</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">(max-width:</span><span class="nv"> </span><span class="s">850px)'</span>
+  <span class="s">weight</span><span class="pi">:</span> <span class="s">1</span>
+  <span class="s">multipliers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">1x</span>
+<span class="s">mappy.wide</span><span class="pi">:</span>
+  <span class="s">label</span><span class="pi">:</span> <span class="s">wide</span>
+  <span class="s">mediaQuery</span><span class="pi">:</span> <span class="s1">'</span><span class="s">all</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">(min-width:</span><span class="nv"> </span><span class="s">851px)'</span>
+  <span class="s">weight</span><span class="pi">:</span> <span class="s">0</span>
+  <span class="s">multipliers</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">1x</span>
+</code></pre>
+</div>
+
+<p>Important tip: Once you add a breakpoints file, you’ll need to uninstall and reinstall your theme to expose these breakpoints in the admin UI.</p>
+
+<p>With these files set up, you now have a working custom theme!</p>
+
+<h2 id="creating-template-files-with-twig">Creating template files with Twig</h2>
+
+<p>In our custom theme’s current state, we’re using Classy’s template files as-is. If we want to customize any of these templates, we need to override them with Twig files located in our custom theme’s <code class="highlighter-rouge">templates</code> directory.</p>
+
+<p><a href="http://twig.sensiolabs.org/doc/templates.html">Twig</a> is a template engine with syntax similar to Django, Jinja, and Liquid. It simplifies template creation with clean syntax and useful build-in filters, functions, and tags. In a Drupal template file (now with the extention .html.twig), anything between <code class="highlighter-rouge"><span class="p">{</span><span class="err">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">}</span><span class="err">}</span></code> or <code class="highlighter-rouge"><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">%</span><span class="p">}</span></code> or <code class="highlighter-rouge"><span class="p">{</span><span class="err">#</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">#</span><span class="p">}</span></code> is Twig.</p>
+
+<ul>
+  <li><code class="highlighter-rouge"><span class="p">{</span><span class="err">{</span><span class="w"> </span><span class="err">These</span><span class="w"> </span><span class="p">}</span><span class="err">}</span></code> are for printing content, either explicitly or via functions</li>
+  <li><code class="highlighter-rouge"><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="err">These</span><span class="w"> </span><span class="err">%</span><span class="p">}</span></code> are for executing statements</li>
+  <li><code class="highlighter-rouge"><span class="p">{</span><span class="err">#</span><span class="w"> </span><span class="err">These</span><span class="w"> </span><span class="err">#</span><span class="p">}</span></code> are for comments</li>
+</ul>
+
+<h3 id="printing-variables-and-regions">Printing variables and regions</h3>
+
+<p>In Drupal 7 we render content like so:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?php</span> <span class="k">print</span> <span class="nx">render</span><span class="p">(</span><span class="nv">$page</span><span class="p">[</span><span class="s1">'sidebar'</span><span class="p">]);</span> <span class="cp">?&gt;</span>
+</code></pre>
+</div>
+
+<p>Printing variables using Twig in D8 is as easy as including them in the double curly brace delimiter.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// In page--front.html.twig
+// Print the sidebar region.
+
+<span class="p">{{</span><span class="w"> </span><span class="nv">page</span><span class="p">.</span><span class="nv">sidebar</span><span class="w"> </span><span class="p">}}</span>
+
+</code></pre>
+</div>
+
+<p>…unless there are special characters in the variable name. If that’s the case and you see an error when using the syntax above, you can use Twig’s subscript syntax, which should look pretty familiar to Drupalers:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// In page--front.html.twig
+// Print the page type.
+
+<span class="p">{{</span><span class="w"> </span><span class="nv">page</span><span class="p">[</span><span class="s1">'#type'</span><span class="p">]</span><span class="w"> </span><span class="p">}}</span>
+
+</code></pre>
+</div>
+
+<p>This will be more useful when debugging. The Drupal core base themes include lists of available variables and regions in the DocBlock of their template files, or you can print variables to the page via Twig’s debug mode (more on that below) to see what’s available to you.</p>
+
+<h3 id="filters-and-functions">Filters and functions</h3>
+
+<p>Twig comes with many built-in <a href="http://twig.sensiolabs.org/doc/filters/index.html">filters</a> that variables are passed to via the pipe character. These filters do many of the things that PHP functions would have in previous Drupal versions. One example is the date filter:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// Format the post date.
+
+<span class="p">{{</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">published</span><span class="p">|</span><span class="nf">date("Y-m-d")</span><span class="w"> </span><span class="p">}}</span>
+
+</code></pre>
+</div>
+
+<p>There are also <a href="https://www.drupal.org/node/2357633">Drupal-specific Twig filters</a>, such as <code class="highlighter-rouge">t</code> which runs the string through the <code class="highlighter-rouge">t()</code> function.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// Run an ARIA label through t()
+
+&lt;nav class="tabs" role="navigation" aria-label="<span class="p">{{</span><span class="w"> </span><span class="s1">'Tabs'</span><span class="p">|</span><span class="nf">t</span><span class="w"> </span><span class="p">}}</span>"&gt;
+
+</code></pre>
+</div>
+
+<p>By the way, <a href="https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute">ARIA labels</a> are new in Drupal 8 too!</p>
+
+<p>In addition to filters, Twig provides a range of <a href="http://twig.sensiolabs.org/doc/functions/index.html">functions</a> that are also used within the double curly brace delimiters.</p>
+
+<h3 id="tags">Tags</h3>
+
+<p>Control flow and other <a href="http://twig.sensiolabs.org/doc/tags/set.html">tags</a> are also supported in Twig. One of my favorite things about templating languages is how easy it is to execute <code class="highlighter-rouge">if</code> statements and <code class="highlighter-rouge">for</code> loops. <a href="https://github.com/savaslabs/savaslabs.github.io">Savas</a> uses Jekyll for our company website and the Liquid templating language makes it easy to loop through a list of data points, blog posts, projects, etc. and print them to a page rather than writing out all of the HTML. In Drupal, we’ll use the <code class="highlighter-rouge">if</code> statement quite often.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// From Bartik's page.html.twig
+// If there are tabs, output them.
+
+<span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">tabs</span><span class="w"> </span><span class="p">%}</span>
+  &lt;nav class="tabs" role="navigation" aria-label="<span class="p">{{</span><span class="w"> </span><span class="s1">'Tabs'</span><span class="p">|</span><span class="nf">t</span><span class="w"> </span><span class="p">}}</span>"&gt;
+    <span class="p">{{</span><span class="w"> </span><span class="nv">tabs</span><span class="w"> </span><span class="p">}}</span>
+  &lt;/nav&gt;
+<span class="p">{%</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">%}</span>
+
+</code></pre>
+</div>
+
+<p>Another useful tag is <code class="highlighter-rouge">set</code>, which allows you to set and use variables throughout the template. In the following example, the variable <code class="highlighter-rouge">heading_id</code> is set and then used as the <code class="highlighter-rouge">aria-labelledby</code> attribute. Note that the Twig concatenation character <code class="highlighter-rouge">~</code> is used, and the string ‘-menu’ is passed through the <code class="highlighter-rouge">clean_id</code> filter.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// From Classy's block--system-menu-block.html.twig
+
+<span class="p">{%</span><span class="w"> </span><span class="nt">set</span><span class="w"> </span><span class="na">heading_id</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>attributes.id<span class="w"> </span>~<span class="w"> </span><span class="s1">'-menu'</span>|clean_id<span class="w"> </span><span class="p">%}</span>
+&lt;nav<span class="p">{{</span><span class="w"> </span><span class="nv">attributes</span><span class="p">.</span><span class="nv">addClass</span><span class="err">(</span><span class="nv">classes</span><span class="err">)</span><span class="w"> </span><span class="p">}}</span> role="navigation" aria-labelledby="<span class="p">{{</span><span class="w"> </span><span class="nv">heading_id</span><span class="w"> </span><span class="p">}}</span>"&gt;
+
+</code></pre>
+</div>
+
+<h3 id="coding-standards">Coding standards</h3>
+
+<p>Since this is new to some Drupalers, take a moment to check out the <a href="https://www.drupal.org/node/1823416">coding standards</a> for Twig.</p>
+
+<h2 id="debugging-with-twig">Debugging with Twig</h2>
+
+<p>Twig comes with a highly useful debug feature that outputs helpful HTML comments and allows you to code without having to clear the cache constantly, but it doesn’t work out of the box. We’re going to turn on that feature and disable the several layers of caching that require developers to clear the cache every time they make a change in a template file.</p>
+
+<p>To enable debug mode and turn off caching, we need to do 3 things:</p>
+
+<ol>
+  <li>Turn on Twig’s debug mode</li>
+  <li>Turn on Twig auto reload, meaning that Twig templates are automatically recompiled when the source code is changed</li>
+  <li>Disable Drupal’s render cache</li>
+</ol>
+
+<p>Note that one thing we do NOT need to do, surprisingly, is turn off Twig caching - turning on auto reload is enough.</p>
+
+<p>If you open <code class="highlighter-rouge">default.services.yml</code> located in <code class="highlighter-rouge">sites/default</code>, you’ll see some <code class="highlighter-rouge">twig.config</code> options where you can enable Twig debugging auto reload. I’m going to use this syntax but in a different file because I’m using a local settings file.</p>
+
+<p>I created <code class="highlighter-rouge">settings.local.php</code> by making copy of <code class="highlighter-rouge">example.settings.local.php</code> in <code class="highlighter-rouge">sites</code>, moving it to <code class="highlighter-rouge">sites/default</code> and renaming it. I then opened up <code class="highlighter-rouge">settings.local.php</code> and customized the <code class="highlighter-rouge">$databases['default']['default']</code> array.</p>
+
+<p>To get Drupal to recognize my local settings file, I opened <code class="highlighter-rouge">settings.php</code> and uncommented the last 3 lines:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="k">if</span> <span class="p">(</span><span class="nb">file_exists</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">'/settings.local.php'</span><span class="p">))</span> <span class="p">{</span>
+  <span class="k">include</span> <span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">'/settings.local.php'</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>In <code class="highlighter-rouge">settings.local.php</code> we’ll see:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="sd">/**
+ * Enable local development services.
+ */</span>
+<span class="nv">$settings</span><span class="p">[</span><span class="s1">'container_yamls'</span><span class="p">][]</span> <span class="o">=</span> <span class="nx">DRUPAL_ROOT</span> <span class="o">.</span> <span class="s1">'/sites/development.services.yml'</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>This means we need to head over to <code class="highlighter-rouge">sites</code> and edit <code class="highlighter-rouge">development.services.yml</code> to change our local development services. I added these lines to this file to enlable debug mode and auto reload:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="s">parameters</span><span class="pi">:</span>
+  <span class="s">twig.config</span><span class="pi">:</span>
+    <span class="s">debug</span><span class="pi">:</span> <span class="s">true</span>
+    <span class="s">auto-reload</span><span class="pi">:</span> <span class="s">true</span>
+</code></pre>
+</div>
+
+<p>Great, we’ve completed steps 1 and 2. Fun fact: step 3 is already complete too! In <code class="highlighter-rouge">settings.local.php</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="sd">/**
+ * Disable the render cache (this includes the page cache).
+ *
+ * This setting disables the render cache by using the Null cache back-end
+ * defined by the development.services.yml file above.
+ *
+ * Do not use this setting until after the site is installed.
+ */</span>
+<span class="nv">$settings</span><span class="p">[</span><span class="s1">'cache'</span><span class="p">][</span><span class="s1">'bins'</span><span class="p">][</span><span class="s1">'render'</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'cache.backend.null'</span><span class="p">;</span>
+</code></pre>
+</div>
+
+<p>So by using the local settings file we’ve already disabled the render cache.</p>
+
+<p>Now, reload your site and you should see HTML comments in your browser’s code inspector with lots of helpful info: which theme hook is being implemented, theme hook suggestions (i.e. how to override the current theme hook), and which template file is being output. You can also make changes to your source code and simply refresh the page to see your changes rather than constantly clearing the cache.</p>
+
+<h3 id="where-my-variables-at">Where my variables at?</h3>
+<p>One useful function that comes with Twig is <code class="highlighter-rouge">dump()</code>. This function works once you’ve enabled Twig’s debug mode and can be entered into any template file.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// Print out all variables on the page.
+
+<span class="p">{{</span><span class="w"> </span><span class="nv">dump</span><span class="err">()</span><span class="w"> </span><span class="p">}}</span>
+
+
+// Print the page's base path.
+
+<span class="p">{{</span><span class="w"> </span><span class="nv">dump</span><span class="err">(</span><span class="nv">base_path</span><span class="err">)</span><span class="w"> </span><span class="p">}}</span>
+
+</code></pre>
+</div>
+
+<p><code class="highlighter-rouge">dump()</code> is great, but it outputs a rather unwieldy array.</p>
+
+<p><img class="blog-image-large" src="/assets/img/blog/dump-output.png" alt="Screenshot of dump function output." /></p>
+
+<p>Enter the beloved Devel module and the new Devel Kint module. Kint is to Drupal 8 what krumo was to Drupal 7. Once Devel and Devel Kint are installed, you can use <code class="highlighter-rouge">kint()</code> in place of <code class="highlighter-rouge">dump()</code> for a nice expandable array.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>// In page--front.html.twig
+// Print out all variables on the page.
+
+<span class="p">{{</span><span class="w"> </span><span class="nv">kint</span><span class="err">()</span><span class="w"> </span><span class="p">}}</span>
+
+</code></pre>
+</div>
+
+<p><img class="blog-image-xl" src="/assets/img/blog/kint-output.png" alt="Screenshot of kint function output." /></p>
+
+<p>Ahh, much better!</p>
+
+<h2 id="further-reading">Further reading:</h2>
+<ul>
+  <li>Start with Drupal.org’s <a href="https://www.drupal.org/theme-guide/8">theming guide</a></li>
+  <li>Check out sqndr’s excellent <a href="http://d8.sqndr.com/">Drupal 8 theming guide</a></li>
+  <li>Drupalize Me’s <a href="https://drupalize.me/blog/201405/lets-debug-twig-drupal-8">post</a> about debugging Twig has some detailed information about <code class="highlighter-rouge">dump()</code>, devel and kint. Be aware that some of the information in that post on configuring Twig is out of date.</li>
+</ul>
+
+    <hr>
+
+    
+      <div class="post-comments">
+  
+    <div class="expander">
+      <a href="javascript:void(0)" id="js-expander-trigger" class="expander-trigger expander-hidden">Comments!</a>
+      <div id="js-expander-content" class="expander-content">
+        <!-- If there are existing comments, output them here. -->
+        <div id="post-comments" class="post-comments"></div>
+        <!-- New comment form -->
+        <form id="comment-form">
+          <h4>Leave a comment</h4>
+          <div class="comment-name">
+            <p>Name</p> <input type='text' name='name' id='name' required /><br>
+          </div>
+
+          <div class="comment-email">
+            <p>Email</p> <input type='email' name='email' id='email' required />
+            <p class="email-disclaimer">Savas will never sell your email address or spam you.</p><br>
+          </div>
+
+          <p>Comment</p>
+          <textarea name='comment' id='comment' required></textarea>
+          <p class="hint below-textarea">Plain text format only please.</p>
+
+          <input type='hidden' name='slug' id='slug' value='/2015/06/10/d8-theming-basics.html' />
+          <input type='text' name='url' id='url' />
+
+          <div class='are-you-human'>
+            <div class='are-you-human-owl'>
+              <img src="/assets/img/owl.png" alt="Savas logo">
+            </div>
+            <div class='are-you-human-field'>
+              <p>What type of animal is the Savas logo?</p>
+              <input type='text' name='nocaptcha' id='nocaptcha' class='nocaptcha'>
+              <p class="hint">Hint: 3 letters long, starts with an 'o' and ends with an 'l'.</p>
+            </div>
+          </div>
+
+          <input type='submit' value='Submit' id='submit' class="submit-comment"/>
+        </form>
+      </div>
+    </div>
+  
+  <hr>
+</div>
+
+    
+    <div class="post-bottom">
+  <div class="post-meta">
+    <h4>About the author</h4>
+    
+      <a href="/team/anne-tomasevich">
+        <img src="/assets/img/team/anne-tomasevich.jpg" alt="Anne Tomasevich">
+      </a>
+      <p class="post-author-desc">Anne is a developer at Savas Labs, focused on front-end technologies and user experience.</p>
+    
+  </div>
+    <!-- Once we have more content, change this to posts related by tag -->
+  <div class="post-related flex-container">
+    <h4>Recent posts by Savas</h4>
+    <div class="cards">
+      
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/22/user-testing.html">
+              <div class="card-header">
+                  Usability Testing - Our Process and Favorite Practices
+              </div>
+              <div class="card-copy">
+                <p>Jun 22, 2016</p>
+                <p><p>Our approach to designing, conducting, and learning from user testing and other analyses.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/16/using-xhprof.html">
+              <div class="card-header">
+                  Using XHProf to profile your Drupal module
+              </div>
+              <div class="card-copy">
+                <p>Jun 16, 2016</p>
+                <p><p>A case study of using XHProf to profile a Drupal module.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/15/git-merge-conflict-strategies.html">
+              <div class="card-header">
+                  Strategies and tools for resolving Git merge conflicts
+              </div>
+              <div class="card-copy">
+                <p>Jun 15, 2016</p>
+                <p><p>An overview of strategies and tools I like to use when I encounter conflicts during merges.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+</div>
+
+    <div class="previous-next-links">
+  <div class="next">
+    
+      <a href="/2015/06/23/a-man-a-plan-a-canal-a-savas.html"><i class="fa fa-long-arrow-left "></i> A man a plan a canal a... Savas!</a>
+    
+  </div>
+  <div class="previous">
+    
+      <a href="/2015/05/25/manage-geojson.html"> Managing GeoJSON data using GDAL <i class="fa fa-long-arrow-right"></i></a>
+    
+  </div>
+</div>
+
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <div class="contact-block">
+  <div class="contact-block__items">
+    <h3>Interested in working with us?</h3>
+    <a href="/contact">Get in touch!</a>
+  </div>
+</div>
+    <footer class="footer" role="contentinfo">
+  <div class="footer-links">
+    <ul>
+      <li><h3>Location</h3></li>
+      <li>Savas Labs<br />
+          PMB 114<br />
+          201 W Main Street, Suite 100<br />
+          Durham, NC 27701<br /></li>
+    </ul>
+    <ul>
+      <li><h3>Around the Web</h3></li>
+      <ul>
+        <li><a href="https://github.com/savaslabs"><span class="mega-octicon octicon-mark-github"></span></a></li>
+        <li><a href="https://www.drupal.org/node/2466865"><i class="fa fa-drupal fa-lg fa-2x"></i></a></li>
+        <li><a href="https://twitter.com/savas_labs"><i class="fa fa-twitter fa-lg fa-2x"></i></a></li>
+        <li><a href="https://www.linkedin.com/company/savas-labs"><i class="fa fa-linkedin fa-lg fa-2x"></i></a></li>
+      </ul>
+    </ul>
+    <ul>
+      <li><h3>Contact</h3></li>
+      <li><a href="mailto:info@savaslabs.com">info@savaslabs.com</a></li>
+      <li>(919) 432-4660</li>
+    </ul>
+  </div>
+
+</footer>
+
+<div class="footer-copyright">
+  <p>Copyright &copy; Savas Labs 2016</p>
+</div>
+
+
+  </body>
+
+</html>

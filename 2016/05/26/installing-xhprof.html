@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <title>Installing XHProf to profile your Drupal module | Savas Labs</title>
+  
+  <meta name="description" content="XHProf is a profiling tool for PHP code – it tracks the amount of time and memory your code spends in each function call, allowing you to spot bottlenecks in...">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,400italic,700italic|PT+Serif|Bitter|Source+Sans+Pro' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/assets/styles/main.css">
+  <link rel="stylesheet" href="/assets/icons/octicons/octicons.css">
+  <link rel="canonical" href="/2016/05/26/installing-xhprof.html">
+  <link rel="alternate" type="application/rss+xml" title="Savas Labs" href="/feed.xml" />
+  <script type="text/javascript" src="/assets/js/main.js"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Durham, North Carolina",
+        "postalCode": "27701",
+        "streetAddress": "201 W Main St."
+      },
+      "description": "A full-service web agency leveraging the power of Drupal.
+",
+      "email": "info@savaslabs.com",
+      "name": "Savas",
+      "telephone": "(919) 432-4660",
+      "url": "http://savaslabs.com",
+      "logo": "http://savaslabs.com/assets/img/logo.png"
+    }
+</script>
+
+  
+  
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Installing XHProf to profile your Drupal module",
+    "about": "Step-by-step, how to install and use XHProf to profile your Drupal module.",
+    "articleBody": "
+
+
+&lt;div class=&quot;post&quot;&gt;
+  &lt;header class=&quot;post-header&quot;&gt;
+    &lt;h1 class=&quot;post-title&quot;&gt;Installing XHProf to profile your Drupal module&lt;/h1&gt;
+    &lt;p&gt;By &lt;a href=&quot;/team/tim-stallmann&quot;&gt;Tim Stallmann&lt;/a&gt;&lt;/p&gt;
+    &lt;p class=&quot;centerdot&quot;&gt;&amp;centerdot; &lt;/p&gt;
+    &lt;p&gt;May 26, 2016 &lt;/p&gt;&lt;br&gt;
+    &lt;i class=&quot;fa fa-tags&quot;&gt;&lt;/i&gt;&lt;p&gt;&lt;a href=&quot;/blog/tag/php/&quot;&gt;PHP&lt;/a&gt;, &lt;a href=&quot;/blog/tag/performance/&quot;&gt;Performance&lt;/a&gt;, &lt;a href=&quot;/blog/tag/drupal/&quot;&gt;Drupal&lt;/a&gt;, &lt;a href=&quot;/blog/tag/drupal-planet/&quot;&gt;Drupal Planet&lt;/a&gt;, &lt;a href=&quot;/blog/tag/module-development/&quot;&gt;Module Development&lt;/a&gt;&lt;/p&gt;
+    
+    &lt;div&gt;&lt;p&gt;&lt;span id=&quot;comment-count&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+    
+    
+      &lt;div class=&quot;post-featured-image&quot;&gt;
+        &lt;img class=&quot;post-hero-image&quot; src=&quot;/assets/img/blog/xhprof-callgraph.jpg&quot; alt=&quot;an XHProf callgraph&quot;&gt;
+      &lt;/div&gt;
+    
+  &lt;/header&gt;
+
+  
+
+  &lt;article class=&quot;post-content&quot;&gt;
+    &lt;p&gt;XHProf is a profiling tool for PHP code – it tracks the amount of time and memory your code spends in each function call, allowing you to spot bottlenecks in the code and identify where it’s worth spending resources on optimization. There are have been a &lt;a href=&quot;http://www.linuxjournal.com/article/7213&quot;&gt;number of PHP profilers over the years&lt;/a&gt;, and XDebug has &lt;a href=&quot;https://xdebug.org/docs/profiler&quot;&gt;a profiler as well&lt;/a&gt;, but XHProf is the first one I’ve successfully managed to configure correctly and interpret the output of.&lt;/p&gt;
+
+&lt;p&gt;I had run across a number of blog posts about using XHProf + Drupal, but never actually got it to work sucessfully for a project. Because so much of the documentation online is incomplete or out-of-date, I thought it would be useful to document my process using XHProf to profile a Drupal 8 custom module here. YMMV, but please post your thoughts/experiences in the comments!&lt;/p&gt;
+
+&lt;h3 id=&quot;how-to-find-documentation&quot;&gt;How to find documentation&lt;/h3&gt;
+
+&lt;p&gt;I find the &lt;a href=&quot;http://php.net/manual/en/book.xhprof.php&quot;&gt;php.net XHProf manual entry&lt;/a&gt; super-confusing and circular. Part of the problem is that Facebook’s original documentation for the library has since been removed from the internet and is only accessible via &lt;a href=&quot;http://web.archive.org&quot;&gt;the WayBack Machine&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If there’s only one thing you take away from this blog post, let it be: read and bookmark the WayBack machine view of the original XHProf documentation, which is at &lt;a href=&quot;http://web.archive.org/web/20110514095512/http://mirror.facebook.net/facebook/xhprof/doc.html&quot;&gt;http://web.archive.org/web/20110514095512/http://mirror.facebook.net/facebook/xhprof/doc.html&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;install-xhprof-in-a-vm&quot;&gt;Install XHProf in a VM&lt;/h3&gt;
+
+&lt;p&gt;If you’re not running DrupalVM, you’ll need to install XHProf manually via &lt;a href=&quot;https://pecl.php.net/&quot;&gt;PECL&lt;/a&gt;. On &lt;a href=&quot;http://docs.drupalvm.com/en/latest/&quot;&gt;DrupalVM&lt;/a&gt;, &lt;a href=&quot;http://docs.drupalvm.com/en/latest/extras/profile-code/#xhprof&quot;&gt;XHProf is already installed&lt;/a&gt; and you can skip to the next step.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sudo pecl install xhprof-beta&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Note that all these commands are for Ubuntu flavors of linux. If you’re on Red Hat / CentOS you’ll want to use the &lt;code class=&quot;highlighter-rouge&quot;&gt;yum&lt;/code&gt; equivalents. I had to first install the &lt;code class=&quot;highlighter-rouge&quot;&gt;php5-dev&lt;/code&gt; package to get PECL working properly:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get update
+sudo apt-get install php5-dev
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;And, if you want to view nice callgraph trees like the one below you’ll need to install the graphviz package &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo apt-get install graphviz&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/xhprof-callgraph.jpg&quot; alt=&quot;Image of a sample XHProf callgraph&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;configure-php-to-run-xhprof&quot;&gt;Configure PHP to run XHProf&lt;/h3&gt;
+
+&lt;p&gt;You need to tell PHP to enable the xhprof extension via your php.ini files. Usually these are in &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/php5/apache2/php.ini&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/php5/cli/php.ini&lt;/code&gt;. Add the following lines to the bottom of each file if they’re not there already. You will also need to create the &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/tmp/xhprof&lt;/code&gt; directory if it doesn’t already exist.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;[xhprof]&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;extension&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;xhprof.so&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;;
+; directory used by default implementation of the iXHProfRuns
+; interface (namely, the XHProfRuns_Default class) for storing
+; XHProf runs.
+;
+&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;xhprof.output_dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/var/tmp/xhprof&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Lastly, restart Apache so that the PHP config changes take effect.&lt;/p&gt;
+
+&lt;h3 id=&quot;set-up-a-path-to-view-the-xhprof-gui&quot;&gt;Set up a path to view the XHProf GUI&lt;/h3&gt;
+
+&lt;p&gt;The XHProf GUI runs off a set of HTML files in the &lt;code class=&quot;highlighter-rouge&quot;&gt;xhprof_html&lt;/code&gt; directory. If you’ve been following the install steps above, you should be able to find that directory at &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/share/php/xhprof_html&lt;/code&gt;. Now you need to set up your virtual host configuration to serve the files in the &lt;code class=&quot;highlighter-rouge&quot;&gt;xhprof_html&lt;/code&gt; directory.&lt;/p&gt;
+
+&lt;p&gt;I find the easiest way to do this is just to symlink the &lt;code class=&quot;highlighter-rouge&quot;&gt;xhprof_html&lt;/code&gt; directory into the existing webroot of whatever site you’re working on locally, for example:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ln -s /usr/share/php/xhprof_html /var/www/my-website-dir/xhprof&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If you’re using DrupalVM, a separate vhost configuration will already be set up for XHProf, and the default URL is &lt;code class=&quot;highlighter-rouge&quot;&gt;http://xhprof.drupalvm.dev/&lt;/code&gt; although it can be changed in your &lt;code class=&quot;highlighter-rouge&quot;&gt;config.yml&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;h3 id=&quot;hooking-xhprof-into-your-module-code&quot;&gt;Hooking XHProf into your module code&lt;/h3&gt;
+
+&lt;p&gt;Generally, the process of profiling a chunk of code using XHProf goes as follows:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Call &lt;code class=&quot;highlighter-rouge&quot;&gt;xhprof_enable()&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Run the code you want profiled&lt;/li&gt;
+  &lt;li&gt;Once the code has finished running, call &lt;code class=&quot;highlighter-rouge&quot;&gt;xhprof_disable()&lt;/code&gt;. That function will return the profiler data, which you can either display to the screen (not recommended), or…&lt;/li&gt;
+  &lt;li&gt;Store the profiler data to a file by creating a new &lt;code class=&quot;highlighter-rouge&quot;&gt;XHProfRuns_Default();&lt;/code&gt; object and calling its &lt;code class=&quot;highlighter-rouge&quot;&gt;save_run&lt;/code&gt; method.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;In the case below, I’m profiling a module that implements a few Drush commands from the command line which I’d like to optimize. So I created &lt;code class=&quot;highlighter-rouge&quot;&gt;_modulename_xhprof_enable()&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;_modulename_xhprof_disable()&lt;/code&gt; functions – the names don’t matter here – and then added a &lt;code class=&quot;highlighter-rouge&quot;&gt;--profile&lt;/code&gt; flag to my Drush command options which, when it is set to true, calls my custom enable/disable functions before and after the Drush command runs.&lt;/p&gt;
+
+&lt;p&gt;Here’s what those look like in full:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;/**
+ * Helper function to enable xhprof.
+ */&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;_mymodule_enable_xhprof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;function_exists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;xhprof_enable&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Tell XHProf to track both CPU time and memory usage
+&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;xhprof_enable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;XHPROF_FLAGS_CPU&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;XHPROF_FLAGS_MEMORY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// Don&#39;t treat these functions as separate function callss
+&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;// in the results.
+&lt;/span&gt;        &lt;span class=&quot;s1&quot;&gt;&#39;ignored_functions&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;call_user_func&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;s1&quot;&gt;&#39;call_user_func_array&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;sd&quot;&gt;/**
+ * Helper function to disable xhprof and save logs.
+ */&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;_mymodule_disable_xhprof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;function_exists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;xhprof_enable&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$xhprof_data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;xhprof_disable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;//
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// Saving the XHProf run
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// using the default implementation of iXHProfRuns.
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//
+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;include_once&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/usr/share/php/xhprof_lib/utils/xhprof_lib.php&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;include_once&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/usr/share/php/xhprof_lib/utils/xhprof_runs.php&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nv&quot;&gt;$xhprof_runs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;XHProfRuns_Default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// Save the run under a namespace &quot;xhprof_foo&quot;.
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// **NOTE**:
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// By default save_run() will automatically generate a unique
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// run id for you. [You can override that behavior by passing
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// a run id (optional arg) to the save_run() method instead.]
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// .
+&lt;/span&gt;    &lt;span class=&quot;nv&quot;&gt;$run_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$xhprof_runs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;save_run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$xhprof_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;xhprof_mymodule&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;---------------&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Assuming you have set up the http based UI for &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;XHProf at some address, you can view run at &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;http://mywebsiteurl.dev/xhprof/index.php?run=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$run_id&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;amp;source=xhprof_mymodule&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;---------------&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;echo&lt;/code&gt; command here works fine for a Drush command, but for other tasks you could log the run url using watchdog.&lt;/p&gt;
+
+&lt;p&gt;Note: Another way to run XHProf on a Drupal site is using the &lt;a href=&quot;https://www.drupal.org/project/xhprof&quot;&gt;XHProf&lt;/a&gt; module, but I haven’t had great luck with that.&lt;/p&gt;
+
+&lt;h3 id=&quot;viewing-profiler-results&quot;&gt;Viewing profiler results&lt;/h3&gt;
+
+&lt;p&gt;If everything is configured correctly, when you run your module you should get a run ID output either to the screen (via &lt;code class=&quot;highlighter-rouge&quot;&gt;echo&lt;/code&gt;, as above, or however you’ve configured this logging). Visit the URL you configured above for xhprof, and you should see a list of all the stored runs. Clicking on a run will bring up the full profiler report.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/xhprof-screenshot.jpg&quot; alt=&quot;Sample screenshot of an XHProf profiler report&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;now-what&quot;&gt;Now what?&lt;/h3&gt;
+
+&lt;p&gt;Now you’ve got all this data – how to make sense of it? What to do with it? Stay tuned for more discussion of how to interpret XHProf results and a real-world example of profiling a D8 module, next week!&lt;/p&gt;
+
+
+    &lt;hr&gt;
+
+    
+      &lt;div class=&quot;post-comments&quot;&gt;
+  
+    &lt;div class=&quot;expander&quot;&gt;
+      &lt;a href=&quot;javascript:void(0)&quot; id=&quot;js-expander-trigger&quot; class=&quot;expander-trigger expander-hidden&quot;&gt;Comments!&lt;/a&gt;
+      &lt;div id=&quot;js-expander-content&quot; class=&quot;expander-content&quot;&gt;
+        &lt;!-- If there are existing comments, output them here. --&gt;
+        &lt;div id=&quot;post-comments&quot; class=&quot;post-comments&quot;&gt;&lt;/div&gt;
+        &lt;!-- New comment form --&gt;
+        &lt;form id=&quot;comment-form&quot;&gt;
+          &lt;h4&gt;Leave a comment&lt;/h4&gt;
+          &lt;div class=&quot;comment-name&quot;&gt;
+            &lt;p&gt;Name&lt;/p&gt; &lt;input type=&#39;text&#39; name=&#39;name&#39; id=&#39;name&#39; required /&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;comment-email&quot;&gt;
+            &lt;p&gt;Email&lt;/p&gt; &lt;input type=&#39;email&#39; name=&#39;email&#39; id=&#39;email&#39; required /&gt;
+            &lt;p class=&quot;email-disclaimer&quot;&gt;Savas will never sell your email address or spam you.&lt;/p&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;p&gt;Comment&lt;/p&gt;
+          &lt;textarea name=&#39;comment&#39; id=&#39;comment&#39; required&gt;&lt;/textarea&gt;
+          &lt;p class=&quot;hint below-textarea&quot;&gt;Plain text format only please.&lt;/p&gt;
+
+          &lt;input type=&#39;hidden&#39; name=&#39;slug&#39; id=&#39;slug&#39; value=&#39;/2016/05/26/installing-xhprof.html&#39; /&gt;
+          &lt;input type=&#39;text&#39; name=&#39;url&#39; id=&#39;url&#39; /&gt;
+
+          &lt;div class=&#39;are-you-human&#39;&gt;
+            &lt;div class=&#39;are-you-human-owl&#39;&gt;
+              &lt;img src=&quot;/assets/img/owl.png&quot; alt=&quot;Savas logo&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&#39;are-you-human-field&#39;&gt;
+              &lt;p&gt;What type of animal is the Savas logo?&lt;/p&gt;
+              &lt;input type=&#39;text&#39; name=&#39;nocaptcha&#39; id=&#39;nocaptcha&#39; class=&#39;nocaptcha&#39;&gt;
+              &lt;p class=&quot;hint&quot;&gt;Hint: 3 letters long, starts with an &#39;o&#39; and ends with an &#39;l&#39;.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;input type=&#39;submit&#39; value=&#39;Submit&#39; id=&#39;submit&#39; class=&quot;submit-comment&quot;/&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+  &lt;hr&gt;
+&lt;/div&gt;
+
+    
+    &lt;div class=&quot;post-bottom&quot;&gt;
+  &lt;div class=&quot;post-meta&quot;&gt;
+    &lt;h4&gt;About the author&lt;/h4&gt;
+    
+      &lt;a href=&quot;/team/tim-stallmann&quot;&gt;
+        &lt;img src=&quot;/assets/img/team/tim-stallmann.jpg&quot; alt=&quot;Tim Stallmann&quot;&gt;
+      &lt;/a&gt;
+      &lt;p class=&quot;post-author-desc&quot;&gt;Tim is a cartographer and developer at Savas Labs, implementing complex web applications for our clients.&lt;/p&gt;
+    
+  &lt;/div&gt;
+    &lt;!-- Once we have more content, change this to posts related by tag --&gt;
+  &lt;div class=&quot;post-related flex-container&quot;&gt;
+    &lt;h4&gt;Recent posts by Savas&lt;/h4&gt;
+    &lt;div class=&quot;cards&quot;&gt;
+      
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/22/user-testing.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Usability Testing - Our Process and Favorite Practices
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 22, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;Our approach to designing, conducting, and learning from user testing and other analyses.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/16/using-xhprof.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Using XHProf to profile your Drupal module
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 16, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;A case study of using XHProf to profile a Drupal module.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/15/git-merge-conflict-strategies.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Strategies and tools for resolving Git merge conflicts
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 15, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;An overview of strategies and tools I like to use when I encounter conflicts during merges.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;div class=&quot;previous-next-links&quot;&gt;
+  &lt;div class=&quot;next&quot;&gt;
+    
+      &lt;a href=&quot;/2016/06/15/git-merge-conflict-strategies.html&quot;&gt;&lt;i class=&quot;fa fa-long-arrow-left &quot;&gt;&lt;/i&gt; Strategies and tools for resolving Git merge conflicts&lt;/a&gt;
+    
+  &lt;/div&gt;
+  &lt;div class=&quot;previous&quot;&gt;
+    
+      &lt;a href=&quot;/2016/05/20/drupalcon-nola-recap.html&quot;&gt; Drupalcon New Orleans 2016: a Twitter recap &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+  &lt;/article&gt;
+
+&lt;/div&gt;
+",
+      "author": {
+          "@context": "http://schema.org",
+          "@type": "Person",
+          "name": "Tim Stallmann",
+          "affiliation": "Savas",
+          "worksFor": "Savas"
+      },
+    "keywords": "php, performance, drupal, drupal-planet, module-development",
+    "text": "
+
+
+&lt;div class=&quot;post&quot;&gt;
+  &lt;header class=&quot;post-header&quot;&gt;
+    &lt;h1 class=&quot;post-title&quot;&gt;Installing XHProf to profile your Drupal module&lt;/h1&gt;
+    &lt;p&gt;By &lt;a href=&quot;/team/tim-stallmann&quot;&gt;Tim Stallmann&lt;/a&gt;&lt;/p&gt;
+    &lt;p class=&quot;centerdot&quot;&gt;&amp;centerdot; &lt;/p&gt;
+    &lt;p&gt;May 26, 2016 &lt;/p&gt;&lt;br&gt;
+    &lt;i class=&quot;fa fa-tags&quot;&gt;&lt;/i&gt;&lt;p&gt;&lt;a href=&quot;/blog/tag/php/&quot;&gt;PHP&lt;/a&gt;, &lt;a href=&quot;/blog/tag/performance/&quot;&gt;Performance&lt;/a&gt;, &lt;a href=&quot;/blog/tag/drupal/&quot;&gt;Drupal&lt;/a&gt;, &lt;a href=&quot;/blog/tag/drupal-planet/&quot;&gt;Drupal Planet&lt;/a&gt;, &lt;a href=&quot;/blog/tag/module-development/&quot;&gt;Module Development&lt;/a&gt;&lt;/p&gt;
+    
+    &lt;div&gt;&lt;p&gt;&lt;span id=&quot;comment-count&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+    
+    
+      &lt;div class=&quot;post-featured-image&quot;&gt;
+        &lt;img class=&quot;post-hero-image&quot; src=&quot;/assets/img/blog/xhprof-callgraph.jpg&quot; alt=&quot;an XHProf callgraph&quot;&gt;
+      &lt;/div&gt;
+    
+  &lt;/header&gt;
+
+  
+
+  &lt;article class=&quot;post-content&quot;&gt;
+    &lt;p&gt;XHProf is a profiling tool for PHP code – it tracks the amount of time and memory your code spends in each function call, allowing you to spot bottlenecks in the code and identify where it’s worth spending resources on optimization. There are have been a &lt;a href=&quot;http://www.linuxjournal.com/article/7213&quot;&gt;number of PHP profilers over the years&lt;/a&gt;, and XDebug has &lt;a href=&quot;https://xdebug.org/docs/profiler&quot;&gt;a profiler as well&lt;/a&gt;, but XHProf is the first one I’ve successfully managed to configure correctly and interpret the output of.&lt;/p&gt;
+
+&lt;p&gt;I had run across a number of blog posts about using XHProf + Drupal, but never actually got it to work sucessfully for a project. Because so much of the documentation online is incomplete or out-of-date, I thought it would be useful to document my process using XHProf to profile a Drupal 8 custom module here. YMMV, but please post your thoughts/experiences in the comments!&lt;/p&gt;
+
+&lt;h3 id=&quot;how-to-find-documentation&quot;&gt;How to find documentation&lt;/h3&gt;
+
+&lt;p&gt;I find the &lt;a href=&quot;http://php.net/manual/en/book.xhprof.php&quot;&gt;php.net XHProf manual entry&lt;/a&gt; super-confusing and circular. Part of the problem is that Facebook’s original documentation for the library has since been removed from the internet and is only accessible via &lt;a href=&quot;http://web.archive.org&quot;&gt;the WayBack Machine&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If there’s only one thing you take away from this blog post, let it be: read and bookmark the WayBack machine view of the original XHProf documentation, which is at &lt;a href=&quot;http://web.archive.org/web/20110514095512/http://mirror.facebook.net/facebook/xhprof/doc.html&quot;&gt;http://web.archive.org/web/20110514095512/http://mirror.facebook.net/facebook/xhprof/doc.html&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;install-xhprof-in-a-vm&quot;&gt;Install XHProf in a VM&lt;/h3&gt;
+
+&lt;p&gt;If you’re not running DrupalVM, you’ll need to install XHProf manually via &lt;a href=&quot;https://pecl.php.net/&quot;&gt;PECL&lt;/a&gt;. On &lt;a href=&quot;http://docs.drupalvm.com/en/latest/&quot;&gt;DrupalVM&lt;/a&gt;, &lt;a href=&quot;http://docs.drupalvm.com/en/latest/extras/profile-code/#xhprof&quot;&gt;XHProf is already installed&lt;/a&gt; and you can skip to the next step.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sudo pecl install xhprof-beta&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Note that all these commands are for Ubuntu flavors of linux. If you’re on Red Hat / CentOS you’ll want to use the &lt;code class=&quot;highlighter-rouge&quot;&gt;yum&lt;/code&gt; equivalents. I had to first install the &lt;code class=&quot;highlighter-rouge&quot;&gt;php5-dev&lt;/code&gt; package to get PECL working properly:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get update
+sudo apt-get install php5-dev
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;And, if you want to view nice callgraph trees like the one below you’ll need to install the graphviz package &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo apt-get install graphviz&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/xhprof-callgraph.jpg&quot; alt=&quot;Image of a sample XHProf callgraph&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;configure-php-to-run-xhprof&quot;&gt;Configure PHP to run XHProf&lt;/h3&gt;
+
+&lt;p&gt;You need to tell PHP to enable the xhprof extension via your php.ini files. Usually these are in &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/php5/apache2/php.ini&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/php5/cli/php.ini&lt;/code&gt;. Add the following lines to the bottom of each file if they’re not there already. You will also need to create the &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/tmp/xhprof&lt;/code&gt; directory if it doesn’t already exist.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;[xhprof]&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;extension&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;xhprof.so&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;;
+; directory used by default implementation of the iXHProfRuns
+; interface (namely, the XHProfRuns_Default class) for storing
+; XHProf runs.
+;
+&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;xhprof.output_dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/var/tmp/xhprof&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Lastly, restart Apache so that the PHP config changes take effect.&lt;/p&gt;
+
+&lt;h3 id=&quot;set-up-a-path-to-view-the-xhprof-gui&quot;&gt;Set up a path to view the XHProf GUI&lt;/h3&gt;
+
+&lt;p&gt;The XHProf GUI runs off a set of HTML files in the &lt;code class=&quot;highlighter-rouge&quot;&gt;xhprof_html&lt;/code&gt; directory. If you’ve been following the install steps above, you should be able to find that directory at &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/share/php/xhprof_html&lt;/code&gt;. Now you need to set up your virtual host configuration to serve the files in the &lt;code class=&quot;highlighter-rouge&quot;&gt;xhprof_html&lt;/code&gt; directory.&lt;/p&gt;
+
+&lt;p&gt;I find the easiest way to do this is just to symlink the &lt;code class=&quot;highlighter-rouge&quot;&gt;xhprof_html&lt;/code&gt; directory into the existing webroot of whatever site you’re working on locally, for example:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ln -s /usr/share/php/xhprof_html /var/www/my-website-dir/xhprof&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If you’re using DrupalVM, a separate vhost configuration will already be set up for XHProf, and the default URL is &lt;code class=&quot;highlighter-rouge&quot;&gt;http://xhprof.drupalvm.dev/&lt;/code&gt; although it can be changed in your &lt;code class=&quot;highlighter-rouge&quot;&gt;config.yml&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;h3 id=&quot;hooking-xhprof-into-your-module-code&quot;&gt;Hooking XHProf into your module code&lt;/h3&gt;
+
+&lt;p&gt;Generally, the process of profiling a chunk of code using XHProf goes as follows:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Call &lt;code class=&quot;highlighter-rouge&quot;&gt;xhprof_enable()&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Run the code you want profiled&lt;/li&gt;
+  &lt;li&gt;Once the code has finished running, call &lt;code class=&quot;highlighter-rouge&quot;&gt;xhprof_disable()&lt;/code&gt;. That function will return the profiler data, which you can either display to the screen (not recommended), or…&lt;/li&gt;
+  &lt;li&gt;Store the profiler data to a file by creating a new &lt;code class=&quot;highlighter-rouge&quot;&gt;XHProfRuns_Default();&lt;/code&gt; object and calling its &lt;code class=&quot;highlighter-rouge&quot;&gt;save_run&lt;/code&gt; method.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;In the case below, I’m profiling a module that implements a few Drush commands from the command line which I’d like to optimize. So I created &lt;code class=&quot;highlighter-rouge&quot;&gt;_modulename_xhprof_enable()&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;_modulename_xhprof_disable()&lt;/code&gt; functions – the names don’t matter here – and then added a &lt;code class=&quot;highlighter-rouge&quot;&gt;--profile&lt;/code&gt; flag to my Drush command options which, when it is set to true, calls my custom enable/disable functions before and after the Drush command runs.&lt;/p&gt;
+
+&lt;p&gt;Here’s what those look like in full:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;/**
+ * Helper function to enable xhprof.
+ */&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;_mymodule_enable_xhprof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;function_exists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;xhprof_enable&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Tell XHProf to track both CPU time and memory usage
+&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;xhprof_enable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;XHPROF_FLAGS_CPU&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;XHPROF_FLAGS_MEMORY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// Don&#39;t treat these functions as separate function callss
+&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;// in the results.
+&lt;/span&gt;        &lt;span class=&quot;s1&quot;&gt;&#39;ignored_functions&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;call_user_func&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;s1&quot;&gt;&#39;call_user_func_array&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;sd&quot;&gt;/**
+ * Helper function to disable xhprof and save logs.
+ */&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;_mymodule_disable_xhprof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;function_exists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;xhprof_enable&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$xhprof_data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;xhprof_disable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;//
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// Saving the XHProf run
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// using the default implementation of iXHProfRuns.
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//
+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;include_once&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/usr/share/php/xhprof_lib/utils/xhprof_lib.php&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;include_once&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/usr/share/php/xhprof_lib/utils/xhprof_runs.php&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nv&quot;&gt;$xhprof_runs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;XHProfRuns_Default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// Save the run under a namespace &quot;xhprof_foo&quot;.
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// **NOTE**:
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// By default save_run() will automatically generate a unique
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// run id for you. [You can override that behavior by passing
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// a run id (optional arg) to the save_run() method instead.]
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// .
+&lt;/span&gt;    &lt;span class=&quot;nv&quot;&gt;$run_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$xhprof_runs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;save_run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$xhprof_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;xhprof_mymodule&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;---------------&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Assuming you have set up the http based UI for &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;XHProf at some address, you can view run at &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;http://mywebsiteurl.dev/xhprof/index.php?run=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$run_id&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;amp;source=xhprof_mymodule&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;---------------&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;echo&lt;/code&gt; command here works fine for a Drush command, but for other tasks you could log the run url using watchdog.&lt;/p&gt;
+
+&lt;p&gt;Note: Another way to run XHProf on a Drupal site is using the &lt;a href=&quot;https://www.drupal.org/project/xhprof&quot;&gt;XHProf&lt;/a&gt; module, but I haven’t had great luck with that.&lt;/p&gt;
+
+&lt;h3 id=&quot;viewing-profiler-results&quot;&gt;Viewing profiler results&lt;/h3&gt;
+
+&lt;p&gt;If everything is configured correctly, when you run your module you should get a run ID output either to the screen (via &lt;code class=&quot;highlighter-rouge&quot;&gt;echo&lt;/code&gt;, as above, or however you’ve configured this logging). Visit the URL you configured above for xhprof, and you should see a list of all the stored runs. Clicking on a run will bring up the full profiler report.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/xhprof-screenshot.jpg&quot; alt=&quot;Sample screenshot of an XHProf profiler report&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;now-what&quot;&gt;Now what?&lt;/h3&gt;
+
+&lt;p&gt;Now you’ve got all this data – how to make sense of it? What to do with it? Stay tuned for more discussion of how to interpret XHProf results and a real-world example of profiling a D8 module, next week!&lt;/p&gt;
+
+
+    &lt;hr&gt;
+
+    
+      &lt;div class=&quot;post-comments&quot;&gt;
+  
+    &lt;div class=&quot;expander&quot;&gt;
+      &lt;a href=&quot;javascript:void(0)&quot; id=&quot;js-expander-trigger&quot; class=&quot;expander-trigger expander-hidden&quot;&gt;Comments!&lt;/a&gt;
+      &lt;div id=&quot;js-expander-content&quot; class=&quot;expander-content&quot;&gt;
+        &lt;!-- If there are existing comments, output them here. --&gt;
+        &lt;div id=&quot;post-comments&quot; class=&quot;post-comments&quot;&gt;&lt;/div&gt;
+        &lt;!-- New comment form --&gt;
+        &lt;form id=&quot;comment-form&quot;&gt;
+          &lt;h4&gt;Leave a comment&lt;/h4&gt;
+          &lt;div class=&quot;comment-name&quot;&gt;
+            &lt;p&gt;Name&lt;/p&gt; &lt;input type=&#39;text&#39; name=&#39;name&#39; id=&#39;name&#39; required /&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;comment-email&quot;&gt;
+            &lt;p&gt;Email&lt;/p&gt; &lt;input type=&#39;email&#39; name=&#39;email&#39; id=&#39;email&#39; required /&gt;
+            &lt;p class=&quot;email-disclaimer&quot;&gt;Savas will never sell your email address or spam you.&lt;/p&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;p&gt;Comment&lt;/p&gt;
+          &lt;textarea name=&#39;comment&#39; id=&#39;comment&#39; required&gt;&lt;/textarea&gt;
+          &lt;p class=&quot;hint below-textarea&quot;&gt;Plain text format only please.&lt;/p&gt;
+
+          &lt;input type=&#39;hidden&#39; name=&#39;slug&#39; id=&#39;slug&#39; value=&#39;/2016/05/26/installing-xhprof.html&#39; /&gt;
+          &lt;input type=&#39;text&#39; name=&#39;url&#39; id=&#39;url&#39; /&gt;
+
+          &lt;div class=&#39;are-you-human&#39;&gt;
+            &lt;div class=&#39;are-you-human-owl&#39;&gt;
+              &lt;img src=&quot;/assets/img/owl.png&quot; alt=&quot;Savas logo&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&#39;are-you-human-field&#39;&gt;
+              &lt;p&gt;What type of animal is the Savas logo?&lt;/p&gt;
+              &lt;input type=&#39;text&#39; name=&#39;nocaptcha&#39; id=&#39;nocaptcha&#39; class=&#39;nocaptcha&#39;&gt;
+              &lt;p class=&quot;hint&quot;&gt;Hint: 3 letters long, starts with an &#39;o&#39; and ends with an &#39;l&#39;.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;input type=&#39;submit&#39; value=&#39;Submit&#39; id=&#39;submit&#39; class=&quot;submit-comment&quot;/&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+  &lt;hr&gt;
+&lt;/div&gt;
+
+    
+    &lt;div class=&quot;post-bottom&quot;&gt;
+  &lt;div class=&quot;post-meta&quot;&gt;
+    &lt;h4&gt;About the author&lt;/h4&gt;
+    
+      &lt;a href=&quot;/team/tim-stallmann&quot;&gt;
+        &lt;img src=&quot;/assets/img/team/tim-stallmann.jpg&quot; alt=&quot;Tim Stallmann&quot;&gt;
+      &lt;/a&gt;
+      &lt;p class=&quot;post-author-desc&quot;&gt;Tim is a cartographer and developer at Savas Labs, implementing complex web applications for our clients.&lt;/p&gt;
+    
+  &lt;/div&gt;
+    &lt;!-- Once we have more content, change this to posts related by tag --&gt;
+  &lt;div class=&quot;post-related flex-container&quot;&gt;
+    &lt;h4&gt;Recent posts by Savas&lt;/h4&gt;
+    &lt;div class=&quot;cards&quot;&gt;
+      
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/22/user-testing.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Usability Testing - Our Process and Favorite Practices
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 22, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;Our approach to designing, conducting, and learning from user testing and other analyses.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/16/using-xhprof.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Using XHProf to profile your Drupal module
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 16, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;A case study of using XHProf to profile a Drupal module.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/15/git-merge-conflict-strategies.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Strategies and tools for resolving Git merge conflicts
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 15, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;An overview of strategies and tools I like to use when I encounter conflicts during merges.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;div class=&quot;previous-next-links&quot;&gt;
+  &lt;div class=&quot;next&quot;&gt;
+    
+      &lt;a href=&quot;/2016/06/15/git-merge-conflict-strategies.html&quot;&gt;&lt;i class=&quot;fa fa-long-arrow-left &quot;&gt;&lt;/i&gt; Strategies and tools for resolving Git merge conflicts&lt;/a&gt;
+    
+  &lt;/div&gt;
+  &lt;div class=&quot;previous&quot;&gt;
+    
+      &lt;a href=&quot;/2016/05/20/drupalcon-nola-recap.html&quot;&gt; Drupalcon New Orleans 2016: a Twitter recap &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+  &lt;/article&gt;
+
+&lt;/div&gt;
+",
+    "sourceOrganization": "Savas",
+    "inLanguage": "en-US",
+    "dateCreated": "2016-05-26 00:00:00 +0000",
+    "datePublished": "2016-05-26 00:00:00 +0000",
+    "url": "/2016/05/26/installing-xhprof.html"
+  }
+</script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-61514316-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  
+
+  
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+
+    <!-- Savas logo. -->
+    <a href="/" class="logo">
+        <img src="/assets/img/logo.png" alt="Savas logo">
+    </a>
+
+    <!-- Mobile menu button. -->
+    <a href="/" id="js-mobile-menu" class="navigation-menu-button">MENU</a>
+
+    <!-- Main menu. -->
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+
+        <!-- Loop through nav items in config.yml. -->
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  more">
+            <a href="javascript:void(0)">Who we are</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+
+              <ul class="submenu">
+                
+
+                  <!-- Assign active nav item class. -->
+                  
+                  
+
+                  <li class="nav-link ">
+                    <a href="/team">Team</a>
+                  </li>
+                
+
+                  <!-- Assign active nav item class. -->
+                  
+                  
+
+                  <li class="nav-link ">
+                    <a href="/mission-and-values">Mission & values</a>
+                  </li>
+                
+              </ul>
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/services">Services</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/work">Our work</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/blog">Blog</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/contact">Contact</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        
+
+
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">Installing XHProf to profile your Drupal module</h1>
+    <p>By <a href="/team/tim-stallmann">Tim Stallmann</a></p>
+    <p class="centerdot">&centerdot; </p>
+    <p>May 26, 2016 </p><br>
+    <i class="fa fa-tags"></i><p><a href="/blog/tag/php/">PHP</a>, <a href="/blog/tag/performance/">Performance</a>, <a href="/blog/tag/drupal/">Drupal</a>, <a href="/blog/tag/drupal-planet/">Drupal Planet</a>, <a href="/blog/tag/module-development/">Module Development</a></p>
+    
+    <div><p><span id="comment-count"></span></p></div>
+    
+    
+      <div class="post-featured-image">
+        <img class="post-hero-image" src="/assets/img/blog/xhprof-callgraph.jpg" alt="an XHProf callgraph">
+      </div>
+    
+  </header>
+
+  
+
+  <article class="post-content">
+    <p>XHProf is a profiling tool for PHP code – it tracks the amount of time and memory your code spends in each function call, allowing you to spot bottlenecks in the code and identify where it’s worth spending resources on optimization. There are have been a <a href="http://www.linuxjournal.com/article/7213">number of PHP profilers over the years</a>, and XDebug has <a href="https://xdebug.org/docs/profiler">a profiler as well</a>, but XHProf is the first one I’ve successfully managed to configure correctly and interpret the output of.</p>
+
+<p>I had run across a number of blog posts about using XHProf + Drupal, but never actually got it to work sucessfully for a project. Because so much of the documentation online is incomplete or out-of-date, I thought it would be useful to document my process using XHProf to profile a Drupal 8 custom module here. YMMV, but please post your thoughts/experiences in the comments!</p>
+
+<h3 id="how-to-find-documentation">How to find documentation</h3>
+
+<p>I find the <a href="http://php.net/manual/en/book.xhprof.php">php.net XHProf manual entry</a> super-confusing and circular. Part of the problem is that Facebook’s original documentation for the library has since been removed from the internet and is only accessible via <a href="http://web.archive.org">the WayBack Machine</a>.</p>
+
+<p>If there’s only one thing you take away from this blog post, let it be: read and bookmark the WayBack machine view of the original XHProf documentation, which is at <a href="http://web.archive.org/web/20110514095512/http://mirror.facebook.net/facebook/xhprof/doc.html">http://web.archive.org/web/20110514095512/http://mirror.facebook.net/facebook/xhprof/doc.html</a>.</p>
+
+<h3 id="install-xhprof-in-a-vm">Install XHProf in a VM</h3>
+
+<p>If you’re not running DrupalVM, you’ll need to install XHProf manually via <a href="https://pecl.php.net/">PECL</a>. On <a href="http://docs.drupalvm.com/en/latest/">DrupalVM</a>, <a href="http://docs.drupalvm.com/en/latest/extras/profile-code/#xhprof">XHProf is already installed</a> and you can skip to the next step.</p>
+
+<p><code class="highlighter-rouge">sudo pecl install xhprof-beta</code></p>
+
+<p>Note that all these commands are for Ubuntu flavors of linux. If you’re on Red Hat / CentOS you’ll want to use the <code class="highlighter-rouge">yum</code> equivalents. I had to first install the <code class="highlighter-rouge">php5-dev</code> package to get PECL working properly:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>sudo apt-get update
+sudo apt-get install php5-dev
+</code></pre>
+</div>
+
+<p>And, if you want to view nice callgraph trees like the one below you’ll need to install the graphviz package <code class="highlighter-rouge">sudo apt-get install graphviz</code></p>
+
+<p><img src="/assets/img/blog/xhprof-callgraph.jpg" alt="Image of a sample XHProf callgraph" /></p>
+
+<h3 id="configure-php-to-run-xhprof">Configure PHP to run XHProf</h3>
+
+<p>You need to tell PHP to enable the xhprof extension via your php.ini files. Usually these are in <code class="highlighter-rouge">/etc/php5/apache2/php.ini</code> and <code class="highlighter-rouge">/etc/php5/cli/php.ini</code>. Add the following lines to the bottom of each file if they’re not there already. You will also need to create the <code class="highlighter-rouge">/var/tmp/xhprof</code> directory if it doesn’t already exist.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nn">[xhprof]</span>
+<span class="py">extension</span><span class="p">=</span><span class="s">xhprof.so</span>
+<span class="c">;
+; directory used by default implementation of the iXHProfRuns
+; interface (namely, the XHProfRuns_Default class) for storing
+; XHProf runs.
+;
+</span><span class="py">xhprof.output_dir</span><span class="p">=</span><span class="s">"/var/tmp/xhprof"</span>
+</code></pre>
+</div>
+
+<p>Lastly, restart Apache so that the PHP config changes take effect.</p>
+
+<h3 id="set-up-a-path-to-view-the-xhprof-gui">Set up a path to view the XHProf GUI</h3>
+
+<p>The XHProf GUI runs off a set of HTML files in the <code class="highlighter-rouge">xhprof_html</code> directory. If you’ve been following the install steps above, you should be able to find that directory at <code class="highlighter-rouge">/usr/share/php/xhprof_html</code>. Now you need to set up your virtual host configuration to serve the files in the <code class="highlighter-rouge">xhprof_html</code> directory.</p>
+
+<p>I find the easiest way to do this is just to symlink the <code class="highlighter-rouge">xhprof_html</code> directory into the existing webroot of whatever site you’re working on locally, for example:</p>
+
+<p><code class="highlighter-rouge">ln -s /usr/share/php/xhprof_html /var/www/my-website-dir/xhprof</code></p>
+
+<p>If you’re using DrupalVM, a separate vhost configuration will already be set up for XHProf, and the default URL is <code class="highlighter-rouge">http://xhprof.drupalvm.dev/</code> although it can be changed in your <code class="highlighter-rouge">config.yml</code> file.</p>
+
+<h3 id="hooking-xhprof-into-your-module-code">Hooking XHProf into your module code</h3>
+
+<p>Generally, the process of profiling a chunk of code using XHProf goes as follows:</p>
+
+<ol>
+  <li>Call <code class="highlighter-rouge">xhprof_enable()</code></li>
+  <li>Run the code you want profiled</li>
+  <li>Once the code has finished running, call <code class="highlighter-rouge">xhprof_disable()</code>. That function will return the profiler data, which you can either display to the screen (not recommended), or…</li>
+  <li>Store the profiler data to a file by creating a new <code class="highlighter-rouge">XHProfRuns_Default();</code> object and calling its <code class="highlighter-rouge">save_run</code> method.</li>
+</ol>
+
+<p>In the case below, I’m profiling a module that implements a few Drush commands from the command line which I’d like to optimize. So I created <code class="highlighter-rouge">_modulename_xhprof_enable()</code> and <code class="highlighter-rouge">_modulename_xhprof_disable()</code> functions – the names don’t matter here – and then added a <code class="highlighter-rouge">--profile</code> flag to my Drush command options which, when it is set to true, calls my custom enable/disable functions before and after the Drush command runs.</p>
+
+<p>Here’s what those look like in full:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="sd">/**
+ * Helper function to enable xhprof.
+ */</span>
+<span class="k">function</span> <span class="nf">_mymodule_enable_xhprof</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">function_exists</span><span class="p">(</span><span class="s1">'xhprof_enable'</span><span class="p">))</span> <span class="p">{</span>
+    <span class="c1">// Tell XHProf to track both CPU time and memory usage
+</span>    <span class="nb">xhprof_enable</span><span class="p">(</span><span class="nx">XHPROF_FLAGS_CPU</span> <span class="o">+</span> <span class="nx">XHPROF_FLAGS_MEMORY</span><span class="p">,</span>
+      <span class="k">array</span><span class="p">(</span>
+        <span class="c1">// Don't treat these functions as separate function callss
+</span>        <span class="c1">// in the results.
+</span>        <span class="s1">'ignored_functions'</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">'call_user_func'</span><span class="p">,</span>
+          <span class="s1">'call_user_func_array'</span><span class="p">,</span>
+        <span class="p">),</span>
+      <span class="p">));</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="sd">/**
+ * Helper function to disable xhprof and save logs.
+ */</span>
+<span class="k">function</span> <span class="nf">_mymodule_disable_xhprof</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nb">function_exists</span><span class="p">(</span><span class="s1">'xhprof_enable'</span><span class="p">))</span> <span class="p">{</span>
+    <span class="nv">$xhprof_data</span> <span class="o">=</span> <span class="nb">xhprof_disable</span><span class="p">();</span>
+
+    <span class="c1">//
+</span>    <span class="c1">// Saving the XHProf run
+</span>    <span class="c1">// using the default implementation of iXHProfRuns.
+</span>    <span class="c1">//
+</span>    <span class="k">include_once</span> <span class="s2">"/usr/share/php/xhprof_lib/utils/xhprof_lib.php"</span><span class="p">;</span>
+    <span class="k">include_once</span> <span class="s2">"/usr/share/php/xhprof_lib/utils/xhprof_runs.php"</span><span class="p">;</span>
+
+    <span class="nv">$xhprof_runs</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XHProfRuns_Default</span><span class="p">();</span>
+
+    <span class="c1">// Save the run under a namespace "xhprof_foo".
+</span>    <span class="c1">//
+</span>    <span class="c1">// **NOTE**:
+</span>    <span class="c1">// By default save_run() will automatically generate a unique
+</span>    <span class="c1">// run id for you. [You can override that behavior by passing
+</span>    <span class="c1">// a run id (optional arg) to the save_run() method instead.]
+</span>    <span class="c1">// .
+</span>    <span class="nv">$run_id</span> <span class="o">=</span> <span class="nv">$xhprof_runs</span><span class="o">-&gt;</span><span class="na">save_run</span><span class="p">(</span><span class="nv">$xhprof_data</span><span class="p">,</span> <span class="s1">'xhprof_mymodule'</span><span class="p">);</span>
+
+    <span class="k">echo</span> <span class="s2">"---------------</span><span class="se">\n</span><span class="s2">Assuming you have set up the http based UI for </span><span class="se">\n</span><span class="s2">XHProf at some address, you can view run at </span><span class="se">\n</span><span class="s2">http://mywebsiteurl.dev/xhprof/index.php?run=</span><span class="nv">$run_id</span><span class="s2">&amp;source=xhprof_mymodule</span><span class="se">\n</span><span class="s2">---------------</span><span class="se">\n</span><span class="s2">"</span><span class="p">;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>The <code class="highlighter-rouge">echo</code> command here works fine for a Drush command, but for other tasks you could log the run url using watchdog.</p>
+
+<p>Note: Another way to run XHProf on a Drupal site is using the <a href="https://www.drupal.org/project/xhprof">XHProf</a> module, but I haven’t had great luck with that.</p>
+
+<h3 id="viewing-profiler-results">Viewing profiler results</h3>
+
+<p>If everything is configured correctly, when you run your module you should get a run ID output either to the screen (via <code class="highlighter-rouge">echo</code>, as above, or however you’ve configured this logging). Visit the URL you configured above for xhprof, and you should see a list of all the stored runs. Clicking on a run will bring up the full profiler report.</p>
+
+<p><img src="/assets/img/blog/xhprof-screenshot.jpg" alt="Sample screenshot of an XHProf profiler report" /></p>
+
+<h3 id="now-what">Now what?</h3>
+
+<p>Now you’ve got all this data – how to make sense of it? What to do with it? Stay tuned for more discussion of how to interpret XHProf results and a real-world example of profiling a D8 module, next week!</p>
+
+
+    <hr>
+
+    
+      <div class="post-comments">
+  
+    <div class="expander">
+      <a href="javascript:void(0)" id="js-expander-trigger" class="expander-trigger expander-hidden">Comments!</a>
+      <div id="js-expander-content" class="expander-content">
+        <!-- If there are existing comments, output them here. -->
+        <div id="post-comments" class="post-comments"></div>
+        <!-- New comment form -->
+        <form id="comment-form">
+          <h4>Leave a comment</h4>
+          <div class="comment-name">
+            <p>Name</p> <input type='text' name='name' id='name' required /><br>
+          </div>
+
+          <div class="comment-email">
+            <p>Email</p> <input type='email' name='email' id='email' required />
+            <p class="email-disclaimer">Savas will never sell your email address or spam you.</p><br>
+          </div>
+
+          <p>Comment</p>
+          <textarea name='comment' id='comment' required></textarea>
+          <p class="hint below-textarea">Plain text format only please.</p>
+
+          <input type='hidden' name='slug' id='slug' value='/2016/05/26/installing-xhprof.html' />
+          <input type='text' name='url' id='url' />
+
+          <div class='are-you-human'>
+            <div class='are-you-human-owl'>
+              <img src="/assets/img/owl.png" alt="Savas logo">
+            </div>
+            <div class='are-you-human-field'>
+              <p>What type of animal is the Savas logo?</p>
+              <input type='text' name='nocaptcha' id='nocaptcha' class='nocaptcha'>
+              <p class="hint">Hint: 3 letters long, starts with an 'o' and ends with an 'l'.</p>
+            </div>
+          </div>
+
+          <input type='submit' value='Submit' id='submit' class="submit-comment"/>
+        </form>
+      </div>
+    </div>
+  
+  <hr>
+</div>
+
+    
+    <div class="post-bottom">
+  <div class="post-meta">
+    <h4>About the author</h4>
+    
+      <a href="/team/tim-stallmann">
+        <img src="/assets/img/team/tim-stallmann.jpg" alt="Tim Stallmann">
+      </a>
+      <p class="post-author-desc">Tim is a cartographer and developer at Savas Labs, implementing complex web applications for our clients.</p>
+    
+  </div>
+    <!-- Once we have more content, change this to posts related by tag -->
+  <div class="post-related flex-container">
+    <h4>Recent posts by Savas</h4>
+    <div class="cards">
+      
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/22/user-testing.html">
+              <div class="card-header">
+                  Usability Testing - Our Process and Favorite Practices
+              </div>
+              <div class="card-copy">
+                <p>Jun 22, 2016</p>
+                <p><p>Our approach to designing, conducting, and learning from user testing and other analyses.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/16/using-xhprof.html">
+              <div class="card-header">
+                  Using XHProf to profile your Drupal module
+              </div>
+              <div class="card-copy">
+                <p>Jun 16, 2016</p>
+                <p><p>A case study of using XHProf to profile a Drupal module.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/15/git-merge-conflict-strategies.html">
+              <div class="card-header">
+                  Strategies and tools for resolving Git merge conflicts
+              </div>
+              <div class="card-copy">
+                <p>Jun 15, 2016</p>
+                <p><p>An overview of strategies and tools I like to use when I encounter conflicts during merges.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+</div>
+
+    <div class="previous-next-links">
+  <div class="next">
+    
+      <a href="/2016/06/15/git-merge-conflict-strategies.html"><i class="fa fa-long-arrow-left "></i> Strategies and tools for resolving Git merge conflicts</a>
+    
+  </div>
+  <div class="previous">
+    
+      <a href="/2016/05/20/drupalcon-nola-recap.html"> Drupalcon New Orleans 2016: a Twitter recap <i class="fa fa-long-arrow-right"></i></a>
+    
+  </div>
+</div>
+
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <div class="contact-block">
+  <div class="contact-block__items">
+    <h3>Interested in working with us?</h3>
+    <a href="/contact">Get in touch!</a>
+  </div>
+</div>
+    <footer class="footer" role="contentinfo">
+  <div class="footer-links">
+    <ul>
+      <li><h3>Location</h3></li>
+      <li>Savas Labs<br />
+          PMB 114<br />
+          201 W Main Street, Suite 100<br />
+          Durham, NC 27701<br /></li>
+    </ul>
+    <ul>
+      <li><h3>Around the Web</h3></li>
+      <ul>
+        <li><a href="https://github.com/savaslabs"><span class="mega-octicon octicon-mark-github"></span></a></li>
+        <li><a href="https://www.drupal.org/node/2466865"><i class="fa fa-drupal fa-lg fa-2x"></i></a></li>
+        <li><a href="https://twitter.com/savas_labs"><i class="fa fa-twitter fa-lg fa-2x"></i></a></li>
+        <li><a href="https://www.linkedin.com/company/savas-labs"><i class="fa fa-linkedin fa-lg fa-2x"></i></a></li>
+      </ul>
+    </ul>
+    <ul>
+      <li><h3>Contact</h3></li>
+      <li><a href="mailto:info@savaslabs.com">info@savaslabs.com</a></li>
+      <li>(919) 432-4660</li>
+    </ul>
+  </div>
+
+</footer>
+
+<div class="footer-copyright">
+  <p>Copyright &copy; Savas Labs 2016</p>
+</div>
+
+
+  </body>
+
+</html>

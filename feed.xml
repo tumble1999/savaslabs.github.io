@@ -1,30 +1,1025 @@
----
-layout: null
----
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>{{ site.title | xml_escape }}</title>
-    <description>{{ site.description | xml_escape }}</description>
-    <link>{{ site.url }}/</link>
-    <atom:link href="{{ "/feed.xml" | prepend: site.url }}" rel="self" type="application/rss+xml"/>
-    <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
-    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
-    <generator>Jekyll v{{ jekyll.version }}</generator>
-    {% for post in site.posts limit:10 %}
+    <title>Savas Labs</title>
+    <description>A full-service web agency leveraging the power of Drupal.
+</description>
+    <link>/</link>
+    <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 26 Aug 2016 19:07:15 +0000</pubDate>
+    <lastBuildDate>Fri, 26 Aug 2016 19:07:15 +0000</lastBuildDate>
+    <generator>Jekyll v3.0.3</generator>
+    
       <item>
-        <title>{{ post.title | xml_escape }}</title>
-        <description>{{ post.content | xml_escape }}</description>
-        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
-        <link>{{ post.url | prepend: site.url }}</link>
-        <guid isPermaLink="true">{{ post.url | prepend: site.url }}</guid>
-        {% for tag in post.tags %}
-        <category>{{ tag | xml_escape }}</category>
-        {% endfor %}
-        {% for cat in post.categories %}
-        <category>{{ cat | xml_escape }}</category>
-        {% endfor %}
+        <title>Usability Testing - Our Process and Favorite Practices</title>
+        <description>&lt;p&gt;One of my favorite lines about usability testing comes from Jakob Nielson of the Nielson Norman Group in his article &lt;a href=&quot;https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/&quot;&gt;Why You Only Need to Test with 5 Users&lt;/a&gt;, regarding a graph of number of user test participants versus percentage of usability problems found:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The most striking truth of the curve is that zero users give zero insights.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This, along with &lt;a href=&quot;https://articles.uie.com/three_hund_million_button/&quot;&gt;other persuasive evidence&lt;/a&gt;, is a fantastic reminder that we can learn so much about what’s right and what’s wrong with our websites simply by watching people use them.&lt;/p&gt;
+
+&lt;p&gt;At Savas Labs we’ve honed our approach to usability testing to balance efficiency, budget, and effectiveness. I’d like to share our process, some of my favorite resources, and some lessons we’ve learned along the way.&lt;/p&gt;
+
+&lt;h2 id=&quot;our-process&quot;&gt;Our Process&lt;/h2&gt;
+
+&lt;p&gt;Our process comprises six phases:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;#determine-goals-and-user-personas&quot;&gt;Determine goals and user personas&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#google-analytics&quot;&gt;Review Google Analytics&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#competitive-analysis&quot;&gt;Complete competitive analysis&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#user-testing&quot;&gt;Conduct user testing&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#user-survey&quot;&gt;Conduct user survey&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#compile-findings&quot;&gt;Compile findings&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;determine-goals-and-user-personas&quot;&gt;Determine goals and user personas&lt;/h3&gt;
+
+&lt;p&gt;Focusing a usability study on a product’s most critical users and functionality can help uncover the highest-impact problems without spending time and budget on lower-priority issues. To start the process, we meet with our clients and listen to them explain their purpose, describe their users, and identify potential or known issues with their website.&lt;/p&gt;
+
+&lt;p&gt;From here, we create two very important lists:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The client’s goals for the usability study&lt;/li&gt;
+  &lt;li&gt;The client’s users, in order of priority&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Let’s break these down.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Goals:&lt;/strong&gt; These can be measurable metrics (e.g. “Increase newsletter signups” or “Increase time spent on site”) or general value statements (“Provide a great experience on small screen sizes” or “Maintain a clean, modern design”).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Users:&lt;/strong&gt; This is a list of user personas in order of priority for the particular project. A persona is more in-depth and specific than a demographic, which may represent an age group, a gender, or an occupation. A persona is defined by patterns of behavior and needs, so it may encompass multiple demographics, and one demographic may be split across several personas. The user list is prioritized using the goals of the project (unless the client is lucky enough to be able to put forward the time and money to fix all of their users’ problems at once!) One of our roles in this process is helping the client brainstorm and account for all of their user groups, including ones they might not have considered.&lt;/p&gt;
+
+&lt;p&gt;Once these lists are created, we review them at the beginning of every meeting (yes, every meeting!). Why? Ensuring that the entire team is completely focused on meeting the project goals at all times causes a few awesome things happen:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Perhaps most importantly, at the end of the project everyone will be satisfied with the results, since they’re founded upon pre-determined goals that were agreed upon by everyone involved.&lt;/li&gt;
+  &lt;li&gt;Disagreements or uncertainty can be weighed against the goals – asking if something helps meet or doesn’t help meet the goals starts a focused, productive conversation.&lt;/li&gt;
+  &lt;li&gt;Team members are less likely to bring up or spend time on issues that don’t actually improve the end product.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;I should note that using user personas over demographics and repeating goals at each meeting are tips I picked up from Adam Connor’s workshop (&lt;a href=&quot;http://shop.oreilly.com/product/0636920033561.do&quot;&gt;and associated book&lt;/a&gt;) Discussing Design. I’d highly recommend both! These practices are  an abbreviated version of what he calls a &lt;a href=&quot;http://www.slideshare.net/adamconnor/discussing-design-the-art-of-critique/17-The_MiniBriefA_MiniCreative_Brief_is&quot;&gt;“mini-brief”&lt;/a&gt;, a one-page document detailing project goals, users, and more that is reviewed at each meeting.&lt;/p&gt;
+
+&lt;p&gt;So how does this apply to usability testing? Nailing down project goals and the most critical user groups will focus the scope of usability testing and increase the impact of the findings. We can review analytics and competitors’ sites with the client’s goals in mind, target the most critical users with user testing, cover a broader user base with user survey, and compile opportunities for improvement relevant to the client’s goals and real users of the product.&lt;/p&gt;
+
+&lt;p&gt;Once the goals and users are compiled and agreed upon, we can start digging into the usability testing.&lt;/p&gt;
+
+&lt;h3 id=&quot;google-analytics&quot;&gt;Google Analytics&lt;/h3&gt;
+
+&lt;p&gt;Reviewing Google Analytics is a great first step towards focusing user testing on the aspects of the site that are causing the most issues. If a client doesn’t already have Google Analytics installed, we can help set this up.&lt;/p&gt;
+
+&lt;p&gt;Viewing the analytics interface for the first time can be a bit overwhelming, so I’ll review some terminology and some of the points on which I like to focus for the purposes of usability testing.&lt;/p&gt;
+
+&lt;h5 id=&quot;terminology&quot;&gt;Terminology&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Bounce rate:&lt;/strong&gt; The percentage of users who leave the site after viewing a single page&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Exit page:&lt;/strong&gt; The last page a user views before leaving the site&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Organic search:&lt;/strong&gt; search results not provided by paid advertisements&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Engagement:&lt;/strong&gt; A combination of bounce rate, session duration, and pages viewed per session&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;useful-information&quot;&gt;Useful information&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where are the users located?
+    &lt;ul&gt;
+      &lt;li&gt;Audience &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Geo &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Location&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;What’s the ratio of new vs. returning users?
+    &lt;ul&gt;
+      &lt;li&gt;Audience &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Behavior &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; New vs. Returning&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;How engaged are users?
+    &lt;ul&gt;
+      &lt;li&gt;Audience &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Behavior &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Engagement&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;How many users access the site on desktop, tablet, and mobile?
+    &lt;ul&gt;
+      &lt;li&gt;Audience &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Mobile &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Overview&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;How do users get to the site?
+    &lt;ul&gt;
+      &lt;li&gt;Acquisition &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; All Traffic &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Channels&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Which pages are most viewed?
+    &lt;ul&gt;
+      &lt;li&gt;Behavior &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Site Content &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; All Pages&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;What are the top exit pages, and which of them are highly viewed pages?
+    &lt;ul&gt;
+      &lt;li&gt;Behavior &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Site Content &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Exit Pages&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Reviewing these item with our goals and users in mind informs the design of the user testing to follow. We can focus on the parts of the site causing the most users to leave and the behaviors we want to change, and we can test on the devices important to the users.&lt;/p&gt;
+
+&lt;h3 id=&quot;competitive-analysis&quot;&gt;Competitive analysis&lt;/h3&gt;
+
+&lt;p&gt;In tandem with reviewing analytics, we examine our client’s competitors’ websites (typically with a list of competitors/peers provided by the client). By reviewing the navigation, layout, functionality, and user experience of websites with goals similar to our client’s, we can ascertain critical feedback:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What are other sites doing well? What improvements could be applied to our client’s site?&lt;/li&gt;
+  &lt;li&gt;Where are other sites falling short? How can we ensure these bases are covered on our client’s site?&lt;/li&gt;
+  &lt;li&gt;What user experience problems exist on other sites? Can we test for these same issues on our client’s site during the user testing phase?&lt;/li&gt;
+  &lt;li&gt;How does our client’s site compare overall in terms of quality? How can we elevate our client’s site among its peers?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;user-testing&quot;&gt;User testing&lt;/h3&gt;
+
+&lt;p&gt;After gathering information from analytics and competitive analysis, we design our user tests. These are in-person meetings with a single participant at a time who is asked to complete tasks on the website, acting as one of the user personas. After reading the persona description and the task to the user, we observe their experience and record how they interact with the site.&lt;/p&gt;
+
+&lt;h5 id=&quot;designing-the-tests&quot;&gt;Designing the tests&lt;/h5&gt;
+
+&lt;p&gt;Designing the user tests is a multi-step process:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Decide which personas will be tested and how many participants are needed. User personas to be tested are chosen based on the client’s priority and potential/known issues found in the review of analytics and competitors. Number of participants can be surprisingly small and still quite effective, as per the Nielson Group’s &lt;a href=&quot;https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/&quot;&gt;detailed analysis&lt;/a&gt;. Ideally user testing would be iterative – a few users would be tested, followed by improvements to the site targeting the results of those tests, followed by more testing, etc. If this isn’t possible, five participants with one round of testing is typically effective. A/B testing can be implemented to test different versions of the site (or features within the site) within the same round of testing.&lt;/li&gt;
+  &lt;li&gt;Determine what needs to be tested. These items come from the critical tasks for our user persona(s), the potential points of frustration or difficulty for users (found by Google Analytics, competitive analysis, or simply review of the current site), and anything else desired by the client. I frame these items as goals.&lt;/li&gt;
+  &lt;li&gt;Translate goals to tasks. At this stage, each goal is translated into an actionable task or endpoint for the user.&lt;/li&gt;
+  &lt;li&gt;Translate tasks to scenarios. Rarely is a user told exactly what to do on a website in real life. To make the tests more realistic, we translate tasks into scenarios. We’ll read the scenario to each user to see if she can complete the desired task, how she approaches the task, and what points of frustration she encounters along the way.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;For example:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; The newsletter signup should be well-placed and easy to use.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task:&lt;/strong&gt; Sign up for the newsletter.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Scenario:&lt;/strong&gt; You want to keep up to date with news and job opportunities at XYZ Company. Using the website, find a way to receive monthly email updates from XYZ Company.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.nngroup.com/articles/task-scenarios-usability-testing/&quot;&gt;This article&lt;/a&gt; provides detailed recommendations for creating effective scenarios.&lt;/p&gt;
+
+&lt;p&gt;Some other tips for designing user tests:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;We aim for the test to take about 45 minutes, then ask some general or follow-up questions afterwards. Each participant will be there for about an hour.&lt;/li&gt;
+  &lt;li&gt;Scenarios shouldn’t give away how the website is supposed to work.&lt;/li&gt;
+  &lt;li&gt;Whenever possible, recruit participants who have never seen the site.&lt;/li&gt;
+  &lt;li&gt;Before conducting any real tests, do a pilot study on a willing participant (a coworker with a free hour works!) This will uncover any phrasing that doesn’t work and allow you to check the timing of the test, and it may even start revealing UX issues with the site.&lt;/li&gt;
+  &lt;li&gt;Offering compensation for a participant’s time is not only good practice, it helps immensely with recruitment!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;conducting-the-tests&quot;&gt;Conducting the tests&lt;/h5&gt;
+
+&lt;p&gt;Once participants are recruited, we bring them in one at a time and include as many observers/note takers as possible to capture the user’s actions, reactions, emotions, and words during the test scenarios. We ask the user to think out loud so we can understand their thought process and expectations. We’ll first read them the user persona they’re portraying, followed by each scenario they’ll need to act out. If relevant (and it almost always is), we’ll have participants complete some scenarios on their mobile phone or a tablet.&lt;/p&gt;
+
+&lt;p&gt;Some lessons we’ve learned along the way:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Most people need to be reminded a few times to voice their thoughts aloud.&lt;/li&gt;
+  &lt;li&gt;One person should read the scenarios and talk to the participant, others should take notes and time each task.&lt;/li&gt;
+  &lt;li&gt;It helps to remind the participant that they are not being tested, rather, the site is being reviewed. There is no right or wrong action, and everyone is there to see how users actually use the website in its current state.&lt;/li&gt;
+  &lt;li&gt;The word “test” might make participants nervous. “Scenario” is a more neutral term.&lt;/li&gt;
+  &lt;li&gt;Some users will ask what they’re supposed to do or if a certain choice is right. They can be encouraged to try something new and even allowed to give up, but they shouldn’t be fed the “correct” path.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;user-survey&quot;&gt;User survey&lt;/h3&gt;
+
+&lt;p&gt;To reach more than just the most critical users who were covered by the user testing phase, we create survey questions to elicit feedback from a broad range of users. These questions can be delivered in a variety of ways:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;An email survey sent to all registered users&lt;/li&gt;
+  &lt;li&gt;A contact form on the website soliciting feedback&lt;/li&gt;
+  &lt;li&gt;Targeted survey questions provided by a service like &lt;a href=&quot;https://qualaroo.com/&quot;&gt;Qualaroo&lt;/a&gt;, which can be triggered by certain behaviors (e.g. spending time on a specific page or coming to the site via a certain search term)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Cost and potential effectiveness with the targeted user groups must be weighed here.&lt;/p&gt;
+
+&lt;p&gt;For traditional surveys, we recommend pairing a &lt;a href=&quot;https://www.surveymonkey.com/mp/likert-scale/&quot;&gt;Likert scale&lt;/a&gt; with an open-ended response so users can explain their numeric ratings. This creates both quantitative data and expository feedback.&lt;/p&gt;
+
+&lt;h3 id=&quot;compile-findings&quot;&gt;Compile findings&lt;/h3&gt;
+
+&lt;p&gt;Our actual deliverable to clients takes the form of a report detailing the findings from each phase of the study and a summary of recommendations for future work. In addition to proposing solutions to issues found during the study, we make recommendations based on best practices and measurable metrics like Google’s &lt;a href=&quot;https://www.google.com/webmasters/tools/mobile-friendly/&quot;&gt;Mobile-Friendly test&lt;/a&gt; and the Web Accessibility Evaluation Tool &lt;a href=&quot;http://wave.webaim.org/&quot;&gt;(WAVE)&lt;/a&gt;. In the end, the client will have a list of tasks we believe will improve their website and – let’s not forget! – meet their goals.&lt;/p&gt;
+
+&lt;h2 id=&quot;further-reading&quot;&gt;Further reading&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.nngroup.com/articles/usability-101-introduction-to-usability/&quot;&gt;Usability 101&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://alistapart.com/article/usability-testing-demystified&quot;&gt;Usability Testing Demystified&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Wed, 22 Jun 2016 00:00:00 +0000</pubDate>
+        <link>/2016/06/22/user-testing.html</link>
+        <guid isPermaLink="true">/2016/06/22/user-testing.html</guid>
+        
+        <category>user-experience</category>
+        
+        <category>best-practices</category>
+        
+        
       </item>
-    {% endfor %}
+    
+      <item>
+        <title>Using XHProf to profile your Drupal module</title>
+        <description>&lt;p&gt;This is part 2 of a series on using XHProf for profiling Drupal modules.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/2016/05/26/installing-xhprof.html&quot;&gt;Part 1: Installing XHProf&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;Part 2: Using XHProf&lt;/strong&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;After you’ve &lt;a href=&quot;/2016/05/26/installing-xhprof.html&quot;&gt;installed XHProf&lt;/a&gt;, what’s next? How can you make use of its recommendations to tune a module or a website? Unfortunately there are no hard-and-fast rules for optimizing code to run more efficiently. What I can offer here is my own experience trying to optimize a D8 module using XHProf.&lt;/p&gt;
+
+&lt;h3 id=&quot;understanding-an-xhprof-run-report&quot;&gt;Understanding an XHProf run report&lt;/h3&gt;
+
+&lt;p&gt;The XHProf GUI displays the result of a given profiler run, or a group of runs. It can even compare 2 runs, but we’ll get to that in a minute. If you followed &lt;a href=&quot;/2016/05/26/installing-xhprof.html&quot;&gt;my previous post&lt;/a&gt;, you should have the &lt;code class=&quot;highlighter-rouge&quot;&gt;xhprof_html&lt;/code&gt; directory symlinked into the root web directory for your Drupal site; so visiting &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;my-local-site&amp;gt;/xhprof/&lt;/code&gt; should give you a list of all available stored run IDs, and you can click through one of those to view a specific run report.&lt;/p&gt;
+
+&lt;p&gt;You can also go directly to a specific run report via the URL &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;my-local-site&amp;gt;/xhprof/index.php?run=&amp;lt;run-id&amp;gt;&amp;amp;source=&amp;lt;source-id&amp;gt;&lt;/code&gt; (which you should have been logging already via an &lt;code class=&quot;highlighter-rouge&quot;&gt;echo&lt;/code&gt; statement or &lt;code class=&quot;highlighter-rouge&quot;&gt;dblog&lt;/code&gt; if you followed the last post).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/xhprof-results-page-screenshot.png&quot; alt=&quot;Header of an XHProf run report&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The core of the run report is a table of each function or method which your code called while it was being profiled, along with a set of statistics about that function. This allows you to understand which parts of your code are most resource-intensive, and which are being called frequently in the use case that you’re profiling. Clicking on any one of the column headers will sort the list by that metric. To understand this report, it’s helpful to have some terminology:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Incl. Wall Time&lt;/strong&gt; - The total clock time elapsed between when a function call started and when the function exited. Note that this number is not a great basis for comparisons, since it can include other processes which were taking up CPU time on your machine while the PHP code was running, from streaming music in the background to PHPStorm’s code indexing, to random web browsing.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Incl. CPU Time&lt;/strong&gt; - In contrast to wall time, CPU time tracks only the time which the CPU actually spent executing your code (or related system calls). This is a more reliable metric for comparing different runs.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Excl. Wall/CPU Time&lt;/strong&gt; - Exclusive time measurements only count time actually spent within the given method itself. They exclude the time spent in any method/function called &lt;em&gt;from&lt;/em&gt; the given function (since that time will be tracked separately).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In general, the inclusive metrics (for CPU time and memory usage) will give you a sense of what your expensive methods/functions are – these are the methods or functions that you should avoid calling if possible. In contrast, the exclusive metrics will tell you where you can potentially improve the way a given method/function is implemented. For methods which belong to Drupal Core or other contrib modules, inclusive and exclusive metrics are basically equivalent, since you don’t usually have the option of impacting the implementation details of a function unless you’re working on its code directly. Note also that because your overall parent method and any other high-level methods in your code will &lt;em&gt;always&lt;/em&gt; show up at the top of the inclusive time chart, you may have better luck really understanding where your performance hits come from by sorting by exclusive CPU time.&lt;/p&gt;
+
+&lt;h3 id=&quot;take-a-step-back-and-plan-your-test-scenarios&quot;&gt;Take a step back and plan your test scenarios&lt;/h3&gt;
+
+&lt;p&gt;Before digging in to optimizing your module code, you need to take a step back and think about the big picture. First, what are you optimizing for? Many optimizations involve a tradeoff between time and memory usage. Are you trying to reduce overall run-time at the expense of more memory? Is keeping the memory footprint of a given function down more important? In order to answer these questions you need to think about the overall context in which your code is running. In my case, I was optimizing a background import module which was run via cron, so the top priority was that the memory usage and number of database optimizations were low enough not to impact the user-facing site performance.&lt;/p&gt;
+
+&lt;p&gt;Second, what use case for your code are you profiling? If this is a single method call, what arguments will be passed? If you’re profiling page loads on a website, which pages are you profiling? In order to successfully track whether the changes you’re making are having an impact on the metrics you’re concerned about, you need to be able to narrow down the possible use cases for your code into a handful of most-likely real world scenarios which you’ll actually choose to track via the profiler.&lt;/p&gt;
+
+&lt;h3 id=&quot;keep-things-organized&quot;&gt;Keep things organized&lt;/h3&gt;
+
+&lt;p&gt;Now it’s time to get organized. Write a simple test script so that you can easily run through all your use cases in an automated way – this is not strictly necessary, but it will save you a lot of work and potential error as you move through the process. In my case, I was testing a drush command hook, so I just wrote a bash shell script which executed the command three times in each of two different ways. For profiling page loads, I would recommend using &lt;a href=&quot;https://jmeter.apache.org/&quot;&gt;Apache JMeter&lt;/a&gt; - and you’ll need to consider whether you want to force an uncached page load by passing a random dummy query parameter. Ideally, you should be running each scenario a few times so that you can then average the results to account for any small variations in run-time.&lt;/p&gt;
+
+&lt;p&gt;Keeping your different runs organized is probably the most important part of successfully profiling module code using XHProf! Each run has a unique run ID, but &lt;strong&gt;you&lt;/strong&gt; are solely responsible for knowing which use case scenario and which version of the codebase that run ID corresponds to. I set up a basic spreadsheet in OpenOffice where I could paste in run numbers and basic run stats to compare (but there’s almost certainly a nicer automated way to do this than what I used).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/xhprof-results-spreadsheet.png&quot; alt=&quot;Screenshot of an OpenOffice spreadsheet summarizing XHProf results for various runs&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Once you have a set of run IDs for a given use case + codebase version, you can generate a &lt;em&gt;composite&lt;/em&gt; xhprof report using the query string syntax &lt;code class=&quot;highlighter-rouge&quot;&gt;http://&amp;lt;your-local-site&amp;gt;/xhprof/index.php?run=&amp;lt;first-run-id&amp;gt;,&amp;lt;second-run-id&amp;gt;,&amp;lt;third-run-id&amp;gt;&amp;amp;source=&amp;lt;source-string&amp;gt;&lt;/code&gt; Averaging out across a few runs should give you more &lt;a href=&quot;https://en.wikipedia.org/wiki/Accuracy_and_precision&quot;&gt;precise&lt;/a&gt; measurements for CPU time and memory usage, but beware that if parts of your code involve caching you may want to either throw out the first run’s results in each version of the code base, since that’s where the cache will be generated, or clear the cache between runs.&lt;/p&gt;
+
+&lt;p&gt;Go ahead and test your run scripts to make sure that you can get a consistent baseline result at this point – if you’re seeing large differences in average total CPU times or average memory usage across different runs of the same codebase, you likely won’t be able to compare run times across &lt;em&gt;different&lt;/em&gt; versions of the code.&lt;/p&gt;
+
+&lt;h3 id=&quot;actually-getting-to-work&quot;&gt;Actually getting to work!&lt;/h3&gt;
+
+&lt;p&gt;After all this set-up, you should be ready to experiment and see what the impact of changes in your code base are on the metrics that you want to shift. In my case, the code I was working on used a &lt;a href=&quot;https://github.com/squix78/jsonstreamingparser&quot;&gt;streaming JSON parser class&lt;/a&gt;, and I noticed that one of the top function calls in the inital profiler report was the &lt;code class=&quot;highlighter-rouge&quot;&gt;consumeChar&lt;/code&gt; method of the parser.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/xhprof-results-page.png&quot; alt=&quot;Image of XHProf profiler report with the method consumeChar highlighted in yellow&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It turns out that the JSON files I was importing were pretty-printed, thus containing more whitespace than they needed to. Sine the &lt;code class=&quot;highlighter-rouge&quot;&gt;consumeChar&lt;/code&gt; method gets called on each incoming character of the input stream, that added up to a lot of unnecessary method calls in the original code. By tweaking the JSON file export code to remove the pretty print flag, I cut down the number of times this method was called from 729,099 to 499,809, saving .2 seconds of run time right off the bat.&lt;/p&gt;
+
+&lt;p&gt;That was the major place where the XHProf profiler report gave me insights I would not have had otherwise. The rest of my optimizing experience was mostly testing out some of the common-sense optimizations I had already thought of while looking at the code – caching a table of known Entity IDs rather than querying the DB to check if an entity existed each time, using an associative array and &lt;code class=&quot;highlighter-rouge&quot;&gt;is_empty()&lt;/code&gt; &lt;a href=&quot;http://www.w3programmers.com/phps-in_array-function-is-really-slow/&quot;&gt;to replace &lt;code class=&quot;highlighter-rouge&quot;&gt;in_array()&lt;/code&gt; calls&lt;/a&gt;, cutting down on unnecessary &lt;code class=&quot;highlighter-rouge&quot;&gt;$entity-&amp;gt;save()&lt;/code&gt; operations where possible.&lt;/p&gt;
+
+&lt;p&gt;It’s useful to mention that across the board the biggest performance hit in your Drupal code will probably be database calls, so cutting down on those wherever possible will save run-time (sometimes at the expense of memory, if you’re caching large amounts of data). Remember, also, that if DB log is enabled each logging call is a separate database operation, so use the log sparingly – or just log to &lt;code class=&quot;highlighter-rouge&quot;&gt;syslog&lt;/code&gt; and use service like &lt;a href=&quot;https://papertrailapp.com/&quot;&gt;Papertrail&lt;/a&gt; or &lt;a href=&quot;https://www.loggly.com/&quot;&gt;Loggly&lt;/a&gt; on production sites.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-final-results&quot;&gt;The final results&lt;/h3&gt;
+
+&lt;p&gt;As the results below show, using XHProf and some thoughtful optimizations I was able to cut total run time significantly in one use case (Case 2) and slightly in another use case (Case 1). Case 1 was already running in a reasonable amount of time, so here I was mostly interested in the Case 2 numbers (assuming I didn’t make anything too much worse).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/xhprof-results-graph.png&quot; alt=&quot;Bar chart comparing the run time of various runs&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;think-of-the-big-picture-part-2&quot;&gt;Think of the big picture, part 2&lt;/h3&gt;
+
+&lt;p&gt;Remember that controlled experimental metrics are just a means to understanding and improving real-world performance (which you can also measure directly using tools like &lt;a href=&quot;https://blackfire.io/&quot;&gt;blackfire&lt;/a&gt;, but that’s another blog post). In my case, at the end of the day we decided that the most important thing was to ensure that there wasn’t a performance impact on the production site while this background import code was running; so one of the optimizations we actually ended up implementing was to force this code to run &lt;strong&gt;slower&lt;/strong&gt; by throttling &lt;code class=&quot;highlighter-rouge&quot;&gt;$entity-&amp;gt;save()&lt;/code&gt; operations to maximally 1 every 1/2 second or so, as a way to minimize the number of requests MySQL was having to respond to from the importer. XHProf is a powerful tool, but don’t lose the forest for the trees when it comes to optimization.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 16 Jun 2016 00:00:00 +0000</pubDate>
+        <link>/2016/06/16/using-xhprof.html</link>
+        <guid isPermaLink="true">/2016/06/16/using-xhprof.html</guid>
+        
+        <category>php</category>
+        
+        <category>performance</category>
+        
+        <category>drupal</category>
+        
+        <category>drupal-planet</category>
+        
+        <category>module-development</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Strategies and tools for resolving Git merge conflicts</title>
+        <description>&lt;p&gt;If you use Git for version control and you collaborate frequently, then you are bound to run into merge conflicts from time to time.&lt;/p&gt;
+
+&lt;p&gt;In an ideal world you merge changes to production (or other relevant upstream updates) into your parallel feature work frequently, and the conflicts are relatively minor and straightforward to resolve.&lt;/p&gt;
+
+&lt;p&gt;However, from time to time branches diverge significantly and merging them back together takes time and a solid understanding of why each branch may have modified the same hunks of code.&lt;/p&gt;
+
+&lt;p&gt;In this post I’m going to review the strategies and tools I like to use when resolving complicated merge conflicts.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-merging&quot;&gt;What is merging?&lt;/h2&gt;
+
+&lt;p&gt;There are many good online tutorials that cover Git merging, so I’ll just review the basics. If you’re already fluent in Git, feel free to skip to the &lt;a href=&quot;#strategies-and-tools&quot;&gt;strategies and tools&lt;/a&gt; section.&lt;/p&gt;
+
+&lt;p&gt;As &lt;a href=&quot;https://www.atlassian.com/git/tutorials/using-branches/git-branch&quot;&gt;Atlassian’s branching tutorial&lt;/a&gt; explains “Merging is Git’s way of putting a forked history back together again.”&lt;/p&gt;
+
+&lt;p&gt;A Git merge is run via the command &lt;code class=&quot;highlighter-rouge&quot;&gt;git merge &amp;lt;target_branch&amp;gt;&lt;/code&gt;. When merging, Git always merges into the current branch. The branch being merged (aka the target branch) will not be affected.&lt;/p&gt;
+
+&lt;p&gt;There are two types of merges: fast-forward merges and 3-way merges.&lt;/p&gt;
+
+&lt;p&gt;Fast forward merges occur when the tip of the current branch is a direct ancestor of the target branch. In this case, instead of actually merging the branches, Git simply moves (or fast forwards) the current branch tip up to the target branch tip.&lt;/p&gt;
+
+&lt;p&gt;However, a fast-forward merge is not possible if the branches have diverged. In those cases, a 3-way merge is required, which uses a dedicated commit to bring together the two histories.&lt;/p&gt;
+
+&lt;p&gt;In a three way merge, Git’s merge algorithm uses the current branch, the target branch, and their merge base in order to incorporate changes from the target branch into the current branch. The merge base is essentially the most recent common ancestor (often this is the commit before the two branches forked). Git uses the merge base to identify what changed since the branches diverged.&lt;/p&gt;
+
+&lt;p&gt;Git is smart, and non-overlapping changes (areas of code modified by one branch but not that other) are automatically incorporated into the final merged result. However, sometimes both branches change the same part of the same file, resulting in merge conflicts.&lt;/p&gt;
+
+&lt;h2 id=&quot;merge-conflicts&quot;&gt;Merge conflicts&lt;/h2&gt;
+
+&lt;p&gt;If your branch and the target branch both changed the same part of the same file, then Git won’t be able to merge them cleanly. Each of these discrepancies results in a merge conflict.&lt;/p&gt;
+
+&lt;p&gt;In these cases, Git leaves the changes made by both your branch and the target (separated by special conflict markers) and notifies you that there was a conflict.&lt;/p&gt;
+
+&lt;p&gt;To complete the merge you must then resolve each of these conflicts by explicitly telling Git what you’d like the post-merged file to include at these locations. To do so use the following commands:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git status&lt;/code&gt; shows you which files need to be resolved.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git add&lt;/code&gt; on a conflicted file(s) tells Git the conflicts are resolved.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git commit&lt;/code&gt; generates the merge commit completing the merge.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;strategies-and-tools&quot;&gt;Strategies and tools&lt;/h2&gt;
+
+&lt;p&gt;First of all, you should always make sure your working directory is clean before merging. If you have work in progress, either commit it to a temporary branch or stash it. This allows you to easily abandon your merge at any point without losing any of your work. You can abort an in-progress merge using the &lt;code class=&quot;highlighter-rouge&quot;&gt;git merge --abort&lt;/code&gt; command.&lt;/p&gt;
+
+&lt;p&gt;If the merge results in conflicts, I start by finding the merge base using the &lt;code class=&quot;highlighter-rouge&quot;&gt;git merge-base &amp;lt;tareget_branch&amp;gt; &amp;lt;current_branch&amp;gt;&lt;/code&gt; command. As mentioned previously, the merge base is essentially the commit before the two branches forked.&lt;/p&gt;
+
+&lt;p&gt;I then inspect the development history (since the branches diverged) for each file with merge conflicts. This helps me better understand (or simply remember!) each branch’s intent when modifying the file.&lt;/p&gt;
+
+&lt;p&gt;I find that the most powerful command for this inspection is &lt;code class=&quot;highlighter-rouge&quot;&gt;git log --follow -p -- file&lt;/code&gt;, which &lt;a href=&quot;http://stackoverflow.com/a/5493663/2793226&quot;&gt;shows the history of the file (including the history beyond renames) with diffs for each commit&lt;/a&gt;. To inspect both the target branch and the current branch since they diverged (i.e. since the merge base), I use the following commands respectively:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git log &amp;lt;merge-base-sha&amp;gt; &amp;lt;target-branch&amp;gt; --follow -p -- path/to/file&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git log &amp;lt;merge-base-sha&amp;gt; HEAD --follow -p -- path/to/file&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In this case &lt;code class=&quot;highlighter-rouge&quot;&gt;HEAD&lt;/code&gt; is just a shorthand for the pre-merge state of the current branch.&lt;/p&gt;
+
+&lt;p&gt;Sometimes, I find it easier to omit the &lt;code class=&quot;highlighter-rouge&quot;&gt;-p&lt;/code&gt; option in the previous commands, and instead just review the entire diff for both the target branch and the current branch since they diverged:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git diff &amp;lt;merge-base-sha&amp;gt; &amp;lt;target-branch&amp;gt; -- path/to/file&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git diff &amp;lt;merge-base-sha&amp;gt; HEAD -- path/to/file&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ultimately, reviewing this history helps me better understand what each branch was trying to accomplish. With this information in hand, I can then manually resolve the merge conflicts by deciding what code each of these files should include post merge.&lt;/p&gt;
+
+&lt;h2 id=&quot;visual-merge-tools&quot;&gt;Visual merge tools&lt;/h2&gt;
+&lt;p&gt;In addition to these strategies, I find that it is also helpful to use a visual merge tool when resolving merge conflicts.&lt;/p&gt;
+
+&lt;p&gt;With these tools, you don’t need to sift through Git conflict markers. Rather, visual merge tools provide a GUI that allows you to compare the different versions of the files you are merging, and they provide point and click tools to help you find and resolve conflicts.&lt;/p&gt;
+
+&lt;p&gt;A good visual merge tool will display at least 3 panels for each file with conflicts. There will be a panel showing the version of that file:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;In your branch&lt;/li&gt;
+  &lt;li&gt;In the target branch&lt;/li&gt;
+  &lt;li&gt;As it will appear after merging&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I prefer merge tools (such as the P4Merge tool shown below) which also include a fourth display panel showing the version of that file in the merge base:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/P4Merge_screenshot.png&quot; alt=&quot;P4Merge tool screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;There are many visual merge tools to choose from, some of which may already be installed on your system.&lt;/p&gt;
+
+&lt;p&gt;To view the list of available merge tools along with other valid but uninstalled merge tools, type &lt;code class=&quot;highlighter-rouge&quot;&gt;git mergetool --tool-help&lt;/code&gt; in your terminal.&lt;/p&gt;
+
+&lt;p&gt;If your merge results in conflicts, you can type &lt;code class=&quot;highlighter-rouge&quot;&gt;git mergetool&lt;/code&gt; to use your default merge tool, or you can specify the merge tool to use via &lt;code class=&quot;highlighter-rouge&quot;&gt;git mergetool --tool=&amp;lt;tool&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Most merge tools will iterate through each file with conflicts, giving you the opportunity to resolve the conflicts and save (i.e. &lt;code class=&quot;highlighter-rouge&quot;&gt;git add&lt;/code&gt; them), or dismiss and revisit later.&lt;/p&gt;
+
+&lt;p&gt;I prefer the P4Merge tool but that is just personal preference. I encourage you to invest the time trying a few different tools to decide which works best for you. Ultimately, it will be time well spent.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Encountering merge conflicts can often be intimidating since you don’t want to make inadvertent changes to the code base. But armed with the right tools, the process becomes much easier and more intentional. With knowledge of the merge base, use of the &lt;code class=&quot;highlighter-rouge&quot;&gt;git log --follow -p -- file&lt;/code&gt; command, and the help of a visual merge tool you can go forth confidently when resolving merge conflicts!&lt;/p&gt;
+</description>
+        <pubDate>Wed, 15 Jun 2016 00:00:00 +0000</pubDate>
+        <link>/2016/06/15/git-merge-conflict-strategies.html</link>
+        <guid isPermaLink="true">/2016/06/15/git-merge-conflict-strategies.html</guid>
+        
+        <category>git</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Installing XHProf to profile your Drupal module</title>
+        <description>&lt;p&gt;XHProf is a profiling tool for PHP code – it tracks the amount of time and memory your code spends in each function call, allowing you to spot bottlenecks in the code and identify where it’s worth spending resources on optimization. There are have been a &lt;a href=&quot;http://www.linuxjournal.com/article/7213&quot;&gt;number of PHP profilers over the years&lt;/a&gt;, and XDebug has &lt;a href=&quot;https://xdebug.org/docs/profiler&quot;&gt;a profiler as well&lt;/a&gt;, but XHProf is the first one I’ve successfully managed to configure correctly and interpret the output of.&lt;/p&gt;
+
+&lt;p&gt;I had run across a number of blog posts about using XHProf + Drupal, but never actually got it to work sucessfully for a project. Because so much of the documentation online is incomplete or out-of-date, I thought it would be useful to document my process using XHProf to profile a Drupal 8 custom module here. YMMV, but please post your thoughts/experiences in the comments!&lt;/p&gt;
+
+&lt;h3 id=&quot;how-to-find-documentation&quot;&gt;How to find documentation&lt;/h3&gt;
+
+&lt;p&gt;I find the &lt;a href=&quot;http://php.net/manual/en/book.xhprof.php&quot;&gt;php.net XHProf manual entry&lt;/a&gt; super-confusing and circular. Part of the problem is that Facebook’s original documentation for the library has since been removed from the internet and is only accessible via &lt;a href=&quot;http://web.archive.org&quot;&gt;the WayBack Machine&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If there’s only one thing you take away from this blog post, let it be: read and bookmark the WayBack machine view of the original XHProf documentation, which is at &lt;a href=&quot;http://web.archive.org/web/20110514095512/http://mirror.facebook.net/facebook/xhprof/doc.html&quot;&gt;http://web.archive.org/web/20110514095512/http://mirror.facebook.net/facebook/xhprof/doc.html&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;install-xhprof-in-a-vm&quot;&gt;Install XHProf in a VM&lt;/h3&gt;
+
+&lt;p&gt;If you’re not running DrupalVM, you’ll need to install XHProf manually via &lt;a href=&quot;https://pecl.php.net/&quot;&gt;PECL&lt;/a&gt;. On &lt;a href=&quot;http://docs.drupalvm.com/en/latest/&quot;&gt;DrupalVM&lt;/a&gt;, &lt;a href=&quot;http://docs.drupalvm.com/en/latest/extras/profile-code/#xhprof&quot;&gt;XHProf is already installed&lt;/a&gt; and you can skip to the next step.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sudo pecl install xhprof-beta&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Note that all these commands are for Ubuntu flavors of linux. If you’re on Red Hat / CentOS you’ll want to use the &lt;code class=&quot;highlighter-rouge&quot;&gt;yum&lt;/code&gt; equivalents. I had to first install the &lt;code class=&quot;highlighter-rouge&quot;&gt;php5-dev&lt;/code&gt; package to get PECL working properly:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sudo apt-get update
+sudo apt-get install php5-dev
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;And, if you want to view nice callgraph trees like the one below you’ll need to install the graphviz package &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo apt-get install graphviz&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/xhprof-callgraph.jpg&quot; alt=&quot;Image of a sample XHProf callgraph&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;configure-php-to-run-xhprof&quot;&gt;Configure PHP to run XHProf&lt;/h3&gt;
+
+&lt;p&gt;You need to tell PHP to enable the xhprof extension via your php.ini files. Usually these are in &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/php5/apache2/php.ini&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;/etc/php5/cli/php.ini&lt;/code&gt;. Add the following lines to the bottom of each file if they’re not there already. You will also need to create the &lt;code class=&quot;highlighter-rouge&quot;&gt;/var/tmp/xhprof&lt;/code&gt; directory if it doesn’t already exist.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nn&quot;&gt;[xhprof]&lt;/span&gt;
+&lt;span class=&quot;py&quot;&gt;extension&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;xhprof.so&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;;
+; directory used by default implementation of the iXHProfRuns
+; interface (namely, the XHProfRuns_Default class) for storing
+; XHProf runs.
+;
+&lt;/span&gt;&lt;span class=&quot;py&quot;&gt;xhprof.output_dir&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/var/tmp/xhprof&quot;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Lastly, restart Apache so that the PHP config changes take effect.&lt;/p&gt;
+
+&lt;h3 id=&quot;set-up-a-path-to-view-the-xhprof-gui&quot;&gt;Set up a path to view the XHProf GUI&lt;/h3&gt;
+
+&lt;p&gt;The XHProf GUI runs off a set of HTML files in the &lt;code class=&quot;highlighter-rouge&quot;&gt;xhprof_html&lt;/code&gt; directory. If you’ve been following the install steps above, you should be able to find that directory at &lt;code class=&quot;highlighter-rouge&quot;&gt;/usr/share/php/xhprof_html&lt;/code&gt;. Now you need to set up your virtual host configuration to serve the files in the &lt;code class=&quot;highlighter-rouge&quot;&gt;xhprof_html&lt;/code&gt; directory.&lt;/p&gt;
+
+&lt;p&gt;I find the easiest way to do this is just to symlink the &lt;code class=&quot;highlighter-rouge&quot;&gt;xhprof_html&lt;/code&gt; directory into the existing webroot of whatever site you’re working on locally, for example:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;ln -s /usr/share/php/xhprof_html /var/www/my-website-dir/xhprof&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If you’re using DrupalVM, a separate vhost configuration will already be set up for XHProf, and the default URL is &lt;code class=&quot;highlighter-rouge&quot;&gt;http://xhprof.drupalvm.dev/&lt;/code&gt; although it can be changed in your &lt;code class=&quot;highlighter-rouge&quot;&gt;config.yml&lt;/code&gt; file.&lt;/p&gt;
+
+&lt;h3 id=&quot;hooking-xhprof-into-your-module-code&quot;&gt;Hooking XHProf into your module code&lt;/h3&gt;
+
+&lt;p&gt;Generally, the process of profiling a chunk of code using XHProf goes as follows:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Call &lt;code class=&quot;highlighter-rouge&quot;&gt;xhprof_enable()&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;Run the code you want profiled&lt;/li&gt;
+  &lt;li&gt;Once the code has finished running, call &lt;code class=&quot;highlighter-rouge&quot;&gt;xhprof_disable()&lt;/code&gt;. That function will return the profiler data, which you can either display to the screen (not recommended), or…&lt;/li&gt;
+  &lt;li&gt;Store the profiler data to a file by creating a new &lt;code class=&quot;highlighter-rouge&quot;&gt;XHProfRuns_Default();&lt;/code&gt; object and calling its &lt;code class=&quot;highlighter-rouge&quot;&gt;save_run&lt;/code&gt; method.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;In the case below, I’m profiling a module that implements a few Drush commands from the command line which I’d like to optimize. So I created &lt;code class=&quot;highlighter-rouge&quot;&gt;_modulename_xhprof_enable()&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;_modulename_xhprof_disable()&lt;/code&gt; functions – the names don’t matter here – and then added a &lt;code class=&quot;highlighter-rouge&quot;&gt;--profile&lt;/code&gt; flag to my Drush command options which, when it is set to true, calls my custom enable/disable functions before and after the Drush command runs.&lt;/p&gt;
+
+&lt;p&gt;Here’s what those look like in full:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;/**
+ * Helper function to enable xhprof.
+ */&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;_mymodule_enable_xhprof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;function_exists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;xhprof_enable&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// Tell XHProf to track both CPU time and memory usage
+&lt;/span&gt;    &lt;span class=&quot;nb&quot;&gt;xhprof_enable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;XHPROF_FLAGS_CPU&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;XHPROF_FLAGS_MEMORY&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// Don&#39;t treat these functions as separate function callss
+&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;// in the results.
+&lt;/span&gt;        &lt;span class=&quot;s1&quot;&gt;&#39;ignored_functions&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;call_user_func&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+          &lt;span class=&quot;s1&quot;&gt;&#39;call_user_func_array&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;),&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;sd&quot;&gt;/**
+ * Helper function to disable xhprof and save logs.
+ */&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;_mymodule_disable_xhprof&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;function_exists&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;xhprof_enable&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nv&quot;&gt;$xhprof_data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;xhprof_disable&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;//
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// Saving the XHProf run
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// using the default implementation of iXHProfRuns.
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//
+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;include_once&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/usr/share/php/xhprof_lib/utils/xhprof_lib.php&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;include_once&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;/usr/share/php/xhprof_lib/utils/xhprof_runs.php&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nv&quot;&gt;$xhprof_runs&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;XHProfRuns_Default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+    &lt;span class=&quot;c1&quot;&gt;// Save the run under a namespace &quot;xhprof_foo&quot;.
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// **NOTE**:
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// By default save_run() will automatically generate a unique
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// run id for you. [You can override that behavior by passing
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// a run id (optional arg) to the save_run() method instead.]
+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// .
+&lt;/span&gt;    &lt;span class=&quot;nv&quot;&gt;$run_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$xhprof_runs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;save_run&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$xhprof_data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;xhprof_mymodule&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;---------------&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Assuming you have set up the http based UI for &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;XHProf at some address, you can view run at &lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;http://mywebsiteurl.dev/xhprof/index.php?run=&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$run_id&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;amp;source=xhprof_mymodule&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;---------------&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;echo&lt;/code&gt; command here works fine for a Drush command, but for other tasks you could log the run url using watchdog.&lt;/p&gt;
+
+&lt;p&gt;Note: Another way to run XHProf on a Drupal site is using the &lt;a href=&quot;https://www.drupal.org/project/xhprof&quot;&gt;XHProf&lt;/a&gt; module, but I haven’t had great luck with that.&lt;/p&gt;
+
+&lt;h3 id=&quot;viewing-profiler-results&quot;&gt;Viewing profiler results&lt;/h3&gt;
+
+&lt;p&gt;If everything is configured correctly, when you run your module you should get a run ID output either to the screen (via &lt;code class=&quot;highlighter-rouge&quot;&gt;echo&lt;/code&gt;, as above, or however you’ve configured this logging). Visit the URL you configured above for xhprof, and you should see a list of all the stored runs. Clicking on a run will bring up the full profiler report.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/xhprof-screenshot.jpg&quot; alt=&quot;Sample screenshot of an XHProf profiler report&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;now-what&quot;&gt;Now what?&lt;/h3&gt;
+
+&lt;p&gt;Now you’ve got all this data – how to make sense of it? What to do with it? Stay tuned for more discussion of how to interpret XHProf results and a real-world example of profiling a D8 module, next week!&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 26 May 2016 00:00:00 +0000</pubDate>
+        <link>/2016/05/26/installing-xhprof.html</link>
+        <guid isPermaLink="true">/2016/05/26/installing-xhprof.html</guid>
+        
+        <category>php</category>
+        
+        <category>performance</category>
+        
+        <category>drupal</category>
+        
+        <category>drupal-planet</category>
+        
+        <category>module-development</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>Drupalcon New Orleans 2016: a Twitter recap</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/img/blog/drupalcon-nola.png&quot; alt=&quot;Drupalcon New Orleans logo&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;A week full of summits, sessions, a presentation, some parties and a fair amount of tweeting &lt;img src=&quot;/assets/icons/twitter-bird.svg&quot; height=&quot;24&quot; alt=&quot;Twitter bird&quot; /&gt; was one for the books at Drupalcon NOLA 2016. Come along for a Twitter-assisted chronological journey for Savas Labs in New Orleans.&lt;/p&gt;
+
+&lt;h3 id=&quot;saturday--sunday-arrive-play-soccer-get-acquainted&quot;&gt;Saturday / Sunday: Arrive, play soccer, get acquainted&lt;/h3&gt;
+
+&lt;p&gt;I arrived Saturday evening after a few short flights from Durham, NC. My gracious host and boots on the ground in NOLA Kevin Harrison lent me a bicycle, showed me around the city, and invited me to play in his soccer game. It was a comforting entry into a new city that closely resembled what my weekend would have been like if I were at home. Thanks a ton Kevin for the hospitality!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/kevin-harrison.jpg&quot; alt=&quot;Kevin at a rooftop bar&quot; /&gt;
+ &lt;span class=&quot;caption&quot;&gt;See a palindrome anywhere?&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Kevin also took me to the convention center so I could get my bearings for the week ahead. He took my picture, and &lt;strong&gt;&lt;em&gt;ever so slightly&lt;/em&gt;&lt;/strong&gt; doctored up the version you see below for me to share with our community that we had made it to the big stage!&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot; data-lang=&quot;en&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;We have arrived &lt;a href=&quot;https://twitter.com/hashtag/DrupalCon?src=hash&quot;&gt;#DrupalCon&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/NOLA?src=hash&quot;&gt;#NOLA&lt;/a&gt; &lt;a href=&quot;https://twitter.com/DrupalConNA&quot;&gt;@DrupalConNA&lt;/a&gt;!!!! &lt;a href=&quot;https://twitter.com/hashtag/yesfilter?src=hash&quot;&gt;#yesfilter&lt;/a&gt; &lt;a href=&quot;https://t.co/RlkNAu99nB&quot;&gt;pic.twitter.com/RlkNAu99nB&lt;/a&gt;&lt;/p&gt;&amp;mdash; Savas Labs (@Savas_Labs) &lt;a href=&quot;https://twitter.com/Savas_Labs/status/729504649233899521&quot;&gt;May 9, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;h3 id=&quot;monday---business-summit--opening-party&quot;&gt;Monday - Business Summit / Opening party&lt;/h3&gt;
+
+&lt;p&gt;Thanks to Kevin for my two wheels, this is what my commute looked like most days to and from the conference. Despite the condition of some roads, New Orleans has one of the highest (&lt;a href=&quot;http://www.nola.com/politics/index.ssf/2010/10/biking_new_orleans_might_be_le.html&quot;&gt;sixth according to the 2009 census&lt;/a&gt;) rates of citizens who commute by bicycle in the U.S. It’s clearly also fairly horse-friendly as well.&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot; data-lang=&quot;en&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Nice commute alongside horse and buggy to the convention center en route to &lt;a href=&quot;https://twitter.com/DrupalConNA&quot;&gt;@DrupalConNA&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/NOLA?src=hash&quot;&gt;#NOLA&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/DrupalCon2016?src=hash&quot;&gt;#DrupalCon2016&lt;/a&gt; &lt;a href=&quot;https://t.co/BvvIEJqoga&quot;&gt;pic.twitter.com/BvvIEJqoga&lt;/a&gt;&lt;/p&gt;&amp;mdash; Savas Labs (@Savas_Labs) &lt;a href=&quot;https://twitter.com/Savas_Labs/status/729739990524174336&quot;&gt;May 9, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;span class=&quot;caption&quot;&gt;Rolling through the French Quarter on the way in!&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;After arriving, I walked the .75 miles (no exaggeration… it’s 1 mile long) &lt;strong&gt;&lt;em&gt;inside&lt;/em&gt;&lt;/strong&gt; the convention center to get to the business summit. Although a little disorganized due to a last-minute personnel change of who would be running the summit, it proved to be a very open forum where leaders in in the Drupal community spoke very openly, honestly, and encouragingly about how they run their Drupal businesses. It was refreshing how genuinely the open source philosophy pervaded the consciousness of the leaders who were on panels and giving presentations.&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot; data-lang=&quot;en&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Gaining insight from &lt;a href=&quot;https://twitter.com/hashtag/Drupal?src=hash&quot;&gt;#Drupal&lt;/a&gt; leaders &lt;a href=&quot;https://twitter.com/mediacurrent&quot;&gt;@mediacurrent&lt;/a&gt; &lt;a href=&quot;https://twitter.com/prometsource&quot;&gt;@prometsource&lt;/a&gt; &lt;a href=&quot;https://twitter.com/lullabot&quot;&gt;@lullabot&lt;/a&gt; &lt;a href=&quot;https://twitter.com/phase2&quot;&gt;@phase2&lt;/a&gt; &lt;a href=&quot;https://twitter.com/DrupalConNA&quot;&gt;@DrupalConNA&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/NOLA?src=hash&quot;&gt;#NOLA&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/Drupalcon?src=hash&quot;&gt;#Drupalcon&lt;/a&gt; &lt;a href=&quot;https://t.co/cqvytd7KG7&quot;&gt;pic.twitter.com/cqvytd7KG7&lt;/a&gt;&lt;/p&gt;&amp;mdash; Savas Labs (@Savas_Labs) &lt;a href=&quot;https://twitter.com/Savas_Labs/status/729739985109327873&quot;&gt;May 9, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;In between panels and presentations, the rest of us divvied up into smaller groups brainstorming around key issues and presented our collective expertise back to the larger group. Topics ranged from content strategy, to marketing tactics, to how to handle conflict with large personalities, and everything in between. The breadth of the coverage ensured that nearly everyone got something out of the summit. My reading list grew by an order of magnitude from the summit. Now if I could only find the time…&lt;/p&gt;
+
+&lt;p&gt;After the summit, I joined my teammates &lt;a href=&quot;/team/lisa-ridley/&quot;&gt;Lisa&lt;/a&gt; and &lt;a href=&quot;/team/kosta-harlan/&quot;&gt;Kosta&lt;/a&gt; at the opening reception. This was the first opportunity to see former coworkers and members of the community we were  personally acquainted with before the conference.&lt;/p&gt;
+
+&lt;p&gt;We then headed to the welcome pub crawl to meet up with some Drupal friends in person for the first time. It was a great evening of beautiful weather, good beer, and excited Drupalist(a)(o)s eagerly anticipating a fun week.&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot; data-lang=&quot;en&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Thanks to &lt;a href=&quot;https://twitter.com/kostajh&quot;&gt;@kostajh&lt;/a&gt; just cheers&amp;#39;ed with &lt;a href=&quot;https://twitter.com/BioRAFT&quot;&gt;@BioRAFT&lt;/a&gt; &amp;quot;to coding standards!&amp;quot; &lt;a href=&quot;https://twitter.com/DrupalConNA&quot;&gt;@DrupalConNA&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/DrupalCon?src=hash&quot;&gt;#DrupalCon&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/NOLA?src=hash&quot;&gt;#NOLA&lt;/a&gt; &lt;a href=&quot;https://t.co/6lWKBxNklN&quot;&gt;pic.twitter.com/6lWKBxNklN&lt;/a&gt;&lt;/p&gt;&amp;mdash; Savas Labs (@Savas_Labs) &lt;a href=&quot;https://twitter.com/Savas_Labs/status/729877906231451648&quot;&gt;May 10, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;span class=&quot;caption&quot;&gt;…Only at Drupalcon…&lt;/span&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;tuesday---presentation--women-in-drupal&quot;&gt;Tuesday - Presentation / Women in Drupal&lt;/h3&gt;
+
+&lt;p&gt;Excited (and a bit nervous) to give &lt;a href=&quot;https://events.drupal.org/neworleans2016/sessions/total-value-ownership-drupal-8-and-beyond&quot;&gt;my first presentation at Drupalcon&lt;/a&gt; (e pluribus unum), I spent much of the day reviewing and updating slides that were impacted by &lt;a href=&quot;https://www.youtube.com/watch?v=Ksp5JVFryEg&quot;&gt;the Driesnote&lt;/a&gt; which had a lot of overlap with my presentation.&lt;/p&gt;
+
+&lt;p&gt;Since Drupalcon is primarily a developer’s conference, and I was speaking in the “Business” track, I decided to drum up some interest for the session with a little social media &lt;s&gt;mudslinging&lt;/s&gt; banter.&lt;/p&gt;
+
+&lt;p&gt;A couple favorites are:&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot; data-lang=&quot;en&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Is &lt;a href=&quot;https://twitter.com/acquia&quot;&gt;@acquia&lt;/a&gt;&amp;#39;s &lt;a href=&quot;https://twitter.com/HornCologne&quot;&gt;@horncologne&lt;/a&gt; secretly involved with &lt;a href=&quot;https://twitter.com/Jamroom&quot;&gt;@Jamroom&lt;/a&gt; CMS?&lt;br /&gt;&lt;br /&gt;Sifting through the rumors today &lt;a href=&quot;https://twitter.com/5&quot;&gt;@5&lt;/a&gt;:00 &lt;a href=&quot;https://twitter.com/DrupalConNA&quot;&gt;@DrupalConNA&lt;/a&gt; &lt;a href=&quot;https://t.co/T4sQ5Pmbih&quot;&gt;https://t.co/T4sQ5Pmbih&lt;/a&gt;&lt;/p&gt;&amp;mdash; Savas Labs (@Savas_Labs) &lt;a href=&quot;https://twitter.com/Savas_Labs/status/730096335748206592&quot;&gt;May 10, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;I must admit, since we have a &lt;a href=&quot;/team/kosta-harlan&quot;&gt;Jam&lt;/a&gt; of our own (inquire within), Acquia’s Jam is a topic of frequent discussion at the Savas Labs water cooler. I &lt;s&gt;was&lt;/s&gt; still am hopeful for some social media reaction. Unfortunately there were no &lt;em&gt;real&lt;/em&gt; rumors to speak of.&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot; data-lang=&quot;en&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;TBD today &lt;a href=&quot;https://twitter.com/5&quot;&gt;@5&lt;/a&gt;:00 &lt;a href=&quot;https://twitter.com/DrupalConNA&quot;&gt;@DrupalConNA&lt;/a&gt; &lt;a href=&quot;https://t.co/VODC0fZ65P&quot;&gt;https://t.co/VODC0fZ65P&lt;/a&gt;&lt;br /&gt;&lt;br /&gt;What&amp;#39;s the best/worst named CMS?&lt;br /&gt;Farcry&lt;br /&gt;Geeklog&lt;br /&gt;Thingamablog&lt;a href=&quot;https://twitter.com/TiddlyWiki&quot;&gt;@TiddlyWiki&lt;/a&gt; (my fave)&lt;/p&gt;&amp;mdash; Savas Labs (@Savas_Labs) &lt;a href=&quot;https://twitter.com/Savas_Labs/status/730087801790828545&quot;&gt;May 10, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;span class=&quot;caption&quot;&gt;Just a select few of the &lt;strong&gt;incredible&lt;/strong&gt; names &lt;em&gt;someone&lt;/em&gt; decided to name their CMS in the past. Most of which have little to no presence at this point. You live and learn.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;The presentation was fun to give. I saw some familiar faces like former and current coworkers, which was comforting. The research that went into the presentation was perhaps as valuable as giving the talk. I timed the material I shared well, and there was a fairly lively Q&amp;amp;A session after, which was great. I received some positive and constructive feedback both right after the talk, and via the online evaluations that I’m eager to incorporate the next time I give the presentation.&lt;/p&gt;
+
+&lt;h4 id=&quot;women-in-drupal&quot;&gt;Women in Drupal&lt;/h4&gt;
+
+&lt;p&gt;Somewhat ironically, Kosta and myself and not Lisa (the only female Savasian at Drupalcon) attended the &lt;a href=&quot;https://events.drupal.org/neworleans2016/women-drupal&quot;&gt;Women in Drupal&lt;/a&gt; event. It was a great time to meet some &lt;a href=&quot;http://devcollaborative.com/about-us&quot;&gt;old friends&lt;/a&gt; in person for the first time and make some new friends. It was nice to see the women-owned &lt;a href=&quot;http://www.hook42.com/&quot;&gt;hook 42&lt;/a&gt; as sponsorship leaders who were presenting the day before at the business summit. It’s also great that this has been on the Drupalcon agenda for years. It was also nice to hear people talking of diversity beyond gender as a focus for Drupal agencies and technology companies more generally. However much like evaluations from my session were helpful in pointing out room for improvement, my two cents is that a better platform for meaningful discussion that can lead to action is interesting to me. On the flipside, as my teammates pointed out, there’s nothing wrong with having a party. Thank you to the sponsors and Drupal community for caring about this issue.&lt;/p&gt;
+
+&lt;h3 id=&quot;wednesday---sessions-and-lullabot-party&quot;&gt;Wednesday - Sessions and Lullabot Party&lt;/h3&gt;
+
+&lt;p&gt;After the presentation was behind me, I was happy to be more involved with the daily activities of Drupalcon, i.e. &lt;strong&gt;attending sessions!&lt;/strong&gt;. I went to a handful, but my favorite of the day was &lt;a href=&quot;https://events.drupal.org/neworleans2016/sessions/lessons-wordpress-core&quot;&gt;Lessons from Wordpress Core&lt;/a&gt;. It was a nice discussion juxtaposing Wordpress and Drupal powered websites given by two &lt;a href=&quot;https://pantheon.io/&quot;&gt;Pantheon&lt;/a&gt; employees who had respective expertise in one of the frameworks. One primary takeaway for me was the discrepancy in approach with Drupal vs. Wordpress in backward compatibility. It is a &lt;em&gt;very&lt;/em&gt; complex topic, but in some ways the backwards compatible approach has contributed to Wordpress’s high degree of user-loyalty as well as comparatively fast adoption to the newest version. The Drupal leadership is very conscious of this and is having very meaningful conversations around Backwards compatibility. Larry Garfield (&lt;a href=&quot;https://www.drupal.org/u/crell&quot;&gt;Crell&lt;/a&gt;) &lt;a href=&quot;https://www.youtube.com/watch?v=JeoCHqzvUFY&amp;amp;feature=youtu.be&amp;amp;t=3296&quot;&gt;provides great insight to this&lt;/a&gt; at the end of the session.&lt;/p&gt;
+
+&lt;p&gt;After sessions closed for the day, we had a nice dinner with friends from &lt;a href=&quot;http://devcollaborative.com/about-us&quot;&gt;DevCollaborative&lt;/a&gt;, &lt;a href=&quot;https://www.advomatic.com/our-team/sarah-german&quot;&gt;Advomatic&lt;/a&gt;
+and made our way on over to the &lt;a href=&quot;https://events.drupal.org/neworleans2016/lullabots-8th-annual-drupalcon-party&quot;&gt;Lullabot party&lt;/a&gt;. The theme of meeting those who we only digitally knew, while making new friends certainly continued at the Lullabot party. It was a great time!&lt;/p&gt;
+
+&lt;h3 id=&quot;thursday---the-last-day-of-sessions&quot;&gt;Thursday - the last day of sessions&lt;/h3&gt;
+
+&lt;p&gt;Thursday was the final day of sessions, and of course the &lt;a href=&quot;https://events.drupal.org/neworleans2016/kalamuna-four-kitchens-present-drupal-6-mourning-party&quot;&gt;Drupal 6 burial party&lt;/a&gt; - #SoCheeky. The sessions I attended were all quite pertinent to me. In my talk, I reference the lack of an official release for an e-commerce platform for Drupal 8 is one reason for slowed adoption compared to Drupal 7. The Commerce guys did elicit a lot of applause in &lt;a href=&quot;https://events.drupal.org/neworleans2016/sessions/creating-stores-drupal-commerce-drupal-8&quot;&gt;their session&lt;/a&gt; about what &lt;em&gt;is coming soon&lt;/em&gt; for Drupal Commerce’s official Drupal 8 release, but were only willing to commit to a “ready by the end of summer” time line which left &lt;a href=&quot;https://youtu.be/EQxA3VYal54?t=3161&quot;&gt;some people&lt;/a&gt; chomping at the bit for the official release that is still some time ahead.&lt;/p&gt;
+
+&lt;p&gt;Zivtech’s Co-founder/CTO &lt;a href=&quot;https://www.zivtech.com/about/team/jody-hamilton&quot;&gt;Jody Hamilton&lt;/a&gt;’s &lt;a href=&quot;https://events.drupal.org/neworleans2016/sessions/grow-your-own&quot;&gt;“Grow your own”&lt;/a&gt; presentation about how to create a culture of recruitment and training within was another near-and-dear topic as we had just hired our second intern (&lt;a href=&quot;http://savaslabs.com/team/ro-wang/&quot;&gt;the wonderful Ro&lt;/a&gt;)! The presentation had some good lessons learned and valuable takeaways if not only entertaining to the frequency of the reference to marijuana (see 3 seconds into the presentation). Thanks for the good info Jody!&lt;/p&gt;
+
+&lt;p&gt;My last session of Drupalcon was Dries’s &lt;a href=&quot;https://events.drupal.org/neworleans2016/sessions/state-drupal&quot;&gt;State of Drupal&lt;/a&gt;. Since I missed the &lt;a href=&quot;https://twitter.com/hashtag/DriesNote?src=hash&quot;&gt;#Driesnote&lt;/a&gt; in person (just finished watching it), and contributed to &lt;a href=&quot;http://buytaert.net/state-of-drupal-2016-survey&quot;&gt;the survey&lt;/a&gt; he put out, and &lt;a href=&quot;http://buytaert.net/how-is-drupal-8-doing#comment-125541&quot;&gt;commented on his blog post&lt;/a&gt; about the adoption of Drupal 8, I figured I still needed more. Sure enough, much of the material I was aware of at the time, but as I am wont to do, I was the &lt;a href=&quot;https://youtu.be/Ct0IYLgPYos?t=1923&quot;&gt;first to ask Dries a question&lt;/a&gt; (admittedly a bit circuitous and verbose) as to how to improve the experience of trying to contribute to Drupal. &lt;a href=&quot;https://www.drupal.org/u/xjm&quot;&gt;XJM&lt;/a&gt; rushed to the mic to give a great answer, which ended up driving my involvement with &lt;a href=&quot;https://www.drupal.org/u/jthorson&quot;&gt;Jeremy Thorson&lt;/a&gt; (who also spoke thereafter) at the sprint the following day.&lt;/p&gt;
+
+&lt;p&gt;The day concluded with the marching memorial putting Drupal 6 to rest. I observed the wonderful jazz band that accompanied it, but passed up the opportunity to head to the Rusty Nail for the 3rd time in as many days. Kosta and Lisa were in the air and on their way home at that point.&lt;/p&gt;
+
+&lt;h3 id=&quot;friday---code-sprinting--heading-home&quot;&gt;Friday - Code sprinting / Heading home&lt;/h3&gt;
+
+&lt;p&gt;The Friday sprints were surprisingly well attended. Sprint lounges were occupied all week, and some sprinters promised to continue throughout the weekend at the convention center. This dedication to the project is impressive and inspirational (and I’ve argued necessary) to the future of Drupal’s success.&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot; data-lang=&quot;en&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Putting my 💰 where my 🤑 is and investing in &lt;a href=&quot;https://twitter.com/hashtag/Drupal?src=hash&quot;&gt;#Drupal&lt;/a&gt;:  &lt;a href=&quot;https://t.co/s1aUuoKxkv&quot;&gt;https://t.co/s1aUuoKxkv&lt;/a&gt; &lt;a href=&quot;https://twitter.com/DrupalConNA&quot;&gt;@DrupalConNA&lt;/a&gt; code sprinting 🏃 ! &lt;a href=&quot;https://t.co/mlSXsZif4m&quot;&gt;pic.twitter.com/mlSXsZif4m&lt;/a&gt;&lt;/p&gt;&amp;mdash; Savas Labs (@Savas_Labs) &lt;a href=&quot;https://twitter.com/Savas_Labs/status/731148211218436097&quot;&gt;May 13, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;It is in the track world just as it is in the coding world: &lt;strong&gt;sprinting is hard!&lt;/strong&gt; It is difficult to get organized, get oriented (or help orient) and contribute effectively to a global project in a narrow window of time.&lt;/p&gt;
+
+&lt;p&gt;Given my newfound desire to ease the barriers and access to contributing to the project in general, I decided to sprint to make the drupal.org contributor experience better. In doing so, I got &lt;a href=&quot;https://drupal:drupal@chrisarusso-drupal.dev.devdrupal.org&quot;&gt;my very own installation of the drupal.org website&lt;/a&gt; of which I had complete control. &lt;strong&gt;Fun&lt;/strong&gt;!&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot; data-lang=&quot;en&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;Just for one glorious day when contributing to &lt;a href=&quot;https://twitter.com/hashtag/Drupal?src=hash&quot;&gt;#Drupal&lt;/a&gt;, I AM &lt;a href=&quot;https://twitter.com/Dries&quot;&gt;@Dries&lt;/a&gt;! &lt;a href=&quot;https://twitter.com/DrupalConNA&quot;&gt;@DrupalConNA&lt;/a&gt; &lt;a href=&quot;https://twitter.com/hashtag/DreamsRealized?src=hash&quot;&gt;#DreamsRealized&lt;/a&gt; &lt;a href=&quot;https://t.co/aWGlGaM67P&quot;&gt;pic.twitter.com/aWGlGaM67P&lt;/a&gt;&lt;/p&gt;&amp;mdash; Savas Labs (@Savas_Labs) &lt;a href=&quot;https://twitter.com/Savas_Labs/status/731184271218610177&quot;&gt;May 13, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;span class=&quot;caption&quot;&gt;Note: Dries liked this Tweet&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;As mentioned, &lt;strong&gt;sprinting is hard&lt;/strong&gt;, so I was actually unable to meaningfully contribute a patch during my stay before I had to head to the airport.&lt;/p&gt;
+
+&lt;p&gt;However, I was able to follow up shortly after returning home to &lt;a href=&quot;https://www.drupal.org/node/2035235#comment-11201809&quot;&gt;submit a patch&lt;/a&gt; to the issue I was working on which is currently in review. Exciting stuff.&lt;/p&gt;
+
+&lt;h3 id=&quot;wrap-up&quot;&gt;Wrap-up&lt;/h3&gt;
+
+&lt;p&gt;In conclusion, one of my biggest takeaways from the whole experience is that &lt;strong&gt;it’s all about the community!!&lt;/strong&gt; … that’s what makes Drupal great. Some of my favorite people on planet Earth I either work with, or met through Drupal. Conferences are a nice time to connect in the flesh with people who we know on the other side of a video call, or less yet, as a username on a website. New Orleans proved to be a good city to host Drupalcon, and we’re already looking forward to Baltimore next year.&lt;/p&gt;
+
+&lt;h5 id=&quot;honorable-mention-tweets-anxiously-awaiting-a-response&quot;&gt;Honorable mention Tweets anxiously awaiting a response&lt;/h5&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot; data-lang=&quot;en&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;. &lt;a href=&quot;https://twitter.com/sethviebrock&quot;&gt;@sethviebrock&lt;/a&gt; of &lt;a href=&quot;https://twitter.com/OriginEight&quot;&gt;@OriginEight&lt;/a&gt; - great to meet &lt;a href=&quot;https://twitter.com/DrupalConNA&quot;&gt;@DrupalConNA&lt;/a&gt; - HAVE to hear about your work on 🎤 &lt;a href=&quot;https://twitter.com/justinbieber&quot;&gt;@justinbieber&lt;/a&gt;&amp;#39;s 🎤 website 💻 &lt;a href=&quot;https://twitter.com/hashtag/Beliebers?src=hash&quot;&gt;#Beliebers&lt;/a&gt;&lt;/p&gt;&amp;mdash; Savas Labs (@Savas_Labs) &lt;a href=&quot;https://twitter.com/Savas_Labs/status/730456948731154433&quot;&gt;May 11, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+</description>
+        <pubDate>Fri, 20 May 2016 00:00:00 +0000</pubDate>
+        <link>/2016/05/20/drupalcon-nola-recap.html</link>
+        <guid isPermaLink="true">/2016/05/20/drupalcon-nola-recap.html</guid>
+        
+        <category>drupal</category>
+        
+        <category>drupal8</category>
+        
+        <category>drupalcon</category>
+        
+        <category>event</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>How we added comments to our Jekyll site</title>
+        <description>&lt;p&gt;&lt;a href=&quot;/2015/04/01/building-our-site.html&quot;&gt;Avid readers of our blog&lt;/a&gt; know that it’s built using the amazing and lovely open-source static site generator known as &lt;a href=&quot;http://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Jekyll is a great solution for a site like ours because we get an always-on&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;, super fast, database-free site that’s also capable of many of the things you’d typically associate with a database-driven site: tagging, content organization, advanced templating, etc. Best of all, it’s one less application for us to host and keep up-to-date with the latest security patches.&lt;/p&gt;
+
+&lt;p&gt;However, as much as we like our static HTML, we also care about you, dear reader, and we wanted to provide an easy way for you to comment on and contribute to discussion on our site’s content.&lt;/p&gt;
+
+&lt;p&gt;This post provides an overview of how and why we implemented comments for our Jekyll site. If you find it interesting or helpful… leave a comment!&lt;/p&gt;
+
+&lt;h2 id=&quot;how-most-people-solve-the-problem&quot;&gt;How most people solve the problem&lt;/h2&gt;
+
+&lt;p&gt;Most folks using static site generators include comments by outsourcing their site’s comment section to &lt;a href=&quot;https://disqus.com/&quot;&gt;Disqus&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Disqus works like this: you sign up for their service and get a &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;script&amp;gt;&lt;/code&gt; embed code that you place in your page template. When the user visits that page, their browser will load the Disqus commenting widget. All comments are stored on Disqus’ servers, the script loads any comments stored in Disqus for the particular URL the user is on.&lt;/p&gt;
+
+&lt;p&gt;This is an elegant solution, but there are some problems. For one, you don’t own your comments; they reside in a third-party service. And as &lt;a href=&quot;http://ourincrediblejourney.tumblr.com/&quot;&gt;Our Incredible Journey&lt;/a&gt; has well documented, services, even big ones like Disqus, sometimes disappear without much warning.&lt;/p&gt;
+
+&lt;p&gt;More importantly, Disqus doesn’t have a great track record on privacy. By default, they track your activity while you browse sites across the web:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;We strive to make the Disqus experience as personalized and relevant as possible for all users. In doing so, we collect non-personally identifiable interest information to deliver targeted content and advertising on websites that use Disqus, as well as other websites you may visit.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This is somewhat mitigated by this &lt;a href=&quot;https://help.disqus.com/customer/portal/articles/1657951&quot;&gt;semi-hidden setting&lt;/a&gt; that lets you opt out of some of their tracking, but I’m willing to venture that the vast majority of Disqus users don’t know about this. And the “non-personally identifiable information” term is a &lt;a href=&quot;https://www.eff.org/deeplinks/2009/09/what-information-personally-identifiable&quot;&gt;bit of a misnomer&lt;/a&gt; in any case.&lt;/p&gt;
+
+&lt;p&gt;(Full disclosure: we’re not entirely innocent in this respect either, since we’re using Google Analytics on our site, so if you are not doing so already, we invite you to go install an ad blocker plugin for your browser and come back to finish the article!)&lt;/p&gt;
+
+&lt;h2 id=&quot;creating-an-alternative&quot;&gt;Creating an alternative&lt;/h2&gt;
+
+&lt;p&gt;The privacy concerns and content ownership issues with Disqus were enough to make us look elsewhere for other solutions, and when the alternatives weren’t exactly what we were looking for, we decided to roll our own.&lt;sup id=&quot;fnref:2&quot;&gt;&lt;a href=&quot;#fn:2&quot; class=&quot;footnote&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+
+&lt;p&gt;Our requirements were simple: allow users to leave a comment on a post, have that comment show up to other users who visit the post.&lt;/p&gt;
+
+&lt;p&gt;The basic plan for implementing our Disqus alternative was similar to the Disqus model: on the Savas Labs website, embed some JavaScript in our page template; that JavaScript is then responsible for (1) loading any comments housed in our comment application, and (2) posting new comments to the comment application. The comment application, in turn, is a PHP application with an API that provides create/read/delete operations to users of our website.&lt;/p&gt;
+
+&lt;h3 id=&quot;built-on-lumen&quot;&gt;Built on Lumen&lt;/h3&gt;
+
+&lt;p&gt;Looking around the open source landscape for the right tool to build this app, we came across &lt;a href=&quot;https://lumen.laravel.com/&quot;&gt;Lumen&lt;/a&gt;, a slimmed down version of the well-known &lt;a href=&quot;https://www.laravel.com&quot;&gt;Laravel&lt;/a&gt; project. Lumen was very simple to get up and running with thanks to the &lt;a href=&quot;https://lumen.laravel.com/docs/5.2&quot;&gt;clear documentation examples&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;The entry point of our application are some &lt;a href=&quot;https://github.com/savaslabs/squabble/blob/master/app/Http/routes.php&quot;&gt;routing rules&lt;/a&gt; that determine what data to give back to the user when they visit a particular API endpoint.&lt;/p&gt;
+
+&lt;p&gt;From there, the requests are processed in the &lt;a href=&quot;https://github.com/savaslabs/squabble/blob/master/app/Http/Controllers/CommentController.php&quot;&gt;CommentController&lt;/a&gt; — depending on the request, we can create a comment, retrieve a comment, delete it, or get a quick list of all posts and the number of comments per page (we use this information on our home page and on the &lt;a href=&quot;/news&quot;&gt;News&lt;/a&gt; page to show the comment count per article).&lt;/p&gt;
+
+&lt;p&gt;The application runs on one of our cloud servers on Linode, and uses a SQLite backend. Because the Lumen framework is very lean, and the application does relatively little, it’s very fast — the &lt;code class=&quot;highlighter-rouge&quot;&gt;api/comments/count&lt;/code&gt; call takes ~84 ms while loading all comments (&lt;code class=&quot;highlighter-rouge&quot;&gt;api/comments&lt;/code&gt;) takes about 125 ms.&lt;/p&gt;
+
+&lt;h3 id=&quot;tying-it-all-together&quot;&gt;Tying it all together&lt;/h3&gt;
+
+&lt;p&gt;Now that we set up our backend application for managing comments, we needed a way to interact with it. On this site, we have some JavaScript to interact with the API. You can look at our Jekyll site’s &lt;a href=&quot;https://github.com/savaslabs/savaslabs.github.io/blob/master/assets/js/main.js&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;main.js&lt;/code&gt;&lt;/a&gt; for the gory details, but basically we make use of the jQuery &lt;code class=&quot;highlighter-rouge&quot;&gt;ajax()&lt;/code&gt; method to &lt;code class=&quot;highlighter-rouge&quot;&gt;GET&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;POST&lt;/code&gt; data from and to our commenting API.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;And now you know how and why the “Comments” section on this post appears as it does!&lt;/p&gt;
+
+&lt;p&gt;In conclusion, I should mention that the major downside of building your own comment hosting application is that you have to … build your own comment hosting application. In other words, nothing comes for free — you have to build every feature yourself.&lt;/p&gt;
+
+&lt;p&gt;That’s why, for example, we don’t (yet) have nicely formatted comments (they are plain text only), and users don’t get notifications when someone replies to their comment, there’s no comment threading, etc. On the other hand, what we have met our team’s expectations for minimum viable/lovable product, and it was a good learning experience for our team to develop this application over the last year.&lt;/p&gt;
+
+&lt;p&gt;Our &lt;a href=&quot;https://github.com/savaslabs/savaslabs.github.io&quot;&gt;website&lt;/a&gt; and &lt;a href=&quot;https://github.com/savaslabs/squabble&quot;&gt;comment application&lt;/a&gt; code is all open source, so have a look and feel free to use it for your own projects.&lt;/p&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;&lt;a href=&quot;https://twitter.com/githubstatus/status/711965206029725697&quot;&gt;Nearly&lt;/a&gt;. &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li id=&quot;fn:2&quot;&gt;
+      &lt;p&gt;I should mention we investigated some alternatives too; writing code from scratch that we have to then maintain is rarely our first choice. The &lt;a href=&quot;https://posativ.org/isso/&quot;&gt;Isso&lt;/a&gt; project is very cool but seemed a little complex to deploy and maintain. And &lt;a href=&quot;http://ivanzuzak.info/2011/02/18/github-hosted-comments-for-github-hosted-blogs.html&quot;&gt;this person&lt;/a&gt; came up with a solution that cleverly uses GitHub Issues for gathering comments, but then we’d shut the door on anyone without a GitHub account, and having to visit GitHub to leave a comment is more than a little awkward. Another benefit to writing our own implementation: a great opportunity for the team to stay current with the latest technology and make use of a popular PHP framework. &lt;a href=&quot;#fnref:2&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Wed, 20 Apr 2016 00:00:00 +0000</pubDate>
+        <link>/2016/04/20/squabble-comments.html</link>
+        <guid isPermaLink="true">/2016/04/20/squabble-comments.html</guid>
+        
+        <category>jekyll</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>TriDUG lightning talks</title>
+        <description>&lt;p&gt;Savas Labs will host &lt;a href=&quot;http://www.meetup.com/triDUG/events/229790010/&quot;&gt;this session “Lightning talks - all things Drupal”&lt;/a&gt; at our home base again at the American Underground @ Main in downtown Durham. We will be looking into Raleigh options for the next meetup, so write if you’ve got space to offer.&lt;/p&gt;
+
+&lt;p&gt;We’ll have pizza here at 6:30, and do some mingling until about 7:00. At 7:00 we’ll do introductions, and share any pertinent information about projects we’re working on, job opportunities, and the like.&lt;/p&gt;
+
+&lt;p&gt;At 7:15 we’ll start with the first of 4 lightning talks. Each talk should last 5-15 minutes, and we’ll try to cover a wide array of topics ideally custom development, site building, theming, and perhaps an introductory topic as well. If you have an interest in presenting, please write a comment, as we’ll have a slot or two available for presenters.&lt;/p&gt;
+
+&lt;p&gt;We look forward to seeing you in April after your taxes are done!&lt;/p&gt;
+
+</description>
+        <pubDate>Tue, 22 Mar 2016 00:00:00 +0000</pubDate>
+        <link>/2016/03/22/tridug-lightning-talks.html</link>
+        <guid isPermaLink="true">/2016/03/22/tridug-lightning-talks.html</guid>
+        
+        <category>drupal</category>
+        
+        <category>event</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>An Event Apart Nashville: post-conference thoughts</title>
+        <description>&lt;p&gt;Sitting in the Nashville airport after attending
+&lt;a href=&quot;http://aneventapart.com/&quot;&gt;An Event Apart&lt;/a&gt;, a leading web design and development
+conference, I found myself feeling overwhelmed at the sheer volume of
+information I’d just taken in and the positively enormous possibilities lying
+ahead of the people who build the web (and the equally huge responsibility we
+have to move forward with thoughtfulness and compassion).&lt;/p&gt;
+
+&lt;p&gt;I wasn’t quite sure what to expect going in, so I’d like to summarize my biggest
+takeaways, share some of the things I found exciting, and reflect on what I
+got out of attending and whether it was worth the relatively high ticket price.&lt;/p&gt;
+
+&lt;h2 id=&quot;major-takeaways&quot;&gt;Major takeaways&lt;/h2&gt;
+
+&lt;p&gt;Knowing the kind of ground-breaking conversations that can happen at An Event
+Apart (for instance, the idea of responsive design was introduced by
+&lt;a href=&quot;http://ethanmarcotte.com/&quot;&gt;Ethan Marcotte&lt;/a&gt; at
+&lt;a href=&quot;http://aneventapart.com/news/post/five-years-ago-today-responsive-web-designs-debut&quot;&gt;An Event Apart Seattle 2010&lt;/a&gt;)
+I was hoping for a glimpse into the future of the web, and I wasn’t disappointed.
+Throughout the event, a few overarching themes came up.&lt;/p&gt;
+
+&lt;h3 id=&quot;unified-design-is-the-logical-continuation-of-responsive-design&quot;&gt;Unified design is the logical continuation of responsive design.&lt;/h3&gt;
+
+&lt;p&gt;Between the growing capabilities of devices, the sheer number of models, the
+differences in how we use them depending on age/location/race/preference/ability,
+and our ever-increasing use of small screens, there is no “mobile” and “desktop”
+anymore. In his talk, &lt;a href=&quot;http://cameronmoll.tumblr.com/&quot;&gt;Cameron Moll&lt;/a&gt; replaced
+the responsive design paradigm with &lt;strong&gt;unified design&lt;/strong&gt; - a cohesive, consistent
+experience across all devices regardless of where the experience begins,
+continues, and ends. If we commit to this, we empower users to not only have a
+seamless experience using our products, we also allow them to use whichever
+device makes the most sense for them. As Cameron put it:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The best interface is the one within reach.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Unified design isn’t just important for the sake of a great user experience
+across multiple devices. Right now, 13% of US adults are smartphone-only users,
+and that percentage rises for people without a college degree, people who make
+less than $20,000 a year, and young people — 21% of millenials use the internet
+exclusively on mobile. And the US is behind most countries in mobile use! So if
+we continue gutting the functionality of our sites on small screens, we’re
+penalizing large and sometimes vulnerable groups of users who can’t afford or
+simply don’t want another internet connection besides their phone.&lt;/p&gt;
+
+&lt;p&gt;So why do our mobile sites fall so short? Constantly growing desktop screens
+gave us the opportunity to fill those screens with less-than-useful content. Once we
+needed to adapt to small screens, we had to cut down our desktop sites and often
+ended up sacrificing functionality. This is where the idea of mobile-first can
+save us - rather than designing for desktop then scaling down, we can design for
+mobile and then add enhancements depending on device capabilities. One of the
+biggest gains for me from this conference was finally grasping the true value
+of mobile-first design.&lt;/p&gt;
+
+&lt;h3 id=&quot;beyond-devices-the-internet-of-things-is-coming-and-can-be-awesome----if-we-design-responsibly&quot;&gt;Beyond devices, the Internet of Things is coming and can be awesome – if we design responsibly.&lt;/h3&gt;
+
+&lt;p&gt;I’ll be honest, the &lt;a href=&quot;http://www.wired.com/2013/05/internet-of-things-2/&quot;&gt;Internet of Things&lt;/a&gt;
+usually gives me a creepy,
+hair-standing-up-on-the-back-of-my-neck, &lt;a href=&quot;https://www.washingtonpost.com/business/technology/dreams-of-ray-bradbury-ten-predictions-that-came-true/2012/06/06/gJQAqbs9IV_story.html&quot;&gt;Ray-Bradbury-was-right feeling&lt;/a&gt;. But the
+possibilities in front of us are truly amazing, and if we handle the responsibility
+with care, we can meld the internet with our physical world in a way that actually improves
+our lives. &lt;a href=&quot;https://bigmedium.com/&quot;&gt;Josh Clark&lt;/a&gt; suggested that instead of using
+our powers to bombard people with ads or infantilize them with needless apps, &lt;strong&gt;we
+should strive to make people feel like superheroes.&lt;/strong&gt; One great example that Josh
+shared is &lt;a href=&quot;http://www.rlsb.org.uk/tech-hub/wayfindr&quot;&gt;Wayfindr&lt;/a&gt;, an audio
+navigation system to help visually impaired people use the London Tube.&lt;/p&gt;
+
+&lt;p&gt;Josh also called on us to design calm technology - to weave data into the background
+of our lives rather than overwhelming people with it. A wearable should be something
+you’d wear if it didn’t contain any technology. And like an &lt;a href=&quot;https://youtu.be/bVceIdoWf5o?t=378&quot;&gt;escalator&lt;/a&gt;, a physical
+item should still work if the technology within breaks.&lt;/p&gt;
+
+&lt;h3 id=&quot;as-the-web-seeps-further-into-our-lives-compassion-is-key&quot;&gt;As the web seeps further into our lives, compassion is key.&lt;/h3&gt;
+
+&lt;p&gt;One of the most powerful moments of the conference was Eric Meyer’s presentation
+on designing for real people through compassion. Through an incredibly personal
+and vulnerable narrative, which you can read more about
+&lt;a href=&quot;http://meyerweb.com/eric/thoughts/2014/12/24/inadvertent-algorithmic-cruelty/&quot;&gt;in this post&lt;/a&gt;
+or &lt;a href=&quot;https://abookapart.com/products/design-for-real-life&quot;&gt;in his excellent book&lt;/a&gt;,
+Eric showed us the importance of considering users beyond the ideal personas we
+create. Rather than considering these users “edge cases,” Eric encouraged us to
+think about “&lt;strong&gt;stress cases&lt;/strong&gt;,” users who have an urgent or sensitive need and require
+additional thought and consideration. He challenged us to question our
+assumptions about our users, to earn and maintain their trust, and not to
+exacerbate the bad situations that inevitably affect people – people who still
+have to use the internet.&lt;/p&gt;
+
+&lt;p&gt;Josh Clark brought this up as well when discussing the rapid development of new
+inputs for touch devices, recognizing that we don’t yet have a set of principles
+to design by. His simple call to action:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Be the person who cares.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This principle was demonstrated throughout the conference, too. Even when
+presenters brought up examples of people getting things wrong, they did so to
+ensure that we learn from each other’s mistakes rather than repeating them, and
+they constantly reiterated that we all have room to improve.&lt;/p&gt;
+
+&lt;h2 id=&quot;other-awesome-things&quot;&gt;Other awesome things&lt;/h2&gt;
+
+&lt;p&gt;Here’s a little data-dump of other noteworthy items:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;From Jeffrey Zeldman: &lt;strong&gt;We’re facing the same problems we always have&lt;/strong&gt; - bloat,
+arguments over what code/language to use/support, which browsers to support,
+different screen sizes/dimensions, how to do layouts, etc. These aren’t new
+problems even though the web is constantly evolving.&lt;/li&gt;
+  &lt;li&gt;From Jen Simmons: &lt;strong&gt;The
+&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/CSS/@supports&quot;&gt;feature query&lt;/a&gt;.&lt;/strong&gt;
+Incomplete CSS3 modules are no longer unusable; they can be used in browsers
+that support them and ignored by browsers that don’t.&lt;/li&gt;
+  &lt;li&gt;Speaking of incomplete CSS3 modules,
+&lt;strong&gt;&lt;a href=&quot;http://alistapart.com/article/css-shapes-101&quot;&gt;CSS shapes&lt;/a&gt;.&lt;/strong&gt; This one’s a ways
+off from being completed, but I can’t wait to play around with it.&lt;/li&gt;
+  &lt;li&gt;From Aaron Gustafson: &lt;strong&gt;Work harder so your users don’t have to.&lt;/strong&gt; Aaron’s
+comprehensive guide on forms emphasized carefully considering every form field
+to place the brunt of the work on the developer rather than the user.&lt;/li&gt;
+  &lt;li&gt;From Josh Clark: &lt;strong&gt;Don’t require a different app for every smart device.&lt;/strong&gt;
+Make it easy on the user to connect via
+&lt;a href=&quot;https://google.github.io/physical-web/&quot;&gt;the physical web&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;From Jason Grigsby: &lt;strong&gt;Input is exploding.&lt;/strong&gt; Consider the following: keyboard,
+mouse, camera, accelerometer, trackpad, gestures, location services, voice,
+compass, beacons (e.g. bluetooth), gyroscope, Siri and other AIs, fingerprint
+recognition, Apple Pay, barometer, 3D touch. There were 142 years between the
+keyboard and the mouse, and now we get new inputs with each new device.&lt;/li&gt;
+  &lt;li&gt;From Josh Clark: when designing for touch, &lt;strong&gt;let the real world be your guide.&lt;/strong&gt;
+Function isn’t always more important than form when it comes to enabling new
+users to seamlessly learn new technologies. As data becomes more and more
+tangible, we can capitalize on new inputs to allow users to interact with the
+web in increasingly realistic, physical ways.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;was-it-worth-it&quot;&gt;Was it worth it?&lt;/h2&gt;
+
+&lt;p&gt;This was my biggest question given the relatively high cost, and yes, I think it
+was worth it. The high caliber of the speakers, their presentations, and the
+event as a whole justified the ticket price in my opinion. Every talk was
+polished, informative, and relevant to the current status and future of our
+industry. Not only did I learn a ton, I believe that the event spreads a
+much-needed set of values that will be crucial to the progression of the web as
+it infiltrates more and more aspects of our lives.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://meyerweb.com/eric/thoughts/2005/12/14/event-pricing/&quot;&gt;Eric Meyer’s post from 2005&lt;/a&gt;
+provides further clarity on the pricing.&lt;/p&gt;
+
+&lt;p&gt;Going in I anticipated more technical talks that directly taught a skill or
+tool. Maybe half of the presentations were like this, and some of these covered
+CSS3 modules that aren’t yet supported enough to use. That said, I liked that
+the general theme of the conference was shaping the future of web design and
+front end development. I certainly walked away with new skills and a huge list
+of things to try, but I also learned so much about what’s coming in the industry
+and how those of us who work in it can shape it for the better. I left
+An Event Apart excited, motivated, and frantically trying to decide which of
+the things I learned to explore first.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 21 Mar 2016 00:00:00 +0000</pubDate>
+        <link>/2016/03/21/an-event-apart-nashville.html</link>
+        <guid isPermaLink="true">/2016/03/21/an-event-apart-nashville.html</guid>
+        
+        <category>conference</category>
+        
+        <category>design</category>
+        
+        <category>front-end-dev</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>TriDUG recap: Drupal 8 case studies</title>
+        <description>&lt;p&gt;On Thursday March 17, about thirty &lt;a href=&quot;https://groups.drupal.org/tridug&quot;&gt;TriDUG&lt;/a&gt; members gathered to for a discussion on using Drupal 8.&lt;/p&gt;
+
+&lt;p&gt;I presented on my experiences building &lt;a href=&quot;https://www.durhamatletico.com&quot;&gt;Durham Atlético&lt;/a&gt; using all the Drupal 8 features we’re growing to love: configuration management, new theming layer, Views in core, the vastly improved content editing experience, and the Symfony2 underpinnings of Drupal’s architecture.&lt;/p&gt;
+
+&lt;blockquote class=&quot;twitter-tweet&quot; data-lang=&quot;en&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;The meetup has begun! &lt;a href=&quot;https://t.co/wEHisuW44l&quot;&gt;pic.twitter.com/wEHisuW44l&lt;/a&gt;&lt;/p&gt;&amp;mdash; Savas Labs (@Savas_Labs) &lt;a href=&quot;https://twitter.com/Savas_Labs/status/710605691237605377&quot;&gt;March 17, 2016&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;&lt;a href=&quot;/team/anne-tomasevich&quot;&gt;Anne&lt;/a&gt; gave a tour of the theming layer (she did some &lt;a href=&quot;https://github.com/durhamatletico/durhamatletico-cms/graphs/contributors&quot;&gt;amazing work building the theme&lt;/a&gt; for the Durham Atlético site) and talked up the benefits of using Twig over the old PHP-based templating system in Drupal 7. If you’d like to know more about Drupal 8 theming, we have a great set of &lt;a href=&quot;/blog/tag/theming/&quot;&gt;introductory articles here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Thanks to everyone who attended, we’re looking forward to seeing you all at the next TriDUG meetup!&lt;/p&gt;
+</description>
+        <pubDate>Fri, 18 Mar 2016 00:00:00 +0000</pubDate>
+        <link>/2016/03/18/tridug-recap.html</link>
+        <guid isPermaLink="true">/2016/03/18/tridug-recap.html</guid>
+        
+        <category>drupal8</category>
+        
+        <category>tridug</category>
+        
+        
+      </item>
+    
+      <item>
+        <title>TriDUG: Drupal 8 case studies, presentation, and discussion</title>
+        <description>&lt;p&gt;After a long lull in activity, Savas Labs would like to reinvigorate the &lt;a href=&quot;https://groups.drupal.org/&quot;&gt;TriDUG&lt;/a&gt; evening meetups. We recognize there is a lot of Drupal need and experience here in the Triangle, and we want to collaborate more with our local community. With the help of Barb Baranski, we have sent out a questionnaire to the group to better understand interests, days and locations that will work for the group, and you have responded!&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://www.meetup.com/triDUG/events/229414499/&quot;&gt;We’ll host the first session at our home base&lt;/a&gt;, the American Underground @ Main in downtown Durham.&lt;/p&gt;
+
+&lt;p&gt;We’ll have pizza here at 6:30, and do some mingling until about 7:00. At 7:00 we’ll do introductions, and share any pertinent information about projects we’re working on, job opportunities, and the like.&lt;/p&gt;
+
+&lt;p&gt;At 7:15 or so, Kosta Harlan will present on all things Drupal 8. He has a couple of &lt;a href=&quot;https://www.durhamatletico.com&quot;&gt;real-world projects he’s built&lt;/a&gt; or &lt;a href=&quot;https://github.com/savaslabs/durham-civil-rights-map&quot;&gt;helped build&lt;/a&gt; in Drupal 8, and will spend some time presenting on the specifics of those site builds. Plenty of time will be factored in for Q&amp;amp;A throughout the presentation with some additional time at the end.&lt;/p&gt;
+
+&lt;p&gt;We’ll also discuss future locations, topics and times that work for other members of the group, so we strongly encourage you to come out to this session even if it’s not ideal for you on an ongoing basis to help shape the future of the meetup that this community deserves.&lt;/p&gt;
+
+&lt;p&gt;We look forward to seeing you in Durham on St. Patrick’s Day!&lt;/p&gt;
+</description>
+        <pubDate>Wed, 16 Mar 2016 00:00:00 +0000</pubDate>
+        <link>/2016/03/16/tridug-drupal-8-durham-atletico-case-study.html</link>
+        <guid isPermaLink="true">/2016/03/16/tridug-drupal-8-durham-atletico-case-study.html</guid>
+        
+        <category>drupal</category>
+        
+        <category>event</category>
+        
+        
+      </item>
+    
   </channel>
 </rss>

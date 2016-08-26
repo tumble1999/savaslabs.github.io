@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <title>Usability Testing - Our Process and Favorite Practices | Savas Labs</title>
+  
+  <meta name="description" content="One of my favorite lines about usability testing comes from Jakob Nielson of the Nielson Norman Group in his article Why You Only Need to Test with 5 Users, ...">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,400italic,700italic|PT+Serif|Bitter|Source+Sans+Pro' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/assets/styles/main.css">
+  <link rel="stylesheet" href="/assets/icons/octicons/octicons.css">
+  <link rel="canonical" href="/2016/06/22/user-testing.html">
+  <link rel="alternate" type="application/rss+xml" title="Savas Labs" href="/feed.xml" />
+  <script type="text/javascript" src="/assets/js/main.js"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Durham, North Carolina",
+        "postalCode": "27701",
+        "streetAddress": "201 W Main St."
+      },
+      "description": "A full-service web agency leveraging the power of Drupal.
+",
+      "email": "info@savaslabs.com",
+      "name": "Savas",
+      "telephone": "(919) 432-4660",
+      "url": "http://savaslabs.com",
+      "logo": "http://savaslabs.com/assets/img/logo.png"
+    }
+</script>
+
+  
+  
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Usability Testing - Our Process and Favorite Practices",
+    "about": "Our approach to designing, conducting, and learning from user testing and other analyses.",
+    "articleBody": "
+
+
+&lt;div class=&quot;post&quot;&gt;
+  &lt;header class=&quot;post-header&quot;&gt;
+    &lt;h1 class=&quot;post-title&quot;&gt;Usability Testing - Our Process and Favorite Practices&lt;/h1&gt;
+    &lt;p&gt;By &lt;a href=&quot;/team/anne-tomasevich&quot;&gt;Anne Tomasevich&lt;/a&gt;&lt;/p&gt;
+    &lt;p class=&quot;centerdot&quot;&gt;&amp;centerdot; &lt;/p&gt;
+    &lt;p&gt;Jun 22, 2016 &lt;/p&gt;&lt;br&gt;
+    &lt;i class=&quot;fa fa-tags&quot;&gt;&lt;/i&gt;&lt;p&gt;&lt;a href=&quot;/blog/tag/user-experience/&quot;&gt;User Experience&lt;/a&gt;, &lt;a href=&quot;/blog/tag/best-practices/&quot;&gt;Best Practices&lt;/a&gt;&lt;/p&gt;
+    
+    &lt;div&gt;&lt;p&gt;&lt;span id=&quot;comment-count&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+    
+    
+      &lt;div class=&quot;post-featured-image&quot;&gt;
+        &lt;img class=&quot;post-hero-image&quot; src=&quot;/assets/img/blog/usability-testing.png&quot; alt=&quot;Two people comparing notes while using computers&quot;&gt;
+      &lt;/div&gt;
+    
+  &lt;/header&gt;
+
+  
+
+  &lt;article class=&quot;post-content&quot;&gt;
+    &lt;p&gt;One of my favorite lines about usability testing comes from Jakob Nielson of the Nielson Norman Group in his article &lt;a href=&quot;https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/&quot;&gt;Why You Only Need to Test with 5 Users&lt;/a&gt;, regarding a graph of number of user test participants versus percentage of usability problems found:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The most striking truth of the curve is that zero users give zero insights.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This, along with &lt;a href=&quot;https://articles.uie.com/three_hund_million_button/&quot;&gt;other persuasive evidence&lt;/a&gt;, is a fantastic reminder that we can learn so much about what’s right and what’s wrong with our websites simply by watching people use them.&lt;/p&gt;
+
+&lt;p&gt;At Savas Labs we’ve honed our approach to usability testing to balance efficiency, budget, and effectiveness. I’d like to share our process, some of my favorite resources, and some lessons we’ve learned along the way.&lt;/p&gt;
+
+&lt;h2 id=&quot;our-process&quot;&gt;Our Process&lt;/h2&gt;
+
+&lt;p&gt;Our process comprises six phases:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;#determine-goals-and-user-personas&quot;&gt;Determine goals and user personas&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#google-analytics&quot;&gt;Review Google Analytics&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#competitive-analysis&quot;&gt;Complete competitive analysis&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#user-testing&quot;&gt;Conduct user testing&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#user-survey&quot;&gt;Conduct user survey&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#compile-findings&quot;&gt;Compile findings&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;determine-goals-and-user-personas&quot;&gt;Determine goals and user personas&lt;/h3&gt;
+
+&lt;p&gt;Focusing a usability study on a product’s most critical users and functionality can help uncover the highest-impact problems without spending time and budget on lower-priority issues. To start the process, we meet with our clients and listen to them explain their purpose, describe their users, and identify potential or known issues with their website.&lt;/p&gt;
+
+&lt;p&gt;From here, we create two very important lists:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The client’s goals for the usability study&lt;/li&gt;
+  &lt;li&gt;The client’s users, in order of priority&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Let’s break these down.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Goals:&lt;/strong&gt; These can be measurable metrics (e.g. “Increase newsletter signups” or “Increase time spent on site”) or general value statements (“Provide a great experience on small screen sizes” or “Maintain a clean, modern design”).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Users:&lt;/strong&gt; This is a list of user personas in order of priority for the particular project. A persona is more in-depth and specific than a demographic, which may represent an age group, a gender, or an occupation. A persona is defined by patterns of behavior and needs, so it may encompass multiple demographics, and one demographic may be split across several personas. The user list is prioritized using the goals of the project (unless the client is lucky enough to be able to put forward the time and money to fix all of their users’ problems at once!) One of our roles in this process is helping the client brainstorm and account for all of their user groups, including ones they might not have considered.&lt;/p&gt;
+
+&lt;p&gt;Once these lists are created, we review them at the beginning of every meeting (yes, every meeting!). Why? Ensuring that the entire team is completely focused on meeting the project goals at all times causes a few awesome things happen:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Perhaps most importantly, at the end of the project everyone will be satisfied with the results, since they’re founded upon pre-determined goals that were agreed upon by everyone involved.&lt;/li&gt;
+  &lt;li&gt;Disagreements or uncertainty can be weighed against the goals – asking if something helps meet or doesn’t help meet the goals starts a focused, productive conversation.&lt;/li&gt;
+  &lt;li&gt;Team members are less likely to bring up or spend time on issues that don’t actually improve the end product.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;I should note that using user personas over demographics and repeating goals at each meeting are tips I picked up from Adam Connor’s workshop (&lt;a href=&quot;http://shop.oreilly.com/product/0636920033561.do&quot;&gt;and associated book&lt;/a&gt;) Discussing Design. I’d highly recommend both! These practices are  an abbreviated version of what he calls a &lt;a href=&quot;http://www.slideshare.net/adamconnor/discussing-design-the-art-of-critique/17-The_MiniBriefA_MiniCreative_Brief_is&quot;&gt;“mini-brief”&lt;/a&gt;, a one-page document detailing project goals, users, and more that is reviewed at each meeting.&lt;/p&gt;
+
+&lt;p&gt;So how does this apply to usability testing? Nailing down project goals and the most critical user groups will focus the scope of usability testing and increase the impact of the findings. We can review analytics and competitors’ sites with the client’s goals in mind, target the most critical users with user testing, cover a broader user base with user survey, and compile opportunities for improvement relevant to the client’s goals and real users of the product.&lt;/p&gt;
+
+&lt;p&gt;Once the goals and users are compiled and agreed upon, we can start digging into the usability testing.&lt;/p&gt;
+
+&lt;h3 id=&quot;google-analytics&quot;&gt;Google Analytics&lt;/h3&gt;
+
+&lt;p&gt;Reviewing Google Analytics is a great first step towards focusing user testing on the aspects of the site that are causing the most issues. If a client doesn’t already have Google Analytics installed, we can help set this up.&lt;/p&gt;
+
+&lt;p&gt;Viewing the analytics interface for the first time can be a bit overwhelming, so I’ll review some terminology and some of the points on which I like to focus for the purposes of usability testing.&lt;/p&gt;
+
+&lt;h5 id=&quot;terminology&quot;&gt;Terminology&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Bounce rate:&lt;/strong&gt; The percentage of users who leave the site after viewing a single page&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Exit page:&lt;/strong&gt; The last page a user views before leaving the site&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Organic search:&lt;/strong&gt; search results not provided by paid advertisements&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Engagement:&lt;/strong&gt; A combination of bounce rate, session duration, and pages viewed per session&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;useful-information&quot;&gt;Useful information&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where are the users located?
+    &lt;ul&gt;
+      &lt;li&gt;Audience &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Geo &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Location&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;What’s the ratio of new vs. returning users?
+    &lt;ul&gt;
+      &lt;li&gt;Audience &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Behavior &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; New vs. Returning&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;How engaged are users?
+    &lt;ul&gt;
+      &lt;li&gt;Audience &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Behavior &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Engagement&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;How many users access the site on desktop, tablet, and mobile?
+    &lt;ul&gt;
+      &lt;li&gt;Audience &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Mobile &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Overview&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;How do users get to the site?
+    &lt;ul&gt;
+      &lt;li&gt;Acquisition &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; All Traffic &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Channels&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Which pages are most viewed?
+    &lt;ul&gt;
+      &lt;li&gt;Behavior &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Site Content &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; All Pages&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;What are the top exit pages, and which of them are highly viewed pages?
+    &lt;ul&gt;
+      &lt;li&gt;Behavior &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Site Content &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Exit Pages&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Reviewing these item with our goals and users in mind informs the design of the user testing to follow. We can focus on the parts of the site causing the most users to leave and the behaviors we want to change, and we can test on the devices important to the users.&lt;/p&gt;
+
+&lt;h3 id=&quot;competitive-analysis&quot;&gt;Competitive analysis&lt;/h3&gt;
+
+&lt;p&gt;In tandem with reviewing analytics, we examine our client’s competitors’ websites (typically with a list of competitors/peers provided by the client). By reviewing the navigation, layout, functionality, and user experience of websites with goals similar to our client’s, we can ascertain critical feedback:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What are other sites doing well? What improvements could be applied to our client’s site?&lt;/li&gt;
+  &lt;li&gt;Where are other sites falling short? How can we ensure these bases are covered on our client’s site?&lt;/li&gt;
+  &lt;li&gt;What user experience problems exist on other sites? Can we test for these same issues on our client’s site during the user testing phase?&lt;/li&gt;
+  &lt;li&gt;How does our client’s site compare overall in terms of quality? How can we elevate our client’s site among its peers?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;user-testing&quot;&gt;User testing&lt;/h3&gt;
+
+&lt;p&gt;After gathering information from analytics and competitive analysis, we design our user tests. These are in-person meetings with a single participant at a time who is asked to complete tasks on the website, acting as one of the user personas. After reading the persona description and the task to the user, we observe their experience and record how they interact with the site.&lt;/p&gt;
+
+&lt;h5 id=&quot;designing-the-tests&quot;&gt;Designing the tests&lt;/h5&gt;
+
+&lt;p&gt;Designing the user tests is a multi-step process:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Decide which personas will be tested and how many participants are needed. User personas to be tested are chosen based on the client’s priority and potential/known issues found in the review of analytics and competitors. Number of participants can be surprisingly small and still quite effective, as per the Nielson Group’s &lt;a href=&quot;https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/&quot;&gt;detailed analysis&lt;/a&gt;. Ideally user testing would be iterative – a few users would be tested, followed by improvements to the site targeting the results of those tests, followed by more testing, etc. If this isn’t possible, five participants with one round of testing is typically effective. A/B testing can be implemented to test different versions of the site (or features within the site) within the same round of testing.&lt;/li&gt;
+  &lt;li&gt;Determine what needs to be tested. These items come from the critical tasks for our user persona(s), the potential points of frustration or difficulty for users (found by Google Analytics, competitive analysis, or simply review of the current site), and anything else desired by the client. I frame these items as goals.&lt;/li&gt;
+  &lt;li&gt;Translate goals to tasks. At this stage, each goal is translated into an actionable task or endpoint for the user.&lt;/li&gt;
+  &lt;li&gt;Translate tasks to scenarios. Rarely is a user told exactly what to do on a website in real life. To make the tests more realistic, we translate tasks into scenarios. We’ll read the scenario to each user to see if she can complete the desired task, how she approaches the task, and what points of frustration she encounters along the way.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;For example:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; The newsletter signup should be well-placed and easy to use.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task:&lt;/strong&gt; Sign up for the newsletter.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Scenario:&lt;/strong&gt; You want to keep up to date with news and job opportunities at XYZ Company. Using the website, find a way to receive monthly email updates from XYZ Company.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.nngroup.com/articles/task-scenarios-usability-testing/&quot;&gt;This article&lt;/a&gt; provides detailed recommendations for creating effective scenarios.&lt;/p&gt;
+
+&lt;p&gt;Some other tips for designing user tests:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;We aim for the test to take about 45 minutes, then ask some general or follow-up questions afterwards. Each participant will be there for about an hour.&lt;/li&gt;
+  &lt;li&gt;Scenarios shouldn’t give away how the website is supposed to work.&lt;/li&gt;
+  &lt;li&gt;Whenever possible, recruit participants who have never seen the site.&lt;/li&gt;
+  &lt;li&gt;Before conducting any real tests, do a pilot study on a willing participant (a coworker with a free hour works!) This will uncover any phrasing that doesn’t work and allow you to check the timing of the test, and it may even start revealing UX issues with the site.&lt;/li&gt;
+  &lt;li&gt;Offering compensation for a participant’s time is not only good practice, it helps immensely with recruitment!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;conducting-the-tests&quot;&gt;Conducting the tests&lt;/h5&gt;
+
+&lt;p&gt;Once participants are recruited, we bring them in one at a time and include as many observers/note takers as possible to capture the user’s actions, reactions, emotions, and words during the test scenarios. We ask the user to think out loud so we can understand their thought process and expectations. We’ll first read them the user persona they’re portraying, followed by each scenario they’ll need to act out. If relevant (and it almost always is), we’ll have participants complete some scenarios on their mobile phone or a tablet.&lt;/p&gt;
+
+&lt;p&gt;Some lessons we’ve learned along the way:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Most people need to be reminded a few times to voice their thoughts aloud.&lt;/li&gt;
+  &lt;li&gt;One person should read the scenarios and talk to the participant, others should take notes and time each task.&lt;/li&gt;
+  &lt;li&gt;It helps to remind the participant that they are not being tested, rather, the site is being reviewed. There is no right or wrong action, and everyone is there to see how users actually use the website in its current state.&lt;/li&gt;
+  &lt;li&gt;The word “test” might make participants nervous. “Scenario” is a more neutral term.&lt;/li&gt;
+  &lt;li&gt;Some users will ask what they’re supposed to do or if a certain choice is right. They can be encouraged to try something new and even allowed to give up, but they shouldn’t be fed the “correct” path.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;user-survey&quot;&gt;User survey&lt;/h3&gt;
+
+&lt;p&gt;To reach more than just the most critical users who were covered by the user testing phase, we create survey questions to elicit feedback from a broad range of users. These questions can be delivered in a variety of ways:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;An email survey sent to all registered users&lt;/li&gt;
+  &lt;li&gt;A contact form on the website soliciting feedback&lt;/li&gt;
+  &lt;li&gt;Targeted survey questions provided by a service like &lt;a href=&quot;https://qualaroo.com/&quot;&gt;Qualaroo&lt;/a&gt;, which can be triggered by certain behaviors (e.g. spending time on a specific page or coming to the site via a certain search term)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Cost and potential effectiveness with the targeted user groups must be weighed here.&lt;/p&gt;
+
+&lt;p&gt;For traditional surveys, we recommend pairing a &lt;a href=&quot;https://www.surveymonkey.com/mp/likert-scale/&quot;&gt;Likert scale&lt;/a&gt; with an open-ended response so users can explain their numeric ratings. This creates both quantitative data and expository feedback.&lt;/p&gt;
+
+&lt;h3 id=&quot;compile-findings&quot;&gt;Compile findings&lt;/h3&gt;
+
+&lt;p&gt;Our actual deliverable to clients takes the form of a report detailing the findings from each phase of the study and a summary of recommendations for future work. In addition to proposing solutions to issues found during the study, we make recommendations based on best practices and measurable metrics like Google’s &lt;a href=&quot;https://www.google.com/webmasters/tools/mobile-friendly/&quot;&gt;Mobile-Friendly test&lt;/a&gt; and the Web Accessibility Evaluation Tool &lt;a href=&quot;http://wave.webaim.org/&quot;&gt;(WAVE)&lt;/a&gt;. In the end, the client will have a list of tasks we believe will improve their website and – let’s not forget! – meet their goals.&lt;/p&gt;
+
+&lt;h2 id=&quot;further-reading&quot;&gt;Further reading&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.nngroup.com/articles/usability-101-introduction-to-usability/&quot;&gt;Usability 101&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://alistapart.com/article/usability-testing-demystified&quot;&gt;Usability Testing Demystified&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+    &lt;hr&gt;
+
+    
+      &lt;div class=&quot;post-comments&quot;&gt;
+  
+    &lt;div class=&quot;expander&quot;&gt;
+      &lt;a href=&quot;javascript:void(0)&quot; id=&quot;js-expander-trigger&quot; class=&quot;expander-trigger expander-hidden&quot;&gt;Comments!&lt;/a&gt;
+      &lt;div id=&quot;js-expander-content&quot; class=&quot;expander-content&quot;&gt;
+        &lt;!-- If there are existing comments, output them here. --&gt;
+        &lt;div id=&quot;post-comments&quot; class=&quot;post-comments&quot;&gt;&lt;/div&gt;
+        &lt;!-- New comment form --&gt;
+        &lt;form id=&quot;comment-form&quot;&gt;
+          &lt;h4&gt;Leave a comment&lt;/h4&gt;
+          &lt;div class=&quot;comment-name&quot;&gt;
+            &lt;p&gt;Name&lt;/p&gt; &lt;input type=&#39;text&#39; name=&#39;name&#39; id=&#39;name&#39; required /&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;comment-email&quot;&gt;
+            &lt;p&gt;Email&lt;/p&gt; &lt;input type=&#39;email&#39; name=&#39;email&#39; id=&#39;email&#39; required /&gt;
+            &lt;p class=&quot;email-disclaimer&quot;&gt;Savas will never sell your email address or spam you.&lt;/p&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;p&gt;Comment&lt;/p&gt;
+          &lt;textarea name=&#39;comment&#39; id=&#39;comment&#39; required&gt;&lt;/textarea&gt;
+          &lt;p class=&quot;hint below-textarea&quot;&gt;Plain text format only please.&lt;/p&gt;
+
+          &lt;input type=&#39;hidden&#39; name=&#39;slug&#39; id=&#39;slug&#39; value=&#39;/2016/06/22/user-testing.html&#39; /&gt;
+          &lt;input type=&#39;text&#39; name=&#39;url&#39; id=&#39;url&#39; /&gt;
+
+          &lt;div class=&#39;are-you-human&#39;&gt;
+            &lt;div class=&#39;are-you-human-owl&#39;&gt;
+              &lt;img src=&quot;/assets/img/owl.png&quot; alt=&quot;Savas logo&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&#39;are-you-human-field&#39;&gt;
+              &lt;p&gt;What type of animal is the Savas logo?&lt;/p&gt;
+              &lt;input type=&#39;text&#39; name=&#39;nocaptcha&#39; id=&#39;nocaptcha&#39; class=&#39;nocaptcha&#39;&gt;
+              &lt;p class=&quot;hint&quot;&gt;Hint: 3 letters long, starts with an &#39;o&#39; and ends with an &#39;l&#39;.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;input type=&#39;submit&#39; value=&#39;Submit&#39; id=&#39;submit&#39; class=&quot;submit-comment&quot;/&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+  &lt;hr&gt;
+&lt;/div&gt;
+
+    
+    &lt;div class=&quot;post-bottom&quot;&gt;
+  &lt;div class=&quot;post-meta&quot;&gt;
+    &lt;h4&gt;About the author&lt;/h4&gt;
+    
+      &lt;a href=&quot;/team/anne-tomasevich&quot;&gt;
+        &lt;img src=&quot;/assets/img/team/anne-tomasevich.jpg&quot; alt=&quot;Anne Tomasevich&quot;&gt;
+      &lt;/a&gt;
+      &lt;p class=&quot;post-author-desc&quot;&gt;Anne is a developer at Savas Labs, focused on front-end technologies and user experience.&lt;/p&gt;
+    
+  &lt;/div&gt;
+    &lt;!-- Once we have more content, change this to posts related by tag --&gt;
+  &lt;div class=&quot;post-related flex-container&quot;&gt;
+    &lt;h4&gt;Recent posts by Savas&lt;/h4&gt;
+    &lt;div class=&quot;cards&quot;&gt;
+      
+      
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/16/using-xhprof.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Using XHProf to profile your Drupal module
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 16, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;A case study of using XHProf to profile a Drupal module.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/15/git-merge-conflict-strategies.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Strategies and tools for resolving Git merge conflicts
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 15, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;An overview of strategies and tools I like to use when I encounter conflicts during merges.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/05/26/installing-xhprof.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Installing XHProf to profile your Drupal module
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;May 26, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;Step-by-step, how to install and use XHProf to profile your Drupal module.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;div class=&quot;previous-next-links&quot;&gt;
+  &lt;div class=&quot;next&quot;&gt;
+    
+  &lt;/div&gt;
+  &lt;div class=&quot;previous&quot;&gt;
+    
+      &lt;a href=&quot;/2016/06/16/using-xhprof.html&quot;&gt; Using XHProf to profile your Drupal module &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+  &lt;/article&gt;
+
+&lt;/div&gt;
+",
+      "author": {
+          "@context": "http://schema.org",
+          "@type": "Person",
+          "name": "Anne Tomasevich",
+          "affiliation": "Savas",
+          "worksFor": "Savas"
+      },
+    "keywords": "user-experience, best-practices",
+    "text": "
+
+
+&lt;div class=&quot;post&quot;&gt;
+  &lt;header class=&quot;post-header&quot;&gt;
+    &lt;h1 class=&quot;post-title&quot;&gt;Usability Testing - Our Process and Favorite Practices&lt;/h1&gt;
+    &lt;p&gt;By &lt;a href=&quot;/team/anne-tomasevich&quot;&gt;Anne Tomasevich&lt;/a&gt;&lt;/p&gt;
+    &lt;p class=&quot;centerdot&quot;&gt;&amp;centerdot; &lt;/p&gt;
+    &lt;p&gt;Jun 22, 2016 &lt;/p&gt;&lt;br&gt;
+    &lt;i class=&quot;fa fa-tags&quot;&gt;&lt;/i&gt;&lt;p&gt;&lt;a href=&quot;/blog/tag/user-experience/&quot;&gt;User Experience&lt;/a&gt;, &lt;a href=&quot;/blog/tag/best-practices/&quot;&gt;Best Practices&lt;/a&gt;&lt;/p&gt;
+    
+    &lt;div&gt;&lt;p&gt;&lt;span id=&quot;comment-count&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+    
+    
+      &lt;div class=&quot;post-featured-image&quot;&gt;
+        &lt;img class=&quot;post-hero-image&quot; src=&quot;/assets/img/blog/usability-testing.png&quot; alt=&quot;Two people comparing notes while using computers&quot;&gt;
+      &lt;/div&gt;
+    
+  &lt;/header&gt;
+
+  
+
+  &lt;article class=&quot;post-content&quot;&gt;
+    &lt;p&gt;One of my favorite lines about usability testing comes from Jakob Nielson of the Nielson Norman Group in his article &lt;a href=&quot;https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/&quot;&gt;Why You Only Need to Test with 5 Users&lt;/a&gt;, regarding a graph of number of user test participants versus percentage of usability problems found:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The most striking truth of the curve is that zero users give zero insights.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This, along with &lt;a href=&quot;https://articles.uie.com/three_hund_million_button/&quot;&gt;other persuasive evidence&lt;/a&gt;, is a fantastic reminder that we can learn so much about what’s right and what’s wrong with our websites simply by watching people use them.&lt;/p&gt;
+
+&lt;p&gt;At Savas Labs we’ve honed our approach to usability testing to balance efficiency, budget, and effectiveness. I’d like to share our process, some of my favorite resources, and some lessons we’ve learned along the way.&lt;/p&gt;
+
+&lt;h2 id=&quot;our-process&quot;&gt;Our Process&lt;/h2&gt;
+
+&lt;p&gt;Our process comprises six phases:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;a href=&quot;#determine-goals-and-user-personas&quot;&gt;Determine goals and user personas&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#google-analytics&quot;&gt;Review Google Analytics&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#competitive-analysis&quot;&gt;Complete competitive analysis&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#user-testing&quot;&gt;Conduct user testing&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#user-survey&quot;&gt;Conduct user survey&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#compile-findings&quot;&gt;Compile findings&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;determine-goals-and-user-personas&quot;&gt;Determine goals and user personas&lt;/h3&gt;
+
+&lt;p&gt;Focusing a usability study on a product’s most critical users and functionality can help uncover the highest-impact problems without spending time and budget on lower-priority issues. To start the process, we meet with our clients and listen to them explain their purpose, describe their users, and identify potential or known issues with their website.&lt;/p&gt;
+
+&lt;p&gt;From here, we create two very important lists:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;The client’s goals for the usability study&lt;/li&gt;
+  &lt;li&gt;The client’s users, in order of priority&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Let’s break these down.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Goals:&lt;/strong&gt; These can be measurable metrics (e.g. “Increase newsletter signups” or “Increase time spent on site”) or general value statements (“Provide a great experience on small screen sizes” or “Maintain a clean, modern design”).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Users:&lt;/strong&gt; This is a list of user personas in order of priority for the particular project. A persona is more in-depth and specific than a demographic, which may represent an age group, a gender, or an occupation. A persona is defined by patterns of behavior and needs, so it may encompass multiple demographics, and one demographic may be split across several personas. The user list is prioritized using the goals of the project (unless the client is lucky enough to be able to put forward the time and money to fix all of their users’ problems at once!) One of our roles in this process is helping the client brainstorm and account for all of their user groups, including ones they might not have considered.&lt;/p&gt;
+
+&lt;p&gt;Once these lists are created, we review them at the beginning of every meeting (yes, every meeting!). Why? Ensuring that the entire team is completely focused on meeting the project goals at all times causes a few awesome things happen:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Perhaps most importantly, at the end of the project everyone will be satisfied with the results, since they’re founded upon pre-determined goals that were agreed upon by everyone involved.&lt;/li&gt;
+  &lt;li&gt;Disagreements or uncertainty can be weighed against the goals – asking if something helps meet or doesn’t help meet the goals starts a focused, productive conversation.&lt;/li&gt;
+  &lt;li&gt;Team members are less likely to bring up or spend time on issues that don’t actually improve the end product.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;I should note that using user personas over demographics and repeating goals at each meeting are tips I picked up from Adam Connor’s workshop (&lt;a href=&quot;http://shop.oreilly.com/product/0636920033561.do&quot;&gt;and associated book&lt;/a&gt;) Discussing Design. I’d highly recommend both! These practices are  an abbreviated version of what he calls a &lt;a href=&quot;http://www.slideshare.net/adamconnor/discussing-design-the-art-of-critique/17-The_MiniBriefA_MiniCreative_Brief_is&quot;&gt;“mini-brief”&lt;/a&gt;, a one-page document detailing project goals, users, and more that is reviewed at each meeting.&lt;/p&gt;
+
+&lt;p&gt;So how does this apply to usability testing? Nailing down project goals and the most critical user groups will focus the scope of usability testing and increase the impact of the findings. We can review analytics and competitors’ sites with the client’s goals in mind, target the most critical users with user testing, cover a broader user base with user survey, and compile opportunities for improvement relevant to the client’s goals and real users of the product.&lt;/p&gt;
+
+&lt;p&gt;Once the goals and users are compiled and agreed upon, we can start digging into the usability testing.&lt;/p&gt;
+
+&lt;h3 id=&quot;google-analytics&quot;&gt;Google Analytics&lt;/h3&gt;
+
+&lt;p&gt;Reviewing Google Analytics is a great first step towards focusing user testing on the aspects of the site that are causing the most issues. If a client doesn’t already have Google Analytics installed, we can help set this up.&lt;/p&gt;
+
+&lt;p&gt;Viewing the analytics interface for the first time can be a bit overwhelming, so I’ll review some terminology and some of the points on which I like to focus for the purposes of usability testing.&lt;/p&gt;
+
+&lt;h5 id=&quot;terminology&quot;&gt;Terminology&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Bounce rate:&lt;/strong&gt; The percentage of users who leave the site after viewing a single page&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Exit page:&lt;/strong&gt; The last page a user views before leaving the site&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Organic search:&lt;/strong&gt; search results not provided by paid advertisements&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Engagement:&lt;/strong&gt; A combination of bounce rate, session duration, and pages viewed per session&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;useful-information&quot;&gt;Useful information&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Where are the users located?
+    &lt;ul&gt;
+      &lt;li&gt;Audience &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Geo &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Location&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;What’s the ratio of new vs. returning users?
+    &lt;ul&gt;
+      &lt;li&gt;Audience &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Behavior &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; New vs. Returning&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;How engaged are users?
+    &lt;ul&gt;
+      &lt;li&gt;Audience &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Behavior &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Engagement&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;How many users access the site on desktop, tablet, and mobile?
+    &lt;ul&gt;
+      &lt;li&gt;Audience &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Mobile &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Overview&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;How do users get to the site?
+    &lt;ul&gt;
+      &lt;li&gt;Acquisition &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; All Traffic &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Channels&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Which pages are most viewed?
+    &lt;ul&gt;
+      &lt;li&gt;Behavior &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Site Content &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; All Pages&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;What are the top exit pages, and which of them are highly viewed pages?
+    &lt;ul&gt;
+      &lt;li&gt;Behavior &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Site Content &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt; Exit Pages&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Reviewing these item with our goals and users in mind informs the design of the user testing to follow. We can focus on the parts of the site causing the most users to leave and the behaviors we want to change, and we can test on the devices important to the users.&lt;/p&gt;
+
+&lt;h3 id=&quot;competitive-analysis&quot;&gt;Competitive analysis&lt;/h3&gt;
+
+&lt;p&gt;In tandem with reviewing analytics, we examine our client’s competitors’ websites (typically with a list of competitors/peers provided by the client). By reviewing the navigation, layout, functionality, and user experience of websites with goals similar to our client’s, we can ascertain critical feedback:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What are other sites doing well? What improvements could be applied to our client’s site?&lt;/li&gt;
+  &lt;li&gt;Where are other sites falling short? How can we ensure these bases are covered on our client’s site?&lt;/li&gt;
+  &lt;li&gt;What user experience problems exist on other sites? Can we test for these same issues on our client’s site during the user testing phase?&lt;/li&gt;
+  &lt;li&gt;How does our client’s site compare overall in terms of quality? How can we elevate our client’s site among its peers?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;user-testing&quot;&gt;User testing&lt;/h3&gt;
+
+&lt;p&gt;After gathering information from analytics and competitive analysis, we design our user tests. These are in-person meetings with a single participant at a time who is asked to complete tasks on the website, acting as one of the user personas. After reading the persona description and the task to the user, we observe their experience and record how they interact with the site.&lt;/p&gt;
+
+&lt;h5 id=&quot;designing-the-tests&quot;&gt;Designing the tests&lt;/h5&gt;
+
+&lt;p&gt;Designing the user tests is a multi-step process:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Decide which personas will be tested and how many participants are needed. User personas to be tested are chosen based on the client’s priority and potential/known issues found in the review of analytics and competitors. Number of participants can be surprisingly small and still quite effective, as per the Nielson Group’s &lt;a href=&quot;https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/&quot;&gt;detailed analysis&lt;/a&gt;. Ideally user testing would be iterative – a few users would be tested, followed by improvements to the site targeting the results of those tests, followed by more testing, etc. If this isn’t possible, five participants with one round of testing is typically effective. A/B testing can be implemented to test different versions of the site (or features within the site) within the same round of testing.&lt;/li&gt;
+  &lt;li&gt;Determine what needs to be tested. These items come from the critical tasks for our user persona(s), the potential points of frustration or difficulty for users (found by Google Analytics, competitive analysis, or simply review of the current site), and anything else desired by the client. I frame these items as goals.&lt;/li&gt;
+  &lt;li&gt;Translate goals to tasks. At this stage, each goal is translated into an actionable task or endpoint for the user.&lt;/li&gt;
+  &lt;li&gt;Translate tasks to scenarios. Rarely is a user told exactly what to do on a website in real life. To make the tests more realistic, we translate tasks into scenarios. We’ll read the scenario to each user to see if she can complete the desired task, how she approaches the task, and what points of frustration she encounters along the way.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;For example:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Goal:&lt;/strong&gt; The newsletter signup should be well-placed and easy to use.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Task:&lt;/strong&gt; Sign up for the newsletter.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Scenario:&lt;/strong&gt; You want to keep up to date with news and job opportunities at XYZ Company. Using the website, find a way to receive monthly email updates from XYZ Company.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.nngroup.com/articles/task-scenarios-usability-testing/&quot;&gt;This article&lt;/a&gt; provides detailed recommendations for creating effective scenarios.&lt;/p&gt;
+
+&lt;p&gt;Some other tips for designing user tests:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;We aim for the test to take about 45 minutes, then ask some general or follow-up questions afterwards. Each participant will be there for about an hour.&lt;/li&gt;
+  &lt;li&gt;Scenarios shouldn’t give away how the website is supposed to work.&lt;/li&gt;
+  &lt;li&gt;Whenever possible, recruit participants who have never seen the site.&lt;/li&gt;
+  &lt;li&gt;Before conducting any real tests, do a pilot study on a willing participant (a coworker with a free hour works!) This will uncover any phrasing that doesn’t work and allow you to check the timing of the test, and it may even start revealing UX issues with the site.&lt;/li&gt;
+  &lt;li&gt;Offering compensation for a participant’s time is not only good practice, it helps immensely with recruitment!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;conducting-the-tests&quot;&gt;Conducting the tests&lt;/h5&gt;
+
+&lt;p&gt;Once participants are recruited, we bring them in one at a time and include as many observers/note takers as possible to capture the user’s actions, reactions, emotions, and words during the test scenarios. We ask the user to think out loud so we can understand their thought process and expectations. We’ll first read them the user persona they’re portraying, followed by each scenario they’ll need to act out. If relevant (and it almost always is), we’ll have participants complete some scenarios on their mobile phone or a tablet.&lt;/p&gt;
+
+&lt;p&gt;Some lessons we’ve learned along the way:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Most people need to be reminded a few times to voice their thoughts aloud.&lt;/li&gt;
+  &lt;li&gt;One person should read the scenarios and talk to the participant, others should take notes and time each task.&lt;/li&gt;
+  &lt;li&gt;It helps to remind the participant that they are not being tested, rather, the site is being reviewed. There is no right or wrong action, and everyone is there to see how users actually use the website in its current state.&lt;/li&gt;
+  &lt;li&gt;The word “test” might make participants nervous. “Scenario” is a more neutral term.&lt;/li&gt;
+  &lt;li&gt;Some users will ask what they’re supposed to do or if a certain choice is right. They can be encouraged to try something new and even allowed to give up, but they shouldn’t be fed the “correct” path.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;user-survey&quot;&gt;User survey&lt;/h3&gt;
+
+&lt;p&gt;To reach more than just the most critical users who were covered by the user testing phase, we create survey questions to elicit feedback from a broad range of users. These questions can be delivered in a variety of ways:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;An email survey sent to all registered users&lt;/li&gt;
+  &lt;li&gt;A contact form on the website soliciting feedback&lt;/li&gt;
+  &lt;li&gt;Targeted survey questions provided by a service like &lt;a href=&quot;https://qualaroo.com/&quot;&gt;Qualaroo&lt;/a&gt;, which can be triggered by certain behaviors (e.g. spending time on a specific page or coming to the site via a certain search term)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Cost and potential effectiveness with the targeted user groups must be weighed here.&lt;/p&gt;
+
+&lt;p&gt;For traditional surveys, we recommend pairing a &lt;a href=&quot;https://www.surveymonkey.com/mp/likert-scale/&quot;&gt;Likert scale&lt;/a&gt; with an open-ended response so users can explain their numeric ratings. This creates both quantitative data and expository feedback.&lt;/p&gt;
+
+&lt;h3 id=&quot;compile-findings&quot;&gt;Compile findings&lt;/h3&gt;
+
+&lt;p&gt;Our actual deliverable to clients takes the form of a report detailing the findings from each phase of the study and a summary of recommendations for future work. In addition to proposing solutions to issues found during the study, we make recommendations based on best practices and measurable metrics like Google’s &lt;a href=&quot;https://www.google.com/webmasters/tools/mobile-friendly/&quot;&gt;Mobile-Friendly test&lt;/a&gt; and the Web Accessibility Evaluation Tool &lt;a href=&quot;http://wave.webaim.org/&quot;&gt;(WAVE)&lt;/a&gt;. In the end, the client will have a list of tasks we believe will improve their website and – let’s not forget! – meet their goals.&lt;/p&gt;
+
+&lt;h2 id=&quot;further-reading&quot;&gt;Further reading&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.nngroup.com/articles/usability-101-introduction-to-usability/&quot;&gt;Usability 101&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://alistapart.com/article/usability-testing-demystified&quot;&gt;Usability Testing Demystified&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+    &lt;hr&gt;
+
+    
+      &lt;div class=&quot;post-comments&quot;&gt;
+  
+    &lt;div class=&quot;expander&quot;&gt;
+      &lt;a href=&quot;javascript:void(0)&quot; id=&quot;js-expander-trigger&quot; class=&quot;expander-trigger expander-hidden&quot;&gt;Comments!&lt;/a&gt;
+      &lt;div id=&quot;js-expander-content&quot; class=&quot;expander-content&quot;&gt;
+        &lt;!-- If there are existing comments, output them here. --&gt;
+        &lt;div id=&quot;post-comments&quot; class=&quot;post-comments&quot;&gt;&lt;/div&gt;
+        &lt;!-- New comment form --&gt;
+        &lt;form id=&quot;comment-form&quot;&gt;
+          &lt;h4&gt;Leave a comment&lt;/h4&gt;
+          &lt;div class=&quot;comment-name&quot;&gt;
+            &lt;p&gt;Name&lt;/p&gt; &lt;input type=&#39;text&#39; name=&#39;name&#39; id=&#39;name&#39; required /&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;comment-email&quot;&gt;
+            &lt;p&gt;Email&lt;/p&gt; &lt;input type=&#39;email&#39; name=&#39;email&#39; id=&#39;email&#39; required /&gt;
+            &lt;p class=&quot;email-disclaimer&quot;&gt;Savas will never sell your email address or spam you.&lt;/p&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;p&gt;Comment&lt;/p&gt;
+          &lt;textarea name=&#39;comment&#39; id=&#39;comment&#39; required&gt;&lt;/textarea&gt;
+          &lt;p class=&quot;hint below-textarea&quot;&gt;Plain text format only please.&lt;/p&gt;
+
+          &lt;input type=&#39;hidden&#39; name=&#39;slug&#39; id=&#39;slug&#39; value=&#39;/2016/06/22/user-testing.html&#39; /&gt;
+          &lt;input type=&#39;text&#39; name=&#39;url&#39; id=&#39;url&#39; /&gt;
+
+          &lt;div class=&#39;are-you-human&#39;&gt;
+            &lt;div class=&#39;are-you-human-owl&#39;&gt;
+              &lt;img src=&quot;/assets/img/owl.png&quot; alt=&quot;Savas logo&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&#39;are-you-human-field&#39;&gt;
+              &lt;p&gt;What type of animal is the Savas logo?&lt;/p&gt;
+              &lt;input type=&#39;text&#39; name=&#39;nocaptcha&#39; id=&#39;nocaptcha&#39; class=&#39;nocaptcha&#39;&gt;
+              &lt;p class=&quot;hint&quot;&gt;Hint: 3 letters long, starts with an &#39;o&#39; and ends with an &#39;l&#39;.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;input type=&#39;submit&#39; value=&#39;Submit&#39; id=&#39;submit&#39; class=&quot;submit-comment&quot;/&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+  &lt;hr&gt;
+&lt;/div&gt;
+
+    
+    &lt;div class=&quot;post-bottom&quot;&gt;
+  &lt;div class=&quot;post-meta&quot;&gt;
+    &lt;h4&gt;About the author&lt;/h4&gt;
+    
+      &lt;a href=&quot;/team/anne-tomasevich&quot;&gt;
+        &lt;img src=&quot;/assets/img/team/anne-tomasevich.jpg&quot; alt=&quot;Anne Tomasevich&quot;&gt;
+      &lt;/a&gt;
+      &lt;p class=&quot;post-author-desc&quot;&gt;Anne is a developer at Savas Labs, focused on front-end technologies and user experience.&lt;/p&gt;
+    
+  &lt;/div&gt;
+    &lt;!-- Once we have more content, change this to posts related by tag --&gt;
+  &lt;div class=&quot;post-related flex-container&quot;&gt;
+    &lt;h4&gt;Recent posts by Savas&lt;/h4&gt;
+    &lt;div class=&quot;cards&quot;&gt;
+      
+      
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/16/using-xhprof.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Using XHProf to profile your Drupal module
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 16, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;A case study of using XHProf to profile a Drupal module.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/15/git-merge-conflict-strategies.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Strategies and tools for resolving Git merge conflicts
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 15, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;An overview of strategies and tools I like to use when I encounter conflicts during merges.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/05/26/installing-xhprof.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Installing XHProf to profile your Drupal module
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;May 26, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;Step-by-step, how to install and use XHProf to profile your Drupal module.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;div class=&quot;previous-next-links&quot;&gt;
+  &lt;div class=&quot;next&quot;&gt;
+    
+  &lt;/div&gt;
+  &lt;div class=&quot;previous&quot;&gt;
+    
+      &lt;a href=&quot;/2016/06/16/using-xhprof.html&quot;&gt; Using XHProf to profile your Drupal module &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+  &lt;/article&gt;
+
+&lt;/div&gt;
+",
+    "sourceOrganization": "Savas",
+    "inLanguage": "en-US",
+    "dateCreated": "2016-06-22 00:00:00 +0000",
+    "datePublished": "2016-06-22 00:00:00 +0000",
+    "url": "/2016/06/22/user-testing.html"
+  }
+</script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-61514316-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  
+
+  
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+
+    <!-- Savas logo. -->
+    <a href="/" class="logo">
+        <img src="/assets/img/logo.png" alt="Savas logo">
+    </a>
+
+    <!-- Mobile menu button. -->
+    <a href="/" id="js-mobile-menu" class="navigation-menu-button">MENU</a>
+
+    <!-- Main menu. -->
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+
+        <!-- Loop through nav items in config.yml. -->
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  more">
+            <a href="javascript:void(0)">Who we are</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+
+              <ul class="submenu">
+                
+
+                  <!-- Assign active nav item class. -->
+                  
+                  
+
+                  <li class="nav-link ">
+                    <a href="/team">Team</a>
+                  </li>
+                
+
+                  <!-- Assign active nav item class. -->
+                  
+                  
+
+                  <li class="nav-link ">
+                    <a href="/mission-and-values">Mission & values</a>
+                  </li>
+                
+              </ul>
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/services">Services</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/work">Our work</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/blog">Blog</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/contact">Contact</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        
+
+
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">Usability Testing - Our Process and Favorite Practices</h1>
+    <p>By <a href="/team/anne-tomasevich">Anne Tomasevich</a></p>
+    <p class="centerdot">&centerdot; </p>
+    <p>Jun 22, 2016 </p><br>
+    <i class="fa fa-tags"></i><p><a href="/blog/tag/user-experience/">User Experience</a>, <a href="/blog/tag/best-practices/">Best Practices</a></p>
+    
+    <div><p><span id="comment-count"></span></p></div>
+    
+    
+      <div class="post-featured-image">
+        <img class="post-hero-image" src="/assets/img/blog/usability-testing.png" alt="Two people comparing notes while using computers">
+      </div>
+    
+  </header>
+
+  
+
+  <article class="post-content">
+    <p>One of my favorite lines about usability testing comes from Jakob Nielson of the Nielson Norman Group in his article <a href="https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/">Why You Only Need to Test with 5 Users</a>, regarding a graph of number of user test participants versus percentage of usability problems found:</p>
+
+<blockquote>
+  <p>The most striking truth of the curve is that zero users give zero insights.</p>
+</blockquote>
+
+<p>This, along with <a href="https://articles.uie.com/three_hund_million_button/">other persuasive evidence</a>, is a fantastic reminder that we can learn so much about what’s right and what’s wrong with our websites simply by watching people use them.</p>
+
+<p>At Savas Labs we’ve honed our approach to usability testing to balance efficiency, budget, and effectiveness. I’d like to share our process, some of my favorite resources, and some lessons we’ve learned along the way.</p>
+
+<h2 id="our-process">Our Process</h2>
+
+<p>Our process comprises six phases:</p>
+
+<ol>
+  <li><a href="#determine-goals-and-user-personas">Determine goals and user personas</a></li>
+  <li><a href="#google-analytics">Review Google Analytics</a></li>
+  <li><a href="#competitive-analysis">Complete competitive analysis</a></li>
+  <li><a href="#user-testing">Conduct user testing</a></li>
+  <li><a href="#user-survey">Conduct user survey</a></li>
+  <li><a href="#compile-findings">Compile findings</a></li>
+</ol>
+
+<h3 id="determine-goals-and-user-personas">Determine goals and user personas</h3>
+
+<p>Focusing a usability study on a product’s most critical users and functionality can help uncover the highest-impact problems without spending time and budget on lower-priority issues. To start the process, we meet with our clients and listen to them explain their purpose, describe their users, and identify potential or known issues with their website.</p>
+
+<p>From here, we create two very important lists:</p>
+
+<ol>
+  <li>The client’s goals for the usability study</li>
+  <li>The client’s users, in order of priority</li>
+</ol>
+
+<p>Let’s break these down.</p>
+
+<p><strong>Goals:</strong> These can be measurable metrics (e.g. “Increase newsletter signups” or “Increase time spent on site”) or general value statements (“Provide a great experience on small screen sizes” or “Maintain a clean, modern design”).</p>
+
+<p><strong>Users:</strong> This is a list of user personas in order of priority for the particular project. A persona is more in-depth and specific than a demographic, which may represent an age group, a gender, or an occupation. A persona is defined by patterns of behavior and needs, so it may encompass multiple demographics, and one demographic may be split across several personas. The user list is prioritized using the goals of the project (unless the client is lucky enough to be able to put forward the time and money to fix all of their users’ problems at once!) One of our roles in this process is helping the client brainstorm and account for all of their user groups, including ones they might not have considered.</p>
+
+<p>Once these lists are created, we review them at the beginning of every meeting (yes, every meeting!). Why? Ensuring that the entire team is completely focused on meeting the project goals at all times causes a few awesome things happen:</p>
+
+<ol>
+  <li>Perhaps most importantly, at the end of the project everyone will be satisfied with the results, since they’re founded upon pre-determined goals that were agreed upon by everyone involved.</li>
+  <li>Disagreements or uncertainty can be weighed against the goals – asking if something helps meet or doesn’t help meet the goals starts a focused, productive conversation.</li>
+  <li>Team members are less likely to bring up or spend time on issues that don’t actually improve the end product.</li>
+</ol>
+
+<p>I should note that using user personas over demographics and repeating goals at each meeting are tips I picked up from Adam Connor’s workshop (<a href="http://shop.oreilly.com/product/0636920033561.do">and associated book</a>) Discussing Design. I’d highly recommend both! These practices are  an abbreviated version of what he calls a <a href="http://www.slideshare.net/adamconnor/discussing-design-the-art-of-critique/17-The_MiniBriefA_MiniCreative_Brief_is">“mini-brief”</a>, a one-page document detailing project goals, users, and more that is reviewed at each meeting.</p>
+
+<p>So how does this apply to usability testing? Nailing down project goals and the most critical user groups will focus the scope of usability testing and increase the impact of the findings. We can review analytics and competitors’ sites with the client’s goals in mind, target the most critical users with user testing, cover a broader user base with user survey, and compile opportunities for improvement relevant to the client’s goals and real users of the product.</p>
+
+<p>Once the goals and users are compiled and agreed upon, we can start digging into the usability testing.</p>
+
+<h3 id="google-analytics">Google Analytics</h3>
+
+<p>Reviewing Google Analytics is a great first step towards focusing user testing on the aspects of the site that are causing the most issues. If a client doesn’t already have Google Analytics installed, we can help set this up.</p>
+
+<p>Viewing the analytics interface for the first time can be a bit overwhelming, so I’ll review some terminology and some of the points on which I like to focus for the purposes of usability testing.</p>
+
+<h5 id="terminology">Terminology</h5>
+
+<ul>
+  <li><strong>Bounce rate:</strong> The percentage of users who leave the site after viewing a single page</li>
+  <li><strong>Exit page:</strong> The last page a user views before leaving the site</li>
+  <li><strong>Organic search:</strong> search results not provided by paid advertisements</li>
+  <li><strong>Engagement:</strong> A combination of bounce rate, session duration, and pages viewed per session</li>
+</ul>
+
+<h5 id="useful-information">Useful information</h5>
+
+<ul>
+  <li>Where are the users located?
+    <ul>
+      <li>Audience <i class="fa fa-long-arrow-right"></i> Geo <i class="fa fa-long-arrow-right"></i> Location</li>
+    </ul>
+  </li>
+  <li>What’s the ratio of new vs. returning users?
+    <ul>
+      <li>Audience <i class="fa fa-long-arrow-right"></i> Behavior <i class="fa fa-long-arrow-right"></i> New vs. Returning</li>
+    </ul>
+  </li>
+  <li>How engaged are users?
+    <ul>
+      <li>Audience <i class="fa fa-long-arrow-right"></i> Behavior <i class="fa fa-long-arrow-right"></i> Engagement</li>
+    </ul>
+  </li>
+  <li>How many users access the site on desktop, tablet, and mobile?
+    <ul>
+      <li>Audience <i class="fa fa-long-arrow-right"></i> Mobile <i class="fa fa-long-arrow-right"></i> Overview</li>
+    </ul>
+  </li>
+  <li>How do users get to the site?
+    <ul>
+      <li>Acquisition <i class="fa fa-long-arrow-right"></i> All Traffic <i class="fa fa-long-arrow-right"></i> Channels</li>
+    </ul>
+  </li>
+  <li>Which pages are most viewed?
+    <ul>
+      <li>Behavior <i class="fa fa-long-arrow-right"></i> Site Content <i class="fa fa-long-arrow-right"></i> All Pages</li>
+    </ul>
+  </li>
+  <li>What are the top exit pages, and which of them are highly viewed pages?
+    <ul>
+      <li>Behavior <i class="fa fa-long-arrow-right"></i> Site Content <i class="fa fa-long-arrow-right"></i> Exit Pages</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Reviewing these item with our goals and users in mind informs the design of the user testing to follow. We can focus on the parts of the site causing the most users to leave and the behaviors we want to change, and we can test on the devices important to the users.</p>
+
+<h3 id="competitive-analysis">Competitive analysis</h3>
+
+<p>In tandem with reviewing analytics, we examine our client’s competitors’ websites (typically with a list of competitors/peers provided by the client). By reviewing the navigation, layout, functionality, and user experience of websites with goals similar to our client’s, we can ascertain critical feedback:</p>
+
+<ul>
+  <li>What are other sites doing well? What improvements could be applied to our client’s site?</li>
+  <li>Where are other sites falling short? How can we ensure these bases are covered on our client’s site?</li>
+  <li>What user experience problems exist on other sites? Can we test for these same issues on our client’s site during the user testing phase?</li>
+  <li>How does our client’s site compare overall in terms of quality? How can we elevate our client’s site among its peers?</li>
+</ul>
+
+<h3 id="user-testing">User testing</h3>
+
+<p>After gathering information from analytics and competitive analysis, we design our user tests. These are in-person meetings with a single participant at a time who is asked to complete tasks on the website, acting as one of the user personas. After reading the persona description and the task to the user, we observe their experience and record how they interact with the site.</p>
+
+<h5 id="designing-the-tests">Designing the tests</h5>
+
+<p>Designing the user tests is a multi-step process:</p>
+
+<ol>
+  <li>Decide which personas will be tested and how many participants are needed. User personas to be tested are chosen based on the client’s priority and potential/known issues found in the review of analytics and competitors. Number of participants can be surprisingly small and still quite effective, as per the Nielson Group’s <a href="https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/">detailed analysis</a>. Ideally user testing would be iterative – a few users would be tested, followed by improvements to the site targeting the results of those tests, followed by more testing, etc. If this isn’t possible, five participants with one round of testing is typically effective. A/B testing can be implemented to test different versions of the site (or features within the site) within the same round of testing.</li>
+  <li>Determine what needs to be tested. These items come from the critical tasks for our user persona(s), the potential points of frustration or difficulty for users (found by Google Analytics, competitive analysis, or simply review of the current site), and anything else desired by the client. I frame these items as goals.</li>
+  <li>Translate goals to tasks. At this stage, each goal is translated into an actionable task or endpoint for the user.</li>
+  <li>Translate tasks to scenarios. Rarely is a user told exactly what to do on a website in real life. To make the tests more realistic, we translate tasks into scenarios. We’ll read the scenario to each user to see if she can complete the desired task, how she approaches the task, and what points of frustration she encounters along the way.</li>
+</ol>
+
+<p>For example:</p>
+
+<p><strong>Goal:</strong> The newsletter signup should be well-placed and easy to use.</p>
+
+<p><strong>Task:</strong> Sign up for the newsletter.</p>
+
+<p><strong>Scenario:</strong> You want to keep up to date with news and job opportunities at XYZ Company. Using the website, find a way to receive monthly email updates from XYZ Company.</p>
+
+<p><a href="https://www.nngroup.com/articles/task-scenarios-usability-testing/">This article</a> provides detailed recommendations for creating effective scenarios.</p>
+
+<p>Some other tips for designing user tests:</p>
+
+<ul>
+  <li>We aim for the test to take about 45 minutes, then ask some general or follow-up questions afterwards. Each participant will be there for about an hour.</li>
+  <li>Scenarios shouldn’t give away how the website is supposed to work.</li>
+  <li>Whenever possible, recruit participants who have never seen the site.</li>
+  <li>Before conducting any real tests, do a pilot study on a willing participant (a coworker with a free hour works!) This will uncover any phrasing that doesn’t work and allow you to check the timing of the test, and it may even start revealing UX issues with the site.</li>
+  <li>Offering compensation for a participant’s time is not only good practice, it helps immensely with recruitment!</li>
+</ul>
+
+<h5 id="conducting-the-tests">Conducting the tests</h5>
+
+<p>Once participants are recruited, we bring them in one at a time and include as many observers/note takers as possible to capture the user’s actions, reactions, emotions, and words during the test scenarios. We ask the user to think out loud so we can understand their thought process and expectations. We’ll first read them the user persona they’re portraying, followed by each scenario they’ll need to act out. If relevant (and it almost always is), we’ll have participants complete some scenarios on their mobile phone or a tablet.</p>
+
+<p>Some lessons we’ve learned along the way:</p>
+
+<ul>
+  <li>Most people need to be reminded a few times to voice their thoughts aloud.</li>
+  <li>One person should read the scenarios and talk to the participant, others should take notes and time each task.</li>
+  <li>It helps to remind the participant that they are not being tested, rather, the site is being reviewed. There is no right or wrong action, and everyone is there to see how users actually use the website in its current state.</li>
+  <li>The word “test” might make participants nervous. “Scenario” is a more neutral term.</li>
+  <li>Some users will ask what they’re supposed to do or if a certain choice is right. They can be encouraged to try something new and even allowed to give up, but they shouldn’t be fed the “correct” path.</li>
+</ul>
+
+<h3 id="user-survey">User survey</h3>
+
+<p>To reach more than just the most critical users who were covered by the user testing phase, we create survey questions to elicit feedback from a broad range of users. These questions can be delivered in a variety of ways:</p>
+
+<ul>
+  <li>An email survey sent to all registered users</li>
+  <li>A contact form on the website soliciting feedback</li>
+  <li>Targeted survey questions provided by a service like <a href="https://qualaroo.com/">Qualaroo</a>, which can be triggered by certain behaviors (e.g. spending time on a specific page or coming to the site via a certain search term)</li>
+</ul>
+
+<p>Cost and potential effectiveness with the targeted user groups must be weighed here.</p>
+
+<p>For traditional surveys, we recommend pairing a <a href="https://www.surveymonkey.com/mp/likert-scale/">Likert scale</a> with an open-ended response so users can explain their numeric ratings. This creates both quantitative data and expository feedback.</p>
+
+<h3 id="compile-findings">Compile findings</h3>
+
+<p>Our actual deliverable to clients takes the form of a report detailing the findings from each phase of the study and a summary of recommendations for future work. In addition to proposing solutions to issues found during the study, we make recommendations based on best practices and measurable metrics like Google’s <a href="https://www.google.com/webmasters/tools/mobile-friendly/">Mobile-Friendly test</a> and the Web Accessibility Evaluation Tool <a href="http://wave.webaim.org/">(WAVE)</a>. In the end, the client will have a list of tasks we believe will improve their website and – let’s not forget! – meet their goals.</p>
+
+<h2 id="further-reading">Further reading</h2>
+
+<ul>
+  <li><a href="https://www.nngroup.com/articles/usability-101-introduction-to-usability/">Usability 101</a></li>
+  <li><a href="http://alistapart.com/article/usability-testing-demystified">Usability Testing Demystified</a></li>
+</ul>
+
+    <hr>
+
+    
+      <div class="post-comments">
+  
+    <div class="expander">
+      <a href="javascript:void(0)" id="js-expander-trigger" class="expander-trigger expander-hidden">Comments!</a>
+      <div id="js-expander-content" class="expander-content">
+        <!-- If there are existing comments, output them here. -->
+        <div id="post-comments" class="post-comments"></div>
+        <!-- New comment form -->
+        <form id="comment-form">
+          <h4>Leave a comment</h4>
+          <div class="comment-name">
+            <p>Name</p> <input type='text' name='name' id='name' required /><br>
+          </div>
+
+          <div class="comment-email">
+            <p>Email</p> <input type='email' name='email' id='email' required />
+            <p class="email-disclaimer">Savas will never sell your email address or spam you.</p><br>
+          </div>
+
+          <p>Comment</p>
+          <textarea name='comment' id='comment' required></textarea>
+          <p class="hint below-textarea">Plain text format only please.</p>
+
+          <input type='hidden' name='slug' id='slug' value='/2016/06/22/user-testing.html' />
+          <input type='text' name='url' id='url' />
+
+          <div class='are-you-human'>
+            <div class='are-you-human-owl'>
+              <img src="/assets/img/owl.png" alt="Savas logo">
+            </div>
+            <div class='are-you-human-field'>
+              <p>What type of animal is the Savas logo?</p>
+              <input type='text' name='nocaptcha' id='nocaptcha' class='nocaptcha'>
+              <p class="hint">Hint: 3 letters long, starts with an 'o' and ends with an 'l'.</p>
+            </div>
+          </div>
+
+          <input type='submit' value='Submit' id='submit' class="submit-comment"/>
+        </form>
+      </div>
+    </div>
+  
+  <hr>
+</div>
+
+    
+    <div class="post-bottom">
+  <div class="post-meta">
+    <h4>About the author</h4>
+    
+      <a href="/team/anne-tomasevich">
+        <img src="/assets/img/team/anne-tomasevich.jpg" alt="Anne Tomasevich">
+      </a>
+      <p class="post-author-desc">Anne is a developer at Savas Labs, focused on front-end technologies and user experience.</p>
+    
+  </div>
+    <!-- Once we have more content, change this to posts related by tag -->
+  <div class="post-related flex-container">
+    <h4>Recent posts by Savas</h4>
+    <div class="cards">
+      
+      
+        
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/16/using-xhprof.html">
+              <div class="card-header">
+                  Using XHProf to profile your Drupal module
+              </div>
+              <div class="card-copy">
+                <p>Jun 16, 2016</p>
+                <p><p>A case study of using XHProf to profile a Drupal module.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/15/git-merge-conflict-strategies.html">
+              <div class="card-header">
+                  Strategies and tools for resolving Git merge conflicts
+              </div>
+              <div class="card-copy">
+                <p>Jun 15, 2016</p>
+                <p><p>An overview of strategies and tools I like to use when I encounter conflicts during merges.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+        
+          <div class="card">
+            <a href="/2016/05/26/installing-xhprof.html">
+              <div class="card-header">
+                  Installing XHProf to profile your Drupal module
+              </div>
+              <div class="card-copy">
+                <p>May 26, 2016</p>
+                <p><p>Step-by-step, how to install and use XHProf to profile your Drupal module.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+</div>
+
+    <div class="previous-next-links">
+  <div class="next">
+    
+  </div>
+  <div class="previous">
+    
+      <a href="/2016/06/16/using-xhprof.html"> Using XHProf to profile your Drupal module <i class="fa fa-long-arrow-right"></i></a>
+    
+  </div>
+</div>
+
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <div class="contact-block">
+  <div class="contact-block__items">
+    <h3>Interested in working with us?</h3>
+    <a href="/contact">Get in touch!</a>
+  </div>
+</div>
+    <footer class="footer" role="contentinfo">
+  <div class="footer-links">
+    <ul>
+      <li><h3>Location</h3></li>
+      <li>Savas Labs<br />
+          PMB 114<br />
+          201 W Main Street, Suite 100<br />
+          Durham, NC 27701<br /></li>
+    </ul>
+    <ul>
+      <li><h3>Around the Web</h3></li>
+      <ul>
+        <li><a href="https://github.com/savaslabs"><span class="mega-octicon octicon-mark-github"></span></a></li>
+        <li><a href="https://www.drupal.org/node/2466865"><i class="fa fa-drupal fa-lg fa-2x"></i></a></li>
+        <li><a href="https://twitter.com/savas_labs"><i class="fa fa-twitter fa-lg fa-2x"></i></a></li>
+        <li><a href="https://www.linkedin.com/company/savas-labs"><i class="fa fa-linkedin fa-lg fa-2x"></i></a></li>
+      </ul>
+    </ul>
+    <ul>
+      <li><h3>Contact</h3></li>
+      <li><a href="mailto:info@savaslabs.com">info@savaslabs.com</a></li>
+      <li>(919) 432-4660</li>
+    </ul>
+  </div>
+
+</footer>
+
+<div class="footer-copyright">
+  <p>Copyright &copy; Savas Labs 2016</p>
+</div>
+
+
+  </body>
+
+</html>

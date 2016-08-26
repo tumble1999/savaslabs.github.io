@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <title>Sassy Drupal theming: a lighter version of SMACSS | Savas Labs</title>
+  
+  <meta name="description" content="In my previous post I outlined how to build a Sass directory within a custom Drupal theme including Bourbon and Neat.">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,400italic,700italic|PT+Serif|Bitter|Source+Sans+Pro' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/assets/styles/main.css">
+  <link rel="stylesheet" href="/assets/icons/octicons/octicons.css">
+  <link rel="canonical" href="/2015/08/28/sassy-drupal-theming-part-2.html">
+  <link rel="alternate" type="application/rss+xml" title="Savas Labs" href="/feed.xml" />
+  <script type="text/javascript" src="/assets/js/main.js"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Durham, North Carolina",
+        "postalCode": "27701",
+        "streetAddress": "201 W Main St."
+      },
+      "description": "A full-service web agency leveraging the power of Drupal.
+",
+      "email": "info@savaslabs.com",
+      "name": "Savas",
+      "telephone": "(919) 432-4660",
+      "url": "http://savaslabs.com",
+      "logo": "http://savaslabs.com/assets/img/logo.png"
+    }
+</script>
+
+  
+  
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Sassy Drupal theming: a lighter version of SMACSS",
+    "about": "We'll use SMACSS principles to organize our custom SCSS and keep it lean and maintainable.",
+    "articleBody": "
+
+
+&lt;div class=&quot;post&quot;&gt;
+  &lt;header class=&quot;post-header&quot;&gt;
+    &lt;h1 class=&quot;post-title&quot;&gt;Sassy Drupal theming: a lighter version of SMACSS&lt;/h1&gt;
+    &lt;p&gt;By &lt;a href=&quot;/team/anne-tomasevich&quot;&gt;Anne Tomasevich&lt;/a&gt;&lt;/p&gt;
+    &lt;p class=&quot;centerdot&quot;&gt;&amp;centerdot; &lt;/p&gt;
+    &lt;p&gt;Aug 28, 2015 &lt;/p&gt;&lt;br&gt;
+    &lt;i class=&quot;fa fa-tags&quot;&gt;&lt;/i&gt;&lt;p&gt;&lt;a href=&quot;/blog/tag/drupal/&quot;&gt;Drupal&lt;/a&gt;, &lt;a href=&quot;/blog/tag/drupal-planet/&quot;&gt;Drupal Planet&lt;/a&gt;, &lt;a href=&quot;/blog/tag/theming/&quot;&gt;Theming&lt;/a&gt;, &lt;a href=&quot;/blog/tag/sass/&quot;&gt;Sass&lt;/a&gt;, &lt;a href=&quot;/blog/tag/bourbon/&quot;&gt;Bourbon&lt;/a&gt;&lt;/p&gt;
+    
+    &lt;div&gt;&lt;p&gt;&lt;span id=&quot;comment-count&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+    
+    
+  &lt;/header&gt;
+
+  
+
+  &lt;article class=&quot;post-content&quot;&gt;
+    &lt;p&gt;In my &lt;a href=&quot;/2015/08/21/sassy-drupal-theming-part-1.html&quot;&gt;previous post&lt;/a&gt; I outlined how to build a Sass directory within a custom Drupal theme including Bourbon and Neat.&lt;/p&gt;
+
+&lt;p&gt;At this point, we’re ready to write some SCSS within the &lt;code class=&quot;highlighter-rouge&quot;&gt;base&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;components&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;layouts&lt;/code&gt; directories. In this post I’ll demonstrate how Savas applies &lt;a href=&quot;https://smacss.com/&quot;&gt;SMACSS&lt;/a&gt; principles to organize our custom SCSS. As a reminder, I’ll be linking to our &lt;a href=&quot;https://github.com/savaslabs/durham-civil-rights-map&quot;&gt;Drupal 8 mapping site&lt;/a&gt; as an example throughout, but none of this is Drupal-8-specific.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;drupal-flavored-smacss&quot;&gt;Drupal-flavored SMACSS&lt;/h2&gt;
+
+&lt;p&gt;When we left off, our &lt;code class=&quot;highlighter-rouge&quot;&gt;sass&lt;/code&gt; directory looked like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Inside the custom theme directory&lt;/span&gt;
+sass
+├── _init.scss
+├── base
+├── components
+├── layouts
+├── lib
+│   ├── bourbon
+│   ├── font-awesome
+│   └── neat
+└── styles.scss
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;At this point we’re ready to start styling. Let’s take a look at the three folders that will hold our custom &lt;code class=&quot;highlighter-rouge&quot;&gt;.scss&lt;/code&gt; files, which are loosely based on SMACSS. Acquia has a &lt;a href=&quot;https://dev.acquia.com/blog/organize-your-styles-introduction-smacss&quot;&gt;nice writeup&lt;/a&gt; of how SMACSS principles can be applied to Drupal, but I like to simplify it even further.&lt;/p&gt;
+
+&lt;h3 id=&quot;base&quot;&gt;Base&lt;/h3&gt;
+
+&lt;p&gt;I personally only have three files in the &lt;code class=&quot;highlighter-rouge&quot;&gt;sass/base&lt;/code&gt; directory. Don’t forget that we already &lt;a href=&quot;/2015/08/21/sassy-drupal-theming-part-1.html#set-up-stylesscss&quot;&gt;imported these three partials&lt;/a&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;styles.scss&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;For full examples of each of these files, check out &lt;a href=&quot;https://github.com/savaslabs/durham-civil-rights-map/tree/master/themes/custom/mappy/sass/base&quot;&gt;our &lt;code class=&quot;highlighter-rouge&quot;&gt;base&lt;/code&gt; directory&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;normalizescss&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_normalize.scss&lt;/code&gt;&lt;/h4&gt;
+&lt;p&gt;This is simply &lt;a href=&quot;https://necolas.github.io/normalize.css/&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;normalize.css&lt;/code&gt;&lt;/a&gt; renamed as &lt;code class=&quot;highlighter-rouge&quot;&gt;_normalize.scss&lt;/code&gt; - remember that CSS is valid SCSS. Thoughtbot recommends using &lt;code class=&quot;highlighter-rouge&quot;&gt;normalize.css&lt;/code&gt; as your CSS reset along with Neat. Regardless of which reset you use, include it in &lt;code class=&quot;highlighter-rouge&quot;&gt;base&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;basescss&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_base.scss&lt;/code&gt;&lt;/h4&gt;
+&lt;p&gt;This is for HTML element styles only. No layout, no classes, nothing else. In here I’ll apply font styles to the body and headings, link styles to the anchor element, and possibly a few other site-wide styles.&lt;/p&gt;
+
+&lt;h4 id=&quot;variablesscss&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_variables.scss&lt;/code&gt;&lt;/h4&gt;
+&lt;p&gt;This is where I house all of my Sass variables and custom mixins. I typically have sections for colors, fonts, other useful stuff like a standard border radius or spacing between elements, variables for any &lt;a href=&quot;http://refills.bourbon.io/&quot;&gt;Refills&lt;/a&gt; I’m using, and custom mixins.&lt;/p&gt;
+
+&lt;p&gt;I’d definitely recommend including &lt;code class=&quot;highlighter-rouge&quot;&gt;_normalize.scss&lt;/code&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;base&lt;/code&gt; if you’re using Neat, but other than that do what works for you! If you’re following my method, your &lt;code class=&quot;highlighter-rouge&quot;&gt;sass&lt;/code&gt; folder should be looking like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Inside the custom theme directory&lt;/span&gt;
+sass
+├── _init.scss
+├── base
+│   ├── _base.scss
+│   ├── _normalize.scss
+│   └── _variables.scss
+├── components
+├── layouts
+├── lib
+│   ├── bourbon
+│   ├── font-awesome
+│   └── neat
+└── styles.scss
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;layouts&quot;&gt;Layouts&lt;/h3&gt;
+
+&lt;p&gt;This directory holds page-wide layout styles, which means we’ll be making heavy use of the Neat grid here. This is flexible, but I recommend a single &lt;code class=&quot;highlighter-rouge&quot;&gt;.scss&lt;/code&gt; partial for each unique template file that represents an entire page. Think about what works best for your site. For the sake of our example, let’s say we’re creating &lt;code class=&quot;highlighter-rouge&quot;&gt;_front-page.scss&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;_node-page.scss&lt;/code&gt;. I like to also create &lt;code class=&quot;highlighter-rouge&quot;&gt;_base.scss&lt;/code&gt; for layout styles that apply to all pages.&lt;/p&gt;
+
+&lt;p&gt;Remember that these styles only apply to the page’s layout! I occasionally find myself moving styles from the &lt;code class=&quot;highlighter-rouge&quot;&gt;layouts&lt;/code&gt; directory to &lt;code class=&quot;highlighter-rouge&quot;&gt;base&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;components&lt;/code&gt; when I realize they don’t only define layout. In these partials, you should be doing a lot of grid work and spacing. This is the entirety of my &lt;code class=&quot;highlighter-rouge&quot;&gt;sass/layouts/_base.scss&lt;/code&gt; file on our mapping site:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/**
+ * @file
+ *
+ * Site-wide layout styles.
+ */&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;outer-container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;span-columns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;shift&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;clearfix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;h1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nl&quot;&gt;margin-top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$navigation-height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$general-spacing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;We’re almost there:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Inside the custom theme directory&lt;/span&gt;
+sass
+├── _init.scss
+├── base
+│   ├── _base.scss
+│   ├── _normalize.scss
+│   └── _variables.scss
+├── components
+├── layouts
+│   ├── _base.scss
+│   ├── _front-page.scss
+│   └── _node-page.scss
+├── lib
+│   ├── bourbon
+│   ├── font-awesome
+│   └── neat
+└── styles.scss
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;components&quot;&gt;Components&lt;/h3&gt;
+
+&lt;p&gt;In SMACSS this is called “modules,” but that gets a little confusing in Drupal Land. This is for applying layout and theme styles to smaller chunks of your site, which in Drupal typically means regions. Create a separate partial for each region, or if you have several distinct components within a region, consider a separate partial for each of them.&lt;/p&gt;
+
+&lt;p&gt;Let’s say we created partials for the header, footer, and sidebar regions, plus one for non-layout node page styles. At this point, our &lt;code class=&quot;highlighter-rouge&quot;&gt;sass&lt;/code&gt; directory is looking like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Inside the custom theme directory&lt;/span&gt;
+sass
+├── _init.scss
+├── base
+│   ├── _base.scss
+│   ├── _normalize.scss
+│   └── _variables.scss
+├── components
+│   ├── _node-page.scss
+│   └── regions
+│       ├── _footer.scss
+│       ├── _header.scss
+│       └── _sidebar.scss
+├── layouts
+│   ├── _base.scss
+│   ├── _front-page.scss
+│   └── _node-page.scss
+├── lib
+│   ├── bourbon
+│   ├── font-awesome
+│   └── neat
+└── styles.scss
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now we’ve got a nicely organized, easy to navigate Sass directory, ready to hold your styles and compile them into one beautiful CSS file!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;But how do we ensure that our one CSS file really is beautiful? Check out &lt;a href=&quot;/2015/09/03/sassy-drupal-theming-part-3.html&quot;&gt;my final post&lt;/a&gt; about best practices for writing Sass that you can easily maintain or pass off to another developer.&lt;/p&gt;
+
+    &lt;hr&gt;
+
+    
+      &lt;div class=&quot;post-comments&quot;&gt;
+  
+    &lt;div class=&quot;expander&quot;&gt;
+      &lt;a href=&quot;javascript:void(0)&quot; id=&quot;js-expander-trigger&quot; class=&quot;expander-trigger expander-hidden&quot;&gt;Comments!&lt;/a&gt;
+      &lt;div id=&quot;js-expander-content&quot; class=&quot;expander-content&quot;&gt;
+        &lt;!-- If there are existing comments, output them here. --&gt;
+        &lt;div id=&quot;post-comments&quot; class=&quot;post-comments&quot;&gt;&lt;/div&gt;
+        &lt;!-- New comment form --&gt;
+        &lt;form id=&quot;comment-form&quot;&gt;
+          &lt;h4&gt;Leave a comment&lt;/h4&gt;
+          &lt;div class=&quot;comment-name&quot;&gt;
+            &lt;p&gt;Name&lt;/p&gt; &lt;input type=&#39;text&#39; name=&#39;name&#39; id=&#39;name&#39; required /&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;comment-email&quot;&gt;
+            &lt;p&gt;Email&lt;/p&gt; &lt;input type=&#39;email&#39; name=&#39;email&#39; id=&#39;email&#39; required /&gt;
+            &lt;p class=&quot;email-disclaimer&quot;&gt;Savas will never sell your email address or spam you.&lt;/p&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;p&gt;Comment&lt;/p&gt;
+          &lt;textarea name=&#39;comment&#39; id=&#39;comment&#39; required&gt;&lt;/textarea&gt;
+          &lt;p class=&quot;hint below-textarea&quot;&gt;Plain text format only please.&lt;/p&gt;
+
+          &lt;input type=&#39;hidden&#39; name=&#39;slug&#39; id=&#39;slug&#39; value=&#39;/2015/08/28/sassy-drupal-theming-part-2.html&#39; /&gt;
+          &lt;input type=&#39;text&#39; name=&#39;url&#39; id=&#39;url&#39; /&gt;
+
+          &lt;div class=&#39;are-you-human&#39;&gt;
+            &lt;div class=&#39;are-you-human-owl&#39;&gt;
+              &lt;img src=&quot;/assets/img/owl.png&quot; alt=&quot;Savas logo&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&#39;are-you-human-field&#39;&gt;
+              &lt;p&gt;What type of animal is the Savas logo?&lt;/p&gt;
+              &lt;input type=&#39;text&#39; name=&#39;nocaptcha&#39; id=&#39;nocaptcha&#39; class=&#39;nocaptcha&#39;&gt;
+              &lt;p class=&quot;hint&quot;&gt;Hint: 3 letters long, starts with an &#39;o&#39; and ends with an &#39;l&#39;.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;input type=&#39;submit&#39; value=&#39;Submit&#39; id=&#39;submit&#39; class=&quot;submit-comment&quot;/&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+  &lt;hr&gt;
+&lt;/div&gt;
+
+    
+    &lt;div class=&quot;post-bottom&quot;&gt;
+  &lt;div class=&quot;post-meta&quot;&gt;
+    &lt;h4&gt;About the author&lt;/h4&gt;
+    
+      &lt;a href=&quot;/team/anne-tomasevich&quot;&gt;
+        &lt;img src=&quot;/assets/img/team/anne-tomasevich.jpg&quot; alt=&quot;Anne Tomasevich&quot;&gt;
+      &lt;/a&gt;
+      &lt;p class=&quot;post-author-desc&quot;&gt;Anne is a developer at Savas Labs, focused on front-end technologies and user experience.&lt;/p&gt;
+    
+  &lt;/div&gt;
+    &lt;!-- Once we have more content, change this to posts related by tag --&gt;
+  &lt;div class=&quot;post-related flex-container&quot;&gt;
+    &lt;h4&gt;Recent posts by Savas&lt;/h4&gt;
+    &lt;div class=&quot;cards&quot;&gt;
+      
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/22/user-testing.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Usability Testing - Our Process and Favorite Practices
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 22, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;Our approach to designing, conducting, and learning from user testing and other analyses.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/16/using-xhprof.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Using XHProf to profile your Drupal module
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 16, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;A case study of using XHProf to profile a Drupal module.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/15/git-merge-conflict-strategies.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Strategies and tools for resolving Git merge conflicts
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 15, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;An overview of strategies and tools I like to use when I encounter conflicts during merges.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;div class=&quot;previous-next-links&quot;&gt;
+  &lt;div class=&quot;next&quot;&gt;
+    
+      &lt;a href=&quot;/2015/09/03/sassy-drupal-theming-part-3.html&quot;&gt;&lt;i class=&quot;fa fa-long-arrow-left &quot;&gt;&lt;/i&gt; Sassy Drupal theming: Best practices&lt;/a&gt;
+    
+  &lt;/div&gt;
+  &lt;div class=&quot;previous&quot;&gt;
+    
+      &lt;a href=&quot;/2015/08/24/drupalcamp-asheville-recap.html&quot;&gt; We ate, we hiked, we Drupaled - Drupalcamp Asheville &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+  &lt;/article&gt;
+
+&lt;/div&gt;
+",
+      "author": {
+          "@context": "http://schema.org",
+          "@type": "Person",
+          "name": "Anne Tomasevich",
+          "affiliation": "Savas",
+          "worksFor": "Savas"
+      },
+    "keywords": "drupal, drupal-planet, theming, sass, bourbon",
+    "text": "
+
+
+&lt;div class=&quot;post&quot;&gt;
+  &lt;header class=&quot;post-header&quot;&gt;
+    &lt;h1 class=&quot;post-title&quot;&gt;Sassy Drupal theming: a lighter version of SMACSS&lt;/h1&gt;
+    &lt;p&gt;By &lt;a href=&quot;/team/anne-tomasevich&quot;&gt;Anne Tomasevich&lt;/a&gt;&lt;/p&gt;
+    &lt;p class=&quot;centerdot&quot;&gt;&amp;centerdot; &lt;/p&gt;
+    &lt;p&gt;Aug 28, 2015 &lt;/p&gt;&lt;br&gt;
+    &lt;i class=&quot;fa fa-tags&quot;&gt;&lt;/i&gt;&lt;p&gt;&lt;a href=&quot;/blog/tag/drupal/&quot;&gt;Drupal&lt;/a&gt;, &lt;a href=&quot;/blog/tag/drupal-planet/&quot;&gt;Drupal Planet&lt;/a&gt;, &lt;a href=&quot;/blog/tag/theming/&quot;&gt;Theming&lt;/a&gt;, &lt;a href=&quot;/blog/tag/sass/&quot;&gt;Sass&lt;/a&gt;, &lt;a href=&quot;/blog/tag/bourbon/&quot;&gt;Bourbon&lt;/a&gt;&lt;/p&gt;
+    
+    &lt;div&gt;&lt;p&gt;&lt;span id=&quot;comment-count&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+    
+    
+  &lt;/header&gt;
+
+  
+
+  &lt;article class=&quot;post-content&quot;&gt;
+    &lt;p&gt;In my &lt;a href=&quot;/2015/08/21/sassy-drupal-theming-part-1.html&quot;&gt;previous post&lt;/a&gt; I outlined how to build a Sass directory within a custom Drupal theme including Bourbon and Neat.&lt;/p&gt;
+
+&lt;p&gt;At this point, we’re ready to write some SCSS within the &lt;code class=&quot;highlighter-rouge&quot;&gt;base&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;components&lt;/code&gt;, and &lt;code class=&quot;highlighter-rouge&quot;&gt;layouts&lt;/code&gt; directories. In this post I’ll demonstrate how Savas applies &lt;a href=&quot;https://smacss.com/&quot;&gt;SMACSS&lt;/a&gt; principles to organize our custom SCSS. As a reminder, I’ll be linking to our &lt;a href=&quot;https://github.com/savaslabs/durham-civil-rights-map&quot;&gt;Drupal 8 mapping site&lt;/a&gt; as an example throughout, but none of this is Drupal-8-specific.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;drupal-flavored-smacss&quot;&gt;Drupal-flavored SMACSS&lt;/h2&gt;
+
+&lt;p&gt;When we left off, our &lt;code class=&quot;highlighter-rouge&quot;&gt;sass&lt;/code&gt; directory looked like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Inside the custom theme directory&lt;/span&gt;
+sass
+├── _init.scss
+├── base
+├── components
+├── layouts
+├── lib
+│   ├── bourbon
+│   ├── font-awesome
+│   └── neat
+└── styles.scss
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;At this point we’re ready to start styling. Let’s take a look at the three folders that will hold our custom &lt;code class=&quot;highlighter-rouge&quot;&gt;.scss&lt;/code&gt; files, which are loosely based on SMACSS. Acquia has a &lt;a href=&quot;https://dev.acquia.com/blog/organize-your-styles-introduction-smacss&quot;&gt;nice writeup&lt;/a&gt; of how SMACSS principles can be applied to Drupal, but I like to simplify it even further.&lt;/p&gt;
+
+&lt;h3 id=&quot;base&quot;&gt;Base&lt;/h3&gt;
+
+&lt;p&gt;I personally only have three files in the &lt;code class=&quot;highlighter-rouge&quot;&gt;sass/base&lt;/code&gt; directory. Don’t forget that we already &lt;a href=&quot;/2015/08/21/sassy-drupal-theming-part-1.html#set-up-stylesscss&quot;&gt;imported these three partials&lt;/a&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;styles.scss&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;For full examples of each of these files, check out &lt;a href=&quot;https://github.com/savaslabs/durham-civil-rights-map/tree/master/themes/custom/mappy/sass/base&quot;&gt;our &lt;code class=&quot;highlighter-rouge&quot;&gt;base&lt;/code&gt; directory&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;normalizescss&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_normalize.scss&lt;/code&gt;&lt;/h4&gt;
+&lt;p&gt;This is simply &lt;a href=&quot;https://necolas.github.io/normalize.css/&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;normalize.css&lt;/code&gt;&lt;/a&gt; renamed as &lt;code class=&quot;highlighter-rouge&quot;&gt;_normalize.scss&lt;/code&gt; - remember that CSS is valid SCSS. Thoughtbot recommends using &lt;code class=&quot;highlighter-rouge&quot;&gt;normalize.css&lt;/code&gt; as your CSS reset along with Neat. Regardless of which reset you use, include it in &lt;code class=&quot;highlighter-rouge&quot;&gt;base&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;basescss&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_base.scss&lt;/code&gt;&lt;/h4&gt;
+&lt;p&gt;This is for HTML element styles only. No layout, no classes, nothing else. In here I’ll apply font styles to the body and headings, link styles to the anchor element, and possibly a few other site-wide styles.&lt;/p&gt;
+
+&lt;h4 id=&quot;variablesscss&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_variables.scss&lt;/code&gt;&lt;/h4&gt;
+&lt;p&gt;This is where I house all of my Sass variables and custom mixins. I typically have sections for colors, fonts, other useful stuff like a standard border radius or spacing between elements, variables for any &lt;a href=&quot;http://refills.bourbon.io/&quot;&gt;Refills&lt;/a&gt; I’m using, and custom mixins.&lt;/p&gt;
+
+&lt;p&gt;I’d definitely recommend including &lt;code class=&quot;highlighter-rouge&quot;&gt;_normalize.scss&lt;/code&gt; in &lt;code class=&quot;highlighter-rouge&quot;&gt;base&lt;/code&gt; if you’re using Neat, but other than that do what works for you! If you’re following my method, your &lt;code class=&quot;highlighter-rouge&quot;&gt;sass&lt;/code&gt; folder should be looking like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Inside the custom theme directory&lt;/span&gt;
+sass
+├── _init.scss
+├── base
+│   ├── _base.scss
+│   ├── _normalize.scss
+│   └── _variables.scss
+├── components
+├── layouts
+├── lib
+│   ├── bourbon
+│   ├── font-awesome
+│   └── neat
+└── styles.scss
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;layouts&quot;&gt;Layouts&lt;/h3&gt;
+
+&lt;p&gt;This directory holds page-wide layout styles, which means we’ll be making heavy use of the Neat grid here. This is flexible, but I recommend a single &lt;code class=&quot;highlighter-rouge&quot;&gt;.scss&lt;/code&gt; partial for each unique template file that represents an entire page. Think about what works best for your site. For the sake of our example, let’s say we’re creating &lt;code class=&quot;highlighter-rouge&quot;&gt;_front-page.scss&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;_node-page.scss&lt;/code&gt;. I like to also create &lt;code class=&quot;highlighter-rouge&quot;&gt;_base.scss&lt;/code&gt; for layout styles that apply to all pages.&lt;/p&gt;
+
+&lt;p&gt;Remember that these styles only apply to the page’s layout! I occasionally find myself moving styles from the &lt;code class=&quot;highlighter-rouge&quot;&gt;layouts&lt;/code&gt; directory to &lt;code class=&quot;highlighter-rouge&quot;&gt;base&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;components&lt;/code&gt; when I realize they don’t only define layout. In these partials, you should be doing a lot of grid work and spacing. This is the entirety of my &lt;code class=&quot;highlighter-rouge&quot;&gt;sass/layouts/_base.scss&lt;/code&gt; file on our mapping site:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cm&quot;&gt;/**
+ * @file
+ *
+ * Site-wide layout styles.
+ */&lt;/span&gt;
+
+&lt;span class=&quot;nt&quot;&gt;body&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;outer-container&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+  &lt;span class=&quot;nt&quot;&gt;main&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;span-columns&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;10&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;shift&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;@include&lt;/span&gt; &lt;span class=&quot;nd&quot;&gt;clearfix&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+    &lt;span class=&quot;nt&quot;&gt;h1&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;nl&quot;&gt;margin-top&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;em&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$navigation-height&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$general-spacing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;We’re almost there:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Inside the custom theme directory&lt;/span&gt;
+sass
+├── _init.scss
+├── base
+│   ├── _base.scss
+│   ├── _normalize.scss
+│   └── _variables.scss
+├── components
+├── layouts
+│   ├── _base.scss
+│   ├── _front-page.scss
+│   └── _node-page.scss
+├── lib
+│   ├── bourbon
+│   ├── font-awesome
+│   └── neat
+└── styles.scss
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;components&quot;&gt;Components&lt;/h3&gt;
+
+&lt;p&gt;In SMACSS this is called “modules,” but that gets a little confusing in Drupal Land. This is for applying layout and theme styles to smaller chunks of your site, which in Drupal typically means regions. Create a separate partial for each region, or if you have several distinct components within a region, consider a separate partial for each of them.&lt;/p&gt;
+
+&lt;p&gt;Let’s say we created partials for the header, footer, and sidebar regions, plus one for non-layout node page styles. At this point, our &lt;code class=&quot;highlighter-rouge&quot;&gt;sass&lt;/code&gt; directory is looking like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# Inside the custom theme directory&lt;/span&gt;
+sass
+├── _init.scss
+├── base
+│   ├── _base.scss
+│   ├── _normalize.scss
+│   └── _variables.scss
+├── components
+│   ├── _node-page.scss
+│   └── regions
+│       ├── _footer.scss
+│       ├── _header.scss
+│       └── _sidebar.scss
+├── layouts
+│   ├── _base.scss
+│   ├── _front-page.scss
+│   └── _node-page.scss
+├── lib
+│   ├── bourbon
+│   ├── font-awesome
+│   └── neat
+└── styles.scss
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now we’ve got a nicely organized, easy to navigate Sass directory, ready to hold your styles and compile them into one beautiful CSS file!&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;But how do we ensure that our one CSS file really is beautiful? Check out &lt;a href=&quot;/2015/09/03/sassy-drupal-theming-part-3.html&quot;&gt;my final post&lt;/a&gt; about best practices for writing Sass that you can easily maintain or pass off to another developer.&lt;/p&gt;
+
+    &lt;hr&gt;
+
+    
+      &lt;div class=&quot;post-comments&quot;&gt;
+  
+    &lt;div class=&quot;expander&quot;&gt;
+      &lt;a href=&quot;javascript:void(0)&quot; id=&quot;js-expander-trigger&quot; class=&quot;expander-trigger expander-hidden&quot;&gt;Comments!&lt;/a&gt;
+      &lt;div id=&quot;js-expander-content&quot; class=&quot;expander-content&quot;&gt;
+        &lt;!-- If there are existing comments, output them here. --&gt;
+        &lt;div id=&quot;post-comments&quot; class=&quot;post-comments&quot;&gt;&lt;/div&gt;
+        &lt;!-- New comment form --&gt;
+        &lt;form id=&quot;comment-form&quot;&gt;
+          &lt;h4&gt;Leave a comment&lt;/h4&gt;
+          &lt;div class=&quot;comment-name&quot;&gt;
+            &lt;p&gt;Name&lt;/p&gt; &lt;input type=&#39;text&#39; name=&#39;name&#39; id=&#39;name&#39; required /&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;comment-email&quot;&gt;
+            &lt;p&gt;Email&lt;/p&gt; &lt;input type=&#39;email&#39; name=&#39;email&#39; id=&#39;email&#39; required /&gt;
+            &lt;p class=&quot;email-disclaimer&quot;&gt;Savas will never sell your email address or spam you.&lt;/p&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;p&gt;Comment&lt;/p&gt;
+          &lt;textarea name=&#39;comment&#39; id=&#39;comment&#39; required&gt;&lt;/textarea&gt;
+          &lt;p class=&quot;hint below-textarea&quot;&gt;Plain text format only please.&lt;/p&gt;
+
+          &lt;input type=&#39;hidden&#39; name=&#39;slug&#39; id=&#39;slug&#39; value=&#39;/2015/08/28/sassy-drupal-theming-part-2.html&#39; /&gt;
+          &lt;input type=&#39;text&#39; name=&#39;url&#39; id=&#39;url&#39; /&gt;
+
+          &lt;div class=&#39;are-you-human&#39;&gt;
+            &lt;div class=&#39;are-you-human-owl&#39;&gt;
+              &lt;img src=&quot;/assets/img/owl.png&quot; alt=&quot;Savas logo&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&#39;are-you-human-field&#39;&gt;
+              &lt;p&gt;What type of animal is the Savas logo?&lt;/p&gt;
+              &lt;input type=&#39;text&#39; name=&#39;nocaptcha&#39; id=&#39;nocaptcha&#39; class=&#39;nocaptcha&#39;&gt;
+              &lt;p class=&quot;hint&quot;&gt;Hint: 3 letters long, starts with an &#39;o&#39; and ends with an &#39;l&#39;.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;input type=&#39;submit&#39; value=&#39;Submit&#39; id=&#39;submit&#39; class=&quot;submit-comment&quot;/&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+  &lt;hr&gt;
+&lt;/div&gt;
+
+    
+    &lt;div class=&quot;post-bottom&quot;&gt;
+  &lt;div class=&quot;post-meta&quot;&gt;
+    &lt;h4&gt;About the author&lt;/h4&gt;
+    
+      &lt;a href=&quot;/team/anne-tomasevich&quot;&gt;
+        &lt;img src=&quot;/assets/img/team/anne-tomasevich.jpg&quot; alt=&quot;Anne Tomasevich&quot;&gt;
+      &lt;/a&gt;
+      &lt;p class=&quot;post-author-desc&quot;&gt;Anne is a developer at Savas Labs, focused on front-end technologies and user experience.&lt;/p&gt;
+    
+  &lt;/div&gt;
+    &lt;!-- Once we have more content, change this to posts related by tag --&gt;
+  &lt;div class=&quot;post-related flex-container&quot;&gt;
+    &lt;h4&gt;Recent posts by Savas&lt;/h4&gt;
+    &lt;div class=&quot;cards&quot;&gt;
+      
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/22/user-testing.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Usability Testing - Our Process and Favorite Practices
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 22, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;Our approach to designing, conducting, and learning from user testing and other analyses.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/16/using-xhprof.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Using XHProf to profile your Drupal module
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 16, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;A case study of using XHProf to profile a Drupal module.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/15/git-merge-conflict-strategies.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Strategies and tools for resolving Git merge conflicts
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 15, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;An overview of strategies and tools I like to use when I encounter conflicts during merges.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;div class=&quot;previous-next-links&quot;&gt;
+  &lt;div class=&quot;next&quot;&gt;
+    
+      &lt;a href=&quot;/2015/09/03/sassy-drupal-theming-part-3.html&quot;&gt;&lt;i class=&quot;fa fa-long-arrow-left &quot;&gt;&lt;/i&gt; Sassy Drupal theming: Best practices&lt;/a&gt;
+    
+  &lt;/div&gt;
+  &lt;div class=&quot;previous&quot;&gt;
+    
+      &lt;a href=&quot;/2015/08/24/drupalcamp-asheville-recap.html&quot;&gt; We ate, we hiked, we Drupaled - Drupalcamp Asheville &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+  &lt;/article&gt;
+
+&lt;/div&gt;
+",
+    "sourceOrganization": "Savas",
+    "inLanguage": "en-US",
+    "dateCreated": "2015-08-28 00:00:00 +0000",
+    "datePublished": "2015-08-28 00:00:00 +0000",
+    "url": "/2015/08/28/sassy-drupal-theming-part-2.html"
+  }
+</script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-61514316-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  
+
+  
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+
+    <!-- Savas logo. -->
+    <a href="/" class="logo">
+        <img src="/assets/img/logo.png" alt="Savas logo">
+    </a>
+
+    <!-- Mobile menu button. -->
+    <a href="/" id="js-mobile-menu" class="navigation-menu-button">MENU</a>
+
+    <!-- Main menu. -->
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+
+        <!-- Loop through nav items in config.yml. -->
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  more">
+            <a href="javascript:void(0)">Who we are</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+
+              <ul class="submenu">
+                
+
+                  <!-- Assign active nav item class. -->
+                  
+                  
+
+                  <li class="nav-link ">
+                    <a href="/team">Team</a>
+                  </li>
+                
+
+                  <!-- Assign active nav item class. -->
+                  
+                  
+
+                  <li class="nav-link ">
+                    <a href="/mission-and-values">Mission & values</a>
+                  </li>
+                
+              </ul>
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/services">Services</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/work">Our work</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/blog">Blog</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/contact">Contact</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        
+
+
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">Sassy Drupal theming: a lighter version of SMACSS</h1>
+    <p>By <a href="/team/anne-tomasevich">Anne Tomasevich</a></p>
+    <p class="centerdot">&centerdot; </p>
+    <p>Aug 28, 2015 </p><br>
+    <i class="fa fa-tags"></i><p><a href="/blog/tag/drupal/">Drupal</a>, <a href="/blog/tag/drupal-planet/">Drupal Planet</a>, <a href="/blog/tag/theming/">Theming</a>, <a href="/blog/tag/sass/">Sass</a>, <a href="/blog/tag/bourbon/">Bourbon</a></p>
+    
+    <div><p><span id="comment-count"></span></p></div>
+    
+    
+  </header>
+
+  
+
+  <article class="post-content">
+    <p>In my <a href="/2015/08/21/sassy-drupal-theming-part-1.html">previous post</a> I outlined how to build a Sass directory within a custom Drupal theme including Bourbon and Neat.</p>
+
+<p>At this point, we’re ready to write some SCSS within the <code class="highlighter-rouge">base</code>, <code class="highlighter-rouge">components</code>, and <code class="highlighter-rouge">layouts</code> directories. In this post I’ll demonstrate how Savas applies <a href="https://smacss.com/">SMACSS</a> principles to organize our custom SCSS. As a reminder, I’ll be linking to our <a href="https://github.com/savaslabs/durham-civil-rights-map">Drupal 8 mapping site</a> as an example throughout, but none of this is Drupal-8-specific.</p>
+
+<hr />
+
+<h2 id="drupal-flavored-smacss">Drupal-flavored SMACSS</h2>
+
+<p>When we left off, our <code class="highlighter-rouge">sass</code> directory looked like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c"># Inside the custom theme directory</span>
+sass
+├── _init.scss
+├── base
+├── components
+├── layouts
+├── lib
+│   ├── bourbon
+│   ├── font-awesome
+│   └── neat
+└── styles.scss
+</code></pre>
+</div>
+
+<p>At this point we’re ready to start styling. Let’s take a look at the three folders that will hold our custom <code class="highlighter-rouge">.scss</code> files, which are loosely based on SMACSS. Acquia has a <a href="https://dev.acquia.com/blog/organize-your-styles-introduction-smacss">nice writeup</a> of how SMACSS principles can be applied to Drupal, but I like to simplify it even further.</p>
+
+<h3 id="base">Base</h3>
+
+<p>I personally only have three files in the <code class="highlighter-rouge">sass/base</code> directory. Don’t forget that we already <a href="/2015/08/21/sassy-drupal-theming-part-1.html#set-up-stylesscss">imported these three partials</a> in <code class="highlighter-rouge">styles.scss</code>.</p>
+
+<p>For full examples of each of these files, check out <a href="https://github.com/savaslabs/durham-civil-rights-map/tree/master/themes/custom/mappy/sass/base">our <code class="highlighter-rouge">base</code> directory</a>.</p>
+
+<h4 id="normalizescss"><code class="highlighter-rouge">_normalize.scss</code></h4>
+<p>This is simply <a href="https://necolas.github.io/normalize.css/"><code class="highlighter-rouge">normalize.css</code></a> renamed as <code class="highlighter-rouge">_normalize.scss</code> - remember that CSS is valid SCSS. Thoughtbot recommends using <code class="highlighter-rouge">normalize.css</code> as your CSS reset along with Neat. Regardless of which reset you use, include it in <code class="highlighter-rouge">base</code>.</p>
+
+<h4 id="basescss"><code class="highlighter-rouge">_base.scss</code></h4>
+<p>This is for HTML element styles only. No layout, no classes, nothing else. In here I’ll apply font styles to the body and headings, link styles to the anchor element, and possibly a few other site-wide styles.</p>
+
+<h4 id="variablesscss"><code class="highlighter-rouge">_variables.scss</code></h4>
+<p>This is where I house all of my Sass variables and custom mixins. I typically have sections for colors, fonts, other useful stuff like a standard border radius or spacing between elements, variables for any <a href="http://refills.bourbon.io/">Refills</a> I’m using, and custom mixins.</p>
+
+<p>I’d definitely recommend including <code class="highlighter-rouge">_normalize.scss</code> in <code class="highlighter-rouge">base</code> if you’re using Neat, but other than that do what works for you! If you’re following my method, your <code class="highlighter-rouge">sass</code> folder should be looking like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c"># Inside the custom theme directory</span>
+sass
+├── _init.scss
+├── base
+│   ├── _base.scss
+│   ├── _normalize.scss
+│   └── _variables.scss
+├── components
+├── layouts
+├── lib
+│   ├── bourbon
+│   ├── font-awesome
+│   └── neat
+└── styles.scss
+</code></pre>
+</div>
+
+<h3 id="layouts">Layouts</h3>
+
+<p>This directory holds page-wide layout styles, which means we’ll be making heavy use of the Neat grid here. This is flexible, but I recommend a single <code class="highlighter-rouge">.scss</code> partial for each unique template file that represents an entire page. Think about what works best for your site. For the sake of our example, let’s say we’re creating <code class="highlighter-rouge">_front-page.scss</code> and <code class="highlighter-rouge">_node-page.scss</code>. I like to also create <code class="highlighter-rouge">_base.scss</code> for layout styles that apply to all pages.</p>
+
+<p>Remember that these styles only apply to the page’s layout! I occasionally find myself moving styles from the <code class="highlighter-rouge">layouts</code> directory to <code class="highlighter-rouge">base</code> or <code class="highlighter-rouge">components</code> when I realize they don’t only define layout. In these partials, you should be doing a lot of grid work and spacing. This is the entirety of my <code class="highlighter-rouge">sass/layouts/_base.scss</code> file on our mapping site:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cm">/**
+ * @file
+ *
+ * Site-wide layout styles.
+ */</span>
+
+<span class="nt">body</span> <span class="p">{</span>
+  <span class="k">@include</span> <span class="nd">outer-container</span><span class="p">();</span>
+
+  <span class="nt">main</span> <span class="p">{</span>
+    <span class="k">@include</span> <span class="nd">span-columns</span><span class="p">(</span><span class="m">10</span><span class="p">);</span>
+    <span class="k">@include</span> <span class="nd">shift</span><span class="p">(</span><span class="m">1</span><span class="p">);</span>
+    <span class="k">@include</span> <span class="nd">clearfix</span><span class="p">;</span>
+
+    <span class="nt">h1</span> <span class="p">{</span>
+      <span class="nl">margin-top</span><span class="p">:</span> <span class="nf">em</span><span class="p">(</span><span class="nv">$navigation-height</span><span class="p">)</span> <span class="o">+</span> <span class="nv">$general-spacing</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>We’re almost there:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c"># Inside the custom theme directory</span>
+sass
+├── _init.scss
+├── base
+│   ├── _base.scss
+│   ├── _normalize.scss
+│   └── _variables.scss
+├── components
+├── layouts
+│   ├── _base.scss
+│   ├── _front-page.scss
+│   └── _node-page.scss
+├── lib
+│   ├── bourbon
+│   ├── font-awesome
+│   └── neat
+└── styles.scss
+</code></pre>
+</div>
+
+<h3 id="components">Components</h3>
+
+<p>In SMACSS this is called “modules,” but that gets a little confusing in Drupal Land. This is for applying layout and theme styles to smaller chunks of your site, which in Drupal typically means regions. Create a separate partial for each region, or if you have several distinct components within a region, consider a separate partial for each of them.</p>
+
+<p>Let’s say we created partials for the header, footer, and sidebar regions, plus one for non-layout node page styles. At this point, our <code class="highlighter-rouge">sass</code> directory is looking like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="c"># Inside the custom theme directory</span>
+sass
+├── _init.scss
+├── base
+│   ├── _base.scss
+│   ├── _normalize.scss
+│   └── _variables.scss
+├── components
+│   ├── _node-page.scss
+│   └── regions
+│       ├── _footer.scss
+│       ├── _header.scss
+│       └── _sidebar.scss
+├── layouts
+│   ├── _base.scss
+│   ├── _front-page.scss
+│   └── _node-page.scss
+├── lib
+│   ├── bourbon
+│   ├── font-awesome
+│   └── neat
+└── styles.scss
+</code></pre>
+</div>
+
+<p>Now we’ve got a nicely organized, easy to navigate Sass directory, ready to hold your styles and compile them into one beautiful CSS file!</p>
+
+<hr />
+
+<p>But how do we ensure that our one CSS file really is beautiful? Check out <a href="/2015/09/03/sassy-drupal-theming-part-3.html">my final post</a> about best practices for writing Sass that you can easily maintain or pass off to another developer.</p>
+
+    <hr>
+
+    
+      <div class="post-comments">
+  
+    <div class="expander">
+      <a href="javascript:void(0)" id="js-expander-trigger" class="expander-trigger expander-hidden">Comments!</a>
+      <div id="js-expander-content" class="expander-content">
+        <!-- If there are existing comments, output them here. -->
+        <div id="post-comments" class="post-comments"></div>
+        <!-- New comment form -->
+        <form id="comment-form">
+          <h4>Leave a comment</h4>
+          <div class="comment-name">
+            <p>Name</p> <input type='text' name='name' id='name' required /><br>
+          </div>
+
+          <div class="comment-email">
+            <p>Email</p> <input type='email' name='email' id='email' required />
+            <p class="email-disclaimer">Savas will never sell your email address or spam you.</p><br>
+          </div>
+
+          <p>Comment</p>
+          <textarea name='comment' id='comment' required></textarea>
+          <p class="hint below-textarea">Plain text format only please.</p>
+
+          <input type='hidden' name='slug' id='slug' value='/2015/08/28/sassy-drupal-theming-part-2.html' />
+          <input type='text' name='url' id='url' />
+
+          <div class='are-you-human'>
+            <div class='are-you-human-owl'>
+              <img src="/assets/img/owl.png" alt="Savas logo">
+            </div>
+            <div class='are-you-human-field'>
+              <p>What type of animal is the Savas logo?</p>
+              <input type='text' name='nocaptcha' id='nocaptcha' class='nocaptcha'>
+              <p class="hint">Hint: 3 letters long, starts with an 'o' and ends with an 'l'.</p>
+            </div>
+          </div>
+
+          <input type='submit' value='Submit' id='submit' class="submit-comment"/>
+        </form>
+      </div>
+    </div>
+  
+  <hr>
+</div>
+
+    
+    <div class="post-bottom">
+  <div class="post-meta">
+    <h4>About the author</h4>
+    
+      <a href="/team/anne-tomasevich">
+        <img src="/assets/img/team/anne-tomasevich.jpg" alt="Anne Tomasevich">
+      </a>
+      <p class="post-author-desc">Anne is a developer at Savas Labs, focused on front-end technologies and user experience.</p>
+    
+  </div>
+    <!-- Once we have more content, change this to posts related by tag -->
+  <div class="post-related flex-container">
+    <h4>Recent posts by Savas</h4>
+    <div class="cards">
+      
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/22/user-testing.html">
+              <div class="card-header">
+                  Usability Testing - Our Process and Favorite Practices
+              </div>
+              <div class="card-copy">
+                <p>Jun 22, 2016</p>
+                <p><p>Our approach to designing, conducting, and learning from user testing and other analyses.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/16/using-xhprof.html">
+              <div class="card-header">
+                  Using XHProf to profile your Drupal module
+              </div>
+              <div class="card-copy">
+                <p>Jun 16, 2016</p>
+                <p><p>A case study of using XHProf to profile a Drupal module.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/15/git-merge-conflict-strategies.html">
+              <div class="card-header">
+                  Strategies and tools for resolving Git merge conflicts
+              </div>
+              <div class="card-copy">
+                <p>Jun 15, 2016</p>
+                <p><p>An overview of strategies and tools I like to use when I encounter conflicts during merges.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+</div>
+
+    <div class="previous-next-links">
+  <div class="next">
+    
+      <a href="/2015/09/03/sassy-drupal-theming-part-3.html"><i class="fa fa-long-arrow-left "></i> Sassy Drupal theming: Best practices</a>
+    
+  </div>
+  <div class="previous">
+    
+      <a href="/2015/08/24/drupalcamp-asheville-recap.html"> We ate, we hiked, we Drupaled - Drupalcamp Asheville <i class="fa fa-long-arrow-right"></i></a>
+    
+  </div>
+</div>
+
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <div class="contact-block">
+  <div class="contact-block__items">
+    <h3>Interested in working with us?</h3>
+    <a href="/contact">Get in touch!</a>
+  </div>
+</div>
+    <footer class="footer" role="contentinfo">
+  <div class="footer-links">
+    <ul>
+      <li><h3>Location</h3></li>
+      <li>Savas Labs<br />
+          PMB 114<br />
+          201 W Main Street, Suite 100<br />
+          Durham, NC 27701<br /></li>
+    </ul>
+    <ul>
+      <li><h3>Around the Web</h3></li>
+      <ul>
+        <li><a href="https://github.com/savaslabs"><span class="mega-octicon octicon-mark-github"></span></a></li>
+        <li><a href="https://www.drupal.org/node/2466865"><i class="fa fa-drupal fa-lg fa-2x"></i></a></li>
+        <li><a href="https://twitter.com/savas_labs"><i class="fa fa-twitter fa-lg fa-2x"></i></a></li>
+        <li><a href="https://www.linkedin.com/company/savas-labs"><i class="fa fa-linkedin fa-lg fa-2x"></i></a></li>
+      </ul>
+    </ul>
+    <ul>
+      <li><h3>Contact</h3></li>
+      <li><a href="mailto:info@savaslabs.com">info@savaslabs.com</a></li>
+      <li>(919) 432-4660</li>
+    </ul>
+  </div>
+
+</footer>
+
+<div class="footer-copyright">
+  <p>Copyright &copy; Savas Labs 2016</p>
+</div>
+
+
+  </body>
+
+</html>

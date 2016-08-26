@@ -1,0 +1,2019 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <title>Personal git workflow... for collaboration | Savas Labs</title>
+  
+  <meta name="description" content="One huge benefit to using a source code management system (SCMS) like thede-facto industry-standard git is it eases, nay,down-right facilitates collaboration...">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,400italic,700italic|PT+Serif|Bitter|Source+Sans+Pro' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/assets/styles/main.css">
+  <link rel="stylesheet" href="/assets/icons/octicons/octicons.css">
+  <link rel="canonical" href="/2015/07/09/personal-git-workflow.html">
+  <link rel="alternate" type="application/rss+xml" title="Savas Labs" href="/feed.xml" />
+  <script type="text/javascript" src="/assets/js/main.js"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Durham, North Carolina",
+        "postalCode": "27701",
+        "streetAddress": "201 W Main St."
+      },
+      "description": "A full-service web agency leveraging the power of Drupal.
+",
+      "email": "info@savaslabs.com",
+      "name": "Savas",
+      "telephone": "(919) 432-4660",
+      "url": "http://savaslabs.com",
+      "logo": "http://savaslabs.com/assets/img/logo.png"
+    }
+</script>
+
+  
+  
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Personal git workflow... for collaboration",
+    "about": "A git workflow that optimizes the preservation of (your) integrity, and frequent, distributed backups",
+    "articleBody": "
+
+
+&lt;div class=&quot;post&quot;&gt;
+  &lt;header class=&quot;post-header&quot;&gt;
+    &lt;h1 class=&quot;post-title&quot;&gt;Personal git workflow... for collaboration&lt;/h1&gt;
+    &lt;p&gt;By &lt;a href=&quot;/team/chris-russo&quot;&gt;Chris Russo&lt;/a&gt;&lt;/p&gt;
+    &lt;p class=&quot;centerdot&quot;&gt;&amp;centerdot; &lt;/p&gt;
+    &lt;p&gt;Jul 9, 2015 &lt;/p&gt;&lt;br&gt;
+    &lt;i class=&quot;fa fa-tags&quot;&gt;&lt;/i&gt;&lt;p&gt;&lt;a href=&quot;/blog/tag/git/&quot;&gt;Git&lt;/a&gt;, &lt;a href=&quot;/blog/tag/productivity/&quot;&gt;Productivity&lt;/a&gt;&lt;/p&gt;
+    
+    &lt;div&gt;&lt;p&gt;&lt;span id=&quot;comment-count&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+    
+    
+  &lt;/header&gt;
+
+  
+
+  &lt;article class=&quot;post-content&quot;&gt;
+    &lt;p&gt;One huge benefit to using a source code management system (SCMS) like the
+de-facto industry-standard &lt;a href=&quot;https://git-scm.com/&quot;&gt;git&lt;/a&gt; is it eases, nay,
+down-right &lt;strong&gt;facilitates&lt;/strong&gt; collaboration. One common attribute of
+a web developer is perfectionism. At times,
+this wonderful tool and (oft) wonderful trait can be at odds with one another.
+For those of us who appreciate beautiful code, we (not me) often fear sharing
+what isn’t a polished thing of beauty.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;diff&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;compost_customizations&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;compost_customizations&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;d4e3daf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fa4c5d0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100644&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;---&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;compost_customizations&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+++&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;compost_customizations&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;@@&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;728&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;728&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@@&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;compost_customizations_queue_forgotten_bucket_emails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+         &lt;span class=&quot;c1&quot;&gt;//$raw_collection[0]-&amp;gt;field_reminded_about_forgotten_b-&amp;gt;set(1);
+&lt;/span&gt;         &lt;span class=&quot;nv&quot;&gt;$collection&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;entity_metadata_wrapper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;field_collection_item&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$raw_collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+         &lt;span class=&quot;nv&quot;&gt;$collection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;field_reminded_about_forgotten_b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;// @todo: remove after finishing
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$collection_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;          &lt;span class=&quot;c1&quot;&gt;// Set to reminded
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;          &lt;span class=&quot;nv&quot;&gt;$collection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;        &lt;span class=&quot;nv&quot;&gt;$been&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;reminded?&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;// Set to reminded
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;// @todo: uncomment to save! $collection-&amp;gt;save();
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;nv&quot;&gt;$date&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$collection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;field_forgotten_bucket_date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;nv&quot;&gt;$email_content&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;theme&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;forgotten_bucket_email&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;user&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;date&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+       &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;There are two main problems with selfish sandbagging of one’s code.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Making mistakes is one
+&lt;a href=&quot;http://www.goodreads.com/quotes/tag/learning-from-mistakes&quot;&gt;very efficient way to learn&lt;/a&gt;,
+and when others can see your mistakes during your process, if you are open to
+constructive criticism, you learn faster. Failure is a necessary part of
+&lt;a href=&quot;https://www.youtube.com/watch?v=45mMioJ5szc&quot;&gt;eventual success&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;When you are working with one authoritative repository, which, despite git’s
+naturally
+&lt;a href=&quot;https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows&quot;&gt;distributed nature&lt;/a&gt;,
+is often the case, you may be working on your own code locally for a week or
+more without ever pushing that code to another (backup) repository. What happens
+when your computer fails? You lose a week of work. It’s 2015 while I’m writing
+this, and that is no longer acceptable, nor will make you, your employer, or
+your client very happy when
+(&lt;a href=&quot;https://en.wikipedia.org/wiki/Murphy&#39;s_law&quot;&gt;not if&lt;/a&gt;) it happens.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;This solution, as it is technical in nature, will only deal with problem #2,
+though both are worthwhile in considering how to improve.&lt;/p&gt;
+
+&lt;p&gt;Here is the workflow I recommend a solo developer considering for her own
+workflow when collaborating with others in a shared code repository.&lt;/p&gt;
+
+&lt;h2 id=&quot;commit-early-and-often&quot;&gt;Commit early and often&lt;/h2&gt;
+&lt;p&gt;Everything in git is reversible, so no fear of commitment here! Understanding
+how to explicitly push and fetch from different remote repositories is a
+prerequesite, so make sure you have your repos clearly labeled as to which is
+the backup and which is authoritative so when you are ready to push your
+unrefined commits, they end up only where you want them, and not where you don’t.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MacBook-Pro:scss chris&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git remote -v
+backup  git@bitbucket.org:savaslabs/tilthy-rich-compost.git &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;fetch&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+backup  git@bitbucket.org:savaslabs/tilthy-rich-compost.git &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;push&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+upstream  git@github.com:chrisarusso/Tilthy-Rich-Compost-Website.git &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;fetch&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+upstream  git@github.com:chrisarusso/Tilthy-Rich-Compost-Website.git &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;push&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;write-verbose-messages-format-nothing&quot;&gt;Write verbose messages, format &lt;strong&gt;NOTHING&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Worry about cleanliness &lt;strong&gt;LATER&lt;/strong&gt;, we will get to that. Write lots of messages,
+comment everything, write todos, write questions, write in your native tongue
+ &lt;img alt=&quot;tongue emoji&quot; class=&quot;emoji&quot; src=&quot;http://www.emoji-cheat-sheet.com/graphics/emojis/tongue.png&quot; /&gt;,
+anything that will help you
+understand your thoughts and intentions later. To be clear, yes, commit this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+/**&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;queue&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;up&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;email&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;reminders&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cron&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;runs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*/&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;compost_customizations_queue_forgotten_bucket_emails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// Retrieve all members who have been marked as a forgotten
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// bucket but have not yet been notified
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;  &lt;span class=&quot;nv&quot;&gt;$query&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;EntityFieldQuery&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;  &lt;span class=&quot;nv&quot;&gt;$query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;entityCondition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;entity_type&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;user&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;fieldCondition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;field_active&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;value&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//-&amp;gt;fieldCondition(&#39;field_reminded_about_forgotten_b&#39;, &#39;value&#39;, 0);
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;  &lt;span class=&quot;nv&quot;&gt;$result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;  &lt;span class=&quot;nv&quot;&gt;$user_uids&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;array_keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;user&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;  &lt;span class=&quot;nv&quot;&gt;$users&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;entity_load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;user&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$user_uids&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$users&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;empty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;field_forgotten_bucket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;      &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;field_forgotten_bucket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;LANGUAGE_NONE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$forgotten_bucket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;// Do we wrap collections?
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;      &lt;span class=&quot;nv&quot;&gt;$collection_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$forgotten_bucket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;value&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;      &lt;span class=&quot;nv&quot;&gt;$forgotten_bucket_entity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;entity_load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;field_collection_item&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$collection_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;      &lt;span class=&quot;nv&quot;&gt;$reminded&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$forgotten_bucket_entity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$collection_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;field_reminded_about_forgotten_b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;LANGUAGE_NONE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;value&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;// If they weren&#39;t reminded, let&#39;s queue them up, and set them to reminded
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$reminded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;// @todo: Queue email
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;nv&quot;&gt;$user_wrapper&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;entity_metadata_wrapper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;user&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;nv&quot;&gt;$raw_collection&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$user_wrapper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;field_forgotten_bucket&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;//$raw_collection[0]-&amp;gt;field_reminded_about_forgotten_b-&amp;gt;set(1);
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;nv&quot;&gt;$collection&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;entity_metadata_wrapper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;field_collection_item&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$raw_collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;nv&quot;&gt;$collection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;field_reminded_about_forgotten_b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;// @todo: remove after finishing
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;// Test on one user so we can rerun and others will satisfy condition
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$collection_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;          &lt;span class=&quot;c1&quot;&gt;// Set to reminded
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;          &lt;span class=&quot;nv&quot;&gt;$collection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;nv&quot;&gt;$been&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;reminded?&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;push-to-a-backup-repository-all-the-time&quot;&gt;Push to a backup repository all the time&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://bitbucket.org/&quot;&gt;Bitbucket&lt;/a&gt;, a git (and mercurial) repository host
+brought to you by &lt;a href=&quot;https://www.atlassian.com/&quot;&gt;Atlassian&lt;/a&gt;, unlike the popular, and beloved
+&lt;a href=&quot;https://github.com/&quot;&gt;github&lt;/a&gt;, allows for
+&lt;a href=&quot;https://bitbucket.org/plans&quot;&gt;&lt;strong&gt;unlimited free private repositories&lt;/strong&gt;&lt;/a&gt;
+so no one ever has to see lots of bad code you write, and it won’t cost you
+(not directly at least) a thing! So, regardless of what you’ve got in your
+local repository, commit and push it up to your backup &lt;em&gt;at least&lt;/em&gt; daily, and
+ideally more frequently than that.&lt;/p&gt;
+
+&lt;h3 id=&quot;test-polish-finish-and-push-to-bitbucket&quot;&gt;Test, polish, finish, and push to bitbucket&lt;/h3&gt;
+&lt;p&gt;Once you’ve got your feature functional, tested, suitable to performance, coding
+legibility standards and any other criteria your team requires, you are now
+nearly ready to share. Push up your final commit that addresses all the @todos,
+ and comments you’ve made with the sloppy intermediate
+commits intact to your backup repository.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git push backup no-one-sees-but-me-branch
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;mark-the-tree-no-not-you-fido&quot;&gt;Mark the tree (no, not you fido)&lt;/h2&gt;
+
+&lt;p&gt;We run &lt;code class=&quot;highlighter-rouge&quot;&gt;git log&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;git show&lt;/code&gt; to see the output of &lt;code class=&quot;highlighter-rouge&quot;&gt;HEAD&lt;/code&gt; , i.e. the last
+commit we made.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;commit b464b4570ba56ec7db751483149b046d88fe8d9d
+Author: Chris Russo &amp;lt;chris.andrews.russo@gmail.com&amp;gt;
+Date:   Mon Jul 6 14:14:06 2015 -0400
+
+    Final commit after testing/cleaning; rewrite &lt;span class=&quot;nb&quot;&gt;time&lt;/span&gt;!
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Then run, the &lt;code class=&quot;highlighter-rouge&quot;&gt;git cat-file&lt;/code&gt; with the &lt;code class=&quot;highlighter-rouge&quot;&gt;-p&lt;/code&gt; option to get a breakdown of the
+commit.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MacBook-Pro:compost_customizations chris&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git cat-file -p b464b45
+tree f2f767cefda3d283f0fb3b68fd4f377e554b7f57
+parent a313c886ac6f2f85d97679faae12dc78900d34c9
+author Chris Russo &amp;lt;chris.andrews.russo@gmail.com&amp;gt; 1436206446 -0400
+committer Chris Russo &amp;lt;chris.andrews.russo@gmail.com&amp;gt; 1436206446 -0400
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now we know that the tree hash, which defines all of the files in our repository
+ is &lt;code class=&quot;highlighter-rouge&quot;&gt;f2f767ce&lt;/code&gt;; we’ll
+reference this later to make sure after we’re done rewriting, our files match
+exactly.&lt;/p&gt;
+
+&lt;h2 id=&quot;rollback-to-before-you-started-working-on-your-feature-and-ignored-formatting&quot;&gt;Rollback to before you started working on your feature and ignored formatting&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MacBook-Pro: chris&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt; git log b464b45
+commit b464b4570ba56ec7db751483149b046d88fe8d9d
+Author: Chris Russo &amp;lt;chris.andrews.russo@gmail.com&amp;gt;
+Date:   Mon Jul 6 14:14:06 2015 -0400
+
+    Final commit after testing, clean up &lt;span class=&quot;nb&quot;&gt;time&lt;/span&gt;!
+
+commit a313c886ac6f2f85d97679faae12dc78900d34c9
+Author: Chris Russo &amp;lt;chris.andrews.russo@gmail.com&amp;gt;
+Date:   Sun Jul 5 23:50:14 2015 -0400
+
+    Need to squash all these
+
+commit 91a0f4baeca027c10833a074733a4f9b2fc23cc9
+Author: Chris Russo &amp;lt;chris.andrews.russo@gmail.com&amp;gt;
+Date:   Sun Jul 5 22:17:00 2015 -0400
+
+    Add Blind Carbon Copy module
+
+commit 7e530058003a629450202cc88cc42d17c8ec493f
+Author: Chris Russo &amp;lt;chris.andrews.russo@gmail.com&amp;gt;
+Date:   Sun Jul 5 18:22:32 2015 -0400
+
+    Continue WIP toward automated emails &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;missed buckets
+
+commit 78463a4813dcafa9f9e11e1619c2741df47a14e7
+Author: Chris Russo &amp;lt;chris.andrews.russo@gmail.com&amp;gt;
+Date:   Fri Jul 3 17:47:01 2015 -0400
+
+    WIP
+
+commit 65be3b62cb7fc48ed858eaecc339c6ac91c2c4e9
+Author: Chris Russo &amp;lt;chris.andrews.russo@gmail.com&amp;gt;
+Date:   Fri Jul 3 17:02:14 2015 -0400
+
+    Remove paypal cruft
+
+commit 96edd7c2a5b0baccc9fe3233c4482d0254a41386
+Author: Chris Russo &amp;lt;chris.andrews.russo@gmail.com&amp;gt;
+Date:   Fri Jul 3 16:57:23 2015 -0400
+
+    Add WIP of automated missed bucket emails
+
+commit 2feea47ee3562675f07046a9fdf3af07d667999c
+Author: Chris Russo &amp;lt;chris.andrews.russo@gmail.com&amp;gt;
+Date:   Fri Jul 3 16:11:51 2015 -0400
+
+    Add field collection module
+
+    This was &lt;span class=&quot;k&quot;&gt;done &lt;/span&gt;to link a specific forgotten bucket date
+    with a flag as to whether or not the user was notified.
+    We also want to have &lt;span class=&quot;s2&quot;&gt;&quot;alternate&quot;&lt;/span&gt; collection weeks on
+    routes which will be facilitated by collections as well
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;It looks like the commit right before &lt;code class=&quot;highlighter-rouge&quot;&gt;96edd7c2a5b0&lt;/code&gt; is where our clean code
+ended, so we want to roll back to that.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git reset 2feea47ee35 --hard
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;add-back-the-polished-code-to-the-working-tree&quot;&gt;Add back the &lt;em&gt;polished&lt;/em&gt; code to the working tree&lt;/h2&gt;
+
+&lt;p&gt;Bring back the code that you just finished working on to the working tree,
+but don’t include any of the commits with it.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout b464b4570ba56ec7db751483149b046d88fe8d9d .
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Unstage everything so you may start anew.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MacBook-Pro:drupalroot chris&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git checkout b464b4570ba56ec7db751483149b046d88fe8d9d .
+MacBook-Pro:drupalroot chris&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git status
+On branch master
+Your branch and &lt;span class=&quot;s1&quot;&gt;&#39;upstream/master&#39;&lt;/span&gt; have diverged,
+and have 2 and 4 different commits each, respectively.
+  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;use &lt;span class=&quot;s2&quot;&gt;&quot;git pull&quot;&lt;/span&gt; to merge the remote branch into yours&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Changes to be committed:
+  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;use &lt;span class=&quot;s2&quot;&gt;&quot;git reset HEAD &amp;lt;file&amp;gt;...&quot;&lt;/span&gt; to unstage&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+  new file:   sites/all/modules/contrib/bcc/LICENSE.txt
+  new file:   sites/all/modules/contrib/bcc/README.TXT
+  new file:   sites/all/modules/contrib/bcc/bcc.info
+  new file:   sites/all/modules/contrib/bcc/bcc.install
+  new file:   sites/all/modules/contrib/bcc/bcc.module
+  modified:   sites/all/modules/custom/compost_customizations/compost_customizations.module
+  modified:   sites/all/modules/custom/compost_customizations/templates/forgotten-bucket-email.tpl.php
+
+MacBook-Pro:drupalroot chris&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git reset HEAD
+Unstaged changes after reset:
+M drupalroot/sites/all/modules/custom/compost_customizations/compost_customizations.module
+M drupalroot/sites/all/modules/custom/compost_customizations/templates/forgotten-bucket-email.tpl.php
+MacBook-Pro:drupalroot chris&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git status
+On branch master
+Your branch and &lt;span class=&quot;s1&quot;&gt;&#39;upstream/master&#39;&lt;/span&gt; have diverged,
+and have 2 and 4 different commits each, respectively.
+  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;use &lt;span class=&quot;s2&quot;&gt;&quot;git pull&quot;&lt;/span&gt; to merge the remote branch into yours&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Changes not staged &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;commit:
+  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;use &lt;span class=&quot;s2&quot;&gt;&quot;git add &amp;lt;file&amp;gt;...&quot;&lt;/span&gt; to update what will be committed&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;use &lt;span class=&quot;s2&quot;&gt;&quot;git checkout -- &amp;lt;file&amp;gt;...&quot;&lt;/span&gt; to discard changes &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;working directory&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+  modified:   sites/all/modules/custom/compost_customizations/compost_customizations.module
+  modified:   sites/all/modules/custom/compost_customizations/templates/forgotten-bucket-email.tpl.php
+
+Untracked files:
+  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;use &lt;span class=&quot;s2&quot;&gt;&quot;git add &amp;lt;file&amp;gt;...&quot;&lt;/span&gt; to include &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;what will be committed&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+  sites/all/modules/contrib/bcc/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;make-new-commits-put-your-past-behind-youhttpswwwyoutubecomwatchvk-mphdvseu8&quot;&gt;Make new commits, &lt;a href=&quot;https://www.youtube.com/watch?v=k-MpHDvseU8&quot;&gt;put your past behind you&lt;/a&gt;!&lt;/h2&gt;
+
+&lt;p&gt;Now make the wonderful commit messages
+&lt;a href=&quot;http://chris.beams.io/posts/git-commit&quot;&gt;you know you can&lt;/a&gt;, and impress
+your fellow collaborators!&lt;/p&gt;
+
+&lt;p&gt;I prefer to add patches of files at a time that are logically related with
+&lt;code class=&quot;highlighter-rouge&quot;&gt;git add -p&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;check-that-everything-is-exactly-the-same&quot;&gt;Check that everything is &lt;em&gt;exactly&lt;/em&gt; the same&lt;/h2&gt;
+
+&lt;p&gt;Since we’ve now rewritten history, our commit hashes will not line up. We
+previously had &lt;code class=&quot;highlighter-rouge&quot;&gt;b464b4570&lt;/code&gt; and now we have
+&lt;code class=&quot;highlighter-rouge&quot;&gt;3706ca31&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;However, if we look at the tree object, which defines all the project code,
+we can see that they are identical, we get &lt;code class=&quot;highlighter-rouge&quot;&gt;f2f767ce&lt;/code&gt;
+again. So we can be confident we didn’t miss
+anything in our rewriting.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MacBook-Pro:drupalroot chris&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git cat-file -p 3706ca31771312646f0caf0356cbc9ee3b2f4533
+tree f2f767cefda3d283f0fb3b68fd4f377e554b7f57
+parent f79d6b54a3a7ee25cb391f0978abf85314113461
+author Chris Russo &amp;lt;chris.andrews.russo@gmail.com&amp;gt; 1436206880 -0400
+committer Chris Russo &amp;lt;chris.andrews.russo@gmail.com&amp;gt; 1436207673 -0400
+
+Notify subscribers &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;missed collections
+
+Add a template file &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;email copy
+Add logic to cron to loop through and mail
+users after they&lt;span class=&quot;s1&quot;&gt;&#39;ve not notified us
+but have not left their bucket out
+
+Remove old paypal templates and libraries
+that aren&#39;&lt;/span&gt;t being used
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;push-to-your-shared-platform&quot;&gt;Push to your shared platform&lt;/h2&gt;
+
+&lt;p&gt;Now you’re all set to push up your code for others to see!&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git push upstream branch-made-with-pride
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Pat yourself on the back, go write some bad code, share it with no one,
+fix it up, and share it with everyone. Rinse. Repeat.&lt;/p&gt;
+
+&lt;h3 id=&quot;future-inspired-posts&quot;&gt;Future inspired posts&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;My top 10 useful git commands&lt;/li&gt;
+&lt;/ul&gt;
+
+    &lt;hr&gt;
+
+    
+      &lt;div class=&quot;post-comments&quot;&gt;
+  
+    &lt;div class=&quot;expander&quot;&gt;
+      &lt;a href=&quot;javascript:void(0)&quot; id=&quot;js-expander-trigger&quot; class=&quot;expander-trigger expander-hidden&quot;&gt;Comments!&lt;/a&gt;
+      &lt;div id=&quot;js-expander-content&quot; class=&quot;expander-content&quot;&gt;
+        &lt;!-- If there are existing comments, output them here. --&gt;
+        &lt;div id=&quot;post-comments&quot; class=&quot;post-comments&quot;&gt;&lt;/div&gt;
+        &lt;!-- New comment form --&gt;
+        &lt;form id=&quot;comment-form&quot;&gt;
+          &lt;h4&gt;Leave a comment&lt;/h4&gt;
+          &lt;div class=&quot;comment-name&quot;&gt;
+            &lt;p&gt;Name&lt;/p&gt; &lt;input type=&#39;text&#39; name=&#39;name&#39; id=&#39;name&#39; required /&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;comment-email&quot;&gt;
+            &lt;p&gt;Email&lt;/p&gt; &lt;input type=&#39;email&#39; name=&#39;email&#39; id=&#39;email&#39; required /&gt;
+            &lt;p class=&quot;email-disclaimer&quot;&gt;Savas will never sell your email address or spam you.&lt;/p&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;p&gt;Comment&lt;/p&gt;
+          &lt;textarea name=&#39;comment&#39; id=&#39;comment&#39; required&gt;&lt;/textarea&gt;
+          &lt;p class=&quot;hint below-textarea&quot;&gt;Plain text format only please.&lt;/p&gt;
+
+          &lt;input type=&#39;hidden&#39; name=&#39;slug&#39; id=&#39;slug&#39; value=&#39;/2015/07/09/personal-git-workflow.html&#39; /&gt;
+          &lt;input type=&#39;text&#39; name=&#39;url&#39; id=&#39;url&#39; /&gt;
+
+          &lt;div class=&#39;are-you-human&#39;&gt;
+            &lt;div class=&#39;are-you-human-owl&#39;&gt;
+              &lt;img src=&quot;/assets/img/owl.png&quot; alt=&quot;Savas logo&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&#39;are-you-human-field&#39;&gt;
+              &lt;p&gt;What type of animal is the Savas logo?&lt;/p&gt;
+              &lt;input type=&#39;text&#39; name=&#39;nocaptcha&#39; id=&#39;nocaptcha&#39; class=&#39;nocaptcha&#39;&gt;
+              &lt;p class=&quot;hint&quot;&gt;Hint: 3 letters long, starts with an &#39;o&#39; and ends with an &#39;l&#39;.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;input type=&#39;submit&#39; value=&#39;Submit&#39; id=&#39;submit&#39; class=&quot;submit-comment&quot;/&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+  &lt;hr&gt;
+&lt;/div&gt;
+
+    
+    &lt;div class=&quot;post-bottom&quot;&gt;
+  &lt;div class=&quot;post-meta&quot;&gt;
+    &lt;h4&gt;About the author&lt;/h4&gt;
+    
+      &lt;a href=&quot;/team/chris-russo&quot;&gt;
+        &lt;img src=&quot;/assets/img/team/chris-russo.jpg&quot; alt=&quot;Chris Russo&quot;&gt;
+      &lt;/a&gt;
+      &lt;p class=&quot;post-author-desc&quot;&gt;Chris does his best to ensure that his team is learning and growing and that our clients feel like partners.&lt;/p&gt;
+    
+  &lt;/div&gt;
+    &lt;!-- Once we have more content, change this to posts related by tag --&gt;
+  &lt;div class=&quot;post-related flex-container&quot;&gt;
+    &lt;h4&gt;Recent posts by Savas&lt;/h4&gt;
+    &lt;div class=&quot;cards&quot;&gt;
+      
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/22/user-testing.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Usability Testing - Our Process and Favorite Practices
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 22, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;Our approach to designing, conducting, and learning from user testing and other analyses.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/16/using-xhprof.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Using XHProf to profile your Drupal module
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 16, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;A case study of using XHProf to profile a Drupal module.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/15/git-merge-conflict-strategies.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Strategies and tools for resolving Git merge conflicts
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 15, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;An overview of strategies and tools I like to use when I encounter conflicts during merges.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;div class=&quot;previous-next-links&quot;&gt;
+  &lt;div class=&quot;next&quot;&gt;
+    
+      &lt;a href=&quot;/2015/08/04/user-revision-sanitize.html&quot;&gt;&lt;i class=&quot;fa fa-long-arrow-left &quot;&gt;&lt;/i&gt; When Drupal database sanitization isn&#39;t enough&lt;/a&gt;
+    
+  &lt;/div&gt;
+  &lt;div class=&quot;previous&quot;&gt;
+    
+      &lt;a href=&quot;/2015/07/06/map-in-drupal-8.html&quot;&gt; Building a map in Drupal 8 &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+  &lt;/article&gt;
+
+&lt;/div&gt;
+",
+      "author": {
+          "@context": "http://schema.org",
+          "@type": "Person",
+          "name": "Chris Russo",
+          "affiliation": "Savas",
+          "worksFor": "Savas"
+      },
+    "keywords": "git, productivity",
+    "text": "
+
+
+&lt;div class=&quot;post&quot;&gt;
+  &lt;header class=&quot;post-header&quot;&gt;
+    &lt;h1 class=&quot;post-title&quot;&gt;Personal git workflow... for collaboration&lt;/h1&gt;
+    &lt;p&gt;By &lt;a href=&quot;/team/chris-russo&quot;&gt;Chris Russo&lt;/a&gt;&lt;/p&gt;
+    &lt;p class=&quot;centerdot&quot;&gt;&amp;centerdot; &lt;/p&gt;
+    &lt;p&gt;Jul 9, 2015 &lt;/p&gt;&lt;br&gt;
+    &lt;i class=&quot;fa fa-tags&quot;&gt;&lt;/i&gt;&lt;p&gt;&lt;a href=&quot;/blog/tag/git/&quot;&gt;Git&lt;/a&gt;, &lt;a href=&quot;/blog/tag/productivity/&quot;&gt;Productivity&lt;/a&gt;&lt;/p&gt;
+    
+    &lt;div&gt;&lt;p&gt;&lt;span id=&quot;comment-count&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+    
+    
+  &lt;/header&gt;
+
+  
+
+  &lt;article class=&quot;post-content&quot;&gt;
+    &lt;p&gt;One huge benefit to using a source code management system (SCMS) like the
+de-facto industry-standard &lt;a href=&quot;https://git-scm.com/&quot;&gt;git&lt;/a&gt; is it eases, nay,
+down-right &lt;strong&gt;facilitates&lt;/strong&gt; collaboration. One common attribute of
+a web developer is perfectionism. At times,
+this wonderful tool and (oft) wonderful trait can be at odds with one another.
+For those of us who appreciate beautiful code, we (not me) often fear sharing
+what isn’t a polished thing of beauty.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;diff&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;compost_customizations&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;compost_customizations&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;index&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;d4e3daf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;..&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fa4c5d0&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;100644&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;---&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;compost_customizations&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+++&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;compost_customizations&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;@@&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;728&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;728&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;42&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;@@&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;compost_customizations_queue_forgotten_bucket_emails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+         &lt;span class=&quot;c1&quot;&gt;//$raw_collection[0]-&amp;gt;field_reminded_about_forgotten_b-&amp;gt;set(1);
+&lt;/span&gt;         &lt;span class=&quot;nv&quot;&gt;$collection&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;entity_metadata_wrapper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;field_collection_item&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$raw_collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+         &lt;span class=&quot;nv&quot;&gt;$collection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;field_reminded_about_forgotten_b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;// @todo: remove after finishing
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$collection_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;          &lt;span class=&quot;c1&quot;&gt;// Set to reminded
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;          &lt;span class=&quot;nv&quot;&gt;$collection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;        &lt;span class=&quot;nv&quot;&gt;$been&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;reminded?&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;// Set to reminded
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;// @todo: uncomment to save! $collection-&amp;gt;save();
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;nv&quot;&gt;$date&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$collection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;field_forgotten_bucket_date&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;nv&quot;&gt;$email_content&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;theme&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;forgotten_bucket_email&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;user&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;date&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$date&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+       &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+     &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+   &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;There are two main problems with selfish sandbagging of one’s code.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Making mistakes is one
+&lt;a href=&quot;http://www.goodreads.com/quotes/tag/learning-from-mistakes&quot;&gt;very efficient way to learn&lt;/a&gt;,
+and when others can see your mistakes during your process, if you are open to
+constructive criticism, you learn faster. Failure is a necessary part of
+&lt;a href=&quot;https://www.youtube.com/watch?v=45mMioJ5szc&quot;&gt;eventual success&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;When you are working with one authoritative repository, which, despite git’s
+naturally
+&lt;a href=&quot;https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows&quot;&gt;distributed nature&lt;/a&gt;,
+is often the case, you may be working on your own code locally for a week or
+more without ever pushing that code to another (backup) repository. What happens
+when your computer fails? You lose a week of work. It’s 2015 while I’m writing
+this, and that is no longer acceptable, nor will make you, your employer, or
+your client very happy when
+(&lt;a href=&quot;https://en.wikipedia.org/wiki/Murphy&#39;s_law&quot;&gt;not if&lt;/a&gt;) it happens.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;This solution, as it is technical in nature, will only deal with problem #2,
+though both are worthwhile in considering how to improve.&lt;/p&gt;
+
+&lt;p&gt;Here is the workflow I recommend a solo developer considering for her own
+workflow when collaborating with others in a shared code repository.&lt;/p&gt;
+
+&lt;h2 id=&quot;commit-early-and-often&quot;&gt;Commit early and often&lt;/h2&gt;
+&lt;p&gt;Everything in git is reversible, so no fear of commitment here! Understanding
+how to explicitly push and fetch from different remote repositories is a
+prerequesite, so make sure you have your repos clearly labeled as to which is
+the backup and which is authoritative so when you are ready to push your
+unrefined commits, they end up only where you want them, and not where you don’t.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MacBook-Pro:scss chris&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git remote -v
+backup  git@bitbucket.org:savaslabs/tilthy-rich-compost.git &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;fetch&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+backup  git@bitbucket.org:savaslabs/tilthy-rich-compost.git &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;push&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+upstream  git@github.com:chrisarusso/Tilthy-Rich-Compost-Website.git &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;fetch&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+upstream  git@github.com:chrisarusso/Tilthy-Rich-Compost-Website.git &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;push&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;write-verbose-messages-format-nothing&quot;&gt;Write verbose messages, format &lt;strong&gt;NOTHING&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;Worry about cleanliness &lt;strong&gt;LATER&lt;/strong&gt;, we will get to that. Write lots of messages,
+comment everything, write todos, write questions, write in your native tongue
+ &lt;img alt=&quot;tongue emoji&quot; class=&quot;emoji&quot; src=&quot;http://www.emoji-cheat-sheet.com/graphics/emojis/tongue.png&quot; /&gt;,
+anything that will help you
+understand your thoughts and intentions later. To be clear, yes, commit this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+/**&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Function&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;to&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;queue&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;up&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;text&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;email&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;reminders&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;cron&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;runs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*/&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;compost_customizations_queue_forgotten_bucket_emails&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// Retrieve all members who have been marked as a forgotten
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// bucket but have not yet been notified
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;  &lt;span class=&quot;nv&quot;&gt;$query&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;EntityFieldQuery&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;  &lt;span class=&quot;nv&quot;&gt;$query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;entityCondition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;entity_type&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;user&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;    &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;fieldCondition&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;field_active&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;value&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;//-&amp;gt;fieldCondition(&#39;field_reminded_about_forgotten_b&#39;, &#39;value&#39;, 0);
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;  &lt;span class=&quot;nv&quot;&gt;$result&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$query&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;execute&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;  &lt;span class=&quot;nv&quot;&gt;$user_uids&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;array_keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;user&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;  &lt;span class=&quot;nv&quot;&gt;$users&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;entity_load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;user&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$user_uids&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;  &lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$users&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;empty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;field_forgotten_bucket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;      &lt;span class=&quot;k&quot;&gt;continue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;    &lt;span class=&quot;k&quot;&gt;foreach&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;field_forgotten_bucket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;LANGUAGE_NONE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;as&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$forgotten_bucket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;// Do we wrap collections?
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;      &lt;span class=&quot;nv&quot;&gt;$collection_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$forgotten_bucket&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;value&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;      &lt;span class=&quot;nv&quot;&gt;$forgotten_bucket_entity&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;entity_load&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;field_collection_item&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$collection_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;      &lt;span class=&quot;nv&quot;&gt;$reminded&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$forgotten_bucket_entity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$collection_id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;field_reminded_about_forgotten_b&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;LANGUAGE_NONE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;value&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;// If they weren&#39;t reminded, let&#39;s queue them up, and set them to reminded
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$reminded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;// @todo: Queue email
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;nv&quot;&gt;$user_wrapper&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;entity_metadata_wrapper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;user&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;nv&quot;&gt;$raw_collection&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$user_wrapper&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;field_forgotten_bucket&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;//$raw_collection[0]-&amp;gt;field_reminded_about_forgotten_b-&amp;gt;set(1);
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;nv&quot;&gt;$collection&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;entity_metadata_wrapper&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;field_collection_item&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$raw_collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;nv&quot;&gt;$collection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;field_reminded_about_forgotten_b&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;// @todo: remove after finishing
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;// Test on one user so we can rerun and others will satisfy condition
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;         &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$collection_id&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;          &lt;span class=&quot;c1&quot;&gt;// Set to reminded
+&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;          &lt;span class=&quot;nv&quot;&gt;$collection&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;        &lt;span class=&quot;nv&quot;&gt;$been&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;reminded?&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;push-to-a-backup-repository-all-the-time&quot;&gt;Push to a backup repository all the time&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;https://bitbucket.org/&quot;&gt;Bitbucket&lt;/a&gt;, a git (and mercurial) repository host
+brought to you by &lt;a href=&quot;https://www.atlassian.com/&quot;&gt;Atlassian&lt;/a&gt;, unlike the popular, and beloved
+&lt;a href=&quot;https://github.com/&quot;&gt;github&lt;/a&gt;, allows for
+&lt;a href=&quot;https://bitbucket.org/plans&quot;&gt;&lt;strong&gt;unlimited free private repositories&lt;/strong&gt;&lt;/a&gt;
+so no one ever has to see lots of bad code you write, and it won’t cost you
+(not directly at least) a thing! So, regardless of what you’ve got in your
+local repository, commit and push it up to your backup &lt;em&gt;at least&lt;/em&gt; daily, and
+ideally more frequently than that.&lt;/p&gt;
+
+&lt;h3 id=&quot;test-polish-finish-and-push-to-bitbucket&quot;&gt;Test, polish, finish, and push to bitbucket&lt;/h3&gt;
+&lt;p&gt;Once you’ve got your feature functional, tested, suitable to performance, coding
+legibility standards and any other criteria your team requires, you are now
+nearly ready to share. Push up your final commit that addresses all the @todos,
+ and comments you’ve made with the sloppy intermediate
+commits intact to your backup repository.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git push backup no-one-sees-but-me-branch
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;mark-the-tree-no-not-you-fido&quot;&gt;Mark the tree (no, not you fido)&lt;/h2&gt;
+
+&lt;p&gt;We run &lt;code class=&quot;highlighter-rouge&quot;&gt;git log&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;git show&lt;/code&gt; to see the output of &lt;code class=&quot;highlighter-rouge&quot;&gt;HEAD&lt;/code&gt; , i.e. the last
+commit we made.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;commit b464b4570ba56ec7db751483149b046d88fe8d9d
+Author: Chris Russo &amp;lt;chris.andrews.russo@gmail.com&amp;gt;
+Date:   Mon Jul 6 14:14:06 2015 -0400
+
+    Final commit after testing/cleaning; rewrite &lt;span class=&quot;nb&quot;&gt;time&lt;/span&gt;!
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Then run, the &lt;code class=&quot;highlighter-rouge&quot;&gt;git cat-file&lt;/code&gt; with the &lt;code class=&quot;highlighter-rouge&quot;&gt;-p&lt;/code&gt; option to get a breakdown of the
+commit.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MacBook-Pro:compost_customizations chris&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git cat-file -p b464b45
+tree f2f767cefda3d283f0fb3b68fd4f377e554b7f57
+parent a313c886ac6f2f85d97679faae12dc78900d34c9
+author Chris Russo &amp;lt;chris.andrews.russo@gmail.com&amp;gt; 1436206446 -0400
+committer Chris Russo &amp;lt;chris.andrews.russo@gmail.com&amp;gt; 1436206446 -0400
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now we know that the tree hash, which defines all of the files in our repository
+ is &lt;code class=&quot;highlighter-rouge&quot;&gt;f2f767ce&lt;/code&gt;; we’ll
+reference this later to make sure after we’re done rewriting, our files match
+exactly.&lt;/p&gt;
+
+&lt;h2 id=&quot;rollback-to-before-you-started-working-on-your-feature-and-ignored-formatting&quot;&gt;Rollback to before you started working on your feature and ignored formatting&lt;/h2&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MacBook-Pro: chris&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt; git log b464b45
+commit b464b4570ba56ec7db751483149b046d88fe8d9d
+Author: Chris Russo &amp;lt;chris.andrews.russo@gmail.com&amp;gt;
+Date:   Mon Jul 6 14:14:06 2015 -0400
+
+    Final commit after testing, clean up &lt;span class=&quot;nb&quot;&gt;time&lt;/span&gt;!
+
+commit a313c886ac6f2f85d97679faae12dc78900d34c9
+Author: Chris Russo &amp;lt;chris.andrews.russo@gmail.com&amp;gt;
+Date:   Sun Jul 5 23:50:14 2015 -0400
+
+    Need to squash all these
+
+commit 91a0f4baeca027c10833a074733a4f9b2fc23cc9
+Author: Chris Russo &amp;lt;chris.andrews.russo@gmail.com&amp;gt;
+Date:   Sun Jul 5 22:17:00 2015 -0400
+
+    Add Blind Carbon Copy module
+
+commit 7e530058003a629450202cc88cc42d17c8ec493f
+Author: Chris Russo &amp;lt;chris.andrews.russo@gmail.com&amp;gt;
+Date:   Sun Jul 5 18:22:32 2015 -0400
+
+    Continue WIP toward automated emails &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;missed buckets
+
+commit 78463a4813dcafa9f9e11e1619c2741df47a14e7
+Author: Chris Russo &amp;lt;chris.andrews.russo@gmail.com&amp;gt;
+Date:   Fri Jul 3 17:47:01 2015 -0400
+
+    WIP
+
+commit 65be3b62cb7fc48ed858eaecc339c6ac91c2c4e9
+Author: Chris Russo &amp;lt;chris.andrews.russo@gmail.com&amp;gt;
+Date:   Fri Jul 3 17:02:14 2015 -0400
+
+    Remove paypal cruft
+
+commit 96edd7c2a5b0baccc9fe3233c4482d0254a41386
+Author: Chris Russo &amp;lt;chris.andrews.russo@gmail.com&amp;gt;
+Date:   Fri Jul 3 16:57:23 2015 -0400
+
+    Add WIP of automated missed bucket emails
+
+commit 2feea47ee3562675f07046a9fdf3af07d667999c
+Author: Chris Russo &amp;lt;chris.andrews.russo@gmail.com&amp;gt;
+Date:   Fri Jul 3 16:11:51 2015 -0400
+
+    Add field collection module
+
+    This was &lt;span class=&quot;k&quot;&gt;done &lt;/span&gt;to link a specific forgotten bucket date
+    with a flag as to whether or not the user was notified.
+    We also want to have &lt;span class=&quot;s2&quot;&gt;&quot;alternate&quot;&lt;/span&gt; collection weeks on
+    routes which will be facilitated by collections as well
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;It looks like the commit right before &lt;code class=&quot;highlighter-rouge&quot;&gt;96edd7c2a5b0&lt;/code&gt; is where our clean code
+ended, so we want to roll back to that.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git reset 2feea47ee35 --hard
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;add-back-the-polished-code-to-the-working-tree&quot;&gt;Add back the &lt;em&gt;polished&lt;/em&gt; code to the working tree&lt;/h2&gt;
+
+&lt;p&gt;Bring back the code that you just finished working on to the working tree,
+but don’t include any of the commits with it.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git checkout b464b4570ba56ec7db751483149b046d88fe8d9d .
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Unstage everything so you may start anew.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MacBook-Pro:drupalroot chris&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git checkout b464b4570ba56ec7db751483149b046d88fe8d9d .
+MacBook-Pro:drupalroot chris&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git status
+On branch master
+Your branch and &lt;span class=&quot;s1&quot;&gt;&#39;upstream/master&#39;&lt;/span&gt; have diverged,
+and have 2 and 4 different commits each, respectively.
+  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;use &lt;span class=&quot;s2&quot;&gt;&quot;git pull&quot;&lt;/span&gt; to merge the remote branch into yours&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Changes to be committed:
+  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;use &lt;span class=&quot;s2&quot;&gt;&quot;git reset HEAD &amp;lt;file&amp;gt;...&quot;&lt;/span&gt; to unstage&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+  new file:   sites/all/modules/contrib/bcc/LICENSE.txt
+  new file:   sites/all/modules/contrib/bcc/README.TXT
+  new file:   sites/all/modules/contrib/bcc/bcc.info
+  new file:   sites/all/modules/contrib/bcc/bcc.install
+  new file:   sites/all/modules/contrib/bcc/bcc.module
+  modified:   sites/all/modules/custom/compost_customizations/compost_customizations.module
+  modified:   sites/all/modules/custom/compost_customizations/templates/forgotten-bucket-email.tpl.php
+
+MacBook-Pro:drupalroot chris&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git reset HEAD
+Unstaged changes after reset:
+M drupalroot/sites/all/modules/custom/compost_customizations/compost_customizations.module
+M drupalroot/sites/all/modules/custom/compost_customizations/templates/forgotten-bucket-email.tpl.php
+MacBook-Pro:drupalroot chris&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git status
+On branch master
+Your branch and &lt;span class=&quot;s1&quot;&gt;&#39;upstream/master&#39;&lt;/span&gt; have diverged,
+and have 2 and 4 different commits each, respectively.
+  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;use &lt;span class=&quot;s2&quot;&gt;&quot;git pull&quot;&lt;/span&gt; to merge the remote branch into yours&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+Changes not staged &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;commit:
+  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;use &lt;span class=&quot;s2&quot;&gt;&quot;git add &amp;lt;file&amp;gt;...&quot;&lt;/span&gt; to update what will be committed&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;use &lt;span class=&quot;s2&quot;&gt;&quot;git checkout -- &amp;lt;file&amp;gt;...&quot;&lt;/span&gt; to discard changes &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;working directory&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+  modified:   sites/all/modules/custom/compost_customizations/compost_customizations.module
+  modified:   sites/all/modules/custom/compost_customizations/templates/forgotten-bucket-email.tpl.php
+
+Untracked files:
+  &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;use &lt;span class=&quot;s2&quot;&gt;&quot;git add &amp;lt;file&amp;gt;...&quot;&lt;/span&gt; to include &lt;span class=&quot;k&quot;&gt;in &lt;/span&gt;what will be committed&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+
+  sites/all/modules/contrib/bcc/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;make-new-commits-put-your-past-behind-youhttpswwwyoutubecomwatchvk-mphdvseu8&quot;&gt;Make new commits, &lt;a href=&quot;https://www.youtube.com/watch?v=k-MpHDvseU8&quot;&gt;put your past behind you&lt;/a&gt;!&lt;/h2&gt;
+
+&lt;p&gt;Now make the wonderful commit messages
+&lt;a href=&quot;http://chris.beams.io/posts/git-commit&quot;&gt;you know you can&lt;/a&gt;, and impress
+your fellow collaborators!&lt;/p&gt;
+
+&lt;p&gt;I prefer to add patches of files at a time that are logically related with
+&lt;code class=&quot;highlighter-rouge&quot;&gt;git add -p&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;check-that-everything-is-exactly-the-same&quot;&gt;Check that everything is &lt;em&gt;exactly&lt;/em&gt; the same&lt;/h2&gt;
+
+&lt;p&gt;Since we’ve now rewritten history, our commit hashes will not line up. We
+previously had &lt;code class=&quot;highlighter-rouge&quot;&gt;b464b4570&lt;/code&gt; and now we have
+&lt;code class=&quot;highlighter-rouge&quot;&gt;3706ca31&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;However, if we look at the tree object, which defines all the project code,
+we can see that they are identical, we get &lt;code class=&quot;highlighter-rouge&quot;&gt;f2f767ce&lt;/code&gt;
+again. So we can be confident we didn’t miss
+anything in our rewriting.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;MacBook-Pro:drupalroot chris&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;git cat-file -p 3706ca31771312646f0caf0356cbc9ee3b2f4533
+tree f2f767cefda3d283f0fb3b68fd4f377e554b7f57
+parent f79d6b54a3a7ee25cb391f0978abf85314113461
+author Chris Russo &amp;lt;chris.andrews.russo@gmail.com&amp;gt; 1436206880 -0400
+committer Chris Russo &amp;lt;chris.andrews.russo@gmail.com&amp;gt; 1436207673 -0400
+
+Notify subscribers &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;missed collections
+
+Add a template file &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;email copy
+Add logic to cron to loop through and mail
+users after they&lt;span class=&quot;s1&quot;&gt;&#39;ve not notified us
+but have not left their bucket out
+
+Remove old paypal templates and libraries
+that aren&#39;&lt;/span&gt;t being used
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;push-to-your-shared-platform&quot;&gt;Push to your shared platform&lt;/h2&gt;
+
+&lt;p&gt;Now you’re all set to push up your code for others to see!&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;git push upstream branch-made-with-pride
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Pat yourself on the back, go write some bad code, share it with no one,
+fix it up, and share it with everyone. Rinse. Repeat.&lt;/p&gt;
+
+&lt;h3 id=&quot;future-inspired-posts&quot;&gt;Future inspired posts&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;My top 10 useful git commands&lt;/li&gt;
+&lt;/ul&gt;
+
+    &lt;hr&gt;
+
+    
+      &lt;div class=&quot;post-comments&quot;&gt;
+  
+    &lt;div class=&quot;expander&quot;&gt;
+      &lt;a href=&quot;javascript:void(0)&quot; id=&quot;js-expander-trigger&quot; class=&quot;expander-trigger expander-hidden&quot;&gt;Comments!&lt;/a&gt;
+      &lt;div id=&quot;js-expander-content&quot; class=&quot;expander-content&quot;&gt;
+        &lt;!-- If there are existing comments, output them here. --&gt;
+        &lt;div id=&quot;post-comments&quot; class=&quot;post-comments&quot;&gt;&lt;/div&gt;
+        &lt;!-- New comment form --&gt;
+        &lt;form id=&quot;comment-form&quot;&gt;
+          &lt;h4&gt;Leave a comment&lt;/h4&gt;
+          &lt;div class=&quot;comment-name&quot;&gt;
+            &lt;p&gt;Name&lt;/p&gt; &lt;input type=&#39;text&#39; name=&#39;name&#39; id=&#39;name&#39; required /&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;comment-email&quot;&gt;
+            &lt;p&gt;Email&lt;/p&gt; &lt;input type=&#39;email&#39; name=&#39;email&#39; id=&#39;email&#39; required /&gt;
+            &lt;p class=&quot;email-disclaimer&quot;&gt;Savas will never sell your email address or spam you.&lt;/p&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;p&gt;Comment&lt;/p&gt;
+          &lt;textarea name=&#39;comment&#39; id=&#39;comment&#39; required&gt;&lt;/textarea&gt;
+          &lt;p class=&quot;hint below-textarea&quot;&gt;Plain text format only please.&lt;/p&gt;
+
+          &lt;input type=&#39;hidden&#39; name=&#39;slug&#39; id=&#39;slug&#39; value=&#39;/2015/07/09/personal-git-workflow.html&#39; /&gt;
+          &lt;input type=&#39;text&#39; name=&#39;url&#39; id=&#39;url&#39; /&gt;
+
+          &lt;div class=&#39;are-you-human&#39;&gt;
+            &lt;div class=&#39;are-you-human-owl&#39;&gt;
+              &lt;img src=&quot;/assets/img/owl.png&quot; alt=&quot;Savas logo&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&#39;are-you-human-field&#39;&gt;
+              &lt;p&gt;What type of animal is the Savas logo?&lt;/p&gt;
+              &lt;input type=&#39;text&#39; name=&#39;nocaptcha&#39; id=&#39;nocaptcha&#39; class=&#39;nocaptcha&#39;&gt;
+              &lt;p class=&quot;hint&quot;&gt;Hint: 3 letters long, starts with an &#39;o&#39; and ends with an &#39;l&#39;.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;input type=&#39;submit&#39; value=&#39;Submit&#39; id=&#39;submit&#39; class=&quot;submit-comment&quot;/&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+  &lt;hr&gt;
+&lt;/div&gt;
+
+    
+    &lt;div class=&quot;post-bottom&quot;&gt;
+  &lt;div class=&quot;post-meta&quot;&gt;
+    &lt;h4&gt;About the author&lt;/h4&gt;
+    
+      &lt;a href=&quot;/team/chris-russo&quot;&gt;
+        &lt;img src=&quot;/assets/img/team/chris-russo.jpg&quot; alt=&quot;Chris Russo&quot;&gt;
+      &lt;/a&gt;
+      &lt;p class=&quot;post-author-desc&quot;&gt;Chris does his best to ensure that his team is learning and growing and that our clients feel like partners.&lt;/p&gt;
+    
+  &lt;/div&gt;
+    &lt;!-- Once we have more content, change this to posts related by tag --&gt;
+  &lt;div class=&quot;post-related flex-container&quot;&gt;
+    &lt;h4&gt;Recent posts by Savas&lt;/h4&gt;
+    &lt;div class=&quot;cards&quot;&gt;
+      
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/22/user-testing.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Usability Testing - Our Process and Favorite Practices
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 22, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;Our approach to designing, conducting, and learning from user testing and other analyses.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/16/using-xhprof.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Using XHProf to profile your Drupal module
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 16, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;A case study of using XHProf to profile a Drupal module.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/15/git-merge-conflict-strategies.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Strategies and tools for resolving Git merge conflicts
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 15, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;An overview of strategies and tools I like to use when I encounter conflicts during merges.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;div class=&quot;previous-next-links&quot;&gt;
+  &lt;div class=&quot;next&quot;&gt;
+    
+      &lt;a href=&quot;/2015/08/04/user-revision-sanitize.html&quot;&gt;&lt;i class=&quot;fa fa-long-arrow-left &quot;&gt;&lt;/i&gt; When Drupal database sanitization isn&#39;t enough&lt;/a&gt;
+    
+  &lt;/div&gt;
+  &lt;div class=&quot;previous&quot;&gt;
+    
+      &lt;a href=&quot;/2015/07/06/map-in-drupal-8.html&quot;&gt; Building a map in Drupal 8 &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+  &lt;/article&gt;
+
+&lt;/div&gt;
+",
+    "sourceOrganization": "Savas",
+    "inLanguage": "en-US",
+    "dateCreated": "2015-07-09 00:00:00 +0000",
+    "datePublished": "2015-07-09 00:00:00 +0000",
+    "url": "/2015/07/09/personal-git-workflow.html"
+  }
+</script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-61514316-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  
+
+  
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+
+    <!-- Savas logo. -->
+    <a href="/" class="logo">
+        <img src="/assets/img/logo.png" alt="Savas logo">
+    </a>
+
+    <!-- Mobile menu button. -->
+    <a href="/" id="js-mobile-menu" class="navigation-menu-button">MENU</a>
+
+    <!-- Main menu. -->
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+
+        <!-- Loop through nav items in config.yml. -->
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  more">
+            <a href="javascript:void(0)">Who we are</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+
+              <ul class="submenu">
+                
+
+                  <!-- Assign active nav item class. -->
+                  
+                  
+
+                  <li class="nav-link ">
+                    <a href="/team">Team</a>
+                  </li>
+                
+
+                  <!-- Assign active nav item class. -->
+                  
+                  
+
+                  <li class="nav-link ">
+                    <a href="/mission-and-values">Mission & values</a>
+                  </li>
+                
+              </ul>
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/services">Services</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/work">Our work</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/blog">Blog</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/contact">Contact</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        
+
+
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">Personal git workflow... for collaboration</h1>
+    <p>By <a href="/team/chris-russo">Chris Russo</a></p>
+    <p class="centerdot">&centerdot; </p>
+    <p>Jul 9, 2015 </p><br>
+    <i class="fa fa-tags"></i><p><a href="/blog/tag/git/">Git</a>, <a href="/blog/tag/productivity/">Productivity</a></p>
+    
+    <div><p><span id="comment-count"></span></p></div>
+    
+    
+  </header>
+
+  
+
+  <article class="post-content">
+    <p>One huge benefit to using a source code management system (SCMS) like the
+de-facto industry-standard <a href="https://git-scm.com/">git</a> is it eases, nay,
+down-right <strong>facilitates</strong> collaboration. One common attribute of
+a web developer is perfectionism. At times,
+this wonderful tool and (oft) wonderful trait can be at odds with one another.
+For those of us who appreciate beautiful code, we (not me) often fear sharing
+what isn’t a polished thing of beauty.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="nx">diff</span> <span class="o">--</span><span class="nx">git</span> <span class="nx">a</span><span class="o">/</span><span class="nx">compost_customizations</span><span class="o">.</span><span class="nx">module</span> <span class="nx">b</span><span class="o">/</span><span class="nx">compost_customizations</span><span class="o">.</span><span class="nx">module</span>
+<span class="nx">index</span> <span class="nx">d4e3daf</span><span class="o">..</span><span class="nx">fa4c5d0</span> <span class="mi">100644</span>
+<span class="o">---</span> <span class="nx">a</span><span class="o">/</span><span class="nx">compost_customizations</span><span class="o">.</span><span class="nx">module</span>
+<span class="o">+++</span> <span class="nx">b</span><span class="o">/</span><span class="nx">compost_customizations</span><span class="o">.</span><span class="nx">module</span>
+<span class="o">@@</span> <span class="o">-</span><span class="mi">728</span><span class="p">,</span><span class="mi">15</span> <span class="o">+</span><span class="mi">728</span><span class="p">,</span><span class="mi">42</span> <span class="o">@@</span> <span class="k">function</span> <span class="nf">compost_customizations_queue_forgotten_bucket_emails</span><span class="p">()</span> <span class="p">{</span>
+         <span class="c1">//$raw_collection[0]-&gt;field_reminded_about_forgotten_b-&gt;set(1);
+</span>         <span class="nv">$collection</span> <span class="o">=</span> <span class="nx">entity_metadata_wrapper</span><span class="p">(</span><span class="s1">'field_collection_item'</span><span class="p">,</span> <span class="nv">$raw_collection</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+         <span class="nv">$collection</span><span class="o">-&gt;</span><span class="na">field_reminded_about_forgotten_b</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="o">-</span>        <span class="c1">// @todo: remove after finishing
+</span><span class="o">-</span>        <span class="k">if</span> <span class="p">(</span><span class="nv">$collection_id</span> <span class="o">==</span> <span class="mi">6</span><span class="p">)</span> <span class="p">{</span>
+<span class="o">-</span>          <span class="c1">// Set to reminded
+</span><span class="o">-</span>          <span class="nv">$collection</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+<span class="o">-</span>        <span class="p">}</span>
+<span class="o">-</span>
+<span class="o">-</span>
+<span class="o">-</span>        <span class="nv">$been</span> <span class="o">=</span> <span class="s1">'reminded?'</span><span class="p">;</span>
+<span class="o">+</span>        <span class="c1">// Set to reminded
+</span><span class="o">+</span>        <span class="c1">// @todo: uncomment to save! $collection-&gt;save();
+</span><span class="o">+</span>        <span class="nv">$date</span> <span class="o">=</span> <span class="nv">$collection</span><span class="o">-&gt;</span><span class="na">field_forgotten_bucket_date</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">();</span>
+<span class="o">+</span>        <span class="nv">$email_content</span> <span class="o">=</span> <span class="nx">theme</span><span class="p">(</span><span class="s1">'forgotten_bucket_email'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">'user'</span> <span class="o">=&gt;</span> <span class="nv">$user</span><span class="p">,</span> <span class="s1">'date'</span> <span class="o">=&gt;</span> <span class="nv">$date</span><span class="p">));</span>
+       <span class="p">}</span>
+<span class="o">+</span>
+     <span class="p">}</span>
+   <span class="p">}</span>
+<span class="o">+</span><span class="p">}</span>
+</code></pre>
+</div>
+
+<p>There are two main problems with selfish sandbagging of one’s code.</p>
+
+<ol>
+  <li>Making mistakes is one
+<a href="http://www.goodreads.com/quotes/tag/learning-from-mistakes">very efficient way to learn</a>,
+and when others can see your mistakes during your process, if you are open to
+constructive criticism, you learn faster. Failure is a necessary part of
+<a href="https://www.youtube.com/watch?v=45mMioJ5szc">eventual success</a>.</li>
+  <li>When you are working with one authoritative repository, which, despite git’s
+naturally
+<a href="https://git-scm.com/book/en/v2/Distributed-Git-Distributed-Workflows">distributed nature</a>,
+is often the case, you may be working on your own code locally for a week or
+more without ever pushing that code to another (backup) repository. What happens
+when your computer fails? You lose a week of work. It’s 2015 while I’m writing
+this, and that is no longer acceptable, nor will make you, your employer, or
+your client very happy when
+(<a href="https://en.wikipedia.org/wiki/Murphy's_law">not if</a>) it happens.</li>
+</ol>
+
+<p>This solution, as it is technical in nature, will only deal with problem #2,
+though both are worthwhile in considering how to improve.</p>
+
+<p>Here is the workflow I recommend a solo developer considering for her own
+workflow when collaborating with others in a shared code repository.</p>
+
+<h2 id="commit-early-and-often">Commit early and often</h2>
+<p>Everything in git is reversible, so no fear of commitment here! Understanding
+how to explicitly push and fetch from different remote repositories is a
+prerequesite, so make sure you have your repos clearly labeled as to which is
+the backup and which is authoritative so when you are ready to push your
+unrefined commits, they end up only where you want them, and not where you don’t.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>MacBook-Pro:scss chris<span class="nv">$ </span>git remote -v
+backup  git@bitbucket.org:savaslabs/tilthy-rich-compost.git <span class="o">(</span>fetch<span class="o">)</span>
+backup  git@bitbucket.org:savaslabs/tilthy-rich-compost.git <span class="o">(</span>push<span class="o">)</span>
+upstream  git@github.com:chrisarusso/Tilthy-Rich-Compost-Website.git <span class="o">(</span>fetch<span class="o">)</span>
+upstream  git@github.com:chrisarusso/Tilthy-Rich-Compost-Website.git <span class="o">(</span>push<span class="o">)</span>
+</code></pre>
+</div>
+
+<h2 id="write-verbose-messages-format-nothing">Write verbose messages, format <strong>NOTHING</strong></h2>
+<p>Worry about cleanliness <strong>LATER</strong>, we will get to that. Write lots of messages,
+comment everything, write todos, write questions, write in your native tongue
+ <img alt="tongue emoji" class="emoji" src="http://www.emoji-cheat-sheet.com/graphics/emojis/tongue.png" />,
+anything that will help you
+understand your thoughts and intentions later. To be clear, yes, commit this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="o">+</span>
+<span class="o">+/**</span>
+<span class="o">+</span> <span class="o">*</span> <span class="nx">Function</span> <span class="nx">to</span> <span class="nx">queue</span> <span class="nx">up</span> <span class="nx">text</span> <span class="k">and</span> <span class="nx">email</span> <span class="nx">reminders</span> <span class="nx">from</span> <span class="nx">cron</span> <span class="nx">runs</span><span class="o">.</span>
+<span class="o">+</span> <span class="o">*/</span>
+<span class="o">+</span><span class="k">function</span> <span class="nf">compost_customizations_queue_forgotten_bucket_emails</span><span class="p">()</span> <span class="p">{</span>
+<span class="o">+</span>
+<span class="o">+</span>  <span class="c1">// Retrieve all members who have been marked as a forgotten
+</span><span class="o">+</span>  <span class="c1">// bucket but have not yet been notified
+</span><span class="o">+</span>  <span class="nv">$query</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">EntityFieldQuery</span><span class="p">();</span>
+<span class="o">+</span>
+<span class="o">+</span>  <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">entityCondition</span><span class="p">(</span><span class="s1">'entity_type'</span><span class="p">,</span> <span class="s1">'user'</span><span class="p">)</span>
+<span class="o">+</span>    <span class="o">-&gt;</span><span class="na">fieldCondition</span><span class="p">(</span><span class="s1">'field_active'</span><span class="p">,</span> <span class="s1">'value'</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+<span class="o">+</span>    <span class="c1">//-&gt;fieldCondition('field_reminded_about_forgotten_b', 'value', 0);
+</span><span class="o">+</span>
+<span class="o">+</span>  <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+<span class="o">+</span>  <span class="nv">$user_uids</span> <span class="o">=</span> <span class="nb">array_keys</span><span class="p">(</span><span class="nv">$result</span><span class="p">[</span><span class="s1">'user'</span><span class="p">]);</span>
+<span class="o">+</span>  <span class="nv">$users</span> <span class="o">=</span> <span class="nx">entity_load</span><span class="p">(</span><span class="s1">'user'</span><span class="p">,</span> <span class="nv">$user_uids</span><span class="p">);</span>
+<span class="o">+</span>
+<span class="o">+</span>  <span class="k">foreach</span> <span class="p">(</span><span class="nv">$users</span> <span class="k">as</span> <span class="nv">$user</span><span class="p">)</span> <span class="p">{</span>
+<span class="o">+</span>    <span class="k">if</span> <span class="p">(</span><span class="k">empty</span><span class="p">(</span><span class="nv">$user</span><span class="o">-&gt;</span><span class="na">field_forgotten_bucket</span><span class="p">))</span> <span class="p">{</span>
+<span class="o">+</span>      <span class="k">continue</span><span class="p">;</span>
+<span class="o">+</span>    <span class="p">}</span>
+<span class="o">+</span>
+<span class="o">+</span>    <span class="k">foreach</span> <span class="p">(</span><span class="nv">$user</span><span class="o">-&gt;</span><span class="na">field_forgotten_bucket</span><span class="p">[</span><span class="nx">LANGUAGE_NONE</span><span class="p">]</span> <span class="k">as</span> <span class="nv">$forgotten_bucket</span><span class="p">)</span> <span class="p">{</span>
+<span class="o">+</span>      <span class="c1">// Do we wrap collections?
+</span><span class="o">+</span>      <span class="nv">$collection_id</span> <span class="o">=</span> <span class="nv">$forgotten_bucket</span><span class="p">[</span><span class="s1">'value'</span><span class="p">];</span>
+<span class="o">+</span>      <span class="nv">$forgotten_bucket_entity</span> <span class="o">=</span> <span class="nx">entity_load</span><span class="p">(</span><span class="s1">'field_collection_item'</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="nv">$collection_id</span><span class="p">));</span>
+<span class="o">+</span>      <span class="nv">$reminded</span> <span class="o">=</span> <span class="nv">$forgotten_bucket_entity</span><span class="p">[</span><span class="nv">$collection_id</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">field_reminded_about_forgotten_b</span><span class="p">[</span><span class="nx">LANGUAGE_NONE</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s1">'value'</span><span class="p">];</span>
+<span class="o">+</span>      <span class="c1">// If they weren't reminded, let's queue them up, and set them to reminded
+</span><span class="o">+</span>      <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$reminded</span><span class="p">)</span> <span class="p">{</span>
+<span class="o">+</span>        <span class="c1">// @todo: Queue email
+</span><span class="o">+</span>        <span class="nv">$user_wrapper</span> <span class="o">=</span> <span class="nx">entity_metadata_wrapper</span><span class="p">(</span><span class="s1">'user'</span><span class="p">,</span> <span class="nv">$user</span><span class="p">);</span>
+<span class="o">+</span>        <span class="nv">$raw_collection</span> <span class="o">=</span> <span class="nv">$user_wrapper</span><span class="o">-&gt;</span><span class="na">field_forgotten_bucket</span><span class="o">-&gt;</span><span class="na">value</span><span class="p">();</span>
+<span class="o">+</span>        <span class="c1">//$raw_collection[0]-&gt;field_reminded_about_forgotten_b-&gt;set(1);
+</span><span class="o">+</span>        <span class="nv">$collection</span> <span class="o">=</span> <span class="nx">entity_metadata_wrapper</span><span class="p">(</span><span class="s1">'field_collection_item'</span><span class="p">,</span> <span class="nv">$raw_collection</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span>
+<span class="o">+</span>        <span class="nv">$collection</span><span class="o">-&gt;</span><span class="na">field_reminded_about_forgotten_b</span><span class="o">-&gt;</span><span class="na">set</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="o">+</span>        <span class="c1">// @todo: remove after finishing
+</span><span class="o">+</span>        <span class="c1">// Test on one user so we can rerun and others will satisfy condition
+</span><span class="o">+</span>         <span class="k">if</span> <span class="p">(</span><span class="nv">$collection_id</span> <span class="o">==</span> <span class="mi">6</span><span class="p">)</span> <span class="p">{</span>
+<span class="o">+</span>          <span class="c1">// Set to reminded
+</span><span class="o">+</span>          <span class="nv">$collection</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+<span class="o">+</span>        <span class="p">}</span>
+<span class="o">+</span>
+<span class="o">+</span>
+<span class="o">+</span>        <span class="nv">$been</span> <span class="o">=</span> <span class="s1">'reminded?'</span><span class="p">;</span>
+<span class="o">+</span>      <span class="p">}</span>
+<span class="o">+</span>    <span class="p">}</span>
+<span class="o">+</span>  <span class="p">}</span>
+ <span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="push-to-a-backup-repository-all-the-time">Push to a backup repository all the time</h3>
+<p><a href="https://bitbucket.org/">Bitbucket</a>, a git (and mercurial) repository host
+brought to you by <a href="https://www.atlassian.com/">Atlassian</a>, unlike the popular, and beloved
+<a href="https://github.com/">github</a>, allows for
+<a href="https://bitbucket.org/plans"><strong>unlimited free private repositories</strong></a>
+so no one ever has to see lots of bad code you write, and it won’t cost you
+(not directly at least) a thing! So, regardless of what you’ve got in your
+local repository, commit and push it up to your backup <em>at least</em> daily, and
+ideally more frequently than that.</p>
+
+<h3 id="test-polish-finish-and-push-to-bitbucket">Test, polish, finish, and push to bitbucket</h3>
+<p>Once you’ve got your feature functional, tested, suitable to performance, coding
+legibility standards and any other criteria your team requires, you are now
+nearly ready to share. Push up your final commit that addresses all the @todos,
+ and comments you’ve made with the sloppy intermediate
+commits intact to your backup repository.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>git push backup no-one-sees-but-me-branch
+</code></pre>
+</div>
+
+<h2 id="mark-the-tree-no-not-you-fido">Mark the tree (no, not you fido)</h2>
+
+<p>We run <code class="highlighter-rouge">git log</code> or <code class="highlighter-rouge">git show</code> to see the output of <code class="highlighter-rouge">HEAD</code> , i.e. the last
+commit we made.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>commit b464b4570ba56ec7db751483149b046d88fe8d9d
+Author: Chris Russo &lt;chris.andrews.russo@gmail.com&gt;
+Date:   Mon Jul 6 14:14:06 2015 -0400
+
+    Final commit after testing/cleaning; rewrite <span class="nb">time</span>!
+</code></pre>
+</div>
+
+<p>Then run, the <code class="highlighter-rouge">git cat-file</code> with the <code class="highlighter-rouge">-p</code> option to get a breakdown of the
+commit.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>MacBook-Pro:compost_customizations chris<span class="nv">$ </span>git cat-file -p b464b45
+tree f2f767cefda3d283f0fb3b68fd4f377e554b7f57
+parent a313c886ac6f2f85d97679faae12dc78900d34c9
+author Chris Russo &lt;chris.andrews.russo@gmail.com&gt; 1436206446 -0400
+committer Chris Russo &lt;chris.andrews.russo@gmail.com&gt; 1436206446 -0400
+</code></pre>
+</div>
+
+<p>Now we know that the tree hash, which defines all of the files in our repository
+ is <code class="highlighter-rouge">f2f767ce</code>; we’ll
+reference this later to make sure after we’re done rewriting, our files match
+exactly.</p>
+
+<h2 id="rollback-to-before-you-started-working-on-your-feature-and-ignored-formatting">Rollback to before you started working on your feature and ignored formatting</h2>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>MacBook-Pro: chris<span class="nv">$ </span> git log b464b45
+commit b464b4570ba56ec7db751483149b046d88fe8d9d
+Author: Chris Russo &lt;chris.andrews.russo@gmail.com&gt;
+Date:   Mon Jul 6 14:14:06 2015 -0400
+
+    Final commit after testing, clean up <span class="nb">time</span>!
+
+commit a313c886ac6f2f85d97679faae12dc78900d34c9
+Author: Chris Russo &lt;chris.andrews.russo@gmail.com&gt;
+Date:   Sun Jul 5 23:50:14 2015 -0400
+
+    Need to squash all these
+
+commit 91a0f4baeca027c10833a074733a4f9b2fc23cc9
+Author: Chris Russo &lt;chris.andrews.russo@gmail.com&gt;
+Date:   Sun Jul 5 22:17:00 2015 -0400
+
+    Add Blind Carbon Copy module
+
+commit 7e530058003a629450202cc88cc42d17c8ec493f
+Author: Chris Russo &lt;chris.andrews.russo@gmail.com&gt;
+Date:   Sun Jul 5 18:22:32 2015 -0400
+
+    Continue WIP toward automated emails <span class="k">for </span>missed buckets
+
+commit 78463a4813dcafa9f9e11e1619c2741df47a14e7
+Author: Chris Russo &lt;chris.andrews.russo@gmail.com&gt;
+Date:   Fri Jul 3 17:47:01 2015 -0400
+
+    WIP
+
+commit 65be3b62cb7fc48ed858eaecc339c6ac91c2c4e9
+Author: Chris Russo &lt;chris.andrews.russo@gmail.com&gt;
+Date:   Fri Jul 3 17:02:14 2015 -0400
+
+    Remove paypal cruft
+
+commit 96edd7c2a5b0baccc9fe3233c4482d0254a41386
+Author: Chris Russo &lt;chris.andrews.russo@gmail.com&gt;
+Date:   Fri Jul 3 16:57:23 2015 -0400
+
+    Add WIP of automated missed bucket emails
+
+commit 2feea47ee3562675f07046a9fdf3af07d667999c
+Author: Chris Russo &lt;chris.andrews.russo@gmail.com&gt;
+Date:   Fri Jul 3 16:11:51 2015 -0400
+
+    Add field collection module
+
+    This was <span class="k">done </span>to link a specific forgotten bucket date
+    with a flag as to whether or not the user was notified.
+    We also want to have <span class="s2">"alternate"</span> collection weeks on
+    routes which will be facilitated by collections as well
+</code></pre>
+</div>
+
+<p>It looks like the commit right before <code class="highlighter-rouge">96edd7c2a5b0</code> is where our clean code
+ended, so we want to roll back to that.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>git reset 2feea47ee35 --hard
+</code></pre>
+</div>
+
+<h2 id="add-back-the-polished-code-to-the-working-tree">Add back the <em>polished</em> code to the working tree</h2>
+
+<p>Bring back the code that you just finished working on to the working tree,
+but don’t include any of the commits with it.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>git checkout b464b4570ba56ec7db751483149b046d88fe8d9d .
+</code></pre>
+</div>
+
+<p>Unstage everything so you may start anew.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>MacBook-Pro:drupalroot chris<span class="nv">$ </span>git checkout b464b4570ba56ec7db751483149b046d88fe8d9d .
+MacBook-Pro:drupalroot chris<span class="nv">$ </span>git status
+On branch master
+Your branch and <span class="s1">'upstream/master'</span> have diverged,
+and have 2 and 4 different commits each, respectively.
+  <span class="o">(</span>use <span class="s2">"git pull"</span> to merge the remote branch into yours<span class="o">)</span>
+Changes to be committed:
+  <span class="o">(</span>use <span class="s2">"git reset HEAD &lt;file&gt;..."</span> to unstage<span class="o">)</span>
+
+  new file:   sites/all/modules/contrib/bcc/LICENSE.txt
+  new file:   sites/all/modules/contrib/bcc/README.TXT
+  new file:   sites/all/modules/contrib/bcc/bcc.info
+  new file:   sites/all/modules/contrib/bcc/bcc.install
+  new file:   sites/all/modules/contrib/bcc/bcc.module
+  modified:   sites/all/modules/custom/compost_customizations/compost_customizations.module
+  modified:   sites/all/modules/custom/compost_customizations/templates/forgotten-bucket-email.tpl.php
+
+MacBook-Pro:drupalroot chris<span class="nv">$ </span>git reset HEAD
+Unstaged changes after reset:
+M drupalroot/sites/all/modules/custom/compost_customizations/compost_customizations.module
+M drupalroot/sites/all/modules/custom/compost_customizations/templates/forgotten-bucket-email.tpl.php
+MacBook-Pro:drupalroot chris<span class="nv">$ </span>git status
+On branch master
+Your branch and <span class="s1">'upstream/master'</span> have diverged,
+and have 2 and 4 different commits each, respectively.
+  <span class="o">(</span>use <span class="s2">"git pull"</span> to merge the remote branch into yours<span class="o">)</span>
+Changes not staged <span class="k">for </span>commit:
+  <span class="o">(</span>use <span class="s2">"git add &lt;file&gt;..."</span> to update what will be committed<span class="o">)</span>
+  <span class="o">(</span>use <span class="s2">"git checkout -- &lt;file&gt;..."</span> to discard changes <span class="k">in </span>working directory<span class="o">)</span>
+
+  modified:   sites/all/modules/custom/compost_customizations/compost_customizations.module
+  modified:   sites/all/modules/custom/compost_customizations/templates/forgotten-bucket-email.tpl.php
+
+Untracked files:
+  <span class="o">(</span>use <span class="s2">"git add &lt;file&gt;..."</span> to include <span class="k">in </span>what will be committed<span class="o">)</span>
+
+  sites/all/modules/contrib/bcc/
+</code></pre>
+</div>
+
+<h2 id="make-new-commits-put-your-past-behind-youhttpswwwyoutubecomwatchvk-mphdvseu8">Make new commits, <a href="https://www.youtube.com/watch?v=k-MpHDvseU8">put your past behind you</a>!</h2>
+
+<p>Now make the wonderful commit messages
+<a href="http://chris.beams.io/posts/git-commit">you know you can</a>, and impress
+your fellow collaborators!</p>
+
+<p>I prefer to add patches of files at a time that are logically related with
+<code class="highlighter-rouge">git add -p</code></p>
+
+<h2 id="check-that-everything-is-exactly-the-same">Check that everything is <em>exactly</em> the same</h2>
+
+<p>Since we’ve now rewritten history, our commit hashes will not line up. We
+previously had <code class="highlighter-rouge">b464b4570</code> and now we have
+<code class="highlighter-rouge">3706ca31</code>.</p>
+
+<p>However, if we look at the tree object, which defines all the project code,
+we can see that they are identical, we get <code class="highlighter-rouge">f2f767ce</code>
+again. So we can be confident we didn’t miss
+anything in our rewriting.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>MacBook-Pro:drupalroot chris<span class="nv">$ </span>git cat-file -p 3706ca31771312646f0caf0356cbc9ee3b2f4533
+tree f2f767cefda3d283f0fb3b68fd4f377e554b7f57
+parent f79d6b54a3a7ee25cb391f0978abf85314113461
+author Chris Russo &lt;chris.andrews.russo@gmail.com&gt; 1436206880 -0400
+committer Chris Russo &lt;chris.andrews.russo@gmail.com&gt; 1436207673 -0400
+
+Notify subscribers <span class="k">for </span>missed collections
+
+Add a template file <span class="k">for </span>email copy
+Add logic to cron to loop through and mail
+users after they<span class="s1">'ve not notified us
+but have not left their bucket out
+
+Remove old paypal templates and libraries
+that aren'</span>t being used
+</code></pre>
+</div>
+
+<h2 id="push-to-your-shared-platform">Push to your shared platform</h2>
+
+<p>Now you’re all set to push up your code for others to see!</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>git push upstream branch-made-with-pride
+</code></pre>
+</div>
+
+<p>Pat yourself on the back, go write some bad code, share it with no one,
+fix it up, and share it with everyone. Rinse. Repeat.</p>
+
+<h3 id="future-inspired-posts">Future inspired posts</h3>
+<ul>
+  <li>My top 10 useful git commands</li>
+</ul>
+
+    <hr>
+
+    
+      <div class="post-comments">
+  
+    <div class="expander">
+      <a href="javascript:void(0)" id="js-expander-trigger" class="expander-trigger expander-hidden">Comments!</a>
+      <div id="js-expander-content" class="expander-content">
+        <!-- If there are existing comments, output them here. -->
+        <div id="post-comments" class="post-comments"></div>
+        <!-- New comment form -->
+        <form id="comment-form">
+          <h4>Leave a comment</h4>
+          <div class="comment-name">
+            <p>Name</p> <input type='text' name='name' id='name' required /><br>
+          </div>
+
+          <div class="comment-email">
+            <p>Email</p> <input type='email' name='email' id='email' required />
+            <p class="email-disclaimer">Savas will never sell your email address or spam you.</p><br>
+          </div>
+
+          <p>Comment</p>
+          <textarea name='comment' id='comment' required></textarea>
+          <p class="hint below-textarea">Plain text format only please.</p>
+
+          <input type='hidden' name='slug' id='slug' value='/2015/07/09/personal-git-workflow.html' />
+          <input type='text' name='url' id='url' />
+
+          <div class='are-you-human'>
+            <div class='are-you-human-owl'>
+              <img src="/assets/img/owl.png" alt="Savas logo">
+            </div>
+            <div class='are-you-human-field'>
+              <p>What type of animal is the Savas logo?</p>
+              <input type='text' name='nocaptcha' id='nocaptcha' class='nocaptcha'>
+              <p class="hint">Hint: 3 letters long, starts with an 'o' and ends with an 'l'.</p>
+            </div>
+          </div>
+
+          <input type='submit' value='Submit' id='submit' class="submit-comment"/>
+        </form>
+      </div>
+    </div>
+  
+  <hr>
+</div>
+
+    
+    <div class="post-bottom">
+  <div class="post-meta">
+    <h4>About the author</h4>
+    
+      <a href="/team/chris-russo">
+        <img src="/assets/img/team/chris-russo.jpg" alt="Chris Russo">
+      </a>
+      <p class="post-author-desc">Chris does his best to ensure that his team is learning and growing and that our clients feel like partners.</p>
+    
+  </div>
+    <!-- Once we have more content, change this to posts related by tag -->
+  <div class="post-related flex-container">
+    <h4>Recent posts by Savas</h4>
+    <div class="cards">
+      
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/22/user-testing.html">
+              <div class="card-header">
+                  Usability Testing - Our Process and Favorite Practices
+              </div>
+              <div class="card-copy">
+                <p>Jun 22, 2016</p>
+                <p><p>Our approach to designing, conducting, and learning from user testing and other analyses.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/16/using-xhprof.html">
+              <div class="card-header">
+                  Using XHProf to profile your Drupal module
+              </div>
+              <div class="card-copy">
+                <p>Jun 16, 2016</p>
+                <p><p>A case study of using XHProf to profile a Drupal module.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/15/git-merge-conflict-strategies.html">
+              <div class="card-header">
+                  Strategies and tools for resolving Git merge conflicts
+              </div>
+              <div class="card-copy">
+                <p>Jun 15, 2016</p>
+                <p><p>An overview of strategies and tools I like to use when I encounter conflicts during merges.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+</div>
+
+    <div class="previous-next-links">
+  <div class="next">
+    
+      <a href="/2015/08/04/user-revision-sanitize.html"><i class="fa fa-long-arrow-left "></i> When Drupal database sanitization isn't enough</a>
+    
+  </div>
+  <div class="previous">
+    
+      <a href="/2015/07/06/map-in-drupal-8.html"> Building a map in Drupal 8 <i class="fa fa-long-arrow-right"></i></a>
+    
+  </div>
+</div>
+
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <div class="contact-block">
+  <div class="contact-block__items">
+    <h3>Interested in working with us?</h3>
+    <a href="/contact">Get in touch!</a>
+  </div>
+</div>
+    <footer class="footer" role="contentinfo">
+  <div class="footer-links">
+    <ul>
+      <li><h3>Location</h3></li>
+      <li>Savas Labs<br />
+          PMB 114<br />
+          201 W Main Street, Suite 100<br />
+          Durham, NC 27701<br /></li>
+    </ul>
+    <ul>
+      <li><h3>Around the Web</h3></li>
+      <ul>
+        <li><a href="https://github.com/savaslabs"><span class="mega-octicon octicon-mark-github"></span></a></li>
+        <li><a href="https://www.drupal.org/node/2466865"><i class="fa fa-drupal fa-lg fa-2x"></i></a></li>
+        <li><a href="https://twitter.com/savas_labs"><i class="fa fa-twitter fa-lg fa-2x"></i></a></li>
+        <li><a href="https://www.linkedin.com/company/savas-labs"><i class="fa fa-linkedin fa-lg fa-2x"></i></a></li>
+      </ul>
+    </ul>
+    <ul>
+      <li><h3>Contact</h3></li>
+      <li><a href="mailto:info@savaslabs.com">info@savaslabs.com</a></li>
+      <li>(919) 432-4660</li>
+    </ul>
+  </div>
+
+</footer>
+
+<div class="footer-copyright">
+  <p>Copyright &copy; Savas Labs 2016</p>
+</div>
+
+
+  </body>
+
+</html>

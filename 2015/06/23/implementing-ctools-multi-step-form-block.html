@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <title>Implementing a CTools multi-step form in a block | Savas Labs</title>
+  
+  <meta name="description" content="No one likes long forms. They’re overwhelming to look at and it’s easy to lose your place. Multi-step forms are a way to simplify data collection and make yo...">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,400italic,700italic|PT+Serif|Bitter|Source+Sans+Pro' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/assets/styles/main.css">
+  <link rel="stylesheet" href="/assets/icons/octicons/octicons.css">
+  <link rel="canonical" href="/2015/06/23/implementing-ctools-multi-step-form-block.html">
+  <link rel="alternate" type="application/rss+xml" title="Savas Labs" href="/feed.xml" />
+  <script type="text/javascript" src="/assets/js/main.js"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Durham, North Carolina",
+        "postalCode": "27701",
+        "streetAddress": "201 W Main St."
+      },
+      "description": "A full-service web agency leveraging the power of Drupal.
+",
+      "email": "info@savaslabs.com",
+      "name": "Savas",
+      "telephone": "(919) 432-4660",
+      "url": "http://savaslabs.com",
+      "logo": "http://savaslabs.com/assets/img/logo.png"
+    }
+</script>
+
+  
+  
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Implementing a CTools multi-step form in a block",
+    "about": "Some tips on how to implement a Drupal CTools multi-step form entirely in a block.",
+    "articleBody": "
+
+
+&lt;div class=&quot;post&quot;&gt;
+  &lt;header class=&quot;post-header&quot;&gt;
+    &lt;h1 class=&quot;post-title&quot;&gt;Implementing a CTools multi-step form in a block&lt;/h1&gt;
+    &lt;p&gt;By &lt;a href=&quot;/team/kosta-harlan&quot;&gt;Kosta Harlan&lt;/a&gt;&lt;/p&gt;
+    &lt;p class=&quot;centerdot&quot;&gt;&amp;centerdot; &lt;/p&gt;
+    &lt;p&gt;Jun 23, 2015 &lt;/p&gt;&lt;br&gt;
+    &lt;i class=&quot;fa fa-tags&quot;&gt;&lt;/i&gt;&lt;p&gt;&lt;a href=&quot;/blog/tag/drupal/&quot;&gt;Drupal&lt;/a&gt;, &lt;a href=&quot;/blog/tag/drupal-planet/&quot;&gt;Drupal Planet&lt;/a&gt;&lt;/p&gt;
+    
+    &lt;div&gt;&lt;p&gt;&lt;span id=&quot;comment-count&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+    
+    
+  &lt;/header&gt;
+
+  
+
+  &lt;article class=&quot;post-content&quot;&gt;
+    &lt;p&gt;No one likes long forms. They’re overwhelming to look at and it’s easy to lose your place. Multi-step forms are a way to simplify data collection and make your users’ lives easier.&lt;/p&gt;
+
+&lt;p&gt;Drupal’s Form API combined with the CTools module provide a solid platform for building a multi-step form. There are &lt;a href=&quot;https://duckduckgo.com/?q=ctools+multistep+form&quot;&gt;many wonderful guides&lt;/a&gt; on how to build a CTools multi-step form in Drupal. But as far as I can tell, all of the guides assume that the form will live on a page — which makes sense, as that’s the most common use case.&lt;/p&gt;
+
+&lt;p&gt;On a recent project, though, a client asked us to create a multi-step form using only a block, so it could be placed on a page using Panels. It turns out this is pretty straightforward but as it’s not well documented elsewhere, here’s a quick guide to what you need to do. (Note: I created &lt;a href=&quot;git@github.com:savaslabs/ctools_multistep_form_block.git&quot;&gt;an example module on GitHub&lt;/a&gt;, so please reference that as needed. This post is just covering the highlights.)&lt;/p&gt;
+
+&lt;h2 id=&quot;update-your-ctools-form-definition&quot;&gt;Update your CTools form definition&lt;/h2&gt;
+
+&lt;p&gt;In the main CTools form definition, which looks something like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$form_info&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;id&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;quote-form&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;ajax&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;path&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;example-form/%step&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;show trail&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;show back&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;show return&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FALSE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;We need to change path to use query parameters for advancing the form. So let’s change &lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;&#39;path&#39; =&amp;gt; &#39;example-form?step=%step&#39;&lt;/code&gt;. The path &lt;code class=&quot;highlighter-rouge&quot;&gt;example-form&lt;/code&gt; could be generated by a View, a node page, a Panel page, etc.&lt;/p&gt;
+
+&lt;h2 id=&quot;define-the-block&quot;&gt;Define the block&lt;/h2&gt;
+
+&lt;p&gt;Next, we need an implementation of &lt;code class=&quot;highlighter-rouge&quot;&gt;hook_block_info()&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;hook_block_view()&lt;/code&gt;. &lt;code class=&quot;highlighter-rouge&quot;&gt;hook_block_info()&lt;/code&gt; is pretty unremarkable so I’m not including it here, other than to say you should consider setting &lt;code class=&quot;highlighter-rouge&quot;&gt;cache&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;DRUPAL_NO_CACHE&lt;/code&gt; when declaring your block. Now, on to &lt;code class=&quot;highlighter-rouge&quot;&gt;hook_block_view()&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;/**
+ * Implements hook_block_view().
+ */&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;example_block_view&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$delta&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$block&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$delta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;example_form&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;nv&quot;&gt;$block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;subject&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Our example form&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;nv&quot;&gt;$parameters&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;drupal_get_query_parameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+      &lt;span class=&quot;nv&quot;&gt;$next_step&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;empty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$parameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;step&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;step-one&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$parameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;step&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+      &lt;span class=&quot;nv&quot;&gt;$block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;content&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;example_ctools_wizard&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$next_step&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Let’s take a closer look at this. &lt;code class=&quot;highlighter-rouge&quot;&gt;drupal_get_query_parameters()&lt;/code&gt; is checking to see if there’s a query parameter for &lt;code class=&quot;highlighter-rouge&quot;&gt;step&lt;/code&gt; in the current URL (e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost?step=step-two&lt;/code&gt;). If so, we set the &lt;code class=&quot;highlighter-rouge&quot;&gt;$next_step&lt;/code&gt; variable to that value; if not, we default to &lt;code class=&quot;highlighter-rouge&quot;&gt;step-one&lt;/code&gt; as the starting point for the form. We then pass in the &lt;code class=&quot;highlighter-rouge&quot;&gt;$next_step&lt;/code&gt; variable to our &lt;code class=&quot;highlighter-rouge&quot;&gt;example_ctools_wizard()&lt;/code&gt; function, which generates the multi-step form.&lt;/p&gt;
+
+&lt;h2 id=&quot;send-the-user-on-their-way&quot;&gt;Send the user on their way&lt;/h2&gt;
+
+&lt;p&gt;So far, so good. But there’s one problem at this stage. If we try to use the form now, we’ll get errors: clicking “Continue” on the form will take you to a 404 page of &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost/example-form%3Fstep%3Dstep-two&lt;/code&gt; instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost?step=step-two&lt;/code&gt;. That’s because CTools runs the path we declared in &lt;code class=&quot;highlighter-rouge&quot;&gt;&#39;path&#39; =&amp;gt; &#39;example-form?step=%step&#39;&lt;/code&gt; through an encoding function.&lt;/p&gt;
+
+&lt;p&gt;The workaround is to use our &lt;code class=&quot;highlighter-rouge&quot;&gt;subtask_next&lt;/code&gt; callback to redirect our user where we want them to go using &lt;code class=&quot;highlighter-rouge&quot;&gt;drupal_goto()&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;/**
+ * Callback executed when the &#39;next&#39; button is clicked.
+ */&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;example_subtask_next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$form_state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$values&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;example_get_page_cache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;quote&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;example_set_page_cache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;quote&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;array_merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$form_state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;values&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]));&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// Because we are using query parameters to advance/rewind the form, and
+&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// Ctools doesn&#39;t like query parameters (URL encoding fails), we&#39;ll use
+&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// drupal_goto() to take the user where they need to go.
+&lt;/span&gt;  &lt;span class=&quot;nv&quot;&gt;$destination&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$form_state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;redirect&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;strlen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;example&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;));
+  drupal_goto(&#39;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;example&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;, array(&#39;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39; =&amp;gt; array(&#39;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$destination&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The first two lines are caching form values so that as the user goes back and forth between steps on the form, their data is cached. Moving on: remember how CTools is sending us to a 404 page with the encoded value of the path we want to go to? It turns out the un-encoded value is in &lt;code class=&quot;highlighter-rouge&quot;&gt;$form_state[&#39;redirect&#39;][0]&lt;/code&gt;, in the form of &lt;code class=&quot;highlighter-rouge&quot;&gt;example-form?step=step-two&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Since we know the base path, we can use &lt;code class=&quot;highlighter-rouge&quot;&gt;substr()&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;strlen()&lt;/code&gt; to extract the value of &lt;code class=&quot;highlighter-rouge&quot;&gt;step=&lt;/code&gt; and then pass that along to &lt;code class=&quot;highlighter-rouge&quot;&gt;drupal_goto()&lt;/code&gt;. &lt;code class=&quot;highlighter-rouge&quot;&gt;drupal_goto()&lt;/code&gt; bypasses CTools’ own redirection, and thus we are able to avoid the unwanted encoding of the path, and can send our users happily along their way.&lt;/p&gt;
+
+    &lt;hr&gt;
+
+    
+      &lt;div class=&quot;post-comments&quot;&gt;
+  
+    &lt;div class=&quot;expander&quot;&gt;
+      &lt;a href=&quot;javascript:void(0)&quot; id=&quot;js-expander-trigger&quot; class=&quot;expander-trigger expander-hidden&quot;&gt;Comments!&lt;/a&gt;
+      &lt;div id=&quot;js-expander-content&quot; class=&quot;expander-content&quot;&gt;
+        &lt;!-- If there are existing comments, output them here. --&gt;
+        &lt;div id=&quot;post-comments&quot; class=&quot;post-comments&quot;&gt;&lt;/div&gt;
+        &lt;!-- New comment form --&gt;
+        &lt;form id=&quot;comment-form&quot;&gt;
+          &lt;h4&gt;Leave a comment&lt;/h4&gt;
+          &lt;div class=&quot;comment-name&quot;&gt;
+            &lt;p&gt;Name&lt;/p&gt; &lt;input type=&#39;text&#39; name=&#39;name&#39; id=&#39;name&#39; required /&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;comment-email&quot;&gt;
+            &lt;p&gt;Email&lt;/p&gt; &lt;input type=&#39;email&#39; name=&#39;email&#39; id=&#39;email&#39; required /&gt;
+            &lt;p class=&quot;email-disclaimer&quot;&gt;Savas will never sell your email address or spam you.&lt;/p&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;p&gt;Comment&lt;/p&gt;
+          &lt;textarea name=&#39;comment&#39; id=&#39;comment&#39; required&gt;&lt;/textarea&gt;
+          &lt;p class=&quot;hint below-textarea&quot;&gt;Plain text format only please.&lt;/p&gt;
+
+          &lt;input type=&#39;hidden&#39; name=&#39;slug&#39; id=&#39;slug&#39; value=&#39;/2015/06/23/implementing-ctools-multi-step-form-block.html&#39; /&gt;
+          &lt;input type=&#39;text&#39; name=&#39;url&#39; id=&#39;url&#39; /&gt;
+
+          &lt;div class=&#39;are-you-human&#39;&gt;
+            &lt;div class=&#39;are-you-human-owl&#39;&gt;
+              &lt;img src=&quot;/assets/img/owl.png&quot; alt=&quot;Savas logo&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&#39;are-you-human-field&#39;&gt;
+              &lt;p&gt;What type of animal is the Savas logo?&lt;/p&gt;
+              &lt;input type=&#39;text&#39; name=&#39;nocaptcha&#39; id=&#39;nocaptcha&#39; class=&#39;nocaptcha&#39;&gt;
+              &lt;p class=&quot;hint&quot;&gt;Hint: 3 letters long, starts with an &#39;o&#39; and ends with an &#39;l&#39;.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;input type=&#39;submit&#39; value=&#39;Submit&#39; id=&#39;submit&#39; class=&quot;submit-comment&quot;/&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+  &lt;hr&gt;
+&lt;/div&gt;
+
+    
+    &lt;div class=&quot;post-bottom&quot;&gt;
+  &lt;div class=&quot;post-meta&quot;&gt;
+    &lt;h4&gt;About the author&lt;/h4&gt;
+    
+      &lt;a href=&quot;/team/kosta-harlan&quot;&gt;
+        &lt;img src=&quot;/assets/img/team/kosta-harlan.jpg&quot; alt=&quot;Kosta Harlan&quot;&gt;
+      &lt;/a&gt;
+      &lt;p class=&quot;post-author-desc&quot;&gt;Kosta is responsible for code quality at Savas Labs, keeping up to date with emerging technologies and ensuring our team follows best practices.&lt;/p&gt;
+    
+  &lt;/div&gt;
+    &lt;!-- Once we have more content, change this to posts related by tag --&gt;
+  &lt;div class=&quot;post-related flex-container&quot;&gt;
+    &lt;h4&gt;Recent posts by Savas&lt;/h4&gt;
+    &lt;div class=&quot;cards&quot;&gt;
+      
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/22/user-testing.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Usability Testing - Our Process and Favorite Practices
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 22, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;Our approach to designing, conducting, and learning from user testing and other analyses.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/16/using-xhprof.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Using XHProf to profile your Drupal module
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 16, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;A case study of using XHProf to profile a Drupal module.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/15/git-merge-conflict-strategies.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Strategies and tools for resolving Git merge conflicts
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 15, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;An overview of strategies and tools I like to use when I encounter conflicts during merges.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;div class=&quot;previous-next-links&quot;&gt;
+  &lt;div class=&quot;next&quot;&gt;
+    
+      &lt;a href=&quot;/2015/07/06/map-in-drupal-8.html&quot;&gt;&lt;i class=&quot;fa fa-long-arrow-left &quot;&gt;&lt;/i&gt; Building a map in Drupal 8&lt;/a&gt;
+    
+  &lt;/div&gt;
+  &lt;div class=&quot;previous&quot;&gt;
+    
+      &lt;a href=&quot;/2015/06/23/a-man-a-plan-a-canal-a-savas.html&quot;&gt; A man a plan a canal a... Savas! &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+  &lt;/article&gt;
+
+&lt;/div&gt;
+",
+      "author": {
+          "@context": "http://schema.org",
+          "@type": "Person",
+          "name": "Kosta Harlan",
+          "affiliation": "Savas",
+          "worksFor": "Savas"
+      },
+    "keywords": "drupal, drupal-planet",
+    "text": "
+
+
+&lt;div class=&quot;post&quot;&gt;
+  &lt;header class=&quot;post-header&quot;&gt;
+    &lt;h1 class=&quot;post-title&quot;&gt;Implementing a CTools multi-step form in a block&lt;/h1&gt;
+    &lt;p&gt;By &lt;a href=&quot;/team/kosta-harlan&quot;&gt;Kosta Harlan&lt;/a&gt;&lt;/p&gt;
+    &lt;p class=&quot;centerdot&quot;&gt;&amp;centerdot; &lt;/p&gt;
+    &lt;p&gt;Jun 23, 2015 &lt;/p&gt;&lt;br&gt;
+    &lt;i class=&quot;fa fa-tags&quot;&gt;&lt;/i&gt;&lt;p&gt;&lt;a href=&quot;/blog/tag/drupal/&quot;&gt;Drupal&lt;/a&gt;, &lt;a href=&quot;/blog/tag/drupal-planet/&quot;&gt;Drupal Planet&lt;/a&gt;&lt;/p&gt;
+    
+    &lt;div&gt;&lt;p&gt;&lt;span id=&quot;comment-count&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+    
+    
+  &lt;/header&gt;
+
+  
+
+  &lt;article class=&quot;post-content&quot;&gt;
+    &lt;p&gt;No one likes long forms. They’re overwhelming to look at and it’s easy to lose your place. Multi-step forms are a way to simplify data collection and make your users’ lives easier.&lt;/p&gt;
+
+&lt;p&gt;Drupal’s Form API combined with the CTools module provide a solid platform for building a multi-step form. There are &lt;a href=&quot;https://duckduckgo.com/?q=ctools+multistep+form&quot;&gt;many wonderful guides&lt;/a&gt; on how to build a CTools multi-step form in Drupal. But as far as I can tell, all of the guides assume that the form will live on a page — which makes sense, as that’s the most common use case.&lt;/p&gt;
+
+&lt;p&gt;On a recent project, though, a client asked us to create a multi-step form using only a block, so it could be placed on a page using Panels. It turns out this is pretty straightforward but as it’s not well documented elsewhere, here’s a quick guide to what you need to do. (Note: I created &lt;a href=&quot;git@github.com:savaslabs/ctools_multistep_form_block.git&quot;&gt;an example module on GitHub&lt;/a&gt;, so please reference that as needed. This post is just covering the highlights.)&lt;/p&gt;
+
+&lt;h2 id=&quot;update-your-ctools-form-definition&quot;&gt;Update your CTools form definition&lt;/h2&gt;
+
+&lt;p&gt;In the main CTools form definition, which looks something like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$form_info&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;id&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;quote-form&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;ajax&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;path&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;example-form/%step&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;show trail&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;show back&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;TRUE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s1&quot;&gt;&#39;show return&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;FALSE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;We need to change path to use query parameters for advancing the form. So let’s change &lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;&#39;path&#39; =&amp;gt; &#39;example-form?step=%step&#39;&lt;/code&gt;. The path &lt;code class=&quot;highlighter-rouge&quot;&gt;example-form&lt;/code&gt; could be generated by a View, a node page, a Panel page, etc.&lt;/p&gt;
+
+&lt;h2 id=&quot;define-the-block&quot;&gt;Define the block&lt;/h2&gt;
+
+&lt;p&gt;Next, we need an implementation of &lt;code class=&quot;highlighter-rouge&quot;&gt;hook_block_info()&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;hook_block_view()&lt;/code&gt;. &lt;code class=&quot;highlighter-rouge&quot;&gt;hook_block_info()&lt;/code&gt; is pretty unremarkable so I’m not including it here, other than to say you should consider setting &lt;code class=&quot;highlighter-rouge&quot;&gt;cache&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;DRUPAL_NO_CACHE&lt;/code&gt; when declaring your block. Now, on to &lt;code class=&quot;highlighter-rouge&quot;&gt;hook_block_view()&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;/**
+ * Implements hook_block_view().
+ */&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;example_block_view&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$delta&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$block&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;switch&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$delta&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;case&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;example_form&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;nv&quot;&gt;$block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;subject&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Our example form&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;nv&quot;&gt;$parameters&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;drupal_get_query_parameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+      &lt;span class=&quot;nv&quot;&gt;$next_step&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;empty&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$parameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;step&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;step-one&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$parameters&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;step&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+      &lt;span class=&quot;nv&quot;&gt;$block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;content&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;example_ctools_wizard&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$next_step&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;break&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$block&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Let’s take a closer look at this. &lt;code class=&quot;highlighter-rouge&quot;&gt;drupal_get_query_parameters()&lt;/code&gt; is checking to see if there’s a query parameter for &lt;code class=&quot;highlighter-rouge&quot;&gt;step&lt;/code&gt; in the current URL (e.g. &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost?step=step-two&lt;/code&gt;). If so, we set the &lt;code class=&quot;highlighter-rouge&quot;&gt;$next_step&lt;/code&gt; variable to that value; if not, we default to &lt;code class=&quot;highlighter-rouge&quot;&gt;step-one&lt;/code&gt; as the starting point for the form. We then pass in the &lt;code class=&quot;highlighter-rouge&quot;&gt;$next_step&lt;/code&gt; variable to our &lt;code class=&quot;highlighter-rouge&quot;&gt;example_ctools_wizard()&lt;/code&gt; function, which generates the multi-step form.&lt;/p&gt;
+
+&lt;h2 id=&quot;send-the-user-on-their-way&quot;&gt;Send the user on their way&lt;/h2&gt;
+
+&lt;p&gt;So far, so good. But there’s one problem at this stage. If we try to use the form now, we’ll get errors: clicking “Continue” on the form will take you to a 404 page of &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost/example-form%3Fstep%3Dstep-two&lt;/code&gt; instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost?step=step-two&lt;/code&gt;. That’s because CTools runs the path we declared in &lt;code class=&quot;highlighter-rouge&quot;&gt;&#39;path&#39; =&amp;gt; &#39;example-form?step=%step&#39;&lt;/code&gt; through an encoding function.&lt;/p&gt;
+
+&lt;p&gt;The workaround is to use our &lt;code class=&quot;highlighter-rouge&quot;&gt;subtask_next&lt;/code&gt; callback to redirect our user where we want them to go using &lt;code class=&quot;highlighter-rouge&quot;&gt;drupal_goto()&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;?php&lt;/span&gt;
+&lt;span class=&quot;sd&quot;&gt;/**
+ * Callback executed when the &#39;next&#39; button is clicked.
+ */&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;example_subtask_next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;amp;&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$form_state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nv&quot;&gt;$values&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;example_get_page_cache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;quote&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;example_set_page_cache&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;quote&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;array_merge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$form_state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;values&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]));&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// Because we are using query parameters to advance/rewind the form, and
+&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// Ctools doesn&#39;t like query parameters (URL encoding fails), we&#39;ll use
+&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;// drupal_goto() to take the user where they need to go.
+&lt;/span&gt;  &lt;span class=&quot;nv&quot;&gt;$destination&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;substr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;$form_state&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;redirect&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;][&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;strlen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;example&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;?&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;));
+  drupal_goto(&#39;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;example&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;form&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;, array(&#39;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;query&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39; =&amp;gt; array(&#39;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;step&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;&#39;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$destination&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The first two lines are caching form values so that as the user goes back and forth between steps on the form, their data is cached. Moving on: remember how CTools is sending us to a 404 page with the encoded value of the path we want to go to? It turns out the un-encoded value is in &lt;code class=&quot;highlighter-rouge&quot;&gt;$form_state[&#39;redirect&#39;][0]&lt;/code&gt;, in the form of &lt;code class=&quot;highlighter-rouge&quot;&gt;example-form?step=step-two&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Since we know the base path, we can use &lt;code class=&quot;highlighter-rouge&quot;&gt;substr()&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;strlen()&lt;/code&gt; to extract the value of &lt;code class=&quot;highlighter-rouge&quot;&gt;step=&lt;/code&gt; and then pass that along to &lt;code class=&quot;highlighter-rouge&quot;&gt;drupal_goto()&lt;/code&gt;. &lt;code class=&quot;highlighter-rouge&quot;&gt;drupal_goto()&lt;/code&gt; bypasses CTools’ own redirection, and thus we are able to avoid the unwanted encoding of the path, and can send our users happily along their way.&lt;/p&gt;
+
+    &lt;hr&gt;
+
+    
+      &lt;div class=&quot;post-comments&quot;&gt;
+  
+    &lt;div class=&quot;expander&quot;&gt;
+      &lt;a href=&quot;javascript:void(0)&quot; id=&quot;js-expander-trigger&quot; class=&quot;expander-trigger expander-hidden&quot;&gt;Comments!&lt;/a&gt;
+      &lt;div id=&quot;js-expander-content&quot; class=&quot;expander-content&quot;&gt;
+        &lt;!-- If there are existing comments, output them here. --&gt;
+        &lt;div id=&quot;post-comments&quot; class=&quot;post-comments&quot;&gt;&lt;/div&gt;
+        &lt;!-- New comment form --&gt;
+        &lt;form id=&quot;comment-form&quot;&gt;
+          &lt;h4&gt;Leave a comment&lt;/h4&gt;
+          &lt;div class=&quot;comment-name&quot;&gt;
+            &lt;p&gt;Name&lt;/p&gt; &lt;input type=&#39;text&#39; name=&#39;name&#39; id=&#39;name&#39; required /&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;comment-email&quot;&gt;
+            &lt;p&gt;Email&lt;/p&gt; &lt;input type=&#39;email&#39; name=&#39;email&#39; id=&#39;email&#39; required /&gt;
+            &lt;p class=&quot;email-disclaimer&quot;&gt;Savas will never sell your email address or spam you.&lt;/p&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;p&gt;Comment&lt;/p&gt;
+          &lt;textarea name=&#39;comment&#39; id=&#39;comment&#39; required&gt;&lt;/textarea&gt;
+          &lt;p class=&quot;hint below-textarea&quot;&gt;Plain text format only please.&lt;/p&gt;
+
+          &lt;input type=&#39;hidden&#39; name=&#39;slug&#39; id=&#39;slug&#39; value=&#39;/2015/06/23/implementing-ctools-multi-step-form-block.html&#39; /&gt;
+          &lt;input type=&#39;text&#39; name=&#39;url&#39; id=&#39;url&#39; /&gt;
+
+          &lt;div class=&#39;are-you-human&#39;&gt;
+            &lt;div class=&#39;are-you-human-owl&#39;&gt;
+              &lt;img src=&quot;/assets/img/owl.png&quot; alt=&quot;Savas logo&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&#39;are-you-human-field&#39;&gt;
+              &lt;p&gt;What type of animal is the Savas logo?&lt;/p&gt;
+              &lt;input type=&#39;text&#39; name=&#39;nocaptcha&#39; id=&#39;nocaptcha&#39; class=&#39;nocaptcha&#39;&gt;
+              &lt;p class=&quot;hint&quot;&gt;Hint: 3 letters long, starts with an &#39;o&#39; and ends with an &#39;l&#39;.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;input type=&#39;submit&#39; value=&#39;Submit&#39; id=&#39;submit&#39; class=&quot;submit-comment&quot;/&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+  &lt;hr&gt;
+&lt;/div&gt;
+
+    
+    &lt;div class=&quot;post-bottom&quot;&gt;
+  &lt;div class=&quot;post-meta&quot;&gt;
+    &lt;h4&gt;About the author&lt;/h4&gt;
+    
+      &lt;a href=&quot;/team/kosta-harlan&quot;&gt;
+        &lt;img src=&quot;/assets/img/team/kosta-harlan.jpg&quot; alt=&quot;Kosta Harlan&quot;&gt;
+      &lt;/a&gt;
+      &lt;p class=&quot;post-author-desc&quot;&gt;Kosta is responsible for code quality at Savas Labs, keeping up to date with emerging technologies and ensuring our team follows best practices.&lt;/p&gt;
+    
+  &lt;/div&gt;
+    &lt;!-- Once we have more content, change this to posts related by tag --&gt;
+  &lt;div class=&quot;post-related flex-container&quot;&gt;
+    &lt;h4&gt;Recent posts by Savas&lt;/h4&gt;
+    &lt;div class=&quot;cards&quot;&gt;
+      
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/22/user-testing.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Usability Testing - Our Process and Favorite Practices
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 22, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;Our approach to designing, conducting, and learning from user testing and other analyses.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/16/using-xhprof.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Using XHProf to profile your Drupal module
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 16, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;A case study of using XHProf to profile a Drupal module.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/15/git-merge-conflict-strategies.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Strategies and tools for resolving Git merge conflicts
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 15, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;An overview of strategies and tools I like to use when I encounter conflicts during merges.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;div class=&quot;previous-next-links&quot;&gt;
+  &lt;div class=&quot;next&quot;&gt;
+    
+      &lt;a href=&quot;/2015/07/06/map-in-drupal-8.html&quot;&gt;&lt;i class=&quot;fa fa-long-arrow-left &quot;&gt;&lt;/i&gt; Building a map in Drupal 8&lt;/a&gt;
+    
+  &lt;/div&gt;
+  &lt;div class=&quot;previous&quot;&gt;
+    
+      &lt;a href=&quot;/2015/06/23/a-man-a-plan-a-canal-a-savas.html&quot;&gt; A man a plan a canal a... Savas! &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+  &lt;/article&gt;
+
+&lt;/div&gt;
+",
+    "sourceOrganization": "Savas",
+    "inLanguage": "en-US",
+    "dateCreated": "2015-06-23 00:00:00 +0000",
+    "datePublished": "2015-06-23 00:00:00 +0000",
+    "url": "/2015/06/23/implementing-ctools-multi-step-form-block.html"
+  }
+</script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-61514316-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  
+
+  
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+
+    <!-- Savas logo. -->
+    <a href="/" class="logo">
+        <img src="/assets/img/logo.png" alt="Savas logo">
+    </a>
+
+    <!-- Mobile menu button. -->
+    <a href="/" id="js-mobile-menu" class="navigation-menu-button">MENU</a>
+
+    <!-- Main menu. -->
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+
+        <!-- Loop through nav items in config.yml. -->
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  more">
+            <a href="javascript:void(0)">Who we are</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+
+              <ul class="submenu">
+                
+
+                  <!-- Assign active nav item class. -->
+                  
+                  
+
+                  <li class="nav-link ">
+                    <a href="/team">Team</a>
+                  </li>
+                
+
+                  <!-- Assign active nav item class. -->
+                  
+                  
+
+                  <li class="nav-link ">
+                    <a href="/mission-and-values">Mission & values</a>
+                  </li>
+                
+              </ul>
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/services">Services</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/work">Our work</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/blog">Blog</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/contact">Contact</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        
+
+
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">Implementing a CTools multi-step form in a block</h1>
+    <p>By <a href="/team/kosta-harlan">Kosta Harlan</a></p>
+    <p class="centerdot">&centerdot; </p>
+    <p>Jun 23, 2015 </p><br>
+    <i class="fa fa-tags"></i><p><a href="/blog/tag/drupal/">Drupal</a>, <a href="/blog/tag/drupal-planet/">Drupal Planet</a></p>
+    
+    <div><p><span id="comment-count"></span></p></div>
+    
+    
+  </header>
+
+  
+
+  <article class="post-content">
+    <p>No one likes long forms. They’re overwhelming to look at and it’s easy to lose your place. Multi-step forms are a way to simplify data collection and make your users’ lives easier.</p>
+
+<p>Drupal’s Form API combined with the CTools module provide a solid platform for building a multi-step form. There are <a href="https://duckduckgo.com/?q=ctools+multistep+form">many wonderful guides</a> on how to build a CTools multi-step form in Drupal. But as far as I can tell, all of the guides assume that the form will live on a page — which makes sense, as that’s the most common use case.</p>
+
+<p>On a recent project, though, a client asked us to create a multi-step form using only a block, so it could be placed on a page using Panels. It turns out this is pretty straightforward but as it’s not well documented elsewhere, here’s a quick guide to what you need to do. (Note: I created <a href="git@github.com:savaslabs/ctools_multistep_form_block.git">an example module on GitHub</a>, so please reference that as needed. This post is just covering the highlights.)</p>
+
+<h2 id="update-your-ctools-form-definition">Update your CTools form definition</h2>
+
+<p>In the main CTools form definition, which looks something like this:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="nv">$form_info</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+  <span class="s1">'id'</span> <span class="o">=&gt;</span> <span class="s1">'quote-form'</span><span class="p">,</span>
+  <span class="s1">'ajax'</span> <span class="o">=&gt;</span> <span class="k">TRUE</span><span class="p">,</span>
+  <span class="s1">'path'</span> <span class="o">=&gt;</span> <span class="s1">'example-form/%step'</span><span class="p">,</span>
+  <span class="s1">'show trail'</span> <span class="o">=&gt;</span> <span class="k">TRUE</span><span class="p">,</span>
+  <span class="s1">'show back'</span> <span class="o">=&gt;</span> <span class="k">TRUE</span><span class="p">,</span>
+  <span class="s1">'show return'</span> <span class="o">=&gt;</span> <span class="k">FALSE</span><span class="p">,</span>
+<span class="p">);</span>
+</code></pre>
+</div>
+
+<p>We need to change path to use query parameters for advancing the form. So let’s change <code class="highlighter-rouge">path</code> to <code class="highlighter-rouge">'path' =&gt; 'example-form?step=%step'</code>. The path <code class="highlighter-rouge">example-form</code> could be generated by a View, a node page, a Panel page, etc.</p>
+
+<h2 id="define-the-block">Define the block</h2>
+
+<p>Next, we need an implementation of <code class="highlighter-rouge">hook_block_info()</code> and <code class="highlighter-rouge">hook_block_view()</code>. <code class="highlighter-rouge">hook_block_info()</code> is pretty unremarkable so I’m not including it here, other than to say you should consider setting <code class="highlighter-rouge">cache</code> to <code class="highlighter-rouge">DRUPAL_NO_CACHE</code> when declaring your block. Now, on to <code class="highlighter-rouge">hook_block_view()</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="sd">/**
+ * Implements hook_block_view().
+ */</span>
+<span class="k">function</span> <span class="nf">example_block_view</span><span class="p">(</span><span class="nv">$delta</span> <span class="o">=</span> <span class="s1">''</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nv">$block</span> <span class="o">=</span> <span class="k">array</span><span class="p">();</span>
+  <span class="k">switch</span> <span class="p">(</span><span class="nv">$delta</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="s1">'example_form'</span><span class="o">:</span>
+      <span class="nv">$block</span><span class="p">[</span><span class="s1">'subject'</span><span class="p">]</span> <span class="o">=</span> <span class="nx">t</span><span class="p">(</span><span class="s1">'Our example form'</span><span class="p">);</span>
+      <span class="nv">$parameters</span> <span class="o">=</span> <span class="nx">drupal_get_query_parameters</span><span class="p">();</span>
+      <span class="nv">$next_step</span> <span class="o">=</span> <span class="k">empty</span><span class="p">(</span><span class="nv">$parameters</span><span class="p">[</span><span class="s1">'step'</span><span class="p">])</span> <span class="o">?</span> <span class="s1">'step-one'</span> <span class="o">:</span> <span class="nv">$parameters</span><span class="p">[</span><span class="s1">'step'</span><span class="p">];</span>
+      <span class="nv">$block</span><span class="p">[</span><span class="s1">'content'</span><span class="p">]</span> <span class="o">=</span> <span class="nx">example_ctools_wizard</span><span class="p">(</span><span class="nv">$next_step</span><span class="p">);</span>
+      <span class="k">break</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nv">$block</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>Let’s take a closer look at this. <code class="highlighter-rouge">drupal_get_query_parameters()</code> is checking to see if there’s a query parameter for <code class="highlighter-rouge">step</code> in the current URL (e.g. <code class="highlighter-rouge">http://localhost?step=step-two</code>). If so, we set the <code class="highlighter-rouge">$next_step</code> variable to that value; if not, we default to <code class="highlighter-rouge">step-one</code> as the starting point for the form. We then pass in the <code class="highlighter-rouge">$next_step</code> variable to our <code class="highlighter-rouge">example_ctools_wizard()</code> function, which generates the multi-step form.</p>
+
+<h2 id="send-the-user-on-their-way">Send the user on their way</h2>
+
+<p>So far, so good. But there’s one problem at this stage. If we try to use the form now, we’ll get errors: clicking “Continue” on the form will take you to a 404 page of <code class="highlighter-rouge">http://localhost/example-form%3Fstep%3Dstep-two</code> instead of <code class="highlighter-rouge">http://localhost?step=step-two</code>. That’s because CTools runs the path we declared in <code class="highlighter-rouge">'path' =&gt; 'example-form?step=%step'</code> through an encoding function.</p>
+
+<p>The workaround is to use our <code class="highlighter-rouge">subtask_next</code> callback to redirect our user where we want them to go using <code class="highlighter-rouge">drupal_goto()</code>:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="sd">/**
+ * Callback executed when the 'next' button is clicked.
+ */</span>
+<span class="k">function</span> <span class="nf">example_subtask_next</span><span class="p">(</span><span class="o">&amp;</span><span class="nv">$form_state</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nv">$values</span> <span class="o">=</span> <span class="p">(</span><span class="k">array</span><span class="p">)</span> <span class="nx">example_get_page_cache</span><span class="p">(</span><span class="s1">'quote'</span><span class="p">);</span>
+  <span class="nx">example_set_page_cache</span><span class="p">(</span><span class="s1">'quote'</span><span class="p">,</span> <span class="nb">array_merge</span><span class="p">(</span><span class="nv">$values</span><span class="p">,</span> <span class="nv">$form_state</span><span class="p">[</span><span class="s1">'values'</span><span class="p">]));</span>
+  <span class="c1">// Because we are using query parameters to advance/rewind the form, and
+</span>  <span class="c1">// Ctools doesn't like query parameters (URL encoding fails), we'll use
+</span>  <span class="c1">// drupal_goto() to take the user where they need to go.
+</span>  <span class="nv">$destination</span> <span class="o">=</span> <span class="nb">substr</span><span class="p">(</span><span class="nv">$form_state</span><span class="p">[</span><span class="s1">'redirect'</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="nb">strlen</span><span class="p">(</span><span class="nx">example</span><span class="o">-</span><span class="nx">form</span><span class="o">?</span><span class="nx">step</span><span class="o">=</span><span class="s1">'));
+  drupal_goto('</span><span class="nx">example</span><span class="o">-</span><span class="nx">form</span><span class="s1">', array('</span><span class="nx">query</span><span class="s1">' =&gt; array('</span><span class="nx">step</span><span class="err">'</span> <span class="o">=&gt;</span> <span class="nv">$destination</span><span class="p">)));</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>The first two lines are caching form values so that as the user goes back and forth between steps on the form, their data is cached. Moving on: remember how CTools is sending us to a 404 page with the encoded value of the path we want to go to? It turns out the un-encoded value is in <code class="highlighter-rouge">$form_state['redirect'][0]</code>, in the form of <code class="highlighter-rouge">example-form?step=step-two</code>.</p>
+
+<p>Since we know the base path, we can use <code class="highlighter-rouge">substr()</code> and <code class="highlighter-rouge">strlen()</code> to extract the value of <code class="highlighter-rouge">step=</code> and then pass that along to <code class="highlighter-rouge">drupal_goto()</code>. <code class="highlighter-rouge">drupal_goto()</code> bypasses CTools’ own redirection, and thus we are able to avoid the unwanted encoding of the path, and can send our users happily along their way.</p>
+
+    <hr>
+
+    
+      <div class="post-comments">
+  
+    <div class="expander">
+      <a href="javascript:void(0)" id="js-expander-trigger" class="expander-trigger expander-hidden">Comments!</a>
+      <div id="js-expander-content" class="expander-content">
+        <!-- If there are existing comments, output them here. -->
+        <div id="post-comments" class="post-comments"></div>
+        <!-- New comment form -->
+        <form id="comment-form">
+          <h4>Leave a comment</h4>
+          <div class="comment-name">
+            <p>Name</p> <input type='text' name='name' id='name' required /><br>
+          </div>
+
+          <div class="comment-email">
+            <p>Email</p> <input type='email' name='email' id='email' required />
+            <p class="email-disclaimer">Savas will never sell your email address or spam you.</p><br>
+          </div>
+
+          <p>Comment</p>
+          <textarea name='comment' id='comment' required></textarea>
+          <p class="hint below-textarea">Plain text format only please.</p>
+
+          <input type='hidden' name='slug' id='slug' value='/2015/06/23/implementing-ctools-multi-step-form-block.html' />
+          <input type='text' name='url' id='url' />
+
+          <div class='are-you-human'>
+            <div class='are-you-human-owl'>
+              <img src="/assets/img/owl.png" alt="Savas logo">
+            </div>
+            <div class='are-you-human-field'>
+              <p>What type of animal is the Savas logo?</p>
+              <input type='text' name='nocaptcha' id='nocaptcha' class='nocaptcha'>
+              <p class="hint">Hint: 3 letters long, starts with an 'o' and ends with an 'l'.</p>
+            </div>
+          </div>
+
+          <input type='submit' value='Submit' id='submit' class="submit-comment"/>
+        </form>
+      </div>
+    </div>
+  
+  <hr>
+</div>
+
+    
+    <div class="post-bottom">
+  <div class="post-meta">
+    <h4>About the author</h4>
+    
+      <a href="/team/kosta-harlan">
+        <img src="/assets/img/team/kosta-harlan.jpg" alt="Kosta Harlan">
+      </a>
+      <p class="post-author-desc">Kosta is responsible for code quality at Savas Labs, keeping up to date with emerging technologies and ensuring our team follows best practices.</p>
+    
+  </div>
+    <!-- Once we have more content, change this to posts related by tag -->
+  <div class="post-related flex-container">
+    <h4>Recent posts by Savas</h4>
+    <div class="cards">
+      
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/22/user-testing.html">
+              <div class="card-header">
+                  Usability Testing - Our Process and Favorite Practices
+              </div>
+              <div class="card-copy">
+                <p>Jun 22, 2016</p>
+                <p><p>Our approach to designing, conducting, and learning from user testing and other analyses.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/16/using-xhprof.html">
+              <div class="card-header">
+                  Using XHProf to profile your Drupal module
+              </div>
+              <div class="card-copy">
+                <p>Jun 16, 2016</p>
+                <p><p>A case study of using XHProf to profile a Drupal module.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/15/git-merge-conflict-strategies.html">
+              <div class="card-header">
+                  Strategies and tools for resolving Git merge conflicts
+              </div>
+              <div class="card-copy">
+                <p>Jun 15, 2016</p>
+                <p><p>An overview of strategies and tools I like to use when I encounter conflicts during merges.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+</div>
+
+    <div class="previous-next-links">
+  <div class="next">
+    
+      <a href="/2015/07/06/map-in-drupal-8.html"><i class="fa fa-long-arrow-left "></i> Building a map in Drupal 8</a>
+    
+  </div>
+  <div class="previous">
+    
+      <a href="/2015/06/23/a-man-a-plan-a-canal-a-savas.html"> A man a plan a canal a... Savas! <i class="fa fa-long-arrow-right"></i></a>
+    
+  </div>
+</div>
+
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <div class="contact-block">
+  <div class="contact-block__items">
+    <h3>Interested in working with us?</h3>
+    <a href="/contact">Get in touch!</a>
+  </div>
+</div>
+    <footer class="footer" role="contentinfo">
+  <div class="footer-links">
+    <ul>
+      <li><h3>Location</h3></li>
+      <li>Savas Labs<br />
+          PMB 114<br />
+          201 W Main Street, Suite 100<br />
+          Durham, NC 27701<br /></li>
+    </ul>
+    <ul>
+      <li><h3>Around the Web</h3></li>
+      <ul>
+        <li><a href="https://github.com/savaslabs"><span class="mega-octicon octicon-mark-github"></span></a></li>
+        <li><a href="https://www.drupal.org/node/2466865"><i class="fa fa-drupal fa-lg fa-2x"></i></a></li>
+        <li><a href="https://twitter.com/savas_labs"><i class="fa fa-twitter fa-lg fa-2x"></i></a></li>
+        <li><a href="https://www.linkedin.com/company/savas-labs"><i class="fa fa-linkedin fa-lg fa-2x"></i></a></li>
+      </ul>
+    </ul>
+    <ul>
+      <li><h3>Contact</h3></li>
+      <li><a href="mailto:info@savaslabs.com">info@savaslabs.com</a></li>
+      <li>(919) 432-4660</li>
+    </ul>
+  </div>
+
+</footer>
+
+<div class="footer-copyright">
+  <p>Copyright &copy; Savas Labs 2016</p>
+</div>
+
+
+  </body>
+
+</html>

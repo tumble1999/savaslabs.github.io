@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <title>When Drupal database sanitization isn't enough | Savas Labs</title>
+  
+  <meta name="description" content="The general problemOne of the most embarrassing and potentially costly things we can do as developersis to send emails out to real people unintentionally fro...">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,400italic,700italic|PT+Serif|Bitter|Source+Sans+Pro' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/assets/styles/main.css">
+  <link rel="stylesheet" href="/assets/icons/octicons/octicons.css">
+  <link rel="canonical" href="/2015/08/04/user-revision-sanitize.html">
+  <link rel="alternate" type="application/rss+xml" title="Savas Labs" href="/feed.xml" />
+  <script type="text/javascript" src="/assets/js/main.js"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Durham, North Carolina",
+        "postalCode": "27701",
+        "streetAddress": "201 W Main St."
+      },
+      "description": "A full-service web agency leveraging the power of Drupal.
+",
+      "email": "info@savaslabs.com",
+      "name": "Savas",
+      "telephone": "(919) 432-4660",
+      "url": "http://savaslabs.com",
+      "logo": "http://savaslabs.com/assets/img/logo.png"
+    }
+</script>
+
+  
+  
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "When Drupal database sanitization isn't enough",
+    "about": "The user revision module does not (_yet_) care about `drush sqlsan`,
+and it should!
+",
+    "articleBody": "
+
+
+&lt;div class=&quot;post&quot;&gt;
+  &lt;header class=&quot;post-header&quot;&gt;
+    &lt;h1 class=&quot;post-title&quot;&gt;When Drupal database sanitization isn&#39;t enough&lt;/h1&gt;
+    &lt;p&gt;By &lt;a href=&quot;/team/chris-russo&quot;&gt;Chris Russo&lt;/a&gt;&lt;/p&gt;
+    &lt;p class=&quot;centerdot&quot;&gt;&amp;centerdot; &lt;/p&gt;
+    &lt;p&gt;Aug 4, 2015 &lt;/p&gt;&lt;br&gt;
+    &lt;i class=&quot;fa fa-tags&quot;&gt;&lt;/i&gt;&lt;p&gt;&lt;a href=&quot;/blog/tag/drupal/&quot;&gt;Drupal&lt;/a&gt;, &lt;a href=&quot;/blog/tag/drupal8/&quot;&gt;Drupal 8&lt;/a&gt;, &lt;a href=&quot;/blog/tag/drupal-planet/&quot;&gt;Drupal Planet&lt;/a&gt;, &lt;a href=&quot;/blog/tag/best-practices/&quot;&gt;Best Practices&lt;/a&gt;&lt;/p&gt;
+    
+    &lt;div&gt;&lt;p&gt;&lt;span id=&quot;comment-count&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+    
+    
+  &lt;/header&gt;
+
+  
+
+  &lt;article class=&quot;post-content&quot;&gt;
+    &lt;h2 id=&quot;the-general-problem&quot;&gt;The general problem&lt;/h2&gt;
+&lt;p&gt;One of the most embarrassing and potentially costly things we can do as developers
+is to send emails out to real people unintentionally from a development
+environment. It happens, and often times we aren’t even aware of it until the damage
+is done and a background process sends out, say, 11,000 automated emails to
+existing customers (actually happened to a former employer recently). In the
+Drupal world, there are &lt;a href=&quot;https://github.com/chrisarusso/Tilthy-Rich-Compost-Website/commit/64a558e2&quot;&gt;myriad ways&lt;/a&gt;
+to &lt;a href=&quot;https://github.com/chrisarusso/Tilthy-Rich-Compost-Website/blob/master/scripts/sanitize.php&quot;&gt;attempt to address&lt;/a&gt; this problem.&lt;/p&gt;
+
+&lt;h2 id=&quot;general-solutions-to-the-general-problem&quot;&gt;General solutions to the general problem&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.drupal.org/project/maillog&quot;&gt;maillog&lt;/a&gt; - A Drupal module that
+logs mails to the database and optionally allows you to “not send” them&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.drupal.org/project/reroute_email&quot;&gt;reroute email&lt;/a&gt; - A Drupal
+module that intercepts email and routes it to a configurable address&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://api.drupal.org/api/devel/devel.mail.inc/7&quot;&gt;devel mail&lt;/a&gt; - An
+option of the beloved devel module which writes emails to local files instead
+of sending&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://mailcatcher.me/&quot;&gt;mailcatcher&lt;/a&gt; (not Drupal-specific) - Configure your
+local mail server to not send mail through PHP&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;the-ultimate-solution-to-the-problem&quot;&gt;The &lt;em&gt;ultimate&lt;/em&gt; solution to &lt;em&gt;the problem&lt;/em&gt;?&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Never store real email addresses in your development environment&lt;/strong&gt;. In the
+Drupal world, we do that by using the &lt;code class=&quot;highlighter-rouge&quot;&gt;drush sql-sanitize&lt;/code&gt;
+&lt;a href=&quot;http://drushcommands.com/drush-6x/sql/sql-sanitize&quot;&gt;command&lt;/a&gt;. With no arguments,
+how I typically execute it, the command will set all users emails addresses to
+a phony address that looks like this: &lt;code class=&quot;highlighter-rouge&quot;&gt;user+1@localhost.localdomain&lt;/code&gt;. This is a
+good thing. Then, even in cases in which you do accidentally send out emails
+in an automated way, often from &lt;a href=&quot;https://www.drupal.org/cron&quot;&gt;cron&lt;/a&gt;, sending to phony addresses
+is a livable mistake; no end-user receives an email that confuses
+her or makes her lose confidence in your organization.&lt;/p&gt;
+
+&lt;p&gt;So, in &lt;em&gt;most&lt;/em&gt; cases, &lt;code class=&quot;highlighter-rouge&quot;&gt;drush sqlsan&lt;/code&gt; (alias) is enough, and the mail redirection
+options linked above are additional safety measures. Of course, I’m not
+writing about &lt;em&gt;most&lt;/em&gt; scenarios now am I? Sadly, I’m not yet aware of a
+comprehensive solution that ensures no email will be sent from a development
+environment. Please &lt;a href=&quot;#js-expander-trigger&quot;&gt;comment&lt;/a&gt; if you know of one!&lt;/p&gt;
+
+&lt;h2 id=&quot;the-specific-problem-with-userrevision-module&quot;&gt;The &lt;em&gt;specific&lt;/em&gt; problem with &lt;code class=&quot;highlighter-rouge&quot;&gt;user_revision&lt;/code&gt; module&lt;/h2&gt;
+&lt;p&gt;One pernicious case, in which &lt;code class=&quot;highlighter-rouge&quot;&gt;drush sqlsan&lt;/code&gt; is insufficient in sanitizing your
+database, is when  the
+&lt;a href=&quot;https://www.drupal.org/project/user_revision&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;user_revision&lt;/code&gt; module&lt;/a&gt;
+is enabled on a Drupal 7 site, at least without
+&lt;a href=&quot;https://www.drupal.org/node/2534638&quot;&gt;my patch&lt;/a&gt;
+applied. The &lt;code class=&quot;highlighter-rouge&quot;&gt;user_revision&lt;/code&gt; module
+&lt;a href=&quot;http://cgit.drupalcode.org/user_revision/tree/user_revision.module?id=cce42174aec453e6652da8738e397df20b6f2cd0#n164&quot;&gt;extends the &lt;code class=&quot;highlighter-rouge&quot;&gt;UserController&lt;/code&gt;&lt;/a&gt;
+class, which overwrites fields from the “base” table &lt;code class=&quot;highlighter-rouge&quot;&gt;users&lt;/code&gt; (in the case) to
+the “revision” table, &lt;code class=&quot;highlighter-rouge&quot;&gt;user_revision&lt;/code&gt;, due to
+&lt;a href=&quot;http://cgit.drupalcode.org/drupal/tree/includes/entity.inc?h=7.x#n306&quot;&gt;the way that &lt;code class=&quot;highlighter-rouge&quot;&gt;entity_load()&lt;/code&gt; works&lt;/a&gt;
+. Therefore, when a user entity is loaded, it receives the &lt;code class=&quot;highlighter-rouge&quot;&gt;mail&lt;/code&gt; field
+from the &lt;code class=&quot;highlighter-rouge&quot;&gt;user_revision&lt;/code&gt; table. Without the above patch applied,
+this table is not affected by &lt;code class=&quot;highlighter-rouge&quot;&gt;drush sqlsan&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-did-i-discover-this&quot;&gt;How did I discover this?&lt;/h2&gt;
+&lt;p&gt;I discovered this when adding new cron, notification functionality to the
+&lt;a href=&quot;http://tilthyrichcompost.com&quot;&gt;Tilthy Rich Compost&lt;/a&gt; website, which we maintain.
+We &lt;a href=&quot;https://github.com/chrisarusso/Tilthy-Rich-Compost-Website/commit/fccc3f7387616510d512d3700639c5de3a560a1e&quot;&gt;began using&lt;/a&gt; the &lt;code class=&quot;highlighter-rouge&quot;&gt;user_revision&lt;/code&gt;
+module in 2013 due to &lt;a href=&quot;https://github.com/chrisarusso/Tilthy-Rich-Compost-Website/issues/29&quot;&gt;losing information we still needed&lt;/a&gt; from canceling users. After sending emails to subscribers from my development
+environment for the 10th time in 2 years, even after sanitizing, I was determined
+to figure out once and for all, what was going on. So like any deep-dive, I
+fired up the trusty ol’ debugger and discovered the aforementioned culprit.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-solution-to-the-specific-problem&quot;&gt;The solution to the &lt;em&gt;specific&lt;/em&gt; problem&lt;/h2&gt;
+&lt;p&gt;After consulting &lt;a href=&quot;/team/kosta-harlan/&quot;&gt;Kosta&lt;/a&gt;, we agreed
+that the solution would be to write a &lt;a href=&quot;https://www.drupal.org/node/2534638&quot;&gt;drush hook&lt;/a&gt;
+for the &lt;code class=&quot;highlighter-rouge&quot;&gt;user_revision&lt;/code&gt; module. This code would need to sanitize the &lt;code class=&quot;highlighter-rouge&quot;&gt;mail&lt;/code&gt;
+field in the &lt;code class=&quot;highlighter-rouge&quot;&gt;user_revision&lt;/code&gt; table and would be invoked when the &lt;code class=&quot;highlighter-rouge&quot;&gt;drush sqlsan&lt;/code&gt;
+command is executed in the presence of the &lt;code class=&quot;highlighter-rouge&quot;&gt;user_revision&lt;/code&gt; module.  However,
+to write this code efficiently and effectively, I would need to debug drush commands
+during execution, which I had never done.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-debug-drush-or-other-cli-scripts-with-phpstorm&quot;&gt;How to debug drush (or other CLI scripts) with PHPStorm&lt;/h2&gt;
+
+&lt;h3 id=&quot;set-up-xdebug-mac-only&quot;&gt;Set up xdebug (Mac only)&lt;/h3&gt;
+&lt;p&gt;I first installed xdebug with &lt;a href=&quot;http://brew.sh/&quot;&gt;homebrew&lt;/a&gt; via
+&lt;a href=&quot;http://antistatique.net/en/we/blog/2013/09/17/debugging-with-xdebug-and-phpstorm-on-macos-x&quot;&gt;this method&lt;/a&gt;.
+NB: Changing the port change to &lt;code class=&quot;highlighter-rouge&quot;&gt;10000&lt;/code&gt; was necessary for me.&lt;/p&gt;
+
+&lt;h3 id=&quot;upgrade-to-latest-drush&quot;&gt;Upgrade to latest drush&lt;/h3&gt;
+&lt;p&gt;I &lt;a href=&quot;http://whaaat.com/installing-drush-8-using-composer&quot;&gt;ensured I was using the most recent version of drush&lt;/a&gt;
+(I strongly recommend perusing Brant’s &lt;a href=&quot;http://whaaat.com/about&quot;&gt;about page&lt;/a&gt;)
+to ensure that the code I wrote would apply to most recent drush development.&lt;/p&gt;
+
+&lt;h3 id=&quot;getting-breakpoints-in-phpstorm-to-listen-to-drush&quot;&gt;Getting breakpoints in PHPStorm to listen to drush&lt;/h3&gt;
+&lt;p&gt;Several have blogged about this before, so I’ll just point theirs out. Generally,
+I followed
+&lt;a href=&quot;https://www.deeson.co.uk/labs/debugging-drupal-drush-real-time-phpstorm-and-xdebug&quot;&gt;these instructions&lt;/a&gt;,
+but I trust that my mentor and friend
+Randy Fay&lt;a href=&quot;http://randyfay.com/content/remote-command-line-debugging-phpstorm-phpdrupal-including-drush&quot;&gt;’s article&lt;/a&gt;
+is excellent as well. They all seemed to use
+&lt;a href=&quot;http://xdebug.org/&quot;&gt;xdebug&lt;/a&gt; and &lt;a href=&quot;https://www.jetbrains.com/phpstorm/&quot;&gt;PHPStorm&lt;/a&gt;,
+and though I use PHPStorm, I have been using ZendDebugger for years, with
+reasonable success. But I &lt;em&gt;had&lt;/em&gt; been dissatisfied of late, and the rest of the
+&lt;a href=&quot;/team&quot;&gt;team&lt;/a&gt; uses xdebug anyway, so I figured it would be a safe switch,
+which proved true. After having xdebug properly installed, you can
+&lt;a href=&quot;https://github.com/kostajh/dotfiles/blob/master/.bashrc#L85&quot;&gt;add a line&lt;/a&gt;
+to your &lt;code class=&quot;highlighter-rouge&quot;&gt;.bashrc&lt;/code&gt; file to always make PHPStorm ready to listen for drush
+commands.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-solution-in-action&quot;&gt;The solution in action&lt;/h2&gt;
+&lt;p&gt;So &lt;a href=&quot;https://github.com/chrisarusso/Tilthy-Rich-Compost-Website/commit/cf8f04f65b9f782ebaaf84d4348043f5aeec8409&quot;&gt;now when running &lt;code class=&quot;highlighter-rouge&quot;&gt;drush sqlsan&lt;/code&gt;&lt;/a&gt;,
+we can truly feel safe that we won’t send emails to anyone we didn’t mean to.
+You’re welcome community
+&lt;img src=&quot;http://www.emoji-cheat-sheet.com/graphics/emojis/wink.png&quot; alt=&quot;winking emoji&quot; class=&quot;emoji&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;will-userrevision-exist-in-d8&quot;&gt;Will &lt;code class=&quot;highlighter-rouge&quot;&gt;user_revision&lt;/code&gt; exist in D8?&lt;/h2&gt;
+&lt;p&gt;It’s not clear, though &lt;a href=&quot;https://www.drupal.org/sandbox/devpreview/2444961&quot;&gt;some&lt;/a&gt;
+think &lt;a href=&quot;https://www.drupal.org/node/2336681&quot;&gt;so&lt;/a&gt;.
+Perhaps mature D8 entities and revisioning on all entities will render a contrib
+module unnecessary. Time will tell.&lt;/p&gt;
+
+    &lt;hr&gt;
+
+    
+      &lt;div class=&quot;post-comments&quot;&gt;
+  
+    &lt;div class=&quot;expander&quot;&gt;
+      &lt;a href=&quot;javascript:void(0)&quot; id=&quot;js-expander-trigger&quot; class=&quot;expander-trigger expander-hidden&quot;&gt;Comments!&lt;/a&gt;
+      &lt;div id=&quot;js-expander-content&quot; class=&quot;expander-content&quot;&gt;
+        &lt;!-- If there are existing comments, output them here. --&gt;
+        &lt;div id=&quot;post-comments&quot; class=&quot;post-comments&quot;&gt;&lt;/div&gt;
+        &lt;!-- New comment form --&gt;
+        &lt;form id=&quot;comment-form&quot;&gt;
+          &lt;h4&gt;Leave a comment&lt;/h4&gt;
+          &lt;div class=&quot;comment-name&quot;&gt;
+            &lt;p&gt;Name&lt;/p&gt; &lt;input type=&#39;text&#39; name=&#39;name&#39; id=&#39;name&#39; required /&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;comment-email&quot;&gt;
+            &lt;p&gt;Email&lt;/p&gt; &lt;input type=&#39;email&#39; name=&#39;email&#39; id=&#39;email&#39; required /&gt;
+            &lt;p class=&quot;email-disclaimer&quot;&gt;Savas will never sell your email address or spam you.&lt;/p&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;p&gt;Comment&lt;/p&gt;
+          &lt;textarea name=&#39;comment&#39; id=&#39;comment&#39; required&gt;&lt;/textarea&gt;
+          &lt;p class=&quot;hint below-textarea&quot;&gt;Plain text format only please.&lt;/p&gt;
+
+          &lt;input type=&#39;hidden&#39; name=&#39;slug&#39; id=&#39;slug&#39; value=&#39;/2015/08/04/user-revision-sanitize.html&#39; /&gt;
+          &lt;input type=&#39;text&#39; name=&#39;url&#39; id=&#39;url&#39; /&gt;
+
+          &lt;div class=&#39;are-you-human&#39;&gt;
+            &lt;div class=&#39;are-you-human-owl&#39;&gt;
+              &lt;img src=&quot;/assets/img/owl.png&quot; alt=&quot;Savas logo&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&#39;are-you-human-field&#39;&gt;
+              &lt;p&gt;What type of animal is the Savas logo?&lt;/p&gt;
+              &lt;input type=&#39;text&#39; name=&#39;nocaptcha&#39; id=&#39;nocaptcha&#39; class=&#39;nocaptcha&#39;&gt;
+              &lt;p class=&quot;hint&quot;&gt;Hint: 3 letters long, starts with an &#39;o&#39; and ends with an &#39;l&#39;.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;input type=&#39;submit&#39; value=&#39;Submit&#39; id=&#39;submit&#39; class=&quot;submit-comment&quot;/&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+  &lt;hr&gt;
+&lt;/div&gt;
+
+    
+    &lt;div class=&quot;post-bottom&quot;&gt;
+  &lt;div class=&quot;post-meta&quot;&gt;
+    &lt;h4&gt;About the author&lt;/h4&gt;
+    
+      &lt;a href=&quot;/team/chris-russo&quot;&gt;
+        &lt;img src=&quot;/assets/img/team/chris-russo.jpg&quot; alt=&quot;Chris Russo&quot;&gt;
+      &lt;/a&gt;
+      &lt;p class=&quot;post-author-desc&quot;&gt;Chris does his best to ensure that his team is learning and growing and that our clients feel like partners.&lt;/p&gt;
+    
+  &lt;/div&gt;
+    &lt;!-- Once we have more content, change this to posts related by tag --&gt;
+  &lt;div class=&quot;post-related flex-container&quot;&gt;
+    &lt;h4&gt;Recent posts by Savas&lt;/h4&gt;
+    &lt;div class=&quot;cards&quot;&gt;
+      
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/22/user-testing.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Usability Testing - Our Process and Favorite Practices
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 22, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;Our approach to designing, conducting, and learning from user testing and other analyses.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/16/using-xhprof.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Using XHProf to profile your Drupal module
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 16, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;A case study of using XHProf to profile a Drupal module.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/15/git-merge-conflict-strategies.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Strategies and tools for resolving Git merge conflicts
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 15, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;An overview of strategies and tools I like to use when I encounter conflicts during merges.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;div class=&quot;previous-next-links&quot;&gt;
+  &lt;div class=&quot;next&quot;&gt;
+    
+      &lt;a href=&quot;/2015/08/13/drupalcamp-asheville.html&quot;&gt;&lt;i class=&quot;fa fa-long-arrow-left &quot;&gt;&lt;/i&gt; Savas giving two presentations at Drupalcamp Asheville&lt;/a&gt;
+    
+  &lt;/div&gt;
+  &lt;div class=&quot;previous&quot;&gt;
+    
+      &lt;a href=&quot;/2015/07/09/personal-git-workflow.html&quot;&gt; Personal git workflow... for collaboration &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+  &lt;/article&gt;
+
+&lt;/div&gt;
+",
+      "author": {
+          "@context": "http://schema.org",
+          "@type": "Person",
+          "name": "Chris Russo",
+          "affiliation": "Savas",
+          "worksFor": "Savas"
+      },
+    "keywords": "drupal, drupal8, drupal-planet, best-practices",
+    "text": "
+
+
+&lt;div class=&quot;post&quot;&gt;
+  &lt;header class=&quot;post-header&quot;&gt;
+    &lt;h1 class=&quot;post-title&quot;&gt;When Drupal database sanitization isn&#39;t enough&lt;/h1&gt;
+    &lt;p&gt;By &lt;a href=&quot;/team/chris-russo&quot;&gt;Chris Russo&lt;/a&gt;&lt;/p&gt;
+    &lt;p class=&quot;centerdot&quot;&gt;&amp;centerdot; &lt;/p&gt;
+    &lt;p&gt;Aug 4, 2015 &lt;/p&gt;&lt;br&gt;
+    &lt;i class=&quot;fa fa-tags&quot;&gt;&lt;/i&gt;&lt;p&gt;&lt;a href=&quot;/blog/tag/drupal/&quot;&gt;Drupal&lt;/a&gt;, &lt;a href=&quot;/blog/tag/drupal8/&quot;&gt;Drupal 8&lt;/a&gt;, &lt;a href=&quot;/blog/tag/drupal-planet/&quot;&gt;Drupal Planet&lt;/a&gt;, &lt;a href=&quot;/blog/tag/best-practices/&quot;&gt;Best Practices&lt;/a&gt;&lt;/p&gt;
+    
+    &lt;div&gt;&lt;p&gt;&lt;span id=&quot;comment-count&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+    
+    
+  &lt;/header&gt;
+
+  
+
+  &lt;article class=&quot;post-content&quot;&gt;
+    &lt;h2 id=&quot;the-general-problem&quot;&gt;The general problem&lt;/h2&gt;
+&lt;p&gt;One of the most embarrassing and potentially costly things we can do as developers
+is to send emails out to real people unintentionally from a development
+environment. It happens, and often times we aren’t even aware of it until the damage
+is done and a background process sends out, say, 11,000 automated emails to
+existing customers (actually happened to a former employer recently). In the
+Drupal world, there are &lt;a href=&quot;https://github.com/chrisarusso/Tilthy-Rich-Compost-Website/commit/64a558e2&quot;&gt;myriad ways&lt;/a&gt;
+to &lt;a href=&quot;https://github.com/chrisarusso/Tilthy-Rich-Compost-Website/blob/master/scripts/sanitize.php&quot;&gt;attempt to address&lt;/a&gt; this problem.&lt;/p&gt;
+
+&lt;h2 id=&quot;general-solutions-to-the-general-problem&quot;&gt;General solutions to the general problem&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.drupal.org/project/maillog&quot;&gt;maillog&lt;/a&gt; - A Drupal module that
+logs mails to the database and optionally allows you to “not send” them&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.drupal.org/project/reroute_email&quot;&gt;reroute email&lt;/a&gt; - A Drupal
+module that intercepts email and routes it to a configurable address&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://api.drupal.org/api/devel/devel.mail.inc/7&quot;&gt;devel mail&lt;/a&gt; - An
+option of the beloved devel module which writes emails to local files instead
+of sending&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://mailcatcher.me/&quot;&gt;mailcatcher&lt;/a&gt; (not Drupal-specific) - Configure your
+local mail server to not send mail through PHP&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;the-ultimate-solution-to-the-problem&quot;&gt;The &lt;em&gt;ultimate&lt;/em&gt; solution to &lt;em&gt;the problem&lt;/em&gt;?&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Never store real email addresses in your development environment&lt;/strong&gt;. In the
+Drupal world, we do that by using the &lt;code class=&quot;highlighter-rouge&quot;&gt;drush sql-sanitize&lt;/code&gt;
+&lt;a href=&quot;http://drushcommands.com/drush-6x/sql/sql-sanitize&quot;&gt;command&lt;/a&gt;. With no arguments,
+how I typically execute it, the command will set all users emails addresses to
+a phony address that looks like this: &lt;code class=&quot;highlighter-rouge&quot;&gt;user+1@localhost.localdomain&lt;/code&gt;. This is a
+good thing. Then, even in cases in which you do accidentally send out emails
+in an automated way, often from &lt;a href=&quot;https://www.drupal.org/cron&quot;&gt;cron&lt;/a&gt;, sending to phony addresses
+is a livable mistake; no end-user receives an email that confuses
+her or makes her lose confidence in your organization.&lt;/p&gt;
+
+&lt;p&gt;So, in &lt;em&gt;most&lt;/em&gt; cases, &lt;code class=&quot;highlighter-rouge&quot;&gt;drush sqlsan&lt;/code&gt; (alias) is enough, and the mail redirection
+options linked above are additional safety measures. Of course, I’m not
+writing about &lt;em&gt;most&lt;/em&gt; scenarios now am I? Sadly, I’m not yet aware of a
+comprehensive solution that ensures no email will be sent from a development
+environment. Please &lt;a href=&quot;#js-expander-trigger&quot;&gt;comment&lt;/a&gt; if you know of one!&lt;/p&gt;
+
+&lt;h2 id=&quot;the-specific-problem-with-userrevision-module&quot;&gt;The &lt;em&gt;specific&lt;/em&gt; problem with &lt;code class=&quot;highlighter-rouge&quot;&gt;user_revision&lt;/code&gt; module&lt;/h2&gt;
+&lt;p&gt;One pernicious case, in which &lt;code class=&quot;highlighter-rouge&quot;&gt;drush sqlsan&lt;/code&gt; is insufficient in sanitizing your
+database, is when  the
+&lt;a href=&quot;https://www.drupal.org/project/user_revision&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;user_revision&lt;/code&gt; module&lt;/a&gt;
+is enabled on a Drupal 7 site, at least without
+&lt;a href=&quot;https://www.drupal.org/node/2534638&quot;&gt;my patch&lt;/a&gt;
+applied. The &lt;code class=&quot;highlighter-rouge&quot;&gt;user_revision&lt;/code&gt; module
+&lt;a href=&quot;http://cgit.drupalcode.org/user_revision/tree/user_revision.module?id=cce42174aec453e6652da8738e397df20b6f2cd0#n164&quot;&gt;extends the &lt;code class=&quot;highlighter-rouge&quot;&gt;UserController&lt;/code&gt;&lt;/a&gt;
+class, which overwrites fields from the “base” table &lt;code class=&quot;highlighter-rouge&quot;&gt;users&lt;/code&gt; (in the case) to
+the “revision” table, &lt;code class=&quot;highlighter-rouge&quot;&gt;user_revision&lt;/code&gt;, due to
+&lt;a href=&quot;http://cgit.drupalcode.org/drupal/tree/includes/entity.inc?h=7.x#n306&quot;&gt;the way that &lt;code class=&quot;highlighter-rouge&quot;&gt;entity_load()&lt;/code&gt; works&lt;/a&gt;
+. Therefore, when a user entity is loaded, it receives the &lt;code class=&quot;highlighter-rouge&quot;&gt;mail&lt;/code&gt; field
+from the &lt;code class=&quot;highlighter-rouge&quot;&gt;user_revision&lt;/code&gt; table. Without the above patch applied,
+this table is not affected by &lt;code class=&quot;highlighter-rouge&quot;&gt;drush sqlsan&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-did-i-discover-this&quot;&gt;How did I discover this?&lt;/h2&gt;
+&lt;p&gt;I discovered this when adding new cron, notification functionality to the
+&lt;a href=&quot;http://tilthyrichcompost.com&quot;&gt;Tilthy Rich Compost&lt;/a&gt; website, which we maintain.
+We &lt;a href=&quot;https://github.com/chrisarusso/Tilthy-Rich-Compost-Website/commit/fccc3f7387616510d512d3700639c5de3a560a1e&quot;&gt;began using&lt;/a&gt; the &lt;code class=&quot;highlighter-rouge&quot;&gt;user_revision&lt;/code&gt;
+module in 2013 due to &lt;a href=&quot;https://github.com/chrisarusso/Tilthy-Rich-Compost-Website/issues/29&quot;&gt;losing information we still needed&lt;/a&gt; from canceling users. After sending emails to subscribers from my development
+environment for the 10th time in 2 years, even after sanitizing, I was determined
+to figure out once and for all, what was going on. So like any deep-dive, I
+fired up the trusty ol’ debugger and discovered the aforementioned culprit.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-solution-to-the-specific-problem&quot;&gt;The solution to the &lt;em&gt;specific&lt;/em&gt; problem&lt;/h2&gt;
+&lt;p&gt;After consulting &lt;a href=&quot;/team/kosta-harlan/&quot;&gt;Kosta&lt;/a&gt;, we agreed
+that the solution would be to write a &lt;a href=&quot;https://www.drupal.org/node/2534638&quot;&gt;drush hook&lt;/a&gt;
+for the &lt;code class=&quot;highlighter-rouge&quot;&gt;user_revision&lt;/code&gt; module. This code would need to sanitize the &lt;code class=&quot;highlighter-rouge&quot;&gt;mail&lt;/code&gt;
+field in the &lt;code class=&quot;highlighter-rouge&quot;&gt;user_revision&lt;/code&gt; table and would be invoked when the &lt;code class=&quot;highlighter-rouge&quot;&gt;drush sqlsan&lt;/code&gt;
+command is executed in the presence of the &lt;code class=&quot;highlighter-rouge&quot;&gt;user_revision&lt;/code&gt; module.  However,
+to write this code efficiently and effectively, I would need to debug drush commands
+during execution, which I had never done.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-debug-drush-or-other-cli-scripts-with-phpstorm&quot;&gt;How to debug drush (or other CLI scripts) with PHPStorm&lt;/h2&gt;
+
+&lt;h3 id=&quot;set-up-xdebug-mac-only&quot;&gt;Set up xdebug (Mac only)&lt;/h3&gt;
+&lt;p&gt;I first installed xdebug with &lt;a href=&quot;http://brew.sh/&quot;&gt;homebrew&lt;/a&gt; via
+&lt;a href=&quot;http://antistatique.net/en/we/blog/2013/09/17/debugging-with-xdebug-and-phpstorm-on-macos-x&quot;&gt;this method&lt;/a&gt;.
+NB: Changing the port change to &lt;code class=&quot;highlighter-rouge&quot;&gt;10000&lt;/code&gt; was necessary for me.&lt;/p&gt;
+
+&lt;h3 id=&quot;upgrade-to-latest-drush&quot;&gt;Upgrade to latest drush&lt;/h3&gt;
+&lt;p&gt;I &lt;a href=&quot;http://whaaat.com/installing-drush-8-using-composer&quot;&gt;ensured I was using the most recent version of drush&lt;/a&gt;
+(I strongly recommend perusing Brant’s &lt;a href=&quot;http://whaaat.com/about&quot;&gt;about page&lt;/a&gt;)
+to ensure that the code I wrote would apply to most recent drush development.&lt;/p&gt;
+
+&lt;h3 id=&quot;getting-breakpoints-in-phpstorm-to-listen-to-drush&quot;&gt;Getting breakpoints in PHPStorm to listen to drush&lt;/h3&gt;
+&lt;p&gt;Several have blogged about this before, so I’ll just point theirs out. Generally,
+I followed
+&lt;a href=&quot;https://www.deeson.co.uk/labs/debugging-drupal-drush-real-time-phpstorm-and-xdebug&quot;&gt;these instructions&lt;/a&gt;,
+but I trust that my mentor and friend
+Randy Fay&lt;a href=&quot;http://randyfay.com/content/remote-command-line-debugging-phpstorm-phpdrupal-including-drush&quot;&gt;’s article&lt;/a&gt;
+is excellent as well. They all seemed to use
+&lt;a href=&quot;http://xdebug.org/&quot;&gt;xdebug&lt;/a&gt; and &lt;a href=&quot;https://www.jetbrains.com/phpstorm/&quot;&gt;PHPStorm&lt;/a&gt;,
+and though I use PHPStorm, I have been using ZendDebugger for years, with
+reasonable success. But I &lt;em&gt;had&lt;/em&gt; been dissatisfied of late, and the rest of the
+&lt;a href=&quot;/team&quot;&gt;team&lt;/a&gt; uses xdebug anyway, so I figured it would be a safe switch,
+which proved true. After having xdebug properly installed, you can
+&lt;a href=&quot;https://github.com/kostajh/dotfiles/blob/master/.bashrc#L85&quot;&gt;add a line&lt;/a&gt;
+to your &lt;code class=&quot;highlighter-rouge&quot;&gt;.bashrc&lt;/code&gt; file to always make PHPStorm ready to listen for drush
+commands.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-solution-in-action&quot;&gt;The solution in action&lt;/h2&gt;
+&lt;p&gt;So &lt;a href=&quot;https://github.com/chrisarusso/Tilthy-Rich-Compost-Website/commit/cf8f04f65b9f782ebaaf84d4348043f5aeec8409&quot;&gt;now when running &lt;code class=&quot;highlighter-rouge&quot;&gt;drush sqlsan&lt;/code&gt;&lt;/a&gt;,
+we can truly feel safe that we won’t send emails to anyone we didn’t mean to.
+You’re welcome community
+&lt;img src=&quot;http://www.emoji-cheat-sheet.com/graphics/emojis/wink.png&quot; alt=&quot;winking emoji&quot; class=&quot;emoji&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;will-userrevision-exist-in-d8&quot;&gt;Will &lt;code class=&quot;highlighter-rouge&quot;&gt;user_revision&lt;/code&gt; exist in D8?&lt;/h2&gt;
+&lt;p&gt;It’s not clear, though &lt;a href=&quot;https://www.drupal.org/sandbox/devpreview/2444961&quot;&gt;some&lt;/a&gt;
+think &lt;a href=&quot;https://www.drupal.org/node/2336681&quot;&gt;so&lt;/a&gt;.
+Perhaps mature D8 entities and revisioning on all entities will render a contrib
+module unnecessary. Time will tell.&lt;/p&gt;
+
+    &lt;hr&gt;
+
+    
+      &lt;div class=&quot;post-comments&quot;&gt;
+  
+    &lt;div class=&quot;expander&quot;&gt;
+      &lt;a href=&quot;javascript:void(0)&quot; id=&quot;js-expander-trigger&quot; class=&quot;expander-trigger expander-hidden&quot;&gt;Comments!&lt;/a&gt;
+      &lt;div id=&quot;js-expander-content&quot; class=&quot;expander-content&quot;&gt;
+        &lt;!-- If there are existing comments, output them here. --&gt;
+        &lt;div id=&quot;post-comments&quot; class=&quot;post-comments&quot;&gt;&lt;/div&gt;
+        &lt;!-- New comment form --&gt;
+        &lt;form id=&quot;comment-form&quot;&gt;
+          &lt;h4&gt;Leave a comment&lt;/h4&gt;
+          &lt;div class=&quot;comment-name&quot;&gt;
+            &lt;p&gt;Name&lt;/p&gt; &lt;input type=&#39;text&#39; name=&#39;name&#39; id=&#39;name&#39; required /&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;comment-email&quot;&gt;
+            &lt;p&gt;Email&lt;/p&gt; &lt;input type=&#39;email&#39; name=&#39;email&#39; id=&#39;email&#39; required /&gt;
+            &lt;p class=&quot;email-disclaimer&quot;&gt;Savas will never sell your email address or spam you.&lt;/p&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;p&gt;Comment&lt;/p&gt;
+          &lt;textarea name=&#39;comment&#39; id=&#39;comment&#39; required&gt;&lt;/textarea&gt;
+          &lt;p class=&quot;hint below-textarea&quot;&gt;Plain text format only please.&lt;/p&gt;
+
+          &lt;input type=&#39;hidden&#39; name=&#39;slug&#39; id=&#39;slug&#39; value=&#39;/2015/08/04/user-revision-sanitize.html&#39; /&gt;
+          &lt;input type=&#39;text&#39; name=&#39;url&#39; id=&#39;url&#39; /&gt;
+
+          &lt;div class=&#39;are-you-human&#39;&gt;
+            &lt;div class=&#39;are-you-human-owl&#39;&gt;
+              &lt;img src=&quot;/assets/img/owl.png&quot; alt=&quot;Savas logo&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&#39;are-you-human-field&#39;&gt;
+              &lt;p&gt;What type of animal is the Savas logo?&lt;/p&gt;
+              &lt;input type=&#39;text&#39; name=&#39;nocaptcha&#39; id=&#39;nocaptcha&#39; class=&#39;nocaptcha&#39;&gt;
+              &lt;p class=&quot;hint&quot;&gt;Hint: 3 letters long, starts with an &#39;o&#39; and ends with an &#39;l&#39;.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;input type=&#39;submit&#39; value=&#39;Submit&#39; id=&#39;submit&#39; class=&quot;submit-comment&quot;/&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+  &lt;hr&gt;
+&lt;/div&gt;
+
+    
+    &lt;div class=&quot;post-bottom&quot;&gt;
+  &lt;div class=&quot;post-meta&quot;&gt;
+    &lt;h4&gt;About the author&lt;/h4&gt;
+    
+      &lt;a href=&quot;/team/chris-russo&quot;&gt;
+        &lt;img src=&quot;/assets/img/team/chris-russo.jpg&quot; alt=&quot;Chris Russo&quot;&gt;
+      &lt;/a&gt;
+      &lt;p class=&quot;post-author-desc&quot;&gt;Chris does his best to ensure that his team is learning and growing and that our clients feel like partners.&lt;/p&gt;
+    
+  &lt;/div&gt;
+    &lt;!-- Once we have more content, change this to posts related by tag --&gt;
+  &lt;div class=&quot;post-related flex-container&quot;&gt;
+    &lt;h4&gt;Recent posts by Savas&lt;/h4&gt;
+    &lt;div class=&quot;cards&quot;&gt;
+      
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/22/user-testing.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Usability Testing - Our Process and Favorite Practices
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 22, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;Our approach to designing, conducting, and learning from user testing and other analyses.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/16/using-xhprof.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Using XHProf to profile your Drupal module
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 16, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;A case study of using XHProf to profile a Drupal module.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/15/git-merge-conflict-strategies.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Strategies and tools for resolving Git merge conflicts
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 15, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;An overview of strategies and tools I like to use when I encounter conflicts during merges.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;div class=&quot;previous-next-links&quot;&gt;
+  &lt;div class=&quot;next&quot;&gt;
+    
+      &lt;a href=&quot;/2015/08/13/drupalcamp-asheville.html&quot;&gt;&lt;i class=&quot;fa fa-long-arrow-left &quot;&gt;&lt;/i&gt; Savas giving two presentations at Drupalcamp Asheville&lt;/a&gt;
+    
+  &lt;/div&gt;
+  &lt;div class=&quot;previous&quot;&gt;
+    
+      &lt;a href=&quot;/2015/07/09/personal-git-workflow.html&quot;&gt; Personal git workflow... for collaboration &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+  &lt;/article&gt;
+
+&lt;/div&gt;
+",
+    "sourceOrganization": "Savas",
+    "inLanguage": "en-US",
+    "dateCreated": "2015-08-04 00:00:00 +0000",
+    "datePublished": "2015-08-04 00:00:00 +0000",
+    "url": "/2015/08/04/user-revision-sanitize.html"
+  }
+</script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-61514316-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  
+
+  
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+
+    <!-- Savas logo. -->
+    <a href="/" class="logo">
+        <img src="/assets/img/logo.png" alt="Savas logo">
+    </a>
+
+    <!-- Mobile menu button. -->
+    <a href="/" id="js-mobile-menu" class="navigation-menu-button">MENU</a>
+
+    <!-- Main menu. -->
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+
+        <!-- Loop through nav items in config.yml. -->
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  more">
+            <a href="javascript:void(0)">Who we are</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+
+              <ul class="submenu">
+                
+
+                  <!-- Assign active nav item class. -->
+                  
+                  
+
+                  <li class="nav-link ">
+                    <a href="/team">Team</a>
+                  </li>
+                
+
+                  <!-- Assign active nav item class. -->
+                  
+                  
+
+                  <li class="nav-link ">
+                    <a href="/mission-and-values">Mission & values</a>
+                  </li>
+                
+              </ul>
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/services">Services</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/work">Our work</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/blog">Blog</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/contact">Contact</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        
+
+
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">When Drupal database sanitization isn't enough</h1>
+    <p>By <a href="/team/chris-russo">Chris Russo</a></p>
+    <p class="centerdot">&centerdot; </p>
+    <p>Aug 4, 2015 </p><br>
+    <i class="fa fa-tags"></i><p><a href="/blog/tag/drupal/">Drupal</a>, <a href="/blog/tag/drupal8/">Drupal 8</a>, <a href="/blog/tag/drupal-planet/">Drupal Planet</a>, <a href="/blog/tag/best-practices/">Best Practices</a></p>
+    
+    <div><p><span id="comment-count"></span></p></div>
+    
+    
+  </header>
+
+  
+
+  <article class="post-content">
+    <h2 id="the-general-problem">The general problem</h2>
+<p>One of the most embarrassing and potentially costly things we can do as developers
+is to send emails out to real people unintentionally from a development
+environment. It happens, and often times we aren’t even aware of it until the damage
+is done and a background process sends out, say, 11,000 automated emails to
+existing customers (actually happened to a former employer recently). In the
+Drupal world, there are <a href="https://github.com/chrisarusso/Tilthy-Rich-Compost-Website/commit/64a558e2">myriad ways</a>
+to <a href="https://github.com/chrisarusso/Tilthy-Rich-Compost-Website/blob/master/scripts/sanitize.php">attempt to address</a> this problem.</p>
+
+<h2 id="general-solutions-to-the-general-problem">General solutions to the general problem</h2>
+<ul>
+  <li><a href="https://www.drupal.org/project/maillog">maillog</a> - A Drupal module that
+logs mails to the database and optionally allows you to “not send” them</li>
+  <li><a href="https://www.drupal.org/project/reroute_email">reroute email</a> - A Drupal
+module that intercepts email and routes it to a configurable address</li>
+  <li><a href="https://api.drupal.org/api/devel/devel.mail.inc/7">devel mail</a> - An
+option of the beloved devel module which writes emails to local files instead
+of sending</li>
+  <li><a href="http://mailcatcher.me/">mailcatcher</a> (not Drupal-specific) - Configure your
+local mail server to not send mail through PHP</li>
+</ul>
+
+<h2 id="the-ultimate-solution-to-the-problem">The <em>ultimate</em> solution to <em>the problem</em>?</h2>
+<p><strong>Never store real email addresses in your development environment</strong>. In the
+Drupal world, we do that by using the <code class="highlighter-rouge">drush sql-sanitize</code>
+<a href="http://drushcommands.com/drush-6x/sql/sql-sanitize">command</a>. With no arguments,
+how I typically execute it, the command will set all users emails addresses to
+a phony address that looks like this: <code class="highlighter-rouge">user+1@localhost.localdomain</code>. This is a
+good thing. Then, even in cases in which you do accidentally send out emails
+in an automated way, often from <a href="https://www.drupal.org/cron">cron</a>, sending to phony addresses
+is a livable mistake; no end-user receives an email that confuses
+her or makes her lose confidence in your organization.</p>
+
+<p>So, in <em>most</em> cases, <code class="highlighter-rouge">drush sqlsan</code> (alias) is enough, and the mail redirection
+options linked above are additional safety measures. Of course, I’m not
+writing about <em>most</em> scenarios now am I? Sadly, I’m not yet aware of a
+comprehensive solution that ensures no email will be sent from a development
+environment. Please <a href="#js-expander-trigger">comment</a> if you know of one!</p>
+
+<h2 id="the-specific-problem-with-userrevision-module">The <em>specific</em> problem with <code class="highlighter-rouge">user_revision</code> module</h2>
+<p>One pernicious case, in which <code class="highlighter-rouge">drush sqlsan</code> is insufficient in sanitizing your
+database, is when  the
+<a href="https://www.drupal.org/project/user_revision"><code class="highlighter-rouge">user_revision</code> module</a>
+is enabled on a Drupal 7 site, at least without
+<a href="https://www.drupal.org/node/2534638">my patch</a>
+applied. The <code class="highlighter-rouge">user_revision</code> module
+<a href="http://cgit.drupalcode.org/user_revision/tree/user_revision.module?id=cce42174aec453e6652da8738e397df20b6f2cd0#n164">extends the <code class="highlighter-rouge">UserController</code></a>
+class, which overwrites fields from the “base” table <code class="highlighter-rouge">users</code> (in the case) to
+the “revision” table, <code class="highlighter-rouge">user_revision</code>, due to
+<a href="http://cgit.drupalcode.org/drupal/tree/includes/entity.inc?h=7.x#n306">the way that <code class="highlighter-rouge">entity_load()</code> works</a>
+. Therefore, when a user entity is loaded, it receives the <code class="highlighter-rouge">mail</code> field
+from the <code class="highlighter-rouge">user_revision</code> table. Without the above patch applied,
+this table is not affected by <code class="highlighter-rouge">drush sqlsan</code>.</p>
+
+<h2 id="how-did-i-discover-this">How did I discover this?</h2>
+<p>I discovered this when adding new cron, notification functionality to the
+<a href="http://tilthyrichcompost.com">Tilthy Rich Compost</a> website, which we maintain.
+We <a href="https://github.com/chrisarusso/Tilthy-Rich-Compost-Website/commit/fccc3f7387616510d512d3700639c5de3a560a1e">began using</a> the <code class="highlighter-rouge">user_revision</code>
+module in 2013 due to <a href="https://github.com/chrisarusso/Tilthy-Rich-Compost-Website/issues/29">losing information we still needed</a> from canceling users. After sending emails to subscribers from my development
+environment for the 10th time in 2 years, even after sanitizing, I was determined
+to figure out once and for all, what was going on. So like any deep-dive, I
+fired up the trusty ol’ debugger and discovered the aforementioned culprit.</p>
+
+<h2 id="the-solution-to-the-specific-problem">The solution to the <em>specific</em> problem</h2>
+<p>After consulting <a href="/team/kosta-harlan/">Kosta</a>, we agreed
+that the solution would be to write a <a href="https://www.drupal.org/node/2534638">drush hook</a>
+for the <code class="highlighter-rouge">user_revision</code> module. This code would need to sanitize the <code class="highlighter-rouge">mail</code>
+field in the <code class="highlighter-rouge">user_revision</code> table and would be invoked when the <code class="highlighter-rouge">drush sqlsan</code>
+command is executed in the presence of the <code class="highlighter-rouge">user_revision</code> module.  However,
+to write this code efficiently and effectively, I would need to debug drush commands
+during execution, which I had never done.</p>
+
+<h2 id="how-to-debug-drush-or-other-cli-scripts-with-phpstorm">How to debug drush (or other CLI scripts) with PHPStorm</h2>
+
+<h3 id="set-up-xdebug-mac-only">Set up xdebug (Mac only)</h3>
+<p>I first installed xdebug with <a href="http://brew.sh/">homebrew</a> via
+<a href="http://antistatique.net/en/we/blog/2013/09/17/debugging-with-xdebug-and-phpstorm-on-macos-x">this method</a>.
+NB: Changing the port change to <code class="highlighter-rouge">10000</code> was necessary for me.</p>
+
+<h3 id="upgrade-to-latest-drush">Upgrade to latest drush</h3>
+<p>I <a href="http://whaaat.com/installing-drush-8-using-composer">ensured I was using the most recent version of drush</a>
+(I strongly recommend perusing Brant’s <a href="http://whaaat.com/about">about page</a>)
+to ensure that the code I wrote would apply to most recent drush development.</p>
+
+<h3 id="getting-breakpoints-in-phpstorm-to-listen-to-drush">Getting breakpoints in PHPStorm to listen to drush</h3>
+<p>Several have blogged about this before, so I’ll just point theirs out. Generally,
+I followed
+<a href="https://www.deeson.co.uk/labs/debugging-drupal-drush-real-time-phpstorm-and-xdebug">these instructions</a>,
+but I trust that my mentor and friend
+Randy Fay<a href="http://randyfay.com/content/remote-command-line-debugging-phpstorm-phpdrupal-including-drush">’s article</a>
+is excellent as well. They all seemed to use
+<a href="http://xdebug.org/">xdebug</a> and <a href="https://www.jetbrains.com/phpstorm/">PHPStorm</a>,
+and though I use PHPStorm, I have been using ZendDebugger for years, with
+reasonable success. But I <em>had</em> been dissatisfied of late, and the rest of the
+<a href="/team">team</a> uses xdebug anyway, so I figured it would be a safe switch,
+which proved true. After having xdebug properly installed, you can
+<a href="https://github.com/kostajh/dotfiles/blob/master/.bashrc#L85">add a line</a>
+to your <code class="highlighter-rouge">.bashrc</code> file to always make PHPStorm ready to listen for drush
+commands.</p>
+
+<h2 id="the-solution-in-action">The solution in action</h2>
+<p>So <a href="https://github.com/chrisarusso/Tilthy-Rich-Compost-Website/commit/cf8f04f65b9f782ebaaf84d4348043f5aeec8409">now when running <code class="highlighter-rouge">drush sqlsan</code></a>,
+we can truly feel safe that we won’t send emails to anyone we didn’t mean to.
+You’re welcome community
+<img src="http://www.emoji-cheat-sheet.com/graphics/emojis/wink.png" alt="winking emoji" class="emoji" /></p>
+
+<h2 id="will-userrevision-exist-in-d8">Will <code class="highlighter-rouge">user_revision</code> exist in D8?</h2>
+<p>It’s not clear, though <a href="https://www.drupal.org/sandbox/devpreview/2444961">some</a>
+think <a href="https://www.drupal.org/node/2336681">so</a>.
+Perhaps mature D8 entities and revisioning on all entities will render a contrib
+module unnecessary. Time will tell.</p>
+
+    <hr>
+
+    
+      <div class="post-comments">
+  
+    <div class="expander">
+      <a href="javascript:void(0)" id="js-expander-trigger" class="expander-trigger expander-hidden">Comments!</a>
+      <div id="js-expander-content" class="expander-content">
+        <!-- If there are existing comments, output them here. -->
+        <div id="post-comments" class="post-comments"></div>
+        <!-- New comment form -->
+        <form id="comment-form">
+          <h4>Leave a comment</h4>
+          <div class="comment-name">
+            <p>Name</p> <input type='text' name='name' id='name' required /><br>
+          </div>
+
+          <div class="comment-email">
+            <p>Email</p> <input type='email' name='email' id='email' required />
+            <p class="email-disclaimer">Savas will never sell your email address or spam you.</p><br>
+          </div>
+
+          <p>Comment</p>
+          <textarea name='comment' id='comment' required></textarea>
+          <p class="hint below-textarea">Plain text format only please.</p>
+
+          <input type='hidden' name='slug' id='slug' value='/2015/08/04/user-revision-sanitize.html' />
+          <input type='text' name='url' id='url' />
+
+          <div class='are-you-human'>
+            <div class='are-you-human-owl'>
+              <img src="/assets/img/owl.png" alt="Savas logo">
+            </div>
+            <div class='are-you-human-field'>
+              <p>What type of animal is the Savas logo?</p>
+              <input type='text' name='nocaptcha' id='nocaptcha' class='nocaptcha'>
+              <p class="hint">Hint: 3 letters long, starts with an 'o' and ends with an 'l'.</p>
+            </div>
+          </div>
+
+          <input type='submit' value='Submit' id='submit' class="submit-comment"/>
+        </form>
+      </div>
+    </div>
+  
+  <hr>
+</div>
+
+    
+    <div class="post-bottom">
+  <div class="post-meta">
+    <h4>About the author</h4>
+    
+      <a href="/team/chris-russo">
+        <img src="/assets/img/team/chris-russo.jpg" alt="Chris Russo">
+      </a>
+      <p class="post-author-desc">Chris does his best to ensure that his team is learning and growing and that our clients feel like partners.</p>
+    
+  </div>
+    <!-- Once we have more content, change this to posts related by tag -->
+  <div class="post-related flex-container">
+    <h4>Recent posts by Savas</h4>
+    <div class="cards">
+      
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/22/user-testing.html">
+              <div class="card-header">
+                  Usability Testing - Our Process and Favorite Practices
+              </div>
+              <div class="card-copy">
+                <p>Jun 22, 2016</p>
+                <p><p>Our approach to designing, conducting, and learning from user testing and other analyses.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/16/using-xhprof.html">
+              <div class="card-header">
+                  Using XHProf to profile your Drupal module
+              </div>
+              <div class="card-copy">
+                <p>Jun 16, 2016</p>
+                <p><p>A case study of using XHProf to profile a Drupal module.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/15/git-merge-conflict-strategies.html">
+              <div class="card-header">
+                  Strategies and tools for resolving Git merge conflicts
+              </div>
+              <div class="card-copy">
+                <p>Jun 15, 2016</p>
+                <p><p>An overview of strategies and tools I like to use when I encounter conflicts during merges.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+</div>
+
+    <div class="previous-next-links">
+  <div class="next">
+    
+      <a href="/2015/08/13/drupalcamp-asheville.html"><i class="fa fa-long-arrow-left "></i> Savas giving two presentations at Drupalcamp Asheville</a>
+    
+  </div>
+  <div class="previous">
+    
+      <a href="/2015/07/09/personal-git-workflow.html"> Personal git workflow... for collaboration <i class="fa fa-long-arrow-right"></i></a>
+    
+  </div>
+</div>
+
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <div class="contact-block">
+  <div class="contact-block__items">
+    <h3>Interested in working with us?</h3>
+    <a href="/contact">Get in touch!</a>
+  </div>
+</div>
+    <footer class="footer" role="contentinfo">
+  <div class="footer-links">
+    <ul>
+      <li><h3>Location</h3></li>
+      <li>Savas Labs<br />
+          PMB 114<br />
+          201 W Main Street, Suite 100<br />
+          Durham, NC 27701<br /></li>
+    </ul>
+    <ul>
+      <li><h3>Around the Web</h3></li>
+      <ul>
+        <li><a href="https://github.com/savaslabs"><span class="mega-octicon octicon-mark-github"></span></a></li>
+        <li><a href="https://www.drupal.org/node/2466865"><i class="fa fa-drupal fa-lg fa-2x"></i></a></li>
+        <li><a href="https://twitter.com/savas_labs"><i class="fa fa-twitter fa-lg fa-2x"></i></a></li>
+        <li><a href="https://www.linkedin.com/company/savas-labs"><i class="fa fa-linkedin fa-lg fa-2x"></i></a></li>
+      </ul>
+    </ul>
+    <ul>
+      <li><h3>Contact</h3></li>
+      <li><a href="mailto:info@savaslabs.com">info@savaslabs.com</a></li>
+      <li>(919) 432-4660</li>
+    </ul>
+  </div>
+
+</footer>
+
+<div class="footer-copyright">
+  <p>Copyright &copy; Savas Labs 2016</p>
+</div>
+
+
+  </body>
+
+</html>

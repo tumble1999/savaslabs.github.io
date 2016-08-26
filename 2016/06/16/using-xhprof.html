@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <title>Using XHProf to profile your Drupal module | Savas Labs</title>
+  
+  <meta name="description" content="This is part 2 of a series on using XHProf for profiling Drupal modules.">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,400italic,700italic|PT+Serif|Bitter|Source+Sans+Pro' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/assets/styles/main.css">
+  <link rel="stylesheet" href="/assets/icons/octicons/octicons.css">
+  <link rel="canonical" href="/2016/06/16/using-xhprof.html">
+  <link rel="alternate" type="application/rss+xml" title="Savas Labs" href="/feed.xml" />
+  <script type="text/javascript" src="/assets/js/main.js"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Durham, North Carolina",
+        "postalCode": "27701",
+        "streetAddress": "201 W Main St."
+      },
+      "description": "A full-service web agency leveraging the power of Drupal.
+",
+      "email": "info@savaslabs.com",
+      "name": "Savas",
+      "telephone": "(919) 432-4660",
+      "url": "http://savaslabs.com",
+      "logo": "http://savaslabs.com/assets/img/logo.png"
+    }
+</script>
+
+  
+  
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Using XHProf to profile your Drupal module",
+    "about": "A case study of using XHProf to profile a Drupal module.",
+    "articleBody": "
+
+
+&lt;div class=&quot;post&quot;&gt;
+  &lt;header class=&quot;post-header&quot;&gt;
+    &lt;h1 class=&quot;post-title&quot;&gt;Using XHProf to profile your Drupal module&lt;/h1&gt;
+    &lt;p&gt;By &lt;a href=&quot;/team/tim-stallmann&quot;&gt;Tim Stallmann&lt;/a&gt;&lt;/p&gt;
+    &lt;p class=&quot;centerdot&quot;&gt;&amp;centerdot; &lt;/p&gt;
+    &lt;p&gt;Jun 16, 2016 &lt;/p&gt;&lt;br&gt;
+    &lt;i class=&quot;fa fa-tags&quot;&gt;&lt;/i&gt;&lt;p&gt;&lt;a href=&quot;/blog/tag/php/&quot;&gt;PHP&lt;/a&gt;, &lt;a href=&quot;/blog/tag/performance/&quot;&gt;Performance&lt;/a&gt;, &lt;a href=&quot;/blog/tag/drupal/&quot;&gt;Drupal&lt;/a&gt;, &lt;a href=&quot;/blog/tag/drupal-planet/&quot;&gt;Drupal Planet&lt;/a&gt;, &lt;a href=&quot;/blog/tag/module-development/&quot;&gt;Module Development&lt;/a&gt;&lt;/p&gt;
+    
+    &lt;div&gt;&lt;p&gt;&lt;span id=&quot;comment-count&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+    
+    
+  &lt;/header&gt;
+
+  
+
+  &lt;article class=&quot;post-content&quot;&gt;
+    &lt;p&gt;This is part 2 of a series on using XHProf for profiling Drupal modules.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/2016/05/26/installing-xhprof.html&quot;&gt;Part 1: Installing XHProf&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;Part 2: Using XHProf&lt;/strong&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;After you’ve &lt;a href=&quot;/2016/05/26/installing-xhprof.html&quot;&gt;installed XHProf&lt;/a&gt;, what’s next? How can you make use of its recommendations to tune a module or a website? Unfortunately there are no hard-and-fast rules for optimizing code to run more efficiently. What I can offer here is my own experience trying to optimize a D8 module using XHProf.&lt;/p&gt;
+
+&lt;h3 id=&quot;understanding-an-xhprof-run-report&quot;&gt;Understanding an XHProf run report&lt;/h3&gt;
+
+&lt;p&gt;The XHProf GUI displays the result of a given profiler run, or a group of runs. It can even compare 2 runs, but we’ll get to that in a minute. If you followed &lt;a href=&quot;/2016/05/26/installing-xhprof.html&quot;&gt;my previous post&lt;/a&gt;, you should have the &lt;code class=&quot;highlighter-rouge&quot;&gt;xhprof_html&lt;/code&gt; directory symlinked into the root web directory for your Drupal site; so visiting &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;my-local-site&amp;gt;/xhprof/&lt;/code&gt; should give you a list of all available stored run IDs, and you can click through one of those to view a specific run report.&lt;/p&gt;
+
+&lt;p&gt;You can also go directly to a specific run report via the URL &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;my-local-site&amp;gt;/xhprof/index.php?run=&amp;lt;run-id&amp;gt;&amp;amp;source=&amp;lt;source-id&amp;gt;&lt;/code&gt; (which you should have been logging already via an &lt;code class=&quot;highlighter-rouge&quot;&gt;echo&lt;/code&gt; statement or &lt;code class=&quot;highlighter-rouge&quot;&gt;dblog&lt;/code&gt; if you followed the last post).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/xhprof-results-page-screenshot.png&quot; alt=&quot;Header of an XHProf run report&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The core of the run report is a table of each function or method which your code called while it was being profiled, along with a set of statistics about that function. This allows you to understand which parts of your code are most resource-intensive, and which are being called frequently in the use case that you’re profiling. Clicking on any one of the column headers will sort the list by that metric. To understand this report, it’s helpful to have some terminology:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Incl. Wall Time&lt;/strong&gt; - The total clock time elapsed between when a function call started and when the function exited. Note that this number is not a great basis for comparisons, since it can include other processes which were taking up CPU time on your machine while the PHP code was running, from streaming music in the background to PHPStorm’s code indexing, to random web browsing.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Incl. CPU Time&lt;/strong&gt; - In contrast to wall time, CPU time tracks only the time which the CPU actually spent executing your code (or related system calls). This is a more reliable metric for comparing different runs.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Excl. Wall/CPU Time&lt;/strong&gt; - Exclusive time measurements only count time actually spent within the given method itself. They exclude the time spent in any method/function called &lt;em&gt;from&lt;/em&gt; the given function (since that time will be tracked separately).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In general, the inclusive metrics (for CPU time and memory usage) will give you a sense of what your expensive methods/functions are – these are the methods or functions that you should avoid calling if possible. In contrast, the exclusive metrics will tell you where you can potentially improve the way a given method/function is implemented. For methods which belong to Drupal Core or other contrib modules, inclusive and exclusive metrics are basically equivalent, since you don’t usually have the option of impacting the implementation details of a function unless you’re working on its code directly. Note also that because your overall parent method and any other high-level methods in your code will &lt;em&gt;always&lt;/em&gt; show up at the top of the inclusive time chart, you may have better luck really understanding where your performance hits come from by sorting by exclusive CPU time.&lt;/p&gt;
+
+&lt;h3 id=&quot;take-a-step-back-and-plan-your-test-scenarios&quot;&gt;Take a step back and plan your test scenarios&lt;/h3&gt;
+
+&lt;p&gt;Before digging in to optimizing your module code, you need to take a step back and think about the big picture. First, what are you optimizing for? Many optimizations involve a tradeoff between time and memory usage. Are you trying to reduce overall run-time at the expense of more memory? Is keeping the memory footprint of a given function down more important? In order to answer these questions you need to think about the overall context in which your code is running. In my case, I was optimizing a background import module which was run via cron, so the top priority was that the memory usage and number of database optimizations were low enough not to impact the user-facing site performance.&lt;/p&gt;
+
+&lt;p&gt;Second, what use case for your code are you profiling? If this is a single method call, what arguments will be passed? If you’re profiling page loads on a website, which pages are you profiling? In order to successfully track whether the changes you’re making are having an impact on the metrics you’re concerned about, you need to be able to narrow down the possible use cases for your code into a handful of most-likely real world scenarios which you’ll actually choose to track via the profiler.&lt;/p&gt;
+
+&lt;h3 id=&quot;keep-things-organized&quot;&gt;Keep things organized&lt;/h3&gt;
+
+&lt;p&gt;Now it’s time to get organized. Write a simple test script so that you can easily run through all your use cases in an automated way – this is not strictly necessary, but it will save you a lot of work and potential error as you move through the process. In my case, I was testing a drush command hook, so I just wrote a bash shell script which executed the command three times in each of two different ways. For profiling page loads, I would recommend using &lt;a href=&quot;https://jmeter.apache.org/&quot;&gt;Apache JMeter&lt;/a&gt; - and you’ll need to consider whether you want to force an uncached page load by passing a random dummy query parameter. Ideally, you should be running each scenario a few times so that you can then average the results to account for any small variations in run-time.&lt;/p&gt;
+
+&lt;p&gt;Keeping your different runs organized is probably the most important part of successfully profiling module code using XHProf! Each run has a unique run ID, but &lt;strong&gt;you&lt;/strong&gt; are solely responsible for knowing which use case scenario and which version of the codebase that run ID corresponds to. I set up a basic spreadsheet in OpenOffice where I could paste in run numbers and basic run stats to compare (but there’s almost certainly a nicer automated way to do this than what I used).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/xhprof-results-spreadsheet.png&quot; alt=&quot;Screenshot of an OpenOffice spreadsheet summarizing XHProf results for various runs&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Once you have a set of run IDs for a given use case + codebase version, you can generate a &lt;em&gt;composite&lt;/em&gt; xhprof report using the query string syntax &lt;code class=&quot;highlighter-rouge&quot;&gt;http://&amp;lt;your-local-site&amp;gt;/xhprof/index.php?run=&amp;lt;first-run-id&amp;gt;,&amp;lt;second-run-id&amp;gt;,&amp;lt;third-run-id&amp;gt;&amp;amp;source=&amp;lt;source-string&amp;gt;&lt;/code&gt; Averaging out across a few runs should give you more &lt;a href=&quot;https://en.wikipedia.org/wiki/Accuracy_and_precision&quot;&gt;precise&lt;/a&gt; measurements for CPU time and memory usage, but beware that if parts of your code involve caching you may want to either throw out the first run’s results in each version of the code base, since that’s where the cache will be generated, or clear the cache between runs.&lt;/p&gt;
+
+&lt;p&gt;Go ahead and test your run scripts to make sure that you can get a consistent baseline result at this point – if you’re seeing large differences in average total CPU times or average memory usage across different runs of the same codebase, you likely won’t be able to compare run times across &lt;em&gt;different&lt;/em&gt; versions of the code.&lt;/p&gt;
+
+&lt;h3 id=&quot;actually-getting-to-work&quot;&gt;Actually getting to work!&lt;/h3&gt;
+
+&lt;p&gt;After all this set-up, you should be ready to experiment and see what the impact of changes in your code base are on the metrics that you want to shift. In my case, the code I was working on used a &lt;a href=&quot;https://github.com/squix78/jsonstreamingparser&quot;&gt;streaming JSON parser class&lt;/a&gt;, and I noticed that one of the top function calls in the inital profiler report was the &lt;code class=&quot;highlighter-rouge&quot;&gt;consumeChar&lt;/code&gt; method of the parser.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/xhprof-results-page.png&quot; alt=&quot;Image of XHProf profiler report with the method consumeChar highlighted in yellow&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It turns out that the JSON files I was importing were pretty-printed, thus containing more whitespace than they needed to. Sine the &lt;code class=&quot;highlighter-rouge&quot;&gt;consumeChar&lt;/code&gt; method gets called on each incoming character of the input stream, that added up to a lot of unnecessary method calls in the original code. By tweaking the JSON file export code to remove the pretty print flag, I cut down the number of times this method was called from 729,099 to 499,809, saving .2 seconds of run time right off the bat.&lt;/p&gt;
+
+&lt;p&gt;That was the major place where the XHProf profiler report gave me insights I would not have had otherwise. The rest of my optimizing experience was mostly testing out some of the common-sense optimizations I had already thought of while looking at the code – caching a table of known Entity IDs rather than querying the DB to check if an entity existed each time, using an associative array and &lt;code class=&quot;highlighter-rouge&quot;&gt;is_empty()&lt;/code&gt; &lt;a href=&quot;http://www.w3programmers.com/phps-in_array-function-is-really-slow/&quot;&gt;to replace &lt;code class=&quot;highlighter-rouge&quot;&gt;in_array()&lt;/code&gt; calls&lt;/a&gt;, cutting down on unnecessary &lt;code class=&quot;highlighter-rouge&quot;&gt;$entity-&amp;gt;save()&lt;/code&gt; operations where possible.&lt;/p&gt;
+
+&lt;p&gt;It’s useful to mention that across the board the biggest performance hit in your Drupal code will probably be database calls, so cutting down on those wherever possible will save run-time (sometimes at the expense of memory, if you’re caching large amounts of data). Remember, also, that if DB log is enabled each logging call is a separate database operation, so use the log sparingly – or just log to &lt;code class=&quot;highlighter-rouge&quot;&gt;syslog&lt;/code&gt; and use service like &lt;a href=&quot;https://papertrailapp.com/&quot;&gt;Papertrail&lt;/a&gt; or &lt;a href=&quot;https://www.loggly.com/&quot;&gt;Loggly&lt;/a&gt; on production sites.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-final-results&quot;&gt;The final results&lt;/h3&gt;
+
+&lt;p&gt;As the results below show, using XHProf and some thoughtful optimizations I was able to cut total run time significantly in one use case (Case 2) and slightly in another use case (Case 1). Case 1 was already running in a reasonable amount of time, so here I was mostly interested in the Case 2 numbers (assuming I didn’t make anything too much worse).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/xhprof-results-graph.png&quot; alt=&quot;Bar chart comparing the run time of various runs&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;think-of-the-big-picture-part-2&quot;&gt;Think of the big picture, part 2&lt;/h3&gt;
+
+&lt;p&gt;Remember that controlled experimental metrics are just a means to understanding and improving real-world performance (which you can also measure directly using tools like &lt;a href=&quot;https://blackfire.io/&quot;&gt;blackfire&lt;/a&gt;, but that’s another blog post). In my case, at the end of the day we decided that the most important thing was to ensure that there wasn’t a performance impact on the production site while this background import code was running; so one of the optimizations we actually ended up implementing was to force this code to run &lt;strong&gt;slower&lt;/strong&gt; by throttling &lt;code class=&quot;highlighter-rouge&quot;&gt;$entity-&amp;gt;save()&lt;/code&gt; operations to maximally 1 every 1/2 second or so, as a way to minimize the number of requests MySQL was having to respond to from the importer. XHProf is a powerful tool, but don’t lose the forest for the trees when it comes to optimization.&lt;/p&gt;
+
+    &lt;hr&gt;
+
+    
+      &lt;div class=&quot;post-comments&quot;&gt;
+  
+    &lt;div class=&quot;expander&quot;&gt;
+      &lt;a href=&quot;javascript:void(0)&quot; id=&quot;js-expander-trigger&quot; class=&quot;expander-trigger expander-hidden&quot;&gt;Comments!&lt;/a&gt;
+      &lt;div id=&quot;js-expander-content&quot; class=&quot;expander-content&quot;&gt;
+        &lt;!-- If there are existing comments, output them here. --&gt;
+        &lt;div id=&quot;post-comments&quot; class=&quot;post-comments&quot;&gt;&lt;/div&gt;
+        &lt;!-- New comment form --&gt;
+        &lt;form id=&quot;comment-form&quot;&gt;
+          &lt;h4&gt;Leave a comment&lt;/h4&gt;
+          &lt;div class=&quot;comment-name&quot;&gt;
+            &lt;p&gt;Name&lt;/p&gt; &lt;input type=&#39;text&#39; name=&#39;name&#39; id=&#39;name&#39; required /&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;comment-email&quot;&gt;
+            &lt;p&gt;Email&lt;/p&gt; &lt;input type=&#39;email&#39; name=&#39;email&#39; id=&#39;email&#39; required /&gt;
+            &lt;p class=&quot;email-disclaimer&quot;&gt;Savas will never sell your email address or spam you.&lt;/p&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;p&gt;Comment&lt;/p&gt;
+          &lt;textarea name=&#39;comment&#39; id=&#39;comment&#39; required&gt;&lt;/textarea&gt;
+          &lt;p class=&quot;hint below-textarea&quot;&gt;Plain text format only please.&lt;/p&gt;
+
+          &lt;input type=&#39;hidden&#39; name=&#39;slug&#39; id=&#39;slug&#39; value=&#39;/2016/06/16/using-xhprof.html&#39; /&gt;
+          &lt;input type=&#39;text&#39; name=&#39;url&#39; id=&#39;url&#39; /&gt;
+
+          &lt;div class=&#39;are-you-human&#39;&gt;
+            &lt;div class=&#39;are-you-human-owl&#39;&gt;
+              &lt;img src=&quot;/assets/img/owl.png&quot; alt=&quot;Savas logo&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&#39;are-you-human-field&#39;&gt;
+              &lt;p&gt;What type of animal is the Savas logo?&lt;/p&gt;
+              &lt;input type=&#39;text&#39; name=&#39;nocaptcha&#39; id=&#39;nocaptcha&#39; class=&#39;nocaptcha&#39;&gt;
+              &lt;p class=&quot;hint&quot;&gt;Hint: 3 letters long, starts with an &#39;o&#39; and ends with an &#39;l&#39;.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;input type=&#39;submit&#39; value=&#39;Submit&#39; id=&#39;submit&#39; class=&quot;submit-comment&quot;/&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+  &lt;hr&gt;
+&lt;/div&gt;
+
+    
+    &lt;div class=&quot;post-bottom&quot;&gt;
+  &lt;div class=&quot;post-meta&quot;&gt;
+    &lt;h4&gt;About the author&lt;/h4&gt;
+    
+      &lt;a href=&quot;/team/tim-stallmann&quot;&gt;
+        &lt;img src=&quot;/assets/img/team/tim-stallmann.jpg&quot; alt=&quot;Tim Stallmann&quot;&gt;
+      &lt;/a&gt;
+      &lt;p class=&quot;post-author-desc&quot;&gt;Tim is a cartographer and developer at Savas Labs, implementing complex web applications for our clients.&lt;/p&gt;
+    
+  &lt;/div&gt;
+    &lt;!-- Once we have more content, change this to posts related by tag --&gt;
+  &lt;div class=&quot;post-related flex-container&quot;&gt;
+    &lt;h4&gt;Recent posts by Savas&lt;/h4&gt;
+    &lt;div class=&quot;cards&quot;&gt;
+      
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/22/user-testing.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Usability Testing - Our Process and Favorite Practices
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 22, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;Our approach to designing, conducting, and learning from user testing and other analyses.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/15/git-merge-conflict-strategies.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Strategies and tools for resolving Git merge conflicts
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 15, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;An overview of strategies and tools I like to use when I encounter conflicts during merges.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/05/26/installing-xhprof.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Installing XHProf to profile your Drupal module
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;May 26, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;Step-by-step, how to install and use XHProf to profile your Drupal module.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;div class=&quot;previous-next-links&quot;&gt;
+  &lt;div class=&quot;next&quot;&gt;
+    
+      &lt;a href=&quot;/2016/06/22/user-testing.html&quot;&gt;&lt;i class=&quot;fa fa-long-arrow-left &quot;&gt;&lt;/i&gt; Usability Testing - Our Process and Favorite Practices&lt;/a&gt;
+    
+  &lt;/div&gt;
+  &lt;div class=&quot;previous&quot;&gt;
+    
+      &lt;a href=&quot;/2016/06/15/git-merge-conflict-strategies.html&quot;&gt; Strategies and tools for resolving Git merge conflicts &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+  &lt;/article&gt;
+
+&lt;/div&gt;
+",
+      "author": {
+          "@context": "http://schema.org",
+          "@type": "Person",
+          "name": "Tim Stallmann",
+          "affiliation": "Savas",
+          "worksFor": "Savas"
+      },
+    "keywords": "php, performance, drupal, drupal-planet, module-development",
+    "text": "
+
+
+&lt;div class=&quot;post&quot;&gt;
+  &lt;header class=&quot;post-header&quot;&gt;
+    &lt;h1 class=&quot;post-title&quot;&gt;Using XHProf to profile your Drupal module&lt;/h1&gt;
+    &lt;p&gt;By &lt;a href=&quot;/team/tim-stallmann&quot;&gt;Tim Stallmann&lt;/a&gt;&lt;/p&gt;
+    &lt;p class=&quot;centerdot&quot;&gt;&amp;centerdot; &lt;/p&gt;
+    &lt;p&gt;Jun 16, 2016 &lt;/p&gt;&lt;br&gt;
+    &lt;i class=&quot;fa fa-tags&quot;&gt;&lt;/i&gt;&lt;p&gt;&lt;a href=&quot;/blog/tag/php/&quot;&gt;PHP&lt;/a&gt;, &lt;a href=&quot;/blog/tag/performance/&quot;&gt;Performance&lt;/a&gt;, &lt;a href=&quot;/blog/tag/drupal/&quot;&gt;Drupal&lt;/a&gt;, &lt;a href=&quot;/blog/tag/drupal-planet/&quot;&gt;Drupal Planet&lt;/a&gt;, &lt;a href=&quot;/blog/tag/module-development/&quot;&gt;Module Development&lt;/a&gt;&lt;/p&gt;
+    
+    &lt;div&gt;&lt;p&gt;&lt;span id=&quot;comment-count&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+    
+    
+  &lt;/header&gt;
+
+  
+
+  &lt;article class=&quot;post-content&quot;&gt;
+    &lt;p&gt;This is part 2 of a series on using XHProf for profiling Drupal modules.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/2016/05/26/installing-xhprof.html&quot;&gt;Part 1: Installing XHProf&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;Part 2: Using XHProf&lt;/strong&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;After you’ve &lt;a href=&quot;/2016/05/26/installing-xhprof.html&quot;&gt;installed XHProf&lt;/a&gt;, what’s next? How can you make use of its recommendations to tune a module or a website? Unfortunately there are no hard-and-fast rules for optimizing code to run more efficiently. What I can offer here is my own experience trying to optimize a D8 module using XHProf.&lt;/p&gt;
+
+&lt;h3 id=&quot;understanding-an-xhprof-run-report&quot;&gt;Understanding an XHProf run report&lt;/h3&gt;
+
+&lt;p&gt;The XHProf GUI displays the result of a given profiler run, or a group of runs. It can even compare 2 runs, but we’ll get to that in a minute. If you followed &lt;a href=&quot;/2016/05/26/installing-xhprof.html&quot;&gt;my previous post&lt;/a&gt;, you should have the &lt;code class=&quot;highlighter-rouge&quot;&gt;xhprof_html&lt;/code&gt; directory symlinked into the root web directory for your Drupal site; so visiting &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;my-local-site&amp;gt;/xhprof/&lt;/code&gt; should give you a list of all available stored run IDs, and you can click through one of those to view a specific run report.&lt;/p&gt;
+
+&lt;p&gt;You can also go directly to a specific run report via the URL &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;my-local-site&amp;gt;/xhprof/index.php?run=&amp;lt;run-id&amp;gt;&amp;amp;source=&amp;lt;source-id&amp;gt;&lt;/code&gt; (which you should have been logging already via an &lt;code class=&quot;highlighter-rouge&quot;&gt;echo&lt;/code&gt; statement or &lt;code class=&quot;highlighter-rouge&quot;&gt;dblog&lt;/code&gt; if you followed the last post).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/xhprof-results-page-screenshot.png&quot; alt=&quot;Header of an XHProf run report&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The core of the run report is a table of each function or method which your code called while it was being profiled, along with a set of statistics about that function. This allows you to understand which parts of your code are most resource-intensive, and which are being called frequently in the use case that you’re profiling. Clicking on any one of the column headers will sort the list by that metric. To understand this report, it’s helpful to have some terminology:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Incl. Wall Time&lt;/strong&gt; - The total clock time elapsed between when a function call started and when the function exited. Note that this number is not a great basis for comparisons, since it can include other processes which were taking up CPU time on your machine while the PHP code was running, from streaming music in the background to PHPStorm’s code indexing, to random web browsing.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Incl. CPU Time&lt;/strong&gt; - In contrast to wall time, CPU time tracks only the time which the CPU actually spent executing your code (or related system calls). This is a more reliable metric for comparing different runs.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Excl. Wall/CPU Time&lt;/strong&gt; - Exclusive time measurements only count time actually spent within the given method itself. They exclude the time spent in any method/function called &lt;em&gt;from&lt;/em&gt; the given function (since that time will be tracked separately).&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In general, the inclusive metrics (for CPU time and memory usage) will give you a sense of what your expensive methods/functions are – these are the methods or functions that you should avoid calling if possible. In contrast, the exclusive metrics will tell you where you can potentially improve the way a given method/function is implemented. For methods which belong to Drupal Core or other contrib modules, inclusive and exclusive metrics are basically equivalent, since you don’t usually have the option of impacting the implementation details of a function unless you’re working on its code directly. Note also that because your overall parent method and any other high-level methods in your code will &lt;em&gt;always&lt;/em&gt; show up at the top of the inclusive time chart, you may have better luck really understanding where your performance hits come from by sorting by exclusive CPU time.&lt;/p&gt;
+
+&lt;h3 id=&quot;take-a-step-back-and-plan-your-test-scenarios&quot;&gt;Take a step back and plan your test scenarios&lt;/h3&gt;
+
+&lt;p&gt;Before digging in to optimizing your module code, you need to take a step back and think about the big picture. First, what are you optimizing for? Many optimizations involve a tradeoff between time and memory usage. Are you trying to reduce overall run-time at the expense of more memory? Is keeping the memory footprint of a given function down more important? In order to answer these questions you need to think about the overall context in which your code is running. In my case, I was optimizing a background import module which was run via cron, so the top priority was that the memory usage and number of database optimizations were low enough not to impact the user-facing site performance.&lt;/p&gt;
+
+&lt;p&gt;Second, what use case for your code are you profiling? If this is a single method call, what arguments will be passed? If you’re profiling page loads on a website, which pages are you profiling? In order to successfully track whether the changes you’re making are having an impact on the metrics you’re concerned about, you need to be able to narrow down the possible use cases for your code into a handful of most-likely real world scenarios which you’ll actually choose to track via the profiler.&lt;/p&gt;
+
+&lt;h3 id=&quot;keep-things-organized&quot;&gt;Keep things organized&lt;/h3&gt;
+
+&lt;p&gt;Now it’s time to get organized. Write a simple test script so that you can easily run through all your use cases in an automated way – this is not strictly necessary, but it will save you a lot of work and potential error as you move through the process. In my case, I was testing a drush command hook, so I just wrote a bash shell script which executed the command three times in each of two different ways. For profiling page loads, I would recommend using &lt;a href=&quot;https://jmeter.apache.org/&quot;&gt;Apache JMeter&lt;/a&gt; - and you’ll need to consider whether you want to force an uncached page load by passing a random dummy query parameter. Ideally, you should be running each scenario a few times so that you can then average the results to account for any small variations in run-time.&lt;/p&gt;
+
+&lt;p&gt;Keeping your different runs organized is probably the most important part of successfully profiling module code using XHProf! Each run has a unique run ID, but &lt;strong&gt;you&lt;/strong&gt; are solely responsible for knowing which use case scenario and which version of the codebase that run ID corresponds to. I set up a basic spreadsheet in OpenOffice where I could paste in run numbers and basic run stats to compare (but there’s almost certainly a nicer automated way to do this than what I used).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/xhprof-results-spreadsheet.png&quot; alt=&quot;Screenshot of an OpenOffice spreadsheet summarizing XHProf results for various runs&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Once you have a set of run IDs for a given use case + codebase version, you can generate a &lt;em&gt;composite&lt;/em&gt; xhprof report using the query string syntax &lt;code class=&quot;highlighter-rouge&quot;&gt;http://&amp;lt;your-local-site&amp;gt;/xhprof/index.php?run=&amp;lt;first-run-id&amp;gt;,&amp;lt;second-run-id&amp;gt;,&amp;lt;third-run-id&amp;gt;&amp;amp;source=&amp;lt;source-string&amp;gt;&lt;/code&gt; Averaging out across a few runs should give you more &lt;a href=&quot;https://en.wikipedia.org/wiki/Accuracy_and_precision&quot;&gt;precise&lt;/a&gt; measurements for CPU time and memory usage, but beware that if parts of your code involve caching you may want to either throw out the first run’s results in each version of the code base, since that’s where the cache will be generated, or clear the cache between runs.&lt;/p&gt;
+
+&lt;p&gt;Go ahead and test your run scripts to make sure that you can get a consistent baseline result at this point – if you’re seeing large differences in average total CPU times or average memory usage across different runs of the same codebase, you likely won’t be able to compare run times across &lt;em&gt;different&lt;/em&gt; versions of the code.&lt;/p&gt;
+
+&lt;h3 id=&quot;actually-getting-to-work&quot;&gt;Actually getting to work!&lt;/h3&gt;
+
+&lt;p&gt;After all this set-up, you should be ready to experiment and see what the impact of changes in your code base are on the metrics that you want to shift. In my case, the code I was working on used a &lt;a href=&quot;https://github.com/squix78/jsonstreamingparser&quot;&gt;streaming JSON parser class&lt;/a&gt;, and I noticed that one of the top function calls in the inital profiler report was the &lt;code class=&quot;highlighter-rouge&quot;&gt;consumeChar&lt;/code&gt; method of the parser.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/xhprof-results-page.png&quot; alt=&quot;Image of XHProf profiler report with the method consumeChar highlighted in yellow&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It turns out that the JSON files I was importing were pretty-printed, thus containing more whitespace than they needed to. Sine the &lt;code class=&quot;highlighter-rouge&quot;&gt;consumeChar&lt;/code&gt; method gets called on each incoming character of the input stream, that added up to a lot of unnecessary method calls in the original code. By tweaking the JSON file export code to remove the pretty print flag, I cut down the number of times this method was called from 729,099 to 499,809, saving .2 seconds of run time right off the bat.&lt;/p&gt;
+
+&lt;p&gt;That was the major place where the XHProf profiler report gave me insights I would not have had otherwise. The rest of my optimizing experience was mostly testing out some of the common-sense optimizations I had already thought of while looking at the code – caching a table of known Entity IDs rather than querying the DB to check if an entity existed each time, using an associative array and &lt;code class=&quot;highlighter-rouge&quot;&gt;is_empty()&lt;/code&gt; &lt;a href=&quot;http://www.w3programmers.com/phps-in_array-function-is-really-slow/&quot;&gt;to replace &lt;code class=&quot;highlighter-rouge&quot;&gt;in_array()&lt;/code&gt; calls&lt;/a&gt;, cutting down on unnecessary &lt;code class=&quot;highlighter-rouge&quot;&gt;$entity-&amp;gt;save()&lt;/code&gt; operations where possible.&lt;/p&gt;
+
+&lt;p&gt;It’s useful to mention that across the board the biggest performance hit in your Drupal code will probably be database calls, so cutting down on those wherever possible will save run-time (sometimes at the expense of memory, if you’re caching large amounts of data). Remember, also, that if DB log is enabled each logging call is a separate database operation, so use the log sparingly – or just log to &lt;code class=&quot;highlighter-rouge&quot;&gt;syslog&lt;/code&gt; and use service like &lt;a href=&quot;https://papertrailapp.com/&quot;&gt;Papertrail&lt;/a&gt; or &lt;a href=&quot;https://www.loggly.com/&quot;&gt;Loggly&lt;/a&gt; on production sites.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-final-results&quot;&gt;The final results&lt;/h3&gt;
+
+&lt;p&gt;As the results below show, using XHProf and some thoughtful optimizations I was able to cut total run time significantly in one use case (Case 2) and slightly in another use case (Case 1). Case 1 was already running in a reasonable amount of time, so here I was mostly interested in the Case 2 numbers (assuming I didn’t make anything too much worse).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/xhprof-results-graph.png&quot; alt=&quot;Bar chart comparing the run time of various runs&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;think-of-the-big-picture-part-2&quot;&gt;Think of the big picture, part 2&lt;/h3&gt;
+
+&lt;p&gt;Remember that controlled experimental metrics are just a means to understanding and improving real-world performance (which you can also measure directly using tools like &lt;a href=&quot;https://blackfire.io/&quot;&gt;blackfire&lt;/a&gt;, but that’s another blog post). In my case, at the end of the day we decided that the most important thing was to ensure that there wasn’t a performance impact on the production site while this background import code was running; so one of the optimizations we actually ended up implementing was to force this code to run &lt;strong&gt;slower&lt;/strong&gt; by throttling &lt;code class=&quot;highlighter-rouge&quot;&gt;$entity-&amp;gt;save()&lt;/code&gt; operations to maximally 1 every 1/2 second or so, as a way to minimize the number of requests MySQL was having to respond to from the importer. XHProf is a powerful tool, but don’t lose the forest for the trees when it comes to optimization.&lt;/p&gt;
+
+    &lt;hr&gt;
+
+    
+      &lt;div class=&quot;post-comments&quot;&gt;
+  
+    &lt;div class=&quot;expander&quot;&gt;
+      &lt;a href=&quot;javascript:void(0)&quot; id=&quot;js-expander-trigger&quot; class=&quot;expander-trigger expander-hidden&quot;&gt;Comments!&lt;/a&gt;
+      &lt;div id=&quot;js-expander-content&quot; class=&quot;expander-content&quot;&gt;
+        &lt;!-- If there are existing comments, output them here. --&gt;
+        &lt;div id=&quot;post-comments&quot; class=&quot;post-comments&quot;&gt;&lt;/div&gt;
+        &lt;!-- New comment form --&gt;
+        &lt;form id=&quot;comment-form&quot;&gt;
+          &lt;h4&gt;Leave a comment&lt;/h4&gt;
+          &lt;div class=&quot;comment-name&quot;&gt;
+            &lt;p&gt;Name&lt;/p&gt; &lt;input type=&#39;text&#39; name=&#39;name&#39; id=&#39;name&#39; required /&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;comment-email&quot;&gt;
+            &lt;p&gt;Email&lt;/p&gt; &lt;input type=&#39;email&#39; name=&#39;email&#39; id=&#39;email&#39; required /&gt;
+            &lt;p class=&quot;email-disclaimer&quot;&gt;Savas will never sell your email address or spam you.&lt;/p&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;p&gt;Comment&lt;/p&gt;
+          &lt;textarea name=&#39;comment&#39; id=&#39;comment&#39; required&gt;&lt;/textarea&gt;
+          &lt;p class=&quot;hint below-textarea&quot;&gt;Plain text format only please.&lt;/p&gt;
+
+          &lt;input type=&#39;hidden&#39; name=&#39;slug&#39; id=&#39;slug&#39; value=&#39;/2016/06/16/using-xhprof.html&#39; /&gt;
+          &lt;input type=&#39;text&#39; name=&#39;url&#39; id=&#39;url&#39; /&gt;
+
+          &lt;div class=&#39;are-you-human&#39;&gt;
+            &lt;div class=&#39;are-you-human-owl&#39;&gt;
+              &lt;img src=&quot;/assets/img/owl.png&quot; alt=&quot;Savas logo&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&#39;are-you-human-field&#39;&gt;
+              &lt;p&gt;What type of animal is the Savas logo?&lt;/p&gt;
+              &lt;input type=&#39;text&#39; name=&#39;nocaptcha&#39; id=&#39;nocaptcha&#39; class=&#39;nocaptcha&#39;&gt;
+              &lt;p class=&quot;hint&quot;&gt;Hint: 3 letters long, starts with an &#39;o&#39; and ends with an &#39;l&#39;.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;input type=&#39;submit&#39; value=&#39;Submit&#39; id=&#39;submit&#39; class=&quot;submit-comment&quot;/&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+  &lt;hr&gt;
+&lt;/div&gt;
+
+    
+    &lt;div class=&quot;post-bottom&quot;&gt;
+  &lt;div class=&quot;post-meta&quot;&gt;
+    &lt;h4&gt;About the author&lt;/h4&gt;
+    
+      &lt;a href=&quot;/team/tim-stallmann&quot;&gt;
+        &lt;img src=&quot;/assets/img/team/tim-stallmann.jpg&quot; alt=&quot;Tim Stallmann&quot;&gt;
+      &lt;/a&gt;
+      &lt;p class=&quot;post-author-desc&quot;&gt;Tim is a cartographer and developer at Savas Labs, implementing complex web applications for our clients.&lt;/p&gt;
+    
+  &lt;/div&gt;
+    &lt;!-- Once we have more content, change this to posts related by tag --&gt;
+  &lt;div class=&quot;post-related flex-container&quot;&gt;
+    &lt;h4&gt;Recent posts by Savas&lt;/h4&gt;
+    &lt;div class=&quot;cards&quot;&gt;
+      
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/22/user-testing.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Usability Testing - Our Process and Favorite Practices
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 22, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;Our approach to designing, conducting, and learning from user testing and other analyses.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/15/git-merge-conflict-strategies.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Strategies and tools for resolving Git merge conflicts
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 15, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;An overview of strategies and tools I like to use when I encounter conflicts during merges.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/05/26/installing-xhprof.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Installing XHProf to profile your Drupal module
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;May 26, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;Step-by-step, how to install and use XHProf to profile your Drupal module.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;div class=&quot;previous-next-links&quot;&gt;
+  &lt;div class=&quot;next&quot;&gt;
+    
+      &lt;a href=&quot;/2016/06/22/user-testing.html&quot;&gt;&lt;i class=&quot;fa fa-long-arrow-left &quot;&gt;&lt;/i&gt; Usability Testing - Our Process and Favorite Practices&lt;/a&gt;
+    
+  &lt;/div&gt;
+  &lt;div class=&quot;previous&quot;&gt;
+    
+      &lt;a href=&quot;/2016/06/15/git-merge-conflict-strategies.html&quot;&gt; Strategies and tools for resolving Git merge conflicts &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+  &lt;/article&gt;
+
+&lt;/div&gt;
+",
+    "sourceOrganization": "Savas",
+    "inLanguage": "en-US",
+    "dateCreated": "2016-06-16 00:00:00 +0000",
+    "datePublished": "2016-06-16 00:00:00 +0000",
+    "url": "/2016/06/16/using-xhprof.html"
+  }
+</script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-61514316-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  
+
+  
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+
+    <!-- Savas logo. -->
+    <a href="/" class="logo">
+        <img src="/assets/img/logo.png" alt="Savas logo">
+    </a>
+
+    <!-- Mobile menu button. -->
+    <a href="/" id="js-mobile-menu" class="navigation-menu-button">MENU</a>
+
+    <!-- Main menu. -->
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+
+        <!-- Loop through nav items in config.yml. -->
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  more">
+            <a href="javascript:void(0)">Who we are</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+
+              <ul class="submenu">
+                
+
+                  <!-- Assign active nav item class. -->
+                  
+                  
+
+                  <li class="nav-link ">
+                    <a href="/team">Team</a>
+                  </li>
+                
+
+                  <!-- Assign active nav item class. -->
+                  
+                  
+
+                  <li class="nav-link ">
+                    <a href="/mission-and-values">Mission & values</a>
+                  </li>
+                
+              </ul>
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/services">Services</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/work">Our work</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/blog">Blog</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/contact">Contact</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        
+
+
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">Using XHProf to profile your Drupal module</h1>
+    <p>By <a href="/team/tim-stallmann">Tim Stallmann</a></p>
+    <p class="centerdot">&centerdot; </p>
+    <p>Jun 16, 2016 </p><br>
+    <i class="fa fa-tags"></i><p><a href="/blog/tag/php/">PHP</a>, <a href="/blog/tag/performance/">Performance</a>, <a href="/blog/tag/drupal/">Drupal</a>, <a href="/blog/tag/drupal-planet/">Drupal Planet</a>, <a href="/blog/tag/module-development/">Module Development</a></p>
+    
+    <div><p><span id="comment-count"></span></p></div>
+    
+    
+  </header>
+
+  
+
+  <article class="post-content">
+    <p>This is part 2 of a series on using XHProf for profiling Drupal modules.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><a href="/2016/05/26/installing-xhprof.html">Part 1: Installing XHProf</a></td>
+      <td><strong>Part 2: Using XHProf</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>After you’ve <a href="/2016/05/26/installing-xhprof.html">installed XHProf</a>, what’s next? How can you make use of its recommendations to tune a module or a website? Unfortunately there are no hard-and-fast rules for optimizing code to run more efficiently. What I can offer here is my own experience trying to optimize a D8 module using XHProf.</p>
+
+<h3 id="understanding-an-xhprof-run-report">Understanding an XHProf run report</h3>
+
+<p>The XHProf GUI displays the result of a given profiler run, or a group of runs. It can even compare 2 runs, but we’ll get to that in a minute. If you followed <a href="/2016/05/26/installing-xhprof.html">my previous post</a>, you should have the <code class="highlighter-rouge">xhprof_html</code> directory symlinked into the root web directory for your Drupal site; so visiting <code class="highlighter-rouge">&lt;my-local-site&gt;/xhprof/</code> should give you a list of all available stored run IDs, and you can click through one of those to view a specific run report.</p>
+
+<p>You can also go directly to a specific run report via the URL <code class="highlighter-rouge">&lt;my-local-site&gt;/xhprof/index.php?run=&lt;run-id&gt;&amp;source=&lt;source-id&gt;</code> (which you should have been logging already via an <code class="highlighter-rouge">echo</code> statement or <code class="highlighter-rouge">dblog</code> if you followed the last post).</p>
+
+<p><img src="/assets/img/blog/xhprof-results-page-screenshot.png" alt="Header of an XHProf run report" /></p>
+
+<p>The core of the run report is a table of each function or method which your code called while it was being profiled, along with a set of statistics about that function. This allows you to understand which parts of your code are most resource-intensive, and which are being called frequently in the use case that you’re profiling. Clicking on any one of the column headers will sort the list by that metric. To understand this report, it’s helpful to have some terminology:</p>
+
+<ul>
+  <li><strong>Incl. Wall Time</strong> - The total clock time elapsed between when a function call started and when the function exited. Note that this number is not a great basis for comparisons, since it can include other processes which were taking up CPU time on your machine while the PHP code was running, from streaming music in the background to PHPStorm’s code indexing, to random web browsing.</li>
+  <li><strong>Incl. CPU Time</strong> - In contrast to wall time, CPU time tracks only the time which the CPU actually spent executing your code (or related system calls). This is a more reliable metric for comparing different runs.</li>
+  <li><strong>Excl. Wall/CPU Time</strong> - Exclusive time measurements only count time actually spent within the given method itself. They exclude the time spent in any method/function called <em>from</em> the given function (since that time will be tracked separately).</li>
+</ul>
+
+<p>In general, the inclusive metrics (for CPU time and memory usage) will give you a sense of what your expensive methods/functions are – these are the methods or functions that you should avoid calling if possible. In contrast, the exclusive metrics will tell you where you can potentially improve the way a given method/function is implemented. For methods which belong to Drupal Core or other contrib modules, inclusive and exclusive metrics are basically equivalent, since you don’t usually have the option of impacting the implementation details of a function unless you’re working on its code directly. Note also that because your overall parent method and any other high-level methods in your code will <em>always</em> show up at the top of the inclusive time chart, you may have better luck really understanding where your performance hits come from by sorting by exclusive CPU time.</p>
+
+<h3 id="take-a-step-back-and-plan-your-test-scenarios">Take a step back and plan your test scenarios</h3>
+
+<p>Before digging in to optimizing your module code, you need to take a step back and think about the big picture. First, what are you optimizing for? Many optimizations involve a tradeoff between time and memory usage. Are you trying to reduce overall run-time at the expense of more memory? Is keeping the memory footprint of a given function down more important? In order to answer these questions you need to think about the overall context in which your code is running. In my case, I was optimizing a background import module which was run via cron, so the top priority was that the memory usage and number of database optimizations were low enough not to impact the user-facing site performance.</p>
+
+<p>Second, what use case for your code are you profiling? If this is a single method call, what arguments will be passed? If you’re profiling page loads on a website, which pages are you profiling? In order to successfully track whether the changes you’re making are having an impact on the metrics you’re concerned about, you need to be able to narrow down the possible use cases for your code into a handful of most-likely real world scenarios which you’ll actually choose to track via the profiler.</p>
+
+<h3 id="keep-things-organized">Keep things organized</h3>
+
+<p>Now it’s time to get organized. Write a simple test script so that you can easily run through all your use cases in an automated way – this is not strictly necessary, but it will save you a lot of work and potential error as you move through the process. In my case, I was testing a drush command hook, so I just wrote a bash shell script which executed the command three times in each of two different ways. For profiling page loads, I would recommend using <a href="https://jmeter.apache.org/">Apache JMeter</a> - and you’ll need to consider whether you want to force an uncached page load by passing a random dummy query parameter. Ideally, you should be running each scenario a few times so that you can then average the results to account for any small variations in run-time.</p>
+
+<p>Keeping your different runs organized is probably the most important part of successfully profiling module code using XHProf! Each run has a unique run ID, but <strong>you</strong> are solely responsible for knowing which use case scenario and which version of the codebase that run ID corresponds to. I set up a basic spreadsheet in OpenOffice where I could paste in run numbers and basic run stats to compare (but there’s almost certainly a nicer automated way to do this than what I used).</p>
+
+<p><img src="/assets/img/blog/xhprof-results-spreadsheet.png" alt="Screenshot of an OpenOffice spreadsheet summarizing XHProf results for various runs" /></p>
+
+<p>Once you have a set of run IDs for a given use case + codebase version, you can generate a <em>composite</em> xhprof report using the query string syntax <code class="highlighter-rouge">http://&lt;your-local-site&gt;/xhprof/index.php?run=&lt;first-run-id&gt;,&lt;second-run-id&gt;,&lt;third-run-id&gt;&amp;source=&lt;source-string&gt;</code> Averaging out across a few runs should give you more <a href="https://en.wikipedia.org/wiki/Accuracy_and_precision">precise</a> measurements for CPU time and memory usage, but beware that if parts of your code involve caching you may want to either throw out the first run’s results in each version of the code base, since that’s where the cache will be generated, or clear the cache between runs.</p>
+
+<p>Go ahead and test your run scripts to make sure that you can get a consistent baseline result at this point – if you’re seeing large differences in average total CPU times or average memory usage across different runs of the same codebase, you likely won’t be able to compare run times across <em>different</em> versions of the code.</p>
+
+<h3 id="actually-getting-to-work">Actually getting to work!</h3>
+
+<p>After all this set-up, you should be ready to experiment and see what the impact of changes in your code base are on the metrics that you want to shift. In my case, the code I was working on used a <a href="https://github.com/squix78/jsonstreamingparser">streaming JSON parser class</a>, and I noticed that one of the top function calls in the inital profiler report was the <code class="highlighter-rouge">consumeChar</code> method of the parser.</p>
+
+<p><img src="/assets/img/blog/xhprof-results-page.png" alt="Image of XHProf profiler report with the method consumeChar highlighted in yellow" /></p>
+
+<p>It turns out that the JSON files I was importing were pretty-printed, thus containing more whitespace than they needed to. Sine the <code class="highlighter-rouge">consumeChar</code> method gets called on each incoming character of the input stream, that added up to a lot of unnecessary method calls in the original code. By tweaking the JSON file export code to remove the pretty print flag, I cut down the number of times this method was called from 729,099 to 499,809, saving .2 seconds of run time right off the bat.</p>
+
+<p>That was the major place where the XHProf profiler report gave me insights I would not have had otherwise. The rest of my optimizing experience was mostly testing out some of the common-sense optimizations I had already thought of while looking at the code – caching a table of known Entity IDs rather than querying the DB to check if an entity existed each time, using an associative array and <code class="highlighter-rouge">is_empty()</code> <a href="http://www.w3programmers.com/phps-in_array-function-is-really-slow/">to replace <code class="highlighter-rouge">in_array()</code> calls</a>, cutting down on unnecessary <code class="highlighter-rouge">$entity-&gt;save()</code> operations where possible.</p>
+
+<p>It’s useful to mention that across the board the biggest performance hit in your Drupal code will probably be database calls, so cutting down on those wherever possible will save run-time (sometimes at the expense of memory, if you’re caching large amounts of data). Remember, also, that if DB log is enabled each logging call is a separate database operation, so use the log sparingly – or just log to <code class="highlighter-rouge">syslog</code> and use service like <a href="https://papertrailapp.com/">Papertrail</a> or <a href="https://www.loggly.com/">Loggly</a> on production sites.</p>
+
+<h3 id="the-final-results">The final results</h3>
+
+<p>As the results below show, using XHProf and some thoughtful optimizations I was able to cut total run time significantly in one use case (Case 2) and slightly in another use case (Case 1). Case 1 was already running in a reasonable amount of time, so here I was mostly interested in the Case 2 numbers (assuming I didn’t make anything too much worse).</p>
+
+<p><img src="/assets/img/blog/xhprof-results-graph.png" alt="Bar chart comparing the run time of various runs" /></p>
+
+<h3 id="think-of-the-big-picture-part-2">Think of the big picture, part 2</h3>
+
+<p>Remember that controlled experimental metrics are just a means to understanding and improving real-world performance (which you can also measure directly using tools like <a href="https://blackfire.io/">blackfire</a>, but that’s another blog post). In my case, at the end of the day we decided that the most important thing was to ensure that there wasn’t a performance impact on the production site while this background import code was running; so one of the optimizations we actually ended up implementing was to force this code to run <strong>slower</strong> by throttling <code class="highlighter-rouge">$entity-&gt;save()</code> operations to maximally 1 every 1/2 second or so, as a way to minimize the number of requests MySQL was having to respond to from the importer. XHProf is a powerful tool, but don’t lose the forest for the trees when it comes to optimization.</p>
+
+    <hr>
+
+    
+      <div class="post-comments">
+  
+    <div class="expander">
+      <a href="javascript:void(0)" id="js-expander-trigger" class="expander-trigger expander-hidden">Comments!</a>
+      <div id="js-expander-content" class="expander-content">
+        <!-- If there are existing comments, output them here. -->
+        <div id="post-comments" class="post-comments"></div>
+        <!-- New comment form -->
+        <form id="comment-form">
+          <h4>Leave a comment</h4>
+          <div class="comment-name">
+            <p>Name</p> <input type='text' name='name' id='name' required /><br>
+          </div>
+
+          <div class="comment-email">
+            <p>Email</p> <input type='email' name='email' id='email' required />
+            <p class="email-disclaimer">Savas will never sell your email address or spam you.</p><br>
+          </div>
+
+          <p>Comment</p>
+          <textarea name='comment' id='comment' required></textarea>
+          <p class="hint below-textarea">Plain text format only please.</p>
+
+          <input type='hidden' name='slug' id='slug' value='/2016/06/16/using-xhprof.html' />
+          <input type='text' name='url' id='url' />
+
+          <div class='are-you-human'>
+            <div class='are-you-human-owl'>
+              <img src="/assets/img/owl.png" alt="Savas logo">
+            </div>
+            <div class='are-you-human-field'>
+              <p>What type of animal is the Savas logo?</p>
+              <input type='text' name='nocaptcha' id='nocaptcha' class='nocaptcha'>
+              <p class="hint">Hint: 3 letters long, starts with an 'o' and ends with an 'l'.</p>
+            </div>
+          </div>
+
+          <input type='submit' value='Submit' id='submit' class="submit-comment"/>
+        </form>
+      </div>
+    </div>
+  
+  <hr>
+</div>
+
+    
+    <div class="post-bottom">
+  <div class="post-meta">
+    <h4>About the author</h4>
+    
+      <a href="/team/tim-stallmann">
+        <img src="/assets/img/team/tim-stallmann.jpg" alt="Tim Stallmann">
+      </a>
+      <p class="post-author-desc">Tim is a cartographer and developer at Savas Labs, implementing complex web applications for our clients.</p>
+    
+  </div>
+    <!-- Once we have more content, change this to posts related by tag -->
+  <div class="post-related flex-container">
+    <h4>Recent posts by Savas</h4>
+    <div class="cards">
+      
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/22/user-testing.html">
+              <div class="card-header">
+                  Usability Testing - Our Process and Favorite Practices
+              </div>
+              <div class="card-copy">
+                <p>Jun 22, 2016</p>
+                <p><p>Our approach to designing, conducting, and learning from user testing and other analyses.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/15/git-merge-conflict-strategies.html">
+              <div class="card-header">
+                  Strategies and tools for resolving Git merge conflicts
+              </div>
+              <div class="card-copy">
+                <p>Jun 15, 2016</p>
+                <p><p>An overview of strategies and tools I like to use when I encounter conflicts during merges.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+        
+          <div class="card">
+            <a href="/2016/05/26/installing-xhprof.html">
+              <div class="card-header">
+                  Installing XHProf to profile your Drupal module
+              </div>
+              <div class="card-copy">
+                <p>May 26, 2016</p>
+                <p><p>Step-by-step, how to install and use XHProf to profile your Drupal module.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+</div>
+
+    <div class="previous-next-links">
+  <div class="next">
+    
+      <a href="/2016/06/22/user-testing.html"><i class="fa fa-long-arrow-left "></i> Usability Testing - Our Process and Favorite Practices</a>
+    
+  </div>
+  <div class="previous">
+    
+      <a href="/2016/06/15/git-merge-conflict-strategies.html"> Strategies and tools for resolving Git merge conflicts <i class="fa fa-long-arrow-right"></i></a>
+    
+  </div>
+</div>
+
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <div class="contact-block">
+  <div class="contact-block__items">
+    <h3>Interested in working with us?</h3>
+    <a href="/contact">Get in touch!</a>
+  </div>
+</div>
+    <footer class="footer" role="contentinfo">
+  <div class="footer-links">
+    <ul>
+      <li><h3>Location</h3></li>
+      <li>Savas Labs<br />
+          PMB 114<br />
+          201 W Main Street, Suite 100<br />
+          Durham, NC 27701<br /></li>
+    </ul>
+    <ul>
+      <li><h3>Around the Web</h3></li>
+      <ul>
+        <li><a href="https://github.com/savaslabs"><span class="mega-octicon octicon-mark-github"></span></a></li>
+        <li><a href="https://www.drupal.org/node/2466865"><i class="fa fa-drupal fa-lg fa-2x"></i></a></li>
+        <li><a href="https://twitter.com/savas_labs"><i class="fa fa-twitter fa-lg fa-2x"></i></a></li>
+        <li><a href="https://www.linkedin.com/company/savas-labs"><i class="fa fa-linkedin fa-lg fa-2x"></i></a></li>
+      </ul>
+    </ul>
+    <ul>
+      <li><h3>Contact</h3></li>
+      <li><a href="mailto:info@savaslabs.com">info@savaslabs.com</a></li>
+      <li>(919) 432-4660</li>
+    </ul>
+  </div>
+
+</footer>
+
+<div class="footer-copyright">
+  <p>Copyright &copy; Savas Labs 2016</p>
+</div>
+
+
+  </body>
+
+</html>

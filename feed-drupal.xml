@@ -1,39 +1,507 @@
----
----
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>{{ site.title | xml_escape }}</title>
-    <description>{{ site.description | xml_escape }}</description>
-    <link>{{ site.url }}/</link>
-    <atom:link href="{{ "/feed-drupal.xml" | prepend: site.url }}" rel="self" type="application/rss+xml"/>
-    <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
-    <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
-    <generator>Jekyll v{{ jekyll.version }}</generator>
-    {% for post in site.posts %}
-    {% if post.tags contains 'drupal-planet' %}
+    <title>Savas Labs</title>
+    <description>A full-service web agency leveraging the power of Drupal.
+</description>
+    <link>/</link>
+    <atom:link href="/feed-drupal.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 26 Aug 2016 19:07:15 +0000</pubDate>
+    <lastBuildDate>Fri, 26 Aug 2016 19:07:15 +0000</lastBuildDate>
+    <generator>Jekyll v3.0.3</generator>
+    
+    
+    
+    
       <item>
-        <title>{{ post.title | xml_escape }}</title>
+        <title>Using XHProf to profile your Drupal module</title>
         <description>
           &lt;p&gt;
-            {% if post.featured_image %}
-              &lt;img src=&quot;{{ site.url}}{{ post.featured_image }}&quot; alt=&quot;{{ post.featured_image_alt }}&quot; &gt;
-            {% endif %}
-            {{ post.drupal_planet_summary | xml_escape }}
-                &lt;a href=&quot;{{ site.url }}{{ post.url }}&quot;&gt;Continue reading…&lt;/a&gt;
+            
+            Second part in a series of how to use XHProf effectively within a VM for a Drupal website.
+                &lt;a href=&quot;/2016/06/16/using-xhprof.html&quot;&gt;Continue reading…&lt;/a&gt;
           &lt;/p&gt;
         </description>
-        <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
-        <link>{{ post.url | prepend: site.url }}</link>
-        <guid isPermaLink="true">{{ post.url | prepend: site.url }}</guid>
-        {% for tag in post.tags %}
-        <category>{{ tag | xml_escape }}</category>
-        {% endfor %}
-        {% for cat in post.categories %}
-        <category>{{ cat | xml_escape }}</category>
-        {% endfor %}
+        <pubDate>Thu, 16 Jun 2016 00:00:00 +0000</pubDate>
+        <link>/2016/06/16/using-xhprof.html</link>
+        <guid isPermaLink="true">/2016/06/16/using-xhprof.html</guid>
+        
+        <category>php</category>
+        
+        <category>performance</category>
+        
+        <category>drupal</category>
+        
+        <category>drupal-planet</category>
+        
+        <category>module-development</category>
+        
+        
       </item>
-      {% endif %}
-    {% endfor %}
+      
+    
+    
+    
+    
+      <item>
+        <title>Installing XHProf to profile your Drupal module</title>
+        <description>
+          &lt;p&gt;
+            
+              &lt;img src=&quot;/assets/img/blog/xhprof-callgraph.jpg&quot; alt=&quot;an XHProf callgraph&quot; &gt;
+            
+            First part in a series of how to use XHProf effectively within a VM for a Drupal website.
+                &lt;a href=&quot;/2016/05/26/installing-xhprof.html&quot;&gt;Continue reading…&lt;/a&gt;
+          &lt;/p&gt;
+        </description>
+        <pubDate>Thu, 26 May 2016 00:00:00 +0000</pubDate>
+        <link>/2016/05/26/installing-xhprof.html</link>
+        <guid isPermaLink="true">/2016/05/26/installing-xhprof.html</guid>
+        
+        <category>php</category>
+        
+        <category>performance</category>
+        
+        <category>drupal</category>
+        
+        <category>drupal-planet</category>
+        
+        <category>module-development</category>
+        
+        
+      </item>
+      
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <item>
+        <title>Drupal 6 retires today, now what? Part 4: Upgrade to D7 or D8?</title>
+        <description>
+          &lt;p&gt;
+            
+              &lt;img src=&quot;/assets/img/blog/retirement.jpg&quot; alt=&quot;a retirement sign at the beach&quot; &gt;
+            
+            Part 4 of a series investigating what options you have with your Drupal 6 site as EOL has now come. We discuss whether Drupal 7 or Drupal 8 make sense for your site.
+                &lt;a href=&quot;/2016/02/24/drupal-6-part-4.html&quot;&gt;Continue reading…&lt;/a&gt;
+          &lt;/p&gt;
+        </description>
+        <pubDate>Wed, 24 Feb 2016 00:00:00 +0000</pubDate>
+        <link>/2016/02/24/drupal-6-part-4.html</link>
+        <guid isPermaLink="true">/2016/02/24/drupal-6-part-4.html</guid>
+        
+        <category>drupal</category>
+        
+        <category>drupal8</category>
+        
+        <category>drupal-planet</category>
+        
+        
+      </item>
+      
+    
+    
+      <item>
+        <title>It actually is 2016, your site is running on Drupal 6, now what? Part 3: the options</title>
+        <description>
+          &lt;p&gt;
+            
+              &lt;img src=&quot;/assets/img/blog/options.png&quot; alt=&quot;a highway-looking sign with arrows pointing to many possibilities&quot; &gt;
+            
+            Part 3 of a series investigating what options you have with your Drupal 6 site as EOL approaches. We discuss what your options really are given the many difficult decisions you are likely faced given your organization&#39;s budget, level of risk and tolerance for it, and other business priorities.
+                &lt;a href=&quot;/2016/01/25/drupal-6-part-3.html&quot;&gt;Continue reading…&lt;/a&gt;
+          &lt;/p&gt;
+        </description>
+        <pubDate>Mon, 25 Jan 2016 00:00:00 +0000</pubDate>
+        <link>/2016/01/25/drupal-6-part-3.html</link>
+        <guid isPermaLink="true">/2016/01/25/drupal-6-part-3.html</guid>
+        
+        <category>drupal</category>
+        
+        <category>drupal8</category>
+        
+        <category>drupal-planet</category>
+        
+        
+      </item>
+      
+    
+    
+      <item>
+        <title>How to subscribe users to MailChimp lists in a Drupal custom module</title>
+        <description>
+          &lt;p&gt;
+            
+              &lt;img src=&quot;/assets/img/blog/composer.jpg&quot; alt=&quot;composer&quot; &gt;
+            
+            A demonstration on how to use Composer Manager and the MailChimp PHP library to simply and easily subscribe users to mailing lists without using the MailChimp contributed module.
+
+                &lt;a href=&quot;/2016/01/22/composer-mailchimp-subscriptions.html&quot;&gt;Continue reading…&lt;/a&gt;
+          &lt;/p&gt;
+        </description>
+        <pubDate>Fri, 22 Jan 2016 00:00:00 +0000</pubDate>
+        <link>/2016/01/22/composer-mailchimp-subscriptions.html</link>
+        <guid isPermaLink="true">/2016/01/22/composer-mailchimp-subscriptions.html</guid>
+        
+        <category>drupal</category>
+        
+        <category>drupal-planet</category>
+        
+        <category>composer</category>
+        
+        <category>module-development</category>
+        
+        <category>mailchimp</category>
+        
+        
+      </item>
+      
+    
+    
+      <item>
+        <title>It&#39;s nearly 2016, your site is running on Drupal 6, now what? Part 2: the risks.</title>
+        <description>
+          &lt;p&gt;
+            
+              &lt;img src=&quot;/assets/img/blog/crossed-out-angel.png&quot; alt=&quot;Crossed out angel&quot; &gt;
+            
+            Part 2 of a series investigating what to do with your Drupal 6 site as
+EOL approaches. This post takes a deep dive into the risks specifically.
+
+                &lt;a href=&quot;/2015/12/10/drupal-6-part-2.html&quot;&gt;Continue reading…&lt;/a&gt;
+          &lt;/p&gt;
+        </description>
+        <pubDate>Thu, 10 Dec 2015 00:00:00 +0000</pubDate>
+        <link>/2015/12/10/drupal-6-part-2.html</link>
+        <guid isPermaLink="true">/2015/12/10/drupal-6-part-2.html</guid>
+        
+        <category>drupal</category>
+        
+        <category>drupal8</category>
+        
+        <category>drupal-planet</category>
+        
+        
+      </item>
+      
+    
+    
+      <item>
+        <title>It&#39;s nearly 2016, your site is running on Drupal 6, now what? Part 1: The overview</title>
+        <description>
+          &lt;p&gt;
+            
+            
+                &lt;a href=&quot;/2015/11/24/drupal-6-upgrade.html&quot;&gt;Continue reading…&lt;/a&gt;
+          &lt;/p&gt;
+        </description>
+        <pubDate>Tue, 24 Nov 2015 00:00:00 +0000</pubDate>
+        <link>/2015/11/24/drupal-6-upgrade.html</link>
+        <guid isPermaLink="true">/2015/11/24/drupal-6-upgrade.html</guid>
+        
+        <category>drupal</category>
+        
+        <category>drupal8</category>
+        
+        <category>drupal-planet</category>
+        
+        
+      </item>
+      
+    
+    
+      <item>
+        <title>Drupalized Web Mapping @ NACIS 2015</title>
+        <description>
+          &lt;p&gt;
+            
+            
+                &lt;a href=&quot;/2015/11/05/drupal-web-mapping.html&quot;&gt;Continue reading…&lt;/a&gt;
+          &lt;/p&gt;
+        </description>
+        <pubDate>Thu, 05 Nov 2015 00:00:00 +0000</pubDate>
+        <link>/2015/11/05/drupal-web-mapping.html</link>
+        <guid isPermaLink="true">/2015/11/05/drupal-web-mapping.html</guid>
+        
+        <category>drupal</category>
+        
+        <category>drupal-planet</category>
+        
+        <category>cartography</category>
+        
+        
+      </item>
+      
+    
+    
+    
+    
+    
+    
+    
+    
+      <item>
+        <title>Sassy Drupal theming: a lighter version of SMACSS</title>
+        <description>
+          &lt;p&gt;
+            
+            It takes some forethought, but a well-organized theme means code that is modular and easy to maintain or pass off to another developer. SMACSS principles are becoming more and more widespread and can be applied to a Drupal theme. At Savas we&#39;ve picked out what we love from SMACSS and simplified the rest, creating a stylesheet organization method that works for us. In this post (part 2 of my three-part series on Drupal theming with Sass) I&#39;ll go through our version of SMACSS and link to real examples.
+
+                &lt;a href=&quot;/2015/08/28/sassy-drupal-theming-part-2.html&quot;&gt;Continue reading…&lt;/a&gt;
+          &lt;/p&gt;
+        </description>
+        <pubDate>Fri, 28 Aug 2015 00:00:00 +0000</pubDate>
+        <link>/2015/08/28/sassy-drupal-theming-part-2.html</link>
+        <guid isPermaLink="true">/2015/08/28/sassy-drupal-theming-part-2.html</guid>
+        
+        <category>drupal</category>
+        
+        <category>drupal-planet</category>
+        
+        <category>theming</category>
+        
+        <category>sass</category>
+        
+        <category>bourbon</category>
+        
+        
+      </item>
+      
+    
+    
+    
+    
+      <item>
+        <title>Sassy Drupal theming: Setting up Bourbon and Neat</title>
+        <description>
+          &lt;p&gt;
+            
+            When Savas built a custom Drupal 8 theme, we needed to include a grid framework and chose Bourbon&#39;s Neat for its ease of use, its light weight, and the library of useful Sass mixins provided by Bourbon. In this post I detail how to set all of this up and use Compass to compile SCSS.
+
+                &lt;a href=&quot;/2015/08/21/sassy-drupal-theming-part-1.html&quot;&gt;Continue reading…&lt;/a&gt;
+          &lt;/p&gt;
+        </description>
+        <pubDate>Fri, 21 Aug 2015 00:00:00 +0000</pubDate>
+        <link>/2015/08/21/sassy-drupal-theming-part-1.html</link>
+        <guid isPermaLink="true">/2015/08/21/sassy-drupal-theming-part-1.html</guid>
+        
+        <category>drupal</category>
+        
+        <category>drupal-planet</category>
+        
+        <category>theming</category>
+        
+        <category>sass</category>
+        
+        <category>bourbon</category>
+        
+        
+      </item>
+      
+    
+    
+    
+    
+      <item>
+        <title>When Drupal database sanitization isn&#39;t enough</title>
+        <description>
+          &lt;p&gt;
+            
+            One of the most embarrassing and potentially costly things we can do as developers is to send emails out to real people unintentionally from a development environment. It happens, and often times we aren&#39;t even aware of it until the damage is done and a background process sends out, say, 11,000 automated emails to existing customers (actually happened to a former employer recently). In the Drupal world, there are [myriad ways](https://github.com/chrisarusso/Tilthy-Rich-Compost-Website/commit/64a558e2) to [attempt to address](https://github.com/chrisarusso/Tilthy-Rich-Compost-Website/blob/master/scripts/sanitize.php) this problem.
+
+We discuss how to use a drush hook on the `drush sqlsan` command to ensure proper sanitization while using the `user revision` module.
+
+                &lt;a href=&quot;/2015/08/04/user-revision-sanitize.html&quot;&gt;Continue reading…&lt;/a&gt;
+          &lt;/p&gt;
+        </description>
+        <pubDate>Tue, 04 Aug 2015 00:00:00 +0000</pubDate>
+        <link>/2015/08/04/user-revision-sanitize.html</link>
+        <guid isPermaLink="true">/2015/08/04/user-revision-sanitize.html</guid>
+        
+        <category>drupal</category>
+        
+        <category>drupal8</category>
+        
+        <category>drupal-planet</category>
+        
+        <category>best-practices</category>
+        
+        
+      </item>
+      
+    
+    
+    
+    
+      <item>
+        <title>Building a map in Drupal 8</title>
+        <description>
+          &lt;p&gt;
+            
+            Adding a map to a Drupal 7 site is made easy by a variety of location storage and map rendering modules. However, at the time of this post most of these modules don&#39;t have an 8.x branch ready and therefore aren&#39;t usable in Drupal 8. Since Savas has recently taken on a Drupal 8 mapping project, we decided to use the Leaflet library within a custom theme to render our map and the Views GeoJSON module to store our data.
+
+In this post we&#39;ll add the Leaflet library to a custom theme using the new *.libaries.yml file, write a little Javascript to create our map, and pull in map points via a REST export view.
+
+                &lt;a href=&quot;/2015/07/06/map-in-drupal-8.html&quot;&gt;Continue reading…&lt;/a&gt;
+          &lt;/p&gt;
+        </description>
+        <pubDate>Mon, 06 Jul 2015 00:00:00 +0000</pubDate>
+        <link>/2015/07/06/map-in-drupal-8.html</link>
+        <guid isPermaLink="true">/2015/07/06/map-in-drupal-8.html</guid>
+        
+        <category>drupal</category>
+        
+        <category>drupal8</category>
+        
+        <category>drupal-planet</category>
+        
+        <category>cartography</category>
+        
+        <category>leaflet</category>
+        
+        
+      </item>
+      
+    
+    
+      <item>
+        <title>Implementing a CTools multi-step form in a block</title>
+        <description>
+          &lt;p&gt;
+            
+            No one likes long forms. They&#39;re overwhelming to look at and it&#39;s easy to lose your place. Multi-step forms are a way to simplify data collection and make your users&#39; lives easier.
+
+Drupal&#39;s Form API combined with the CTools module provide a solid platform for building a multi-step form. There are [many wonderful guides](https://duckduckgo.com/?q=ctools+multistep+form) on how to build a CTools multi-step form in Drupal. But as far as I can tell, all of the guides assume that the form will live on a page — which makes sense, as that&#39;s the most common use case.
+
+On a recent project, though, a client asked us to create a multi-step form using only a block, so it could be placed on a page using Panels. It turns out this is pretty straightforward but as it&#39;s not well documented elsewhere, here&#39;s a quick guide to what you need to do. (Note: I created [an example module on GitHub](https://github.com/savaslabs/ctools_multistep_form_block), so please reference that as needed. This post is just covering the highlights.)
+
+                &lt;a href=&quot;/2015/06/23/implementing-ctools-multi-step-form-block.html&quot;&gt;Continue reading…&lt;/a&gt;
+          &lt;/p&gt;
+        </description>
+        <pubDate>Tue, 23 Jun 2015 00:00:00 +0000</pubDate>
+        <link>/2015/06/23/implementing-ctools-multi-step-form-block.html</link>
+        <guid isPermaLink="true">/2015/06/23/implementing-ctools-multi-step-form-block.html</guid>
+        
+        <category>drupal</category>
+        
+        <category>drupal-planet</category>
+        
+        
+      </item>
+      
+    
+    
+    
+    
+      <item>
+        <title>Drupal 8 Theming Basics</title>
+        <description>
+          &lt;p&gt;
+            
+            Theming in Drupal 8 means a lot of changes for current Drupalers. These updates make Drupal more accessible to non-Drupalers and more modular, semantic, modern, and fun for everyone. Right now, documentation is scarce and often out-of-date, so I&#39;ve collected all that I&#39;ve learned while building my first Drupal 8 site.
+
+Since most contributed base themes don&#39;t have an 8.x branch in a useable state at this point, Savas created a custom theme based on Classy, Drupal&#39;s new base theme. I&#39;ll step through the process of creating a custom theme and walk through the basics of Twig and Twig debugging.
+
+                &lt;a href=&quot;/2015/06/10/d8-theming-basics.html&quot;&gt;Continue reading…&lt;/a&gt;
+          &lt;/p&gt;
+        </description>
+        <pubDate>Wed, 10 Jun 2015 00:00:00 +0000</pubDate>
+        <link>/2015/06/10/d8-theming-basics.html</link>
+        <guid isPermaLink="true">/2015/06/10/d8-theming-basics.html</guid>
+        
+        <category>drupal8</category>
+        
+        <category>drupal-planet</category>
+        
+        <category>theming</category>
+        
+        <category>drupal</category>
+        
+        
+      </item>
+      
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <item>
+        <title>Drupal 8 development environment using Docker, Docker Compose, and Bowline on OS X</title>
+        <description>
+          &lt;p&gt;
+            
+            In this post I explain how my team used Docker, Docker Compose, and Bowline to spin up consistent local dev environments on OS X as part of a Drupal 8 contrib module sprint.
+
+                &lt;a href=&quot;/2015/04/23/drupal-8-docker-bowline-setup.html&quot;&gt;Continue reading…&lt;/a&gt;
+          &lt;/p&gt;
+        </description>
+        <pubDate>Thu, 23 Apr 2015 00:00:00 +0000</pubDate>
+        <link>/2015/04/23/drupal-8-docker-bowline-setup.html</link>
+        <guid isPermaLink="true">/2015/04/23/drupal-8-docker-bowline-setup.html</guid>
+        
+        <category>docker</category>
+        
+        <category>bowline</category>
+        
+        <category>osx</category>
+        
+        <category>drupal</category>
+        
+        <category>drupal8</category>
+        
+        <category>drupal-planet</category>
+        
+        
+      </item>
+      
+    
+    
+    
+    
+      <item>
+        <title>Savas supports the Drupal Association</title>
+        <description>
+          &lt;p&gt;
+            
+            Drupal is a thriving FOSS project, and one of the main organizations moving it forward is the Drupal Association. Today, Savas is proud to have become a supporting member of the Drupal Association.
+
+                &lt;a href=&quot;/2015/04/07/savas-supports-drupal-association.html&quot;&gt;Continue reading…&lt;/a&gt;
+          &lt;/p&gt;
+        </description>
+        <pubDate>Tue, 07 Apr 2015 00:00:00 +0000</pubDate>
+        <link>/2015/04/07/savas-supports-drupal-association.html</link>
+        <guid isPermaLink="true">/2015/04/07/savas-supports-drupal-association.html</guid>
+        
+        <category>drupal</category>
+        
+        <category>drupal-planet</category>
+        
+        
+      </item>
+      
+    
+    
+    
+    
+    
   </channel>
 </rss>

@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <title>It actually is 2016, your site is running on Drupal 6, now what? Part 3: the options | Savas Labs</title>
+  
+  <meta name="description" content="This is part 3 of a series investigating what to do with your Drupal 6 site asEOL approaches.">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,400italic,700italic|PT+Serif|Bitter|Source+Sans+Pro' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/assets/styles/main.css">
+  <link rel="stylesheet" href="/assets/icons/octicons/octicons.css">
+  <link rel="canonical" href="/2016/01/25/drupal-6-part-3.html">
+  <link rel="alternate" type="application/rss+xml" title="Savas Labs" href="/feed.xml" />
+  <script type="text/javascript" src="/assets/js/main.js"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Durham, North Carolina",
+        "postalCode": "27701",
+        "streetAddress": "201 W Main St."
+      },
+      "description": "A full-service web agency leveraging the power of Drupal.
+",
+      "email": "info@savaslabs.com",
+      "name": "Savas",
+      "telephone": "(919) 432-4660",
+      "url": "http://savaslabs.com",
+      "logo": "http://savaslabs.com/assets/img/logo.png"
+    }
+</script>
+
+  
+  
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "It actually is 2016, your site is running on Drupal 6, now what? Part 3: the options",
+    "about": "What are your options while running a Drupal 6 site in the wild after EOL?",
+    "articleBody": "
+
+
+&lt;div class=&quot;post&quot;&gt;
+  &lt;header class=&quot;post-header&quot;&gt;
+    &lt;h1 class=&quot;post-title&quot;&gt;It actually is 2016, your site is running on Drupal 6, now what? Part 3: the options&lt;/h1&gt;
+    &lt;p&gt;By &lt;a href=&quot;/team/chris-russo&quot;&gt;Chris Russo&lt;/a&gt;&lt;/p&gt;
+    &lt;p class=&quot;centerdot&quot;&gt;&amp;centerdot; &lt;/p&gt;
+    &lt;p&gt;Jan 25, 2016 &lt;/p&gt;&lt;br&gt;
+    &lt;i class=&quot;fa fa-tags&quot;&gt;&lt;/i&gt;&lt;p&gt;&lt;a href=&quot;/blog/tag/drupal/&quot;&gt;Drupal&lt;/a&gt;, &lt;a href=&quot;/blog/tag/drupal8/&quot;&gt;Drupal 8&lt;/a&gt;, &lt;a href=&quot;/blog/tag/drupal-planet/&quot;&gt;Drupal Planet&lt;/a&gt;&lt;/p&gt;
+    
+    &lt;div&gt;&lt;p&gt;&lt;span id=&quot;comment-count&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+    
+    
+      &lt;div class=&quot;post-featured-image&quot;&gt;
+        &lt;img class=&quot;post-hero-image&quot; src=&quot;/assets/img/blog/options.png&quot; alt=&quot;a highway-looking sign with arrows pointing to many possibilities&quot;&gt;
+      &lt;/div&gt;
+    
+  &lt;/header&gt;
+
+  
+
+  &lt;article class=&quot;post-content&quot;&gt;
+    &lt;p&gt;This is part 3 of a series investigating what to do with your Drupal 6 site as
+EOL approaches.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/2015/11/24/drupal-6-upgrade.html&quot;&gt;Part 1 - overview&lt;/a&gt; |
+&lt;a href=&quot;/2015/12/10/drupal-6-part-2.html&quot;&gt;Part 2 - the risks&lt;/a&gt;
+| &lt;strong&gt;Part 3 - the options&lt;/strong&gt; |
+&lt;a href=&quot;/2016/02/24/drupal-6-part-4.html&quot;&gt;Part 4 - Drupal 7 or 8?&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;the-options-of-operating-drupal-6-after-eol&quot;&gt;The options of operating Drupal 6 after EOL&lt;/h2&gt;
+
+&lt;p&gt;Though some advisers (solicited or not) might tell you otherwise, you &lt;em&gt;always&lt;/em&gt; have options as to what to do
+with your website if you’re running Drupal. One of them is of course nothing, and the others require more thought.&lt;/p&gt;
+
+&lt;p&gt;What is the right thing to do can be a hot-button topic. Some technologists are purists,
+and believe it sacrosanct to even consider running software beyond EOL. However, we appreciate
+that although ideally site owners would always have been prepared and budgeted for
+software upgrades, sometimes life happens, and other business priorities and budget
+availability don’t perfectly align with timing for a software upgrade.&lt;/p&gt;
+
+&lt;div class=&quot;blog-image-large wrap-left&quot;&gt;
+  &lt;img src=&quot;/assets/img/blog/Armageddon-affleck.jpg&quot; alt=&quot;Ben Affleck in the Hollywood movie Armageddon&quot; /&gt;
+&lt;/div&gt;
+&lt;p&gt;One end of the spectrum is well captured by the following quotation from
+the &lt;a href=&quot;https://www.drupal.org/user/406161&quot;&gt;Drupal security team&lt;/a&gt; that some (certainly not us
+&lt;img src=&quot;http://www.emoji-cheat-sheet.com/graphics/emojis/wink.png&quot; alt=&quot;winking emoji&quot; class=&quot;emoji&quot; /&gt;) may consider an
+alarmist reaction to one of the &lt;a href=&quot;https://www.drupal.org/PSA-2014-003&quot;&gt;most prolific Drupal security vulnerabilities to-date&lt;/a&gt; colloquially referred to as “Drupalgeddon”&lt;/p&gt;
+
+&lt;p&gt;&lt;br style=&quot;clear:both;&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;You should proceed under the assumption that every Drupal 7 website was compromised unless updated or patched before Oct 15th, 11pm UTC, that is 7 hours after the announcement.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This is of course meant to err on the side of caution, but can
+also be very anxiety provoking. Similarly, when hearing of the 3 month window for Drupal 6
+support after Drupal 8.0.0 was released &lt;a href=&quot;https://www.drupal.org/drupal-6-eol#comment-10556816&quot;&gt;“Le dendrite”&lt;/a&gt; is not wrong to say:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;someone please settle my stomach&lt;/p&gt;
+
+  &lt;p&gt;I was shocked to read this. it might seriously wreck me,
+ i really hope i’m misunderstanding this&lt;/p&gt;
+
+  &lt;p&gt;will my sites just die?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;That &lt;a href=&quot;https://www.drupal.org/drupal-6-eol&quot;&gt;entire thread&lt;/a&gt; is a
+pretty good exposé into the various perspectives and preparedness
+on upgrading Drupal 6 sites. If you’ve got a spare half-day, give it a once-over.&lt;/p&gt;
+
+&lt;p&gt;On the &lt;strong&gt;&lt;em&gt;other hand&lt;/em&gt;&lt;/strong&gt;, we have had at least two clients in 2015 who continued to run
+&lt;a href=&quot;https://www.drupal.org/drupal-5.0&quot;&gt;&lt;strong&gt;Drupal 5&lt;/strong&gt;&lt;/a&gt; (not a typo)
+websites in production successfully.&lt;/p&gt;
+
+&lt;p&gt;Neither end is entirely wrong, they just represent difference of opinion and available options.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-primary-options-for-drupal-6-site-owners-are&quot;&gt;The primary options for Drupal 6 site owners are&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Do &lt;strong&gt;not&lt;/strong&gt; upgrade your website to a newer Drupal version&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Do&lt;/strong&gt; upgrade your website to a newer Drupal version&lt;/li&gt;
+  &lt;li&gt;Use the time to seriously revision your website altogether&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;But how do you decide which option is best for you, the site owner?&lt;/p&gt;
+
+&lt;p&gt;That decision mostly rests on your organization’s&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;risk tolerance&lt;/li&gt;
+  &lt;li&gt;likelihood to be targeted by hackers&lt;/li&gt;
+  &lt;li&gt;budget to improve your website&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;considerations-to-not-upgrade&quot;&gt;Considerations to &lt;em&gt;not&lt;/em&gt; upgrade&lt;/h4&gt;
+
+&lt;p&gt;Choosing &lt;em&gt;not&lt;/em&gt; to upgrade your website is typically dictated by your organization having neither internal
+technical expertise or sufficient funds to hire a partner. When this is the case, if a small budget can be
+afforded, a site audit is usually the next best option to have some peace of mind that you’re taking the measures you’re able to
+ mitigate the risk of running outdated, unsupported software. A qualified partner can perform a
+thorough assessment of risk and make budget-conscious recommendations
+on how to best harden the site against outside threats short of doing the more costly
+full-site upgrade.&lt;/p&gt;
+
+&lt;div class=&quot;blog-image-large wrap-left&quot;&gt;
+ &lt;img src=&quot;/assets/img/blog/wild.jpg&quot; alt=&quot;wolves in the wild&quot; /&gt;
+&lt;/div&gt;
+&lt;p&gt;Primary attack vectors that we focus on lie in custom code, and
+under-supported contributed modules since core code represents much lower risk
+having been well vetted by years in the wild.
+&lt;br style=&quot;clear:both;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;One other consideration independent
+of your specific website configuration is your server autonomy dictated by your hosting provider. Running old software is
+usually tolerated in a shared hosting environment for only so long before upgrades
+are enforced. Warning emails are often (not always) sent out in advance of server-level upgrades, however,
+ it’s easy to miss those emails, and it hurts to be caught by surprise that some PHP version upgrade renders
+your site completely useless. Understanding the level of control you as the
+site owner has over your server is crucial.&lt;/p&gt;
+
+&lt;h4 id=&quot;considerations-to-upgrade&quot;&gt;Considerations &lt;em&gt;to&lt;/em&gt; upgrade&lt;/h4&gt;
+
+&lt;p&gt;Going through a typical Drupal upgrade (the update.php method) is usually the right option for you if you&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Want to mostly preserve the site to be upgraded as-is.&lt;/li&gt;
+  &lt;li&gt;Have a fairly straightforward site using few, and mainly popular contributed modules .&lt;/li&gt;
+  &lt;li&gt;Decide you ought to be using supported software because you
+    &lt;ul&gt;
+      &lt;li&gt;have sensitive information within your site that would be disastrous if compromised.&lt;/li&gt;
+      &lt;li&gt;have financial transactions or information housed within your site.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Have sufficient budget to do the work.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Upgrading a Drupal website is a &lt;strong&gt;non-trivial&lt;/strong&gt; investment. We’ve definitely had conversations
+ with clients to the tune of&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“oh, upgrading is not a click of a button? Phooey!”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;which is very understandable. The Drupal community’s stance of not retaining backwards compatibility
+for the sake of keeping pace with modern web development is solid and quite defensible as well. Acquia
+does a good job of addressing that in the “Support” section (unfortunately not directly linkable)
+in this informative
+&lt;a href=&quot;https://www.acquia.com/blog/setting-record-straight-total-cost-adobe-aem-vs-acquia&quot;&gt;article about total cost of ownership&lt;/a&gt;
+of a Drupal site, which is in itself a topic worth a lot of consideration and analysis.&lt;/p&gt;
+
+&lt;p&gt;When prospective clients are committed to the time-line and investment of an upgrade,
+ we always advise them to seriously consider a comprehensive rebuild/redesign as it can
+ often present the path of most value. It is uncommon that a client desires to
+ invest significantly to create an exact replica of the site they built 3, 4, or 5 years ago.&lt;/p&gt;
+
+&lt;p&gt;In many cases, legacy content, functionality and style has outlived it’s relevancy after 3 years
+ and it becomes more burdensome than valuable, in the same way a poorly maintained house on a nice lot
+ may be less valuable than if the lot were empty.&lt;/p&gt;
+
+&lt;p&gt;Another consideration is whether or not Drupal is the right platform for your organization’s needs.
+ The answer to this is usually yes, especially after there is organizational
+ investment and familiarity, but for less complicated sites that are open to revisioning,
+ there are other options that, for example, are free to host and have no upgrade requirements
+  like the &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;static site generator Jekyll&lt;/a&gt; from which our own
+   web site is built. An honest consultant will tell you when Drupal is a good fit
+   and when it’s not.&lt;/p&gt;
+
+&lt;p&gt;But alas, if you’re determined to stick with Drupal
+and you’d like to upgrade, the final consideration
+is what platform to upgrade to, Drupal 7 or 8?&lt;/p&gt;
+
+&lt;p&gt;Ah-ah-ah…&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/ah-ah-ah-terminal.jpg&quot; alt=&quot;Dennis Nedry from Jurassic Park saying ah ah ah&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;that’s for the next episode!&lt;/p&gt;
+
+&lt;h2 id=&quot;part-4-and-beyond&quot;&gt;Part 4 and beyond&lt;/h2&gt;
+
+&lt;p&gt;Next, we’ll discuss Drupal 7 vs. Drupal 8 decision-making (or not Drupal at all!).&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a href=&quot;/2015/11/24/drupal-6-upgrade.html&quot;&gt;Part 1 - overview&lt;/a&gt; |
+&lt;a href=&quot;/2015/12/10/drupal-6-part-2.html&quot;&gt;Part 2 - the risks&lt;/a&gt;
+| &lt;strong&gt;Part 3 - the options&lt;/strong&gt; |
+&lt;a href=&quot;/2016/02/24/drupal-6-part-4.html&quot;&gt;Part 4 - Drupal 7 or 8?&lt;/a&gt;&lt;/p&gt;
+
+    &lt;hr&gt;
+
+    
+      &lt;div class=&quot;post-comments&quot;&gt;
+  
+    &lt;div class=&quot;expander&quot;&gt;
+      &lt;a href=&quot;javascript:void(0)&quot; id=&quot;js-expander-trigger&quot; class=&quot;expander-trigger expander-hidden&quot;&gt;Comments!&lt;/a&gt;
+      &lt;div id=&quot;js-expander-content&quot; class=&quot;expander-content&quot;&gt;
+        &lt;!-- If there are existing comments, output them here. --&gt;
+        &lt;div id=&quot;post-comments&quot; class=&quot;post-comments&quot;&gt;&lt;/div&gt;
+        &lt;!-- New comment form --&gt;
+        &lt;form id=&quot;comment-form&quot;&gt;
+          &lt;h4&gt;Leave a comment&lt;/h4&gt;
+          &lt;div class=&quot;comment-name&quot;&gt;
+            &lt;p&gt;Name&lt;/p&gt; &lt;input type=&#39;text&#39; name=&#39;name&#39; id=&#39;name&#39; required /&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;comment-email&quot;&gt;
+            &lt;p&gt;Email&lt;/p&gt; &lt;input type=&#39;email&#39; name=&#39;email&#39; id=&#39;email&#39; required /&gt;
+            &lt;p class=&quot;email-disclaimer&quot;&gt;Savas will never sell your email address or spam you.&lt;/p&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;p&gt;Comment&lt;/p&gt;
+          &lt;textarea name=&#39;comment&#39; id=&#39;comment&#39; required&gt;&lt;/textarea&gt;
+          &lt;p class=&quot;hint below-textarea&quot;&gt;Plain text format only please.&lt;/p&gt;
+
+          &lt;input type=&#39;hidden&#39; name=&#39;slug&#39; id=&#39;slug&#39; value=&#39;/2016/01/25/drupal-6-part-3.html&#39; /&gt;
+          &lt;input type=&#39;text&#39; name=&#39;url&#39; id=&#39;url&#39; /&gt;
+
+          &lt;div class=&#39;are-you-human&#39;&gt;
+            &lt;div class=&#39;are-you-human-owl&#39;&gt;
+              &lt;img src=&quot;/assets/img/owl.png&quot; alt=&quot;Savas logo&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&#39;are-you-human-field&#39;&gt;
+              &lt;p&gt;What type of animal is the Savas logo?&lt;/p&gt;
+              &lt;input type=&#39;text&#39; name=&#39;nocaptcha&#39; id=&#39;nocaptcha&#39; class=&#39;nocaptcha&#39;&gt;
+              &lt;p class=&quot;hint&quot;&gt;Hint: 3 letters long, starts with an &#39;o&#39; and ends with an &#39;l&#39;.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;input type=&#39;submit&#39; value=&#39;Submit&#39; id=&#39;submit&#39; class=&quot;submit-comment&quot;/&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+  &lt;hr&gt;
+&lt;/div&gt;
+
+    
+    &lt;div class=&quot;post-bottom&quot;&gt;
+  &lt;div class=&quot;post-meta&quot;&gt;
+    &lt;h4&gt;About the author&lt;/h4&gt;
+    
+      &lt;a href=&quot;/team/chris-russo&quot;&gt;
+        &lt;img src=&quot;/assets/img/team/chris-russo.jpg&quot; alt=&quot;Chris Russo&quot;&gt;
+      &lt;/a&gt;
+      &lt;p class=&quot;post-author-desc&quot;&gt;Chris does his best to ensure that his team is learning and growing and that our clients feel like partners.&lt;/p&gt;
+    
+  &lt;/div&gt;
+    &lt;!-- Once we have more content, change this to posts related by tag --&gt;
+  &lt;div class=&quot;post-related flex-container&quot;&gt;
+    &lt;h4&gt;Recent posts by Savas&lt;/h4&gt;
+    &lt;div class=&quot;cards&quot;&gt;
+      
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/22/user-testing.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Usability Testing - Our Process and Favorite Practices
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 22, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;Our approach to designing, conducting, and learning from user testing and other analyses.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/16/using-xhprof.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Using XHProf to profile your Drupal module
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 16, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;A case study of using XHProf to profile a Drupal module.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/15/git-merge-conflict-strategies.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Strategies and tools for resolving Git merge conflicts
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 15, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;An overview of strategies and tools I like to use when I encounter conflicts during merges.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;div class=&quot;previous-next-links&quot;&gt;
+  &lt;div class=&quot;next&quot;&gt;
+    
+      &lt;a href=&quot;/2016/02/24/drupal-6-part-4.html&quot;&gt;&lt;i class=&quot;fa fa-long-arrow-left &quot;&gt;&lt;/i&gt; Drupal 6 retires today, now what? Part 4: Upgrade to D7 or D8?&lt;/a&gt;
+    
+  &lt;/div&gt;
+  &lt;div class=&quot;previous&quot;&gt;
+    
+      &lt;a href=&quot;/2016/01/22/composer-mailchimp-subscriptions.html&quot;&gt; How to subscribe users to MailChimp lists in a Drupal custom module &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+  &lt;/article&gt;
+
+&lt;/div&gt;
+",
+      "author": {
+          "@context": "http://schema.org",
+          "@type": "Person",
+          "name": "Chris Russo",
+          "affiliation": "Savas",
+          "worksFor": "Savas"
+      },
+    "keywords": "drupal, drupal8, drupal-planet",
+    "text": "
+
+
+&lt;div class=&quot;post&quot;&gt;
+  &lt;header class=&quot;post-header&quot;&gt;
+    &lt;h1 class=&quot;post-title&quot;&gt;It actually is 2016, your site is running on Drupal 6, now what? Part 3: the options&lt;/h1&gt;
+    &lt;p&gt;By &lt;a href=&quot;/team/chris-russo&quot;&gt;Chris Russo&lt;/a&gt;&lt;/p&gt;
+    &lt;p class=&quot;centerdot&quot;&gt;&amp;centerdot; &lt;/p&gt;
+    &lt;p&gt;Jan 25, 2016 &lt;/p&gt;&lt;br&gt;
+    &lt;i class=&quot;fa fa-tags&quot;&gt;&lt;/i&gt;&lt;p&gt;&lt;a href=&quot;/blog/tag/drupal/&quot;&gt;Drupal&lt;/a&gt;, &lt;a href=&quot;/blog/tag/drupal8/&quot;&gt;Drupal 8&lt;/a&gt;, &lt;a href=&quot;/blog/tag/drupal-planet/&quot;&gt;Drupal Planet&lt;/a&gt;&lt;/p&gt;
+    
+    &lt;div&gt;&lt;p&gt;&lt;span id=&quot;comment-count&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+    
+    
+      &lt;div class=&quot;post-featured-image&quot;&gt;
+        &lt;img class=&quot;post-hero-image&quot; src=&quot;/assets/img/blog/options.png&quot; alt=&quot;a highway-looking sign with arrows pointing to many possibilities&quot;&gt;
+      &lt;/div&gt;
+    
+  &lt;/header&gt;
+
+  
+
+  &lt;article class=&quot;post-content&quot;&gt;
+    &lt;p&gt;This is part 3 of a series investigating what to do with your Drupal 6 site as
+EOL approaches.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;/2015/11/24/drupal-6-upgrade.html&quot;&gt;Part 1 - overview&lt;/a&gt; |
+&lt;a href=&quot;/2015/12/10/drupal-6-part-2.html&quot;&gt;Part 2 - the risks&lt;/a&gt;
+| &lt;strong&gt;Part 3 - the options&lt;/strong&gt; |
+&lt;a href=&quot;/2016/02/24/drupal-6-part-4.html&quot;&gt;Part 4 - Drupal 7 or 8?&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;the-options-of-operating-drupal-6-after-eol&quot;&gt;The options of operating Drupal 6 after EOL&lt;/h2&gt;
+
+&lt;p&gt;Though some advisers (solicited or not) might tell you otherwise, you &lt;em&gt;always&lt;/em&gt; have options as to what to do
+with your website if you’re running Drupal. One of them is of course nothing, and the others require more thought.&lt;/p&gt;
+
+&lt;p&gt;What is the right thing to do can be a hot-button topic. Some technologists are purists,
+and believe it sacrosanct to even consider running software beyond EOL. However, we appreciate
+that although ideally site owners would always have been prepared and budgeted for
+software upgrades, sometimes life happens, and other business priorities and budget
+availability don’t perfectly align with timing for a software upgrade.&lt;/p&gt;
+
+&lt;div class=&quot;blog-image-large wrap-left&quot;&gt;
+  &lt;img src=&quot;/assets/img/blog/Armageddon-affleck.jpg&quot; alt=&quot;Ben Affleck in the Hollywood movie Armageddon&quot; /&gt;
+&lt;/div&gt;
+&lt;p&gt;One end of the spectrum is well captured by the following quotation from
+the &lt;a href=&quot;https://www.drupal.org/user/406161&quot;&gt;Drupal security team&lt;/a&gt; that some (certainly not us
+&lt;img src=&quot;http://www.emoji-cheat-sheet.com/graphics/emojis/wink.png&quot; alt=&quot;winking emoji&quot; class=&quot;emoji&quot; /&gt;) may consider an
+alarmist reaction to one of the &lt;a href=&quot;https://www.drupal.org/PSA-2014-003&quot;&gt;most prolific Drupal security vulnerabilities to-date&lt;/a&gt; colloquially referred to as “Drupalgeddon”&lt;/p&gt;
+
+&lt;p&gt;&lt;br style=&quot;clear:both;&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;You should proceed under the assumption that every Drupal 7 website was compromised unless updated or patched before Oct 15th, 11pm UTC, that is 7 hours after the announcement.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This is of course meant to err on the side of caution, but can
+also be very anxiety provoking. Similarly, when hearing of the 3 month window for Drupal 6
+support after Drupal 8.0.0 was released &lt;a href=&quot;https://www.drupal.org/drupal-6-eol#comment-10556816&quot;&gt;“Le dendrite”&lt;/a&gt; is not wrong to say:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;someone please settle my stomach&lt;/p&gt;
+
+  &lt;p&gt;I was shocked to read this. it might seriously wreck me,
+ i really hope i’m misunderstanding this&lt;/p&gt;
+
+  &lt;p&gt;will my sites just die?&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;That &lt;a href=&quot;https://www.drupal.org/drupal-6-eol&quot;&gt;entire thread&lt;/a&gt; is a
+pretty good exposé into the various perspectives and preparedness
+on upgrading Drupal 6 sites. If you’ve got a spare half-day, give it a once-over.&lt;/p&gt;
+
+&lt;p&gt;On the &lt;strong&gt;&lt;em&gt;other hand&lt;/em&gt;&lt;/strong&gt;, we have had at least two clients in 2015 who continued to run
+&lt;a href=&quot;https://www.drupal.org/drupal-5.0&quot;&gt;&lt;strong&gt;Drupal 5&lt;/strong&gt;&lt;/a&gt; (not a typo)
+websites in production successfully.&lt;/p&gt;
+
+&lt;p&gt;Neither end is entirely wrong, they just represent difference of opinion and available options.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-primary-options-for-drupal-6-site-owners-are&quot;&gt;The primary options for Drupal 6 site owners are&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Do &lt;strong&gt;not&lt;/strong&gt; upgrade your website to a newer Drupal version&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Do&lt;/strong&gt; upgrade your website to a newer Drupal version&lt;/li&gt;
+  &lt;li&gt;Use the time to seriously revision your website altogether&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;But how do you decide which option is best for you, the site owner?&lt;/p&gt;
+
+&lt;p&gt;That decision mostly rests on your organization’s&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;risk tolerance&lt;/li&gt;
+  &lt;li&gt;likelihood to be targeted by hackers&lt;/li&gt;
+  &lt;li&gt;budget to improve your website&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;considerations-to-not-upgrade&quot;&gt;Considerations to &lt;em&gt;not&lt;/em&gt; upgrade&lt;/h4&gt;
+
+&lt;p&gt;Choosing &lt;em&gt;not&lt;/em&gt; to upgrade your website is typically dictated by your organization having neither internal
+technical expertise or sufficient funds to hire a partner. When this is the case, if a small budget can be
+afforded, a site audit is usually the next best option to have some peace of mind that you’re taking the measures you’re able to
+ mitigate the risk of running outdated, unsupported software. A qualified partner can perform a
+thorough assessment of risk and make budget-conscious recommendations
+on how to best harden the site against outside threats short of doing the more costly
+full-site upgrade.&lt;/p&gt;
+
+&lt;div class=&quot;blog-image-large wrap-left&quot;&gt;
+ &lt;img src=&quot;/assets/img/blog/wild.jpg&quot; alt=&quot;wolves in the wild&quot; /&gt;
+&lt;/div&gt;
+&lt;p&gt;Primary attack vectors that we focus on lie in custom code, and
+under-supported contributed modules since core code represents much lower risk
+having been well vetted by years in the wild.
+&lt;br style=&quot;clear:both;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;One other consideration independent
+of your specific website configuration is your server autonomy dictated by your hosting provider. Running old software is
+usually tolerated in a shared hosting environment for only so long before upgrades
+are enforced. Warning emails are often (not always) sent out in advance of server-level upgrades, however,
+ it’s easy to miss those emails, and it hurts to be caught by surprise that some PHP version upgrade renders
+your site completely useless. Understanding the level of control you as the
+site owner has over your server is crucial.&lt;/p&gt;
+
+&lt;h4 id=&quot;considerations-to-upgrade&quot;&gt;Considerations &lt;em&gt;to&lt;/em&gt; upgrade&lt;/h4&gt;
+
+&lt;p&gt;Going through a typical Drupal upgrade (the update.php method) is usually the right option for you if you&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Want to mostly preserve the site to be upgraded as-is.&lt;/li&gt;
+  &lt;li&gt;Have a fairly straightforward site using few, and mainly popular contributed modules .&lt;/li&gt;
+  &lt;li&gt;Decide you ought to be using supported software because you
+    &lt;ul&gt;
+      &lt;li&gt;have sensitive information within your site that would be disastrous if compromised.&lt;/li&gt;
+      &lt;li&gt;have financial transactions or information housed within your site.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Have sufficient budget to do the work.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Upgrading a Drupal website is a &lt;strong&gt;non-trivial&lt;/strong&gt; investment. We’ve definitely had conversations
+ with clients to the tune of&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“oh, upgrading is not a click of a button? Phooey!”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;which is very understandable. The Drupal community’s stance of not retaining backwards compatibility
+for the sake of keeping pace with modern web development is solid and quite defensible as well. Acquia
+does a good job of addressing that in the “Support” section (unfortunately not directly linkable)
+in this informative
+&lt;a href=&quot;https://www.acquia.com/blog/setting-record-straight-total-cost-adobe-aem-vs-acquia&quot;&gt;article about total cost of ownership&lt;/a&gt;
+of a Drupal site, which is in itself a topic worth a lot of consideration and analysis.&lt;/p&gt;
+
+&lt;p&gt;When prospective clients are committed to the time-line and investment of an upgrade,
+ we always advise them to seriously consider a comprehensive rebuild/redesign as it can
+ often present the path of most value. It is uncommon that a client desires to
+ invest significantly to create an exact replica of the site they built 3, 4, or 5 years ago.&lt;/p&gt;
+
+&lt;p&gt;In many cases, legacy content, functionality and style has outlived it’s relevancy after 3 years
+ and it becomes more burdensome than valuable, in the same way a poorly maintained house on a nice lot
+ may be less valuable than if the lot were empty.&lt;/p&gt;
+
+&lt;p&gt;Another consideration is whether or not Drupal is the right platform for your organization’s needs.
+ The answer to this is usually yes, especially after there is organizational
+ investment and familiarity, but for less complicated sites that are open to revisioning,
+ there are other options that, for example, are free to host and have no upgrade requirements
+  like the &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;static site generator Jekyll&lt;/a&gt; from which our own
+   web site is built. An honest consultant will tell you when Drupal is a good fit
+   and when it’s not.&lt;/p&gt;
+
+&lt;p&gt;But alas, if you’re determined to stick with Drupal
+and you’d like to upgrade, the final consideration
+is what platform to upgrade to, Drupal 7 or 8?&lt;/p&gt;
+
+&lt;p&gt;Ah-ah-ah…&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/ah-ah-ah-terminal.jpg&quot; alt=&quot;Dennis Nedry from Jurassic Park saying ah ah ah&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;that’s for the next episode!&lt;/p&gt;
+
+&lt;h2 id=&quot;part-4-and-beyond&quot;&gt;Part 4 and beyond&lt;/h2&gt;
+
+&lt;p&gt;Next, we’ll discuss Drupal 7 vs. Drupal 8 decision-making (or not Drupal at all!).&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;a href=&quot;/2015/11/24/drupal-6-upgrade.html&quot;&gt;Part 1 - overview&lt;/a&gt; |
+&lt;a href=&quot;/2015/12/10/drupal-6-part-2.html&quot;&gt;Part 2 - the risks&lt;/a&gt;
+| &lt;strong&gt;Part 3 - the options&lt;/strong&gt; |
+&lt;a href=&quot;/2016/02/24/drupal-6-part-4.html&quot;&gt;Part 4 - Drupal 7 or 8?&lt;/a&gt;&lt;/p&gt;
+
+    &lt;hr&gt;
+
+    
+      &lt;div class=&quot;post-comments&quot;&gt;
+  
+    &lt;div class=&quot;expander&quot;&gt;
+      &lt;a href=&quot;javascript:void(0)&quot; id=&quot;js-expander-trigger&quot; class=&quot;expander-trigger expander-hidden&quot;&gt;Comments!&lt;/a&gt;
+      &lt;div id=&quot;js-expander-content&quot; class=&quot;expander-content&quot;&gt;
+        &lt;!-- If there are existing comments, output them here. --&gt;
+        &lt;div id=&quot;post-comments&quot; class=&quot;post-comments&quot;&gt;&lt;/div&gt;
+        &lt;!-- New comment form --&gt;
+        &lt;form id=&quot;comment-form&quot;&gt;
+          &lt;h4&gt;Leave a comment&lt;/h4&gt;
+          &lt;div class=&quot;comment-name&quot;&gt;
+            &lt;p&gt;Name&lt;/p&gt; &lt;input type=&#39;text&#39; name=&#39;name&#39; id=&#39;name&#39; required /&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;comment-email&quot;&gt;
+            &lt;p&gt;Email&lt;/p&gt; &lt;input type=&#39;email&#39; name=&#39;email&#39; id=&#39;email&#39; required /&gt;
+            &lt;p class=&quot;email-disclaimer&quot;&gt;Savas will never sell your email address or spam you.&lt;/p&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;p&gt;Comment&lt;/p&gt;
+          &lt;textarea name=&#39;comment&#39; id=&#39;comment&#39; required&gt;&lt;/textarea&gt;
+          &lt;p class=&quot;hint below-textarea&quot;&gt;Plain text format only please.&lt;/p&gt;
+
+          &lt;input type=&#39;hidden&#39; name=&#39;slug&#39; id=&#39;slug&#39; value=&#39;/2016/01/25/drupal-6-part-3.html&#39; /&gt;
+          &lt;input type=&#39;text&#39; name=&#39;url&#39; id=&#39;url&#39; /&gt;
+
+          &lt;div class=&#39;are-you-human&#39;&gt;
+            &lt;div class=&#39;are-you-human-owl&#39;&gt;
+              &lt;img src=&quot;/assets/img/owl.png&quot; alt=&quot;Savas logo&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&#39;are-you-human-field&#39;&gt;
+              &lt;p&gt;What type of animal is the Savas logo?&lt;/p&gt;
+              &lt;input type=&#39;text&#39; name=&#39;nocaptcha&#39; id=&#39;nocaptcha&#39; class=&#39;nocaptcha&#39;&gt;
+              &lt;p class=&quot;hint&quot;&gt;Hint: 3 letters long, starts with an &#39;o&#39; and ends with an &#39;l&#39;.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;input type=&#39;submit&#39; value=&#39;Submit&#39; id=&#39;submit&#39; class=&quot;submit-comment&quot;/&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+  &lt;hr&gt;
+&lt;/div&gt;
+
+    
+    &lt;div class=&quot;post-bottom&quot;&gt;
+  &lt;div class=&quot;post-meta&quot;&gt;
+    &lt;h4&gt;About the author&lt;/h4&gt;
+    
+      &lt;a href=&quot;/team/chris-russo&quot;&gt;
+        &lt;img src=&quot;/assets/img/team/chris-russo.jpg&quot; alt=&quot;Chris Russo&quot;&gt;
+      &lt;/a&gt;
+      &lt;p class=&quot;post-author-desc&quot;&gt;Chris does his best to ensure that his team is learning and growing and that our clients feel like partners.&lt;/p&gt;
+    
+  &lt;/div&gt;
+    &lt;!-- Once we have more content, change this to posts related by tag --&gt;
+  &lt;div class=&quot;post-related flex-container&quot;&gt;
+    &lt;h4&gt;Recent posts by Savas&lt;/h4&gt;
+    &lt;div class=&quot;cards&quot;&gt;
+      
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/22/user-testing.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Usability Testing - Our Process and Favorite Practices
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 22, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;Our approach to designing, conducting, and learning from user testing and other analyses.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/16/using-xhprof.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Using XHProf to profile your Drupal module
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 16, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;A case study of using XHProf to profile a Drupal module.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/15/git-merge-conflict-strategies.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Strategies and tools for resolving Git merge conflicts
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 15, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;An overview of strategies and tools I like to use when I encounter conflicts during merges.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;div class=&quot;previous-next-links&quot;&gt;
+  &lt;div class=&quot;next&quot;&gt;
+    
+      &lt;a href=&quot;/2016/02/24/drupal-6-part-4.html&quot;&gt;&lt;i class=&quot;fa fa-long-arrow-left &quot;&gt;&lt;/i&gt; Drupal 6 retires today, now what? Part 4: Upgrade to D7 or D8?&lt;/a&gt;
+    
+  &lt;/div&gt;
+  &lt;div class=&quot;previous&quot;&gt;
+    
+      &lt;a href=&quot;/2016/01/22/composer-mailchimp-subscriptions.html&quot;&gt; How to subscribe users to MailChimp lists in a Drupal custom module &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+  &lt;/article&gt;
+
+&lt;/div&gt;
+",
+    "sourceOrganization": "Savas",
+    "inLanguage": "en-US",
+    "dateCreated": "2016-01-25 00:00:00 +0000",
+    "datePublished": "2016-01-25 00:00:00 +0000",
+    "url": "/2016/01/25/drupal-6-part-3.html"
+  }
+</script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-61514316-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  
+
+  
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+
+    <!-- Savas logo. -->
+    <a href="/" class="logo">
+        <img src="/assets/img/logo.png" alt="Savas logo">
+    </a>
+
+    <!-- Mobile menu button. -->
+    <a href="/" id="js-mobile-menu" class="navigation-menu-button">MENU</a>
+
+    <!-- Main menu. -->
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+
+        <!-- Loop through nav items in config.yml. -->
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  more">
+            <a href="javascript:void(0)">Who we are</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+
+              <ul class="submenu">
+                
+
+                  <!-- Assign active nav item class. -->
+                  
+                  
+
+                  <li class="nav-link ">
+                    <a href="/team">Team</a>
+                  </li>
+                
+
+                  <!-- Assign active nav item class. -->
+                  
+                  
+
+                  <li class="nav-link ">
+                    <a href="/mission-and-values">Mission & values</a>
+                  </li>
+                
+              </ul>
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/services">Services</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/work">Our work</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/blog">Blog</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/contact">Contact</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        
+
+
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">It actually is 2016, your site is running on Drupal 6, now what? Part 3: the options</h1>
+    <p>By <a href="/team/chris-russo">Chris Russo</a></p>
+    <p class="centerdot">&centerdot; </p>
+    <p>Jan 25, 2016 </p><br>
+    <i class="fa fa-tags"></i><p><a href="/blog/tag/drupal/">Drupal</a>, <a href="/blog/tag/drupal8/">Drupal 8</a>, <a href="/blog/tag/drupal-planet/">Drupal Planet</a></p>
+    
+    <div><p><span id="comment-count"></span></p></div>
+    
+    
+      <div class="post-featured-image">
+        <img class="post-hero-image" src="/assets/img/blog/options.png" alt="a highway-looking sign with arrows pointing to many possibilities">
+      </div>
+    
+  </header>
+
+  
+
+  <article class="post-content">
+    <p>This is part 3 of a series investigating what to do with your Drupal 6 site as
+EOL approaches.</p>
+
+<p><a href="/2015/11/24/drupal-6-upgrade.html">Part 1 - overview</a> |
+<a href="/2015/12/10/drupal-6-part-2.html">Part 2 - the risks</a>
+| <strong>Part 3 - the options</strong> |
+<a href="/2016/02/24/drupal-6-part-4.html">Part 4 - Drupal 7 or 8?</a></p>
+
+<hr />
+
+<h2 id="the-options-of-operating-drupal-6-after-eol">The options of operating Drupal 6 after EOL</h2>
+
+<p>Though some advisers (solicited or not) might tell you otherwise, you <em>always</em> have options as to what to do
+with your website if you’re running Drupal. One of them is of course nothing, and the others require more thought.</p>
+
+<p>What is the right thing to do can be a hot-button topic. Some technologists are purists,
+and believe it sacrosanct to even consider running software beyond EOL. However, we appreciate
+that although ideally site owners would always have been prepared and budgeted for
+software upgrades, sometimes life happens, and other business priorities and budget
+availability don’t perfectly align with timing for a software upgrade.</p>
+
+<div class="blog-image-large wrap-left">
+  <img src="/assets/img/blog/Armageddon-affleck.jpg" alt="Ben Affleck in the Hollywood movie Armageddon" />
+</div>
+<p>One end of the spectrum is well captured by the following quotation from
+the <a href="https://www.drupal.org/user/406161">Drupal security team</a> that some (certainly not us
+<img src="http://www.emoji-cheat-sheet.com/graphics/emojis/wink.png" alt="winking emoji" class="emoji" />) may consider an
+alarmist reaction to one of the <a href="https://www.drupal.org/PSA-2014-003">most prolific Drupal security vulnerabilities to-date</a> colloquially referred to as “Drupalgeddon”</p>
+
+<p><br style="clear:both;" /></p>
+
+<blockquote>
+  <p>You should proceed under the assumption that every Drupal 7 website was compromised unless updated or patched before Oct 15th, 11pm UTC, that is 7 hours after the announcement.</p>
+</blockquote>
+
+<p>This is of course meant to err on the side of caution, but can
+also be very anxiety provoking. Similarly, when hearing of the 3 month window for Drupal 6
+support after Drupal 8.0.0 was released <a href="https://www.drupal.org/drupal-6-eol#comment-10556816">“Le dendrite”</a> is not wrong to say:</p>
+
+<blockquote>
+  <p>someone please settle my stomach</p>
+
+  <p>I was shocked to read this. it might seriously wreck me,
+ i really hope i’m misunderstanding this</p>
+
+  <p>will my sites just die?</p>
+</blockquote>
+
+<p>That <a href="https://www.drupal.org/drupal-6-eol">entire thread</a> is a
+pretty good exposé into the various perspectives and preparedness
+on upgrading Drupal 6 sites. If you’ve got a spare half-day, give it a once-over.</p>
+
+<p>On the <strong><em>other hand</em></strong>, we have had at least two clients in 2015 who continued to run
+<a href="https://www.drupal.org/drupal-5.0"><strong>Drupal 5</strong></a> (not a typo)
+websites in production successfully.</p>
+
+<p>Neither end is entirely wrong, they just represent difference of opinion and available options.</p>
+
+<h2 id="the-primary-options-for-drupal-6-site-owners-are">The primary options for Drupal 6 site owners are</h2>
+<ol>
+  <li>Do <strong>not</strong> upgrade your website to a newer Drupal version</li>
+  <li><strong>Do</strong> upgrade your website to a newer Drupal version</li>
+  <li>Use the time to seriously revision your website altogether</li>
+</ol>
+
+<p>But how do you decide which option is best for you, the site owner?</p>
+
+<p>That decision mostly rests on your organization’s</p>
+
+<ul>
+  <li>risk tolerance</li>
+  <li>likelihood to be targeted by hackers</li>
+  <li>budget to improve your website</li>
+</ul>
+
+<h4 id="considerations-to-not-upgrade">Considerations to <em>not</em> upgrade</h4>
+
+<p>Choosing <em>not</em> to upgrade your website is typically dictated by your organization having neither internal
+technical expertise or sufficient funds to hire a partner. When this is the case, if a small budget can be
+afforded, a site audit is usually the next best option to have some peace of mind that you’re taking the measures you’re able to
+ mitigate the risk of running outdated, unsupported software. A qualified partner can perform a
+thorough assessment of risk and make budget-conscious recommendations
+on how to best harden the site against outside threats short of doing the more costly
+full-site upgrade.</p>
+
+<div class="blog-image-large wrap-left">
+ <img src="/assets/img/blog/wild.jpg" alt="wolves in the wild" />
+</div>
+<p>Primary attack vectors that we focus on lie in custom code, and
+under-supported contributed modules since core code represents much lower risk
+having been well vetted by years in the wild.
+<br style="clear:both;" /></p>
+
+<p>One other consideration independent
+of your specific website configuration is your server autonomy dictated by your hosting provider. Running old software is
+usually tolerated in a shared hosting environment for only so long before upgrades
+are enforced. Warning emails are often (not always) sent out in advance of server-level upgrades, however,
+ it’s easy to miss those emails, and it hurts to be caught by surprise that some PHP version upgrade renders
+your site completely useless. Understanding the level of control you as the
+site owner has over your server is crucial.</p>
+
+<h4 id="considerations-to-upgrade">Considerations <em>to</em> upgrade</h4>
+
+<p>Going through a typical Drupal upgrade (the update.php method) is usually the right option for you if you</p>
+
+<ul>
+  <li>Want to mostly preserve the site to be upgraded as-is.</li>
+  <li>Have a fairly straightforward site using few, and mainly popular contributed modules .</li>
+  <li>Decide you ought to be using supported software because you
+    <ul>
+      <li>have sensitive information within your site that would be disastrous if compromised.</li>
+      <li>have financial transactions or information housed within your site.</li>
+    </ul>
+  </li>
+  <li>Have sufficient budget to do the work.</li>
+</ul>
+
+<p>Upgrading a Drupal website is a <strong>non-trivial</strong> investment. We’ve definitely had conversations
+ with clients to the tune of</p>
+
+<blockquote>
+  <p>“oh, upgrading is not a click of a button? Phooey!”</p>
+</blockquote>
+
+<p>which is very understandable. The Drupal community’s stance of not retaining backwards compatibility
+for the sake of keeping pace with modern web development is solid and quite defensible as well. Acquia
+does a good job of addressing that in the “Support” section (unfortunately not directly linkable)
+in this informative
+<a href="https://www.acquia.com/blog/setting-record-straight-total-cost-adobe-aem-vs-acquia">article about total cost of ownership</a>
+of a Drupal site, which is in itself a topic worth a lot of consideration and analysis.</p>
+
+<p>When prospective clients are committed to the time-line and investment of an upgrade,
+ we always advise them to seriously consider a comprehensive rebuild/redesign as it can
+ often present the path of most value. It is uncommon that a client desires to
+ invest significantly to create an exact replica of the site they built 3, 4, or 5 years ago.</p>
+
+<p>In many cases, legacy content, functionality and style has outlived it’s relevancy after 3 years
+ and it becomes more burdensome than valuable, in the same way a poorly maintained house on a nice lot
+ may be less valuable than if the lot were empty.</p>
+
+<p>Another consideration is whether or not Drupal is the right platform for your organization’s needs.
+ The answer to this is usually yes, especially after there is organizational
+ investment and familiarity, but for less complicated sites that are open to revisioning,
+ there are other options that, for example, are free to host and have no upgrade requirements
+  like the <a href="https://jekyllrb.com/">static site generator Jekyll</a> from which our own
+   web site is built. An honest consultant will tell you when Drupal is a good fit
+   and when it’s not.</p>
+
+<p>But alas, if you’re determined to stick with Drupal
+and you’d like to upgrade, the final consideration
+is what platform to upgrade to, Drupal 7 or 8?</p>
+
+<p>Ah-ah-ah…</p>
+
+<p><img src="/assets/img/blog/ah-ah-ah-terminal.jpg" alt="Dennis Nedry from Jurassic Park saying ah ah ah" /></p>
+
+<p>that’s for the next episode!</p>
+
+<h2 id="part-4-and-beyond">Part 4 and beyond</h2>
+
+<p>Next, we’ll discuss Drupal 7 vs. Drupal 8 decision-making (or not Drupal at all!).</p>
+
+<hr />
+
+<p><a href="/2015/11/24/drupal-6-upgrade.html">Part 1 - overview</a> |
+<a href="/2015/12/10/drupal-6-part-2.html">Part 2 - the risks</a>
+| <strong>Part 3 - the options</strong> |
+<a href="/2016/02/24/drupal-6-part-4.html">Part 4 - Drupal 7 or 8?</a></p>
+
+    <hr>
+
+    
+      <div class="post-comments">
+  
+    <div class="expander">
+      <a href="javascript:void(0)" id="js-expander-trigger" class="expander-trigger expander-hidden">Comments!</a>
+      <div id="js-expander-content" class="expander-content">
+        <!-- If there are existing comments, output them here. -->
+        <div id="post-comments" class="post-comments"></div>
+        <!-- New comment form -->
+        <form id="comment-form">
+          <h4>Leave a comment</h4>
+          <div class="comment-name">
+            <p>Name</p> <input type='text' name='name' id='name' required /><br>
+          </div>
+
+          <div class="comment-email">
+            <p>Email</p> <input type='email' name='email' id='email' required />
+            <p class="email-disclaimer">Savas will never sell your email address or spam you.</p><br>
+          </div>
+
+          <p>Comment</p>
+          <textarea name='comment' id='comment' required></textarea>
+          <p class="hint below-textarea">Plain text format only please.</p>
+
+          <input type='hidden' name='slug' id='slug' value='/2016/01/25/drupal-6-part-3.html' />
+          <input type='text' name='url' id='url' />
+
+          <div class='are-you-human'>
+            <div class='are-you-human-owl'>
+              <img src="/assets/img/owl.png" alt="Savas logo">
+            </div>
+            <div class='are-you-human-field'>
+              <p>What type of animal is the Savas logo?</p>
+              <input type='text' name='nocaptcha' id='nocaptcha' class='nocaptcha'>
+              <p class="hint">Hint: 3 letters long, starts with an 'o' and ends with an 'l'.</p>
+            </div>
+          </div>
+
+          <input type='submit' value='Submit' id='submit' class="submit-comment"/>
+        </form>
+      </div>
+    </div>
+  
+  <hr>
+</div>
+
+    
+    <div class="post-bottom">
+  <div class="post-meta">
+    <h4>About the author</h4>
+    
+      <a href="/team/chris-russo">
+        <img src="/assets/img/team/chris-russo.jpg" alt="Chris Russo">
+      </a>
+      <p class="post-author-desc">Chris does his best to ensure that his team is learning and growing and that our clients feel like partners.</p>
+    
+  </div>
+    <!-- Once we have more content, change this to posts related by tag -->
+  <div class="post-related flex-container">
+    <h4>Recent posts by Savas</h4>
+    <div class="cards">
+      
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/22/user-testing.html">
+              <div class="card-header">
+                  Usability Testing - Our Process and Favorite Practices
+              </div>
+              <div class="card-copy">
+                <p>Jun 22, 2016</p>
+                <p><p>Our approach to designing, conducting, and learning from user testing and other analyses.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/16/using-xhprof.html">
+              <div class="card-header">
+                  Using XHProf to profile your Drupal module
+              </div>
+              <div class="card-copy">
+                <p>Jun 16, 2016</p>
+                <p><p>A case study of using XHProf to profile a Drupal module.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/15/git-merge-conflict-strategies.html">
+              <div class="card-header">
+                  Strategies and tools for resolving Git merge conflicts
+              </div>
+              <div class="card-copy">
+                <p>Jun 15, 2016</p>
+                <p><p>An overview of strategies and tools I like to use when I encounter conflicts during merges.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+</div>
+
+    <div class="previous-next-links">
+  <div class="next">
+    
+      <a href="/2016/02/24/drupal-6-part-4.html"><i class="fa fa-long-arrow-left "></i> Drupal 6 retires today, now what? Part 4: Upgrade to D7 or D8?</a>
+    
+  </div>
+  <div class="previous">
+    
+      <a href="/2016/01/22/composer-mailchimp-subscriptions.html"> How to subscribe users to MailChimp lists in a Drupal custom module <i class="fa fa-long-arrow-right"></i></a>
+    
+  </div>
+</div>
+
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <div class="contact-block">
+  <div class="contact-block__items">
+    <h3>Interested in working with us?</h3>
+    <a href="/contact">Get in touch!</a>
+  </div>
+</div>
+    <footer class="footer" role="contentinfo">
+  <div class="footer-links">
+    <ul>
+      <li><h3>Location</h3></li>
+      <li>Savas Labs<br />
+          PMB 114<br />
+          201 W Main Street, Suite 100<br />
+          Durham, NC 27701<br /></li>
+    </ul>
+    <ul>
+      <li><h3>Around the Web</h3></li>
+      <ul>
+        <li><a href="https://github.com/savaslabs"><span class="mega-octicon octicon-mark-github"></span></a></li>
+        <li><a href="https://www.drupal.org/node/2466865"><i class="fa fa-drupal fa-lg fa-2x"></i></a></li>
+        <li><a href="https://twitter.com/savas_labs"><i class="fa fa-twitter fa-lg fa-2x"></i></a></li>
+        <li><a href="https://www.linkedin.com/company/savas-labs"><i class="fa fa-linkedin fa-lg fa-2x"></i></a></li>
+      </ul>
+    </ul>
+    <ul>
+      <li><h3>Contact</h3></li>
+      <li><a href="mailto:info@savaslabs.com">info@savaslabs.com</a></li>
+      <li>(919) 432-4660</li>
+    </ul>
+  </div>
+
+</footer>
+
+<div class="footer-copyright">
+  <p>Copyright &copy; Savas Labs 2016</p>
+</div>
+
+
+  </body>
+
+</html>

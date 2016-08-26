@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <title>It's nearly 2016, your site is running on Drupal 6, now what? Part 1: The overview | Savas Labs</title>
+  
+  <meta name="description" content="This is part 1 of a series investigating what to do with your Drupal 6 site asEOL approaches.">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,400italic,700italic|PT+Serif|Bitter|Source+Sans+Pro' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/assets/styles/main.css">
+  <link rel="stylesheet" href="/assets/icons/octicons/octicons.css">
+  <link rel="canonical" href="/2015/11/24/drupal-6-upgrade.html">
+  <link rel="alternate" type="application/rss+xml" title="Savas Labs" href="/feed.xml" />
+  <script type="text/javascript" src="/assets/js/main.js"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Durham, North Carolina",
+        "postalCode": "27701",
+        "streetAddress": "201 W Main St."
+      },
+      "description": "A full-service web agency leveraging the power of Drupal.
+",
+      "email": "info@savaslabs.com",
+      "name": "Savas",
+      "telephone": "(919) 432-4660",
+      "url": "http://savaslabs.com",
+      "logo": "http://savaslabs.com/assets/img/logo.png"
+    }
+</script>
+
+  
+  
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "It's nearly 2016, your site is running on Drupal 6, now what? Part 1: The overview",
+    "about": "What to plan for as Drupal 6 EOL approaches.",
+    "articleBody": "
+
+
+&lt;div class=&quot;post&quot;&gt;
+  &lt;header class=&quot;post-header&quot;&gt;
+    &lt;h1 class=&quot;post-title&quot;&gt;It&#39;s nearly 2016, your site is running on Drupal 6, now what? Part 1: The overview&lt;/h1&gt;
+    &lt;p&gt;By &lt;a href=&quot;/team/chris-russo&quot;&gt;Chris Russo&lt;/a&gt;&lt;/p&gt;
+    &lt;p class=&quot;centerdot&quot;&gt;&amp;centerdot; &lt;/p&gt;
+    &lt;p&gt;Nov 24, 2015 &lt;/p&gt;&lt;br&gt;
+    &lt;i class=&quot;fa fa-tags&quot;&gt;&lt;/i&gt;&lt;p&gt;&lt;a href=&quot;/blog/tag/drupal/&quot;&gt;Drupal&lt;/a&gt;, &lt;a href=&quot;/blog/tag/drupal8/&quot;&gt;Drupal 8&lt;/a&gt;, &lt;a href=&quot;/blog/tag/drupal-planet/&quot;&gt;Drupal Planet&lt;/a&gt;&lt;/p&gt;
+    
+    &lt;div&gt;&lt;p&gt;&lt;span id=&quot;comment-count&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+    
+    
+  &lt;/header&gt;
+
+  
+
+  &lt;article class=&quot;post-content&quot;&gt;
+    &lt;p&gt;This is part 1 of a series investigating what to do with your Drupal 6 site as
+EOL approaches.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Part 1 - overview&lt;/strong&gt; |
+&lt;a href=&quot;/2015/12/10/drupal-6-part-2.html&quot;&gt;Part 2 - the risks&lt;/a&gt;
+ | &lt;a href=&quot;/2016/01/25/drupal-6-part-3.html&quot;&gt;Part 3 - the options&lt;/a&gt;
+ | &lt;a href=&quot;/2016/02/24/drupal-6-part-4.html&quot;&gt;Part 4 - Drupal 7 or 8?&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;the-issue-at-img-srcassetsimgbloghandpng-althand&quot;&gt;The issue at &lt;img src=&quot;/assets/img/blog/hand.png&quot; alt=&quot;hand&quot; /&gt;&lt;/h2&gt;
+
+&lt;p&gt;As most Drupal 6 site owners are aware, after a &lt;a href=&quot;https://www.drupal.org/core/dev-cycle&quot;&gt;prolonged development period&lt;/a&gt;, Drupal 8 was officially released (&lt;a href=&quot;(https://www.drupal.org/node/2619030)&quot;&gt;8.0.0&lt;/a&gt;) last week on November 19th, 2015
+&lt;a href=&quot;https://en.wikipedia.org/wiki/Dries_Buytaert&quot;&gt;Dries’s birthday&lt;/a&gt; with a corresponding many, &lt;a href=&quot;https://twitter.com/hashtag/Celebr8D8?src=hash&quot;&gt;many a lively party&lt;/a&gt;:
+&lt;img src=&quot;/assets/img/blog/celebr8d8.jpg&quot; alt=&quot;Drupal 8 celebration #celebr8d8&quot; /&gt;
+&lt;span class=&quot;caption&quot;&gt;Like this fancy one in downtown Durham atop the rooftop bar of &lt;a href=&quot;http://thedurham.com/&quot;&gt;The Durham Hotel&lt;/a&gt;.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Drupal 8.0.0 is a &lt;a href=&quot;http://celebratedrupal8.com/&quot;&gt;&lt;strong&gt;BIG DEAL&lt;/strong&gt;&lt;/a&gt; and generally speaking is great for the community of Drupal site owners and site builders.&lt;/p&gt;
+
+&lt;p&gt;However (there’s always a but), with the official release of Drupal 8,
+&lt;strong&gt;support for Drupal 6 will end on&lt;/strong&gt; &lt;a href=&quot;https://www.drupal.org/drupal-6-eol&quot;&gt;&lt;strong&gt;February 24th, 2016&lt;/strong&gt;&lt;/a&gt;. Given the U.S. holiday
+season has begun, there is little productive time remaining to undertake a site upgrade before Drupal 6 End Of Life (EOL). If you are a site owner fortunate enough to have survived a Drupal site
+upgrade in the past, you are well aware that the upgrade process can be time-intensive for complex sites. It is &lt;em&gt;never&lt;/em&gt; as easy as the click of a button. For most Drupal 6 site owners, it is the fact
+that their sites &lt;em&gt;are&lt;/em&gt; so complex that they have avoided going through the upgrade process for as long as possible.&lt;/p&gt;
+
+&lt;p&gt;This presents &lt;strong&gt;responsible&lt;/strong&gt; yet &lt;strong&gt;practical&lt;/strong&gt; site owners who don’t have unlimited budgets with difficult decisions, each with associated
+pros and cons to weigh. In &lt;strong&gt;part 1 of this series&lt;/strong&gt;, we’ll help walk you through the following topics at a high-level,
+ with a follow-up post examining each topic in finer detail.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What does Drupal 6 EOL mean for me?&lt;/li&gt;
+  &lt;li&gt;What are the risks to not upgrading?&lt;/li&gt;
+  &lt;li&gt;What are my options?&lt;/li&gt;
+  &lt;li&gt;Should we upgrade to Drupal 7 or Drupal 8?&lt;/li&gt;
+  &lt;li&gt;How do we decide what to do?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;N.B.&lt;/strong&gt;: if you don’t fit into the aforementioned category of having budgetary constraints, please &lt;a href=&quot;/contact&quot;&gt;&lt;strong&gt;contact us immediately&lt;/strong&gt;&lt;/a&gt;. ;)&lt;/p&gt;
+
+&lt;h3 id=&quot;what-does-drupal-6-eol-mean-for-me&quot;&gt;What does Drupal 6 EOL mean for me?&lt;/h3&gt;
+
+&lt;p&gt;Like any good (and probably the bad too) Drupal advisor will tell you, &lt;strong&gt;it all depends&lt;/strong&gt;. Helpful, right? But truly, it’s necessary to understand the
+organization and its
+technical requirements very well to assess the risk of operating a Drupal 6 site after EOL.
+As an agency that leverages open source technology to build modern web applications, on a daily basis Savas relies on the Newtonian&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;…shoulders of giants…&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;to perform sophisticated tasks with the click of a button (or more likely a command in the terminal). That Drupal community that we access and contribute to
+ for features
+is the same one that provides security maintenance. After EOL for Drupal 6, that click of a button access goes away both for features, but more importantly
+ for security fixes. In other words, it means (&lt;em&gt;almost&lt;/em&gt;) &lt;strong&gt;no one is watching&lt;/strong&gt; Drupal 6 after February 24th 2015. For sustainability purposes, that huge community
+ (&lt;a href=&quot;https://www.drupal.org/#community-stats&quot;&gt;~100,000 active contributors&lt;/a&gt;) must use its time and energy to support the newer platforms.&lt;/p&gt;
+
+&lt;h4 id=&quot;state-of-drupal-6-sites-in-production&quot;&gt;State of Drupal 6 sites in production&lt;/h4&gt;
+
+&lt;p&gt;Drupal 6 has been around for a long time. As of mid November 2015 there are at least
+&lt;a href=&quot;https://www.drupal.org/project/usage/drupal&quot;&gt;~125,000 reported instances&lt;/a&gt; (&lt;a href=&quot;https://www.drupal.org/node/329620&quot;&gt;likely underrepresented&lt;/a&gt;) of
+Drupal 6 sites in the wild. So you are not alone (…I am here with you…) and there is some comfort in that. If you’re reading this and have not
+begun your upgrade process yet, it is &lt;strong&gt;very&lt;/strong&gt; likely you will be spending at least some time outside of support for your Drupal 6 site.
+We dive into this at a deeper level in &lt;a href=&quot;/2015/12/10/drupal-6-part-2.html&quot;&gt;part 2&lt;/a&gt;, but some of the factors that are worth taking into consideration as you strategize the upgrade are:&lt;/p&gt;
+
+&lt;h5 id=&quot;considerations-to-assess-risk&quot;&gt;Considerations to assess risk&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;How well-known is your organization?
+    &lt;ul&gt;
+      &lt;li&gt;Larger organizations with high public profiles are systematically targeted more frequently than smaller, lesser-known organizations.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;How many contributed modules does your site utilize and how well supported are those modules?
+    &lt;ul&gt;
+      &lt;li&gt;Attack vectors that remain for Drupal 6 are likely to be modules that have not received a lot of historical support, but are in some way identifiable to the public when they are in use on a site.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;How much does your site rely on custom code?
+    &lt;ul&gt;
+      &lt;li&gt;Custom code has the advantage of not being publicly known, but the large disadvantage of only being vetted by one site.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;what-are-the-risks&quot;&gt;What are the risks?&lt;/h3&gt;
+
+&lt;p&gt;High-level risks, more closely examined in &lt;a href=&quot;/2015/12/10/drupal-6-part-2.html&quot;&gt;part 2&lt;/a&gt; are as follows from most severe to least.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Complete site compromise and control with consequences dictated by the whim of a hacker.&lt;/li&gt;
+  &lt;li&gt;Site incompatibility with mandatory server security upgrades that fall out of sync with Drupal 6 (PHP 7 comes out in late 2015).&lt;/li&gt;
+  &lt;li&gt;You do not keep up with modern web development practices. After all, Drupal 6 came out &lt;a href=&quot;http://stackoverflow.com/questions/1090869/why-is-1-1-1970-the-epoch-time&quot;&gt;January 1st, 1970&lt;/a&gt; (&lt;a href=&quot;https://www.drupal.org/drupal-6.0&quot;&gt;I just checked&lt;/a&gt;) and given that makes it older than 6 months on the web, it’s ancient.&lt;/li&gt;
+  &lt;li&gt;You expose yourself to a decreasing market of developers that are able to serve you. With each major release, especially two in row (7 and 8) with significant architectural modifications to the former,
+skills honed in development for the current version of the software, provide diminishing returns the further back in versions you go.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;what-are-my-options&quot;&gt;What are my options?&lt;/h3&gt;
+
+&lt;p&gt;In considering a Drupal 6 upgrade you have a few simple options.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Do nothing, and keep your fingers crossed.&lt;/li&gt;
+  &lt;li&gt;Upgrade Drupal 6 core to a supported version (probably Drupal 7) and match existing functionality.&lt;/li&gt;
+  &lt;li&gt;Engage a robust redesign/rebuild (Drupal 7 or 8).
+    &lt;ul&gt;
+      &lt;li&gt;Simultaneously harden the site to best mitigate attack vulnerabilities as the rebuild may take 6-18 months to complete.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Select a different solution than Drupal, and migrate to that.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;drupal-7-or-drupal-8-heck-what-about-drupal-9&quot;&gt;Drupal 7 or Drupal 8… heck, what about Drupal 9?&lt;/h3&gt;
+
+&lt;p&gt;This is another one that, I know…shocker, depends. The factors that effect this choice we discuss more in &lt;a href=&quot;/2015/12/10/drupal-6-part-2.html&quot;&gt;part 2&lt;/a&gt; are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Organizational tolerance for risk&lt;/strong&gt;: Drupal 8 is less tested, and is inherently riskier earlier on in the life cycle of your site.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Willingness to support community&lt;/strong&gt;: In some cases Drupal 8 contributed modules will need extra polish to be up to production snuff.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Complexity of site&lt;/strong&gt;: Drupal 8 &lt;strong&gt;core&lt;/strong&gt; has many more bells and whistles, but the contributed module landscape has a long way to catch up to Drupal 7.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;What is the future/life of the site&lt;/strong&gt;: Drupal 8 is much more forward-thinking in its approach, whereas though vetted, Drupal 7 is over 4 years old.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Existing developer’s skill set&lt;/strong&gt;: Drupal 8 architecture, coding style (object oriented) and PFE (proudly found elsewhere) approach that leverages strengths from the rest of the PHP community all mark
+ substantial shifts from Drupal 7. Therefore the skills required to succeed in these two realms differ.&lt;/li&gt;
+  &lt;li&gt;Get out of here with that Drupal 9 talk! It’s neither prime nor even!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;what-is-our-recommendation&quot;&gt;What is our recommendation?&lt;/h2&gt;
+
+&lt;p&gt;If you feel lost in these concepts or with answering some of these questions on your own, it’s best that you &lt;a href=&quot;/contact&quot;&gt;speak with professionals&lt;/a&gt; who
+have years of experience maintaining and upgrading Drupal sites. The upgrade process
+is a highly variable one, and is not especially easy to estimate as it is much more nuanced than typical feature development.&lt;/p&gt;
+
+&lt;p&gt;Reaching EOL for your existing Drupal site is a time that we encourage site owners to look at the process like &lt;strong&gt;moving into a new and better home&lt;/strong&gt;.
+It’s best to take the time to envision and create what you want in the new space, rather than thoughtlessly replicate what you had in the old.
+Why make a carbon copy when you had good reasons to make the move after all (even if you were technologically strong-armed by volunteers)? It’s very common to have
+features and custom development that have outlived their usefulness to your organization’s mission; so it’s a good time to purge. Out with the old, in with the new!&lt;/p&gt;
+
+&lt;p&gt;Having said that, the desire to preserve content from the existing site is very common and often necessary. There are advanced
+migration techniques available from Drupal 6 to Drupal 7 or Drupal 8 that may be entirely separated from the rest of the rebuild, so porting content
+and matching site functionality can be completely decoupled.&lt;/p&gt;
+
+&lt;p&gt;We &lt;strong&gt;love talking through this process&lt;/strong&gt; with site owners. We analyze what makes the most sense for your organization while addressing priorities for both short and long term goals.
+We have been building sites in Drupal 8 since May 2015 and sites in Drupal 7
+since 2010 so we are well versed to the pros and cons of each. &lt;a href=&quot;/contact&quot;&gt;Reach out&lt;/a&gt; to further discuss, continue on to &lt;a href=&quot;/2015/12/10/drupal-6-part-2.html&quot;&gt;part 2&lt;/a&gt; and stay tuned for part 3.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;Part 1 - overview&lt;/strong&gt; |
+&lt;a href=&quot;/2015/12/10/drupal-6-part-2.html&quot;&gt;Part 2 - the risks&lt;/a&gt;
+ | &lt;a href=&quot;/2016/01/25/drupal-6-part-3.html&quot;&gt;Part 3 - the options&lt;/a&gt;
+ | &lt;a href=&quot;/2016/02/24/drupal-6-part-4.html&quot;&gt;Part 4 - Drupal 7 or 8?&lt;/a&gt;&lt;/p&gt;
+
+    &lt;hr&gt;
+
+    
+      &lt;div class=&quot;post-comments&quot;&gt;
+  
+    &lt;div class=&quot;expander&quot;&gt;
+      &lt;a href=&quot;javascript:void(0)&quot; id=&quot;js-expander-trigger&quot; class=&quot;expander-trigger expander-hidden&quot;&gt;Comments!&lt;/a&gt;
+      &lt;div id=&quot;js-expander-content&quot; class=&quot;expander-content&quot;&gt;
+        &lt;!-- If there are existing comments, output them here. --&gt;
+        &lt;div id=&quot;post-comments&quot; class=&quot;post-comments&quot;&gt;&lt;/div&gt;
+        &lt;!-- New comment form --&gt;
+        &lt;form id=&quot;comment-form&quot;&gt;
+          &lt;h4&gt;Leave a comment&lt;/h4&gt;
+          &lt;div class=&quot;comment-name&quot;&gt;
+            &lt;p&gt;Name&lt;/p&gt; &lt;input type=&#39;text&#39; name=&#39;name&#39; id=&#39;name&#39; required /&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;comment-email&quot;&gt;
+            &lt;p&gt;Email&lt;/p&gt; &lt;input type=&#39;email&#39; name=&#39;email&#39; id=&#39;email&#39; required /&gt;
+            &lt;p class=&quot;email-disclaimer&quot;&gt;Savas will never sell your email address or spam you.&lt;/p&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;p&gt;Comment&lt;/p&gt;
+          &lt;textarea name=&#39;comment&#39; id=&#39;comment&#39; required&gt;&lt;/textarea&gt;
+          &lt;p class=&quot;hint below-textarea&quot;&gt;Plain text format only please.&lt;/p&gt;
+
+          &lt;input type=&#39;hidden&#39; name=&#39;slug&#39; id=&#39;slug&#39; value=&#39;/2015/11/24/drupal-6-upgrade.html&#39; /&gt;
+          &lt;input type=&#39;text&#39; name=&#39;url&#39; id=&#39;url&#39; /&gt;
+
+          &lt;div class=&#39;are-you-human&#39;&gt;
+            &lt;div class=&#39;are-you-human-owl&#39;&gt;
+              &lt;img src=&quot;/assets/img/owl.png&quot; alt=&quot;Savas logo&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&#39;are-you-human-field&#39;&gt;
+              &lt;p&gt;What type of animal is the Savas logo?&lt;/p&gt;
+              &lt;input type=&#39;text&#39; name=&#39;nocaptcha&#39; id=&#39;nocaptcha&#39; class=&#39;nocaptcha&#39;&gt;
+              &lt;p class=&quot;hint&quot;&gt;Hint: 3 letters long, starts with an &#39;o&#39; and ends with an &#39;l&#39;.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;input type=&#39;submit&#39; value=&#39;Submit&#39; id=&#39;submit&#39; class=&quot;submit-comment&quot;/&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+  &lt;hr&gt;
+&lt;/div&gt;
+
+    
+    &lt;div class=&quot;post-bottom&quot;&gt;
+  &lt;div class=&quot;post-meta&quot;&gt;
+    &lt;h4&gt;About the author&lt;/h4&gt;
+    
+      &lt;a href=&quot;/team/chris-russo&quot;&gt;
+        &lt;img src=&quot;/assets/img/team/chris-russo.jpg&quot; alt=&quot;Chris Russo&quot;&gt;
+      &lt;/a&gt;
+      &lt;p class=&quot;post-author-desc&quot;&gt;Chris does his best to ensure that his team is learning and growing and that our clients feel like partners.&lt;/p&gt;
+    
+  &lt;/div&gt;
+    &lt;!-- Once we have more content, change this to posts related by tag --&gt;
+  &lt;div class=&quot;post-related flex-container&quot;&gt;
+    &lt;h4&gt;Recent posts by Savas&lt;/h4&gt;
+    &lt;div class=&quot;cards&quot;&gt;
+      
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/22/user-testing.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Usability Testing - Our Process and Favorite Practices
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 22, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;Our approach to designing, conducting, and learning from user testing and other analyses.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/16/using-xhprof.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Using XHProf to profile your Drupal module
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 16, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;A case study of using XHProf to profile a Drupal module.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/15/git-merge-conflict-strategies.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Strategies and tools for resolving Git merge conflicts
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 15, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;An overview of strategies and tools I like to use when I encounter conflicts during merges.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;div class=&quot;previous-next-links&quot;&gt;
+  &lt;div class=&quot;next&quot;&gt;
+    
+      &lt;a href=&quot;/2015/12/10/drupal-6-part-2.html&quot;&gt;&lt;i class=&quot;fa fa-long-arrow-left &quot;&gt;&lt;/i&gt; It&#39;s nearly 2016, your site is running on Drupal 6, now what? Part 2: the risks.&lt;/a&gt;
+    
+  &lt;/div&gt;
+  &lt;div class=&quot;previous&quot;&gt;
+    
+      &lt;a href=&quot;/2015/11/05/drupal-web-mapping.html&quot;&gt; Drupalized Web Mapping @ NACIS 2015 &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+  &lt;/article&gt;
+
+&lt;/div&gt;
+",
+      "author": {
+          "@context": "http://schema.org",
+          "@type": "Person",
+          "name": "Chris Russo",
+          "affiliation": "Savas",
+          "worksFor": "Savas"
+      },
+    "keywords": "drupal, drupal8, drupal-planet",
+    "text": "
+
+
+&lt;div class=&quot;post&quot;&gt;
+  &lt;header class=&quot;post-header&quot;&gt;
+    &lt;h1 class=&quot;post-title&quot;&gt;It&#39;s nearly 2016, your site is running on Drupal 6, now what? Part 1: The overview&lt;/h1&gt;
+    &lt;p&gt;By &lt;a href=&quot;/team/chris-russo&quot;&gt;Chris Russo&lt;/a&gt;&lt;/p&gt;
+    &lt;p class=&quot;centerdot&quot;&gt;&amp;centerdot; &lt;/p&gt;
+    &lt;p&gt;Nov 24, 2015 &lt;/p&gt;&lt;br&gt;
+    &lt;i class=&quot;fa fa-tags&quot;&gt;&lt;/i&gt;&lt;p&gt;&lt;a href=&quot;/blog/tag/drupal/&quot;&gt;Drupal&lt;/a&gt;, &lt;a href=&quot;/blog/tag/drupal8/&quot;&gt;Drupal 8&lt;/a&gt;, &lt;a href=&quot;/blog/tag/drupal-planet/&quot;&gt;Drupal Planet&lt;/a&gt;&lt;/p&gt;
+    
+    &lt;div&gt;&lt;p&gt;&lt;span id=&quot;comment-count&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+    
+    
+  &lt;/header&gt;
+
+  
+
+  &lt;article class=&quot;post-content&quot;&gt;
+    &lt;p&gt;This is part 1 of a series investigating what to do with your Drupal 6 site as
+EOL approaches.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Part 1 - overview&lt;/strong&gt; |
+&lt;a href=&quot;/2015/12/10/drupal-6-part-2.html&quot;&gt;Part 2 - the risks&lt;/a&gt;
+ | &lt;a href=&quot;/2016/01/25/drupal-6-part-3.html&quot;&gt;Part 3 - the options&lt;/a&gt;
+ | &lt;a href=&quot;/2016/02/24/drupal-6-part-4.html&quot;&gt;Part 4 - Drupal 7 or 8?&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;the-issue-at-img-srcassetsimgbloghandpng-althand&quot;&gt;The issue at &lt;img src=&quot;/assets/img/blog/hand.png&quot; alt=&quot;hand&quot; /&gt;&lt;/h2&gt;
+
+&lt;p&gt;As most Drupal 6 site owners are aware, after a &lt;a href=&quot;https://www.drupal.org/core/dev-cycle&quot;&gt;prolonged development period&lt;/a&gt;, Drupal 8 was officially released (&lt;a href=&quot;(https://www.drupal.org/node/2619030)&quot;&gt;8.0.0&lt;/a&gt;) last week on November 19th, 2015
+&lt;a href=&quot;https://en.wikipedia.org/wiki/Dries_Buytaert&quot;&gt;Dries’s birthday&lt;/a&gt; with a corresponding many, &lt;a href=&quot;https://twitter.com/hashtag/Celebr8D8?src=hash&quot;&gt;many a lively party&lt;/a&gt;:
+&lt;img src=&quot;/assets/img/blog/celebr8d8.jpg&quot; alt=&quot;Drupal 8 celebration #celebr8d8&quot; /&gt;
+&lt;span class=&quot;caption&quot;&gt;Like this fancy one in downtown Durham atop the rooftop bar of &lt;a href=&quot;http://thedurham.com/&quot;&gt;The Durham Hotel&lt;/a&gt;.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Drupal 8.0.0 is a &lt;a href=&quot;http://celebratedrupal8.com/&quot;&gt;&lt;strong&gt;BIG DEAL&lt;/strong&gt;&lt;/a&gt; and generally speaking is great for the community of Drupal site owners and site builders.&lt;/p&gt;
+
+&lt;p&gt;However (there’s always a but), with the official release of Drupal 8,
+&lt;strong&gt;support for Drupal 6 will end on&lt;/strong&gt; &lt;a href=&quot;https://www.drupal.org/drupal-6-eol&quot;&gt;&lt;strong&gt;February 24th, 2016&lt;/strong&gt;&lt;/a&gt;. Given the U.S. holiday
+season has begun, there is little productive time remaining to undertake a site upgrade before Drupal 6 End Of Life (EOL). If you are a site owner fortunate enough to have survived a Drupal site
+upgrade in the past, you are well aware that the upgrade process can be time-intensive for complex sites. It is &lt;em&gt;never&lt;/em&gt; as easy as the click of a button. For most Drupal 6 site owners, it is the fact
+that their sites &lt;em&gt;are&lt;/em&gt; so complex that they have avoided going through the upgrade process for as long as possible.&lt;/p&gt;
+
+&lt;p&gt;This presents &lt;strong&gt;responsible&lt;/strong&gt; yet &lt;strong&gt;practical&lt;/strong&gt; site owners who don’t have unlimited budgets with difficult decisions, each with associated
+pros and cons to weigh. In &lt;strong&gt;part 1 of this series&lt;/strong&gt;, we’ll help walk you through the following topics at a high-level,
+ with a follow-up post examining each topic in finer detail.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What does Drupal 6 EOL mean for me?&lt;/li&gt;
+  &lt;li&gt;What are the risks to not upgrading?&lt;/li&gt;
+  &lt;li&gt;What are my options?&lt;/li&gt;
+  &lt;li&gt;Should we upgrade to Drupal 7 or Drupal 8?&lt;/li&gt;
+  &lt;li&gt;How do we decide what to do?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;N.B.&lt;/strong&gt;: if you don’t fit into the aforementioned category of having budgetary constraints, please &lt;a href=&quot;/contact&quot;&gt;&lt;strong&gt;contact us immediately&lt;/strong&gt;&lt;/a&gt;. ;)&lt;/p&gt;
+
+&lt;h3 id=&quot;what-does-drupal-6-eol-mean-for-me&quot;&gt;What does Drupal 6 EOL mean for me?&lt;/h3&gt;
+
+&lt;p&gt;Like any good (and probably the bad too) Drupal advisor will tell you, &lt;strong&gt;it all depends&lt;/strong&gt;. Helpful, right? But truly, it’s necessary to understand the
+organization and its
+technical requirements very well to assess the risk of operating a Drupal 6 site after EOL.
+As an agency that leverages open source technology to build modern web applications, on a daily basis Savas relies on the Newtonian&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;…shoulders of giants…&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;to perform sophisticated tasks with the click of a button (or more likely a command in the terminal). That Drupal community that we access and contribute to
+ for features
+is the same one that provides security maintenance. After EOL for Drupal 6, that click of a button access goes away both for features, but more importantly
+ for security fixes. In other words, it means (&lt;em&gt;almost&lt;/em&gt;) &lt;strong&gt;no one is watching&lt;/strong&gt; Drupal 6 after February 24th 2015. For sustainability purposes, that huge community
+ (&lt;a href=&quot;https://www.drupal.org/#community-stats&quot;&gt;~100,000 active contributors&lt;/a&gt;) must use its time and energy to support the newer platforms.&lt;/p&gt;
+
+&lt;h4 id=&quot;state-of-drupal-6-sites-in-production&quot;&gt;State of Drupal 6 sites in production&lt;/h4&gt;
+
+&lt;p&gt;Drupal 6 has been around for a long time. As of mid November 2015 there are at least
+&lt;a href=&quot;https://www.drupal.org/project/usage/drupal&quot;&gt;~125,000 reported instances&lt;/a&gt; (&lt;a href=&quot;https://www.drupal.org/node/329620&quot;&gt;likely underrepresented&lt;/a&gt;) of
+Drupal 6 sites in the wild. So you are not alone (…I am here with you…) and there is some comfort in that. If you’re reading this and have not
+begun your upgrade process yet, it is &lt;strong&gt;very&lt;/strong&gt; likely you will be spending at least some time outside of support for your Drupal 6 site.
+We dive into this at a deeper level in &lt;a href=&quot;/2015/12/10/drupal-6-part-2.html&quot;&gt;part 2&lt;/a&gt;, but some of the factors that are worth taking into consideration as you strategize the upgrade are:&lt;/p&gt;
+
+&lt;h5 id=&quot;considerations-to-assess-risk&quot;&gt;Considerations to assess risk&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;How well-known is your organization?
+    &lt;ul&gt;
+      &lt;li&gt;Larger organizations with high public profiles are systematically targeted more frequently than smaller, lesser-known organizations.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;How many contributed modules does your site utilize and how well supported are those modules?
+    &lt;ul&gt;
+      &lt;li&gt;Attack vectors that remain for Drupal 6 are likely to be modules that have not received a lot of historical support, but are in some way identifiable to the public when they are in use on a site.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;How much does your site rely on custom code?
+    &lt;ul&gt;
+      &lt;li&gt;Custom code has the advantage of not being publicly known, but the large disadvantage of only being vetted by one site.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;what-are-the-risks&quot;&gt;What are the risks?&lt;/h3&gt;
+
+&lt;p&gt;High-level risks, more closely examined in &lt;a href=&quot;/2015/12/10/drupal-6-part-2.html&quot;&gt;part 2&lt;/a&gt; are as follows from most severe to least.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Complete site compromise and control with consequences dictated by the whim of a hacker.&lt;/li&gt;
+  &lt;li&gt;Site incompatibility with mandatory server security upgrades that fall out of sync with Drupal 6 (PHP 7 comes out in late 2015).&lt;/li&gt;
+  &lt;li&gt;You do not keep up with modern web development practices. After all, Drupal 6 came out &lt;a href=&quot;http://stackoverflow.com/questions/1090869/why-is-1-1-1970-the-epoch-time&quot;&gt;January 1st, 1970&lt;/a&gt; (&lt;a href=&quot;https://www.drupal.org/drupal-6.0&quot;&gt;I just checked&lt;/a&gt;) and given that makes it older than 6 months on the web, it’s ancient.&lt;/li&gt;
+  &lt;li&gt;You expose yourself to a decreasing market of developers that are able to serve you. With each major release, especially two in row (7 and 8) with significant architectural modifications to the former,
+skills honed in development for the current version of the software, provide diminishing returns the further back in versions you go.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;what-are-my-options&quot;&gt;What are my options?&lt;/h3&gt;
+
+&lt;p&gt;In considering a Drupal 6 upgrade you have a few simple options.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Do nothing, and keep your fingers crossed.&lt;/li&gt;
+  &lt;li&gt;Upgrade Drupal 6 core to a supported version (probably Drupal 7) and match existing functionality.&lt;/li&gt;
+  &lt;li&gt;Engage a robust redesign/rebuild (Drupal 7 or 8).
+    &lt;ul&gt;
+      &lt;li&gt;Simultaneously harden the site to best mitigate attack vulnerabilities as the rebuild may take 6-18 months to complete.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Select a different solution than Drupal, and migrate to that.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;drupal-7-or-drupal-8-heck-what-about-drupal-9&quot;&gt;Drupal 7 or Drupal 8… heck, what about Drupal 9?&lt;/h3&gt;
+
+&lt;p&gt;This is another one that, I know…shocker, depends. The factors that effect this choice we discuss more in &lt;a href=&quot;/2015/12/10/drupal-6-part-2.html&quot;&gt;part 2&lt;/a&gt; are:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Organizational tolerance for risk&lt;/strong&gt;: Drupal 8 is less tested, and is inherently riskier earlier on in the life cycle of your site.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Willingness to support community&lt;/strong&gt;: In some cases Drupal 8 contributed modules will need extra polish to be up to production snuff.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Complexity of site&lt;/strong&gt;: Drupal 8 &lt;strong&gt;core&lt;/strong&gt; has many more bells and whistles, but the contributed module landscape has a long way to catch up to Drupal 7.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;What is the future/life of the site&lt;/strong&gt;: Drupal 8 is much more forward-thinking in its approach, whereas though vetted, Drupal 7 is over 4 years old.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Existing developer’s skill set&lt;/strong&gt;: Drupal 8 architecture, coding style (object oriented) and PFE (proudly found elsewhere) approach that leverages strengths from the rest of the PHP community all mark
+ substantial shifts from Drupal 7. Therefore the skills required to succeed in these two realms differ.&lt;/li&gt;
+  &lt;li&gt;Get out of here with that Drupal 9 talk! It’s neither prime nor even!&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;what-is-our-recommendation&quot;&gt;What is our recommendation?&lt;/h2&gt;
+
+&lt;p&gt;If you feel lost in these concepts or with answering some of these questions on your own, it’s best that you &lt;a href=&quot;/contact&quot;&gt;speak with professionals&lt;/a&gt; who
+have years of experience maintaining and upgrading Drupal sites. The upgrade process
+is a highly variable one, and is not especially easy to estimate as it is much more nuanced than typical feature development.&lt;/p&gt;
+
+&lt;p&gt;Reaching EOL for your existing Drupal site is a time that we encourage site owners to look at the process like &lt;strong&gt;moving into a new and better home&lt;/strong&gt;.
+It’s best to take the time to envision and create what you want in the new space, rather than thoughtlessly replicate what you had in the old.
+Why make a carbon copy when you had good reasons to make the move after all (even if you were technologically strong-armed by volunteers)? It’s very common to have
+features and custom development that have outlived their usefulness to your organization’s mission; so it’s a good time to purge. Out with the old, in with the new!&lt;/p&gt;
+
+&lt;p&gt;Having said that, the desire to preserve content from the existing site is very common and often necessary. There are advanced
+migration techniques available from Drupal 6 to Drupal 7 or Drupal 8 that may be entirely separated from the rest of the rebuild, so porting content
+and matching site functionality can be completely decoupled.&lt;/p&gt;
+
+&lt;p&gt;We &lt;strong&gt;love talking through this process&lt;/strong&gt; with site owners. We analyze what makes the most sense for your organization while addressing priorities for both short and long term goals.
+We have been building sites in Drupal 8 since May 2015 and sites in Drupal 7
+since 2010 so we are well versed to the pros and cons of each. &lt;a href=&quot;/contact&quot;&gt;Reach out&lt;/a&gt; to further discuss, continue on to &lt;a href=&quot;/2015/12/10/drupal-6-part-2.html&quot;&gt;part 2&lt;/a&gt; and stay tuned for part 3.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;Part 1 - overview&lt;/strong&gt; |
+&lt;a href=&quot;/2015/12/10/drupal-6-part-2.html&quot;&gt;Part 2 - the risks&lt;/a&gt;
+ | &lt;a href=&quot;/2016/01/25/drupal-6-part-3.html&quot;&gt;Part 3 - the options&lt;/a&gt;
+ | &lt;a href=&quot;/2016/02/24/drupal-6-part-4.html&quot;&gt;Part 4 - Drupal 7 or 8?&lt;/a&gt;&lt;/p&gt;
+
+    &lt;hr&gt;
+
+    
+      &lt;div class=&quot;post-comments&quot;&gt;
+  
+    &lt;div class=&quot;expander&quot;&gt;
+      &lt;a href=&quot;javascript:void(0)&quot; id=&quot;js-expander-trigger&quot; class=&quot;expander-trigger expander-hidden&quot;&gt;Comments!&lt;/a&gt;
+      &lt;div id=&quot;js-expander-content&quot; class=&quot;expander-content&quot;&gt;
+        &lt;!-- If there are existing comments, output them here. --&gt;
+        &lt;div id=&quot;post-comments&quot; class=&quot;post-comments&quot;&gt;&lt;/div&gt;
+        &lt;!-- New comment form --&gt;
+        &lt;form id=&quot;comment-form&quot;&gt;
+          &lt;h4&gt;Leave a comment&lt;/h4&gt;
+          &lt;div class=&quot;comment-name&quot;&gt;
+            &lt;p&gt;Name&lt;/p&gt; &lt;input type=&#39;text&#39; name=&#39;name&#39; id=&#39;name&#39; required /&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;comment-email&quot;&gt;
+            &lt;p&gt;Email&lt;/p&gt; &lt;input type=&#39;email&#39; name=&#39;email&#39; id=&#39;email&#39; required /&gt;
+            &lt;p class=&quot;email-disclaimer&quot;&gt;Savas will never sell your email address or spam you.&lt;/p&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;p&gt;Comment&lt;/p&gt;
+          &lt;textarea name=&#39;comment&#39; id=&#39;comment&#39; required&gt;&lt;/textarea&gt;
+          &lt;p class=&quot;hint below-textarea&quot;&gt;Plain text format only please.&lt;/p&gt;
+
+          &lt;input type=&#39;hidden&#39; name=&#39;slug&#39; id=&#39;slug&#39; value=&#39;/2015/11/24/drupal-6-upgrade.html&#39; /&gt;
+          &lt;input type=&#39;text&#39; name=&#39;url&#39; id=&#39;url&#39; /&gt;
+
+          &lt;div class=&#39;are-you-human&#39;&gt;
+            &lt;div class=&#39;are-you-human-owl&#39;&gt;
+              &lt;img src=&quot;/assets/img/owl.png&quot; alt=&quot;Savas logo&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&#39;are-you-human-field&#39;&gt;
+              &lt;p&gt;What type of animal is the Savas logo?&lt;/p&gt;
+              &lt;input type=&#39;text&#39; name=&#39;nocaptcha&#39; id=&#39;nocaptcha&#39; class=&#39;nocaptcha&#39;&gt;
+              &lt;p class=&quot;hint&quot;&gt;Hint: 3 letters long, starts with an &#39;o&#39; and ends with an &#39;l&#39;.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;input type=&#39;submit&#39; value=&#39;Submit&#39; id=&#39;submit&#39; class=&quot;submit-comment&quot;/&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+  &lt;hr&gt;
+&lt;/div&gt;
+
+    
+    &lt;div class=&quot;post-bottom&quot;&gt;
+  &lt;div class=&quot;post-meta&quot;&gt;
+    &lt;h4&gt;About the author&lt;/h4&gt;
+    
+      &lt;a href=&quot;/team/chris-russo&quot;&gt;
+        &lt;img src=&quot;/assets/img/team/chris-russo.jpg&quot; alt=&quot;Chris Russo&quot;&gt;
+      &lt;/a&gt;
+      &lt;p class=&quot;post-author-desc&quot;&gt;Chris does his best to ensure that his team is learning and growing and that our clients feel like partners.&lt;/p&gt;
+    
+  &lt;/div&gt;
+    &lt;!-- Once we have more content, change this to posts related by tag --&gt;
+  &lt;div class=&quot;post-related flex-container&quot;&gt;
+    &lt;h4&gt;Recent posts by Savas&lt;/h4&gt;
+    &lt;div class=&quot;cards&quot;&gt;
+      
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/22/user-testing.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Usability Testing - Our Process and Favorite Practices
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 22, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;Our approach to designing, conducting, and learning from user testing and other analyses.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/16/using-xhprof.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Using XHProf to profile your Drupal module
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 16, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;A case study of using XHProf to profile a Drupal module.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/15/git-merge-conflict-strategies.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Strategies and tools for resolving Git merge conflicts
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 15, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;An overview of strategies and tools I like to use when I encounter conflicts during merges.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;div class=&quot;previous-next-links&quot;&gt;
+  &lt;div class=&quot;next&quot;&gt;
+    
+      &lt;a href=&quot;/2015/12/10/drupal-6-part-2.html&quot;&gt;&lt;i class=&quot;fa fa-long-arrow-left &quot;&gt;&lt;/i&gt; It&#39;s nearly 2016, your site is running on Drupal 6, now what? Part 2: the risks.&lt;/a&gt;
+    
+  &lt;/div&gt;
+  &lt;div class=&quot;previous&quot;&gt;
+    
+      &lt;a href=&quot;/2015/11/05/drupal-web-mapping.html&quot;&gt; Drupalized Web Mapping @ NACIS 2015 &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+  &lt;/article&gt;
+
+&lt;/div&gt;
+",
+    "sourceOrganization": "Savas",
+    "inLanguage": "en-US",
+    "dateCreated": "2015-11-24 00:00:00 +0000",
+    "datePublished": "2015-11-24 00:00:00 +0000",
+    "url": "/2015/11/24/drupal-6-upgrade.html"
+  }
+</script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-61514316-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  
+
+  
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+
+    <!-- Savas logo. -->
+    <a href="/" class="logo">
+        <img src="/assets/img/logo.png" alt="Savas logo">
+    </a>
+
+    <!-- Mobile menu button. -->
+    <a href="/" id="js-mobile-menu" class="navigation-menu-button">MENU</a>
+
+    <!-- Main menu. -->
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+
+        <!-- Loop through nav items in config.yml. -->
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  more">
+            <a href="javascript:void(0)">Who we are</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+
+              <ul class="submenu">
+                
+
+                  <!-- Assign active nav item class. -->
+                  
+                  
+
+                  <li class="nav-link ">
+                    <a href="/team">Team</a>
+                  </li>
+                
+
+                  <!-- Assign active nav item class. -->
+                  
+                  
+
+                  <li class="nav-link ">
+                    <a href="/mission-and-values">Mission & values</a>
+                  </li>
+                
+              </ul>
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/services">Services</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/work">Our work</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/blog">Blog</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/contact">Contact</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        
+
+
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">It's nearly 2016, your site is running on Drupal 6, now what? Part 1: The overview</h1>
+    <p>By <a href="/team/chris-russo">Chris Russo</a></p>
+    <p class="centerdot">&centerdot; </p>
+    <p>Nov 24, 2015 </p><br>
+    <i class="fa fa-tags"></i><p><a href="/blog/tag/drupal/">Drupal</a>, <a href="/blog/tag/drupal8/">Drupal 8</a>, <a href="/blog/tag/drupal-planet/">Drupal Planet</a></p>
+    
+    <div><p><span id="comment-count"></span></p></div>
+    
+    
+  </header>
+
+  
+
+  <article class="post-content">
+    <p>This is part 1 of a series investigating what to do with your Drupal 6 site as
+EOL approaches.</p>
+
+<p><strong>Part 1 - overview</strong> |
+<a href="/2015/12/10/drupal-6-part-2.html">Part 2 - the risks</a>
+ | <a href="/2016/01/25/drupal-6-part-3.html">Part 3 - the options</a>
+ | <a href="/2016/02/24/drupal-6-part-4.html">Part 4 - Drupal 7 or 8?</a></p>
+
+<hr />
+
+<h2 id="the-issue-at-img-srcassetsimgbloghandpng-althand">The issue at <img src="/assets/img/blog/hand.png" alt="hand" /></h2>
+
+<p>As most Drupal 6 site owners are aware, after a <a href="https://www.drupal.org/core/dev-cycle">prolonged development period</a>, Drupal 8 was officially released (<a href="(https://www.drupal.org/node/2619030)">8.0.0</a>) last week on November 19th, 2015
+<a href="https://en.wikipedia.org/wiki/Dries_Buytaert">Dries’s birthday</a> with a corresponding many, <a href="https://twitter.com/hashtag/Celebr8D8?src=hash">many a lively party</a>:
+<img src="/assets/img/blog/celebr8d8.jpg" alt="Drupal 8 celebration #celebr8d8" />
+<span class="caption">Like this fancy one in downtown Durham atop the rooftop bar of <a href="http://thedurham.com/">The Durham Hotel</a>.</span></p>
+
+<p>Drupal 8.0.0 is a <a href="http://celebratedrupal8.com/"><strong>BIG DEAL</strong></a> and generally speaking is great for the community of Drupal site owners and site builders.</p>
+
+<p>However (there’s always a but), with the official release of Drupal 8,
+<strong>support for Drupal 6 will end on</strong> <a href="https://www.drupal.org/drupal-6-eol"><strong>February 24th, 2016</strong></a>. Given the U.S. holiday
+season has begun, there is little productive time remaining to undertake a site upgrade before Drupal 6 End Of Life (EOL). If you are a site owner fortunate enough to have survived a Drupal site
+upgrade in the past, you are well aware that the upgrade process can be time-intensive for complex sites. It is <em>never</em> as easy as the click of a button. For most Drupal 6 site owners, it is the fact
+that their sites <em>are</em> so complex that they have avoided going through the upgrade process for as long as possible.</p>
+
+<p>This presents <strong>responsible</strong> yet <strong>practical</strong> site owners who don’t have unlimited budgets with difficult decisions, each with associated
+pros and cons to weigh. In <strong>part 1 of this series</strong>, we’ll help walk you through the following topics at a high-level,
+ with a follow-up post examining each topic in finer detail.</p>
+
+<ul>
+  <li>What does Drupal 6 EOL mean for me?</li>
+  <li>What are the risks to not upgrading?</li>
+  <li>What are my options?</li>
+  <li>Should we upgrade to Drupal 7 or Drupal 8?</li>
+  <li>How do we decide what to do?</li>
+</ul>
+
+<p><strong>N.B.</strong>: if you don’t fit into the aforementioned category of having budgetary constraints, please <a href="/contact"><strong>contact us immediately</strong></a>. ;)</p>
+
+<h3 id="what-does-drupal-6-eol-mean-for-me">What does Drupal 6 EOL mean for me?</h3>
+
+<p>Like any good (and probably the bad too) Drupal advisor will tell you, <strong>it all depends</strong>. Helpful, right? But truly, it’s necessary to understand the
+organization and its
+technical requirements very well to assess the risk of operating a Drupal 6 site after EOL.
+As an agency that leverages open source technology to build modern web applications, on a daily basis Savas relies on the Newtonian</p>
+
+<blockquote>
+  <p>…shoulders of giants…</p>
+</blockquote>
+
+<p>to perform sophisticated tasks with the click of a button (or more likely a command in the terminal). That Drupal community that we access and contribute to
+ for features
+is the same one that provides security maintenance. After EOL for Drupal 6, that click of a button access goes away both for features, but more importantly
+ for security fixes. In other words, it means (<em>almost</em>) <strong>no one is watching</strong> Drupal 6 after February 24th 2015. For sustainability purposes, that huge community
+ (<a href="https://www.drupal.org/#community-stats">~100,000 active contributors</a>) must use its time and energy to support the newer platforms.</p>
+
+<h4 id="state-of-drupal-6-sites-in-production">State of Drupal 6 sites in production</h4>
+
+<p>Drupal 6 has been around for a long time. As of mid November 2015 there are at least
+<a href="https://www.drupal.org/project/usage/drupal">~125,000 reported instances</a> (<a href="https://www.drupal.org/node/329620">likely underrepresented</a>) of
+Drupal 6 sites in the wild. So you are not alone (…I am here with you…) and there is some comfort in that. If you’re reading this and have not
+begun your upgrade process yet, it is <strong>very</strong> likely you will be spending at least some time outside of support for your Drupal 6 site.
+We dive into this at a deeper level in <a href="/2015/12/10/drupal-6-part-2.html">part 2</a>, but some of the factors that are worth taking into consideration as you strategize the upgrade are:</p>
+
+<h5 id="considerations-to-assess-risk">Considerations to assess risk</h5>
+<ul>
+  <li>How well-known is your organization?
+    <ul>
+      <li>Larger organizations with high public profiles are systematically targeted more frequently than smaller, lesser-known organizations.</li>
+    </ul>
+  </li>
+  <li>How many contributed modules does your site utilize and how well supported are those modules?
+    <ul>
+      <li>Attack vectors that remain for Drupal 6 are likely to be modules that have not received a lot of historical support, but are in some way identifiable to the public when they are in use on a site.</li>
+    </ul>
+  </li>
+  <li>How much does your site rely on custom code?
+    <ul>
+      <li>Custom code has the advantage of not being publicly known, but the large disadvantage of only being vetted by one site.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="what-are-the-risks">What are the risks?</h3>
+
+<p>High-level risks, more closely examined in <a href="/2015/12/10/drupal-6-part-2.html">part 2</a> are as follows from most severe to least.</p>
+
+<ul>
+  <li>Complete site compromise and control with consequences dictated by the whim of a hacker.</li>
+  <li>Site incompatibility with mandatory server security upgrades that fall out of sync with Drupal 6 (PHP 7 comes out in late 2015).</li>
+  <li>You do not keep up with modern web development practices. After all, Drupal 6 came out <a href="http://stackoverflow.com/questions/1090869/why-is-1-1-1970-the-epoch-time">January 1st, 1970</a> (<a href="https://www.drupal.org/drupal-6.0">I just checked</a>) and given that makes it older than 6 months on the web, it’s ancient.</li>
+  <li>You expose yourself to a decreasing market of developers that are able to serve you. With each major release, especially two in row (7 and 8) with significant architectural modifications to the former,
+skills honed in development for the current version of the software, provide diminishing returns the further back in versions you go.</li>
+</ul>
+
+<h3 id="what-are-my-options">What are my options?</h3>
+
+<p>In considering a Drupal 6 upgrade you have a few simple options.</p>
+
+<ul>
+  <li>Do nothing, and keep your fingers crossed.</li>
+  <li>Upgrade Drupal 6 core to a supported version (probably Drupal 7) and match existing functionality.</li>
+  <li>Engage a robust redesign/rebuild (Drupal 7 or 8).
+    <ul>
+      <li>Simultaneously harden the site to best mitigate attack vulnerabilities as the rebuild may take 6-18 months to complete.</li>
+    </ul>
+  </li>
+  <li>Select a different solution than Drupal, and migrate to that.</li>
+</ul>
+
+<h3 id="drupal-7-or-drupal-8-heck-what-about-drupal-9">Drupal 7 or Drupal 8… heck, what about Drupal 9?</h3>
+
+<p>This is another one that, I know…shocker, depends. The factors that effect this choice we discuss more in <a href="/2015/12/10/drupal-6-part-2.html">part 2</a> are:</p>
+
+<ul>
+  <li><strong>Organizational tolerance for risk</strong>: Drupal 8 is less tested, and is inherently riskier earlier on in the life cycle of your site.</li>
+  <li><strong>Willingness to support community</strong>: In some cases Drupal 8 contributed modules will need extra polish to be up to production snuff.</li>
+  <li><strong>Complexity of site</strong>: Drupal 8 <strong>core</strong> has many more bells and whistles, but the contributed module landscape has a long way to catch up to Drupal 7.</li>
+  <li><strong>What is the future/life of the site</strong>: Drupal 8 is much more forward-thinking in its approach, whereas though vetted, Drupal 7 is over 4 years old.</li>
+  <li><strong>Existing developer’s skill set</strong>: Drupal 8 architecture, coding style (object oriented) and PFE (proudly found elsewhere) approach that leverages strengths from the rest of the PHP community all mark
+ substantial shifts from Drupal 7. Therefore the skills required to succeed in these two realms differ.</li>
+  <li>Get out of here with that Drupal 9 talk! It’s neither prime nor even!</li>
+</ul>
+
+<h2 id="what-is-our-recommendation">What is our recommendation?</h2>
+
+<p>If you feel lost in these concepts or with answering some of these questions on your own, it’s best that you <a href="/contact">speak with professionals</a> who
+have years of experience maintaining and upgrading Drupal sites. The upgrade process
+is a highly variable one, and is not especially easy to estimate as it is much more nuanced than typical feature development.</p>
+
+<p>Reaching EOL for your existing Drupal site is a time that we encourage site owners to look at the process like <strong>moving into a new and better home</strong>.
+It’s best to take the time to envision and create what you want in the new space, rather than thoughtlessly replicate what you had in the old.
+Why make a carbon copy when you had good reasons to make the move after all (even if you were technologically strong-armed by volunteers)? It’s very common to have
+features and custom development that have outlived their usefulness to your organization’s mission; so it’s a good time to purge. Out with the old, in with the new!</p>
+
+<p>Having said that, the desire to preserve content from the existing site is very common and often necessary. There are advanced
+migration techniques available from Drupal 6 to Drupal 7 or Drupal 8 that may be entirely separated from the rest of the rebuild, so porting content
+and matching site functionality can be completely decoupled.</p>
+
+<p>We <strong>love talking through this process</strong> with site owners. We analyze what makes the most sense for your organization while addressing priorities for both short and long term goals.
+We have been building sites in Drupal 8 since May 2015 and sites in Drupal 7
+since 2010 so we are well versed to the pros and cons of each. <a href="/contact">Reach out</a> to further discuss, continue on to <a href="/2015/12/10/drupal-6-part-2.html">part 2</a> and stay tuned for part 3.</p>
+
+<hr />
+
+<p><strong>Part 1 - overview</strong> |
+<a href="/2015/12/10/drupal-6-part-2.html">Part 2 - the risks</a>
+ | <a href="/2016/01/25/drupal-6-part-3.html">Part 3 - the options</a>
+ | <a href="/2016/02/24/drupal-6-part-4.html">Part 4 - Drupal 7 or 8?</a></p>
+
+    <hr>
+
+    
+      <div class="post-comments">
+  
+    <div class="expander">
+      <a href="javascript:void(0)" id="js-expander-trigger" class="expander-trigger expander-hidden">Comments!</a>
+      <div id="js-expander-content" class="expander-content">
+        <!-- If there are existing comments, output them here. -->
+        <div id="post-comments" class="post-comments"></div>
+        <!-- New comment form -->
+        <form id="comment-form">
+          <h4>Leave a comment</h4>
+          <div class="comment-name">
+            <p>Name</p> <input type='text' name='name' id='name' required /><br>
+          </div>
+
+          <div class="comment-email">
+            <p>Email</p> <input type='email' name='email' id='email' required />
+            <p class="email-disclaimer">Savas will never sell your email address or spam you.</p><br>
+          </div>
+
+          <p>Comment</p>
+          <textarea name='comment' id='comment' required></textarea>
+          <p class="hint below-textarea">Plain text format only please.</p>
+
+          <input type='hidden' name='slug' id='slug' value='/2015/11/24/drupal-6-upgrade.html' />
+          <input type='text' name='url' id='url' />
+
+          <div class='are-you-human'>
+            <div class='are-you-human-owl'>
+              <img src="/assets/img/owl.png" alt="Savas logo">
+            </div>
+            <div class='are-you-human-field'>
+              <p>What type of animal is the Savas logo?</p>
+              <input type='text' name='nocaptcha' id='nocaptcha' class='nocaptcha'>
+              <p class="hint">Hint: 3 letters long, starts with an 'o' and ends with an 'l'.</p>
+            </div>
+          </div>
+
+          <input type='submit' value='Submit' id='submit' class="submit-comment"/>
+        </form>
+      </div>
+    </div>
+  
+  <hr>
+</div>
+
+    
+    <div class="post-bottom">
+  <div class="post-meta">
+    <h4>About the author</h4>
+    
+      <a href="/team/chris-russo">
+        <img src="/assets/img/team/chris-russo.jpg" alt="Chris Russo">
+      </a>
+      <p class="post-author-desc">Chris does his best to ensure that his team is learning and growing and that our clients feel like partners.</p>
+    
+  </div>
+    <!-- Once we have more content, change this to posts related by tag -->
+  <div class="post-related flex-container">
+    <h4>Recent posts by Savas</h4>
+    <div class="cards">
+      
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/22/user-testing.html">
+              <div class="card-header">
+                  Usability Testing - Our Process and Favorite Practices
+              </div>
+              <div class="card-copy">
+                <p>Jun 22, 2016</p>
+                <p><p>Our approach to designing, conducting, and learning from user testing and other analyses.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/16/using-xhprof.html">
+              <div class="card-header">
+                  Using XHProf to profile your Drupal module
+              </div>
+              <div class="card-copy">
+                <p>Jun 16, 2016</p>
+                <p><p>A case study of using XHProf to profile a Drupal module.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/15/git-merge-conflict-strategies.html">
+              <div class="card-header">
+                  Strategies and tools for resolving Git merge conflicts
+              </div>
+              <div class="card-copy">
+                <p>Jun 15, 2016</p>
+                <p><p>An overview of strategies and tools I like to use when I encounter conflicts during merges.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+</div>
+
+    <div class="previous-next-links">
+  <div class="next">
+    
+      <a href="/2015/12/10/drupal-6-part-2.html"><i class="fa fa-long-arrow-left "></i> It's nearly 2016, your site is running on Drupal 6, now what? Part 2: the risks.</a>
+    
+  </div>
+  <div class="previous">
+    
+      <a href="/2015/11/05/drupal-web-mapping.html"> Drupalized Web Mapping @ NACIS 2015 <i class="fa fa-long-arrow-right"></i></a>
+    
+  </div>
+</div>
+
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <div class="contact-block">
+  <div class="contact-block__items">
+    <h3>Interested in working with us?</h3>
+    <a href="/contact">Get in touch!</a>
+  </div>
+</div>
+    <footer class="footer" role="contentinfo">
+  <div class="footer-links">
+    <ul>
+      <li><h3>Location</h3></li>
+      <li>Savas Labs<br />
+          PMB 114<br />
+          201 W Main Street, Suite 100<br />
+          Durham, NC 27701<br /></li>
+    </ul>
+    <ul>
+      <li><h3>Around the Web</h3></li>
+      <ul>
+        <li><a href="https://github.com/savaslabs"><span class="mega-octicon octicon-mark-github"></span></a></li>
+        <li><a href="https://www.drupal.org/node/2466865"><i class="fa fa-drupal fa-lg fa-2x"></i></a></li>
+        <li><a href="https://twitter.com/savas_labs"><i class="fa fa-twitter fa-lg fa-2x"></i></a></li>
+        <li><a href="https://www.linkedin.com/company/savas-labs"><i class="fa fa-linkedin fa-lg fa-2x"></i></a></li>
+      </ul>
+    </ul>
+    <ul>
+      <li><h3>Contact</h3></li>
+      <li><a href="mailto:info@savaslabs.com">info@savaslabs.com</a></li>
+      <li>(919) 432-4660</li>
+    </ul>
+  </div>
+
+</footer>
+
+<div class="footer-copyright">
+  <p>Copyright &copy; Savas Labs 2016</p>
+</div>
+
+
+  </body>
+
+</html>

@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <title>Strategies and tools for resolving Git merge conflicts | Savas Labs</title>
+  
+  <meta name="description" content="If you use Git for version control and you collaborate frequently, then you are bound to run into merge conflicts from time to time.">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700,400italic,700italic|PT+Serif|Bitter|Source+Sans+Pro' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/assets/styles/main.css">
+  <link rel="stylesheet" href="/assets/icons/octicons/octicons.css">
+  <link rel="canonical" href="/2016/06/15/git-merge-conflict-strategies.html">
+  <link rel="alternate" type="application/rss+xml" title="Savas Labs" href="/feed.xml" />
+  <script type="text/javascript" src="/assets/js/main.js"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Durham, North Carolina",
+        "postalCode": "27701",
+        "streetAddress": "201 W Main St."
+      },
+      "description": "A full-service web agency leveraging the power of Drupal.
+",
+      "email": "info@savaslabs.com",
+      "name": "Savas",
+      "telephone": "(919) 432-4660",
+      "url": "http://savaslabs.com",
+      "logo": "http://savaslabs.com/assets/img/logo.png"
+    }
+</script>
+
+  
+  
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Strategies and tools for resolving Git merge conflicts",
+    "about": "An overview of strategies and tools I like to use when I encounter conflicts during merges.",
+    "articleBody": "
+
+
+&lt;div class=&quot;post&quot;&gt;
+  &lt;header class=&quot;post-header&quot;&gt;
+    &lt;h1 class=&quot;post-title&quot;&gt;Strategies and tools for resolving Git merge conflicts&lt;/h1&gt;
+    &lt;p&gt;By &lt;a href=&quot;/team/dan-murphy&quot;&gt;Dan Murphy&lt;/a&gt;&lt;/p&gt;
+    &lt;p class=&quot;centerdot&quot;&gt;&amp;centerdot; &lt;/p&gt;
+    &lt;p&gt;Jun 15, 2016 &lt;/p&gt;&lt;br&gt;
+    &lt;i class=&quot;fa fa-tags&quot;&gt;&lt;/i&gt;&lt;p&gt;&lt;a href=&quot;/blog/tag/git/&quot;&gt;Git&lt;/a&gt;&lt;/p&gt;
+    
+    &lt;div&gt;&lt;p&gt;&lt;span id=&quot;comment-count&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+    
+    
+      &lt;div class=&quot;post-featured-image&quot;&gt;
+        &lt;img class=&quot;post-hero-image&quot; src=&quot;/assets/img/blog/git_merge_conflict_screenshot.png&quot; alt=&quot;screenshot of git merge output&quot;&gt;
+      &lt;/div&gt;
+    
+  &lt;/header&gt;
+
+  
+
+  &lt;article class=&quot;post-content&quot;&gt;
+    &lt;p&gt;If you use Git for version control and you collaborate frequently, then you are bound to run into merge conflicts from time to time.&lt;/p&gt;
+
+&lt;p&gt;In an ideal world you merge changes to production (or other relevant upstream updates) into your parallel feature work frequently, and the conflicts are relatively minor and straightforward to resolve.&lt;/p&gt;
+
+&lt;p&gt;However, from time to time branches diverge significantly and merging them back together takes time and a solid understanding of why each branch may have modified the same hunks of code.&lt;/p&gt;
+
+&lt;p&gt;In this post I’m going to review the strategies and tools I like to use when resolving complicated merge conflicts.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-merging&quot;&gt;What is merging?&lt;/h2&gt;
+
+&lt;p&gt;There are many good online tutorials that cover Git merging, so I’ll just review the basics. If you’re already fluent in Git, feel free to skip to the &lt;a href=&quot;#strategies-and-tools&quot;&gt;strategies and tools&lt;/a&gt; section.&lt;/p&gt;
+
+&lt;p&gt;As &lt;a href=&quot;https://www.atlassian.com/git/tutorials/using-branches/git-branch&quot;&gt;Atlassian’s branching tutorial&lt;/a&gt; explains “Merging is Git’s way of putting a forked history back together again.”&lt;/p&gt;
+
+&lt;p&gt;A Git merge is run via the command &lt;code class=&quot;highlighter-rouge&quot;&gt;git merge &amp;lt;target_branch&amp;gt;&lt;/code&gt;. When merging, Git always merges into the current branch. The branch being merged (aka the target branch) will not be affected.&lt;/p&gt;
+
+&lt;p&gt;There are two types of merges: fast-forward merges and 3-way merges.&lt;/p&gt;
+
+&lt;p&gt;Fast forward merges occur when the tip of the current branch is a direct ancestor of the target branch. In this case, instead of actually merging the branches, Git simply moves (or fast forwards) the current branch tip up to the target branch tip.&lt;/p&gt;
+
+&lt;p&gt;However, a fast-forward merge is not possible if the branches have diverged. In those cases, a 3-way merge is required, which uses a dedicated commit to bring together the two histories.&lt;/p&gt;
+
+&lt;p&gt;In a three way merge, Git’s merge algorithm uses the current branch, the target branch, and their merge base in order to incorporate changes from the target branch into the current branch. The merge base is essentially the most recent common ancestor (often this is the commit before the two branches forked). Git uses the merge base to identify what changed since the branches diverged.&lt;/p&gt;
+
+&lt;p&gt;Git is smart, and non-overlapping changes (areas of code modified by one branch but not that other) are automatically incorporated into the final merged result. However, sometimes both branches change the same part of the same file, resulting in merge conflicts.&lt;/p&gt;
+
+&lt;h2 id=&quot;merge-conflicts&quot;&gt;Merge conflicts&lt;/h2&gt;
+
+&lt;p&gt;If your branch and the target branch both changed the same part of the same file, then Git won’t be able to merge them cleanly. Each of these discrepancies results in a merge conflict.&lt;/p&gt;
+
+&lt;p&gt;In these cases, Git leaves the changes made by both your branch and the target (separated by special conflict markers) and notifies you that there was a conflict.&lt;/p&gt;
+
+&lt;p&gt;To complete the merge you must then resolve each of these conflicts by explicitly telling Git what you’d like the post-merged file to include at these locations. To do so use the following commands:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git status&lt;/code&gt; shows you which files need to be resolved.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git add&lt;/code&gt; on a conflicted file(s) tells Git the conflicts are resolved.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git commit&lt;/code&gt; generates the merge commit completing the merge.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;strategies-and-tools&quot;&gt;Strategies and tools&lt;/h2&gt;
+
+&lt;p&gt;First of all, you should always make sure your working directory is clean before merging. If you have work in progress, either commit it to a temporary branch or stash it. This allows you to easily abandon your merge at any point without losing any of your work. You can abort an in-progress merge using the &lt;code class=&quot;highlighter-rouge&quot;&gt;git merge --abort&lt;/code&gt; command.&lt;/p&gt;
+
+&lt;p&gt;If the merge results in conflicts, I start by finding the merge base using the &lt;code class=&quot;highlighter-rouge&quot;&gt;git merge-base &amp;lt;tareget_branch&amp;gt; &amp;lt;current_branch&amp;gt;&lt;/code&gt; command. As mentioned previously, the merge base is essentially the commit before the two branches forked.&lt;/p&gt;
+
+&lt;p&gt;I then inspect the development history (since the branches diverged) for each file with merge conflicts. This helps me better understand (or simply remember!) each branch’s intent when modifying the file.&lt;/p&gt;
+
+&lt;p&gt;I find that the most powerful command for this inspection is &lt;code class=&quot;highlighter-rouge&quot;&gt;git log --follow -p -- file&lt;/code&gt;, which &lt;a href=&quot;http://stackoverflow.com/a/5493663/2793226&quot;&gt;shows the history of the file (including the history beyond renames) with diffs for each commit&lt;/a&gt;. To inspect both the target branch and the current branch since they diverged (i.e. since the merge base), I use the following commands respectively:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git log &amp;lt;merge-base-sha&amp;gt; &amp;lt;target-branch&amp;gt; --follow -p -- path/to/file&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git log &amp;lt;merge-base-sha&amp;gt; HEAD --follow -p -- path/to/file&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In this case &lt;code class=&quot;highlighter-rouge&quot;&gt;HEAD&lt;/code&gt; is just a shorthand for the pre-merge state of the current branch.&lt;/p&gt;
+
+&lt;p&gt;Sometimes, I find it easier to omit the &lt;code class=&quot;highlighter-rouge&quot;&gt;-p&lt;/code&gt; option in the previous commands, and instead just review the entire diff for both the target branch and the current branch since they diverged:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git diff &amp;lt;merge-base-sha&amp;gt; &amp;lt;target-branch&amp;gt; -- path/to/file&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git diff &amp;lt;merge-base-sha&amp;gt; HEAD -- path/to/file&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ultimately, reviewing this history helps me better understand what each branch was trying to accomplish. With this information in hand, I can then manually resolve the merge conflicts by deciding what code each of these files should include post merge.&lt;/p&gt;
+
+&lt;h2 id=&quot;visual-merge-tools&quot;&gt;Visual merge tools&lt;/h2&gt;
+&lt;p&gt;In addition to these strategies, I find that it is also helpful to use a visual merge tool when resolving merge conflicts.&lt;/p&gt;
+
+&lt;p&gt;With these tools, you don’t need to sift through Git conflict markers. Rather, visual merge tools provide a GUI that allows you to compare the different versions of the files you are merging, and they provide point and click tools to help you find and resolve conflicts.&lt;/p&gt;
+
+&lt;p&gt;A good visual merge tool will display at least 3 panels for each file with conflicts. There will be a panel showing the version of that file:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;In your branch&lt;/li&gt;
+  &lt;li&gt;In the target branch&lt;/li&gt;
+  &lt;li&gt;As it will appear after merging&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I prefer merge tools (such as the P4Merge tool shown below) which also include a fourth display panel showing the version of that file in the merge base:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/P4Merge_screenshot.png&quot; alt=&quot;P4Merge tool screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;There are many visual merge tools to choose from, some of which may already be installed on your system.&lt;/p&gt;
+
+&lt;p&gt;To view the list of available merge tools along with other valid but uninstalled merge tools, type &lt;code class=&quot;highlighter-rouge&quot;&gt;git mergetool --tool-help&lt;/code&gt; in your terminal.&lt;/p&gt;
+
+&lt;p&gt;If your merge results in conflicts, you can type &lt;code class=&quot;highlighter-rouge&quot;&gt;git mergetool&lt;/code&gt; to use your default merge tool, or you can specify the merge tool to use via &lt;code class=&quot;highlighter-rouge&quot;&gt;git mergetool --tool=&amp;lt;tool&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Most merge tools will iterate through each file with conflicts, giving you the opportunity to resolve the conflicts and save (i.e. &lt;code class=&quot;highlighter-rouge&quot;&gt;git add&lt;/code&gt; them), or dismiss and revisit later.&lt;/p&gt;
+
+&lt;p&gt;I prefer the P4Merge tool but that is just personal preference. I encourage you to invest the time trying a few different tools to decide which works best for you. Ultimately, it will be time well spent.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Encountering merge conflicts can often be intimidating since you don’t want to make inadvertent changes to the code base. But armed with the right tools, the process becomes much easier and more intentional. With knowledge of the merge base, use of the &lt;code class=&quot;highlighter-rouge&quot;&gt;git log --follow -p -- file&lt;/code&gt; command, and the help of a visual merge tool you can go forth confidently when resolving merge conflicts!&lt;/p&gt;
+
+    &lt;hr&gt;
+
+    
+      &lt;div class=&quot;post-comments&quot;&gt;
+  
+    &lt;div class=&quot;expander&quot;&gt;
+      &lt;a href=&quot;javascript:void(0)&quot; id=&quot;js-expander-trigger&quot; class=&quot;expander-trigger expander-hidden&quot;&gt;Comments!&lt;/a&gt;
+      &lt;div id=&quot;js-expander-content&quot; class=&quot;expander-content&quot;&gt;
+        &lt;!-- If there are existing comments, output them here. --&gt;
+        &lt;div id=&quot;post-comments&quot; class=&quot;post-comments&quot;&gt;&lt;/div&gt;
+        &lt;!-- New comment form --&gt;
+        &lt;form id=&quot;comment-form&quot;&gt;
+          &lt;h4&gt;Leave a comment&lt;/h4&gt;
+          &lt;div class=&quot;comment-name&quot;&gt;
+            &lt;p&gt;Name&lt;/p&gt; &lt;input type=&#39;text&#39; name=&#39;name&#39; id=&#39;name&#39; required /&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;comment-email&quot;&gt;
+            &lt;p&gt;Email&lt;/p&gt; &lt;input type=&#39;email&#39; name=&#39;email&#39; id=&#39;email&#39; required /&gt;
+            &lt;p class=&quot;email-disclaimer&quot;&gt;Savas will never sell your email address or spam you.&lt;/p&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;p&gt;Comment&lt;/p&gt;
+          &lt;textarea name=&#39;comment&#39; id=&#39;comment&#39; required&gt;&lt;/textarea&gt;
+          &lt;p class=&quot;hint below-textarea&quot;&gt;Plain text format only please.&lt;/p&gt;
+
+          &lt;input type=&#39;hidden&#39; name=&#39;slug&#39; id=&#39;slug&#39; value=&#39;/2016/06/15/git-merge-conflict-strategies.html&#39; /&gt;
+          &lt;input type=&#39;text&#39; name=&#39;url&#39; id=&#39;url&#39; /&gt;
+
+          &lt;div class=&#39;are-you-human&#39;&gt;
+            &lt;div class=&#39;are-you-human-owl&#39;&gt;
+              &lt;img src=&quot;/assets/img/owl.png&quot; alt=&quot;Savas logo&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&#39;are-you-human-field&#39;&gt;
+              &lt;p&gt;What type of animal is the Savas logo?&lt;/p&gt;
+              &lt;input type=&#39;text&#39; name=&#39;nocaptcha&#39; id=&#39;nocaptcha&#39; class=&#39;nocaptcha&#39;&gt;
+              &lt;p class=&quot;hint&quot;&gt;Hint: 3 letters long, starts with an &#39;o&#39; and ends with an &#39;l&#39;.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;input type=&#39;submit&#39; value=&#39;Submit&#39; id=&#39;submit&#39; class=&quot;submit-comment&quot;/&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+  &lt;hr&gt;
+&lt;/div&gt;
+
+    
+    &lt;div class=&quot;post-bottom&quot;&gt;
+  &lt;div class=&quot;post-meta&quot;&gt;
+    &lt;h4&gt;About the author&lt;/h4&gt;
+    
+      &lt;a href=&quot;/team/dan-murphy&quot;&gt;
+        &lt;img src=&quot;/assets/img/team/dan-murphy.jpg&quot; alt=&quot;Dan Murphy&quot;&gt;
+      &lt;/a&gt;
+      &lt;p class=&quot;post-author-desc&quot;&gt;Dan develops back-end solutions and front-end, responsive designs for Savas Labs clients.&lt;/p&gt;
+    
+  &lt;/div&gt;
+    &lt;!-- Once we have more content, change this to posts related by tag --&gt;
+  &lt;div class=&quot;post-related flex-container&quot;&gt;
+    &lt;h4&gt;Recent posts by Savas&lt;/h4&gt;
+    &lt;div class=&quot;cards&quot;&gt;
+      
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/22/user-testing.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Usability Testing - Our Process and Favorite Practices
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 22, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;Our approach to designing, conducting, and learning from user testing and other analyses.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/16/using-xhprof.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Using XHProf to profile your Drupal module
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 16, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;A case study of using XHProf to profile a Drupal module.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/05/26/installing-xhprof.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Installing XHProf to profile your Drupal module
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;May 26, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;Step-by-step, how to install and use XHProf to profile your Drupal module.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;div class=&quot;previous-next-links&quot;&gt;
+  &lt;div class=&quot;next&quot;&gt;
+    
+      &lt;a href=&quot;/2016/06/16/using-xhprof.html&quot;&gt;&lt;i class=&quot;fa fa-long-arrow-left &quot;&gt;&lt;/i&gt; Using XHProf to profile your Drupal module&lt;/a&gt;
+    
+  &lt;/div&gt;
+  &lt;div class=&quot;previous&quot;&gt;
+    
+      &lt;a href=&quot;/2016/05/26/installing-xhprof.html&quot;&gt; Installing XHProf to profile your Drupal module &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+  &lt;/article&gt;
+
+&lt;/div&gt;
+",
+      "author": {
+          "@context": "http://schema.org",
+          "@type": "Person",
+          "name": "Dan Murphy",
+          "affiliation": "Savas",
+          "worksFor": "Savas"
+      },
+    "keywords": "git",
+    "text": "
+
+
+&lt;div class=&quot;post&quot;&gt;
+  &lt;header class=&quot;post-header&quot;&gt;
+    &lt;h1 class=&quot;post-title&quot;&gt;Strategies and tools for resolving Git merge conflicts&lt;/h1&gt;
+    &lt;p&gt;By &lt;a href=&quot;/team/dan-murphy&quot;&gt;Dan Murphy&lt;/a&gt;&lt;/p&gt;
+    &lt;p class=&quot;centerdot&quot;&gt;&amp;centerdot; &lt;/p&gt;
+    &lt;p&gt;Jun 15, 2016 &lt;/p&gt;&lt;br&gt;
+    &lt;i class=&quot;fa fa-tags&quot;&gt;&lt;/i&gt;&lt;p&gt;&lt;a href=&quot;/blog/tag/git/&quot;&gt;Git&lt;/a&gt;&lt;/p&gt;
+    
+    &lt;div&gt;&lt;p&gt;&lt;span id=&quot;comment-count&quot;&gt;&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;
+    
+    
+      &lt;div class=&quot;post-featured-image&quot;&gt;
+        &lt;img class=&quot;post-hero-image&quot; src=&quot;/assets/img/blog/git_merge_conflict_screenshot.png&quot; alt=&quot;screenshot of git merge output&quot;&gt;
+      &lt;/div&gt;
+    
+  &lt;/header&gt;
+
+  
+
+  &lt;article class=&quot;post-content&quot;&gt;
+    &lt;p&gt;If you use Git for version control and you collaborate frequently, then you are bound to run into merge conflicts from time to time.&lt;/p&gt;
+
+&lt;p&gt;In an ideal world you merge changes to production (or other relevant upstream updates) into your parallel feature work frequently, and the conflicts are relatively minor and straightforward to resolve.&lt;/p&gt;
+
+&lt;p&gt;However, from time to time branches diverge significantly and merging them back together takes time and a solid understanding of why each branch may have modified the same hunks of code.&lt;/p&gt;
+
+&lt;p&gt;In this post I’m going to review the strategies and tools I like to use when resolving complicated merge conflicts.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-merging&quot;&gt;What is merging?&lt;/h2&gt;
+
+&lt;p&gt;There are many good online tutorials that cover Git merging, so I’ll just review the basics. If you’re already fluent in Git, feel free to skip to the &lt;a href=&quot;#strategies-and-tools&quot;&gt;strategies and tools&lt;/a&gt; section.&lt;/p&gt;
+
+&lt;p&gt;As &lt;a href=&quot;https://www.atlassian.com/git/tutorials/using-branches/git-branch&quot;&gt;Atlassian’s branching tutorial&lt;/a&gt; explains “Merging is Git’s way of putting a forked history back together again.”&lt;/p&gt;
+
+&lt;p&gt;A Git merge is run via the command &lt;code class=&quot;highlighter-rouge&quot;&gt;git merge &amp;lt;target_branch&amp;gt;&lt;/code&gt;. When merging, Git always merges into the current branch. The branch being merged (aka the target branch) will not be affected.&lt;/p&gt;
+
+&lt;p&gt;There are two types of merges: fast-forward merges and 3-way merges.&lt;/p&gt;
+
+&lt;p&gt;Fast forward merges occur when the tip of the current branch is a direct ancestor of the target branch. In this case, instead of actually merging the branches, Git simply moves (or fast forwards) the current branch tip up to the target branch tip.&lt;/p&gt;
+
+&lt;p&gt;However, a fast-forward merge is not possible if the branches have diverged. In those cases, a 3-way merge is required, which uses a dedicated commit to bring together the two histories.&lt;/p&gt;
+
+&lt;p&gt;In a three way merge, Git’s merge algorithm uses the current branch, the target branch, and their merge base in order to incorporate changes from the target branch into the current branch. The merge base is essentially the most recent common ancestor (often this is the commit before the two branches forked). Git uses the merge base to identify what changed since the branches diverged.&lt;/p&gt;
+
+&lt;p&gt;Git is smart, and non-overlapping changes (areas of code modified by one branch but not that other) are automatically incorporated into the final merged result. However, sometimes both branches change the same part of the same file, resulting in merge conflicts.&lt;/p&gt;
+
+&lt;h2 id=&quot;merge-conflicts&quot;&gt;Merge conflicts&lt;/h2&gt;
+
+&lt;p&gt;If your branch and the target branch both changed the same part of the same file, then Git won’t be able to merge them cleanly. Each of these discrepancies results in a merge conflict.&lt;/p&gt;
+
+&lt;p&gt;In these cases, Git leaves the changes made by both your branch and the target (separated by special conflict markers) and notifies you that there was a conflict.&lt;/p&gt;
+
+&lt;p&gt;To complete the merge you must then resolve each of these conflicts by explicitly telling Git what you’d like the post-merged file to include at these locations. To do so use the following commands:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git status&lt;/code&gt; shows you which files need to be resolved.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git add&lt;/code&gt; on a conflicted file(s) tells Git the conflicts are resolved.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git commit&lt;/code&gt; generates the merge commit completing the merge.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;strategies-and-tools&quot;&gt;Strategies and tools&lt;/h2&gt;
+
+&lt;p&gt;First of all, you should always make sure your working directory is clean before merging. If you have work in progress, either commit it to a temporary branch or stash it. This allows you to easily abandon your merge at any point without losing any of your work. You can abort an in-progress merge using the &lt;code class=&quot;highlighter-rouge&quot;&gt;git merge --abort&lt;/code&gt; command.&lt;/p&gt;
+
+&lt;p&gt;If the merge results in conflicts, I start by finding the merge base using the &lt;code class=&quot;highlighter-rouge&quot;&gt;git merge-base &amp;lt;tareget_branch&amp;gt; &amp;lt;current_branch&amp;gt;&lt;/code&gt; command. As mentioned previously, the merge base is essentially the commit before the two branches forked.&lt;/p&gt;
+
+&lt;p&gt;I then inspect the development history (since the branches diverged) for each file with merge conflicts. This helps me better understand (or simply remember!) each branch’s intent when modifying the file.&lt;/p&gt;
+
+&lt;p&gt;I find that the most powerful command for this inspection is &lt;code class=&quot;highlighter-rouge&quot;&gt;git log --follow -p -- file&lt;/code&gt;, which &lt;a href=&quot;http://stackoverflow.com/a/5493663/2793226&quot;&gt;shows the history of the file (including the history beyond renames) with diffs for each commit&lt;/a&gt;. To inspect both the target branch and the current branch since they diverged (i.e. since the merge base), I use the following commands respectively:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git log &amp;lt;merge-base-sha&amp;gt; &amp;lt;target-branch&amp;gt; --follow -p -- path/to/file&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git log &amp;lt;merge-base-sha&amp;gt; HEAD --follow -p -- path/to/file&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In this case &lt;code class=&quot;highlighter-rouge&quot;&gt;HEAD&lt;/code&gt; is just a shorthand for the pre-merge state of the current branch.&lt;/p&gt;
+
+&lt;p&gt;Sometimes, I find it easier to omit the &lt;code class=&quot;highlighter-rouge&quot;&gt;-p&lt;/code&gt; option in the previous commands, and instead just review the entire diff for both the target branch and the current branch since they diverged:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git diff &amp;lt;merge-base-sha&amp;gt; &amp;lt;target-branch&amp;gt; -- path/to/file&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;git diff &amp;lt;merge-base-sha&amp;gt; HEAD -- path/to/file&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ultimately, reviewing this history helps me better understand what each branch was trying to accomplish. With this information in hand, I can then manually resolve the merge conflicts by deciding what code each of these files should include post merge.&lt;/p&gt;
+
+&lt;h2 id=&quot;visual-merge-tools&quot;&gt;Visual merge tools&lt;/h2&gt;
+&lt;p&gt;In addition to these strategies, I find that it is also helpful to use a visual merge tool when resolving merge conflicts.&lt;/p&gt;
+
+&lt;p&gt;With these tools, you don’t need to sift through Git conflict markers. Rather, visual merge tools provide a GUI that allows you to compare the different versions of the files you are merging, and they provide point and click tools to help you find and resolve conflicts.&lt;/p&gt;
+
+&lt;p&gt;A good visual merge tool will display at least 3 panels for each file with conflicts. There will be a panel showing the version of that file:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;In your branch&lt;/li&gt;
+  &lt;li&gt;In the target branch&lt;/li&gt;
+  &lt;li&gt;As it will appear after merging&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;I prefer merge tools (such as the P4Merge tool shown below) which also include a fourth display panel showing the version of that file in the merge base:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/P4Merge_screenshot.png&quot; alt=&quot;P4Merge tool screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;There are many visual merge tools to choose from, some of which may already be installed on your system.&lt;/p&gt;
+
+&lt;p&gt;To view the list of available merge tools along with other valid but uninstalled merge tools, type &lt;code class=&quot;highlighter-rouge&quot;&gt;git mergetool --tool-help&lt;/code&gt; in your terminal.&lt;/p&gt;
+
+&lt;p&gt;If your merge results in conflicts, you can type &lt;code class=&quot;highlighter-rouge&quot;&gt;git mergetool&lt;/code&gt; to use your default merge tool, or you can specify the merge tool to use via &lt;code class=&quot;highlighter-rouge&quot;&gt;git mergetool --tool=&amp;lt;tool&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Most merge tools will iterate through each file with conflicts, giving you the opportunity to resolve the conflicts and save (i.e. &lt;code class=&quot;highlighter-rouge&quot;&gt;git add&lt;/code&gt; them), or dismiss and revisit later.&lt;/p&gt;
+
+&lt;p&gt;I prefer the P4Merge tool but that is just personal preference. I encourage you to invest the time trying a few different tools to decide which works best for you. Ultimately, it will be time well spent.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;Encountering merge conflicts can often be intimidating since you don’t want to make inadvertent changes to the code base. But armed with the right tools, the process becomes much easier and more intentional. With knowledge of the merge base, use of the &lt;code class=&quot;highlighter-rouge&quot;&gt;git log --follow -p -- file&lt;/code&gt; command, and the help of a visual merge tool you can go forth confidently when resolving merge conflicts!&lt;/p&gt;
+
+    &lt;hr&gt;
+
+    
+      &lt;div class=&quot;post-comments&quot;&gt;
+  
+    &lt;div class=&quot;expander&quot;&gt;
+      &lt;a href=&quot;javascript:void(0)&quot; id=&quot;js-expander-trigger&quot; class=&quot;expander-trigger expander-hidden&quot;&gt;Comments!&lt;/a&gt;
+      &lt;div id=&quot;js-expander-content&quot; class=&quot;expander-content&quot;&gt;
+        &lt;!-- If there are existing comments, output them here. --&gt;
+        &lt;div id=&quot;post-comments&quot; class=&quot;post-comments&quot;&gt;&lt;/div&gt;
+        &lt;!-- New comment form --&gt;
+        &lt;form id=&quot;comment-form&quot;&gt;
+          &lt;h4&gt;Leave a comment&lt;/h4&gt;
+          &lt;div class=&quot;comment-name&quot;&gt;
+            &lt;p&gt;Name&lt;/p&gt; &lt;input type=&#39;text&#39; name=&#39;name&#39; id=&#39;name&#39; required /&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;div class=&quot;comment-email&quot;&gt;
+            &lt;p&gt;Email&lt;/p&gt; &lt;input type=&#39;email&#39; name=&#39;email&#39; id=&#39;email&#39; required /&gt;
+            &lt;p class=&quot;email-disclaimer&quot;&gt;Savas will never sell your email address or spam you.&lt;/p&gt;&lt;br&gt;
+          &lt;/div&gt;
+
+          &lt;p&gt;Comment&lt;/p&gt;
+          &lt;textarea name=&#39;comment&#39; id=&#39;comment&#39; required&gt;&lt;/textarea&gt;
+          &lt;p class=&quot;hint below-textarea&quot;&gt;Plain text format only please.&lt;/p&gt;
+
+          &lt;input type=&#39;hidden&#39; name=&#39;slug&#39; id=&#39;slug&#39; value=&#39;/2016/06/15/git-merge-conflict-strategies.html&#39; /&gt;
+          &lt;input type=&#39;text&#39; name=&#39;url&#39; id=&#39;url&#39; /&gt;
+
+          &lt;div class=&#39;are-you-human&#39;&gt;
+            &lt;div class=&#39;are-you-human-owl&#39;&gt;
+              &lt;img src=&quot;/assets/img/owl.png&quot; alt=&quot;Savas logo&quot;&gt;
+            &lt;/div&gt;
+            &lt;div class=&#39;are-you-human-field&#39;&gt;
+              &lt;p&gt;What type of animal is the Savas logo?&lt;/p&gt;
+              &lt;input type=&#39;text&#39; name=&#39;nocaptcha&#39; id=&#39;nocaptcha&#39; class=&#39;nocaptcha&#39;&gt;
+              &lt;p class=&quot;hint&quot;&gt;Hint: 3 letters long, starts with an &#39;o&#39; and ends with an &#39;l&#39;.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;input type=&#39;submit&#39; value=&#39;Submit&#39; id=&#39;submit&#39; class=&quot;submit-comment&quot;/&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  
+  &lt;hr&gt;
+&lt;/div&gt;
+
+    
+    &lt;div class=&quot;post-bottom&quot;&gt;
+  &lt;div class=&quot;post-meta&quot;&gt;
+    &lt;h4&gt;About the author&lt;/h4&gt;
+    
+      &lt;a href=&quot;/team/dan-murphy&quot;&gt;
+        &lt;img src=&quot;/assets/img/team/dan-murphy.jpg&quot; alt=&quot;Dan Murphy&quot;&gt;
+      &lt;/a&gt;
+      &lt;p class=&quot;post-author-desc&quot;&gt;Dan develops back-end solutions and front-end, responsive designs for Savas Labs clients.&lt;/p&gt;
+    
+  &lt;/div&gt;
+    &lt;!-- Once we have more content, change this to posts related by tag --&gt;
+  &lt;div class=&quot;post-related flex-container&quot;&gt;
+    &lt;h4&gt;Recent posts by Savas&lt;/h4&gt;
+    &lt;div class=&quot;cards&quot;&gt;
+      
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/22/user-testing.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Usability Testing - Our Process and Favorite Practices
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 22, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;Our approach to designing, conducting, and learning from user testing and other analyses.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/06/16/using-xhprof.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Using XHProf to profile your Drupal module
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;Jun 16, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;A case study of using XHProf to profile a Drupal module.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+      
+        
+        
+          &lt;div class=&quot;card&quot;&gt;
+            &lt;a href=&quot;/2016/05/26/installing-xhprof.html&quot;&gt;
+              &lt;div class=&quot;card-header&quot;&gt;
+                  Installing XHProf to profile your Drupal module
+              &lt;/div&gt;
+              &lt;div class=&quot;card-copy&quot;&gt;
+                &lt;p&gt;May 26, 2016&lt;/p&gt;
+                &lt;p&gt;&lt;p&gt;Step-by-step, how to install and use XHProf to profile your Drupal module.&lt;/p&gt;
+&lt;/p&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+    &lt;div class=&quot;previous-next-links&quot;&gt;
+  &lt;div class=&quot;next&quot;&gt;
+    
+      &lt;a href=&quot;/2016/06/16/using-xhprof.html&quot;&gt;&lt;i class=&quot;fa fa-long-arrow-left &quot;&gt;&lt;/i&gt; Using XHProf to profile your Drupal module&lt;/a&gt;
+    
+  &lt;/div&gt;
+  &lt;div class=&quot;previous&quot;&gt;
+    
+      &lt;a href=&quot;/2016/05/26/installing-xhprof.html&quot;&gt; Installing XHProf to profile your Drupal module &lt;i class=&quot;fa fa-long-arrow-right&quot;&gt;&lt;/i&gt;&lt;/a&gt;
+    
+  &lt;/div&gt;
+&lt;/div&gt;
+
+
+  &lt;/article&gt;
+
+&lt;/div&gt;
+",
+    "sourceOrganization": "Savas",
+    "inLanguage": "en-US",
+    "dateCreated": "2016-06-15 00:00:00 +0000",
+    "datePublished": "2016-06-15 00:00:00 +0000",
+    "url": "/2016/06/15/git-merge-conflict-strategies.html"
+  }
+</script>
+
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-61514316-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+  
+
+  
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+
+    <!-- Savas logo. -->
+    <a href="/" class="logo">
+        <img src="/assets/img/logo.png" alt="Savas logo">
+    </a>
+
+    <!-- Mobile menu button. -->
+    <a href="/" id="js-mobile-menu" class="navigation-menu-button">MENU</a>
+
+    <!-- Main menu. -->
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+
+        <!-- Loop through nav items in config.yml. -->
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  more">
+            <a href="javascript:void(0)">Who we are</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+
+              <ul class="submenu">
+                
+
+                  <!-- Assign active nav item class. -->
+                  
+                  
+
+                  <li class="nav-link ">
+                    <a href="/team">Team</a>
+                  </li>
+                
+
+                  <!-- Assign active nav item class. -->
+                  
+                  
+
+                  <li class="nav-link ">
+                    <a href="/mission-and-values">Mission & values</a>
+                  </li>
+                
+              </ul>
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/services">Services</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/work">Our work</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/blog">Blog</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+
+          <!-- These variables will be used for special CSS classes. -->
+          
+
+          <!-- Assign active nav item class. -->
+          
+
+          <!-- Assign class for menu items with sub-links. -->
+          
+
+          <!-- Build links. -->
+          <li class="nav-link  ">
+            <a href="/contact">Contact</a>
+
+            <!-- If there are sub-links, create them. -->
+            
+          </li>
+        
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        
+
+
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">Strategies and tools for resolving Git merge conflicts</h1>
+    <p>By <a href="/team/dan-murphy">Dan Murphy</a></p>
+    <p class="centerdot">&centerdot; </p>
+    <p>Jun 15, 2016 </p><br>
+    <i class="fa fa-tags"></i><p><a href="/blog/tag/git/">Git</a></p>
+    
+    <div><p><span id="comment-count"></span></p></div>
+    
+    
+      <div class="post-featured-image">
+        <img class="post-hero-image" src="/assets/img/blog/git_merge_conflict_screenshot.png" alt="screenshot of git merge output">
+      </div>
+    
+  </header>
+
+  
+
+  <article class="post-content">
+    <p>If you use Git for version control and you collaborate frequently, then you are bound to run into merge conflicts from time to time.</p>
+
+<p>In an ideal world you merge changes to production (or other relevant upstream updates) into your parallel feature work frequently, and the conflicts are relatively minor and straightforward to resolve.</p>
+
+<p>However, from time to time branches diverge significantly and merging them back together takes time and a solid understanding of why each branch may have modified the same hunks of code.</p>
+
+<p>In this post I’m going to review the strategies and tools I like to use when resolving complicated merge conflicts.</p>
+
+<h2 id="what-is-merging">What is merging?</h2>
+
+<p>There are many good online tutorials that cover Git merging, so I’ll just review the basics. If you’re already fluent in Git, feel free to skip to the <a href="#strategies-and-tools">strategies and tools</a> section.</p>
+
+<p>As <a href="https://www.atlassian.com/git/tutorials/using-branches/git-branch">Atlassian’s branching tutorial</a> explains “Merging is Git’s way of putting a forked history back together again.”</p>
+
+<p>A Git merge is run via the command <code class="highlighter-rouge">git merge &lt;target_branch&gt;</code>. When merging, Git always merges into the current branch. The branch being merged (aka the target branch) will not be affected.</p>
+
+<p>There are two types of merges: fast-forward merges and 3-way merges.</p>
+
+<p>Fast forward merges occur when the tip of the current branch is a direct ancestor of the target branch. In this case, instead of actually merging the branches, Git simply moves (or fast forwards) the current branch tip up to the target branch tip.</p>
+
+<p>However, a fast-forward merge is not possible if the branches have diverged. In those cases, a 3-way merge is required, which uses a dedicated commit to bring together the two histories.</p>
+
+<p>In a three way merge, Git’s merge algorithm uses the current branch, the target branch, and their merge base in order to incorporate changes from the target branch into the current branch. The merge base is essentially the most recent common ancestor (often this is the commit before the two branches forked). Git uses the merge base to identify what changed since the branches diverged.</p>
+
+<p>Git is smart, and non-overlapping changes (areas of code modified by one branch but not that other) are automatically incorporated into the final merged result. However, sometimes both branches change the same part of the same file, resulting in merge conflicts.</p>
+
+<h2 id="merge-conflicts">Merge conflicts</h2>
+
+<p>If your branch and the target branch both changed the same part of the same file, then Git won’t be able to merge them cleanly. Each of these discrepancies results in a merge conflict.</p>
+
+<p>In these cases, Git leaves the changes made by both your branch and the target (separated by special conflict markers) and notifies you that there was a conflict.</p>
+
+<p>To complete the merge you must then resolve each of these conflicts by explicitly telling Git what you’d like the post-merged file to include at these locations. To do so use the following commands:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">git status</code> shows you which files need to be resolved.</li>
+  <li><code class="highlighter-rouge">git add</code> on a conflicted file(s) tells Git the conflicts are resolved.</li>
+  <li><code class="highlighter-rouge">git commit</code> generates the merge commit completing the merge.</li>
+</ul>
+
+<h2 id="strategies-and-tools">Strategies and tools</h2>
+
+<p>First of all, you should always make sure your working directory is clean before merging. If you have work in progress, either commit it to a temporary branch or stash it. This allows you to easily abandon your merge at any point without losing any of your work. You can abort an in-progress merge using the <code class="highlighter-rouge">git merge --abort</code> command.</p>
+
+<p>If the merge results in conflicts, I start by finding the merge base using the <code class="highlighter-rouge">git merge-base &lt;tareget_branch&gt; &lt;current_branch&gt;</code> command. As mentioned previously, the merge base is essentially the commit before the two branches forked.</p>
+
+<p>I then inspect the development history (since the branches diverged) for each file with merge conflicts. This helps me better understand (or simply remember!) each branch’s intent when modifying the file.</p>
+
+<p>I find that the most powerful command for this inspection is <code class="highlighter-rouge">git log --follow -p -- file</code>, which <a href="http://stackoverflow.com/a/5493663/2793226">shows the history of the file (including the history beyond renames) with diffs for each commit</a>. To inspect both the target branch and the current branch since they diverged (i.e. since the merge base), I use the following commands respectively:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">git log &lt;merge-base-sha&gt; &lt;target-branch&gt; --follow -p -- path/to/file</code></li>
+  <li><code class="highlighter-rouge">git log &lt;merge-base-sha&gt; HEAD --follow -p -- path/to/file</code></li>
+</ul>
+
+<p>In this case <code class="highlighter-rouge">HEAD</code> is just a shorthand for the pre-merge state of the current branch.</p>
+
+<p>Sometimes, I find it easier to omit the <code class="highlighter-rouge">-p</code> option in the previous commands, and instead just review the entire diff for both the target branch and the current branch since they diverged:</p>
+
+<ul>
+  <li><code class="highlighter-rouge">git diff &lt;merge-base-sha&gt; &lt;target-branch&gt; -- path/to/file</code></li>
+  <li><code class="highlighter-rouge">git diff &lt;merge-base-sha&gt; HEAD -- path/to/file</code></li>
+</ul>
+
+<p>Ultimately, reviewing this history helps me better understand what each branch was trying to accomplish. With this information in hand, I can then manually resolve the merge conflicts by deciding what code each of these files should include post merge.</p>
+
+<h2 id="visual-merge-tools">Visual merge tools</h2>
+<p>In addition to these strategies, I find that it is also helpful to use a visual merge tool when resolving merge conflicts.</p>
+
+<p>With these tools, you don’t need to sift through Git conflict markers. Rather, visual merge tools provide a GUI that allows you to compare the different versions of the files you are merging, and they provide point and click tools to help you find and resolve conflicts.</p>
+
+<p>A good visual merge tool will display at least 3 panels for each file with conflicts. There will be a panel showing the version of that file:</p>
+
+<ul>
+  <li>In your branch</li>
+  <li>In the target branch</li>
+  <li>As it will appear after merging</li>
+</ul>
+
+<p>I prefer merge tools (such as the P4Merge tool shown below) which also include a fourth display panel showing the version of that file in the merge base:</p>
+
+<p><img src="/assets/img/blog/P4Merge_screenshot.png" alt="P4Merge tool screenshot" /></p>
+
+<p>There are many visual merge tools to choose from, some of which may already be installed on your system.</p>
+
+<p>To view the list of available merge tools along with other valid but uninstalled merge tools, type <code class="highlighter-rouge">git mergetool --tool-help</code> in your terminal.</p>
+
+<p>If your merge results in conflicts, you can type <code class="highlighter-rouge">git mergetool</code> to use your default merge tool, or you can specify the merge tool to use via <code class="highlighter-rouge">git mergetool --tool=&lt;tool&gt;</code>.</p>
+
+<p>Most merge tools will iterate through each file with conflicts, giving you the opportunity to resolve the conflicts and save (i.e. <code class="highlighter-rouge">git add</code> them), or dismiss and revisit later.</p>
+
+<p>I prefer the P4Merge tool but that is just personal preference. I encourage you to invest the time trying a few different tools to decide which works best for you. Ultimately, it will be time well spent.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Encountering merge conflicts can often be intimidating since you don’t want to make inadvertent changes to the code base. But armed with the right tools, the process becomes much easier and more intentional. With knowledge of the merge base, use of the <code class="highlighter-rouge">git log --follow -p -- file</code> command, and the help of a visual merge tool you can go forth confidently when resolving merge conflicts!</p>
+
+    <hr>
+
+    
+      <div class="post-comments">
+  
+    <div class="expander">
+      <a href="javascript:void(0)" id="js-expander-trigger" class="expander-trigger expander-hidden">Comments!</a>
+      <div id="js-expander-content" class="expander-content">
+        <!-- If there are existing comments, output them here. -->
+        <div id="post-comments" class="post-comments"></div>
+        <!-- New comment form -->
+        <form id="comment-form">
+          <h4>Leave a comment</h4>
+          <div class="comment-name">
+            <p>Name</p> <input type='text' name='name' id='name' required /><br>
+          </div>
+
+          <div class="comment-email">
+            <p>Email</p> <input type='email' name='email' id='email' required />
+            <p class="email-disclaimer">Savas will never sell your email address or spam you.</p><br>
+          </div>
+
+          <p>Comment</p>
+          <textarea name='comment' id='comment' required></textarea>
+          <p class="hint below-textarea">Plain text format only please.</p>
+
+          <input type='hidden' name='slug' id='slug' value='/2016/06/15/git-merge-conflict-strategies.html' />
+          <input type='text' name='url' id='url' />
+
+          <div class='are-you-human'>
+            <div class='are-you-human-owl'>
+              <img src="/assets/img/owl.png" alt="Savas logo">
+            </div>
+            <div class='are-you-human-field'>
+              <p>What type of animal is the Savas logo?</p>
+              <input type='text' name='nocaptcha' id='nocaptcha' class='nocaptcha'>
+              <p class="hint">Hint: 3 letters long, starts with an 'o' and ends with an 'l'.</p>
+            </div>
+          </div>
+
+          <input type='submit' value='Submit' id='submit' class="submit-comment"/>
+        </form>
+      </div>
+    </div>
+  
+  <hr>
+</div>
+
+    
+    <div class="post-bottom">
+  <div class="post-meta">
+    <h4>About the author</h4>
+    
+      <a href="/team/dan-murphy">
+        <img src="/assets/img/team/dan-murphy.jpg" alt="Dan Murphy">
+      </a>
+      <p class="post-author-desc">Dan develops back-end solutions and front-end, responsive designs for Savas Labs clients.</p>
+    
+  </div>
+    <!-- Once we have more content, change this to posts related by tag -->
+  <div class="post-related flex-container">
+    <h4>Recent posts by Savas</h4>
+    <div class="cards">
+      
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/22/user-testing.html">
+              <div class="card-header">
+                  Usability Testing - Our Process and Favorite Practices
+              </div>
+              <div class="card-copy">
+                <p>Jun 22, 2016</p>
+                <p><p>Our approach to designing, conducting, and learning from user testing and other analyses.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+        
+          <div class="card">
+            <a href="/2016/06/16/using-xhprof.html">
+              <div class="card-header">
+                  Using XHProf to profile your Drupal module
+              </div>
+              <div class="card-copy">
+                <p>Jun 16, 2016</p>
+                <p><p>A case study of using XHProf to profile a Drupal module.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+      
+        
+        
+          <div class="card">
+            <a href="/2016/05/26/installing-xhprof.html">
+              <div class="card-header">
+                  Installing XHProf to profile your Drupal module
+              </div>
+              <div class="card-copy">
+                <p>May 26, 2016</p>
+                <p><p>Step-by-step, how to install and use XHProf to profile your Drupal module.</p>
+</p>
+              </div>
+            </a>
+          </div>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+</div>
+
+    <div class="previous-next-links">
+  <div class="next">
+    
+      <a href="/2016/06/16/using-xhprof.html"><i class="fa fa-long-arrow-left "></i> Using XHProf to profile your Drupal module</a>
+    
+  </div>
+  <div class="previous">
+    
+      <a href="/2016/05/26/installing-xhprof.html"> Installing XHProf to profile your Drupal module <i class="fa fa-long-arrow-right"></i></a>
+    
+  </div>
+</div>
+
+
+  </article>
+
+</div>
+
+      </div>
+    </div>
+
+    <div class="contact-block">
+  <div class="contact-block__items">
+    <h3>Interested in working with us?</h3>
+    <a href="/contact">Get in touch!</a>
+  </div>
+</div>
+    <footer class="footer" role="contentinfo">
+  <div class="footer-links">
+    <ul>
+      <li><h3>Location</h3></li>
+      <li>Savas Labs<br />
+          PMB 114<br />
+          201 W Main Street, Suite 100<br />
+          Durham, NC 27701<br /></li>
+    </ul>
+    <ul>
+      <li><h3>Around the Web</h3></li>
+      <ul>
+        <li><a href="https://github.com/savaslabs"><span class="mega-octicon octicon-mark-github"></span></a></li>
+        <li><a href="https://www.drupal.org/node/2466865"><i class="fa fa-drupal fa-lg fa-2x"></i></a></li>
+        <li><a href="https://twitter.com/savas_labs"><i class="fa fa-twitter fa-lg fa-2x"></i></a></li>
+        <li><a href="https://www.linkedin.com/company/savas-labs"><i class="fa fa-linkedin fa-lg fa-2x"></i></a></li>
+      </ul>
+    </ul>
+    <ul>
+      <li><h3>Contact</h3></li>
+      <li><a href="mailto:info@savaslabs.com">info@savaslabs.com</a></li>
+      <li>(919) 432-4660</li>
+    </ul>
+  </div>
+
+</footer>
+
+<div class="footer-copyright">
+  <p>Copyright &copy; Savas Labs 2016</p>
+</div>
+
+
+  </body>
+
+</html>
