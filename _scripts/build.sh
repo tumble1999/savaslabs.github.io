@@ -15,7 +15,7 @@ cp -R _site/* ../savaslabs.github.io.master
 # Commit and push generated content to master branch.
 cd ../savaslabs.github.io.master
 git config user.email ${GH_EMAIL}
-git config user.name "savas-travis"
+git config user.name "savas-bot"
 git add -A .
 git commit -a -m "Travis #$TRAVIS_BUILD_NUMBER"
 git push --quiet origin master > /dev/null 2>&1
