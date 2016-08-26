@@ -12,7 +12,7 @@ git remote -v
 
 # Clone master branch using encrypted GH_TOKEN for authentication.
 git clone https://${GH_TOKEN}@github.com/savaslabs/savaslabs.github.io.git ../savaslabs.github.io.master
-rm -rf ../savaslabs.github.io.master/
+rm -rf ../savaslabs.github.io.master/*
 ls -lah ../savaslabs.github.io.master
 
 # Copy generated HTML site to master branch.
