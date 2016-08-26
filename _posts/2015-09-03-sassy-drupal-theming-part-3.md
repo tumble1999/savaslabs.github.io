@@ -132,7 +132,7 @@ Some say follow the [Inception Rule](http://thesassway.com/beginner/the-inceptio
 
 ## 5. Use SCSS-Lint
 
-Or whatever code inspector you want. We've had great success with [SCSS-Lint](https://github.com/brigade/scss-lint) on our [company website](https://github.com/savaslabs/savaslabs.github.io/blob/master/_tests/run-tests.sh). SCSS Lint checks everything from declaration order to whitespace to nesting depth. It's very strict out of the box but you can change or ignore linters to customize it to your needs. Because of the potential complexity of Sass, following coding standards becomes more crucial than ever. And, y'know, it's good for you.
+Or whatever code inspector you want. We've had great success with [SCSS-Lint](https://github.com/brigade/scss-lint) on our [company website](https://github.com/savaslabs/savaslabs.github.io/blob/source/_scripts/run-tests.sh). SCSS Lint checks everything from declaration order to whitespace to nesting depth. It's very strict out of the box but you can change or ignore linters to customize it to your needs. Because of the potential complexity of Sass, following coding standards becomes more crucial than ever. And, y'know, it's good for you.
 
 <hr>
 
