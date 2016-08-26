@@ -3,10 +3,12 @@
 # Enable error reporting to the console.
 set -e
 
+# Need to see if this exists.
+ls -lah ../savaslabs.github.io.master
+
 # Clone master branch into a new directory using encrypted GH_TOKEN for
 # authentication.
 git clone https://${GH_TOKEN}@github.com/savaslabs/savaslabs.github.io.git ../savaslabs.github.io.master
-ls -lah ../savaslabs.github.io.master
 
 # Check out master branch on new repo and remove everything.
 cd ../savaslabs.github.io.master
