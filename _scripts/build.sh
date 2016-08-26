@@ -7,20 +7,18 @@ set -e
 # authentication.
 git clone https://${GH_TOKEN}@github.com/savaslabs/savaslabs.github.io.git ../savaslabs.github.io.master
 
-# Move to new directory and copy generated HTML site from source.
+# Check out master branch on new repo and remove everything.
 cd ../savaslabs.github.io.master
 git config user.email ${GH_EMAIL}
 git config user.name "savas-bot"
+git checkout master
 rm -rf *
-cp -R ../savaslabs.github.io/_site/* .
 ls -lah
 
-# Switch to the master branch, keeping the copied _site directory.
-git stash
-git status
-git checkout master
-git status
-git stash apply
+# Move to new directory and copy generated HTML site from source.
+# Now the master branch will contain only the contents of the _site directory.
+cp -R ../savaslabs.github.io/_site/* .
+ls -lah
 git status
 
 # Commit and push generated content to master branch.
