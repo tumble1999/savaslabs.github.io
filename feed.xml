@@ -6,9 +6,89 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 26 Aug 2016 19:43:07 +0000</pubDate>
-    <lastBuildDate>Fri, 26 Aug 2016 19:43:07 +0000</lastBuildDate>
+    <pubDate>Mon, 29 Aug 2016 17:46:31 +0000</pubDate>
+    <lastBuildDate>Mon, 29 Aug 2016 17:46:31 +0000</lastBuildDate>
     <generator>Jekyll v3.0.3</generator>
+    
+      <item>
+        <title>A Savas Labs Internship</title>
+        <description>&lt;p&gt;&lt;img src=&quot;/assets/img/blog/internship-slave.jpg&quot; class=&quot;blog-image-large&quot; alt=&quot;Sipress Cartoon&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;caption&quot;&gt;&lt;a href=&quot;https://www.cartoonbank.com/search/-/search/results?p_p_state=pop_up&amp;amp;_listenersearchresults_WAR_searchportlet_struts.portlet.action=%2Fview%2FshowDetail&amp;amp;_listenersearchresults_WAR_searchportlet_pageNumber=1&amp;amp;_listenersearchresults_WAR_searchportlet_search=feature%3Acncartoons+intern&amp;amp;_listenersearchresults_WAR_searchportlet_match=a&amp;amp;_listenersearchresults_WAR_searchportlet_sort=d&amp;amp;_listenersearchresults_WAR_searchportlet_byline=Sipress&amp;amp;_listenersearchresults_WAR_searchportlet_docdaterng=2004&amp;amp;_listenersearchresults_WAR_searchportlet_searchFeatures=cncartoons&amp;amp;_listenersearchresults_WAR_searchportlet_tagId=cncartoons022239&quot;&gt;&lt;em&gt;Source&lt;/em&gt;&lt;/a&gt;.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;If you’ve ever contemplated a drastic career change, then you’ve probably thought about what it’d be like to start at the beginning again at some point.&lt;/p&gt;
+
+&lt;p&gt;In this post, I’d like to share my 3 month internship experience for anyone who’s considering making the switch to Web Development, or who may be curious about the learning environment here at Savas.&lt;/p&gt;
+
+&lt;h2 id=&quot;visiting-the-team&quot;&gt;Visiting the Team&lt;/h2&gt;
+
+&lt;p&gt;Since I’m located &lt;a href=&quot;https://www.google.com/maps/dir/Portland,+OR/Durham,+NC/@39.4988195,-118.778336,4z/data=!4m13!4m12!1m5!1m1!1s0x54950b0b7da97427:0x1c36b9e6f6d18591!2m2!1d-122.6764816!2d45.5230622!1m5!1m1!1s0x89ace471120f66f1:0xe17ada898a46f27e!2m2!1d-78.898619!2d35.9940329&quot;&gt;2,845 miles&lt;/a&gt; from Savas Labs HQ, one of my biggest concerns starting out as a newbie was the added challenge of telecommuting. To get me up and running as fast as possible, &lt;a href=&quot;http://savaslabs.com/team/chris-russo/&quot;&gt;Chris&lt;/a&gt; and I decided I’d fly to Durham to meet the team and work in the office together for my first week.&lt;/p&gt;
+
+&lt;p&gt;It was great to kick-off my internship with in-person QA sessions and impromptu whiteboarding (not to mention meeting my teammates and being graciously invited to their homes!). Even though we relied on screenshares and conference calls just fine after that first week, being in the same physical space to start off with helped establish my presence with the team and laid a strong learning foundation for the remainder of my internship.&lt;/p&gt;
+
+&lt;h2 id=&quot;an-inclusive-learning-environment&quot;&gt;An Inclusive Learning Environment&lt;/h2&gt;
+
+&lt;p&gt;Everyone at Savas Labs contributed to my learning! I was encouraged by the entire team, and no one was above taking the time to show me how to &lt;a href=&quot;https://www.drupal.org/node/1791676&quot;&gt;install Composer&lt;/a&gt; or configure &lt;a href=&quot;https://www.drupalvm.com/&quot;&gt;DrupalVM&lt;/a&gt;. I felt comfortable asking questions and was encouraged to do so from the beginning.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/internship-encouragement.png&quot; class=&quot;blog-image-large&quot; alt=&quot;Slack Encouragement&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;caption&quot;&gt;Supportive Savasians!&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;It helped that many on the team had also transitioned from other careers and understood what it felt like to be overwhelmed by a barrage of new information. More than once, &lt;a href=&quot;http://savaslabs.com/team/dan-murphy/&quot;&gt;Dan&lt;/a&gt; or &lt;a href=&quot;http://savaslabs.com/team/anne-tomasevich/&quot;&gt;Anne&lt;/a&gt; would check in and ask me if I needed any help or had any general questions (thanks you guys!). And I could tell everyone took my internship seriously, and never once was I made to feel inconsequential!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/internship-dilbert.gif&quot; class=&quot;blog-image-xl&quot; alt=&quot;Dilbert Cartoon&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;caption&quot;&gt;&lt;a href=&quot;http://dilbert.com/strip/2011-04-22&quot;&gt;&lt;em&gt;Source&lt;/em&gt;&lt;/a&gt;.&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Likewise, I found the internship to be anything but a one-sided experience. My thoughts on workflow and documentation were welcome from the beginning and it was nice to have my voice be a part of the discussion about virtualization, even though I had minimal experience. It was very satisfying to contribute to the company while Savas was investing in me.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-learning&quot;&gt;The Learning&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;There is. A lot. To. Learn&lt;/strong&gt; (I mean, it can’t &lt;em&gt;all&lt;/em&gt; be roses right?).&lt;/p&gt;
+
+&lt;p&gt;Though comfortable with programming syntax when I started (a significant portion of my last job was writing custom object-oriented programs for mechanical systems), I had never heard of &lt;a href=&quot;https://git-scm.com/&quot;&gt;git&lt;/a&gt; before or had any idea how to use the command line. I had, essentially, &lt;em&gt;zero&lt;/em&gt; Web Development experience&lt;sup id=&quot;fnref:1&quot;&gt;&lt;a href=&quot;#fn:1&quot; class=&quot;footnote&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
+
+&lt;p&gt;To be honest, I wasn’t expecting the sheer breadth and volume of material I’d need to know just to reach a modicum level of proficiency. I spent the first month figuring out the foundations – making pull requests, figuring out how to download software from the command line (don’t even get me started on virtualization)– before I could even start to dip my toes into Drupal development. This sounds naive now, but I was genuinely surprised when I realized that Web Development was going to be &lt;a href=&quot;https://web.archive.org/web/20160507042856/http://www.codem0nk3y.com/wp-content/uploads/2012/04/cms-learning-curve.png&quot;&gt;much more difficult&lt;/a&gt; than reading a few good books on Drupal and CSS!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/internship-learning-cartoon.png&quot; class=&quot;blog-image-xl&quot; alt=&quot;So much to learn!&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;caption&quot;&gt;At times it felt like I’d inadvertently walked into a trap. &lt;em&gt;Source&lt;/em&gt;: Me!&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Likewise, I think this presented a teaching challenge for Savas as well. Before I started, Chris created a list of what I was expected to cover in the course of this internship. Frankly, the topics assumed a lot of foundational knowledge that I didn’t have yet. I’d start tackling a task only to realize that I was missing a critical package manager or had skipped a step I didn’t even know was needed. In those moments I found myself wishing there was a more structured curriculum.&lt;/p&gt;
+
+&lt;p&gt;As I started to get the basics down, my learning became more focused as I began to get involved with client projects. I found task-based learning more satisfying because I was contributing to projects and the team. While no project is without busywork, the team wasn’t just trying to offload mindless drudgery to the newest pair of hands – I could tell my teammates were thinking about the value of each assignment and how that would help me build upon the previous lessons I’d just learned.&lt;/p&gt;
+
+&lt;h2 id=&quot;mentoring--community&quot;&gt;Mentoring &amp;amp; Community&lt;/h2&gt;
+&lt;p&gt;My mentor, &lt;a href=&quot;http://savaslabs.com/team/lisa-ridley/&quot;&gt;Lisa&lt;/a&gt;, was instrumental in the success of my internship. Given how much there was (and still is!) to learn, having an experienced person actively direct my focus was invaluable.&lt;/p&gt;
+
+&lt;p&gt;When I became a bit adrift after the first month, Lisa guided me towards site building and eventually even created a &lt;a href=&quot;https://github.com/savaslabs/autism-case-study&quot;&gt;simulated D7 client project&lt;/a&gt; for me to work on. And mindful of the changing Web Development landscape, Lisa counseled me to emphasize Drupal 7/Drupal 8 learning instead of spending time on Drupal 6 projects. We started meeting twice a week (sometimes more!) to discuss my progress or deep dive into topics like the history of version control. All this took a significant amount of Lisa’s time (thank you Lisa!), and is proof of the Savas team’s dedication to each other’s growth as developers.&lt;/p&gt;
+
+&lt;p&gt;More generally, this generosity is something I’ve noticed throughout the Web and Drupal communities. In the few months since I’ve started, I sense that my colleagues don’t just look towards their day-to-day responsibilities at Savas, but also beyond, at what they can contribute to Development at large. This isn’t exclusive to our company either. The number of &lt;a href=&quot;http://www.metaltoad.com/blog/how-write-drupal-update-scripts&quot;&gt;how-to articles&lt;/a&gt;, &lt;a href=&quot;http://stackoverflow.com/questions/1064361/unable-to-show-a-git-tree-in-terminal&quot;&gt;Stack Exchange conversations&lt;/a&gt;, and Open Source &lt;a href=&quot;https://github.com/fish-shell/fish-shell&quot;&gt;public repos&lt;/a&gt; available is inspiring!&lt;/p&gt;
+
+&lt;h2 id=&quot;last-thoughts&quot;&gt;Last Thoughts&lt;/h2&gt;
+
+&lt;p&gt;There’s still &lt;em&gt;mountains&lt;/em&gt; to learn, and I’ll probably be bouncing around the “&lt;a href=&quot;https://www.vikingcodeschool.com/posts/why-learning-to-code-is-so-damn-hard&quot;&gt;Desert of Despair&lt;/a&gt;” for some time to come. But I’d like to end by saying that it’s been incredibly satisfying to have even come this far (with the help of my knowledgeable and amazingly supportive teammates of course!).&lt;/p&gt;
+
+&lt;p&gt;And yes, I’ve &lt;a href=&quot;https://github.com/lrowang/savaslabs.github.io/commit/c6fc9b630f55e19962560eebdd3f66b438defc11&quot;&gt;graduated&lt;/a&gt;!&lt;/p&gt;
+
+&lt;div class=&quot;footnotes&quot;&gt;
+  &lt;ol&gt;
+    &lt;li id=&quot;fn:1&quot;&gt;
+      &lt;p&gt;If you’re just starting out, Viking Code School sums up the &lt;a href=&quot;https://www.vikingcodeschool.com/posts/why-learning-to-code-is-so-damn-hard&quot;&gt;learning challenges&lt;/a&gt; quite well (the concepts are &lt;a href=&quot;https://drupalize.me/blog/201607/why-learning-drupal-hard?utm_source=The+Weekly+Drop&amp;amp;utm_medium=email&amp;amp;utm_campaign=The_Weekly_Drop_Issue_250_07_28_2016&quot;&gt;applicable to Drupal&lt;/a&gt; too), and I found the description to be painfully accurate! &lt;a href=&quot;#fnref:1&quot; class=&quot;reversefootnote&quot;&gt;&amp;#8617;&lt;/a&gt;&lt;/p&gt;
+    &lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;
+</description>
+        <pubDate>Mon, 29 Aug 2016 00:00:00 +0000</pubDate>
+        <link>/2016/08/29/internship-thoughts.html</link>
+        <guid isPermaLink="true">/2016/08/29/internship-thoughts.html</guid>
+        
+        <category>internship</category>
+        
+        <category>identity</category>
+        
+        
+      </item>
     
       <item>
         <title>Usability Testing - Our Process and Favorite Practices</title>
@@ -992,31 +1072,6 @@ the things I learned to explore first.&lt;/p&gt;
         <category>drupal8</category>
         
         <category>tridug</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>TriDUG: Drupal 8 case studies, presentation, and discussion</title>
-        <description>&lt;p&gt;After a long lull in activity, Savas Labs would like to reinvigorate the &lt;a href=&quot;https://groups.drupal.org/&quot;&gt;TriDUG&lt;/a&gt; evening meetups. We recognize there is a lot of Drupal need and experience here in the Triangle, and we want to collaborate more with our local community. With the help of Barb Baranski, we have sent out a questionnaire to the group to better understand interests, days and locations that will work for the group, and you have responded!&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;http://www.meetup.com/triDUG/events/229414499/&quot;&gt;We’ll host the first session at our home base&lt;/a&gt;, the American Underground @ Main in downtown Durham.&lt;/p&gt;
-
-&lt;p&gt;We’ll have pizza here at 6:30, and do some mingling until about 7:00. At 7:00 we’ll do introductions, and share any pertinent information about projects we’re working on, job opportunities, and the like.&lt;/p&gt;
-
-&lt;p&gt;At 7:15 or so, Kosta Harlan will present on all things Drupal 8. He has a couple of &lt;a href=&quot;https://www.durhamatletico.com&quot;&gt;real-world projects he’s built&lt;/a&gt; or &lt;a href=&quot;https://github.com/savaslabs/durham-civil-rights-map&quot;&gt;helped build&lt;/a&gt; in Drupal 8, and will spend some time presenting on the specifics of those site builds. Plenty of time will be factored in for Q&amp;amp;A throughout the presentation with some additional time at the end.&lt;/p&gt;
-
-&lt;p&gt;We’ll also discuss future locations, topics and times that work for other members of the group, so we strongly encourage you to come out to this session even if it’s not ideal for you on an ongoing basis to help shape the future of the meetup that this community deserves.&lt;/p&gt;
-
-&lt;p&gt;We look forward to seeing you in Durham on St. Patrick’s Day!&lt;/p&gt;
-</description>
-        <pubDate>Wed, 16 Mar 2016 00:00:00 +0000</pubDate>
-        <link>/2016/03/16/tridug-drupal-8-durham-atletico-case-study.html</link>
-        <guid isPermaLink="true">/2016/03/16/tridug-drupal-8-durham-atletico-case-study.html</guid>
-        
-        <category>drupal</category>
-        
-        <category>event</category>
         
         
       </item>
