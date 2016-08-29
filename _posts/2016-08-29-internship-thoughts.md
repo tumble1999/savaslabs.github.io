@@ -1,9 +1,9 @@
 ---
 layout: post
 title: "A Savas Labs Internship"
-date: 2016-08-02
+date: 2016-08-29
 author: Ro Wang
-tags: internship identity  
+tags: internship identity
 summary: What it's like to learn at Savas Labs.
 ---
 <img src="/assets/img/blog/internship-slave.jpg" class="blog-image-large" alt="Sipress Cartoon">
@@ -64,6 +64,5 @@ More generally, this generosity is something I’ve noticed throughout the Web a
 There’s still _mountains_ to learn, and I’ll probably be bouncing around the “[Desert of Despair](https://www.vikingcodeschool.com/posts/why-learning-to-code-is-so-damn-hard)” for some time to come. But I’d like to end by saying that it’s been incredibly satisfying to have even come this far (with the help of my knowledgeable and amazingly supportive teammates of course!).
 
 And yes, I’ve [graduated](https://github.com/lrowang/savaslabs.github.io/commit/c6fc9b630f55e19962560eebdd3f66b438defc11)!
-
 
 [^1]: If you’re just starting out, Viking Code School sums up the [learning challenges](https://www.vikingcodeschool.com/posts/why-learning-to-code-is-so-damn-hard) quite well (the concepts are [applicable to Drupal](https://drupalize.me/blog/201607/why-learning-drupal-hard?utm_source=The+Weekly+Drop&utm_medium=email&utm_campaign=The_Weekly_Drop_Issue_250_07_28_2016) too), and I found the description to be painfully accurate!
