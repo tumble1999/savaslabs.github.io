@@ -3,18 +3,18 @@ layout: page-narrow
 title: Web designer
 permalink: "/web-designer/"
 excerpt: |
-  Savas is seeking to employ a web designer.
+  Savas Labs is seeking to employ a web designer.
 ---
 
 ### The position
 We would like to strengthen our web design offering to keep up with the
 requests we receive from our high-profile clients. If you are interested in a
-leadership role in shaping design at Savas, this is the position for you. We'd
+leadership role in shaping design at Savas Labs, this is the position for you. We'd
 love to hear about front-end development techniques you're comfortable with to complement
 your design skills.
 
-### Working at Savas
-At Savas, we prioritize a few things. We like people who are enjoyable to work
+### Working at Savas Labs
+At Savas Labs, we prioritize a few things. We like people who are enjoyable to work
 with. We like to **learn** from and **teach** one another, and often the result is others
  learn as well either via [blog posts](/blog),
  [conference prezzies](https://events.drupal.org/neworleans2016/sessions/total-value-ownership-drupal-8-and-beyond) or social media.

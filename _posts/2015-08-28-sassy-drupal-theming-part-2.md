@@ -6,13 +6,13 @@ author: Anne Tomasevich
 tags: drupal drupal-planet theming sass bourbon
 summary: We'll use SMACSS principles to organize our custom SCSS and keep it lean and maintainable.
 drupal_planet_summary: |
-  It takes some forethought, but a well-organized theme means code that is modular and easy to maintain or pass off to another developer. SMACSS principles are becoming more and more widespread and can be applied to a Drupal theme. At Savas we've picked out what we love from SMACSS and simplified the rest, creating a stylesheet organization method that works for us. In this post (part 2 of my three-part series on Drupal theming with Sass) I'll go through our version of SMACSS and link to real examples.
+  It takes some forethought, but a well-organized theme means code that is modular and easy to maintain or pass off to another developer. SMACSS principles are becoming more and more widespread and can be applied to a Drupal theme. At Savas Labs we've picked out what we love from SMACSS and simplified the rest, creating a stylesheet organization method that works for us. In this post (part 2 of my three-part series on Drupal theming with Sass) I'll go through our version of SMACSS and link to real examples.
 redirect_from: "/2015/08/27/sassy-drupal-theming-part-2.html"
 ---
 
 In my [previous post](/2015/08/21/sassy-drupal-theming-part-1.html) I outlined how to build a Sass directory within a custom Drupal theme including Bourbon and Neat.
 
-At this point, we're ready to write some SCSS within the `base`, `components`, and `layouts` directories. In this post I'll demonstrate how Savas applies [SMACSS](https://smacss.com/) principles to organize our custom SCSS. As a reminder, I'll be linking to our [Drupal 8 mapping site](https://github.com/savaslabs/durham-civil-rights-map) as an example throughout, but none of this is Drupal-8-specific.
+At this point, we're ready to write some SCSS within the `base`, `components`, and `layouts` directories. In this post I'll demonstrate how Savas Labs applies [SMACSS](https://smacss.com/) principles to organize our custom SCSS. As a reminder, I'll be linking to our [Drupal 8 mapping site](https://github.com/savaslabs/durham-civil-rights-map) as an example throughout, but none of this is Drupal-8-specific.
 
 <hr>
 

@@ -8,7 +8,7 @@ summary: Theming in Drupal 8 means a lot of changes for current Drupalers and a 
 drupal_planet_summary: |
   Theming in Drupal 8 means a lot of changes for current Drupalers. These updates make Drupal more accessible to non-Drupalers and more modular, semantic, modern, and fun for everyone. Right now, documentation is scarce and often out-of-date, so I've collected all that I've learned while building my first Drupal 8 site.
 
-  Since most contributed base themes don't have an 8.x branch in a useable state at this point, Savas created a custom theme based on Classy, Drupal's new base theme. I'll step through the process of creating a custom theme and walk through the basics of Twig and Twig debugging.
+  Since most contributed base themes don't have an 8.x branch in a useable state at this point, Savas Labs created a custom theme based on Classy, Drupal's new base theme. I'll step through the process of creating a custom theme and walk through the basics of Twig and Twig debugging.
 
 ---
 
@@ -70,7 +70,7 @@ So, now that we’ve covered some reasons that D8 theming will be awesome and we
 
 The first thing to note is the different file structure. The `core` folder now holds all the the modules and themes that ship with Drupal, and contributed and custom modules and themes are now found respectively in the `modules` and `themes` folders in the Drupal document root (mine is called `docroot`).
 
-Let’s create a folder for our new theme. Savas is working on a Drupal 8 mapping project, so I’ll use that as an example. Our theme is called “Mappy,” so we’ve created a folder for our theme within `themes/custom`.
+Let’s create a folder for our new theme. Savas Labs is working on a Drupal 8 mapping project, so I’ll use that as an example. Our theme is called “Mappy,” so we’ve created a folder for our theme within `themes/custom`.
 
 <img class="blog-image-xl" src="{{ site.base_url }}/assets/img/blog/theme-folder-location.png" alt="Screenshot of D8 file structure.">
 
@@ -257,7 +257,7 @@ In addition to filters, Twig provides a range of [functions](http://twig.sensiol
 
 ### Tags
 
-Control flow and other [tags](http://twig.sensiolabs.org/doc/tags/set.html) are also supported in Twig. One of my favorite things about templating languages is how easy it is to execute `if` statements and `for` loops. [Savas](https://github.com/savaslabs/savaslabs.github.io) uses Jekyll for our company website and the Liquid templating language makes it easy to loop through a list of data points, blog posts, projects, etc. and print them to a page rather than writing out all of the HTML. In Drupal, we'll use the `if` statement quite often.
+Control flow and other [tags](http://twig.sensiolabs.org/doc/tags/set.html) are also supported in Twig. One of my favorite things about templating languages is how easy it is to execute `if` statements and `for` loops. [Savas Labs](https://github.com/savaslabs/savaslabs.github.io) uses Jekyll for our company website and the Liquid templating language makes it easy to loop through a list of data points, blog posts, projects, etc. and print them to a page rather than writing out all of the HTML. In Drupal, we'll use the `if` statement quite often.
 
 ```liquid
 // From Bartik's page.html.twig

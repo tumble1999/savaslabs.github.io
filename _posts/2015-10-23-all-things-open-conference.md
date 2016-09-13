@@ -127,5 +127,5 @@ serve dominant or extroverted people.
 + Be visually inclusive: have pictures on your website, and booths at events
 that are demographically diverse.
 
-I look forward to Savas presenting at
+I look forward to Savas Labs presenting at
 [#ATO2016](https://twitter.com/hashtag/ATO2016?src=hash) next year.

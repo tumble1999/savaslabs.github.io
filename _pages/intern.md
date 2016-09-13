@@ -3,19 +3,19 @@ layout: page-narrow
 title: Internship
 permalink: "/intern/"
 excerpt: |
-  Savas is hiring for internship positions.
+  Savas Labs is hiring for internship positions.
 ---
 
 ### The position
-At Savas, we have internship opportunities for **project managers**, and
+At Savas Labs, we have internship opportunities for **project managers**, and
 **web developers**. This is a great opportunity to see what working in a dynamic
 web agency is like. The selected candidate will receive support from a technical
 and business perspective, but will also need to be self-motivated, and able to
 contribute through times of limited supervision. The role of the intern will
 depend on availability and this is a part-time, paid internship.
 
-### Working at Savas
-At Savas, we prioritize a few things. We like people who are enjoyable to work
+### Working at Savas Labs
+At Savas Labs, we prioritize a few things. We like people who are enjoyable to work
 with. We like to **learn** from and **teach** one another, and often the result is others
  learn as well either via [blog posts](/blog),
  [conference prezzies](https://events.drupal.org/neworleans2016/sessions/total-value-ownership-drupal-8-and-beyond) or social media.

@@ -3,7 +3,7 @@ layout: page-narrow
 title: Drupal developer
 permalink: "/drupal-developer/"
 excerpt: |
-  Savas hiring for Drupal developer.
+  Savas Labs hiring for Drupal developer.
 ---
 
 <p style="text-align:center;">

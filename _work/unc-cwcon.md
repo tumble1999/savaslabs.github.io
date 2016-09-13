@@ -9,4 +9,4 @@ short_description: >
 services:
   - On-site training
 ---
-Savas provided on-site Drupal training to empower the CWCon administrators to build a new Drupal site for the conference each year.
+Savas Labs provided on-site Drupal training to empower the CWCon administrators to build a new Drupal site for the conference each year.

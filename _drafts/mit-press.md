@@ -15,20 +15,20 @@ client_name:
 
 ### Drupal development and code cleanup
 
-Since 2014, Savas refactored substantial portions of the MIT Press Drupal codebase for improved security, usability, and performance. To guarantee a reliable and maintainable site for years to come, Savas developers phased out fragile custom code, replacing it with coding standards complaint code utilizing the Drupal API, and re-organizing the way the content within the site is rendered.
+Since 2014, Savas Labs refactored substantial portions of the MIT Press Drupal codebase for improved security, usability, and performance. To guarantee a reliable and maintainable site for years to come, Savas Labs developers phased out fragile custom code, replacing it with coding standards complaint code utilizing the Drupal API, and re-organizing the way the content within the site is rendered.
 
-Savas developers added new functionality to the site, enhancing the user experience and making it easier for content editors to do their jobs. Savas has also been responsible for resolving numerous permissions issues and other bugs that had previously hindered site maintainers.
+Savas Labs developers added new functionality to the site, enhancing the user experience and making it easier for content editors to do their jobs. Savas Labs has also been responsible for resolving numerous permissions issues and other bugs that had previously hindered site maintainers.
 
-During the development process, Savas brought existing code up to standards, increasing maintainability and functionality.
+During the development process, Savas Labs brought existing code up to standards, increasing maintainability and functionality.
 
 ---
 
 ### New feature integration
 
-Savas has collaborated with MIT Press to deploy new microsites and new features to the MIT Press website. This includes a custom module build by Savas for a large-scale data integration with an external FileMaker database, automating what was a tedious, manual process into a one click, push button deployment.
+Savas Labs has collaborated with MIT Press to deploy new microsites and new features to the MIT Press website. This includes a custom module build by Savas Labs for a large-scale data integration with an external FileMaker database, automating what was a tedious, manual process into a one click, push button deployment.
 
 ---
 
 ### Security audit
 
-Savas developers implemented version control using Git and GitHub, a deployment system using [Fabric](https://www.fabfile.org) and made important initial security updates. On an ongoing basis, Savas has identified and investigated potential security issues and made the appropriate updates to ensure that sensitive and propriatary information is protected.
+Savas Labs developers implemented version control using Git and GitHub, a deployment system using [Fabric](https://www.fabfile.org) and made important initial security updates. On an ongoing basis, Savas Labs has identified and investigated potential security issues and made the appropriate updates to ensure that sensitive and propriatary information is protected.

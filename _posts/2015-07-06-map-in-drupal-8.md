@@ -6,18 +6,18 @@ author: Anne Tomasevich
 tags: drupal drupal8 drupal-planet cartography leaflet
 summary: In this post I'll outline how to create a basic map in Drupal 8 using the Leaflet library within a custom theme and the Views GeoJSON module.
 drupal_planet_summary: |
-  Adding a map to a Drupal 7 site is made easy by a variety of location storage and map rendering modules. However, at the time of this post most of these modules don't have an 8.x branch ready and therefore aren't usable in Drupal 8. Since Savas has recently taken on a Drupal 8 mapping project, we decided to use the Leaflet library within a custom theme to render our map and the Views GeoJSON module to store our data.
+  Adding a map to a Drupal 7 site is made easy by a variety of location storage and map rendering modules. However, at the time of this post most of these modules don't have an 8.x branch ready and therefore aren't usable in Drupal 8. Since Savas Labs has recently taken on a Drupal 8 mapping project, we decided to use the Leaflet library within a custom theme to render our map and the Views GeoJSON module to store our data.
 
   In this post we'll add the Leaflet library to a custom theme using the new *.libaries.yml file, write a little Javascript to create our map, and pull in map points via a REST export view.
 ---
 
-Adding a map to a Drupal 7 site is made easy by a variety of location storage and map rendering modules. However, at the time of this post most of these modules don't have an 8.x branch ready and therefore aren't usable in Drupal 8. Since Savas has recently taken on a Drupal 8 mapping project, we decided to use the Leaflet library within a custom theme to render our map and the Views GeoJSON module to store our data.
+Adding a map to a Drupal 7 site is made easy by a variety of location storage and map rendering modules. However, at the time of this post most of these modules don't have an 8.x branch ready and therefore aren't usable in Drupal 8. Since Savas Labs has recently taken on a Drupal 8 mapping project, we decided to use the Leaflet library within a custom theme to render our map and the Views GeoJSON module to store our data.
 
 Before we jump in, I have to give major kudos to my coworker [Tim Stallmann](/team/tim-stallmann/). This tutorial is based on his [excellent post](/2015/05/18/mapping-geojson.html) about mapping with Leaflet and GeoJSON, so check that out for a great primer if you're new to mapping.
 
 ## Setup
 
-Before we can get into mapping, we'll need a working Drupal 8 site. Savas has previously gone over [setting up a D8 site using Docker](/2015/04/23/drupal-8-docker-bowline-setup.html) and [creating a custom theme](/2015/06/10/d8-theming-basics.html). That said, you don't need to use Docker or a custom theme based on Classy to create your map - any Drupal 8 instance with a custom theme will do. In this tutorial, I'll be referencing our custom theme called Mappy that we created for the [Durham Civil Rights Mapping project](https://github.com/savaslabs/durham-civil-rights-map).
+Before we can get into mapping, we'll need a working Drupal 8 site. Savas Labs has previously gone over [setting up a D8 site using Docker](/2015/04/23/drupal-8-docker-bowline-setup.html) and [creating a custom theme](/2015/06/10/d8-theming-basics.html). That said, you don't need to use Docker or a custom theme based on Classy to create your map - any Drupal 8 instance with a custom theme will do. In this tutorial, I'll be referencing our custom theme called Mappy that we created for the [Durham Civil Rights Mapping project](https://github.com/savaslabs/durham-civil-rights-map).
 
 ## Install contributed modules
 
@@ -25,7 +25,7 @@ First you'll need to install several contributed modules in your site's `modules
 
 - [Geofield](https://www.drupal.org/project/geofield), which creates a new field type called geofield that we'll use within a view
 - [GeoPHP](https://www.drupal.org/project/geophp), a dependency of Geofield
-- [Views GeoJSON](https://github.com/savaslabs/views_geojson), a style plugin for Views that outputs data in GeoJSON, which can be used by Leaflet to create map points. You'll note that I've linked to Savas's Views GeoJSON GitHub repo rather than the module's [Drupal.org page](https://www.drupal.org/project/views_geojson), because at the time of writing this our 8.x branch is not yet available there. You can follow the status of this issue [here.](https://www.drupal.org/node/2527636)
+- [Views GeoJSON](https://github.com/savaslabs/views_geojson), a style plugin for Views that outputs data in GeoJSON, which can be used by Leaflet to create map points. You'll note that I've linked to Savas Labs Views GeoJSON GitHub repo rather than the module's [Drupal.org page](https://www.drupal.org/project/views_geojson), because at the time of writing this our 8.x branch is not yet available there. You can follow the status of this issue [here.](https://www.drupal.org/node/2527636)
 
 There are 3 core modules you'll need:
 
@@ -220,4 +220,4 @@ Now when I click on a point I get a nice little popup with the node title.
 
 <img src="/assets/img/blog/map-in-drupal-8/map-with-popup.png" alt="Screenshot of the map with a popup open" class="blog-image-xl">
 
-Check out the entire [map.js file](https://github.com/savaslabs/durham-civil-rights-map/blob/master/themes/custom/mappy/js/page--front--map.js) and be sure to visit Savas's GitHub repository for the [Durham Civil Rights Mapping project](https://github.com/savaslabs/durham-civil-rights-map) and the [completed site](http://www.durhamcivilrightsmap.org/) to see a Drupal 8 site in action!
+Check out the entire [map.js file](https://github.com/savaslabs/durham-civil-rights-map/blob/master/themes/custom/mappy/js/page--front--map.js) and be sure to visit Savas Labs GitHub repository for the [Durham Civil Rights Mapping project](https://github.com/savaslabs/durham-civil-rights-map) and the [completed site](http://www.durhamcivilrightsmap.org/) to see a Drupal 8 site in action!
