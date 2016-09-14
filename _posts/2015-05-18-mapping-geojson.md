@@ -55,7 +55,7 @@ With leaflet-providers included, we can add a number of different basemaps. Here
 var terrainTiles = L.tileLayer.provider('OpenTopoMap');
 terrainTiles.addTo(map);
 
-// Set the initial viewport of the map. Here we're centering on Savas' hometown and zooming out a bit.
+// Set the initial viewport of the map. Here we're centering on Savas Labs' hometown and zooming out a bit.
 map.setView([35.9908385, -78.9005222], 8);
 ```
 
@@ -126,7 +126,7 @@ function addDataToMap(data, map) {
 }
 ```
 
-And here's the "finished" map! Stay tuned for more GeoJSON + Leaflet tutorials from [Savas](http://www.savaslabs.com)
+And here's the "finished" map! Stay tuned for more GeoJSON + Leaflet tutorials from [Savas Labs](http://www.savaslabs.com)
 
 The final HTML file with inline javascript is also posted [as a gist here](https://gist.github.com/chrisarusso/d7d54a4149830a8baa6d).
 

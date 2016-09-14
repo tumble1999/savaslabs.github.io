@@ -10,7 +10,7 @@ summary: Fostering a **fair** and rewarding work environment is of utmost priori
 Fostering a **fair** and rewarding work environment is of utmost priority for me as
 an employer and providing a Living Wage is a good place to start.
 
-We here at Savas are proud members of the [Durham Living Wage Project](http://www.durhamlivingwage.org).
+We here at Savas Labs are proud members of the [Durham Living Wage Project](http://www.durhamlivingwage.org).
 The DLWP (I shortened it) is a new, local organization encouraging
 Durhamites to take a closer look at wages, fairness, and what they suggest will
 result in a better society for _all_.

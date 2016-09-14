@@ -24,7 +24,7 @@ $ cd [sitename]
 $ jekyll serve
 ```
 
-This created the file structure, and `jekyll serve` starts a local server on which the new site is running, convenient for coding on sunny patios with bad wifi. 
+This created the file structure, and `jekyll serve` starts a local server on which the new site is running, convenient for coding on sunny patios with bad wifi.
 
 From here we created each page and incorporated the content we had already generated for the original site. Creating the skeleton of the site was relatively quick thanks to Jekyll's use of YAML [front matter](http://jekyllrb.com/docs/frontmatter/) and the modular nature of its HTML files. We used markdown files in lieu of HTML when possible, and capitalized on Jekyll's support of the Liquid templating language to include HTML snippets (e.g. head, header and footer) and to loop through lists (e.g. team members or recent blog posts).
 
@@ -65,7 +65,7 @@ div {
 }
 ```
 
-In addition to flexbox, we used Bourbon's CSS3 transitions mixins, em to pixel calculations, and media query mixins. 
+In addition to flexbox, we used Bourbon's CSS3 transitions mixins, em to pixel calculations, and media query mixins.
 
 Lessons learned:
 

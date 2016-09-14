@@ -6,17 +6,17 @@ author: Anne Tomasevich
 tags: drupal drupal-planet theming sass bourbon
 summary: A step-by-step tutorial on setting up Bourbon and Neat and compiling it all with Compass.
 drupal_planet_summary: |
-  When Savas built a custom Drupal 8 theme, we needed to include a grid framework and chose Bourbon's Neat for its ease of use, its light weight, and the library of useful Sass mixins provided by Bourbon. In this post I detail how to set all of this up and use Compass to compile SCSS.
+  When Savas Labs built a custom Drupal 8 theme, we needed to include a grid framework and chose Bourbon's Neat for its ease of use, its light weight, and the library of useful Sass mixins provided by Bourbon. In this post I detail how to set all of this up and use Compass to compile SCSS.
 
 ---
 
-Recently Savas [built a custom Drupal 8 theme](/2015/06/10/d8-theming-basics.html) using Bourbon for mixins and Neat as our grid framework, applying our favorite parts of SMACSS principles and focusing on creating organized, maintainable code. The result? Fast, easy coding and a relatively lightweight theme.
+Recently Savas Labs [built a custom Drupal 8 theme](/2015/06/10/d8-theming-basics.html) using Bourbon for mixins and Neat as our grid framework, applying our favorite parts of SMACSS principles and focusing on creating organized, maintainable code. The result? Fast, easy coding and a relatively lightweight theme.
 
 In this three-part series I'll detail:
 
 - Setting up Bourbon and Neat within a Drupal theme for quick, well-organized styling
 - [Creating a Sass file structure following a light version of SMACSS](/2015/08/28/sassy-drupal-theming-part-2.html)
-- [What we at Savas consider best practices for creating shareable, maintainable Sass](/2015/09/03/sassy-drupal-theming-part-3.html)
+- [What we at Savas Labs consider best practices for creating shareable, maintainable Sass](/2015/09/03/sassy-drupal-theming-part-3.html)
 
 I'll be pulling some examples from our Drupal 8 theme, but none of this is Drupal-8-specific and really, it's not entirely Drupal-specific. These principles can be applied to any site. Much of the material in these posts is also largely a matter of opinion, so if you disagree or if something else works better for you, sound off about it in the [comments!](#js-expander-trigger)
 
@@ -298,4 +298,4 @@ sass
 └── styles.scss
 ```
 
-Where do we go from here? In [my next post](/2015/08/28/sassy-drupal-theming-part-2.html), I tackle the `base`, `components`, and `layouts` SMACSS-based directories and the custom `scss` files they will hold. In a future post I'll go through some of Savas's best practices for writing Sass that can be easily shared amongst team members and maintained in the long run.
+Where do we go from here? In [my next post](/2015/08/28/sassy-drupal-theming-part-2.html), I tackle the `base`, `components`, and `layouts` SMACSS-based directories and the custom `scss` files they will hold. In a future post I'll go through some of Savas Labs best practices for writing Sass that can be easily shared amongst team members and maintained in the long run.

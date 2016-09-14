@@ -41,7 +41,7 @@ ethos, founded in honesty and integrity, makes us a delight to collaborate with.
 
 #### Balance
 
-[Balance](/team/#what-does-savas-mean) is important to us at Savas. We work
+[Balance](/team/#what-does-savas-mean) is important to us at Savas Labs. We work
 hard while we’re on the clock but appreciate and encourage aspirations outside
 of the work place. Having fun does not have to come at the cost of productivity,
 and we find just the opposite to be the case. We aspire to be well-rounded

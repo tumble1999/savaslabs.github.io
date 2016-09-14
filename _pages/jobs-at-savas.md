@@ -1,15 +1,15 @@
 ---
 layout: page-narrow
-title: Opportunities at Savas
+title: Opportunities at Savas Labs
 permalink: "/jobs-at-savas/"
 excerpt: |
- The needs at Savas are constantly evolving, but *​*we are always**​ on the
+ The needs at Savas Labs are constantly evolving, but *​*we are always**​ on the
  lookout for talented and engaged people to help us deliver excellence to the
  interwebs and beyond for our clients.
 ---
 
 <p class="page-description">
-  The needs at Savas are constantly evolving, but ​<b>we are always</b> on
+  The needs at Savas Labs are constantly evolving, but ​<b>we are always</b> on
   the lookout for talented and engaged people to help us deliver excellence to
   the interwebs and beyond for our clients.
 
@@ -35,7 +35,7 @@ excerpt: |
 ---
 
 ### About working with us
-At Savas, we prioritize a few things. We like people who are enjoyable to work
+At Savas Labs, we prioritize a few things. We like people who are enjoyable to work
 with. We like to **learn** from and **teach** one another, and often the result is others
  learn as well either via [blog posts](/blog),
  [conference prezzies](https://events.drupal.org/neworleans2016/sessions/total-value-ownership-drupal-8-and-beyond) or social media.

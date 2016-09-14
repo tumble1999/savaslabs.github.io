@@ -49,7 +49,7 @@ pros and cons to weigh. In **part 1 of this series**, we'll help walk you throug
 Like any good (and probably the bad too) Drupal advisor will tell you, **it all depends**. Helpful, right? But truly, it's necessary to understand the
 organization and its
 technical requirements very well to assess the risk of operating a Drupal 6 site after EOL.
-As an agency that leverages open source technology to build modern web applications, on a daily basis Savas relies on the Newtonian
+As an agency that leverages open source technology to build modern web applications, on a daily basis Savas Labs relies on the Newtonian
 
 > ...shoulders of giants...
 

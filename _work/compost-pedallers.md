@@ -12,7 +12,7 @@ services:
   - API integration
   - E-commerce
 ---
-Savas has developed numerous features for Compost Pedallers' Drupal-powered site, including e-commerce capabilities and a web service that provides an API of customer data for Compost Pedaller bikers.
+Savas Labs has developed numerous features for Compost Pedallers' Drupal-powered site, including e-commerce capabilities and a web service that provides an API of customer data for Compost Pedaller bikers.
 
 ### Challenges
 
@@ -24,10 +24,10 @@ Savas has developed numerous features for Compost Pedallers' Drupal-powered site
 
 ### Solutions
 
-Savas started by cleaning up the existing codebase to ensure it was consistent with Drupal standards, laying the groundwork for sustainable development going forward.
+Savas Labs started by cleaning up the existing codebase to ensure it was consistent with Drupal standards, laying the groundwork for sustainable development going forward.
 
-Next, it was important to Compost Pedallers to have a lot of flexibility in their subscription plans along with automated, recurring billing. Based on Savas founder [Chris Russo’s](/team/chris-russo) own experience [running a compost service](/work/tilthy-rich-compost), Savas suggested that Compost Pedallers switch to [Stripe](https://www.stripe.com) as their payment processor.
+Next, it was important to Compost Pedallers to have a lot of flexibility in their subscription plans along with automated, recurring billing. Based on Savas Labs founder [Chris Russo’s](/team/chris-russo) own experience [running a compost service](/work/tilthy-rich-compost), Savas Labs suggested that Compost Pedallers switch to [Stripe](https://www.stripe.com) as their payment processor.
 
-Stripe provides a [powerful payment API](https://stripe.com/docs) allowing for complete control over the checkout experience, coupled with simple, competitive pricing and tremendous customer support. After demonstrating the benefits of Stripe to the client, Savas integrated Stripe into the existing Compost Pedallers site.
+Stripe provides a [powerful payment API](https://stripe.com/docs) allowing for complete control over the checkout experience, coupled with simple, competitive pricing and tremendous customer support. After demonstrating the benefits of Stripe to the client, Savas Labs integrated Stripe into the existing Compost Pedallers site.
 
-Compost Pedallers also wanted a more modern looking website that was user friendly on a variety of devices, including tablets and smart phones. Savas assisted Compost Pedallers in selecting a pre-built responsive theme, then adjusted the theme to work well with the site configuration, providing custom code where needed to ensure the new theme worked throughout, including in the client’s online store.
+Compost Pedallers also wanted a more modern looking website that was user friendly on a variety of devices, including tablets and smart phones. Savas Labs assisted Compost Pedallers in selecting a pre-built responsive theme, then adjusted the theme to work well with the site configuration, providing custom code where needed to ensure the new theme worked throughout, including in the client’s online store.

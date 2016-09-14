@@ -7,7 +7,7 @@ client_url: "https://www.transactionadvisors.com"
 client_description: |
   [Transaction Advisors](https://www.transactionadvisors.com) is a prestigious technical journal that publishes select white papers, technical articles, and research studies on the critical issues impacting corporate transaction planning, structuring, and execution.
 client_quote: |
-  When faced with a challenging multi-site build out that included importing content from a very old platform, creating 3 integrated subscription forms, and launching under a tight timeline, Savas was strategic, knowledgeable, and great to work with. They were the right team for our complex project!
+  When faced with a challenging multi-site build out that included importing content from a very old platform, creating 3 integrated subscription forms, and launching under a tight timeline, Savas Labs was strategic, knowledgeable, and great to work with. They were the right team for our complex project!
 client_quote_author:  Nora K. Hickey, Managing Director, Finance Information Group
 client_dates: 2014 - present
 project_description: |

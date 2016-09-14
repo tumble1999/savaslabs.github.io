@@ -9,7 +9,7 @@ summary: Using composer manager to manage a custom module's dependencies.
 ---
 
 ## Why Composer?
-We at Savas love [Composer](https://getcomposer.org/) and use it with many of our projects to help manage our automated testing dependencies.
+We at Savas Labs love [Composer](https://getcomposer.org/) and use it with many of our projects to help manage our automated testing dependencies.
 
 For those not already familiar, [Composer](https://getcomposer.org/) is a package manager for PHP. If you want to go further down the rabbit hole ["a package is a namespace that organizes a set of related classes and interfaces.”](https://docs.oracle.com/javase/tutorial/java/concepts/package.html)
 
@@ -40,4 +40,4 @@ By default, if a module includes a `composer.json` file and is enabled or disabl
 You can also use Drush to manually update the consolidated `composer.json` file via `drush composer-json-rebuild`, and manually install or update dependencies via `drush composer-manager [COMMAND] [OPTIONS]`. For example `drush composer-manager update`.
 
 ## Conclusion
-We at Savas love any tool or module that makes our development easier, and [Composer Manager](https://www.drupal.org/project/composer_manager) fits that bill. As Drupal modules start making more and more use of libraries from the greater PHP community, we expect to be using Composer Manager on more and more projects.
+We at Savas Labs love any tool or module that makes our development easier, and [Composer Manager](https://www.drupal.org/project/composer_manager) fits that bill. As Drupal modules start making more and more use of libraries from the greater PHP community, we expect to be using Composer Manager on more and more projects.
