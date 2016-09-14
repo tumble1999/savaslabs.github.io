@@ -6,8 +6,8 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 29 Aug 2016 17:46:31 +0000</pubDate>
-    <lastBuildDate>Mon, 29 Aug 2016 17:46:31 +0000</lastBuildDate>
+    <pubDate>Wed, 14 Sep 2016 19:58:07 +0000</pubDate>
+    <lastBuildDate>Wed, 14 Sep 2016 19:58:07 +0000</lastBuildDate>
     <generator>Jekyll v3.0.3</generator>
     
       <item>
@@ -18,7 +18,7 @@
 
 &lt;p&gt;If you’ve ever contemplated a drastic career change, then you’ve probably thought about what it’d be like to start at the beginning again at some point.&lt;/p&gt;
 
-&lt;p&gt;In this post, I’d like to share my 3 month internship experience for anyone who’s considering making the switch to Web Development, or who may be curious about the learning environment here at Savas.&lt;/p&gt;
+&lt;p&gt;In this post, I’d like to share my 3 month internship experience for anyone who’s considering making the switch to Web Development, or who may be curious about the learning environment here at Savas Labs.&lt;/p&gt;
 
 &lt;h2 id=&quot;visiting-the-team&quot;&gt;Visiting the Team&lt;/h2&gt;
 
@@ -40,7 +40,7 @@
 
 &lt;p&gt;&lt;span class=&quot;caption&quot;&gt;&lt;a href=&quot;http://dilbert.com/strip/2011-04-22&quot;&gt;&lt;em&gt;Source&lt;/em&gt;&lt;/a&gt;.&lt;/span&gt;&lt;/p&gt;
 
-&lt;p&gt;Likewise, I found the internship to be anything but a one-sided experience. My thoughts on workflow and documentation were welcome from the beginning and it was nice to have my voice be a part of the discussion about virtualization, even though I had minimal experience. It was very satisfying to contribute to the company while Savas was investing in me.&lt;/p&gt;
+&lt;p&gt;Likewise, I found the internship to be anything but a one-sided experience. My thoughts on workflow and documentation were welcome from the beginning and it was nice to have my voice be a part of the discussion about virtualization, even though I had minimal experience. It was very satisfying to contribute to the company while Savas Labs was investing in me.&lt;/p&gt;
 
 &lt;h2 id=&quot;the-learning&quot;&gt;The Learning&lt;/h2&gt;
 
@@ -54,16 +54,16 @@
 
 &lt;p&gt;&lt;span class=&quot;caption&quot;&gt;At times it felt like I’d inadvertently walked into a trap. &lt;em&gt;Source&lt;/em&gt;: Me!&lt;/span&gt;&lt;/p&gt;
 
-&lt;p&gt;Likewise, I think this presented a teaching challenge for Savas as well. Before I started, Chris created a list of what I was expected to cover in the course of this internship. Frankly, the topics assumed a lot of foundational knowledge that I didn’t have yet. I’d start tackling a task only to realize that I was missing a critical package manager or had skipped a step I didn’t even know was needed. In those moments I found myself wishing there was a more structured curriculum.&lt;/p&gt;
+&lt;p&gt;Likewise, I think this presented a teaching challenge for Savas Labs as well. Before I started, Chris created a list of what I was expected to cover in the course of this internship. Frankly, the topics assumed a lot of foundational knowledge that I didn’t have yet. I’d start tackling a task only to realize that I was missing a critical package manager or had skipped a step I didn’t even know was needed. In those moments I found myself wishing there was a more structured curriculum.&lt;/p&gt;
 
 &lt;p&gt;As I started to get the basics down, my learning became more focused as I began to get involved with client projects. I found task-based learning more satisfying because I was contributing to projects and the team. While no project is without busywork, the team wasn’t just trying to offload mindless drudgery to the newest pair of hands – I could tell my teammates were thinking about the value of each assignment and how that would help me build upon the previous lessons I’d just learned.&lt;/p&gt;
 
 &lt;h2 id=&quot;mentoring--community&quot;&gt;Mentoring &amp;amp; Community&lt;/h2&gt;
 &lt;p&gt;My mentor, &lt;a href=&quot;http://savaslabs.com/team/lisa-ridley/&quot;&gt;Lisa&lt;/a&gt;, was instrumental in the success of my internship. Given how much there was (and still is!) to learn, having an experienced person actively direct my focus was invaluable.&lt;/p&gt;
 
-&lt;p&gt;When I became a bit adrift after the first month, Lisa guided me towards site building and eventually even created a &lt;a href=&quot;https://github.com/savaslabs/autism-case-study&quot;&gt;simulated D7 client project&lt;/a&gt; for me to work on. And mindful of the changing Web Development landscape, Lisa counseled me to emphasize Drupal 7/Drupal 8 learning instead of spending time on Drupal 6 projects. We started meeting twice a week (sometimes more!) to discuss my progress or deep dive into topics like the history of version control. All this took a significant amount of Lisa’s time (thank you Lisa!), and is proof of the Savas team’s dedication to each other’s growth as developers.&lt;/p&gt;
+&lt;p&gt;When I became a bit adrift after the first month, Lisa guided me towards site building and eventually even created a &lt;a href=&quot;https://github.com/savaslabs/autism-case-study&quot;&gt;simulated D7 client project&lt;/a&gt; for me to work on. And mindful of the changing Web Development landscape, Lisa counseled me to emphasize Drupal 7/Drupal 8 learning instead of spending time on Drupal 6 projects. We started meeting twice a week (sometimes more!) to discuss my progress or deep dive into topics like the history of version control. All this took a significant amount of Lisa’s time (thank you Lisa!), and is proof of the Savas Labs team’s dedication to each other’s growth as developers.&lt;/p&gt;
 
-&lt;p&gt;More generally, this generosity is something I’ve noticed throughout the Web and Drupal communities. In the few months since I’ve started, I sense that my colleagues don’t just look towards their day-to-day responsibilities at Savas, but also beyond, at what they can contribute to Development at large. This isn’t exclusive to our company either. The number of &lt;a href=&quot;http://www.metaltoad.com/blog/how-write-drupal-update-scripts&quot;&gt;how-to articles&lt;/a&gt;, &lt;a href=&quot;http://stackoverflow.com/questions/1064361/unable-to-show-a-git-tree-in-terminal&quot;&gt;Stack Exchange conversations&lt;/a&gt;, and Open Source &lt;a href=&quot;https://github.com/fish-shell/fish-shell&quot;&gt;public repos&lt;/a&gt; available is inspiring!&lt;/p&gt;
+&lt;p&gt;More generally, this generosity is something I’ve noticed throughout the Web and Drupal communities. In the few months since I’ve started, I sense that my colleagues don’t just look towards their day-to-day responsibilities at Savas Labs, but also beyond, at what they can contribute to Development at large. This isn’t exclusive to our company either. The number of &lt;a href=&quot;http://www.metaltoad.com/blog/how-write-drupal-update-scripts&quot;&gt;how-to articles&lt;/a&gt;, &lt;a href=&quot;http://stackoverflow.com/questions/1064361/unable-to-show-a-git-tree-in-terminal&quot;&gt;Stack Exchange conversations&lt;/a&gt;, and Open Source &lt;a href=&quot;https://github.com/fish-shell/fish-shell&quot;&gt;public repos&lt;/a&gt; available is inspiring!&lt;/p&gt;
 
 &lt;h2 id=&quot;last-thoughts&quot;&gt;Last Thoughts&lt;/h2&gt;
 
@@ -818,9 +818,9 @@ and made our way on over to the &lt;a href=&quot;https://events.drupal.org/newor
 
 &lt;p&gt;Looking around the open source landscape for the right tool to build this app, we came across &lt;a href=&quot;https://lumen.laravel.com/&quot;&gt;Lumen&lt;/a&gt;, a slimmed down version of the well-known &lt;a href=&quot;https://www.laravel.com&quot;&gt;Laravel&lt;/a&gt; project. Lumen was very simple to get up and running with thanks to the &lt;a href=&quot;https://lumen.laravel.com/docs/5.2&quot;&gt;clear documentation examples&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;The entry point of our application are some &lt;a href=&quot;https://github.com/savaslabs/squabble/blob/master/app/Http/routes.php&quot;&gt;routing rules&lt;/a&gt; that determine what data to give back to the user when they visit a particular API endpoint.&lt;/p&gt;
+&lt;p&gt;The entry point of our application are some &lt;a href=&quot;https://github.com/savaslabs/squabble/blob/master/source/app/Http/routes.php&quot;&gt;routing rules&lt;/a&gt; that determine what data to give back to the user when they visit a particular API endpoint.&lt;/p&gt;
 
-&lt;p&gt;From there, the requests are processed in the &lt;a href=&quot;https://github.com/savaslabs/squabble/blob/master/app/Http/Controllers/CommentController.php&quot;&gt;CommentController&lt;/a&gt; — depending on the request, we can create a comment, retrieve a comment, delete it, or get a quick list of all posts and the number of comments per page (we use this information on our home page and on the &lt;a href=&quot;/news&quot;&gt;News&lt;/a&gt; page to show the comment count per article).&lt;/p&gt;
+&lt;p&gt;From there, the requests are processed in the &lt;a href=&quot;https://github.com/savaslabs/squabble/blob/master/source/app/Http/Controllers/CommentController.php&quot;&gt;CommentController&lt;/a&gt; — depending on the request, we can create a comment, retrieve a comment, delete it, or get a quick list of all posts and the number of comments per page (we use this information on our home page and on the &lt;a href=&quot;/news&quot;&gt;News&lt;/a&gt; page to show the comment count per article).&lt;/p&gt;
 
 &lt;p&gt;The application runs on one of our cloud servers on Linode, and uses a SQLite backend. Because the Lumen framework is very lean, and the application does relatively little, it’s very fast — the &lt;code class=&quot;highlighter-rouge&quot;&gt;api/comments/count&lt;/code&gt; call takes ~84 ms while loading all comments (&lt;code class=&quot;highlighter-rouge&quot;&gt;api/comments&lt;/code&gt;) takes about 125 ms.&lt;/p&gt;
 

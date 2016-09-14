@@ -6,8 +6,8 @@
 </description>
     <link>/</link>
     <atom:link href="/feed-drupal.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 29 Aug 2016 17:46:31 +0000</pubDate>
-    <lastBuildDate>Mon, 29 Aug 2016 17:46:31 +0000</lastBuildDate>
+    <pubDate>Wed, 14 Sep 2016 19:58:07 +0000</pubDate>
+    <lastBuildDate>Wed, 14 Sep 2016 19:58:07 +0000</lastBuildDate>
     <generator>Jekyll v3.0.3</generator>
     
     
@@ -261,7 +261,7 @@ EOL approaches. This post takes a deep dive into the risks specifically.
         <description>
           &lt;p&gt;
             
-            It takes some forethought, but a well-organized theme means code that is modular and easy to maintain or pass off to another developer. SMACSS principles are becoming more and more widespread and can be applied to a Drupal theme. At Savas we&#39;ve picked out what we love from SMACSS and simplified the rest, creating a stylesheet organization method that works for us. In this post (part 2 of my three-part series on Drupal theming with Sass) I&#39;ll go through our version of SMACSS and link to real examples.
+            It takes some forethought, but a well-organized theme means code that is modular and easy to maintain or pass off to another developer. SMACSS principles are becoming more and more widespread and can be applied to a Drupal theme. At Savas Labs we&#39;ve picked out what we love from SMACSS and simplified the rest, creating a stylesheet organization method that works for us. In this post (part 2 of my three-part series on Drupal theming with Sass) I&#39;ll go through our version of SMACSS and link to real examples.
 
                 &lt;a href=&quot;/2015/08/28/sassy-drupal-theming-part-2.html&quot;&gt;Continue reading…&lt;/a&gt;
           &lt;/p&gt;
@@ -292,7 +292,7 @@ EOL approaches. This post takes a deep dive into the risks specifically.
         <description>
           &lt;p&gt;
             
-            When Savas built a custom Drupal 8 theme, we needed to include a grid framework and chose Bourbon&#39;s Neat for its ease of use, its light weight, and the library of useful Sass mixins provided by Bourbon. In this post I detail how to set all of this up and use Compass to compile SCSS.
+            When Savas Labs built a custom Drupal 8 theme, we needed to include a grid framework and chose Bourbon&#39;s Neat for its ease of use, its light weight, and the library of useful Sass mixins provided by Bourbon. In this post I detail how to set all of this up and use Compass to compile SCSS.
 
                 &lt;a href=&quot;/2015/08/21/sassy-drupal-theming-part-1.html&quot;&gt;Continue reading…&lt;/a&gt;
           &lt;/p&gt;
@@ -354,7 +354,7 @@ We discuss how to use a drush hook on the `drush sqlsan` command to ensure prope
         <description>
           &lt;p&gt;
             
-            Adding a map to a Drupal 7 site is made easy by a variety of location storage and map rendering modules. However, at the time of this post most of these modules don&#39;t have an 8.x branch ready and therefore aren&#39;t usable in Drupal 8. Since Savas has recently taken on a Drupal 8 mapping project, we decided to use the Leaflet library within a custom theme to render our map and the Views GeoJSON module to store our data.
+            Adding a map to a Drupal 7 site is made easy by a variety of location storage and map rendering modules. However, at the time of this post most of these modules don&#39;t have an 8.x branch ready and therefore aren&#39;t usable in Drupal 8. Since Savas Labs has recently taken on a Drupal 8 mapping project, we decided to use the Leaflet library within a custom theme to render our map and the Views GeoJSON module to store our data.
 
 In this post we&#39;ll add the Leaflet library to a custom theme using the new *.libaries.yml file, write a little Javascript to create our map, and pull in map points via a REST export view.
 
@@ -416,7 +416,7 @@ On a recent project, though, a client asked us to create a multi-step form using
             
             Theming in Drupal 8 means a lot of changes for current Drupalers. These updates make Drupal more accessible to non-Drupalers and more modular, semantic, modern, and fun for everyone. Right now, documentation is scarce and often out-of-date, so I&#39;ve collected all that I&#39;ve learned while building my first Drupal 8 site.
 
-Since most contributed base themes don&#39;t have an 8.x branch in a useable state at this point, Savas created a custom theme based on Classy, Drupal&#39;s new base theme. I&#39;ll step through the process of creating a custom theme and walk through the basics of Twig and Twig debugging.
+Since most contributed base themes don&#39;t have an 8.x branch in a useable state at this point, Savas Labs created a custom theme based on Classy, Drupal&#39;s new base theme. I&#39;ll step through the process of creating a custom theme and walk through the basics of Twig and Twig debugging.
 
                 &lt;a href=&quot;/2015/06/10/d8-theming-basics.html&quot;&gt;Continue reading…&lt;/a&gt;
           &lt;/p&gt;
@@ -480,11 +480,11 @@ Since most contributed base themes don&#39;t have an 8.x branch in a useable sta
     
     
       <item>
-        <title>Savas supports the Drupal Association</title>
+        <title>Savas Labs supports the Drupal Association</title>
         <description>
           &lt;p&gt;
             
-            Drupal is a thriving FOSS project, and one of the main organizations moving it forward is the Drupal Association. Today, Savas is proud to have become a supporting member of the Drupal Association.
+            Drupal is a thriving FOSS project, and one of the main organizations moving it forward is the Drupal Association. Today, Savas Labs is proud to have become a supporting member of the Drupal Association.
 
                 &lt;a href=&quot;/2015/04/07/savas-supports-drupal-association.html&quot;&gt;Continue reading…&lt;/a&gt;
           &lt;/p&gt;

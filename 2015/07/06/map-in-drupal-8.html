@@ -30,7 +30,7 @@
       "description": "A full-service web agency leveraging the power of Drupal.
 ",
       "email": "info@savaslabs.com",
-      "name": "Savas",
+      "name": "Savas Labs",
       "telephone": "(919) 432-4660",
       "url": "http://savaslabs.com",
       "logo": "http://savaslabs.com/assets/img/logo.png"
@@ -64,13 +64,13 @@
   
 
   &lt;article class=&quot;post-content&quot;&gt;
-    &lt;p&gt;Adding a map to a Drupal 7 site is made easy by a variety of location storage and map rendering modules. However, at the time of this post most of these modules don’t have an 8.x branch ready and therefore aren’t usable in Drupal 8. Since Savas has recently taken on a Drupal 8 mapping project, we decided to use the Leaflet library within a custom theme to render our map and the Views GeoJSON module to store our data.&lt;/p&gt;
+    &lt;p&gt;Adding a map to a Drupal 7 site is made easy by a variety of location storage and map rendering modules. However, at the time of this post most of these modules don’t have an 8.x branch ready and therefore aren’t usable in Drupal 8. Since Savas Labs has recently taken on a Drupal 8 mapping project, we decided to use the Leaflet library within a custom theme to render our map and the Views GeoJSON module to store our data.&lt;/p&gt;
 
 &lt;p&gt;Before we jump in, I have to give major kudos to my coworker &lt;a href=&quot;/team/tim-stallmann/&quot;&gt;Tim Stallmann&lt;/a&gt;. This tutorial is based on his &lt;a href=&quot;/2015/05/18/mapping-geojson.html&quot;&gt;excellent post&lt;/a&gt; about mapping with Leaflet and GeoJSON, so check that out for a great primer if you’re new to mapping.&lt;/p&gt;
 
 &lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
 
-&lt;p&gt;Before we can get into mapping, we’ll need a working Drupal 8 site. Savas has previously gone over &lt;a href=&quot;/2015/04/23/drupal-8-docker-bowline-setup.html&quot;&gt;setting up a D8 site using Docker&lt;/a&gt; and &lt;a href=&quot;/2015/06/10/d8-theming-basics.html&quot;&gt;creating a custom theme&lt;/a&gt;. That said, you don’t need to use Docker or a custom theme based on Classy to create your map - any Drupal 8 instance with a custom theme will do. In this tutorial, I’ll be referencing our custom theme called Mappy that we created for the &lt;a href=&quot;https://github.com/savaslabs/durham-civil-rights-map&quot;&gt;Durham Civil Rights Mapping project&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Before we can get into mapping, we’ll need a working Drupal 8 site. Savas Labs has previously gone over &lt;a href=&quot;/2015/04/23/drupal-8-docker-bowline-setup.html&quot;&gt;setting up a D8 site using Docker&lt;/a&gt; and &lt;a href=&quot;/2015/06/10/d8-theming-basics.html&quot;&gt;creating a custom theme&lt;/a&gt;. That said, you don’t need to use Docker or a custom theme based on Classy to create your map - any Drupal 8 instance with a custom theme will do. In this tutorial, I’ll be referencing our custom theme called Mappy that we created for the &lt;a href=&quot;https://github.com/savaslabs/durham-civil-rights-map&quot;&gt;Durham Civil Rights Mapping project&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;install-contributed-modules&quot;&gt;Install contributed modules&lt;/h2&gt;
 
@@ -79,7 +79,7 @@
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.drupal.org/project/geofield&quot;&gt;Geofield&lt;/a&gt;, which creates a new field type called geofield that we’ll use within a view&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.drupal.org/project/geophp&quot;&gt;GeoPHP&lt;/a&gt;, a dependency of Geofield&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/savaslabs/views_geojson&quot;&gt;Views GeoJSON&lt;/a&gt;, a style plugin for Views that outputs data in GeoJSON, which can be used by Leaflet to create map points. You’ll note that I’ve linked to Savas’s Views GeoJSON GitHub repo rather than the module’s &lt;a href=&quot;https://www.drupal.org/project/views_geojson&quot;&gt;Drupal.org page&lt;/a&gt;, because at the time of writing this our 8.x branch is not yet available there. You can follow the status of this issue &lt;a href=&quot;https://www.drupal.org/node/2527636&quot;&gt;here.&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/savaslabs/views_geojson&quot;&gt;Views GeoJSON&lt;/a&gt;, a style plugin for Views that outputs data in GeoJSON, which can be used by Leaflet to create map points. You’ll note that I’ve linked to Savas Labs Views GeoJSON GitHub repo rather than the module’s &lt;a href=&quot;https://www.drupal.org/project/views_geojson&quot;&gt;Drupal.org page&lt;/a&gt;, because at the time of writing this our 8.x branch is not yet available there. You can follow the status of this issue &lt;a href=&quot;https://www.drupal.org/node/2527636&quot;&gt;here.&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;There are 3 core modules you’ll need:&lt;/p&gt;
@@ -281,7 +281,7 @@
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/blog/map-in-drupal-8/map-with-popup.png&quot; alt=&quot;Screenshot of the map with a popup open&quot; class=&quot;blog-image-xl&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Check out the entire &lt;a href=&quot;https://github.com/savaslabs/durham-civil-rights-map/blob/master/themes/custom/mappy/js/page--front--map.js&quot;&gt;map.js file&lt;/a&gt; and be sure to visit Savas’s GitHub repository for the &lt;a href=&quot;https://github.com/savaslabs/durham-civil-rights-map&quot;&gt;Durham Civil Rights Mapping project&lt;/a&gt; and the &lt;a href=&quot;http://www.durhamcivilrightsmap.org/&quot;&gt;completed site&lt;/a&gt; to see a Drupal 8 site in action!&lt;/p&gt;
+&lt;p&gt;Check out the entire &lt;a href=&quot;https://github.com/savaslabs/durham-civil-rights-map/blob/master/themes/custom/mappy/js/page--front--map.js&quot;&gt;map.js file&lt;/a&gt; and be sure to visit Savas Labs GitHub repository for the &lt;a href=&quot;https://github.com/savaslabs/durham-civil-rights-map&quot;&gt;Durham Civil Rights Mapping project&lt;/a&gt; and the &lt;a href=&quot;http://www.durhamcivilrightsmap.org/&quot;&gt;completed site&lt;/a&gt; to see a Drupal 8 site in action!&lt;/p&gt;
 
     &lt;hr&gt;
 
@@ -302,7 +302,7 @@
 
           &lt;div class=&quot;comment-email&quot;&gt;
             &lt;p&gt;Email&lt;/p&gt; &lt;input type=&#39;email&#39; name=&#39;email&#39; id=&#39;email&#39; required /&gt;
-            &lt;p class=&quot;email-disclaimer&quot;&gt;Savas will never sell your email address or spam you.&lt;/p&gt;&lt;br&gt;
+            &lt;p class=&quot;email-disclaimer&quot;&gt;Savas Labs will never sell your email address or spam you.&lt;/p&gt;&lt;br&gt;
           &lt;/div&gt;
 
           &lt;p&gt;Comment&lt;/p&gt;
@@ -314,10 +314,10 @@
 
           &lt;div class=&#39;are-you-human&#39;&gt;
             &lt;div class=&#39;are-you-human-owl&#39;&gt;
-              &lt;img src=&quot;/assets/img/owl.png&quot; alt=&quot;Savas logo&quot;&gt;
+              &lt;img src=&quot;/assets/img/owl.png&quot; alt=&quot;Savas Labs logo&quot;&gt;
             &lt;/div&gt;
             &lt;div class=&#39;are-you-human-field&#39;&gt;
-              &lt;p&gt;What type of animal is the Savas logo?&lt;/p&gt;
+              &lt;p&gt;What type of animal is the Savas Labs logo?&lt;/p&gt;
               &lt;input type=&#39;text&#39; name=&#39;nocaptcha&#39; id=&#39;nocaptcha&#39; class=&#39;nocaptcha&#39;&gt;
               &lt;p class=&quot;hint&quot;&gt;Hint: 3 letters long, starts with an &#39;o&#39; and ends with an &#39;l&#39;.&lt;/p&gt;
             &lt;/div&gt;
@@ -344,7 +344,7 @@
   &lt;/div&gt;
     &lt;!-- Once we have more content, change this to posts related by tag --&gt;
   &lt;div class=&quot;post-related flex-container&quot;&gt;
-    &lt;h4&gt;Recent posts by Savas&lt;/h4&gt;
+    &lt;h4&gt;Recent posts by Savas Labs&lt;/h4&gt;
     &lt;div class=&quot;cards&quot;&gt;
       
       
@@ -498,8 +498,8 @@
           "@context": "http://schema.org",
           "@type": "Person",
           "name": "Anne Tomasevich",
-          "affiliation": "Savas",
-          "worksFor": "Savas"
+          "affiliation": "Savas Labs",
+          "worksFor": "Savas Labs"
       },
     "keywords": "drupal, drupal8, drupal-planet, cartography, leaflet",
     "text": "
@@ -521,13 +521,13 @@
   
 
   &lt;article class=&quot;post-content&quot;&gt;
-    &lt;p&gt;Adding a map to a Drupal 7 site is made easy by a variety of location storage and map rendering modules. However, at the time of this post most of these modules don’t have an 8.x branch ready and therefore aren’t usable in Drupal 8. Since Savas has recently taken on a Drupal 8 mapping project, we decided to use the Leaflet library within a custom theme to render our map and the Views GeoJSON module to store our data.&lt;/p&gt;
+    &lt;p&gt;Adding a map to a Drupal 7 site is made easy by a variety of location storage and map rendering modules. However, at the time of this post most of these modules don’t have an 8.x branch ready and therefore aren’t usable in Drupal 8. Since Savas Labs has recently taken on a Drupal 8 mapping project, we decided to use the Leaflet library within a custom theme to render our map and the Views GeoJSON module to store our data.&lt;/p&gt;
 
 &lt;p&gt;Before we jump in, I have to give major kudos to my coworker &lt;a href=&quot;/team/tim-stallmann/&quot;&gt;Tim Stallmann&lt;/a&gt;. This tutorial is based on his &lt;a href=&quot;/2015/05/18/mapping-geojson.html&quot;&gt;excellent post&lt;/a&gt; about mapping with Leaflet and GeoJSON, so check that out for a great primer if you’re new to mapping.&lt;/p&gt;
 
 &lt;h2 id=&quot;setup&quot;&gt;Setup&lt;/h2&gt;
 
-&lt;p&gt;Before we can get into mapping, we’ll need a working Drupal 8 site. Savas has previously gone over &lt;a href=&quot;/2015/04/23/drupal-8-docker-bowline-setup.html&quot;&gt;setting up a D8 site using Docker&lt;/a&gt; and &lt;a href=&quot;/2015/06/10/d8-theming-basics.html&quot;&gt;creating a custom theme&lt;/a&gt;. That said, you don’t need to use Docker or a custom theme based on Classy to create your map - any Drupal 8 instance with a custom theme will do. In this tutorial, I’ll be referencing our custom theme called Mappy that we created for the &lt;a href=&quot;https://github.com/savaslabs/durham-civil-rights-map&quot;&gt;Durham Civil Rights Mapping project&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Before we can get into mapping, we’ll need a working Drupal 8 site. Savas Labs has previously gone over &lt;a href=&quot;/2015/04/23/drupal-8-docker-bowline-setup.html&quot;&gt;setting up a D8 site using Docker&lt;/a&gt; and &lt;a href=&quot;/2015/06/10/d8-theming-basics.html&quot;&gt;creating a custom theme&lt;/a&gt;. That said, you don’t need to use Docker or a custom theme based on Classy to create your map - any Drupal 8 instance with a custom theme will do. In this tutorial, I’ll be referencing our custom theme called Mappy that we created for the &lt;a href=&quot;https://github.com/savaslabs/durham-civil-rights-map&quot;&gt;Durham Civil Rights Mapping project&lt;/a&gt;.&lt;/p&gt;
 
 &lt;h2 id=&quot;install-contributed-modules&quot;&gt;Install contributed modules&lt;/h2&gt;
 
@@ -536,7 +536,7 @@
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.drupal.org/project/geofield&quot;&gt;Geofield&lt;/a&gt;, which creates a new field type called geofield that we’ll use within a view&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://www.drupal.org/project/geophp&quot;&gt;GeoPHP&lt;/a&gt;, a dependency of Geofield&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://github.com/savaslabs/views_geojson&quot;&gt;Views GeoJSON&lt;/a&gt;, a style plugin for Views that outputs data in GeoJSON, which can be used by Leaflet to create map points. You’ll note that I’ve linked to Savas’s Views GeoJSON GitHub repo rather than the module’s &lt;a href=&quot;https://www.drupal.org/project/views_geojson&quot;&gt;Drupal.org page&lt;/a&gt;, because at the time of writing this our 8.x branch is not yet available there. You can follow the status of this issue &lt;a href=&quot;https://www.drupal.org/node/2527636&quot;&gt;here.&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/savaslabs/views_geojson&quot;&gt;Views GeoJSON&lt;/a&gt;, a style plugin for Views that outputs data in GeoJSON, which can be used by Leaflet to create map points. You’ll note that I’ve linked to Savas Labs Views GeoJSON GitHub repo rather than the module’s &lt;a href=&quot;https://www.drupal.org/project/views_geojson&quot;&gt;Drupal.org page&lt;/a&gt;, because at the time of writing this our 8.x branch is not yet available there. You can follow the status of this issue &lt;a href=&quot;https://www.drupal.org/node/2527636&quot;&gt;here.&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;There are 3 core modules you’ll need:&lt;/p&gt;
@@ -738,7 +738,7 @@
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/blog/map-in-drupal-8/map-with-popup.png&quot; alt=&quot;Screenshot of the map with a popup open&quot; class=&quot;blog-image-xl&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Check out the entire &lt;a href=&quot;https://github.com/savaslabs/durham-civil-rights-map/blob/master/themes/custom/mappy/js/page--front--map.js&quot;&gt;map.js file&lt;/a&gt; and be sure to visit Savas’s GitHub repository for the &lt;a href=&quot;https://github.com/savaslabs/durham-civil-rights-map&quot;&gt;Durham Civil Rights Mapping project&lt;/a&gt; and the &lt;a href=&quot;http://www.durhamcivilrightsmap.org/&quot;&gt;completed site&lt;/a&gt; to see a Drupal 8 site in action!&lt;/p&gt;
+&lt;p&gt;Check out the entire &lt;a href=&quot;https://github.com/savaslabs/durham-civil-rights-map/blob/master/themes/custom/mappy/js/page--front--map.js&quot;&gt;map.js file&lt;/a&gt; and be sure to visit Savas Labs GitHub repository for the &lt;a href=&quot;https://github.com/savaslabs/durham-civil-rights-map&quot;&gt;Durham Civil Rights Mapping project&lt;/a&gt; and the &lt;a href=&quot;http://www.durhamcivilrightsmap.org/&quot;&gt;completed site&lt;/a&gt; to see a Drupal 8 site in action!&lt;/p&gt;
 
     &lt;hr&gt;
 
@@ -759,7 +759,7 @@
 
           &lt;div class=&quot;comment-email&quot;&gt;
             &lt;p&gt;Email&lt;/p&gt; &lt;input type=&#39;email&#39; name=&#39;email&#39; id=&#39;email&#39; required /&gt;
-            &lt;p class=&quot;email-disclaimer&quot;&gt;Savas will never sell your email address or spam you.&lt;/p&gt;&lt;br&gt;
+            &lt;p class=&quot;email-disclaimer&quot;&gt;Savas Labs will never sell your email address or spam you.&lt;/p&gt;&lt;br&gt;
           &lt;/div&gt;
 
           &lt;p&gt;Comment&lt;/p&gt;
@@ -771,10 +771,10 @@
 
           &lt;div class=&#39;are-you-human&#39;&gt;
             &lt;div class=&#39;are-you-human-owl&#39;&gt;
-              &lt;img src=&quot;/assets/img/owl.png&quot; alt=&quot;Savas logo&quot;&gt;
+              &lt;img src=&quot;/assets/img/owl.png&quot; alt=&quot;Savas Labs logo&quot;&gt;
             &lt;/div&gt;
             &lt;div class=&#39;are-you-human-field&#39;&gt;
-              &lt;p&gt;What type of animal is the Savas logo?&lt;/p&gt;
+              &lt;p&gt;What type of animal is the Savas Labs logo?&lt;/p&gt;
               &lt;input type=&#39;text&#39; name=&#39;nocaptcha&#39; id=&#39;nocaptcha&#39; class=&#39;nocaptcha&#39;&gt;
               &lt;p class=&quot;hint&quot;&gt;Hint: 3 letters long, starts with an &#39;o&#39; and ends with an &#39;l&#39;.&lt;/p&gt;
             &lt;/div&gt;
@@ -801,7 +801,7 @@
   &lt;/div&gt;
     &lt;!-- Once we have more content, change this to posts related by tag --&gt;
   &lt;div class=&quot;post-related flex-container&quot;&gt;
-    &lt;h4&gt;Recent posts by Savas&lt;/h4&gt;
+    &lt;h4&gt;Recent posts by Savas Labs&lt;/h4&gt;
     &lt;div class=&quot;cards&quot;&gt;
       
       
@@ -951,7 +951,7 @@
 
 &lt;/div&gt;
 ",
-    "sourceOrganization": "Savas",
+    "sourceOrganization": "Savas Labs",
     "inLanguage": "en-US",
     "dateCreated": "2015-07-06 00:00:00 +0000",
     "datePublished": "2015-07-06 00:00:00 +0000",
@@ -981,9 +981,9 @@
     <header class="navigation" role="banner">
   <div class="navigation-wrapper">
 
-    <!-- Savas logo. -->
+    <!-- Savas Labs logo. -->
     <a href="/" class="logo">
-        <img src="/assets/img/logo.png" alt="Savas logo">
+        <img src="/assets/img/logo.png" alt="Savas Labs logo">
     </a>
 
     <!-- Mobile menu button. -->
@@ -1135,13 +1135,13 @@
   
 
   <article class="post-content">
-    <p>Adding a map to a Drupal 7 site is made easy by a variety of location storage and map rendering modules. However, at the time of this post most of these modules don’t have an 8.x branch ready and therefore aren’t usable in Drupal 8. Since Savas has recently taken on a Drupal 8 mapping project, we decided to use the Leaflet library within a custom theme to render our map and the Views GeoJSON module to store our data.</p>
+    <p>Adding a map to a Drupal 7 site is made easy by a variety of location storage and map rendering modules. However, at the time of this post most of these modules don’t have an 8.x branch ready and therefore aren’t usable in Drupal 8. Since Savas Labs has recently taken on a Drupal 8 mapping project, we decided to use the Leaflet library within a custom theme to render our map and the Views GeoJSON module to store our data.</p>
 
 <p>Before we jump in, I have to give major kudos to my coworker <a href="/team/tim-stallmann/">Tim Stallmann</a>. This tutorial is based on his <a href="/2015/05/18/mapping-geojson.html">excellent post</a> about mapping with Leaflet and GeoJSON, so check that out for a great primer if you’re new to mapping.</p>
 
 <h2 id="setup">Setup</h2>
 
-<p>Before we can get into mapping, we’ll need a working Drupal 8 site. Savas has previously gone over <a href="/2015/04/23/drupal-8-docker-bowline-setup.html">setting up a D8 site using Docker</a> and <a href="/2015/06/10/d8-theming-basics.html">creating a custom theme</a>. That said, you don’t need to use Docker or a custom theme based on Classy to create your map - any Drupal 8 instance with a custom theme will do. In this tutorial, I’ll be referencing our custom theme called Mappy that we created for the <a href="https://github.com/savaslabs/durham-civil-rights-map">Durham Civil Rights Mapping project</a>.</p>
+<p>Before we can get into mapping, we’ll need a working Drupal 8 site. Savas Labs has previously gone over <a href="/2015/04/23/drupal-8-docker-bowline-setup.html">setting up a D8 site using Docker</a> and <a href="/2015/06/10/d8-theming-basics.html">creating a custom theme</a>. That said, you don’t need to use Docker or a custom theme based on Classy to create your map - any Drupal 8 instance with a custom theme will do. In this tutorial, I’ll be referencing our custom theme called Mappy that we created for the <a href="https://github.com/savaslabs/durham-civil-rights-map">Durham Civil Rights Mapping project</a>.</p>
 
 <h2 id="install-contributed-modules">Install contributed modules</h2>
 
@@ -1150,7 +1150,7 @@
 <ul>
   <li><a href="https://www.drupal.org/project/geofield">Geofield</a>, which creates a new field type called geofield that we’ll use within a view</li>
   <li><a href="https://www.drupal.org/project/geophp">GeoPHP</a>, a dependency of Geofield</li>
-  <li><a href="https://github.com/savaslabs/views_geojson">Views GeoJSON</a>, a style plugin for Views that outputs data in GeoJSON, which can be used by Leaflet to create map points. You’ll note that I’ve linked to Savas’s Views GeoJSON GitHub repo rather than the module’s <a href="https://www.drupal.org/project/views_geojson">Drupal.org page</a>, because at the time of writing this our 8.x branch is not yet available there. You can follow the status of this issue <a href="https://www.drupal.org/node/2527636">here.</a></li>
+  <li><a href="https://github.com/savaslabs/views_geojson">Views GeoJSON</a>, a style plugin for Views that outputs data in GeoJSON, which can be used by Leaflet to create map points. You’ll note that I’ve linked to Savas Labs Views GeoJSON GitHub repo rather than the module’s <a href="https://www.drupal.org/project/views_geojson">Drupal.org page</a>, because at the time of writing this our 8.x branch is not yet available there. You can follow the status of this issue <a href="https://www.drupal.org/node/2527636">here.</a></li>
 </ul>
 
 <p>There are 3 core modules you’ll need:</p>
@@ -1352,7 +1352,7 @@
 
 <p><img src="/assets/img/blog/map-in-drupal-8/map-with-popup.png" alt="Screenshot of the map with a popup open" class="blog-image-xl" /></p>
 
-<p>Check out the entire <a href="https://github.com/savaslabs/durham-civil-rights-map/blob/master/themes/custom/mappy/js/page--front--map.js">map.js file</a> and be sure to visit Savas’s GitHub repository for the <a href="https://github.com/savaslabs/durham-civil-rights-map">Durham Civil Rights Mapping project</a> and the <a href="http://www.durhamcivilrightsmap.org/">completed site</a> to see a Drupal 8 site in action!</p>
+<p>Check out the entire <a href="https://github.com/savaslabs/durham-civil-rights-map/blob/master/themes/custom/mappy/js/page--front--map.js">map.js file</a> and be sure to visit Savas Labs GitHub repository for the <a href="https://github.com/savaslabs/durham-civil-rights-map">Durham Civil Rights Mapping project</a> and the <a href="http://www.durhamcivilrightsmap.org/">completed site</a> to see a Drupal 8 site in action!</p>
 
     <hr>
 
@@ -1373,7 +1373,7 @@
 
           <div class="comment-email">
             <p>Email</p> <input type='email' name='email' id='email' required />
-            <p class="email-disclaimer">Savas will never sell your email address or spam you.</p><br>
+            <p class="email-disclaimer">Savas Labs will never sell your email address or spam you.</p><br>
           </div>
 
           <p>Comment</p>
@@ -1385,10 +1385,10 @@
 
           <div class='are-you-human'>
             <div class='are-you-human-owl'>
-              <img src="/assets/img/owl.png" alt="Savas logo">
+              <img src="/assets/img/owl.png" alt="Savas Labs logo">
             </div>
             <div class='are-you-human-field'>
-              <p>What type of animal is the Savas logo?</p>
+              <p>What type of animal is the Savas Labs logo?</p>
               <input type='text' name='nocaptcha' id='nocaptcha' class='nocaptcha'>
               <p class="hint">Hint: 3 letters long, starts with an 'o' and ends with an 'l'.</p>
             </div>
@@ -1415,7 +1415,7 @@
   </div>
     <!-- Once we have more content, change this to posts related by tag -->
   <div class="post-related flex-container">
-    <h4>Recent posts by Savas</h4>
+    <h4>Recent posts by Savas Labs</h4>
     <div class="cards">
       
       
