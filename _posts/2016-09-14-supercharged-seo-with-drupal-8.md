@@ -9,7 +9,7 @@ featured_image: "/assets/img/blog/supercharged-seo-with-drupal-8.jpg"
 featured_image_alt: "Supercharged SEO with Drupal 8"
 ---
 
-Here at Savas Labs, when it comes to developing systems, our focus is not only to code according to best practices, but also deliver a solid marketing vehicle to our clients and partners. Let’s be honest here - perfectly coded, a pretty looking website will be of little use if it doesn’t produce leads / facilitate conversions or generate revenue! So how do we achieve those goals? We get there by balancing website objectives while giving priority to lead generation via SEO. The more quality traffic that comes to the website - the more conversions we can achieve. It’s that simple! 
+Here at Savas Labs, when it comes to developing systems, our focus is not only to code according to best practices, but also deliver a solid marketing vehicle to our clients and partners. Let’s be honest here - perfectly coded, a pretty looking website will be of little use if it doesn’t produce leads / facilitate conversions or generate revenue! So how do we achieve those goals? We get there by balancing website objectives while giving priority to lead generation via SEO. The more quality traffic that comes to the website - the more conversions we can achieve. It’s that simple!
 
 There are multiple ways of generating traffic to a website. The most popular are SEO (search engine optimization) and PPC (Pay Per Click). Both bring traffic through search engines. The difference between the two is that SEO brings long-term results boosting organic traffic while PPC helps marketers achieve short-term goals by gaining instant exposure throughout the duration of the ad campaign.
 
@@ -59,11 +59,11 @@ Can your business handle the loss in revenue that may occur from slow page load 
 ## Drupal 8 - Built with SEO in Mind
 
  The base of all our SEO efforts lies within the website’s architecture. There are many website engines and CMS’s to choose from and most of them will claim that they are SEO optimized. Don’t be fooled! No CMS will come search engine optimized out of the box. It may have some features, which, if configured correctly, may bring you some SEO benefits. SEO is not only about code, though it does start there. SEO is also about the continuous efforts of your marketing team. We all know that time = money. The more efficient your marketing team is in performing tasks within your CMS - the more ROI you get!
- 
+
  A good CMS must provide means for your marketing team to work independently from your development team. Drupal 8 does just that! It provides solid framework that can be tuned to become a powerful marketing-machine.
- 
+
  Let’s take a look at some of the new feature in core that make search engines love Drupal 8.
- 
+
 #### Drupal 8 is Responsive out of the Box
 
 Drupal 8 comes with responsive themes in core. Now both public facing and admin facing themes are responsive and make user experience great on any device.
