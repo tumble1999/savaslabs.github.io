@@ -106,11 +106,13 @@ It enables Drupal to create and deliver content as a service to any channel (agg
 
 Previous versions of Drupal had partial support for multilingual websites. Luckily, Drupal 8 had a fundamental overhaul of its [multilingual system](www.drupal8multilingual.org/features). Every single component is translatable out of the box in Drupal core without any additional modules. Drupal core natively supports 94 languages. Also, the administration interface is now entirely translatable. Media assets (files or images), can now be assigned to a language or shared between languages. This gives a huge advantage to businesses that aim to reach global audience.
 
-With just the core features our SEO for Drupal 8 is off to a good start! Drupal 8 also has a growing number of contributed modules that can amplify your SEO efforts. Some of the best are [Metatags](https://www.drupal.org/project/metatag), [Google Analytics](https://www.drupal.org/project/google_analytics), [Pathauto](https://www.drupal.org/project/pathauto), [Redirect](https://www.drupal.org/project/redirect), and more.
+SEO for Drupal 8 is off to a good start with just the core features! Drupal 8 also has a growing number of contributed modules that can amplify your SEO efforts. Just to name a few: [Metatags](https://www.drupal.org/project/metatag), [Google Analytics](https://www.drupal.org/project/google_analytics), [Pathauto](https://www.drupal.org/project/pathauto), [Redirect](https://www.drupal.org/project/redirect), and more.
 
 *****
 
-**Drupal 8 satisfies current SEO trends enabling marketers do their job effectively and efficiently! Even with minimal SEO, Drupal 8 ensures future marketing performance. Supercharge your SEO marketing campaign with Drupal 8!**
+**Drupal 8 satisfies current SEO trends enabling marketers do their job effectively and efficiently! Even with minimal SEO, Drupal 8 ensures future marketing performance.**
+
+**Supercharge your marketing campaign with Drupal 8!**
 
 
 
