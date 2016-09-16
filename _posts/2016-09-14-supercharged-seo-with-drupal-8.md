@@ -35,7 +35,7 @@ Content is still king! Yes, that’s right. It is and it will always be! You’v
 
 #### 2. Backlinks
 
-Not just any good ‘ol link to your website. [Good backlinks](cognitiveseo.com/blog/3057/the-definition-of-the-high-quality-backlink/) come from high authority domains that are in the same niche as your website. Strong backlinks bring quality traffic and are therefore considered highly desirable to your SEO cause.
+Not just any good ‘ol link to your website. [Good backlinks](http://cognitiveseo.com/blog/3057/the-definition-of-the-high-quality-backlink/) come from high authority domains that are in the same niche as your website. Strong backlinks bring quality traffic and are therefore considered highly desirable to your SEO cause.
 
 #### 3. Responsive Design
 
@@ -80,7 +80,7 @@ No! Not out the box! In fact vanilla Drupal 8 is running much more code than van
 
 - **BigPipe render pipeline**. Sends pages in a way that allows browsers to show them much faster. First sends the cacheable parts of the page, then the dynamic/uncacheable parts. Uses the [BigPipe technique](https://www.facebook.com/notes/facebook-engineering/bigpipe-pipelining-web-pages-for-high-performance/389414033919).
 
-These improvements have the potential to make your Drupal 8 website fly! And if after all that it is not “flying” - than you need someone to review the code that powers your website’s features. ([Contact us](savaslabs.com/contact/))
+These improvements have the potential to make your Drupal 8 website fly! And if after all that it is not “flying” - than you need someone to review the code that powers your website’s features. ([Contact us](/contact/))
 
 #### Semantic Markup
 
@@ -104,7 +104,7 @@ It enables Drupal to create and deliver content as a service to any channel (agg
 
 #### Drupal 8  Multilingual Capabilities
 
-Previous versions of Drupal had partial support for multilingual websites. Luckily, Drupal 8 had a fundamental overhaul of its [multilingual system](www.drupal8multilingual.org/features). Every single component is translatable out of the box in Drupal core without any additional modules. Drupal core natively supports 94 languages. Also, the administration interface is now entirely translatable. Media assets (files or images), can now be assigned to a language or shared between languages. This gives a huge advantage to businesses that aim to reach global audience.
+Previous versions of Drupal had partial support for multilingual websites. Luckily, Drupal 8 had a fundamental overhaul of its [multilingual system](http://www.drupal8multilingual.org/features). Every single component is translatable out of the box in Drupal core without any additional modules. Drupal core natively supports 94 languages. Also, the administration interface is now entirely translatable. Media assets (files or images), can now be assigned to a language or shared between languages. This gives a huge advantage to businesses that aim to reach global audience.
 
 SEO for Drupal 8 is off to a good start with just the core features! Drupal 8 also has a growing number of contributed modules that can amplify your SEO efforts. Just to name a few: [Metatags](https://www.drupal.org/project/metatag), [Google Analytics](https://www.drupal.org/project/google_analytics), [Pathauto](https://www.drupal.org/project/pathauto), [Redirect](https://www.drupal.org/project/redirect), and more.
 
