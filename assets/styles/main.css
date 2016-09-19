@@ -3467,6 +3467,40 @@ header,
 /**
  * @file
  *
+ * Style heading links in articles.
+ */
+.post article h2 a,
+.post article h3 a,
+.post article h4 a,
+.post article h5 a,
+.post article h6 a {
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  opacity: 0;
+  padding-left: 5px; }
+  .post article h2 a .fa-link,
+  .post article h3 a .fa-link,
+  .post article h4 a .fa-link,
+  .post article h5 a .fa-link,
+  .post article h6 a .fa-link {
+    font-size: 50%; }
+  .post article h2 a:hover,
+  .post article h3 a:hover,
+  .post article h4 a:hover,
+  .post article h5 a:hover,
+  .post article h6 a:hover {
+    text-decoration: none; }
+.post article h2:hover a,
+.post article h3:hover a,
+.post article h4:hover a,
+.post article h5:hover a,
+.post article h6:hover a {
+  opacity: 1; }
+
+/**
+ * @file
+ *
  * Styles for the home page.
  */
 .home .home__cover {
