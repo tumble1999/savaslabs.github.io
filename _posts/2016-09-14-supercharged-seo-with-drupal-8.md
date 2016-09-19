@@ -33,7 +33,6 @@ Here are 4 ranking factors that we've identified as being most important as of Q
 
 [Content is still king!](https://mention.com/blog/2017-content-marketing-predictions/) Yes, that’s right. It is and it always will be! You’ve got to be relevant in order to even appear in search. And nothing will make you more relevant than carefully crafted, practical, awesome, juicy, shareable, actionable (you name it) CONTENT! It is important to note that marketers should stop thinking of content as purely text and focus their efforts on providing [visual content](http://blog.hubspot.com/marketing/visual-content-marketing-strategy#sm.00001bvjy82syzedqpgnd8w6p9mw8) that supports storytelling, is engaging and [matches user intent](https://varvy.com/matching-user-intent.html).
 
-
 #### 2. Backlinks
 
 Not just any good ‘ol link to your website. [Good backlinks](http://cognitiveseo.com/blog/3057/the-definition-of-the-high-quality-backlink/) come from high authority domains that are in the same niche as your website. Strong backlinks bring quality traffic and are therefore considered highly desirable to your SEO cause.
@@ -117,6 +116,3 @@ SEO for Drupal 8 is off to a good start with just the core features! Drupal 8 al
 **Drupal 8 satisfies current SEO trends enabling marketers do their job effectively and efficiently! Even with minimal configuration, Drupal 8 lays solid base for future marketing performance.**
 
 **Supercharge your marketing campaign with Drupal 8!**
-
-
-
