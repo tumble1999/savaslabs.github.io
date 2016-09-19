@@ -40,7 +40,7 @@ $(document).ready(
         });
     });
 
-// Function for blog posts.
+// Functions for blog posts.
 $(document).ready(
     function () {
 
