@@ -100,7 +100,7 @@ Search engines appreciate clean markup that explicitly describes the purpose of 
 
 Another exciting new feature of Drupal 8 is a [flexible content delivery](https://drupal.com/feature/content-as-a-service).
 
-Today, content owners want to get their content to as many platforms and channels as possible: web, mobile, social networks, smart devices, etc. It is expensive to have a separates solution for every channel. It is much more efficient to have a single editorial team and single software platform that allows for well-organized content management. Drupal 8 and its content-as-a-service capability provides a one-stop solution where content is created and managed via unified web-interface and then consumed by other channels with minimal effort.
+Today, content owners want to get their content to as many platforms and channels as possible: web, mobile, social networks, smart devices, etc. It is expensive to have a separate solution for every channel. It is much more efficient to have a single editorial team and single software platform that allows for well-organized content management. Drupal 8 and its content-as-a-service capability provides a one-stop solution where content is created and managed via unified web-interface and then consumed by other channels with minimal effort.
 
 #### Drupal 8  Multilingual Capabilities
 
