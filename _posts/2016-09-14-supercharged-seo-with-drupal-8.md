@@ -25,7 +25,7 @@ Search engines (Google, Bing, etc.) change their search algorithms many times th
 
 ## SEO Outlook 2017
 
-The Savas Labs team stays dialed in on the current trends of Search Engines Optimization. By leveraging aggregated research data and accounting for past experiences, we've developed a solid, yet constantly evolving, foundation of currently effective marketing methods.
+The Savas Labs team stays dialed in on the current trends of Search Engines Optimization. By leveraging aggregated research data and first-hand experience, we've developed a solid, yet constantly evolving, foundation of currently effective marketing methods.
 
 Here are 4 ranking factors that we've identified as being most important as of Q4 2016. Our forecast is that these 4 factors will likely remain at the top of the list throughout 2017.
 
