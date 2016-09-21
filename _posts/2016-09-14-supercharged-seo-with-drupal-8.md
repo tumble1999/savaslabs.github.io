@@ -24,9 +24,9 @@ Search Engine Optimization (SEO) is a marketing discipline focused on optimizing
 Search engines (Google, Bing, etc.) change their search algorithms many times throughout the year. There are over 200 ranking factors that become updated with every algorithmic change. It is worth noting that Google, one of the leading search engines, is steadily growing its market share in the world and the United States for both desktop and mobile search (see chart below).
 
 <img src="/assets/img/blog/search-engine-market-share-sep-2016.png" class="blog-image-large" alt="Search Engine Market Share 2016">
-  
+
   <span class="caption">[Search Engine Market Share 2016](https://www.netmarketshare.com/search-engine-market-share.aspx?qprid=4&qpcustomd=0&qpsp=2016&qpnp=1&qptimeframe=Y)</span>
-  
+
 Google's dominance in web search makes it clear that in 2017 marketers should pay close attention to Google's algorithmic updates in order to stay ahead of the curve. Standards introduced to SEO by Google are likely to satisfy all other search engines. Given this reality, there are many techniques that website owners can use to optimize their digital property for search engine consumption. So where do we start? How do we know what efforts will bring us the best ROI and let our marketers do their job effectively in the long run?
 
 ## SEO Outlook 2017
