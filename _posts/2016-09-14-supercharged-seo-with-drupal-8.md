@@ -21,7 +21,13 @@ Let’s start by taking a look at what exactly Search Engine Optimization is.
 
 Search Engine Optimization (SEO) is a marketing discipline focused on optimizing a website’s architecture and content so that it performs well (read “ranks high”) in organic search engine results.
 
-Search engines (Google, Bing, etc.) change their search algorithms many times throughout the year. There are over 200 ranking factors that become updated with every algorithmic change. Given this reality, there are many techniques that website owners can use to optimize their digital property for search engine consumption. So where do we start? How do we know what efforts will bring us the best ROI and let our marketers do their job effectively in the long run?
+Search engines (Google, Bing, etc.) change their search algorithms many times throughout the year. There are over 200 ranking factors that become updated with every algorithmic change. It is worth noting that Google, one of the leading search engines, is steadily growing its market share in the world and the United States for both desktop and mobile search (see chart below).
+
+<img src="/assets/img/blog/search-engine-market-share-sep-2016.png" class="blog-image-large" alt="Search Engine Market Share 2016">
+  
+  <span class="caption">[Search Engine Market Share 2016](https://www.netmarketshare.com/search-engine-market-share.aspx?qprid=4&qpcustomd=0&qpsp=2016&qpnp=1&qptimeframe=Y)</span>
+  
+Google's dominance in web search makes it clear that in 2017 marketers should pay close attention to Google's algorithmic updates in order to stay ahead of the curve. Standards introduced to SEO by Google are likely to satisfy all other search engines. Given this reality, there are many techniques that website owners can use to optimize their digital property for search engine consumption. So where do we start? How do we know what efforts will bring us the best ROI and let our marketers do their job effectively in the long run?
 
 ## SEO Outlook 2017
 
@@ -57,11 +63,11 @@ Can your business handle the loss in revenue that may occur from slow page load 
 
 ## Drupal 8 - Built with SEO in Mind
 
- The base of all our SEO efforts lies within the website’s architecture. There are many website engines and CMS’s to choose from and most of them will claim that they are SEO optimized. Don’t be fooled! No CMS will come search engine optimized out of the box. It may have some features, which, if configured correctly, may bring you some SEO benefits. SEO is not only about code, though it does start there. SEO is also about the continuous efforts of your marketing team. We all know that time = money. The more efficient your marketing team is in performing tasks within your CMS - the more ROI you get!
+The base of all our SEO efforts lies within the website’s architecture. There are many website engines and CMS’s to choose from and most of them will claim that they are SEO optimized. Don’t be fooled! No CMS will come search engine optimized out of the box. It may have some features, which, if configured correctly, may bring you some SEO benefits. SEO is not only about code, though it does start there. SEO is also about the continuous efforts of your marketing team. We all know that time = money. The more efficient your marketing team is in performing tasks within your CMS - the more ROI you get!
 
- A good CMS must provide means for your marketing team to work independently from your development team. Drupal 8 does just that! It provides solid framework that can be tuned to become a powerful marketing-machine.
+A good CMS must provide means for your marketing team to work independently from your development team. Drupal 8 does just that! It provides solid framework that can be tuned to become a powerful marketing-machine.
 
- Let’s take a look at some of the new features in core that make search engines love Drupal 8.
+Let’s take a look at some of the new features in core that make search engines love Drupal 8.
 
 #### Drupal 8 is Responsive out of the Box
 
@@ -69,7 +75,7 @@ Drupal 8 comes with responsive themes in core. Now both public facing and admin 
 
 #### Drupal 8 Page Load is Fast
 
-No! Not out the box! In fact vanilla Drupal 8 is running much more code than vanilla Drupal 7. It runs vendor code like Symfony, which adds some overhead. However, Drupal 8 has a number of improvements that are making up for that overhead:
+There has been a lot of debate about Drupal 8 vs. Drupal 7 performance / page load since the Drupal 8's release. It is a fact that vanilla Drupal 8 is running much more code than vanilla Drupal 7. It runs vendor code like Symfony, which adds some overhead. However, Drupal 8 has a significant number of performance improvements that are making up for that overhead:
 
 - **Javascript files are now loading in the footer**. Due to this change pages build up faster and user can see and use them earlier.
 
@@ -103,16 +109,18 @@ Today, content owners want to get their content to as many platforms and channel
 
 #### Drupal 8  Multilingual Capabilities
 
-To reach audiences from around the world, companies need to speak to users in their native language. In 2017, producing content in English language [is not enough](http://www.bloggingpro.com/archives/2016/01/04/why-having-a-multilingual-website-is-the-smartest-marketing-decision/), even if English is considered an internationally accepted language. To help put things in perspective we checked recent statistics.
+To reach audiences from around the world, companies need to speak to users in their native language. In 2017, producing content in English language [is not enough](http://www.bloggingpro.com/archives/2016/01/04/why-having-a-multilingual-website-is-the-smartest-marketing-decision/), even if English is considered an internationally accepted language. The United States is now the world’s second largest Spanish-speaking country after Mexico, which amplifies the necessity of serving multilingual content for U.S. based audience. To help put things in perspective we checked recent statistics.
 
 > [English is a #1 language used in the Web, but it only amounts to 26.3% of the online market.](http://www.internetworldstats.com/stats7.htm)
 
+> [There are 41 million native Spanish speakers in the U.S. Around 79% of them using search engines on a daily basis for gathering information about a future purchase.](https://www.thinkwithgoogle.com/articles/new-research-shows-how-to-connect-with-digital-hispanics-online.html)
+
 Reaching global audience with Drupal has never been this easy! Previous versions of Drupal had partial support for multilingual websites. Luckily, Drupal 8 had a fundamental overhaul of its [multilingual system](http://www.drupal8multilingual.org/features). Every single component is translatable out of the box in Drupal core without any additional modules. Drupal core natively supports 94 languages. Also, the administration interface is now entirely translatable. Media assets (files or images), can now be assigned to a language or shared between languages. This gives a huge advantage to businesses that aim to reach global audience.
 
-SEO for Drupal 8 is off to a good start with just the core features! Drupal 8 also has a growing number of contributed modules that can amplify your SEO efforts. Just to name a few: [Metatags](https://www.drupal.org/project/metatag), [Google Analytics](https://www.drupal.org/project/google_analytics), [Pathauto](https://www.drupal.org/project/pathauto), [Redirect](https://www.drupal.org/project/redirect), and more.
+SEO for Drupal 8 is off to a good start with just the core features! Drupal 8 also has a growing number of contributed modules that can amplify your SEO efforts. Just to name a few: [Metatag](https://www.drupal.org/project/metatag), [Google Analytics](https://www.drupal.org/project/google_analytics), [Pathauto](https://www.drupal.org/project/pathauto), [Redirect](https://www.drupal.org/project/redirect), and more.
 
 *****
 
-**Drupal 8 satisfies current SEO trends enabling marketers do their job effectively and efficiently! Even with minimal configuration, Drupal 8 lays solid base for future marketing performance.**
+**Drupal 8 satisfies current SEO trends enabling marketers do their job effectively and efficiently! Even with minimal configuration, Drupal 8 lays a solid base for future marketing performance.**
 
 **Supercharge your marketing campaign with Drupal 8!**
