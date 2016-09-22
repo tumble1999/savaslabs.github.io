@@ -48,7 +48,7 @@ To be honest, I wasn’t expecting the sheer breadth and volume of material I’
 
 <span class="caption">At times it felt like I'd inadvertently walked into a trap. _Source_: Me!</span>
 
-Likewise, I think this presented a teaching challenge for Savas Labs as well. Before I started, Chris created a list of what I was expected to cover in the course of this internship. Frankly, the topics assumed a lot of foundational knowledge that I didn’t have yet. I'd start tackling a task only to realize that I was missing a critical package manager or had skipped a step I didn't even know was needed. In those moments I found myself wishing there was a more structured curriculum.
+Likewise, I think this presented a teaching challenge for Savas Labs as well. Before I started, Chris and Remy[^2] created a list of what I was expected to cover in the course of this internship. Frankly, the topics assumed a lot of foundational knowledge that I didn’t have yet. I'd start tackling a task only to realize that I was missing a critical package manager or had skipped a step I didn't even know was needed. In those moments I found myself wishing there was a more structured curriculum.
 
 As I started to get the basics down, my learning became more focused as I began to get involved with client projects. I found task-based learning more satisfying because I was contributing to projects and the team. While no project is without busywork, the team wasn’t just trying to offload mindless drudgery to the newest pair of hands -- I could tell my teammates were thinking about the value of each assignment and how that would help me build upon the previous lessons I’d just learned.
 
@@ -66,3 +66,5 @@ There’s still _mountains_ to learn, and I’ll probably be bouncing around the
 And yes, I’ve [graduated](https://github.com/lrowang/savaslabs.github.io/commit/c6fc9b630f55e19962560eebdd3f66b438defc11)!
 
 [^1]: If you’re just starting out, Viking Code School sums up the [learning challenges](https://www.vikingcodeschool.com/posts/why-learning-to-code-is-so-damn-hard) quite well (the concepts are [applicable to Drupal](https://drupalize.me/blog/201607/why-learning-drupal-hard?utm_source=The+Weekly+Drop&utm_medium=email&utm_campaign=The_Weekly_Drop_Issue_250_07_28_2016) too), and I found the description to be painfully accurate!
+
+[^2]: **Fun Fact**: I met Chris/Savas through my husband, [Remy Denton](https://www.isovera.com/staff/remy-denton) (yes, we're aware of the _House of Cards_ [guy](http://house-of-cards.wikia.com/wiki/Remy_Danton)!). Remy is a Developer and former colleague of Chris's at [Isovera](https://www.isovera.com/). He put me in touch with Savas while I was considering the transition to Web Development and helped Chris put together the initial learning curriculum.
