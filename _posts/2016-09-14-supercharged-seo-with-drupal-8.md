@@ -3,23 +3,25 @@ layout: post
 title: "Supercharged SEO with Drupal 8"
 date: 2016-09-14
 author: Oksana Cyrwus
-tags: drupal drupal8 drupal-planet marketing 
+tags: drupal drupal8 drupal-planet marketing
 summary: SEO trends 2017 and Drupal 8 as the best option for your long-term marketing campaign.
 featured_image: "/assets/img/blog/supercharged-seo-with-drupal-8.jpg"
 featured_image_alt: "Supercharged SEO with Drupal 8"
+drupal_planet_summary:
+  SEO trends 2017 and an in depth look at Drupal 8's new features that make Drupal the best option for your long-term marketing campaign.
 ---
 
-Here at Savas Labs, we listen to our clients needs, and what many of our clients need is to reach their target audiences effectively. Let’s be honest here - perfectly coded, a pretty looking website will be of little use if it doesn’t produce leads / facilitate conversions or generate revenue! So how do we help our clients achieve their goals? We get there by balancing website objectives while giving priority to lead generation via SEO. The more quality traffic that comes to the website - the more conversions we can achieve. It’s that simple!
+Here at Savas Labs, we listen to our clients needs, and what many of our clients need is to reach their target audiences effectively. Let's be honest here - perfectly coded, a pretty looking website will be of little use if it doesn't produce leads / increase brand awareness / facilitate conversions or generate revenue! So how do we help our clients achieve their goals? We get there by balancing website objectives while giving priority to lead generation via SEO. The more quality traffic that comes to the website - the more conversions we can achieve. It's that simple!
 
 There are multiple ways of generating traffic to a website. The most popular methods are SEO (Search Engine Optimization) and PPC (Pay Per Click). Both bring traffic through search engines. The difference between the two is that SEO brings long-term results boosting organic traffic while PPC helps marketers achieve short-term goals by gaining instant exposure throughout the duration of an ad campaign.
 
-In this post I’ll share some insight about current SEO trends. I’ll also describe new features of  Drupal 8 that make it the most SEO-friendly content management framework available today.
+In this post I'll share some insight about current SEO trends. I'll also describe new features of  Drupal 8 that make it the most SEO-friendly content management framework available today.
 
-Let’s start by taking a look at what exactly Search Engine Optimization is.
+Let's start by taking a look at what exactly Search Engine Optimization is.
 
 ## What is SEO?
 
-Search Engine Optimization (SEO) is a marketing discipline focused on optimizing a website’s architecture and content so that it performs well (read “ranks high”) in organic search engine results.
+Search Engine Optimization (SEO) is a marketing discipline focused on optimizing a website's architecture and content so that it performs well (read "ranks high") in organic search engine results.
 
 Search engines (Google, Bing, etc.) change their search algorithms many times throughout the year. There are over 200 ranking factors that become updated with every algorithmic change. It is worth noting that Google, one of the leading search engines, is steadily growing its market share in the world and the United States for both desktop and mobile search (see chart below).
 
@@ -37,7 +39,7 @@ Here are 4 ranking factors that we've identified as being most important as of Q
 
 #### 1. Content
 
-[Content is still king!](https://mention.com/blog/2017-content-marketing-predictions/) Yes, that’s right. It is and it always will be! You’ve got to be relevant in order to even appear in search. And nothing will make you more relevant than carefully crafted, practical, awesome, juicy, shareable, actionable (you name it) CONTENT! It is important to note that marketers should stop thinking of content as purely text and focus their efforts on providing [visual content](http://blog.hubspot.com/marketing/visual-content-marketing-strategy#sm.00001bvjy82syzedqpgnd8w6p9mw8) that supports storytelling, is engaging and [matches user intent](https://varvy.com/matching-user-intent.html).
+[Content is still king!](https://mention.com/blog/2017-content-marketing-predictions/) Yes, that's right. It is and it always will be! You've got to be relevant in order to even appear in search. And nothing will make you more relevant than carefully crafted, practical, awesome, juicy, shareable, actionable (you name it) CONTENT! It is important to note that marketers should stop thinking of content as purely text and focus their efforts on providing [visual content](http://blog.hubspot.com/marketing/visual-content-marketing-strategy#sm.00001bvjy82syzedqpgnd8w6p9mw8) that supports storytelling, is engaging and [matches user intent](https://varvy.com/matching-user-intent.html).
 
 #### 2. Backlinks
 
@@ -45,7 +47,7 @@ Not just any good ‘ol link to your website. [Good backlinks](http://cognitives
 
 #### 3. Responsive Design
 
-With more people using their handheld devices to browse the internet, it has become increasingly important to make a website look good across multiple platforms (smartphone, tablet, etc.). It is not an option in 2017 - it is a necessity! While we won’t get into the notoriously labeled [Google algorithm update “Mobilegeddon”](https://webmasters.googleblog.com/2015/04/rolling-out-mobile-friendly-update.html) that happened in April 2015, we will provide some interesting statistics to back up the importance of responsive design.
+With more people using their handheld devices to browse the internet, it has become increasingly important to make a website look good across multiple platforms (smartphone, tablet, etc.). It is not an option in 2017 - it is a necessity! While we won't get into the notoriously labeled [Google algorithm update "Mobilegeddon"](https://webmasters.googleblog.com/2015/04/rolling-out-mobile-friendly-update.html) that happened in April 2015, we will provide some interesting statistics to back up the importance of responsive design.
 
 > [There are more mobile internet users than desktop internet users; 52.7% of global internet users access the internet via mobile, and 75.1% of U.S. internet users access the internet via mobile.](https://hostingfacts.com/internet-facts-stats-2016/)
 
@@ -63,11 +65,11 @@ Can your business handle the loss in revenue that may occur from slow page load 
 
 ## Drupal 8 - Built with SEO in Mind
 
-The base of all our SEO efforts lies within the website’s architecture. There are many website engines and CMS’s to choose from and most of them will claim that they are SEO optimized. Don’t be fooled! No CMS will come search engine optimized out of the box. It may have some features, which, if configured correctly, may bring you some SEO benefits. SEO is not only about code, though it does start there. SEO is also about the continuous efforts of your marketing team. We all know that time = money. The more efficient your marketing team is in performing tasks within your CMS - the more ROI you get!
+The base of all our SEO efforts lies within the website's architecture. There are many website engines and CMS's to choose from and most of them will claim that they are SEO optimized. Don't be fooled! No CMS will come search engine optimized out of the box. It may have some features, which, if configured correctly, may bring you some SEO benefits. SEO is not only about code, though it does start there. SEO is also about the continuous efforts of your marketing team. We all know that time = money. The more efficient your marketing team is in performing tasks within your CMS - the more ROI you get!
 
 A good CMS must provide means for your marketing team to work independently from your development team. Drupal 8 does just that! It provides a solid framework that can be tuned to become a powerful marketing-machine.
 
-Let’s take a look at some of the new features in core that make search engines love Drupal 8.
+Let's take a look at some of the new features in core that make search engines love Drupal 8.
 
 #### Drupal 8 is Responsive out of the Box
 
@@ -81,11 +83,11 @@ There has been a lot of debate about Drupal 8 vs. Drupal 7 performance / page lo
 
 - **[Pluggable CSS/JS aggregation and minification](https://www.drupal.org/node/2034675)** to support more optimal optimization algorithms.
 
-- **Highly improved caching**. Drupal 8 uses “cache tags” that makes caching more efficient and includes Cache Context API which provides context-based caching. This means pages load faster while ensuring that visitors always see the latest version of your site.
+- **Highly improved caching**. Drupal 8 uses "cache tags" that makes caching more efficient and includes Cache Context API which provides context-based caching. This means pages load faster while ensuring that visitors always see the latest version of your site.
 
 - **BigPipe render pipeline**. Sends pages in a way that allows browsers to show them much faster. First sends the cacheable parts of the page, then the dynamic/uncacheable parts. Uses the [BigPipe technique](https://www.facebook.com/notes/facebook-engineering/bigpipe-pipelining-web-pages-for-high-performance/389414033919).
 
-These improvements have the potential to make your Drupal 8 website fly! And if after all that it is not “flying” - than you need someone to review the code that powers your website’s features. [Contact us](/contact/).
+These improvements have the potential to make your Drupal 8 website fly! And if after all that it is not "flying" - than you need someone to review the code that powers your website's features. [Contact us](/contact/).
 
 #### Semantic Markup
 
@@ -99,6 +101,8 @@ Search engines appreciate clean markup that explicitly describes the purpose of 
 
 - ARIA roles in markup to improve accessibility
 
+- Resource Description Framework (RDF) support that provides a standardized model for data interchange and facilitates [Schema.org](http://schema.org/) mappings
+
 - Twig theming engine - makes it harder for developers to create messy, non-semantic code
 
 #### Content-as-a-Service
@@ -109,7 +113,7 @@ Today, content owners want to get their content to as many platforms and channel
 
 #### Drupal 8  Multilingual Capabilities
 
-To reach audiences from around the world, companies need to speak to users in their native language. In 2017, producing content in English language [is not enough](http://www.bloggingpro.com/archives/2016/01/04/why-having-a-multilingual-website-is-the-smartest-marketing-decision/), even if English is considered an internationally accepted language. The United States is now the world’s second largest Spanish-speaking country after Mexico, which amplifies the necessity of serving multilingual content for U.S. based audience. To help put things in perspective we checked recent statistics.
+To reach audiences from around the world, companies need to speak to users in their native language. In 2017, producing content in English language [is not enough](http://www.bloggingpro.com/archives/2016/01/04/why-having-a-multilingual-website-is-the-smartest-marketing-decision/), even if English is considered an internationally accepted language. The United States is now the world's second largest Spanish-speaking country after Mexico, which amplifies the necessity of serving multilingual content for U.S. based audience. To help put things in perspective we checked recent statistics.
 
 > [English is a #1 language used in the Web, but it only amounts to 26.3% of the online market.](http://www.internetworldstats.com/stats7.htm)
 
@@ -122,5 +126,3 @@ SEO for Drupal 8 is off to a good start with just the core features! Drupal 8 al
 *****
 
 **Drupal 8 satisfies current SEO trends enabling marketers do their job effectively and efficiently! Even with minimal configuration, Drupal 8 lays a solid base for future marketing performance.**
-
-**Supercharge your marketing campaign with Drupal 8!**
