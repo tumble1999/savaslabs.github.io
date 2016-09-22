@@ -3,7 +3,7 @@ layout: post
 title: "Supercharged SEO with Drupal 8"
 date: 2016-09-14
 author: Oksana Cyrwus
-tags: drupal drupal8 marketing
+tags: drupal drupal8 drupal-planet marketing 
 summary: SEO trends 2017 and Drupal 8 as the best option for your long-term marketing campaign.
 featured_image: "/assets/img/blog/supercharged-seo-with-drupal-8.jpg"
 featured_image_alt: "Supercharged SEO with Drupal 8"
@@ -65,7 +65,7 @@ Can your business handle the loss in revenue that may occur from slow page load 
 
 The base of all our SEO efforts lies within the website’s architecture. There are many website engines and CMS’s to choose from and most of them will claim that they are SEO optimized. Don’t be fooled! No CMS will come search engine optimized out of the box. It may have some features, which, if configured correctly, may bring you some SEO benefits. SEO is not only about code, though it does start there. SEO is also about the continuous efforts of your marketing team. We all know that time = money. The more efficient your marketing team is in performing tasks within your CMS - the more ROI you get!
 
-A good CMS must provide means for your marketing team to work independently from your development team. Drupal 8 does just that! It provides solid framework that can be tuned to become a powerful marketing-machine.
+A good CMS must provide means for your marketing team to work independently from your development team. Drupal 8 does just that! It provides a solid framework that can be tuned to become a powerful marketing-machine.
 
 Let’s take a look at some of the new features in core that make search engines love Drupal 8.
 
