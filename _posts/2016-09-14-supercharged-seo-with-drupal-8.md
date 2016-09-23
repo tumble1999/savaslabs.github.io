@@ -35,7 +35,7 @@ Google's dominance in web search makes it clear that in 2017 marketers should pa
 
 The Savas Labs team stays dialed in on the current trends of Search Engines Optimization. By leveraging aggregated research data and first-hand experience, we've developed a solid, yet constantly evolving, foundation of currently effective marketing methods.
 
-Here are four ranking factors that we've identified as being most important as of Q4 2016. Our forecast is that these 4 factors will likely remain at the top of the list throughout 2017.
+Here are four ranking factors that we've identified as being most important as of Q4 2016. Our forecast is that these four factors will likely remain at the top of the list throughout 2017.
 
 #### 1. Content
 
