@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Supercharged SEO with Drupal 8"
-date: 2016-09-14
+date: 2016-09-23
 author: Oksana Cyrwus
 tags: drupal drupal8 drupal-planet marketing
 summary: SEO trends 2017 and Drupal 8 as the best option for your long-term marketing campaign.
