@@ -29,13 +29,13 @@ Search engines (Google, Bing, etc.) change their search algorithms many times th
 
   <span class="caption">[Search Engine Market Share 2016](https://www.netmarketshare.com/search-engine-market-share.aspx?qprid=4&qpcustomd=0&qpsp=2016&qpnp=1&qptimeframe=Y)</span>
 
-Google's dominance in web search makes it clear that in 2017 marketers should pay close attention to Google's algorithmic updates in order to stay ahead of the curve. Standards introduced to SEO by Google are likely to satisfy all other search engines. Given this reality, there are many techniques that website owners can use to optimize their digital property for search engine consumption. So where do we start? How do we know what efforts will bring us the best ROI and let our marketers do their job effectively in the long run?
+Google's dominance in web search makes it clear that in 2017 marketers should pay close attention to Google's algorithmic updates in order to stay ahead of the curve. Standards introduced to SEO by Google are likely to satisfy all other search engines. Given this reality, there are many techniques that website owners can use to optimize their digital property for search engine consumption. So where do we start? How do we know what efforts will bring us the best Return on Investment (ROI) and let our marketers do their job effectively in the long run?
 
 ## SEO Outlook 2017
 
 The Savas Labs team stays dialed in on the current trends of Search Engines Optimization. By leveraging aggregated research data and first-hand experience, we've developed a solid, yet constantly evolving, foundation of currently effective marketing methods.
 
-Here are 4 ranking factors that we've identified as being most important as of Q4 2016. Our forecast is that these 4 factors will likely remain at the top of the list throughout 2017.
+Here are four ranking factors that we've identified as being most important as of Q4 2016. Our forecast is that these 4 factors will likely remain at the top of the list throughout 2017.
 
 #### 1. Content
 
@@ -91,7 +91,7 @@ These improvements have the potential to make your Drupal 8 website fly! And if 
 
 #### Semantic Markup
 
-Search engines appreciate clean markup that explicitly describes the purpose of on-page elements. Thanks to [HTML5 Initiative](https://www.drupal.org/community-initiatives/drupal-core/html5) for Drupal 8 development, we now have a number of great markup improvements right in Drupal core:
+Search engines appreciate clean markup that explicitly describes the purpose of on-page elements. Thanks to the [HTML5 Initiative](https://www.drupal.org/community-initiatives/drupal-core/html5) for Drupal 8 development, we now have a number of great markup improvements right in Drupal core:
 
 - HTML5 themes with new semantic elements in core templates
 
@@ -119,7 +119,7 @@ To reach audiences from around the world, companies need to speak to users in th
 
 > [There are 41 million native Spanish speakers in the U.S. Around 79% of them using search engines on a daily basis for gathering information about a future purchase.](https://www.thinkwithgoogle.com/articles/new-research-shows-how-to-connect-with-digital-hispanics-online.html)
 
-Reaching global audience with Drupal has never been this easy! Previous versions of Drupal had partial support for multilingual websites. Luckily, Drupal 8 had a fundamental overhaul of its [multilingual system](http://www.drupal8multilingual.org/features). Every single component is translatable out of the box in Drupal core without any additional modules. Drupal core natively supports 94 languages. Also, the administration interface is now entirely translatable. Media assets (files or images), can now be assigned to a language or shared between languages. This gives a huge advantage to businesses that aim to reach global audience.
+Reaching a global audience with Drupal has never been this easy! Previous versions of Drupal had partial support for multilingual websites. Luckily, Drupal 8 had a fundamental overhaul of its [multilingual system](http://www.drupal8multilingual.org/features). Every single component is translatable out of the box in Drupal core without any additional modules. Drupal core natively supports 94 languages. Also, the administration interface is now entirely translatable. Media assets (files or images), can now be assigned to a language or shared between languages. This gives a huge advantage to businesses that aim to reach a global audience.
 
 SEO for Drupal 8 is off to a good start with just the core features! Drupal 8 also has a growing number of contributed modules that can amplify your SEO efforts. Just to name a few: [Metatag](https://www.drupal.org/project/metatag), [Google Analytics](https://www.drupal.org/project/google_analytics), [Pathauto](https://www.drupal.org/project/pathauto), [Redirect](https://www.drupal.org/project/redirect), and more.
 
