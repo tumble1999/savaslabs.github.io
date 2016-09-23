@@ -6,9 +6,170 @@
 </description>
     <link>/</link>
     <atom:link href="/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 22 Sep 2016 22:17:34 +0000</pubDate>
-    <lastBuildDate>Thu, 22 Sep 2016 22:17:34 +0000</lastBuildDate>
+    <pubDate>Fri, 23 Sep 2016 12:04:19 +0000</pubDate>
+    <lastBuildDate>Fri, 23 Sep 2016 12:04:19 +0000</lastBuildDate>
     <generator>Jekyll v3.0.3</generator>
+    
+      <item>
+        <title>Supercharged SEO with Drupal 8</title>
+        <description>&lt;p&gt;Here at Savas Labs, we listen to our clients needs, and what many of our clients need is to reach their target audiences effectively. Let’s be honest here - perfectly coded, a pretty looking website will be of little use if it doesn’t produce leads / increase brand awareness / facilitate conversions or generate revenue! So how do we help our clients achieve their goals? We get there by balancing website objectives while giving priority to lead generation via SEO. The more quality traffic that comes to the website - the more conversions we can achieve. It’s that simple!&lt;/p&gt;
+
+&lt;p&gt;There are multiple ways of generating traffic to a website. The most popular methods are SEO (Search Engine Optimization) and PPC (Pay Per Click). Both bring traffic through search engines. The difference between the two is that SEO brings long-term results boosting organic traffic while PPC helps marketers achieve short-term goals by gaining instant exposure throughout the duration of an ad campaign.&lt;/p&gt;
+
+&lt;p&gt;In this post I’ll share some insight about current SEO trends. I’ll also describe new features of  Drupal 8 that make it the most SEO-friendly content management framework available today.&lt;/p&gt;
+
+&lt;p&gt;Let’s start by taking a look at what exactly Search Engine Optimization is.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-seo&quot;&gt;What is SEO?&lt;/h2&gt;
+
+&lt;p&gt;Search Engine Optimization (SEO) is a marketing discipline focused on optimizing a website’s architecture and content so that it performs well (read “ranks high”) in organic search engine results.&lt;/p&gt;
+
+&lt;p&gt;Search engines (Google, Bing, etc.) change their search algorithms many times throughout the year. There are over 200 ranking factors that become updated with every algorithmic change. It is worth noting that Google, one of the leading search engines, is steadily growing its market share in the world and the United States for both desktop and mobile search (see chart below).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/blog/search-engine-market-share-sep-2016.png&quot; class=&quot;blog-image-large&quot; alt=&quot;Search Engine Market Share 2016&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;caption&quot;&gt;&lt;a href=&quot;https://www.netmarketshare.com/search-engine-market-share.aspx?qprid=4&amp;amp;qpcustomd=0&amp;amp;qpsp=2016&amp;amp;qpnp=1&amp;amp;qptimeframe=Y&quot;&gt;Search Engine Market Share 2016&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;Google’s dominance in web search makes it clear that in 2017 marketers should pay close attention to Google’s algorithmic updates in order to stay ahead of the curve. Standards introduced to SEO by Google are likely to satisfy all other search engines. Given this reality, there are many techniques that website owners can use to optimize their digital property for search engine consumption. So where do we start? How do we know what efforts will bring us the best Return on Investment (ROI) and let our marketers do their job effectively in the long run?&lt;/p&gt;
+
+&lt;h2 id=&quot;seo-outlook-2017&quot;&gt;SEO Outlook 2017&lt;/h2&gt;
+
+&lt;p&gt;The Savas Labs team stays dialed in on the current trends of Search Engines Optimization. By leveraging aggregated research data and first-hand experience, we’ve developed a solid, yet constantly evolving, foundation of currently effective marketing methods.&lt;/p&gt;
+
+&lt;p&gt;Here are four ranking factors that we’ve identified as being most important as of Q4 2016. Our forecast is that these four factors will likely remain at the top of the list throughout 2017.&lt;/p&gt;
+
+&lt;h4 id=&quot;content&quot;&gt;1. Content&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://mention.com/blog/2017-content-marketing-predictions/&quot;&gt;Content is still king!&lt;/a&gt; Yes, that’s right. It is and it always will be! You’ve got to be relevant in order to even appear in search. And nothing will make you more relevant than carefully crafted, practical, awesome, juicy, shareable, actionable (you name it) CONTENT! It is important to note that marketers should stop thinking of content as purely text and focus their efforts on providing &lt;a href=&quot;http://blog.hubspot.com/marketing/visual-content-marketing-strategy#sm.00001bvjy82syzedqpgnd8w6p9mw8&quot;&gt;visual content&lt;/a&gt; that supports storytelling, is engaging and &lt;a href=&quot;https://varvy.com/matching-user-intent.html&quot;&gt;matches user intent&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;backlinks&quot;&gt;2. Backlinks&lt;/h4&gt;
+
+&lt;p&gt;Not just any good ‘ol link to your website. &lt;a href=&quot;http://cognitiveseo.com/blog/3057/the-definition-of-the-high-quality-backlink/&quot;&gt;Good backlinks&lt;/a&gt; come from high authority domains that are in the same niche as your website. Strong backlinks bring quality traffic and are therefore considered highly desirable to your SEO cause.&lt;/p&gt;
+
+&lt;h4 id=&quot;responsive-design&quot;&gt;3. Responsive Design&lt;/h4&gt;
+
+&lt;p&gt;With more people using their handheld devices to browse the internet, it has become increasingly important to make a website look good across multiple platforms (smartphone, tablet, etc.). It is not an option in 2017 - it is a necessity! While we won’t get into the notoriously labeled &lt;a href=&quot;https://webmasters.googleblog.com/2015/04/rolling-out-mobile-friendly-update.html&quot;&gt;Google algorithm update “Mobilegeddon”&lt;/a&gt; that happened in April 2015, we will provide some interesting statistics to back up the importance of responsive design.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://hostingfacts.com/internet-facts-stats-2016/&quot;&gt;There are more mobile internet users than desktop internet users; 52.7% of global internet users access the internet via mobile, and 75.1% of U.S. internet users access the internet via mobile.&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;http://www.convinceandconvert.com/mobile/7-mobile-marketing-stats-that-will-blow-your-mind/&quot;&gt;4 out of 5 consumers use a Smartphone to shop.&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;page-speed&quot;&gt;4. Page Speed&lt;/h4&gt;
+
+&lt;p&gt;In response to the substantial increase in mobile traffic growth, search engines have acknowledged the importance of page speed and the effect it has on user experience (UX) and now give more weight to fast-loading websites.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://blog.kissmetrics.com/loading-time/&quot;&gt;40% of people abandon a website that takes more than 3 seconds to load.&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;http://blog.radware.com/applicationdelivery/applicationaccelerationoptimization/2013/05/case-study-page-load-time-conversions/&quot;&gt;a 2-second delay in load time during a transaction resulted in abandonment rates of up to 87%. This is significantly higher than the baseline abandonment rate of 67%.&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Can your business handle the loss in revenue that may occur from slow page load speed?&lt;/p&gt;
+
+&lt;h2 id=&quot;drupal-8---built-with-seo-in-mind&quot;&gt;Drupal 8 - Built with SEO in Mind&lt;/h2&gt;
+
+&lt;p&gt;The base of all our SEO efforts lies within the website’s architecture. There are many website engines and CMS’s to choose from and most of them will claim that they are SEO optimized. Don’t be fooled! No CMS will come search engine optimized out of the box. It may have some features, which, if configured correctly, may bring you some SEO benefits. SEO is not only about code, though it does start there. SEO is also about the continuous efforts of your marketing team. We all know that time = money. The more efficient your marketing team is in performing tasks within your CMS - the more ROI you get!&lt;/p&gt;
+
+&lt;p&gt;A good CMS must provide means for your marketing team to work independently from your development team. Drupal 8 does just that! It provides a solid framework that can be tuned to become a powerful marketing-machine.&lt;/p&gt;
+
+&lt;p&gt;Let’s take a look at some of the new features in core that make search engines love Drupal 8.&lt;/p&gt;
+
+&lt;h4 id=&quot;drupal-8-is-responsive-out-of-the-box&quot;&gt;Drupal 8 is Responsive out of the Box&lt;/h4&gt;
+
+&lt;p&gt;Drupal 8 comes with responsive themes in core. Now both public facing and admin facing themes are responsive and make user experience great on any device.&lt;/p&gt;
+
+&lt;h4 id=&quot;drupal-8-page-load-is-fast&quot;&gt;Drupal 8 Page Load is Fast&lt;/h4&gt;
+
+&lt;p&gt;There has been a lot of debate about Drupal 8 vs. Drupal 7 performance / page load since the Drupal 8’s release. It is a fact that vanilla Drupal 8 is running much more code than vanilla Drupal 7. It runs vendor code like Symfony, which adds some overhead. However, Drupal 8 has a significant number of performance improvements that are making up for that overhead:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Javascript files are now loading in the footer&lt;/strong&gt;. Due to this change pages build up faster and user can see and use them earlier.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;&lt;a href=&quot;https://www.drupal.org/node/2034675&quot;&gt;Pluggable CSS/JS aggregation and minification&lt;/a&gt;&lt;/strong&gt; to support more optimal optimization algorithms.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;Highly improved caching&lt;/strong&gt;. Drupal 8 uses “cache tags” that makes caching more efficient and includes Cache Context API which provides context-based caching. This means pages load faster while ensuring that visitors always see the latest version of your site.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;BigPipe render pipeline&lt;/strong&gt;. Sends pages in a way that allows browsers to show them much faster. First sends the cacheable parts of the page, then the dynamic/uncacheable parts. Uses the &lt;a href=&quot;https://www.facebook.com/notes/facebook-engineering/bigpipe-pipelining-web-pages-for-high-performance/389414033919&quot;&gt;BigPipe technique&lt;/a&gt;.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These improvements have the potential to make your Drupal 8 website fly! And if after all that it is not “flying” - than you need someone to review the code that powers your website’s features. &lt;a href=&quot;/contact/&quot;&gt;Contact us&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;semantic-markup&quot;&gt;Semantic Markup&lt;/h4&gt;
+
+&lt;p&gt;Search engines appreciate clean markup that explicitly describes the purpose of on-page elements. Thanks to the &lt;a href=&quot;https://www.drupal.org/community-initiatives/drupal-core/html5&quot;&gt;HTML5 Initiative&lt;/a&gt; for Drupal 8 development, we now have a number of great markup improvements right in Drupal core:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;HTML5 themes with new semantic elements in core templates&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Support for the new form elements to Drupal’s Form API&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Rich media handling with &amp;lt;video&amp;gt; and &amp;lt;audio&amp;gt; elements&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;ARIA roles in markup to improve accessibility&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Resource Description Framework (RDF) support that provides a standardized model for data interchange and facilitates &lt;a href=&quot;http://schema.org/&quot;&gt;Schema.org&lt;/a&gt; mappings&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Twig theming engine - makes it harder for developers to create messy, non-semantic code&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;content-as-a-service&quot;&gt;Content-as-a-Service&lt;/h4&gt;
+
+&lt;p&gt;Another exciting new feature of Drupal 8 is a &lt;a href=&quot;https://drupal.com/feature/content-as-a-service&quot;&gt;flexible content delivery&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Today, content owners want to get their content to as many platforms and channels as possible: web, mobile, social networks, smart devices, etc. It is expensive to have a separate solution for every channel. It is much more efficient to have a single editorial team and single software platform that allows for well-organized content management. Drupal 8 and its content-as-a-service capability provides a one-stop solution where content is created and managed via unified web-interface and then consumed by other channels with minimal effort.&lt;/p&gt;
+
+&lt;h4 id=&quot;drupal-8--multilingual-capabilities&quot;&gt;Drupal 8  Multilingual Capabilities&lt;/h4&gt;
+
+&lt;p&gt;To reach audiences from around the world, companies need to speak to users in their native language. In 2017, producing content in English language &lt;a href=&quot;http://www.bloggingpro.com/archives/2016/01/04/why-having-a-multilingual-website-is-the-smartest-marketing-decision/&quot;&gt;is not enough&lt;/a&gt;, even if English is considered an internationally accepted language. The United States is now the world’s second largest Spanish-speaking country after Mexico, which amplifies the necessity of serving multilingual content for U.S. based audience. To help put things in perspective we checked recent statistics.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;http://www.internetworldstats.com/stats7.htm&quot;&gt;English is a #1 language used in the Web, but it only amounts to 26.3% of the online market.&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;a href=&quot;https://www.thinkwithgoogle.com/articles/new-research-shows-how-to-connect-with-digital-hispanics-online.html&quot;&gt;There are 41 million native Spanish speakers in the U.S. Around 79% of them using search engines on a daily basis for gathering information about a future purchase.&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Reaching a global audience with Drupal has never been this easy! Previous versions of Drupal had partial support for multilingual websites. Luckily, Drupal 8 had a fundamental overhaul of its &lt;a href=&quot;http://www.drupal8multilingual.org/features&quot;&gt;multilingual system&lt;/a&gt;. Every single component is translatable out of the box in Drupal core without any additional modules. Drupal core natively supports 94 languages. Also, the administration interface is now entirely translatable. Media assets (files or images), can now be assigned to a language or shared between languages. This gives a huge advantage to businesses that aim to reach a global audience.&lt;/p&gt;
+
+&lt;p&gt;SEO for Drupal 8 is off to a good start with just the core features! Drupal 8 also has a growing number of contributed modules that can amplify your SEO efforts. Just to name a few: &lt;a href=&quot;https://www.drupal.org/project/metatag&quot;&gt;Metatag&lt;/a&gt;, &lt;a href=&quot;https://www.drupal.org/project/google_analytics&quot;&gt;Google Analytics&lt;/a&gt;, &lt;a href=&quot;https://www.drupal.org/project/pathauto&quot;&gt;Pathauto&lt;/a&gt;, &lt;a href=&quot;https://www.drupal.org/project/redirect&quot;&gt;Redirect&lt;/a&gt;, and more.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;Drupal 8 satisfies current SEO trends enabling marketers do their job effectively and efficiently! Even with minimal configuration, Drupal 8 lays a solid base for future marketing performance.&lt;/strong&gt;&lt;/p&gt;
+</description>
+        <pubDate>Fri, 23 Sep 2016 00:00:00 +0000</pubDate>
+        <link>/2016/09/23/supercharged-seo-with-drupal-8.html</link>
+        <guid isPermaLink="true">/2016/09/23/supercharged-seo-with-drupal-8.html</guid>
+        
+        <category>drupal</category>
+        
+        <category>drupal8</category>
+        
+        <category>drupal-planet</category>
+        
+        <category>marketing</category>
+        
+        
+      </item>
     
       <item>
         <title>A Savas Labs Internship</title>
@@ -1051,30 +1212,6 @@ the things I learned to explore first.&lt;/p&gt;
         <category>design</category>
         
         <category>front-end-dev</category>
-        
-        
-      </item>
-    
-      <item>
-        <title>TriDUG recap: Drupal 8 case studies</title>
-        <description>&lt;p&gt;On Thursday March 17, about thirty &lt;a href=&quot;https://groups.drupal.org/tridug&quot;&gt;TriDUG&lt;/a&gt; members gathered to for a discussion on using Drupal 8.&lt;/p&gt;
-
-&lt;p&gt;I presented on my experiences building &lt;a href=&quot;https://www.durhamatletico.com&quot;&gt;Durham Atlético&lt;/a&gt; using all the Drupal 8 features we’re growing to love: configuration management, new theming layer, Views in core, the vastly improved content editing experience, and the Symfony2 underpinnings of Drupal’s architecture.&lt;/p&gt;
-
-&lt;blockquote class=&quot;twitter-tweet&quot; data-lang=&quot;en&quot;&gt;&lt;p lang=&quot;en&quot; dir=&quot;ltr&quot;&gt;The meetup has begun! &lt;a href=&quot;https://t.co/wEHisuW44l&quot;&gt;pic.twitter.com/wEHisuW44l&lt;/a&gt;&lt;/p&gt;&amp;mdash; Savas Labs (@Savas_Labs) &lt;a href=&quot;https://twitter.com/Savas_Labs/status/710605691237605377&quot;&gt;March 17, 2016&lt;/a&gt;&lt;/blockquote&gt;
-&lt;script async=&quot;&quot; src=&quot;//platform.twitter.com/widgets.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
-
-&lt;p&gt;&lt;a href=&quot;/team/anne-tomasevich&quot;&gt;Anne&lt;/a&gt; gave a tour of the theming layer (she did some &lt;a href=&quot;https://github.com/durhamatletico/durhamatletico-cms/graphs/contributors&quot;&gt;amazing work building the theme&lt;/a&gt; for the Durham Atlético site) and talked up the benefits of using Twig over the old PHP-based templating system in Drupal 7. If you’d like to know more about Drupal 8 theming, we have a great set of &lt;a href=&quot;/blog/tag/theming/&quot;&gt;introductory articles here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Thanks to everyone who attended, we’re looking forward to seeing you all at the next TriDUG meetup!&lt;/p&gt;
-</description>
-        <pubDate>Fri, 18 Mar 2016 00:00:00 +0000</pubDate>
-        <link>/2016/03/18/tridug-recap.html</link>
-        <guid isPermaLink="true">/2016/03/18/tridug-recap.html</guid>
-        
-        <category>drupal8</category>
-        
-        <category>tridug</category>
         
         
       </item>
